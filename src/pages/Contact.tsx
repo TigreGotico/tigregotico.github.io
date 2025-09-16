@@ -103,7 +103,7 @@ const Contact = () => {
             </motion.div>
 
             <motion.h1
-              className="text-4xl md:text-6xl font-gothic font-bold text-foreground mb-8 tracking-gothic"
+              className="text-4xl md:text-6xl font-serif font-bold text-foreground mb-8 tracking-tight"
               variants={itemVariants}
             >
               {t('contact.title')}

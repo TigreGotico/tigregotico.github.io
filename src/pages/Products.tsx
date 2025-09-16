@@ -126,7 +126,7 @@ const Products = () => {
               </motion.div>
 
               <motion.h1
-                className="text-4xl md:text-6xl font-gothic font-bold text-foreground mb-8 tracking-gothic"
+                className="text-4xl md:text-6xl font-serif font-bold text-foreground mb-8 tracking-tight"
                 variants={itemVariants}
               >
                 {t('nav.products')}
@@ -145,7 +145,7 @@ const Products = () => {
               variants={itemVariants}
             >
               <motion.h2
-                className="text-3xl md:text-5xl font-gothic font-bold text-foreground mb-6 tracking-gothic"
+                className="text-3xl md:text-5xl font-serif font-bold text-foreground mb-6 tracking-tight"
                 variants={itemVariants}
               >
                 {t('products.plugins.headline')}
@@ -178,7 +178,7 @@ const Products = () => {
                       >
                         <plugin.icon className="w-6 h-6 text-white" />
                       </motion.div>
-                      <CardTitle className="text-xl font-gothic font-semibold text-foreground tracking-gothic mb-2">
+                      <CardTitle className="text-xl font-serif font-semibold text-foreground tracking-tight mb-2">
                         {plugin.name}
                       </CardTitle>
                       <div className="text-2xl font-bold text-primary mb-4">
@@ -221,7 +221,7 @@ const Products = () => {
               variants={itemVariants}
             >
               <motion.h2
-                className="text-3xl md:text-5xl font-gothic font-bold text-foreground mb-6 tracking-gothic"
+                className="text-3xl md:text-5xl font-serif font-bold text-foreground mb-6 tracking-tight"
                 variants={itemVariants}
               >
                 {t('products.merch.headline')}
@@ -254,7 +254,7 @@ const Products = () => {
                       >
                         <item.icon className="w-6 h-6 text-white" />
                       </motion.div>
-                      <CardTitle className="text-xl font-gothic font-semibold text-foreground tracking-gothic mb-2">
+                      <CardTitle className="text-xl font-serif font-semibold text-foreground tracking-tight mb-2">
                         {item.name}
                       </CardTitle>
                       <div className="text-2xl font-bold text-terracotta-dark mb-4">

@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Target, Zap, Users, ArrowRight, CheckCircle } from 'lucide-react';
+import { Target, Zap, Users, ArrowRight, CheckCircle, Mic } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Services = () => {
@@ -109,7 +109,7 @@ const Services = () => {
               </motion.div>
 
               <motion.h1
-                className="text-4xl md:text-6xl font-gothic font-bold text-foreground mb-8 tracking-gothic"
+                className="text-4xl md:text-6xl font-serif font-bold text-foreground mb-8 tracking-tight"
                 variants={itemVariants}
               >
                 {t('services.title')}
@@ -146,7 +146,7 @@ const Services = () => {
               variants={itemVariants}
             >
               <motion.h2
-                className="text-3xl md:text-5xl font-gothic font-bold text-foreground mb-6 tracking-gothic"
+                className="text-3xl md:text-5xl font-serif font-bold text-foreground mb-6 tracking-tight"
                 variants={itemVariants}
               >
                 {t('services.consulting.headline')}
@@ -179,7 +179,7 @@ const Services = () => {
                       >
                         <service.icon className="w-6 h-6 text-white" />
                       </motion.div>
-                      <CardTitle className="text-xl font-gothic font-semibold text-foreground tracking-gothic">
+                      <CardTitle className="text-xl font-serif font-semibold text-foreground tracking-tight">
                         {service.title}
                       </CardTitle>
                     </CardHeader>
@@ -213,6 +213,95 @@ const Services = () => {
           </motion.div>
         </section>
 
+        {/* TTS Training Section */}
+        <section className="py-20">
+          <motion.div
+            className="max-w-6xl mx-auto px-6 lg:px-8"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+          >
+            <motion.div
+              className="text-center mb-16"
+              variants={itemVariants}
+            >
+              <motion.div
+                className="mb-8"
+                variants={itemVariants}
+              >
+                <motion.div
+                  className="w-16 h-0.5 bg-primary mx-auto mb-4"
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  viewport={{ once: true }}
+                  whileHover={{ scaleX: 1.2, transition: { duration: 0.3 } }}
+                ></motion.div>
+                <motion.div
+                  className="w-8 h-0.5 bg-primary/60 mx-auto"
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                  viewport={{ once: true }}
+                  whileHover={{ scaleX: 1.3, transition: { duration: 0.3 } }}
+                ></motion.div>
+              </motion.div>
+
+              <motion.h2
+                className="text-3xl md:text-5xl font-serif font-bold text-foreground mb-6 tracking-tight"
+                variants={itemVariants}
+              >
+                {t('services.tts.headline')}
+              </motion.h2>
+
+              <motion.div
+                className="w-24 h-0.5 bg-primary mx-auto mb-8"
+                variants={itemVariants}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              ></motion.div>
+
+              <motion.div
+                className="max-w-4xl mx-auto mb-12"
+                variants={itemVariants}
+              >
+                <motion.div
+                  className="w-20 h-20 bg-gradient-primary rounded-xl flex items-center justify-center mx-auto mb-8"
+                  whileHover={{ rotate: 5, scale: 1.1 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Mic className="w-10 h-10 text-white" />
+                </motion.div>
+              </motion.div>
+
+              <motion.p
+                className="text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed font-light tracking-wide"
+                variants={itemVariants}
+              >
+                {t('services.tts.description')}
+              </motion.p>
+            </motion.div>
+
+            <motion.div
+              className="text-center"
+              variants={itemVariants}
+            >
+              <motion.div
+                variants={buttonVariants}
+                whileHover="hover"
+                whileTap="tap"
+              >
+                <Link to="/contact">
+                  <Button size="lg" className="bg-gradient-primary hover:opacity-90 text-white px-8 py-4 text-lg font-medium tracking-wide shadow-gothic">
+                    {t('services.getstarted')}
+                    <ArrowRight className="ml-2 w-5 h-5" />
+                  </Button>
+                </Link>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+        </section>
+
         {/* Website Building Section */}
         <section className="py-20 bg-gradient-subtle">
           <motion.div
@@ -227,7 +316,7 @@ const Services = () => {
               variants={itemVariants}
             >
               <motion.h2
-                className="text-3xl md:text-5xl font-gothic font-bold text-foreground mb-6 tracking-gothic"
+                className="text-3xl md:text-5xl font-serif font-bold text-foreground mb-6 tracking-tight"
                 variants={itemVariants}
               >
                 {t('services.website.headline')}

@@ -64,7 +64,7 @@ const NotFound = () => {
         </motion.div>
 
         <motion.h1
-          className="mb-6 text-6xl md:text-8xl font-gothic font-bold text-foreground tracking-gothic"
+          className="mb-6 text-6xl md:text-8xl font-serif font-bold text-foreground tracking-tight"
           variants={itemVariants}
         >
           404

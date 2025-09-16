@@ -74,9 +74,9 @@ const Footer = () => {
                 whileHover={{ rotate: 5 }}
                 transition={{ duration: 0.2 }}
               >
-                <span className="text-white font-gothic font-bold text-lg tracking-gothic">TG</span>
+                <span className="text-white font-serif font-bold text-lg tracking-tight">TG</span>
               </motion.div>
-              <span className="font-gothic font-semibold text-2xl tracking-gothic">TigreGótico</span>
+              <span className="font-serif font-semibold text-2xl tracking-tight">TigreGótico</span>
             </motion.div>
             <motion.p
               className="text-white/70 leading-relaxed font-light tracking-wide"
@@ -92,7 +92,7 @@ const Footer = () => {
             variants={itemVariants}
           >
             <motion.h3
-              className="font-gothic font-semibold text-lg mb-6 tracking-gothic"
+              className="font-serif font-semibold text-lg mb-6 tracking-tight"
               variants={itemVariants}
             >
               Quick Links
@@ -132,7 +132,7 @@ const Footer = () => {
             variants={itemVariants}
           >
             <motion.h3
-              className="font-gothic font-semibold text-lg mb-6 tracking-gothic"
+              className="font-serif font-semibold text-lg mb-6 tracking-tight"
               variants={itemVariants}
             >
               Contact
@@ -141,8 +141,8 @@ const Footer = () => {
               className="space-y-2 text-white/70 font-light tracking-wide"
               variants={itemVariants}
             >
-              <p>Sample Address</p>
-              <p>something something</p>
+              <p>Praceta António Sérgio, nº317 4ºEsquerdo</p>
+              <p>4450-048 Matosinhos Portugal</p>
               <p>contact@tigregotico.com</p>
               <p>+351 xx xxx xxxx</p>
             </motion.div>

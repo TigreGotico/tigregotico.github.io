@@ -19,8 +19,8 @@ const translations = {
     
     // Hero Section
     'hero.title': 'Privacy-First Voice Technology',
-    'hero.subtitle': '',
-    'hero.description': '',
+    'hero.subtitle': ' ',
+    'hero.description': ' ',
     'hero.cta.primary': 'Explore Our FOSS Consulting Services',
     'hero.cta.secondary': 'Discover Our Products',
     
@@ -51,6 +51,11 @@ const translations = {
     'services.portfolio': 'We are proud to have developed and maintained the official OpenVoiceOS website, a live example of our commitment to clean code, responsive design, and open-source principles.',
     'services.website.cta': 'Let\'s Build Your Website',
     
+    // TTS Training Service
+    'services.tts.headline': 'Custom TTS Voice Training',
+    'services.tts.description': 'Want a unique voice for your project? We offer a service to train a custom, high-quality, and fully offline Text-to-Speech (TTS) voice model for your application. Whether you have a ready-to-use dataset for a specific language or want to clone a reference audio, our service provides fast, privacy-first TTS models perfect for projects like OpenVoiceOS and Home Assistant. The result is a seamless and private voice experience that runs locally on your device, giving you full control over your data.',
+    'services.getstarted': 'Get Started',
+    
     // Products Page
     'products.plugins.headline': 'Unlock More Power with OpenVoiceOS Plugins',
     'products.plugins.intro': 'Our plugins are built to extend the functionality of OVOS and enhance your projects. We believe in the open-source spirit, which is why our plugins are offered on a unique "freemium" model: you pay to download the plugin, but it\'s still licensed under the BSD license, giving you full freedom to use and modify it.',
@@ -75,6 +80,13 @@ const translations = {
     // Footer
     'footer.rights': '© 2024 TigreGóticoLda. All rights reserved.',
     'footer.consulting': 'Privacy-First Voice Technology and FOSS AI Solutions',
+    
+    // Featured Projects
+    'projects.title': 'Featured Projects',
+    'projects.subtitle': 'Showcasing our commitment to open-source innovation and collaborative excellence',
+    'projects.ilenia.headline': 'Driving Innovation with Open-Source Partnerships',
+    'projects.ilenia.introduction': 'We collaborate with leading organizations to advance the capabilities of FOSS voice technology. A key example is our work with the ILENIA project, where we added support for Spanish, Galician, Basque, and Catalan to OpenVoiceOS, including full support for their speech models. This partnership highlights our ability to deliver robust, multi-lingual solutions that empower global communities.',
+    'projects.ilenia.link': 'https://proyectoilenia.es',
   },
   pt: {
     // Navigation
@@ -118,6 +130,11 @@ const translations = {
     'services.portfolio': 'Temos orgulho de ter desenvolvido e mantido o website oficial do OpenVoiceOS, um exemplo vivo de nosso compromisso com código limpo, design responsivo e princípios de código aberto.',
     'services.website.cta': 'Vamos Construir Seu Website',
     
+    // TTS Training Service
+    'services.tts.headline': 'Treinamento de Voz TTS Personalizada',
+    'services.tts.description': 'Quer uma voz única para seu projeto? Oferecemos um serviço para treinar um modelo de voz Text-to-Speech (TTS) personalizado, de alta qualidade e totalmente offline para sua aplicação. Seja você tem um conjunto de dados pronto para uso para um idioma específico ou quer clonar um áudio de referência, nosso serviço fornece modelos TTS rápidos e com prioridade na privacidade, perfeitos para projetos como OpenVoiceOS e Home Assistant. O resultado é uma experiência de voz perfeita e privada que roda localmente em seu dispositivo, dando-lhe controle total sobre seus dados.',
+    'services.getstarted': 'Começar',
+    
     // Products Page
     'products.plugins.headline': 'Desbloqueie Mais Poder com Plugins OpenVoiceOS',
     'products.plugins.intro': 'Nossos plugins são construídos para estender a funcionalidade do OVOS e melhorar seus projetos. Acreditamos no espírito do código aberto, por isso nossos plugins são oferecidos em um modelo único "freemium": você paga para baixar o plugin, mas ainda é licenciado sob a licença BSD, dando-lhe total liberdade para usar e modificá-lo.',
@@ -140,8 +157,16 @@ const translations = {
     'contact.form.submit': 'Enviar Mensagem',
     
     // Footer
+        // Footer
     'footer.rights': '© 2024 TigreGóticoLda. Todos os direitos reservados.',
     'footer.consulting': 'Tecnologia de Voz com Prioridade na Privacidade e Soluções de IA FOSS',
+    
+    // Featured Projects
+    'projects.title': 'Projetos em Destaque',
+    'projects.subtitle': 'Mostrando nosso compromisso com a inovação de código aberto e excelência colaborativa',
+    'projects.ilenia.headline': 'Impulsionando a Inovação com Parcerias de Código Aberto',
+    'projects.ilenia.introduction': 'Colaboramos com organizações líderes para avançar as capacidades da tecnologia de voz FOSS. Um exemplo chave é nosso trabalho com o projeto ILENIA, onde adicionamos suporte para espanhol, galego, basco e catalão ao OpenVoiceOS, incluindo suporte completo para seus modelos de fala. Esta parceria destaca nossa capacidade de entregar soluções multilíngues robustas que capacitam comunidades globais.',
+    'projects.ilenia.link': 'https://proyectoilenia.es',
   }
 };
 

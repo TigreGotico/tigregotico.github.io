@@ -100,7 +100,7 @@ const About = () => {
               </motion.div>
 
               <motion.h1
-                className="text-4xl md:text-6xl font-gothic font-bold text-foreground mb-8 tracking-gothic"
+                className="text-4xl md:text-6xl font-serif font-bold text-foreground mb-8 tracking-tight"
                 variants={itemVariants}
               >
                 {t('nav.about')}
@@ -130,7 +130,7 @@ const About = () => {
               variants={itemVariants}
             >
               <motion.h2
-                className="text-3xl md:text-4xl font-gothic font-bold text-foreground mb-6 tracking-gothic"
+                className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-6 tracking-tight"
                 variants={itemVariants}
               >
                 Our Story
@@ -173,7 +173,7 @@ const About = () => {
               variants={itemVariants}
             >
               <motion.h2
-                className="text-3xl md:text-4xl font-gothic font-bold text-foreground mb-6 tracking-gothic"
+                className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-6 tracking-tight"
                 variants={itemVariants}
               >
                 Our Expertise
@@ -216,7 +216,7 @@ const About = () => {
               variants={itemVariants}
             >
               <motion.h2
-                className="text-3xl md:text-4xl font-gothic font-bold text-foreground mb-6 tracking-gothic"
+                className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-6 tracking-tight"
                 variants={itemVariants}
               >
                 Mission Statement
@@ -259,7 +259,7 @@ const About = () => {
               variants={itemVariants}
             >
               <motion.h2
-                className="text-3xl md:text-4xl font-gothic font-bold text-foreground mb-6 tracking-gothic"
+                className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-6 tracking-tight"
                 variants={itemVariants}
               >
                 Our Values
@@ -293,7 +293,7 @@ const About = () => {
                       >
                         <value.icon className="w-8 h-8 text-white" />
                       </motion.div>
-                      <h3 className="text-xl font-gothic font-semibold text-foreground mb-4 tracking-gothic">
+                      <h3 className="text-xl font-serif font-semibold text-foreground mb-4 tracking-tight">
                         {value.title}
                       </h3>
                       <p className="text-muted-foreground leading-relaxed font-light">

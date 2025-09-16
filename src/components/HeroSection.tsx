@@ -29,12 +29,19 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-subtle"></div>
-
-      {/* Subtle overlay */}
-      <div className="absolute inset-0 bg-black/20"></div>
+    <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      {/* Background Video */}
+      <video
+        className="absolute top-0 left-0 w-full h-full object-cover"
+        autoPlay
+        muted
+        loop
+        playsInline
+        style={{ objectFit: 'cover' }}
+      >
+        <source src="/bg.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
 
       {/* Content */}
       <motion.div
@@ -50,14 +57,14 @@ const HeroSection = () => {
             variants={itemVariants}
           >
             <motion.div
-              className="w-16 h-0.5 bg-primary mx-auto mb-4"
+              className="w-16 h-0.5 bg-white mx-auto mb-4"
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               whileHover={{ scaleX: 1.2, transition: { duration: 0.3 } }}
             ></motion.div>
             <motion.div
-              className="w-8 h-0.5 bg-primary/60 mx-auto"
+              className="w-8 h-0.5 bg-white/60 mx-auto"
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -66,22 +73,22 @@ const HeroSection = () => {
           </motion.div>
 
           <motion.h1
-            className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-foreground mb-8 leading-tight tracking-tight"
+            className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white mb-8 leading-tight tracking-tight"
             variants={itemVariants}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             {t('hero.title')}
-            <span className="block text-foreground/80 font-light mt-2">{t('hero.subtitle')}</span>
+            <span className="block text-white/90 font-light mt-2">{t('hero.subtitle')}</span>
           </motion.h1>
 
           <motion.div
-            className="w-24 h-0.5 bg-primary mx-auto mb-12"
+            className="w-24 h-0.5 bg-white mx-auto mb-12"
             variants={itemVariants}
             transition={{ duration: 0.6, delay: 0.4 }}
           ></motion.div>
 
           <motion.p
-            className="text-lg md:text-xl text-muted-foreground mb-16 max-w-2xl mx-auto leading-relaxed font-light tracking-wide"
+            className="text-lg md:text-xl text-white/80 mb-16 max-w-2xl mx-auto leading-relaxed font-light tracking-wide"
             variants={itemVariants}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
@@ -112,14 +119,14 @@ const HeroSection = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <Button
+                <Button
                 variant="outline"
                 size="lg"
-                className="bg-white/80 text-foreground border-primary/30 hover:bg-white/90 backdrop-blur-sm px-12 py-6 text-base font-medium tracking-wide transition-all duration-300 hover:shadow-lg"
+                className="px-12 py-6 text-base font-medium tracking-wide"
                 onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
-              >
+                >
                 {t('hero.cta.secondary')}
-              </Button>
+                </Button>
             </motion.div>
           </motion.div>
         </div>
