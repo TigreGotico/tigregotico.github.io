@@ -101,7 +101,7 @@ const Footer = () => {
               {[
                 { to: '/', label: t('nav.home') },
                 { to: '/services', label: t('nav.services') },
-                { to: '/products', label: t('nav.products') },
+                // { to: '/products', label: t('nav.products') },
                 { to: '/about', label: t('nav.about') },
                 { to: '/contact', label: t('nav.contact') },
               ].map((link, index) => (

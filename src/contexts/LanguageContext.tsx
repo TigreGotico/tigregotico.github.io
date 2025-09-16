@@ -78,7 +78,7 @@ const translations = {
     'contact.form.submit': 'Send Message',
     
     // Footer
-    'footer.rights': '© 2024 TigreGóticoLda. All rights reserved.',
+    'footer.rights': '© 2025 TigreGóticoLda. All rights reserved.',
     'footer.consulting': 'Privacy-First Voice Technology and FOSS AI Solutions',
     
     // Featured Projects
@@ -158,7 +158,7 @@ const translations = {
     
     // Footer
         // Footer
-    'footer.rights': '© 2024 TigreGóticoLda. Todos os direitos reservados.',
+    'footer.rights': '© 2025 TigreGóticoLda. Todos os direitos reservados.',
     'footer.consulting': 'Tecnologia de Voz com Prioridade na Privacidade e Soluções de IA FOSS',
     
     // Featured Projects
