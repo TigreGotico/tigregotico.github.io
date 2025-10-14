@@ -14,6 +14,7 @@ const Navigation = () => {
     { name: t('nav.home'), href: '/' },
     { name: t('nav.services'), href: '/services' },
     // { name: t('nav.products'), href: '/products' },
+    { name: t('nav.resources'), href: '/resources' },
     { name: t('nav.about'), href: '/about' },
     { name: t('nav.contact'), href: '/contact' },
   ];
@@ -48,27 +49,27 @@ const Navigation = () => {
       variants={navVariants}
       transition={{ duration: 0.6, delay: 0.2 }}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16 sm:h-20">
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           >
-            <Link to="/" className="flex items-center space-x-3">
+            <Link to="/" className="flex items-center space-x-2 sm:space-x-3">
               <motion.div
-                className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center"
+                className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-primary rounded-lg flex items-center justify-center"
                 whileHover={{ rotate: 5 }}
                 transition={{ duration: 0.2 }}
               >
-                <span className="text-white font-serif font-bold text-lg tracking-tight">TG</span>
+                <span className="text-white font-serif font-bold text-sm sm:text-lg tracking-tight">TG</span>
               </motion.div>
-              <span className="font-serif font-semibold text-2xl text-foreground tracking-tight">TigreGótico</span>
+              <span className="font-serif font-semibold text-lg sm:text-2xl text-foreground tracking-tight">TigreGótico</span>
             </Link>
           </motion.div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-12">
+          <div className="hidden lg:flex items-center space-x-8 xl:space-x-12">
             {navigation.map((item, index) => (
               <motion.div
                 key={item.name}
@@ -96,7 +97,7 @@ const Navigation = () => {
 
             {/* Language Switcher */}
             <motion.div
-              className="flex items-center space-x-2 ml-8 border-l border-border pl-8"
+              className="flex items-center space-x-2 ml-6 xl:ml-8 border-l border-border pl-6 xl:pl-8"
               initial={{ opacity: 0, x: 10 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.3, delay: 0.5 }}
@@ -119,7 +120,7 @@ const Navigation = () => {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <motion.div
               whileTap={{ scale: 0.95 }}
             >
@@ -127,12 +128,13 @@ const Navigation = () => {
                 variant="ghost"
                 size="sm"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="p-2"
               >
                 <motion.div
                   animate={{ rotate: isMenuOpen ? 180 : 0 }}
                   transition={{ duration: 0.2 }}
                 >
-                  {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                  {isMenuOpen ? <X className="w-5 h-5 sm:w-6 sm:h-6" /> : <Menu className="w-5 h-5 sm:w-6 sm:h-6" />}
                 </motion.div>
               </Button>
             </motion.div>
@@ -143,7 +145,7 @@ const Navigation = () => {
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div
-              className="md:hidden"
+              className="lg:hidden"
               initial="closed"
               animate="open"
               exit="closed"
@@ -160,10 +162,10 @@ const Navigation = () => {
                     <Link
                       to={item.href}
                       onClick={() => setIsMenuOpen(false)}
-                      className={`block px-3 py-2 text-base font-medium transition-colors hover:text-primary ${
+                      className={`block px-3 py-3 text-base font-medium transition-colors hover:text-primary rounded-lg ${
                         location.pathname === item.href
-                          ? 'text-primary bg-primary-light'
-                          : 'text-muted-foreground'
+                          ? 'text-primary bg-primary/5'
+                          : 'text-muted-foreground hover:bg-muted/30'
                       }`}
                     >
                       {item.name}
@@ -172,14 +174,17 @@ const Navigation = () => {
                 ))}
 
                 <motion.div
-                  className="px-3 py-2 flex items-center space-x-2"
+                  className="px-3 py-3 flex items-center justify-between border-t border-border mt-4 pt-4"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.2, delay: 0.25 }}
                 >
-                  <Globe className="w-4 h-4 text-muted-foreground" />
+                  <div className="flex items-center space-x-2">
+                    <Globe className="w-4 h-4 text-muted-foreground" />
+                    <span className="text-sm text-muted-foreground">Language</span>
+                  </div>
                   <Button
-                    variant="ghost"
+                    variant="outline"
                     size="sm"
                     onClick={() => setLanguage(language === 'en' ? 'pt' : 'en')}
                     className="text-xs font-medium"

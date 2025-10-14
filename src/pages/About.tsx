@@ -69,53 +69,6 @@ const About = () => {
       <Navigation />
 
       <main className="pt-24 pb-16">
-        {/* Header Section */}
-        <section className="py-20 bg-gradient-subtle">
-          <motion.div
-            className="max-w-6xl mx-auto px-6 lg:px-8"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            <motion.div
-              className="text-center mb-16"
-              variants={itemVariants}
-            >
-              <motion.div
-                className="mb-8"
-                variants={itemVariants}
-              >
-                <motion.div
-                  className="w-16 h-0.5 bg-primary mx-auto mb-4"
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                ></motion.div>
-                <motion.div
-                  className="w-8 h-0.5 bg-primary/60 mx-auto"
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={{ duration: 0.8, delay: 0.4 }}
-                ></motion.div>
-              </motion.div>
-
-              <motion.h1
-                className="text-4xl md:text-6xl font-serif font-bold text-foreground mb-8 tracking-tight"
-                variants={itemVariants}
-              >
-                {t('nav.about')}
-              </motion.h1>
-
-              <motion.div
-                className="w-24 h-0.5 bg-primary mx-auto mb-8"
-                initial={{ scaleX: 0 }}
-                animate={{ scaleX: 1 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-              ></motion.div>
-            </motion.div>
-          </motion.div>
-        </section>
-
         {/* Our Story Section */}
         <section className="py-20">
           <motion.div

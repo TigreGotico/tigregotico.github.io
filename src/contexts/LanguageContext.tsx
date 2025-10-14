@@ -14,6 +14,7 @@ const translations = {
     'nav.home': 'Home',
     'nav.services': 'Services',
     'nav.products': 'Products',
+    'nav.resources': 'Resources',
     'nav.about': 'About',
     'nav.contact': 'Contact',
     
@@ -22,7 +23,9 @@ const translations = {
     'hero.subtitle': ' ',
     'hero.description': ' ',
     'hero.cta.primary': 'Explore Our FOSS Consulting Services',
+    'hero.cta.primary.mobile': 'Get Started',
     'hero.cta.secondary': 'Discover Our Products',
+    'hero.cta.secondary.mobile': 'Learn More',
     
     // Services
     'services.title': 'Our Services',
@@ -45,7 +48,7 @@ const translations = {
     'services.hourly.title': 'Hourly Support Packs',
     'services.hourly.description': 'Need a quick hand? Our flexible hourly packs are perfect for troubleshooting, minor feature implementation, or simply getting expert advice when you need it most.',
     'services.integrations.title': 'Integrations',
-    'services.integrations.description': 'We specialize in the OVOS stack, but our expertise extends to other popular open-source platforms, including Home Assistant, for seamless smart home integrations.',
+    'services.integrations.description': 'We specialize in making your voice technology dreams a reality. Our expertise lies in seamlessly integrating any platform into the OpenVoiceOS stack. Whether you need to voice-enable a completely new device, integrate a specific Text-to-Speech (TTS) or Speech-to-Text (STT) service, or build a custom solution from the ground up, we have the unique knowledge to make it work. We can either add custom functionality directly to OpenVoiceOS or make OVOS voice-enable anything you can imagine.',
     'services.website.headline': 'Professional Web Development with a FOSS-First Approach',
     'services.website.intro': 'Your online presence is a reflection of your brand. We design and develop custom websites and web applications with an emphasis on performance, security, and a privacy-first mindset.',
     'services.portfolio': 'We are proud to have developed and maintained the official OpenVoiceOS website, a live example of our commitment to clean code, responsive design, and open-source principles.',
@@ -63,7 +66,8 @@ const translations = {
     'products.merch.intro': 'Every sticker and magnet you purchase is a direct investment in the open-source community. Your support helps us continue maintaining and improving the OpenVoiceOS stack for everyone.',
     
     // About Page
-    'about.story': 'Founded with a deep passion for open source and a firm belief in digital privacy, TigreGóticoLda emerged to provide a professional backbone for the OpenVoiceOS and HiveMind stack. While OpenVoiceOS is a non-profit foundation, our company exists to ensure the long-term sustainability and expert maintenance of its core technologies.',
+    'about.intro': 'About Us',
+    'about.story': 'Founded with a deep passion for open source and a firm belief in digital privacy, TigreGótico emerged to provide a professional backbone for the OpenVoiceOS and HiveMind stack. While OpenVoiceOS is a non-profit foundation, our company exists to ensure the long-term sustainability and expert maintenance of its core technologies.',
     'about.expertise': 'Our company is built on a foundation of unique knowledge: we are the lead developers and maintainers of the OpenVoiceOS and HiveMind voice stack. This isn\'t just a business for us—it\'s a mission. Our expertise is unparalleled because we\'ve been with this technology from its inception, making us the most reliable partners for your voice tech projects.',
     'about.mission': 'To empower businesses and individuals with privacy-focused, open-source voice technology solutions and professional services, championing a future of ethical and transparent AI.',
     
@@ -78,8 +82,13 @@ const translations = {
     'contact.form.submit': 'Send Message',
     
     // Footer
-    'footer.rights': '© 2025 TigreGóticoLda. All rights reserved.',
+    'footer.rights': '© 2025 TigreGótico. All rights reserved.',
     'footer.consulting': 'Privacy-First Voice Technology and FOSS AI Solutions',
+    'footer.opensource': 'Open Source',
+    'footer.quicklinks': 'Quick Links',
+    'footer.contact': 'Contact',
+    'footer.madewith': 'Made with',
+    'footer.foss': 'for the FOSS community',
     
     // Featured Projects
     'projects.title': 'Featured Projects',
@@ -87,21 +96,58 @@ const translations = {
     'projects.ilenia.headline': 'Driving Innovation with Open-Source Partnerships',
     'projects.ilenia.introduction': 'We collaborate with leading organizations to advance the capabilities of FOSS voice technology. A key example is our work with the ILENIA project, where we added support for Spanish, Galician, Basque, and Catalan to OpenVoiceOS, including full support for their speech models. This partnership highlights our ability to deliver robust, multi-lingual solutions that empower global communities.',
     'projects.ilenia.link': 'https://proyectoilenia.es',
+    
+    // Resources
+    'resources.title': 'Resources',
+    'resources.subtitle': 'Here you\'ll find a collection of datasets and models we\'ve published, all available for free and open use. We are committed to contributing to the FOSS AI community and hope these resources prove valuable for your projects.',
+    'resources.foss': 'Free & Open Source',
+    'resources.community': 'Community Driven',
+    'resources.innovation': 'Innovation Focused',
+    
+    // Datasets
+    'resources.datasets.title': 'Published Datasets',
+    'resources.datasets.description': 'Our datasets are available on Hugging Face, providing valuable resources for training and fine-tuning various AI models. We focus on speech-related tasks, including text-to-speech (TTS), wake word detection, and natural language understanding.',
+    'resources.datasets.huggingface.title': 'TigreGotico Datasets',
+    'resources.datasets.huggingface.subtitle': 'Speech and Language Datasets',
+    'resources.datasets.huggingface.description': 'A comprehensive collection of speech datasets covering multiple languages and use cases, from TTS training data to wake word detection samples.',
+    'resources.datasets.browse': 'Browse Datasets',
+    
+    // Models
+    'resources.models.title': 'Published Models',
+    'resources.models.description': 'We also share models, particularly those trained for text-to-speech (TTS), to help accelerate development for others in the open-source community. These models are compatible with popular open-source TTS engines like Piper TTS. We\'ve trained the default OpenVoiceOS models, featuring one male and one female voice for each language, with the same speaker identity across languages.',
+    'resources.models.huggingface.title': 'TigreGotico TTS Models',
+    'resources.models.huggingface.subtitle': 'High-Quality Text-to-Speech Models',
+    'resources.models.huggingface.description': 'Production-ready TTS models trained specifically for OpenVoiceOS and compatible with Piper TTS engine. Each model provides natural-sounding speech synthesis for various languages.',
+    'resources.models.features.title': 'Key Features:',
+    'resources.models.features.piper': 'Compatible with Piper TTS engine',
+    'resources.models.features.ovos': 'Default models for OpenVoiceOS',
+    'resources.models.features.voices': 'Male and female voices for each language',
+    'resources.models.features.quality': 'High-quality, natural-sounding speech',
+    'resources.models.browse': 'Browse Models',
+    
+    // CTA
+    'resources.cta.title': 'Need Custom Resources?',
+    'resources.cta.description': 'Looking for custom datasets or models for your specific use case? Our team can help you create tailored solutions that meet your exact requirements.',
+    'resources.cta.contact': 'Get in Touch',
+    'resources.cta.services': 'View Services',
   },
   pt: {
     // Navigation
     'nav.home': 'Início',
     'nav.services': 'Serviços',
     'nav.products': 'Produtos',
+    'nav.resources': 'Recursos',
     'nav.about': 'Sobre',
     'nav.contact': 'Contacto',
     
     // Hero Section
     'hero.title': 'Tecnologia de Voz com Prioridade na Privacidade e Soluções de IA FOSS.',
     'hero.subtitle': '',
-    'hero.description': 'Num mundo de assistentes de voz ávidos de dados, oferecemos uma alternativa melhor. A TigreGóticoLda fornece serviços profissionais construídos nos princípios da privacidade, código aberto e soberania de dados. Como mantenedores principais do OpenVoiceOS e HiveMind stack, temos a experiência única para ajudá-lo a construir soluções de tecnologia de voz seguras e compatíveis com GDPR.',
+    'hero.description': 'Num mundo de assistentes de voz ávidos de dados, oferecemos uma alternativa melhor. A TigreGótico fornece serviços profissionais construídos nos princípios da privacidade, código aberto e soberania de dados. Como mantenedores principais do OpenVoiceOS e HiveMind stack, temos a experiência única para ajudá-lo a construir soluções de tecnologia de voz seguras e compatíveis com GDPR.',
     'hero.cta.primary': 'Explore Nossos Serviços de Consultoria FOSS',
+    'hero.cta.primary.mobile': 'Começar',
     'hero.cta.secondary': 'Descubra Nossos Produtos',
+    'hero.cta.secondary.mobile': 'Saber Mais',
     
     // Services
     'services.title': 'Nossos Serviços',
@@ -142,7 +188,7 @@ const translations = {
     'products.merch.intro': 'Cada sticker e ímã que você compra é um investimento direto na comunidade de código aberto. Seu apoio nos ajuda a continuar mantendo e melhorando o stack OpenVoiceOS para todos.',
     
     // About Page
-    'about.story': 'Fundada com uma profunda paixão pelo código aberto e uma firme crença na privacidade digital, a TigreGóticoLda surgiu para fornecer uma espinha dorsal profissional para o OpenVoiceOS e HiveMind stack. Enquanto o OpenVoiceOS é uma fundação sem fins lucrativos, nossa empresa existe para garantir a sustentabilidade de longo prazo e manutenção especializada de suas tecnologias principais.',
+    'about.story': 'Fundada com uma profunda paixão pelo código aberto e uma firme crença na privacidade digital, a TigreGótico surgiu para fornecer uma espinha dorsal profissional para o OpenVoiceOS e HiveMind stack. Enquanto o OpenVoiceOS é uma fundação sem fins lucrativos, nossa empresa existe para garantir a sustentabilidade de longo prazo e manutenção especializada de suas tecnologias principais.',
     'about.expertise': 'Nossa empresa é construída sobre uma fundação de conhecimento único: somos os principais desenvolvedores e mantenedores do stack de voz OpenVoiceOS e HiveMind. Isso não é apenas um negócio para nós—é uma missão. Nossa experiência é incomparável porque estivemos com essa tecnologia desde sua concepção, tornando-nos os parceiros mais confiáveis para seus projetos de tecnologia de voz.',
     'about.mission': 'Capacitar empresas e indivíduos com soluções de tecnologia de voz focadas na privacidade e código aberto e serviços profissionais, defendendo um futuro de IA ética e transparente.',
     
@@ -158,8 +204,13 @@ const translations = {
     
     // Footer
         // Footer
-    'footer.rights': '© 2025 TigreGóticoLda. Todos os direitos reservados.',
+    'footer.rights': '© 2025 TigreGótico. Todos os direitos reservados.',
     'footer.consulting': 'Tecnologia de Voz com Prioridade na Privacidade e Soluções de IA FOSS',
+    'footer.opensource': 'Código Aberto',
+    'footer.quicklinks': 'Links Rápidos',
+    'footer.contact': 'Contacto',
+    'footer.madewith': 'Feito com',
+    'footer.foss': 'para a comunidade FOSS',
     
     // Featured Projects
     'projects.title': 'Projetos em Destaque',
@@ -167,6 +218,40 @@ const translations = {
     'projects.ilenia.headline': 'Impulsionando a Inovação com Parcerias de Código Aberto',
     'projects.ilenia.introduction': 'Colaboramos com organizações líderes para avançar as capacidades da tecnologia de voz FOSS. Um exemplo chave é nosso trabalho com o projeto ILENIA, onde adicionamos suporte para espanhol, galego, basco e catalão ao OpenVoiceOS, incluindo suporte completo para seus modelos de fala. Esta parceria destaca nossa capacidade de entregar soluções multilíngues robustas que capacitam comunidades globais.',
     'projects.ilenia.link': 'https://proyectoilenia.es',
+    
+    // Resources
+    'resources.title': 'Recursos',
+    'resources.subtitle': 'Aqui você encontrará uma coleção de conjuntos de dados e modelos que publicamos, todos disponíveis para uso gratuito e aberto. Estamos comprometidos em contribuir para a comunidade FOSS AI e esperamos que esses recursos sejam valiosos para seus projetos.',
+    'resources.foss': 'Livre e Código Aberto',
+    'resources.community': 'Impulsionado pela Comunidade',
+    'resources.innovation': 'Focado em Inovação',
+    
+    // Datasets
+    'resources.datasets.title': 'Conjuntos de Dados Publicados',
+    'resources.datasets.description': 'Nossos conjuntos de dados estão disponíveis no Hugging Face, fornecendo recursos valiosos para treinamento e ajuste fino de vários modelos de IA. Focamos em tarefas relacionadas à fala, incluindo text-to-speech (TTS), detecção de palavras de ativação e compreensão de linguagem natural.',
+    'resources.datasets.huggingface.title': 'Conjuntos de Dados TigreGotico',
+    'resources.datasets.huggingface.subtitle': 'Conjuntos de Dados de Fala e Linguagem',
+    'resources.datasets.huggingface.description': 'Uma coleção abrangente de conjuntos de dados de fala cobrindo múltiplas linguagens e casos de uso, desde dados de treinamento TTS até amostras de detecção de palavras de ativação.',
+    'resources.datasets.browse': 'Explorar Conjuntos de Dados',
+    
+    // Models
+    'resources.models.title': 'Modelos Publicados',
+    'resources.models.description': 'Também compartilhamos modelos, particularmente aqueles treinados para text-to-speech (TTS), para ajudar a acelerar o desenvolvimento para outros na comunidade de código aberto. Esses modelos são compatíveis com engines TTS de código aberto populares como Piper TTS. Treinamos os modelos padrão do OpenVoiceOS, apresentando uma voz masculina e uma feminina para cada idioma, com a mesma identidade de locutor entre idiomas.',
+    'resources.models.huggingface.title': 'Modelos TTS TigreGotico',
+    'resources.models.huggingface.subtitle': 'Modelos Text-to-Speech de Alta Qualidade',
+    'resources.models.huggingface.description': 'Modelos TTS prontos para produção treinados especificamente para OpenVoiceOS e compatíveis com o engine Piper TTS. Cada modelo fornece síntese de fala com som natural para várias linguagens.',
+    'resources.models.features.title': 'Características Principais:',
+    'resources.models.features.piper': 'Compatível com o engine Piper TTS',
+    'resources.models.features.ovos': 'Modelos padrão para OpenVoiceOS',
+    'resources.models.features.voices': 'Vozes masculinas e femininas para cada idioma',
+    'resources.models.features.quality': 'Fala de alta qualidade e som natural',
+    'resources.models.browse': 'Explorar Modelos',
+    
+    // CTA
+    'resources.cta.title': 'Precisa de Recursos Personalizados?',
+    'resources.cta.description': 'Procurando conjuntos de dados ou modelos personalizados para seu caso de uso específico? Nossa equipe pode ajudá-lo a criar soluções sob medida que atendem exatamente aos seus requisitos.',
+    'resources.cta.contact': 'Entre em Contato',
+    'resources.cta.services': 'Ver Serviços',
   }
 };
 

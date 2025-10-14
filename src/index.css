@@ -223,10 +223,42 @@
 
   /* Professional spacing */
   .section-spacing {
-    @apply py-20 lg:py-32;
+    @apply py-12 sm:py-16 lg:py-20 xl:py-32;
   }
 
   .container-professional {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Mobile optimizations */
+  .mobile-safe-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  .mobile-text-responsive {
+    @apply text-sm sm:text-base lg:text-lg;
+  }
+
+  .mobile-heading-responsive {
+    @apply text-2xl sm:text-3xl lg:text-4xl xl:text-5xl;
+  }
+
+  /* Touch-friendly interactive elements */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+
+  /* Prevent text selection on interactive elements */
+  .no-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  /* Smooth scrolling for mobile */
+  .scroll-smooth-mobile {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
   }
 }

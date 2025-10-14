@@ -49,23 +49,23 @@ const ServicesSection = () => {
   };
 
   return (
-    <section id="services" className="py-20 lg:py-32 bg-gradient-subtle">
-      <div className="max-w-6xl mx-auto px-6 lg:px-8">
+    <section id="services" className="py-16 sm:py-20 lg:py-32 bg-gradient-subtle">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
-          className="text-center mb-24"
+          className="text-center mb-16 sm:mb-20 lg:mb-24"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
           <motion.div
-            className="mb-8"
+            className="mb-6 sm:mb-8"
             variants={itemVariants}
             transition={{ duration: 0.6 }}
           >
             <motion.div
-              className="w-16 h-0.5 bg-primary mx-auto mb-4"
+              className="w-12 sm:w-16 h-0.5 bg-primary mx-auto mb-3 sm:mb-4"
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -73,7 +73,7 @@ const ServicesSection = () => {
               whileHover={{ scaleX: 1.2, transition: { duration: 0.3 } }}
             ></motion.div>
             <motion.div
-              className="w-8 h-0.5 bg-primary/60 mx-auto"
+              className="w-6 sm:w-8 h-0.5 bg-primary/60 mx-auto"
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -83,7 +83,7 @@ const ServicesSection = () => {
           </motion.div>
 
           <motion.h2
-            className="text-4xl md:text-6xl font-serif font-bold text-foreground mb-8 tracking-tight"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-foreground mb-6 sm:mb-8 tracking-tight px-4"
             variants={itemVariants}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
@@ -91,13 +91,13 @@ const ServicesSection = () => {
           </motion.h2>
 
           <motion.div
-            className="w-24 h-0.5 bg-primary mx-auto mb-8"
+            className="w-16 sm:w-24 h-0.5 bg-primary mx-auto mb-6 sm:mb-8"
             variants={itemVariants}
             transition={{ duration: 0.6, delay: 0.4 }}
           ></motion.div>
 
           <motion.p
-            className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed font-light"
+            className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed font-light px-4"
             variants={itemVariants}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
@@ -107,7 +107,7 @@ const ServicesSection = () => {
 
         {/* Services Grid */}
         <motion.div
-          className="grid md:grid-cols-3 gap-12"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 lg:gap-12"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -116,27 +116,27 @@ const ServicesSection = () => {
           {services.map((service, index) => (
             <motion.div
               key={index}
-              className="group text-center"
+              className="group text-center px-4"
               variants={cardVariants}
               whileHover="hover"
               transition={{ duration: 0.4, delay: index * 0.1 }}
             >
               <motion.div
-                className="mb-8"
+                className="mb-6 sm:mb-8"
                 whileHover={{ scale: 1.1 }}
                 transition={{ duration: 0.2 }}
               >
                 <motion.div
-                  className="w-20 h-20 bg-gradient-primary rounded-lg flex items-center justify-center mx-auto mb-6 group-hover:shadow-lg transition-shadow duration-300"
+                  className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-primary rounded-lg flex items-center justify-center mx-auto mb-4 sm:mb-6 group-hover:shadow-lg transition-shadow duration-300"
                   whileHover={{ rotate: 5 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <service.icon className="w-10 h-10 text-white" />
+                  <service.icon className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
                 </motion.div>
               </motion.div>
 
               <motion.h3
-                className="text-xl font-serif font-semibold text-foreground mb-6 tracking-tight"
+                className="text-lg sm:text-xl font-serif font-semibold text-foreground mb-4 sm:mb-6 tracking-tight"
                 variants={itemVariants}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
@@ -144,13 +144,13 @@ const ServicesSection = () => {
               </motion.h3>
 
               <motion.div
-                className="w-12 h-0.5 bg-primary/30 mx-auto mb-6"
+                className="w-10 sm:w-12 h-0.5 bg-primary/30 mx-auto mb-4 sm:mb-6"
                 variants={itemVariants}
                 transition={{ duration: 0.6, delay: 0.4 }}
               ></motion.div>
 
               <motion.p
-                className="text-muted-foreground leading-relaxed font-light tracking-wide"
+                className="text-sm sm:text-base text-muted-foreground leading-relaxed font-light tracking-wide"
                 variants={itemVariants}
                 transition={{ duration: 0.6, delay: 0.6 }}
               >
