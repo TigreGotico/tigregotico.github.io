@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Link } from 'react-router-dom';
-import { Heart, Mail, MapPin, Phone, ExternalLink } from 'lucide-react';
+import { Heart, Mail, MapPin, Phone, ExternalLink, Rss } from 'lucide-react';
 import { FaGithub, FaHeart } from 'react-icons/fa';
 import { SiHuggingface } from 'react-icons/si';
 import { HiSpeakerWave } from 'react-icons/hi2';
@@ -92,6 +92,17 @@ const Footer = () => {
                   </Link>
                 </motion.div>
               ))}
+              <motion.a
+                href="/feed.xml"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center space-x-2 text-muted-foreground hover:text-foreground transition-colors text-sm py-1 rounded-lg hover:bg-muted/20 px-2 -mx-2"
+                whileHover={{ x: 4 }}
+                transition={{ duration: 0.2 }}
+              >
+                <Rss className="w-4 h-4" />
+                <span>Blog RSS Feed</span>
+              </motion.a>
             </div>
           </motion.div>
 
