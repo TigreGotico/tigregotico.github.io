@@ -18,14 +18,48 @@ export const parseFrontMatter = (content: string) => {
   }
 
   const [, frontMatterStr, body] = match;
-  const frontMatter: Record<string, string | boolean | string[]> = {};
+  const frontMatter: Record<string, unknown> = {};
+  const lines = frontMatterStr.split('\n');
+  let i = 0;
 
-  frontMatterStr.split('\n').forEach(line => {
-    const [key, ...rest] = line.split(':');
-    if (key && rest.length > 0) {
-      let value: string | boolean | string[] = rest.join(':').trim();
+  while (i < lines.length) {
+    const line = lines[i];
+    const match = line.match(/^(\w+):\s*(.*)?$/);
+    
+    if (!match) {
+      i++;
+      continue;
+    }
 
-      // Handle different value types
+    const key = match[1].trim();
+    let value: unknown = match[2]?.trim() || '';
+
+    // Check if this is a nested object (next line is indented)
+    if (i + 1 < lines.length && lines[i + 1].startsWith('  ')) {
+      const obj: Record<string, string> = {};
+      i++;
+      
+      // Parse nested properties
+      while (i < lines.length && lines[i].startsWith('  ')) {
+        const nestedLine = lines[i].trim();
+        const nestedMatch = nestedLine.match(/^(\w+):\s*(.*)$/);
+        
+        if (nestedMatch) {
+          let nestedValue = nestedMatch[2].trim();
+          // Remove quotes if present
+          if ((nestedValue.startsWith('"') && nestedValue.endsWith('"')) ||
+              (nestedValue.startsWith("'") && nestedValue.endsWith("'"))) {
+            nestedValue = nestedValue.slice(1, -1);
+          }
+          obj[nestedMatch[1]] = nestedValue;
+        }
+        i++;
+      }
+      
+      value = obj;
+      i--; // Adjust because loop will increment
+    } else {
+      // Handle simple values
       if (typeof value === 'string') {
         if (value.startsWith('"') && value.endsWith('"')) {
           value = value.slice(1, -1);
@@ -41,10 +75,11 @@ export const parseFrontMatter = (content: string) => {
           }
         }
       }
-
-      frontMatter[key.trim()] = value;
     }
-  });
+
+    frontMatter[key] = value;
+    i++;
+  }
 
   return { frontMatter, body };
 };
@@ -62,10 +97,10 @@ export const loadBlogPosts = async (): Promise<BlogPostMetadata[]> => {
   try {
     // List of known blog posts - in production, you might list files dynamically
     const blogFiles = [
-      'getting-started-with-react.md',
-      'wakehubert-wake-word-model.md',
-      'web-development-trends-2024.md',
-      'building-scalable-apis-nodejs-express.md'
+      '2025-10-11-r36s.md',
+      '2025-10-18-rss.md',
+      '2025-10-20-ngi.md',
+      '2025-10-24-protocol_interoperability.md'
     ];
 
     const posts: BlogPostMetadata[] = [];
@@ -80,11 +115,24 @@ export const loadBlogPosts = async (): Promise<BlogPostMetadata[]> => {
 
         const slug = file.replace('.md', '');
 
+        // Extract author name from author object or string
+        let authorName = 'Unknown';
+        console.log(`[Blog] Processing file: ${file}, author raw data:`, frontMatter.author);
+        
+        if (typeof frontMatter.author === 'string') {
+          authorName = frontMatter.author;
+        } else if (frontMatter.author && typeof frontMatter.author === 'object' && !Array.isArray(frontMatter.author)) {
+          const authorObj = frontMatter.author as { name?: string };
+          authorName = authorObj.name || 'Unknown';
+        }
+        
+        console.log(`[Blog] Extracted author name: ${authorName}`);
+
         posts.push({
           slug,
           title: (frontMatter.title as string) || 'Untitled',
           date: (frontMatter.date as string) || new Date().toISOString(),
-          author: (frontMatter.author as string) || 'Unknown',
+          author: authorName,
           excerpt: (frontMatter.excerpt as string) || '',
           tags: (Array.isArray(frontMatter.tags) ? frontMatter.tags : []) as string[],
           featured: typeof frontMatter.featured === 'boolean' ? frontMatter.featured : false,
