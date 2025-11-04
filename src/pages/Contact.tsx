@@ -264,15 +264,15 @@ const Contact = () => {
                   {
                     icon: Mail,
                     title: 'Email',
-                    content: 'contact@tigregotico.com',
+                    content: 'jarbasai@mailfence.com',
                     bgColor: 'bg-gradient-primary',
                   },
-                  {
-                    icon: Phone,
-                    title: 'Phone',
-                    content: '+351 xx xxx xxxx',
-                    bgColor: 'bg-gradient-warm',
-                  },
+                  // {
+                  //   icon: Phone,
+                  //   title: 'Phone',
+                  //   content: '+351 xx xxx xxxx',
+                  //   bgColor: 'bg-gradient-warm',
+                  // },
                   {
                     icon: MapPin,
                     title: 'Office',

@@ -192,7 +192,7 @@ const Footer = () => {
               </div>
               
               <motion.a
-                href="mailto:contact@tigregotico.com"
+                href="mailto:jarbasai@mailfence.com"
                 className="flex items-start space-x-3 rounded-lg hover:bg-muted/30 transition-colors group"
                 whileHover={{ x: 4 }}
                 transition={{ duration: 0.2 }}
@@ -202,11 +202,11 @@ const Footer = () => {
                 </div>
                 <div className="flex-1 min-w-0">
                   <span className="text-foreground text-sm font-medium block mb-1">Email</span>
-                  <span className="text-muted-foreground text-xs break-all leading-snug">contact@tigregotico.com</span>
+                  <span className="text-muted-foreground text-xs break-all leading-snug">jarbasai@mailfence.com</span>
                 </div>
               </motion.a>
               
-              <div className="flex items-start space-x-3">
+              {/* <div className="flex items-start space-x-3">
                 <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-emerald-600 rounded-lg flex items-center justify-center shadow-sm flex-shrink-0">
                   <Phone className="w-4 h-4 text-white" />
                 </div>
@@ -214,7 +214,7 @@ const Footer = () => {
                   <span className="text-foreground text-sm font-medium block mb-1">Phone</span>
                   <span className="text-muted-foreground text-xs leading-snug">+351 xx xxx xxxx</span>
                 </div>
-              </div>
+              </div> */}
             </div>
           </motion.div>
         </div>
