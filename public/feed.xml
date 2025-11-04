@@ -7,141 +7,106 @@
     <description>Insights, tutorials, and thoughts on modern web development, technology trends, and best practices.</description>
     <language>en-us</language>
     <copyright>Copyright © 2025 TigreGotico. All rights reserved.</copyright>
-    <lastBuildDate>Fri, 31 Oct 2025 16:50:56 GMT</lastBuildDate>
-    <pubDate>Fri, 24 Oct 2025 00:00:00 GMT</pubDate>
+    <lastBuildDate>Tue, 04 Nov 2025 19:04:23 GMT</lastBuildDate>
+    <pubDate>Mon, 06 Oct 2025 00:00:00 GMT</pubDate>
 
     <item>
-      <title>Building an Open and Interoperable Voice Ecosystem</title>
-      <link>https://tigregotico.github.io/blog/2025-10-24-protocol_interoperability</link>
-      <guid isPermaLink="true">https://tigregotico.github.io/blog/2025-10-24-protocol_interoperability</guid>
-      <pubDate>Fri, 24 Oct 2025 00:00:00 GMT</pubDate>
+      <title>Introducing phoonnx: The Next Generation of Open Voice for OpenVoiceOS</title>
+      <link>https://tigregotico.github.io/blog/2025-10-06-phoonnx</link>
+      <guid isPermaLink="true">https://tigregotico.github.io/blog/2025-10-06-phoonnx</guid>
+      <pubDate>Mon, 06 Oct 2025 00:00:00 GMT</pubDate>
       <author>Unknown</author>
-      <description>OpenVoiceOS has always been about freedom and flexibility, giving users full control over their voice assistants and how they connect with the world. But freedom also brings a challenge: ensuring that all these independent components can understand and work with each other.</description>
+      <description>Today marks a significant step forward in the OpenVoiceOS journey with the official integration and adoption of phoonnx as our primary Text-to-Speech (TTS) engine.</description>
       <content:encoded><![CDATA[
-text text text text
-Building an Open and Interoperable Voice Ecosystem
+Introducing phoonnx: The Next Generation of Open Voice for OpenVoiceOS
 
-Open Voice OS (OVOS) has always been about freedom and flexibility, giving users full control over their voice assistants and how they connect with the world. But freedom also brings a challenge: ensuring that all these independent components can understand and work with each other.
+Today marks a significant step forward in the OpenVoiceOS journey with the official adoption of phoonnx as our primary Text-to-Speech (TTS) framework. 
 
-That’s where standards and interoperability come in.
+This new generation of voices is not just about quality; it's about consistency, efficiency, and fulfilling our mission for truly open, offline-ready voice assistants across the globe.
 
-Today, OVOS is doubling down on its commitment to protocol alignment, not by locking into a single ecosystem, but by speaking the languages of many. This post outlines where we are now and where we’re going, as OVOS evolves into a truly interoperable, protocol-aware voice platform. Much of this work is supported by the NGI0 Commons Fund, helping us build a more open, connected, and privacy-respecting voice ecosystem.
+New Language: Introducing Basque!
 
-Why Standards Matter
+Building on our previous work on Making Synthetic Voices From Scratch and our successful Arabic TTS Collaboration, we are excited to announce a new milestone in our language support: the addition of new voices for Basque (eu-ES)!
 
-Voice technology thrives when systems can communicate. Whether you're connecting a speech-to-text engine to a dialogue manager, or bridging a local agent to a cloud service, the key is clear, consistent interfaces.
+This includes both the male voice (Miro) and female voice (Dii), furthering our mission to support even low-resource languages that lack open, high-quality TTS options.
 
-Interoperability means:
-🧩 Plug-and-play integration between tools, frameworks, and agents
-⚙️ Reuse of existing infrastructure instead of reinventing the wheel
-🔄 Resilience - the freedom to swap out components without breaking everything else
+Previously only a robotic female voice was available, via the AhoTTS plugin made in collaboration with ILENIA.
 
-In short: standards keep the open in Open Voice OS.
+Hear the results: Examples of the new Basque Open-Source Voices.
 
-Near-Future Work: MCP, UTCP, and A2A
+<audio controls>
+  <source src="/assets/blog/phoonnx/miroeu-ES.wav" type="audio/wav">
+  Your browser does not support the audio element.
+</audio>
 
-A major focus for upcoming OVOS releases is protocol-level interoperability. Several new standards are being explored to allow OVOS to seamlessly connect with external AI ecosystems.
+<audio controls>
+  <source src="/assets/blog/phoonnx/diieu-ES.wav" type="audio/wav">
+  Your browser does not support the audio element.
+</audio>
 
-This is part of OVOS’s broader move toward multi-agent systems, exemplified by the ovos-persona-pipeline, which allows users to change the personality of OVOS on demand , effectively switching to an entirely new agent context.
-These same personas will be the ones participating in MCP, UTCP, and A2A communication once these protocols land.
+A Unified Voice for a Global Brand
 
-!Agentic solver plugins
+As OpenVoiceOS expands to more languages and more devices, a crucial need has emerged: a cohesive brand identity conveyed through voice. 
+We need a core set of voices, a standard male and female persona, that sounds the same, professional, and recognizable no matter where you are in the world or which language you are speaking.
 
-Model Context Protocol (MCP) and  Universal Tool Calling Protocol (UTCP)
+This consistency is vital. Imagine installing OpenVoiceOS in Lisbon, Berlin, or Seattle, the voice should be instantly familiar. 
+This is the power of a unified voice, creating a seamless and trustworthy user experience globally.
 
-The Model Context Protocol (MCP) defines how agents and tools can exchange structured context and reasoning requests. In the near future, OVOS plans to both consume MCP-compatible tools and expose its own services (like STT, TTS, translation, and skills) over MCP.
+We are proud to share that TigreGotico has been instrumental in making this vision a reality. 
+They are not only developing the core phoonnx engine but are also actively contributing to open datasets and training the default, multi-lingual OVOS voices. 
+This internal collaboration accelerates development and ensures our voices are aligned with the open-source spirit of our platform.
 
-This would allow external systems — including other assistants or orchestration layers — to treat OVOS capabilities as MCP tools.
+The phoonnx Advantage: A Flexible TTS Ecosystem
 
-In parallel, we’re also experimenting with Universal Tool Calling Protocol (UTCP).
-While MCP and UTCP have overlapping goals, they serve slightly different audiences. OVOS intends to support both, ensuring maximum compatibility and easy integration across ecosystems.
+phoonnx is more than just an inference tool; it is a complete training and inference framework built on the robust VITS architecture. 
+This dual capability allows us to rapidly prototype, train, and deploy high-quality voices.
 
-> “We like UTCP but we love interoperability.”
+A key to this flexibility is the ability to support diverse phonemizers. 
+A phonemizer (or G2P - Grapheme-to-Phoneme model) converts written text into the sequence of sound units (phonemes) the TTS model speaks. 
+Different languages may require different, specialized phonemizers for accurate speech.
 
-Our goal is to make OVOS a universal interface layer, capable of understanding and serving requests in either protocol.
+   eSpeak Compatibility: A core feature is that phoonnx models are fully compatible with the popular Piper TTS engine's runtime, provided they were trained using the widely available eSpeak phonemizer. This ensures easy deployment within the existing OVOS ecosystem and third party projects like Home Assistant.
+   Custom Phonemizer Support: The framework is not limited to eSpeak. For example, we are excited to note that the high-quality Galician models developed by Proxecto Nós using the Cotovia phonemizer are fully compatible and can be used with the phoonnx pipeline.
 
-!MCP/UTCP with OpenVoiceOS
+This flexibility allows us to integrate and benefit from the work of other open-source projects. In fact, for inference, phoonnx can successfully use models originally trained by other projects, including Coqui, Mimic3, and Piper, solidifying its role as a universal TTS deployment tool.
 
-Agent-to-Agent Protocol (A2A)
+Teasing the Future: Next-Gen G2P Models
 
-Finally, we’re integrating the Agent-to-Agent (A2A) protocol to allow multiple agents to discover, communicate, and collaborate dynamically.
+Looking ahead, we are constantly working to improve G2P accuracy, especially for low-resource languages. We are currently developing and testing next-generation G2P models based on the powerful ByT5 architecture. These transformer-based models promise to deliver more accurate and robust phonemization across a wider range of languages.
 
-This work is already underway in the ovos-persona-server, and will eventually power multi-agent orchestration where different personas or solver plugins can coordinate tasks collaboratively.
+You can follow their development here: G2P Models Collection.
 
-!A2A protocol with OpenVoiceOS
+In the near future a dedicated OVOS TTS plugin will be created for phoonnx and made the default for OpenVoiceOS, replacing the previous plugins: ovos-tts-plugin-piper and ovos-tts-plugin-nos. 
 
-The OVOS Messagebus Protocol
+In the meantime you can try the new voices via the existing plugin ovos-tts-plugin-piper
 
-Under the hood, OVOS uses a websocket-based JSON messagebus to communicate internally. Historically, message formats were somewhat ad hoc, but that’s changing.
+All you need to do is pass the model urls under mycroft.conf
 
-An index of Pydantic models is now being developed to describe all known OVOS message types forming what we call the OVOS Messagebus Protocol.
+Progress Report: Available Languages
 
-This documentation effort will make it easier for external tools, dashboards, or bridges (like HiveMind) to interact with OVOS safely and predictably.
+The collective work of the OpenVoiceOS and TigreGotico teams has resulted in a rapidly expanding library of open-source TTS models.
 
-!OpenVoiceOS messagebus
+Currently Supported Languages:
 
-HiveMind: A Transport Protocol for Federated Voice Networks
+ Arabic
+ Basque
+ Dutch
+ English (US/GB)
+ French
+ German
+ Italian
+ Portuguese (Brazil/Portugal)
+Spanish
 
-HiveMind is a hierarchical transport protocol, defining clear rules for how messages are routed and how nodes communicate across a distributed network.
+Get Involved and Find the Models
 
-This means OVOS can operate as just one participant within a much larger HiveMind network or power that network entirely.
+We invite the community to explore and utilize these new resources. Your feedback is crucial to improving voice quality and expanding language coverage.
 
-While HiveMind was originally designed to support OVOS Messages, it’s agent-agnostic, capable of transporting any kind of message for any kind of AI agent.
-HiveMind achieves this flexibility through HiveMind agent plugins, which act as adapters between HiveMind and the agent logic itself.
-
-!HiveMind
-
-The reference plugin uses OVOS as the agent, but any agent can be integrated, as long as the plugin can consume and emit OVOS messages, translating them to whatever the target agent requires.
-
-This architecture enables a distributed ecosystem where:
-Different devices can run different agents, each with its own intelligence and capabilities.
-All HiveMind satellites remain compatible and interconnected.
-You can use the OVOS audio stack and plugin ecosystem (for STT, TTS, wake words, etc.) with any non-OVOS agent, simply by writing a small HiveMind agent plugin wrapper.
-hivemind-a2a-agent-plugin will allow connecting hivemind voice satellites to any A2A agent
-
-With the ongoing effort to formalize the OVOS Messagebus Protocol, HiveMind will soon align even more closely, officially carrying the same message definitions inside, effectively becoming an implementation of the OVOS Messagebus over the HiveMind protocol.
-
-OVOS Plugin Manager: Interoperability by Design
-
-At the core of OVOS’s modularity is the OVOS Plugin Manager, which allows every single OVOS component to be swapped out dynamically.
-
-In this context, the “protocol” is a shared base class with a well-defined API that each plugin implements. This ensures that all plugins, no matter where they’re deployed, expose the same interface to consumers.
-
-This approach allows the same plugin to run anywhere:
-as a standalone HTTP microservice (e.g., STT, TTS, translation, or persona server),
-locally on an OVOS device,
-under a HiveMind satellite, or
-as a service under HiveMind server.
-
-It can even be embedded into other projects that want immediate access to OVOS’s plugin ecosystem without importing the full OVOS stack.
-
-Each plugin is effectively an interoperability layer across technologies: reusable, self-contained, and designed to connect to anything.
-
-> Use only the pieces you need without losing compatibility.
-
-!OpenVoiceOS plugin servers
-
-The Big Picture: “Connect Anything to OVOS, and OVOS to Anything”
-
-All these efforts — MCP, UTCP, A2A, HiveMind, the Messagebus Protocol, the Plugin Manager, and even Wyoming adapters — share one goal:
-to make OVOS a universal connector in the voice and AI ecosystem.
-
-Whether you’re using local models, cloud APIs, or other assistants, OVOS aims to act as the interoperability layer that ties them together.
-
-The result?
-An assistant that doesn’t lock you in, it opens you up to an entire universe of tools, models, and agents.
-
-Work in Progress
-
-These initiatives are all part of ongoing research and development. MCP, UTCP, and A2A are planned but not yet implemented, while HiveMind, the Messagebus documentation, and standalone OVOS microservices are active and evolving.
-
-The roadmap is ambitious but clear:
-make OVOS the most interoperable open-source assistant platform in existence.
-
-With support from the NGI0 Commons Fund, we’re investing in open standards, transparent protocols, and bridges that connect communities across the open-source AI and voice landscape.
-
-If you care about open standards, agentic AI, and the freedom to connect anything to anything, we’d love your input and contributions.
-OVOS is not just building an assistant, it’s building the protocols of open intelligence.
+| Resource                 | Description                                                             | Link                                                                                                             |
+|:-------------------------|:------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------|
+| Phoonnx Models       | The new phoonnx-trained TTS models in ONNX format.                      | phoonnx-tts-models |
+| Piper/Phoonnx Voices | The full collection of OpenVoiceOS voices compatible with Piper.             | pipertts-voices       |
+| Open Datasets        | Datasets used for training these voices, furthering open-data research. | tts-datasets             |
 
 Help Us Build Voice for Everyone
 
@@ -155,62 +120,197 @@ We're not building this for profit. We're building it for people. With your supp
 👉 Support the project here
 
 ---
-Read more: <a href="https://tigregotico.github.io/blog/2025-10-24-protocol_interoperability">View full article</a>
+Read more: <a href="https://tigregotico.github.io/blog/2025-10-06-phoonnx">View full article</a>
 ]]></content:encoded>
     </item>
 
     <item>
-      <title>OpenVoiceOS Receives NGI Zero Commons Fund Grant</title>
-      <link>https://tigregotico.github.io/blog/2025-10-20-ngi</link>
-      <guid isPermaLink="true">https://tigregotico.github.io/blog/2025-10-20-ngi</guid>
-      <pubDate>Mon, 20 Oct 2025 00:00:00 GMT</pubDate>
+      <title>OpenVoiceOS and Home Assistant: A Voice Automation Dream Team</title>
+      <link>https://tigregotico.github.io/blog/2025-09-17-ovos_ha_dream_team</link>
+      <guid isPermaLink="true">https://tigregotico.github.io/blog/2025-09-17-ovos_ha_dream_team</guid>
+      <pubDate>Wed, 17 Sep 2025 00:00:00 GMT</pubDate>
       <author>Unknown</author>
-      <description>We’re excited to share some fantastic news — OpenVoiceOS has been selected to receive a grant from the NGI Zero Commons Fund!</description>
+      <description>In the world of open-source smart homes, some things just click. When you let Home Assistant handle the automation and let OVOS (Open Voice OS) handle the voice, you get a powerful partnership where each project shines. It’s a perfect synergy</description>
       <content:encoded><![CDATA[
-OpenVoiceOS Receives NGI Zero Commons Fund Grant
+OpenVoiceOS and Home Assistant: A Voice Automation Dream Team
 
-We’re excited to share some fantastic news — OpenVoiceOS (OVOS) has been selected to receive a grant from the NGI Zero Commons Fund!
+In the world of open-source smart homes, some things just click. When you let Home Assistant handle the automation and let OVOS (Open Voice OS) handle the voice, you get a powerful partnership where each project shines. It’s a perfect synergy: one is the undisputed champion of home automation, and the other is a flexible, private powerhouse for voice interaction.
 
-This milestone represents a huge step forward for our mission to build an open, community-driven, and privacy-first voice assistant platform. With this support, we can accelerate our progress from beta to a first stable version under our OpenVoiceOS umbrella.
+Home Assistant excels at orchestrating your devices and routines, while OVOS provides unparalleled flexibility and privacy in voice interactions. Together, they create a system that's not only robust but also truly yours.
 
-What is OpenVoiceOS?
+Let's explore how you can bring these two together to create a truly magical smart home experience.
 
-OVOS is Europe’s open-source alternative to proprietary voice assistants.
-Built around transparency, modularity, and user freedom, OVOS lets you choose every component of your assistant — from wake word and speech recognition to text-to-speech, intent handling, and AI conversation modules — all while keeping full control over your data.
+Give Home Assistant an OVOS-Powered Voice
 
-You can run OVOS entirely offline, on-premises, or in the cloud, making it suitable for:
-Smart homes and IoT devices
-Accessibility and assistive technologies
-Industrial and enterprise applications
-Research and educational environments
+The most direct way to get started is to enhance Home Assistant's built-in voice capabilities with the specialized tools from the OVOS ecosystem. Our main goal is to make OVOS's powerful tools accessible to as many people as possible. 
 
-What the Grant Enables
+To achieve this, we've developed dedicated Wyoming integrations that act as bridges, allowing any OVOS Text-to-Speech (TTS), Speech-to-Text (STT), or Wakeword plugin to be exposed to Home Assistant. 
 
-With support from the NGI Zero Commons Fund, we’ll be able to:
-💼 Hire our lead developer to deliver on the first stable roadmap
-🧭 Improve onboarding and usability for non-technical users
-🌍 Expand language support and stabilize platform components
-📚 Enhance documentation for developers building skills and plug-ins
+This means you're not limited to a few options; you gain immediate access to the entire rich ecosystem of OVOS voice plugins, bringing a vast array of languages, voices, and recognition models directly into your Home Assistant setup.
 
-Real-World Impact
+ Wyoming OVOS STT: Convert spoken commands into text for Home Assistant to understand.
+ Wyoming OVOS TTS: Enable Home Assistant to speak responses using OVOS's diverse voice options.
+ Wyoming OVOS Wakeword: Integrate custom wakewords, allowing your Home Assistant setup to respond only when it hears your chosen trigger phrase.
 
-OVOS is already making a difference across Europe and beyond.
-It powers projects such as the Royal Dutch Visio Voicelab, bringing voice interaction to visually impaired users, as well as conversational assistants in nursing homes, manufacturing, and/ or multilingual AI initiatives.
+The OVOS Wyoming Docker project makes getting these services up and running a breeze.
 
-This grant helps us strengthen that ecosystem — empowering developers, researchers, and users to shape the future of open, ethical voice technology.
+Plugin Highlights: Multi-language TTS powered by ILENIA
 
-Thank You ❤️
+For us, accessibility is key. That includes language accessibility. We're proud that this integration allows us to bring high-quality, publicly funded voices from projects like ILENIA to a wider audience. Now, Home Assistant users can easily access fantastic, natural-sounding voices for languages like Catalan and Galician.
 
-We want to express our gratitude to the NGI Zero Commons Fund, NLnet Foundation, and our incredible community of contributors, volunteers, and users.
-Your support makes it possible to keep building a voice assistant platform that prioritizes freedom, transparency, and privacy.
+ Matxa TTS for Catalan: The ovos-tts-plugin-matxa-multispeaker-cat provides multi-speaker text-to-speech capabilities for the Catalan language.
+ NosTTS for Galician: The ovos-tts-plugin-nos offers robust text-to-speech in Galician.
 
-Together, we’re proving that open voice technology can be trustworthy, user-owned, and truly free.
+It’s a great example of how open collaboration benefits everyone.
 
-Stay tuned for more updates as we move toward our full first stable release!
+!ILENIA logo
 
-🔗 NLnet Announcement
-🔗 NGI Zero Commons Fund
-🔗 OpenVoiceOS Project Page
+Setting up Wyoming Services in Home Assistant:
+
+When configuring Wyoming services in Home Assistant, you'll typically refer to the official Home Assistant documentation. This process usually involves simply entering the IP address of your Docker container (or the host running your OVOS Wyoming services) into the Home Assistant web interface.
+
+!wyoming setup in Home Assistant
+
+!wyoming entities in Home Assistant
+
+Let OVOS Be the Brains of the Conversation
+
+Want to take it a step further? You can set up OVOS as a full-fledged conversational agent for Home Assistant using the Ollama integration.
+
+!ollama setup in Home Assistant
+
+In this setup, Home Assistant passes the user's text to the ovos-persona-server. OVOS then figures out what you want and tells Home Assistant what to answer. It’s like hiring a brilliant conversationalist to augment your smart home interactions.
+
+Here’s the cool part: because ovos-persona-server uses Ollama-compatible endpoints, you can connect it to any app that supports the Ollama or OpenAI APIs. The possibilities are huge!
+
+!chat with OVOS in Home Assistant
+
+OVOS with the Voice Pe
+
+Everyone is talking about Home Assistant Voice Preview Edition, a dedicated hardware device for voice control. If you own one, you can now easily integrate it with everything discussed so far.
+
+!Configuring Home Assistant Voice Preview Edition
+
+Welcome Your OVOS Devices into Home Assistant with HiveMind
+
+If you have dedicated OVOS devices, the HiveMind HomeAssistant project is where the real magic happens. This integration makes your OVOS devices show up as native entities in Home Assistant, giving you a beautiful, unified control panel.
+
+Setting up HiveMind Integration:
+
+To integrate your OVOS devices via HiveMind, you'll typically add the HiveMind integration in Home Assistant. This involves providing connection details such as a name for the integration, an accesskey, password, siteid, host (IP address or hostname of your HiveMind server), and the port (defaulting to 5678). You may also have options to allowselfsigned certificates or enable legacyaudio depending on your setup.
+
+!HiveMind setup in Home Assistant
+
+Exposed Controls for OVOS Devices:
+
+Once integrated, HiveMind exposes a comprehensive set of controls for your OVOS devices directly within Home Assistant. This allows you to manage various aspects of your OVOS device from the Home Assistant UI, including:
+
+   Changing the Listening Mode (e.g., wakeword, always listening)
+   Microphone Mute toggle
+   OCP Player status and controls
+   Actions like Reboot Device, Restart OVOS, and Shutdown Device
+   Toggling Sleep Mode and SSH Service
+   Manually Start Listening or Stop listening
+   Controlling volume level
+
+!HiveMind entities in Home Assistant
+
+Notifications Integration:
+
+HiveMind also enables your OVOS devices to function as notification targets within Home Assistant. This means you can configure Home Assistant automations to send spoken notifications directly to your OVOS devices, allowing them to "speak" alerts, reminders, or any other information you configure. This is exposed as a "Speak" notifier entity in Home Assistant.
+
+!HiveMind notify service in Home Assistant
+
+Media Player and Music Assistant Integration:
+
+A fantastic feature of HiveMind integration is that your OVOS devices will show up as standard media players within Home Assistant. This allows you to control media playback on your OVOS devices directly from Home Assistant's media player interface. Furthermore, this integration extends to services like Music Assistant, enabling you to stream music and other audio content from Music Assistant through your OVOS devices, making them a seamless part of your whole-home audio system.
+
+!HiveMind player in Home Assistant
+
+!HiveMind player in Music Assistant
+
+Give OVOS the Keys to the Kingdom
+
+Finally, with the fantastic Skill HomeAssistant from community member mikejgray, you can give OVOS direct control over Home Assistant.
+
+Install this skill, and your OVOS device can now command your smart home. Just say, "Hey Mycroft, turn on the living room lights," and watch the magic happen. It’s the classic voice assistant experience, but fully private, customizable, and powered by two best-in-class open-source projects.
+
+The Perfect Match
+
+When you let OVOS do the talking and Home Assistant do the automating, you get the best of both worlds. It’s a flexible, powerful, and fun combination that lets you build a smart home that is truly your own.
+
+A Note on This Early Preview Release:
+
+We're incredibly excited to share this integration with you! Please keep in mind that this is an early preview release and is still under active development. While it's functional and powerful, it hasn't undergone extensive testing and may have rough edges. We're actively working to refine it, and your feedback is invaluable! 
+
+If you encounter any pain points or have ideas for improvements, please consider opening an issue or, even better, a Pull Request on our GitHub repositories. Your contributions help us make this even better for everyone. Thanks for being an early adopter and helping us shape the future of open-source voice!
+
+Help Us Build Voice for Everyone
+
+OpenVoiceOS is more than software, it’s a mission. If you believe voice assistants should be open, inclusive, and user-controlled, here’s how you can help:
+💸 Donate: Help us fund development, infrastructure, and legal protection.
+📣 Contribute Open Data: Share voice samples and transcriptions under open licenses.
+🌍 Translate: Help make OVOS accessible in every language.
+
+We're not building this for profit. We're building it for people. With your support, we can keep voice tech transparent, private, and community-owned.
+
+👉 Support the project here
+
+---
+Read more: <a href="https://tigregotico.github.io/blog/2025-09-17-ovos_ha_dream_team">View full article</a>
+]]></content:encoded>
+    </item>
+
+    <item>
+      <title>Making Synthetic Voices From Scratch</title>
+      <link>https://tigregotico.github.io/blog/2025-06-26-making-synthetic-voices-from-scratch</link>
+      <guid isPermaLink="true">https://tigregotico.github.io/blog/2025-06-26-making-synthetic-voices-from-scratch</guid>
+      <pubDate>Thu, 26 Jun 2025 00:00:00 GMT</pubDate>
+      <author>Unknown</author>
+      <description>Creating a voice for a text-to-speech system usually requires a real person to spend hours recording audio. That’s expensive, time-consuming, and in many languages or accents, the voices just don’t exist at all</description>
+      <content:encoded><![CDATA[
+Making Synthetic Voices From Scratch
+
+What’s the problem?
+
+Creating a voice for a text-to-speech (TTS) system usually requires a real person to spend hours recording audio. That’s expensive, time-consuming, and in many languages or accents, the voices just don’t exist at all, especially for open-source or offline use.
+
+What did we do?
+
+We developed a technique that allows us to create synthetic voices completely from scratch, even if we don’t have recordings from a real person. These voices:
+
+ Work offline, even on small devices like a Raspberry Pi,
+ Can speak any language, if there’s a good donor system available,
+ Are fully customizable in sound and tone.
+
+How does it work?
+Start with an existing voice - We use an existing TTS voice (from any source) to generate lots of fake speech and text pairs.
+Transform it into a new voice - We apply a special voice conversion process to change the sound of the voice to something new, like a different gender, age, or accent.
+Train a compact model - With this synthetic data, we train a new voice model that sounds natural, speaks fluently, and runs entirely offline.
+
+Why is this special?
+
+ We can create a new voice without needing anyone to record lines.
+ The voices don’t rely on cloud services, they work 100% offline.
+ Each voice can be customized to sound unique or to match a character, personality, or accent.
+
+What about ethics?
+
+We take voice rights seriously.
+
+ If we’re using a real person’s voice, we always get clear permission.
+ If no permission is available, we use public domain recordings or create original voices that don’t copy anyone.
+Our process actually makes the voice less recognizable, which helps protect privacy and avoid impersonation risks.
+
+Real-world example
+
+We applied this method to European Portuguese, a language that had no good offline voice options. In a short time, we built 4 brand-new, high-quality voices, no recordings needed, and they all run on small local devices.
+
+> 💡 Did we mention OpenVoiceOS now has a huggingface account? find all our TTS voices and more at huggingface.co/OpenVoiceOS
+
+In short:
+
+> We’ve found a way to build natural-sounding, offline-ready synthetic voices, without needing a real speaker. It’s fast, ethical, and opens the door for more voices in more languages, for everyone.
 
 Help Us Build Voice for Everyone 
 
@@ -224,244 +324,7 @@ We're not building this for profit. We're building it for people. And with your 
 👉 Support the project here
 
 ---
-Read more: <a href="https://tigregotico.github.io/blog/2025-10-20-ngi">View full article</a>
-]]></content:encoded>
-    </item>
-
-    <item>
-      <title>OpenVoiceOS Blog Launches RSS Feed — A Win for Accessibility &amp; Open Standards</title>
-      <link>https://tigregotico.github.io/blog/2025-10-18-rss</link>
-      <guid isPermaLink="true">https://tigregotico.github.io/blog/2025-10-18-rss</guid>
-      <pubDate>Sat, 18 Oct 2025 00:00:00 GMT</pubDate>
-      <author>Unknown</author>
-      <description>We’re happy to announce that the OpenVoiceOS blog now supports a RSS/Atom feed</description>
-      <content:encoded><![CDATA[
-OpenVoiceOS Blog Launches RSS Feed — A Win for Accessibility & Open Standards
-
-We’re happy to announce that the OVOS (OpenVoiceOS) blog now supports a RSS / Atom feed at:
-
-👉 https://blog.openvoiceos.org/feed.xml
-
-This may look like a small technical change, but in reality it’s a big step forward — especially from the perspective of accessibility, interoperability, and empowering users. Below are a few reasons why we believe RSS is still relevant and why adding a feed is aligned with our vision.
-
-Why RSS Still Matters in 2025
-
-Yes, RSS is old technology, but that doesn’t mean it’s obsolete. Here are a few reasons it continues to deserve a place in the modern web ecosystem:
-Decentralized content subscription
-   RSS gives users control. Instead of being locked into one platform’s algorithm or interface, people can choose their own feed reader or aggregator. You subscribe once, and updates come to you, not the other way around.
-Low overhead, simple format
-   RSS / Atom feeds are lightweight XML documents. They don’t need heavy frameworks, JavaScript, or APIs. That means lower bandwidth, faster performance, and more compatibility with devices and assistive technologies.
-Resilience & longevity
-   Since RSS is an open standard, it’s not tied to any one company or service. If a blog or website changes its front-end, the feed often remains a stable outlet for updates. That robustness is valuable for archival, backup, and long-term content access.
-Interoperability & portability
-   RSS works across platforms, apps, and ecosystems. Want to surface blog posts in your smart home panel, or integrate them into your voice assistant? A feed makes that straightforward. You don’t have to reverse-engineer HTML pages or depend on ad-hoc APIs.
-Accessibility-friendly
-   This is especially important for OVOS and the intersection of voice, assistive tech, and open systems. Many feed readers are designed to work well with screen readers, text-to-speech tools, or simple “next item” navigation. Because RSS is structured, semantic, and minimal, assistive software can more reliably parse it.
-
-Accessibility & Open Standards: Why We Care
-
-At OVOS, our mission is to push toward more open, user-empowering voice and assistant systems. We believe accessibility is not an afterthought, it should be baked into every layer. Supporting an RSS feed is consistent with that philosophy:
-
- Equal access to content: Users who rely on assistive tech (screen readers, braille displays, voice-driven readers) should be able to consume blog updates just as easily as sighted users. Structured feeds help.
- Choice in how you consume: Whether you prefer to read in a browser, within a reader app, or have updates read out to you, RSS gives you options.
- Standards matter: Open standards promote interoperability and reduce handshake friction between systems. We’d rather everyone “speak RSS / Atom” than build brittle, custom bridges.
- Future-proofing: We want the OVOS blog to remain accessible and usable even if web frameworks change, hosting changes, or site redesigns happen. The feed is a thread through all of that.
-
-How You Can Use the New Feed
-
-Here are a few ideas to take advantage of the new RSS feed:
-
- Add it to your favorite news / feed reader (e.g. Feedly, Inoreader, Thunderbird) so new posts show up automatically.
- Use it in automation or scripting: For example, fetch new posts via a lightweight script, push them to your personal dashboard, or trigger voice notifications.
- Integrate with voice assistants: If you build a skill/plugin in OVOS or another system, you can parse the feed and let people ask “What’s new on the blog?” rather than scraping HTML.
- Share / mirror: You could mirror or aggregate OVOS content into your own blog or archive, thanks to the open nature of RSS.
-
-Next Steps
-
- We’ll monitor for feedback, if the feed has issues, we’ll fix them.
- Consider expanding meta-data in feed items: more tags, categories, summaries, thumbnails, etc., to make it richer for readers and integrations.
- Encourage third-party projects in the OVOS ecosystem to use the feed for cross-linking, showing blog snippets in dashboards, or exposing blog summaries in voice UI.
-
-If you come across any issues subscribing or using the feed, or have ideas for enhancements, please let us know.
-
-Thank you for being part of the OVOS community! May your blog updates come to you*, seamlessly and accessibly.
-
-Help Us Build Voice for Everyone
-
-OpenVoiceOS is more than software, it’s a mission. If you believe voice assistants should be open, inclusive, and user-controlled, here’s how you can help:
-💸 Donate: Help us fund development, infrastructure, and legal protection.
-📣 Contribute Open Data: Share voice samples and transcriptions under open licenses.
-🌍 Translate: Help make OVOS accessible in every language.
-
-We're not building this for profit. We're building it for people. With your support, we can keep voice tech transparent, private, and community-owned.
-
-👉 Support the project here
-
----
-Read more: <a href="https://tigregotico.github.io/blog/2025-10-18-rss">View full article</a>
-]]></content:encoded>
-    </item>
-
-    <item>
-      <title>Running HiveMind Player on ArkOS with the R36S</title>
-      <link>https://tigregotico.github.io/blog/2025-10-11-r36s</link>
-      <guid isPermaLink="true">https://tigregotico.github.io/blog/2025-10-11-r36s</guid>
-      <pubDate>Sat, 11 Oct 2025 00:00:00 GMT</pubDate>
-      <author>Unknown</author>
-      <description>The R36S handheld from AliExpress is usually marketed as a retro gaming device, but with a bit of tinkering it can also become a HiveMind-powered audio player, fully integrated with Home Assistant and Music Assistant</description>
-      <content:encoded><![CDATA[
-Running HiveMind Player on ArkOS with the R36S
-
-The R36S handheld from AliExpress is usually marketed as a retro gaming device, but with a bit of tinkering it can also become a HiveMind-powered audio player, fully integrated with Home Assistant and Music Assistant 🎶.
-
-This guide shows how I set up the hivemind-player on ArkOS and turned my device into a smart media endpoint.
-
-!R36Ultra device
-
-Why HiveMind Player?
-
-HiveMind Player lets you run the Open Voice OS (OVOS) audio stack as a service. Once configured, your R36S:
-Appears as a media player in Home Assistant 🏡
-Works seamlessly with Music Assistant 🎵
-Uses OpenVoiceOS for playback control (play, pause, next, etc.)
-Can handle TTS and system volume if you install the right plugins
-
-See the HiveMind Media Player README for full technical details.
-
-Step 1: Flash ArkOS
-
-I used arkos4clone to install ArkOS on my R36 Ultra.
-
-⚠️ Compatibility and initial steps may vary across clone devices, since there are many hardware variations. This guide applies to ArkOS-based firmware but assumes your handheld is already fully functional before starting.
-
-👉 Always follow the specific instructions from your image provider, and check handhelds.wiki for the latest community documentation.
-
-Once ArkOS is up:
-
- Connect to WiFi from the device menu
- Enable Remote Services
- SSH into the device from a computer
-
-!neofetch in ArkOS
-
-Step 2: Install uv
-
-We’ll use uv for managing Python environments and dependencies:
-
-Create a Python 3.10 virtual environment:
-
-Step 3: Install System Packages
-
-ArkOS strips out many development headers, so we need to reinstall them.
-
-Without these, I ran into some confusing build errors when trying to install plugins for volume control, including:
-
-These were resolved by reinstalling the right dev packages:
-
-Then install Python build tools:
-
-Step 4: Install HiveMind Player
-
-Install the player with recommended extras (e.g., VLC, PHAL, OCP, TTS):
-
-Step 5: Configure HiveMind Core
-
-Create a config directory and set up the server.json:
-
-Example minimal configuration:
-
-Step 6: Extra Plugins
-
-You may want to install PHAL plugins for platform and hardware integration, or TTS plugins to use different voices
-
-Currently the most useful is the ALSA plugin for system volume control:
-
-This makes volume adjustable via HiveMind / Home Assistant.
-
-👉 PHAL is optional. Right now it’s only needed for volume control - and, as shown above, it required a lot of dev headers just to build. In the future, dedicated plugins may appear, for example to control the joystick LEDs on the R36 Ultra.
-
-Step 7: Configure ovos-audio
-
-HiveMind Player uses the OVOS audio stack for playback and TTS. The configuration lives in:
-
-The main change required on ArkOS is adjusting the WAV playback command:
-
- By default, mycroft.conf uses paplay
- On ArkOS, this needs to be switched to aplay in order for TTS to work correctly
-
- playwavcmdline → must be changed to aplay %1
- Audio → VLC is already available in ArkOS and can play nearly all streams you throw at it
- TTS → Default is ovos-tts-plugin-piper, but you can swap in any OVOS TTS plugin you prefer such as  ovos-tts-plugin-server
- PHAL → system plugin needs to be adjusted in order to use the correct service names
-
-> NOTE: in arkOS sudo does not require password, therefore ovos-PHAL-plugin-system should work out of the box
-
-Step 8: Set Up Permissions
-
-HiveMind operates on a deny-all policy by default: every message type must be explicitly allowed for clients.
-
-First, create a client identity:
-
-This gives you an Access Key and Password.
-
-Next, allow the minimum messages needed for playback and TTS. Replace <NODEID> with the client’s Node ID:
-
-Step 9: Create a System Service
-
-To keep HiveMind Player running in the background, add a systemd user service:
-
-Paste this:
-
-Then enable and start it:
-
-Step 10: Optional - Install tailscale for remote access
-
-A problem we have with the R36S is that it changes IP address on every boot and randomizes its MAC address; to work around this we could try to assign a static IP address but since this is a handheld and will often be on the move, why not use a VPN?
-
-tailscale is free and painless to install
-
-Now we have a static ip address AND we can access the handheld remotely
-
-Step 11: Integrate with Home Assistant
-
-With the hivemind-homeassistant integration installed, your R36 Ultra shows up as a media player inside Home Assistant.
-
-!R36 device in Home Assistant
-
-In Home Assistant, the TTS setup also makes the device available as a notify entity, so you can send text notifications and have them spoken on your R36 Ultra:
-
-!R36 notify in Home Assistant
-
-Combine this with Music Assistant and suddenly your retro handheld doubles as a WiFi speaker you can control from your smart home dashboard.
-
-!R36 player in Music Assistant
-
-Wrap-Up
-
-That’s it! My R36 Ultra, originally built for emulation, now runs HiveMind Player on ArkOS and integrates seamlessly with my smart home setup.
-
- HiveMind manages the player backend
- Home Assistant discovers it
- Music Assistant lets me browse and stream to it
- ovos-audio makes it flexible for both playback and TTS
- Optional PHAL plugins give extra control (volume now, LEDs in the future)
-Permissions ensure only trusted clients can control it
-
-A fun way to repurpose cheap handheld hardware into a smart speaker alternative! 🚀
-
-Help Us Build Voice for Everyone
-
-OpenVoiceOS is more than software, it’s a mission. If you believe voice assistants should be open, inclusive, and user-controlled, here’s how you can help:
-💸 Donate: Help us fund development, infrastructure, and legal protection.
-📣 Contribute Open Data: Share voice samples and transcriptions under open licenses.
-🌍 Translate: Help make OVOS accessible in every language.
-
-We're not building this for profit. We're building it for people. With your support, we can keep voice tech transparent, private, and community-owned.
-
-👉 Support the project here
-
----
-Read more: <a href="https://tigregotico.github.io/blog/2025-10-11-r36s">View full article</a>
+Read more: <a href="https://tigregotico.github.io/blog/2025-06-26-making-synthetic-voices-from-scratch">View full article</a>
 ]]></content:encoded>
     </item>
   </channel>

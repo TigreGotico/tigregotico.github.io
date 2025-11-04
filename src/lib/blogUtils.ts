@@ -95,12 +95,10 @@ export const calculateReadTime = (content: string): string => {
 // Load all blog posts from the public/blogs directory
 export const loadBlogPosts = async (): Promise<BlogPostMetadata[]> => {
   try {
-    // List of known blog posts - in production, you might list files dynamically
     const blogFiles = [
-      '2025-10-11-r36s.md',
-      '2025-10-18-rss.md',
-      '2025-10-20-ngi.md',
-      '2025-10-24-protocol_interoperability.md'
+      '2025-06-26-making-synthetic-voices-from-scratch.md',
+      '2025-09-17-ovos_ha_dream_team.md',
+      '2025-10-06-phoonnx.md',
     ];
 
     const posts: BlogPostMetadata[] = [];

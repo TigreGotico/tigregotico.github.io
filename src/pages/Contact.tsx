@@ -276,7 +276,7 @@ const Contact = () => {
                   {
                     icon: MapPin,
                     title: 'Office',
-                    content: 'sample addreess\nPortugal',
+                    content: 'Praceta António Sérgio, nº317 4ºEsquerdo\n4450  -048 Matosinhos, Portugal',
                     bgColor: 'bg-gradient-primary',
                   },
                 ].map((contact, index) => (

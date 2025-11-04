@@ -14,6 +14,7 @@ const translations = {
     'nav.home': 'Home',
     'nav.services': 'Services',
     'nav.products': 'Products',
+    'nav.projects': 'Projects',
     'nav.resources': 'Resources',
     'nav.about': 'About',
     'nav.contact': 'Contact',
@@ -93,6 +94,7 @@ const translations = {
     // Featured Projects
     'projects.title': 'Featured Projects',
     'projects.subtitle': 'Showcasing our commitment to open-source innovation and collaborative excellence',
+    'projects.page.subtitle': 'Explore our open-source projects and collaborations',
     'projects.ilenia.headline': 'Driving Innovation with Open-Source Partnerships',
     'projects.ilenia.introduction': 'We collaborate with leading organizations to advance the capabilities of FOSS voice technology. A key example is our work with the ILENIA project, where we added support for Spanish, Galician, Basque, and Catalan to OpenVoiceOS, including full support for their speech models. This partnership highlights our ability to deliver robust, multi-lingual solutions that empower global communities.',
     'projects.ilenia.link': 'https://proyectoilenia.es',
@@ -136,6 +138,7 @@ const translations = {
     'nav.home': 'Início',
     'nav.services': 'Serviços',
     'nav.products': 'Produtos',
+    'nav.projects': 'Projetos',
     'nav.resources': 'Recursos',
     'nav.about': 'Sobre',
     'nav.contact': 'Contacto',
@@ -215,6 +218,7 @@ const translations = {
     // Featured Projects
     'projects.title': 'Projetos em Destaque',
     'projects.subtitle': 'Mostrando nosso compromisso com a inovação de código aberto e excelência colaborativa',
+    'projects.page.subtitle': 'Explore nossos projetos de código aberto e colaborações',
     'projects.ilenia.headline': 'Impulsionando a Inovação com Parcerias de Código Aberto',
     'projects.ilenia.introduction': 'Colaboramos com organizações líderes para avançar as capacidades da tecnologia de voz FOSS. Um exemplo chave é nosso trabalho com o projeto ILENIA, onde adicionamos suporte para espanhol, galego, basco e catalão ao OpenVoiceOS, incluindo suporte completo para seus modelos de fala. Esta parceria destaca nossa capacidade de entregar soluções multilíngues robustas que capacitam comunidades globais.',
     'projects.ilenia.link': 'https://proyectoilenia.es',
