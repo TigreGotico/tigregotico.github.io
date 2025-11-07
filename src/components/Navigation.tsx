@@ -98,7 +98,7 @@ const Navigation = () => {
             ))}
 
             {/* Language Switcher */}
-            <motion.div
+            {/* <motion.div
               className="flex items-center space-x-2 ml-6 xl:ml-8 border-l border-border pl-6 xl:pl-8"
               initial={{ opacity: 0, x: 10 }}
               animate={{ opacity: 1, x: 0 }}
@@ -118,7 +118,7 @@ const Navigation = () => {
                   {language === 'en' ? 'PT' : 'EN'}
                 </Button>
               </motion.div>
-            </motion.div>
+            </motion.div> */}
           </div>
 
           {/* Mobile menu button */}

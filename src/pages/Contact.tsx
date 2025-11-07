@@ -8,6 +8,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useToast } from '@/hooks/use-toast';
 import { Mail, MapPin, Phone, Send } from 'lucide-react';
+import Footer from '@/components/Footer';
 import Navigation from '@/components/Navigation';
 
 const Contact = () => {
@@ -339,6 +340,7 @@ const Contact = () => {
           </div>
         </motion.div>
       </main>
+      <Footer/>
     </div>
   );
 };

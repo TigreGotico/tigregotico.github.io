@@ -268,7 +268,8 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   useEffect(() => {
     // Detect browser language or use stored preference
     const stored = localStorage.getItem('tigregotico-language') as Language;
-    const browserLang = navigator.language.startsWith('pt') ? 'pt' : 'en';
+    // const browserLang = navigator.language.startsWith('pt') ? 'pt' : 'en';
+      const browserLang = 'en';
     setLanguage(stored || browserLang);
   }, []);
 
