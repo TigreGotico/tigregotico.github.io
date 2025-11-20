@@ -58,4 +58,16 @@
     <changefreq>never</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://tigregotico.github.io/blog/2025-11-20-intro-to-ovos</loc>
+    <lastmod>2025-11-20</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tigregotico.github.io/blog/2025-11-20-no-language-left-behind</loc>
+    <lastmod>2025-11-20</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
