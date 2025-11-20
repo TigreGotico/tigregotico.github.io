@@ -1,0 +1,19 @@
+# TigreGótico
+
+> Premium Consulting Services for FOSS Voice Technology and AI. We specialize in privacy-first voice assistants, custom web development, and are the core maintainers of the OpenVoiceOS stack.
+
+## Core Information
+- [Home](https://tigregotico.github.io/): Main landing page with an overview of services, featured projects, and latest updates.
+- [About](https://tigregotico.github.io/about): Information about the team, our mission in open-source voice tech, and our role in the OpenVoiceOS ecosystem.
+- [Services](https://tigregotico.github.io/services): Detailed consulting offerings including FOSS Voice Tech & AI strategies, custom TTS models, OpenVoiceOS plugins, and privacy-focused web development.
+- [Contact](https://tigregotico.github.io/contact): Contact information for inquiries, consulting requests, and collaboration.
+
+## Projects & Resources
+- [Projects](https://tigregotico.github.io/projects): Showcase of our open-source contributions and partnerships.
+- [Blog](https://tigregotico.github.io/blog): Articles, tutorials, and insights on voice AI, OpenVoiceOS development, and synthetic data generation.
+- [Resources](https://tigregotico.github.io/resources): Tools, datasets, documentation, and community resources for developers and integrators.
+
+## External Links
+- [GitHub Profile](https://github.com/TigreGotico): Our open-source repositories.
+- [Hugging Face](https://huggingface.co/TigreGotico): Our collection of AI models and datasets.
+- [OpenVoiceOS](https://openvoiceos.org): The official platform for the Open Voice OS, which we actively maintain and support.

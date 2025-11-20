@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import fs from "fs";
+import { writeSitemap } from "./lib/sitemap-generator";
 
 interface BlogPost {
   slug: string;
@@ -27,13 +28,15 @@ interface ParseResult {
 const rssPlugin = () => ({
   name: "rss-plugin",
   configResolved() {
-    // Generate RSS on server start
+    // Generate RSS and Sitemap on server start
     generateRssFeed();
+    writeSitemap();
   },
   handleHotUpdate({ file }: { file: string }) {
-    // Regenerate RSS when blog files change
+    // Regenerate RSS and Sitemap when blog files change
     if (file.includes("/public/blogs/")) {
       generateRssFeed();
+      writeSitemap();
     }
   },
 });
