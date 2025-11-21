@@ -62,7 +62,7 @@ Experiments such as **[GENIUS-PM](https://wasabiproject.eu/genius-pm)** use the 
 
 **[VAFER](https://wasabiproject.eu/vafer)** integrates voice interfaces with systems that monitor recycling, material reuse, and resource flows—hands-free reporting in factory environments.
 
-All of these rely on OVOS for intent handling and skill execution, and on HiveMind for routing communication between devices, Android UI, and backend systems.
+All of these rely on OVOS and on HiveMind for routing communication between devices, Android UI, and backend systems.
 
 ---
 
