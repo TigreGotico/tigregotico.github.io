@@ -1,13 +1,15 @@
 ---
 title: No Language Left Behind
 date: 2023-10-16
-author: TigreGotico
+author: Casimiro Ferreira
 excerpt: Eliminating language barriers in OpenVoiceOS through language detection, translation plugins, and bidirectional translation capabilities.
 tags: [OVOS, multilingual, language-detection, translation, accessibility]
 featured: false
 ---
 
 # No Language Left Behind
+
+> This post was originally posted in my (now defunct) personal blog
 
 In today's globally connected world, the myriad of languages we speak stands as a testament to our diverse cultures and rich communication. 
 
