@@ -96,11 +96,11 @@ export const calculateReadTime = (content: string): string => {
 export const loadBlogPosts = async (): Promise<BlogPostMetadata[]> => {
   try {
     const blogFiles = [
+      '2023-10-16-no-language-left-behind.md',
       '2025-06-26-making-synthetic-voices-from-scratch.md',
       '2025-09-17-ovos_ha_dream_team.md',
       '2025-10-06-phoonnx.md',
-      '2025-11-20-no-language-left-behind.md',
-      '2025-11-20-intro-to-ovos.md',
+      '2025-11-26-OVOS-hivemind-industry.md',
     ];
 
     const posts: BlogPostMetadata[] = [];
