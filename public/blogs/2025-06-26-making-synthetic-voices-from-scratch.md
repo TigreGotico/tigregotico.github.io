@@ -3,7 +3,7 @@ title: "Making Synthetic Voices From Scratch"
 excerpt: "Creating a voice for a text-to-speech system usually requires a real person to spend hours recording audio. That’s expensive, time-consuming, and in many languages or accents, the voices just don’t exist at all"
 date: "2025-06-26T00:00:00.000Z"
 author:
-  name:  JarbasAl
+  name: Casimiro Ferreira
   picture: "https://avatars.githubusercontent.com/u/33701864"
 coverImage: "https://github.com/OpenVoiceOS/ovos_assets/blob/master/ovos_tts.png?raw=true"
 ogImage:
@@ -11,6 +11,8 @@ ogImage:
 ---
 
 ## Making Synthetic Voices From Scratch
+
+> This blog was originally posted in the [OpenVoiceOS blog](https://blog.openvoiceos.org)
 
 ### What’s the problem?
 
