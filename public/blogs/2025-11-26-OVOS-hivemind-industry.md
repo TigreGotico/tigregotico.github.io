@@ -11,13 +11,16 @@ featured: false
 
 As the lead developer of **[OpenVoiceOS](https://openvoiceos.org)**, maintained by a non-profit, and the creator of **[HiveMind](https://jarbashivemind.github.io/HiveMind-community-docs/)**, I’ve always believed in open, privacy-respecting voice technology. What I did not anticipate was how quickly these tools would end up in industrial research, especially without any direct involvement from me.
 
-The **[COALA](https://coala-ai.de)** and **[WASABI](https://wasabiproject.eu)** EU projects have built an entire industrial voice-assistant framework around **[OVOS](https://openvoiceos.org)(https://openvoiceos.org) + [HiveMind](https://jarbashivemind.github.io/HiveMind-community-docs/)**, integrating them with their own tools, UI, and conversation engines.
+The **[COALA](https://coala-ai.de)** and **[WASABI](https://wasabiproject.eu)** EU projects have built an entire industrial voice-assistant framework around [OVOS](https://openvoiceos.org) + [HiveMind](https://jarbashivemind.github.io/HiveMind-community-docs/), integrating them with their own tools, UI, and conversation engines.
 
 I am not involved with these deployments, but the fact that the stack is being adopted organically is a strong validation of its design.
 
 ---
 
-# How OVOS + HiveMind Are Being Used
+# WASABI Open Call
+
+The 2nd [WASABI Open Call](https://wasabiproject.eu/wp-content/uploads/2025/08/WASABI_Guide_for_Applicants_2nd-OC_vFIN.pdf) to provide financial support to at least 10 experiments led by SMEs recently closed.
+This open call is designed to support AI-based digital assistance experiments involving SMEs from manufacturing.
 
 All WASABI Open Call experiments are required to:
 
@@ -25,7 +28,11 @@ All WASABI Open Call experiments are required to:
 * connect via **HiveMind**
 * develop a custom **OVOS Skill** containing their industrial logic
 
-Below are some examples of what these experiments are actually doing in 2026.
+The usage of OVOS/Hivemind is explained in these 2 documents from the Wasabi project:
+- [Deliverable D2.1](https://wasabiproject.eu/wp-content/uploads/2024/01/WASABI_D2.1_template_v0.7_FINAL.pdf)
+- [Deliverable D2.4](https://files.wasabiproject.eu/wp-content/uploads/2023/Docs/wp2/Deliverables/D2.4/WASABI_D2.4_Joint%20WASABI%20Demonstrator_v0.5_final.pdf)
+
+<img width="831" height="320" alt="wasabi_ovos" src="https://github.com/user-attachments/assets/f62497a7-045e-4875-8174-95f1c0f76c5e" />
 
 ---
 
@@ -61,10 +68,6 @@ All of these rely on OVOS for intent handling and skill execution, and on HiveMi
 
 # What COALA/WASABI Built on Top of OVOS
 
-The usage of OVOS/Hivemind is explained in these 2 documents from the Wasabi project:
-- [Deliverable D2.1](https://wasabiproject.eu/wp-content/uploads/2024/01/WASABI_D2.1_template_v0.7_FINAL.pdf)
-- [Deliverable D2.4](https://files.wasabiproject.eu/wp-content/uploads/2023/Docs/wp2/Deliverables/D2.4/WASABI_D2.4_Joint%20WASABI%20Demonstrator_v0.5_final.pdf)
-  
 Although the projects produced no open-source industrial skills, they did create several components around OVOS + HiveMind:
 
 ### **1. A RASA-based Domain Assistant (DA)**
