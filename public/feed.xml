@@ -7,8 +7,129 @@
     <description>Insights, tutorials, and thoughts on modern web development, technology trends, and best practices.</description>
     <language>en-us</language>
     <copyright>Copyright © 2025 TigreGotico. All rights reserved.</copyright>
-    <lastBuildDate>Thu, 20 Nov 2025 06:32:24 GMT</lastBuildDate>
-    <pubDate>Thu, 20 Nov 2025 00:00:00 GMT</pubDate>
+    <lastBuildDate>Sat, 22 Nov 2025 04:34:06 GMT</lastBuildDate>
+    <pubDate>Wed, 26 Nov 2025 00:00:00 GMT</pubDate>
+
+    <item>
+      <title>OVOS &amp; HiveMind in the Manufacturing Industry</title>
+      <link>https://tigregotico.github.io/blog/2025-11-26-OVOS-hivemind-industry</link>
+      <guid isPermaLink="true">https://tigregotico.github.io/blog/2025-11-26-OVOS-hivemind-industry</guid>
+      <pubDate>Wed, 26 Nov 2025 00:00:00 GMT</pubDate>
+      <author>Casimiro Ferreira</author>
+      <description>The COALA and WASABI EU projects have built an entire industrial voice-assistant framework around OVOS + HiveMind, integrating them with their own tools, UI, and conversation engines.</description>
+      <content:encoded><![CDATA[
+OVOS & HiveMind in the Manufacturing Industry
+
+As the lead developer of OpenVoiceOS, maintained by a non-profit, and the creator of HiveMind, I’ve always believed in open, privacy-respecting voice technology. What I did not anticipate was how quickly these tools would end up in industrial research, especially without any direct involvement from me.
+
+The COALA and WASABI EU projects have built an entire industrial voice-assistant framework around OVOS + HiveMind, integrating them with their own tools, UI, and conversation engines.
+
+I am not involved with these deployments, but the fact that the stack is being adopted organically is a strong validation of its design.
+
+WASABI Open Call
+
+The 2nd WASABI Open Call to provide financial support to at least 10 experiments led by SMEs recently closed.
+This open call is designed to support AI-based digital assistance experiments involving SMEs from manufacturing.
+
+All WASABI Open Call experiments are required to:
+
+ run the WASABI/COALA OVOS Docker stack
+ connect via HiveMind
+ develop a custom OVOS Skill containing their industrial logic
+
+The usage of OVOS/Hivemind is explained in these 2 documents from the Wasabi project:
+Deliverable D2.1
+Deliverable D2.4
+
+<img width="831" height="320" alt="wasabiovos" src="/public/blogs/2025-11-26-OVOS-hivemind-industry.png" />
+
+Examples of Industrial Applications
+Worker Guidance & Assembly Support
+
+Experiments like TICONAI and SKITE are using OVOS skills to guide workers during complex tasks such as assembling components, validating procedures, or providing step-by-step instructions hands-free.
+Quality Control and Error Reduction
+
+Projects like WALLABI and HUMANENERDIA focus on providing workers with real-time instructions and checklists to prevent mistakes. Voice assistants help operators verify settings, remember safety checks, or cross-check parameters.
+Predictive Maintenance Assistance
+
+Experiments such as GENIUS-PM use the assistant to give maintenance techs quick access to machine health data, fault explanations, and repair steps—especially when their hands are occupied.
+Logistics, Material Handling & Warehouse Support
+
+VELO and AIVEA use voice to help workers locate items, confirm inventory, or check delivery tasks while moving around a shop floor.
+Onboarding and Training
+
+ONBOARD and AI-MODE test how new employees can be guided through tasks using voice guidance, reducing the burden on supervisors.
+Sustainability, Waste Tracking & Resource Efficiency
+
+VAFER integrates voice interfaces with systems that monitor recycling, material reuse, and resource flows—hands-free reporting in factory environments.
+
+All of these rely on OVOS and on HiveMind for routing communication between devices, Android UI, and backend systems.
+
+What COALA/WASABI Built on Top of OVOS
+
+Although the projects produced no open-source industrial skills, they did create several components around OVOS + HiveMind:
+A RASA-based Domain Assistant (DA)
+
+Earlier COALA research developed a RASA NLP pipeline trained on manufacturing conversations (about quality checks, troubleshooting, machine operation).
+In WASABI, this RASA engine is plugged into OVOS as a skill, handling domain-specific dialog.
+The COALA Android App
+
+An Android front-end for workers, connecting to OVOS through HiveMind.
+
+Early version released here:
+https://github.com/BIBA-GmbH/Mycroft-Android
+
+Features include:
+
+ login via Keycloak
+ text or voice chat
+ UI for instructions, warnings, and notes
+ HiveMind-based messaging
+A Full Docker-Based Industrial Stack
+
+Both projects ship a preconfigured Docker environment bundling:
+
+ OVOS
+ HiveMind
+ Keycloak (user management)
+ RASA NLP engine
+ COALA connector services
+
+This forms the standard industrial voice-assistant stack that all WASABI experiments must deploy.
+An Industrial Speech Dataset
+
+COALA published a multilingual speech dataset recorded in factories and workshops:
+https://zenodo.org/record/8268928
+
+Why Industry Chooses OVOS + HiveMind
+
+The appeal is straightforward:
+
+ Full transparency (crucial for regulated sectors)
+ Local/edge deployment (no cloud dependency)
+ Easy to integrate into existing equipment
+ Modular enough for custom proprietary skills
+Distributed voice networks (HiveMind satellites across a factory)
+
+In short: the combination is flexible, vendor-neutral, and respects industrial data constraints.
+
+Closing Thoughts
+
+I didn’t set out to build an industrial standard.
+I set out to build something open, reliable, and user-controlled.
+
+Seeing OVOS and HiveMind adopted by COALA/WASABI, without my involvement or promotion, is a quiet but powerful sign that open-source voice technology is maturing.
+
+A transparent, modular voice stack is no longer just a community dream.
+
+It’s becoming part of the industrial toolset used to guide workers, reduce errors, improve maintenance, and ensure safer operations.
+
+This is only the beginning.
+
+---
+Read more: <a href="https://tigregotico.github.io/blog/2025-11-26-OVOS-hivemind-industry">View full article</a>
+]]></content:encoded>
+    </item>
 
     <item>
       <title>What is OpenVoiceOS? A Beginner&apos;s Guide to Privacy-First Voice AI</title>
@@ -44,120 +165,6 @@ Read more: <a href="https://tigregotico.github.io/blog/2025-11-20-intro-to-ovos"
     </item>
 
     <item>
-      <title>No Language Left Behind</title>
-      <link>https://tigregotico.github.io/blog/2025-11-20-no-language-left-behind</link>
-      <guid isPermaLink="true">https://tigregotico.github.io/blog/2025-11-20-no-language-left-behind</guid>
-      <pubDate>Thu, 20 Nov 2025 00:00:00 GMT</pubDate>
-      <author>TigreGotico</author>
-      <description>Eliminating language barriers in OpenVoiceOS through language detection, translation plugins, and bidirectional translation capabilities.</description>
-      <content:encoded><![CDATA[
-No Language Left Behind
-
-In today's globally connected world, the myriad of languages we speak stands as a testament to our diverse cultures and rich communication. 
-
-I am  committed to eliminating language barriers in OpenVoiceOS (OVOS), an open-source voice assistant platform, ensuring no one is excluded from meaningful conversations.
-
-At its core, OVOS is more than just a voice assistant platform. It's a community-driven effort to make technology more accessible to people worldwide. 
-OVOS aims to empower individuals to interact with technology in their native language, and that's where the new language plugins come into play.
-
-Language Detection from Audio
-
-To further embrace linguistic diversity, I have incorporated language detection from audio into OVOS. 
-This enables OVOS to identify the language spoken in audio inputs. 
-This capability is made possible through plugins such as the new FasterWhisperLangClassifier plugin.
-
-OVOS uses a Speech-to-Text (STT) plugin to convert spoken language into text. 
-The STT plugin is crucial for understanding and processing user input, and the information from language detection plays a significant role in this process. 
-The STT plugin must be aware of the language being spoken to provide accurate transcriptions.
-
-I created several plugins that provide this functionality:
-ovos-audio-transformer-plugin-speechbrain-langdetect
-ovos-audio-transformer-plugin-speechflow-langdetect
-ovos-stt-plugin-fasterwhisper
-
-NOTE: language detection from audio is constrained to the languages configured in OVOS config, this rejects all classifications for languages you know will never be spoken around your OVOS setup
-
-Configuration
-
-You can configure the language classifier plugins with different settings and models, depending on your requirements. 
-
-For example, to use a specific model in FasterWhisperLangClassifier:
-
-Text Language Translation
-
-In addition to language detection from audio, I also implemented text language translation.
-
-Translation plugins are the backbone of OVOS's multilingual capabilities for text handling.
-It ensures that when you communicate with OVOS in a language not natively supported, your text is translated, and you receive responses in your preferred language. 
-
-No Language Left Behind (NLLB) is a breakthrough project from Meta that gives the name to this blog post, NLLB is a open-source model capable of delivering high-quality translations directly between 200 languages—including low-resource languages like Asturian, Luganda, Urdu and more.
-
-The NLLB plugin is the primary text language translation plugin that enables OVOS to handle languages that are not natively understood by the assistant. 
-This is especially useful when users communicate in languages that are not part of the assistant's native language set. 
-Skills are generally slow to get fully translated, a huge amount of work is needed to fully support a new language, now users no longer depend on explicit support for their language!
-
-A remote version of this plugin also exists to allow usage of this functionality in less powerful hardware, a list of public servers is provided out of the box, but users are encouraged to self host
-
-Warning there are associated risk with using a public server, read my previous blog post The Trust Factor in Public Servers
-
-Key Highlights of translation plugins
-On-Demand Translation: With this plugin, OVOS can translate text and utterances in real-time.
-Extensive Language Support: It covers a wide range of languages, making it possible for OVOS to communicate effectively with users globally.
-Easy Configuration: Setting up the plugin is straightforward, allowing OVOS developers to integrate it seamlessly.
-
-Translation plugins of note:
-ovos-translate-plugin-nllb
-ovos-translate-server-plugin
-
-Configuration
-
-The OVOS Bidirectional Translation Plugin
-
-The OVOS Bidirectional Translation plugin is a game-changer for OVOS's language capabilities. 
-It includes two main components: the Utterance Translator and the Dialog Translator.
-Together, they enable OVOS to understand and respond in virtually any language, breaking down the language barrier once and for all.
-
-Key Highlights
-Utterance Transformer: Translates incoming text and adjusts the language of the session temporarily, ensuring a seamless conversational experience.
-Language Verification: This optional feature corrects the session language based on the detected text language, ideal for chat platforms with multilingual users.
-Dialog Transformer: Translates the spoken dialog back to the original session language, enabling OVOS to provide responses in the original language.
-Configurable: The Bidirectional Translation plugin can be customized to fit your specific requirements. You can enable or disable features like language verification and more.
-
-Pre-Requisites
-
-Before you can harness the power of the Bidirectional Translation Plugin, you need to have the following components in place:
-Language Detection: If you enabled language verification, ensure that you have a good language detection module configured in OVOS. This is vital for the plugin to identify the language in which the text is provided.
-Translation Module: OVOS relies on a translation plugin to convert text from one language to another. You can use either a local translation module like ovos-translate-plugin-nllb or a remote translation module like ovos-translate-server-plugin.
-
-Configuration
-
-Configuring the Bidirectional Translation plugin is straightforward. You can define your settings in the OVOS configuration file. Here's an example configuration for both the Utterance Transformer and the Dialog Transformer:
-
-These configurations allow you to tailor the behavior of the Bidirectional Translation plugin to your specific requirements.
-
-How It Works Together
-
-All these components can work together or standalone, depending on your specific requirements:
-Language Detection from Audio: This informs the STT plugin to transcribe spoken language accurately.
-Utterance Translation: a translation plugin is used when the text is in a language not natively understood by the assistant, ensuring a seamless conversation.
-Dialog Translation: even if the internally generated speech is in a different language, the translation plugin ensures output (TTS) in the original language
-
-The Bidirectional Translation plugin comes into play when you need to communicate in your preferred language regardless of the language OVOS is configured in. It bridges the language gap and ensures that every user can comfortably communicate in their chosen language.
-
-The OVOS Community
-
-Beyond software, I see a vibrant community forming around our shared passion for making technology universally accessible. 
-With the introduction of these new language plugins and the capability for language detection from audio, I'm driven by a strong commitment to inclusivity and linguistic diversity.
-
-I extend a warm invitation to developers and language enthusiasts from around the world to join me in this mission. 
-Whether your goal is to contribute to language support, translate skills, or explore new features, I wholeheartedly welcome you to join me in pursuing a world where no language is left behind.
-
----
-Read more: <a href="https://tigregotico.github.io/blog/2025-11-20-no-language-left-behind">View full article</a>
-]]></content:encoded>
-    </item>
-
-    <item>
       <title>Introducing phoonnx: The Next Generation of Open Voice for OpenVoiceOS</title>
       <link>https://tigregotico.github.io/blog/2025-10-06-phoonnx</link>
       <guid isPermaLink="true">https://tigregotico.github.io/blog/2025-10-06-phoonnx</guid>
@@ -166,6 +173,8 @@ Read more: <a href="https://tigregotico.github.io/blog/2025-11-20-no-language-le
       <description>Today marks a significant step forward in the OpenVoiceOS journey with the official integration and adoption of phoonnx as our primary Text-to-Speech (TTS) engine.</description>
       <content:encoded><![CDATA[
 Introducing phoonnx: The Next Generation of Open Voice for OpenVoiceOS
+
+> This blog was originally posted in the OpenVoiceOS blog
 
 Today marks a significant step forward in the OpenVoiceOS journey with the official adoption of phoonnx as our primary Text-to-Speech (TTS) framework. 
 
@@ -280,6 +289,8 @@ Read more: <a href="https://tigregotico.github.io/blog/2025-10-06-phoonnx">View 
       <description>In the world of open-source smart homes, some things just click. When you let Home Assistant handle the automation and let OVOS (Open Voice OS) handle the voice, you get a powerful partnership where each project shines. It’s a perfect synergy</description>
       <content:encoded><![CDATA[
 OpenVoiceOS and Home Assistant: A Voice Automation Dream Team
+
+> This blog was originally posted in the OpenVoiceOS blog
 
 In the world of open-source smart homes, some things just click. When you let Home Assistant handle the automation and let OVOS (Open Voice OS) handle the voice, you get a powerful partnership where each project shines. It’s a perfect synergy: one is the undisputed champion of home automation, and the other is a flexible, private powerhouse for voice interaction.
 
@@ -418,6 +429,8 @@ Read more: <a href="https://tigregotico.github.io/blog/2025-09-17-ovos_ha_dream_
       <content:encoded><![CDATA[
 Making Synthetic Voices From Scratch
 
+> This blog was originally posted in the OpenVoiceOS blog
+
 What’s the problem?
 
 Creating a voice for a text-to-speech (TTS) system usually requires a real person to spend hours recording audio. That’s expensive, time-consuming, and in many languages or accents, the voices just don’t exist at all, especially for open-source or offline use.
@@ -472,6 +485,122 @@ We're not building this for profit. We're building it for people. And with your 
 
 ---
 Read more: <a href="https://tigregotico.github.io/blog/2025-06-26-making-synthetic-voices-from-scratch">View full article</a>
+]]></content:encoded>
+    </item>
+
+    <item>
+      <title>No Language Left Behind</title>
+      <link>https://tigregotico.github.io/blog/2023-10-16-no-language-left-behind</link>
+      <guid isPermaLink="true">https://tigregotico.github.io/blog/2023-10-16-no-language-left-behind</guid>
+      <pubDate>Mon, 16 Oct 2023 00:00:00 GMT</pubDate>
+      <author>Casimiro Ferreira</author>
+      <description>Eliminating language barriers in OpenVoiceOS through language detection, translation plugins, and bidirectional translation capabilities.</description>
+      <content:encoded><![CDATA[
+No Language Left Behind
+
+> This post was originally posted in my (now defunct) personal blog
+
+In today's globally connected world, the myriad of languages we speak stands as a testament to our diverse cultures and rich communication. 
+
+I am  committed to eliminating language barriers in OpenVoiceOS (OVOS), an open-source voice assistant platform, ensuring no one is excluded from meaningful conversations.
+
+At its core, OVOS is more than just a voice assistant platform. It's a community-driven effort to make technology more accessible to people worldwide. 
+OVOS aims to empower individuals to interact with technology in their native language, and that's where the new language plugins come into play.
+
+Language Detection from Audio
+
+To further embrace linguistic diversity, I have incorporated language detection from audio into OVOS. 
+This enables OVOS to identify the language spoken in audio inputs. 
+This capability is made possible through plugins such as the new FasterWhisperLangClassifier plugin.
+
+OVOS uses a Speech-to-Text (STT) plugin to convert spoken language into text. 
+The STT plugin is crucial for understanding and processing user input, and the information from language detection plays a significant role in this process. 
+The STT plugin must be aware of the language being spoken to provide accurate transcriptions.
+
+I created several plugins that provide this functionality:
+ovos-audio-transformer-plugin-speechbrain-langdetect
+ovos-audio-transformer-plugin-speechflow-langdetect
+ovos-stt-plugin-fasterwhisper
+
+NOTE: language detection from audio is constrained to the languages configured in OVOS config, this rejects all classifications for languages you know will never be spoken around your OVOS setup
+
+Configuration
+
+You can configure the language classifier plugins with different settings and models, depending on your requirements. 
+
+For example, to use a specific model in FasterWhisperLangClassifier:
+
+Text Language Translation
+
+In addition to language detection from audio, I also implemented text language translation.
+
+Translation plugins are the backbone of OVOS's multilingual capabilities for text handling.
+It ensures that when you communicate with OVOS in a language not natively supported, your text is translated, and you receive responses in your preferred language. 
+
+No Language Left Behind (NLLB) is a breakthrough project from Meta that gives the name to this blog post, NLLB is a open-source model capable of delivering high-quality translations directly between 200 languages—including low-resource languages like Asturian, Luganda, Urdu and more.
+
+The NLLB plugin is the primary text language translation plugin that enables OVOS to handle languages that are not natively understood by the assistant. 
+This is especially useful when users communicate in languages that are not part of the assistant's native language set. 
+Skills are generally slow to get fully translated, a huge amount of work is needed to fully support a new language, now users no longer depend on explicit support for their language!
+
+A remote version of this plugin also exists to allow usage of this functionality in less powerful hardware, a list of public servers is provided out of the box, but users are encouraged to self host
+
+Warning there are associated risk with using a public server, read my previous blog post The Trust Factor in Public Servers
+
+Key Highlights of translation plugins
+On-Demand Translation: With this plugin, OVOS can translate text and utterances in real-time.
+Extensive Language Support: It covers a wide range of languages, making it possible for OVOS to communicate effectively with users globally.
+Easy Configuration: Setting up the plugin is straightforward, allowing OVOS developers to integrate it seamlessly.
+
+Translation plugins of note:
+ovos-translate-plugin-nllb
+ovos-translate-server-plugin
+
+Configuration
+
+The OVOS Bidirectional Translation Plugin
+
+The OVOS Bidirectional Translation plugin is a game-changer for OVOS's language capabilities. 
+It includes two main components: the Utterance Translator and the Dialog Translator.
+Together, they enable OVOS to understand and respond in virtually any language, breaking down the language barrier once and for all.
+
+Key Highlights
+Utterance Transformer: Translates incoming text and adjusts the language of the session temporarily, ensuring a seamless conversational experience.
+Language Verification: This optional feature corrects the session language based on the detected text language, ideal for chat platforms with multilingual users.
+Dialog Transformer: Translates the spoken dialog back to the original session language, enabling OVOS to provide responses in the original language.
+Configurable: The Bidirectional Translation plugin can be customized to fit your specific requirements. You can enable or disable features like language verification and more.
+
+Pre-Requisites
+
+Before you can harness the power of the Bidirectional Translation Plugin, you need to have the following components in place:
+Language Detection: If you enabled language verification, ensure that you have a good language detection module configured in OVOS. This is vital for the plugin to identify the language in which the text is provided.
+Translation Module: OVOS relies on a translation plugin to convert text from one language to another. You can use either a local translation module like ovos-translate-plugin-nllb or a remote translation module like ovos-translate-server-plugin.
+
+Configuration
+
+Configuring the Bidirectional Translation plugin is straightforward. You can define your settings in the OVOS configuration file. Here's an example configuration for both the Utterance Transformer and the Dialog Transformer:
+
+These configurations allow you to tailor the behavior of the Bidirectional Translation plugin to your specific requirements.
+
+How It Works Together
+
+All these components can work together or standalone, depending on your specific requirements:
+Language Detection from Audio: This informs the STT plugin to transcribe spoken language accurately.
+Utterance Translation: a translation plugin is used when the text is in a language not natively understood by the assistant, ensuring a seamless conversation.
+Dialog Translation: even if the internally generated speech is in a different language, the translation plugin ensures output (TTS) in the original language
+
+The Bidirectional Translation plugin comes into play when you need to communicate in your preferred language regardless of the language OVOS is configured in. It bridges the language gap and ensures that every user can comfortably communicate in their chosen language.
+
+The OVOS Community
+
+Beyond software, I see a vibrant community forming around our shared passion for making technology universally accessible. 
+With the introduction of these new language plugins and the capability for language detection from audio, I'm driven by a strong commitment to inclusivity and linguistic diversity.
+
+I extend a warm invitation to developers and language enthusiasts from around the world to join me in this mission. 
+Whether your goal is to contribute to language support, translate skills, or explore new features, I wholeheartedly welcome you to join me in pursuing a world where no language is left behind.
+
+---
+Read more: <a href="https://tigregotico.github.io/blog/2023-10-16-no-language-left-behind">View full article</a>
 ]]></content:encoded>
     </item>
   </channel>
