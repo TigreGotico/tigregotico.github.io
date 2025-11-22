@@ -32,7 +32,7 @@ The usage of OVOS/Hivemind is explained in these 2 documents from the Wasabi pro
 - [Deliverable D2.1](https://wasabiproject.eu/wp-content/uploads/2024/01/WASABI_D2.1_template_v0.7_FINAL.pdf)
 - [Deliverable D2.4](https://files.wasabiproject.eu/wp-content/uploads/2023/Docs/wp2/Deliverables/D2.4/WASABI_D2.4_Joint%20WASABI%20Demonstrator_v0.5_final.pdf)
 
-<img width="831" height="320" alt="wasabi_ovos" src="/public/blogs/2025-11-26-OVOS-hivemind-industry.png" />
+![wasabi_ovos](/blogs/2025-11-26-OVOS-hivemind-industry.png)
 
 ---
 

@@ -399,6 +399,15 @@ const BlogPost = () => {
                         {children}
                       </a>
                     ),
+                    img: ({ src, alt, width, height }) => (
+                      <img
+                        src={src}
+                        alt={alt}
+                        width={width}
+                        height={height}
+                        className="max-w-full h-auto rounded-lg border border-border/30 my-6 mx-auto shadow-md"
+                      />
+                    ),
                   }}
                 >
                   {post.content}
