@@ -40,7 +40,7 @@ The usage of OVOS/Hivemind is explained in these 2 documents from the Wasabi pro
 
 ### **1. Worker Guidance & Assembly Support**
 
-Experiments like **[TICONAI](https://wasabiproject.eu/ticonai-2)** and **[SKITE](https://wasabiproject.eu/skite-main-2)** are using OVOS skills to guide workers during complex tasks—assembling components, validating procedures, or providing step-by-step instructions hands-free.
+Experiments like **[TICONAI](https://wasabiproject.eu/ticonai-2)** and **[SKITE](https://wasabiproject.eu/skite-main-2)** are using OVOS skills to guide workers during complex tasks such as assembling components, validating procedures, or providing step-by-step instructions hands-free.
 
 ### **2. Quality Control and Error Reduction**
 
@@ -96,7 +96,6 @@ Both projects ship a preconfigured Docker environment bundling:
 * OVOS
 * HiveMind
 * Keycloak (user management)
-* MQTT messaging
 * RASA NLP engine
 * COALA connector services
 
