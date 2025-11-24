@@ -7,7 +7,7 @@
     <description>Insights, tutorials, and thoughts on modern web development, technology trends, and best practices.</description>
     <language>en-us</language>
     <copyright>Copyright © 2025 TigreGotico. All rights reserved.</copyright>
-    <lastBuildDate>Sat, 22 Nov 2025 04:34:06 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 24 Nov 2025 18:05:23 GMT</lastBuildDate>
     <pubDate>Wed, 26 Nov 2025 00:00:00 GMT</pubDate>
 
     <item>
@@ -41,7 +41,7 @@ The usage of OVOS/Hivemind is explained in these 2 documents from the Wasabi pro
 Deliverable D2.1
 Deliverable D2.4
 
-<img width="831" height="320" alt="wasabiovos" src="/public/blogs/2025-11-26-OVOS-hivemind-industry.png" />
+!wasabiovos
 
 Examples of Industrial Applications
 Worker Guidance & Assembly Support
@@ -190,15 +190,11 @@ Previously only a robotic female voice was available, via the AhoTTS plugin made
 
 Hear the results: Examples of the new Basque Open-Source Voices.
 
-<audio controls>
-  <source src="/assets/blog/phoonnx/miroeu-ES.wav" type="audio/wav">
-  Your browser does not support the audio element.
-</audio>
+Miro (Male Voice):
+Listen to Miro
 
-<audio controls>
-  <source src="/assets/blog/phoonnx/diieu-ES.wav" type="audio/wav">
-  Your browser does not support the audio element.
-</audio>
+Dii (Female Voice):
+Listen to Dii
 
 A Unified Voice for a Global Brand
 

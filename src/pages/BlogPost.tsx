@@ -389,16 +389,30 @@ const BlogPost = () => {
                         </code>
                       );
                     },
-                    a: ({ href, children }) => (
-                      <a
-                        href={href}
-                        className="text-primary hover:text-primary/80 underline decoration-2 underline-offset-2 transition-colors duration-300"
-                        target={href?.startsWith('http') ? '_blank' : undefined}
-                        rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
-                      >
-                        {children}
-                      </a>
-                    ),
+                    a: ({ href, children }) => {
+                      // Check if the link is to an audio file
+                      if (href && /\.(mp3|wav|ogg|m4a)$/i.test(href)) {
+                        return (
+                          <audio
+                            controls
+                            className="w-full max-w-2xl mx-auto my-6 rounded-lg border border-border/30 shadow-md block"
+                          >
+                            <source src={href} type={`audio/${href.split('.').pop()?.toLowerCase()}`} />
+                            Your browser does not support the audio element.
+                          </audio>
+                        );
+                      }
+                      return (
+                        <a
+                          href={href}
+                          className="text-primary hover:text-primary/80 underline decoration-2 underline-offset-2 transition-colors duration-300"
+                          target={href?.startsWith('http') ? '_blank' : undefined}
+                          rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
+                        >
+                          {children}
+                        </a>
+                      );
+                    },
                     img: ({ src, alt, width, height }) => (
                       <img
                         src={src}
@@ -407,6 +421,16 @@ const BlogPost = () => {
                         height={height}
                         className="max-w-full h-auto rounded-lg border border-border/30 my-6 mx-auto shadow-md"
                       />
+                    ),
+                    audio: (props) => (
+                      <audio
+                        controls
+                        className="w-full max-w-2xl mx-auto my-6 rounded-lg border border-border/30 shadow-md"
+                        {...props}
+                      />
+                    ),
+                    source: ({ src, type }) => (
+                      <source src={src} type={type} />
                     ),
                   }}
                 >
