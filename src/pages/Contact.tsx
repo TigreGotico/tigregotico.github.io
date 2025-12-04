@@ -7,29 +7,69 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useToast } from '@/hooks/use-toast';
-import { Mail, MapPin, Phone, Send } from 'lucide-react';
+import { Mail, MapPin, Send, FileText } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Footer from '@/components/Footer';
 import Navigation from '@/components/Navigation';
+
+const WEB3FORMS_ACCESS_KEY = "7d2b3f4c-7eef-4b64-a99c-d1321d1b79a3";
 
 const Contact = () => {
   const { t } = useLanguage();
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    company: '',
+    email: '',
+    message: '',
+  });
+
+  const handleInputChange = (field: string, value: string) => {
+    setFormData({ ...formData, [field]: value });
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: `Contact Form - ${formData.name}${formData.company ? ` (${formData.company})` : ''}`,
+          from_name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          company: formData.company,
+        }),
+      });
 
-    toast({
-      title: "Message sent!",
-      description: "We'll get back to you within 24 hours.",
-    });
+      const result = await response.json();
+
+      if (result.success) {
+        toast({
+          title: "Message sent!",
+          description: "We'll get back to you within 24 hours.",
+        });
+        setFormData({ name: '', company: '', email: '', message: '' });
+      } else {
+        throw new Error(result.message || 'Form submission failed');
+      }
+    } catch (error) {
+      toast({
+        title: "Error sending message",
+        description: "Please try again or contact us directly via email.",
+        variant: "destructive",
+      });
+    }
 
     setIsSubmitting(false);
-    (e.target as HTMLFormElement).reset();
   };
 
   const containerVariants = {
@@ -164,6 +204,8 @@ const Contact = () => {
                         <Input
                           id="name"
                           name="name"
+                          value={formData.name}
+                          onChange={(e) => handleInputChange('name', e.target.value)}
                           required
                           className="mt-3 focus:ring-primary border-border"
                         />
@@ -175,6 +217,8 @@ const Contact = () => {
                         <Input
                           id="company"
                           name="company"
+                          value={formData.company}
+                          onChange={(e) => handleInputChange('company', e.target.value)}
                           className="mt-3 focus:ring-primary border-border"
                         />
                       </motion.div>
@@ -188,6 +232,8 @@ const Contact = () => {
                         id="email"
                         name="email"
                         type="email"
+                        value={formData.email}
+                        onChange={(e) => handleInputChange('email', e.target.value)}
                         required
                         className="mt-3 focus:ring-primary border-border"
                       />
@@ -200,6 +246,8 @@ const Contact = () => {
                       <Textarea
                         id="message"
                         name="message"
+                        value={formData.message}
+                        onChange={(e) => handleInputChange('message', e.target.value)}
                         required
                         rows={6}
                         className="mt-3 focus:ring-primary resize-none border-border"
@@ -268,16 +316,10 @@ const Contact = () => {
                     content: 'jarbasai@mailfence.com',
                     bgColor: 'bg-gradient-primary',
                   },
-                  // {
-                  //   icon: Phone,
-                  //   title: 'Phone',
-                  //   content: '+351 xx xxx xxxx',
-                  //   bgColor: 'bg-gradient-warm',
-                  // },
                   {
                     icon: MapPin,
                     title: 'Office',
-                    content: 'Praceta António Sérgio, nº317 4ºEsquerdo\n4450  -048 Matosinhos, Portugal',
+                    content: 'Praceta António Sérgio, nº317 4ºEsquerdo\n4450-048 Matosinhos, Portugal',
                     bgColor: 'bg-gradient-primary',
                   },
                 ].map((contact, index) => (
@@ -333,6 +375,35 @@ const Contact = () => {
                         <span>Closed</span>
                       </div>
                     </motion.div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+
+              {/* Project Inquiry CTA */}
+              <motion.div
+                variants={itemVariants}
+              >
+                <Card className="bg-gradient-primary border-0 text-white overflow-hidden">
+                  <CardContent className="p-6">
+                    <div className="flex items-start space-x-4">
+                      <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <FileText className="w-6 h-6 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-lg font-semibold mb-2">Have a Voice AI Project?</h3>
+                        <p className="text-white/80 text-sm mb-4">
+                          Fill out our detailed project scoping form to help us understand your ASR, TTS, or voice assistant requirements.
+                        </p>
+                        <Link to="/project-inquiry">
+                          <Button 
+                            variant="secondary" 
+                            className="bg-white text-primary hover:bg-white/90 font-medium"
+                          >
+                            Start Project Inquiry
+                          </Button>
+                        </Link>
+                      </div>
+                    </div>
                   </CardContent>
                 </Card>
               </motion.div>
