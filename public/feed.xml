@@ -7,7 +7,7 @@
     <description>Insights, tutorials, and thoughts on modern web development, technology trends, and best practices.</description>
     <language>en-us</language>
     <copyright>Copyright © 2025 TigreGotico. All rights reserved.</copyright>
-    <lastBuildDate>Thu, 04 Dec 2025 17:24:30 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 08 Dec 2025 18:06:04 GMT</lastBuildDate>
     <pubDate>Wed, 26 Nov 2025 00:00:00 GMT</pubDate>
 
     <item>
@@ -282,7 +282,7 @@ Read more: <a href="https://tigregotico.github.io/blog/2025-10-06-phoonnx">View 
       <guid isPermaLink="true">https://tigregotico.github.io/blog/2025-09-17-ovos_ha_dream_team</guid>
       <pubDate>Wed, 17 Sep 2025 00:00:00 GMT</pubDate>
       <author>Unknown</author>
-      <description>In the world of open-source smart homes, some things just click. When you let Home Assistant handle the automation and let OVOS (Open Voice OS) handle the voice, you get a powerful partnership where each project shines. It’s a perfect synergy</description>
+      <description>In the world of open-source smart homes, some things just click. When you let Home Assistant handle the automation and let OVOS (Open Voice OS) handle the voice, you get a powerful partnership where each project shines. It&apos;s a perfect synergy</description>
       <content:encoded><![CDATA[
 OpenVoiceOS and Home Assistant: A Voice Automation Dream Team
 
@@ -315,7 +315,7 @@ For us, accessibility is key. That includes language accessibility. We're proud 
  Matxa TTS for Catalan: The ovos-tts-plugin-matxa-multispeaker-cat provides multi-speaker text-to-speech capabilities for the Catalan language.
  NosTTS for Galician: The ovos-tts-plugin-nos offers robust text-to-speech in Galician.
 
-It’s a great example of how open collaboration benefits everyone.
+It's a great example of how open collaboration benefits everyone.
 
 !ILENIA logo
 

@@ -4,7 +4,7 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Database, Mic, ExternalLink, Heart, Users, Zap, Package } from 'lucide-react';
+import { Database, Mic, ExternalLink, Heart, Users, Zap, Package, FileText } from 'lucide-react';
 
 const Resources = () => {
   const { t } = useLanguage();
@@ -245,6 +245,48 @@ const Resources = () => {
                   <Button asChild className="w-full" size="sm">
                     <a href="https://huggingface.co/collections/TigreGotico/grapheme2phoneme-datasets" target="_blank" rel="noopener noreferrer">
                       Browse Collection <ExternalLink className="w-3 h-3 ml-2" />
+                    </a>
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
+          </motion.section>
+
+          {/* Research Section */}
+          <motion.section
+            className="mb-20"
+            variants={itemVariants}
+          >
+            <div className="mb-12">
+              <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-6 flex items-center gap-3">
+                <FileText className="w-8 h-8 text-purple-500" />
+                Research
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-4xl">
+                Academic publications and technical whitepapers documenting our research contributions to open-source voice technology.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Hybrid Synthetic TTS Dataset Whitepaper */}
+              <Card className="group hover:shadow-lg transition-all duration-300 border-2 hover:border-primary/20">
+                <CardHeader>
+                  <div className="flex items-start justify-between">
+                    <div className="flex items-center space-x-3">
+                      <div className="p-2 bg-purple-500/10 rounded-lg">
+                        <FileText className="w-5 h-5 text-purple-500" />
+                      </div>
+                      <div>
+                        <CardTitle className="text-lg font-semibold text-foreground">Hybrid Synthetic TTS Dataset</CardTitle>
+                      </div>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent className="pt-0">
+                  <p className="text-sm text-muted-foreground mb-4">A whitepaper detailing our methodology for creating high-quality synthetic TTS datasets using hybrid approaches.</p>
+                  <Button asChild className="w-full" size="sm">
+                    <a href="/whitepaper_hybrid_synthetic_tts_dataset.pdf" target="_blank" rel="noopener noreferrer">
+                      Download Whitepaper <ExternalLink className="w-3 h-3 ml-2" />
                     </a>
                   </Button>
                 </CardContent>
