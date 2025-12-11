@@ -12,7 +12,7 @@ ogImage:
 
 ## Making Synthetic Voices From Scratch
 
-> This blog was originally posted in the [OpenVoiceOS blog](https://blog.openvoiceos.org)
+> This blog was originally posted in the [OpenVoiceOS blog](https://blog.openvoiceos.org/posts/2025-06-26-making-synthetic-voices-from-scratch)
 
 ### What’s the problem?
 

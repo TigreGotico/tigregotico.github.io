@@ -12,7 +12,7 @@ ogImage:
 
 # OpenVoiceOS and Home Assistant: A Voice Automation Dream Team
 
-> This blog was originally posted in the [OpenVoiceOS blog](https://blog.openvoiceos.org)
+> This blog was originally posted in the [OpenVoiceOS blog](https://blog.openvoiceos.org/posts/2025-09-17-ovos_ha_dream_team)
 
 In the world of open-source smart homes, some things just click. When you let Home Assistant handle the automation and let OVOS (Open Voice OS) handle the voice, you get a powerful partnership where each project shines. It’s a perfect synergy: one is the undisputed champion of home automation, and the other is a flexible, private powerhouse for voice interaction.
 
