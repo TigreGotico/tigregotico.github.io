@@ -102,6 +102,7 @@ export const loadBlogPosts = async (): Promise<BlogPostMetadata[]> => {
       '2025-10-06-phoonnx.md',
       '2025-11-26-OVOS-hivemind-industry.md',
       '2025-12-09-ast.md',
+      '2025-12-12-barranquenho.md',
     ];
 
     const posts: BlogPostMetadata[] = [];
