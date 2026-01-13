@@ -1,3 +1,16 @@
+---
+title: "HiveMind-core v4.0: AGPL, History, and the Path Forward"
+excerpt: "For years, I’ve been chasing business leads and grant opportunities just to keep the lights on, which means HiveMind ideas often stayed in my head; some lost forever, some only half-remembered. This is not sustainable, and it’s not fair to the project or its potential users."
+coverImage: "/assets/blog/hivemind_agpl/thumb.png"
+date: "2026-01-13T00:00:00.000Z"
+author:
+  name: Casimiro Ferreira
+  picture: "https://avatars.githubusercontent.com/u/33701864"
+ogImage:
+  url: "/assets/blog/hivemind_agpl/thumb.png"
+---
+
+
 # HiveMind-core v4.0: AGPL, History, and the Path Forward
 
 Sometimes necessity doesn’t just spark invention, it drags you along and forces you to make something you didn’t know you needed. HiveMind started exactly like that.
