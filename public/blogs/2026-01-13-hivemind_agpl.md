@@ -57,7 +57,7 @@ Historically, HiveMind has often taken a backseat to OVOS. OVOS has a vibrant, a
 
 For years, I’ve been chasing business leads and grant opportunities just to keep the lights on, which means HiveMind ideas often stayed in my head; some lost forever, some only half-remembered. This is not sustainable, and it’s not fair to the project or its potential users.
 
-The AGPL v4.0 change and the introduction of commercial licensing are **not about locking things down**. They’re about creating a **reliable, funded pathway** to dedicate time to HiveMind development:
+The AGPL change in v4.0 and the introduction of commercial licensing are **not about locking things down**. They're about creating a **reliable, funded pathway** to dedicate time to HiveMind development:
 
 * To implement long-standing features that have been waiting for years.
 * To improve stability, performance, and usability in real-world networked deployments.
