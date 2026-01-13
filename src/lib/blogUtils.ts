@@ -103,6 +103,7 @@ export const loadBlogPosts = async (): Promise<BlogPostMetadata[]> => {
       '2025-11-26-OVOS-hivemind-industry.md',
       '2025-12-09-ast.md',
       '2025-12-12-barranquenho.md',
+      '2026-01-13-hivemind_agpl.md',
     ];
 
     const posts: BlogPostMetadata[] = [];
