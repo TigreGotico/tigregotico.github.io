@@ -87,4 +87,4 @@ This keeps HiveMind satellites fully **drop-in compatible**, modular, and future
 * Commercial users now have a **clear licensing path**, funding sustainable development.
 * Sustainable, funded development, so I can finally tackle some of those long-forgotten ideas.
 
-From a broken laptop in university to fully-featured, network-first middleware, HiveMind has always been about **solving real problems, enabling communities, and letting chaos work beautifully**. AGPL v4.0 is a **necessary evil**, ensuring HiveMind can grow sustainably, protect contributions, and avoid the trap of pseudo-FOSS licenses.
+From a broken laptop in university to fully-featured, network-first middleware, HiveMind has always been about **solving real problems, enabling communities, and letting chaos work beautifully**. AGPL is a **necessary evil**, ensuring HiveMind can grow sustainably, protect contributions, and avoid the trap of pseudo-FOSS licenses.
