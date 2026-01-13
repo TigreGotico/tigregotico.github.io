@@ -2,7 +2,7 @@
 
 Sometimes necessity doesn’t just spark invention, it drags you along and forces you to make something you didn’t know you needed. HiveMind started exactly like that.
 
-Around **2015**, I moved from Windows to Linux. My main laptop broke, leaving me stuck with a barely functional **32-bit relic**. Mycroft was too heavy to run locally, but a friend lent me access to a server (hello Chris Schantz, if you’re reading this!). The plan: run Mycroft on the server and access it from my laptop. To do that, I needed middleware to bridge the two. And thus, **HiveMind** was born — a tiny, chaotic, stubborn little project that would grow into a full network-first voice middleware.
+Around **2015**, I moved from Windows to Linux. Soon after my main laptop broke, leaving me stuck with a barely functional **32-bit relic**. Mycroft was too heavy to run locally, but a friend lent me access to a server (hello Chris Schantz, if you’re reading this!). The plan: run Mycroft on the server and access it from my laptop. To do that, I needed middleware to bridge the two. And thus, **HiveMind** was born — a tiny, chaotic, stubborn little project that would grow into a full network-first voice middleware.
 
 This early hack pushed me deeper into Mycroft contributions and eventually led to the creation of **OpenVoiceOS (OVOS)**. But let’s be clear: **HiveMind is my personal project, not an OVOS Foundation project**. 
 
@@ -17,7 +17,7 @@ HiveMind has evolved through necessity, experimentation, and stubbornness:
 1. **TCP sockets (2015)** - proof-of-concept: can two machines even talk?
 2. **WebSockets** - more reliable communication, fewer broken dreams.
 3. **Multiple simultaneous transport protocols** - HTTP on one port, WebSockets on another, satellites don’t blink.
-4. **Modular plugin architecture** - custom transports, binary audio streams, fully replaceable brains. Drop-in compatible, satellites happy, edge devices oblivious.
+4. **Modular plugin architecture** - custom transports, binary audio streams, fully replaceable brains. Drop-in compatible, edge devices oblivious.
 
 Now HiveMind is a **network-first transport + authentication middleware**, designed for distributing agents (brains) across any number of devices. Replace the brain? Just plug in a different agent. Use an LLM? Satellites don’t care. Permissions may not fully apply in that case (no skills/intents to allow/block), but all infrastructure still works.
 
@@ -29,7 +29,7 @@ Let’s be honest: AGPL is not glamorous. I’ve criticized GPL before; the “m
 
 Why AGPL?
 
-* **Networked deployments:** HiveMind is almost always used across multiple devices. AGPL ensures contributions remain open.
+* **Networked deployments:** HiveMind is almost always used across multiple devices. AGPL ensures modifications remain open.
 * **Sustainability:** Commercial users who want to avoid AGPL will pursue a **commercial license**, letting me focus on HiveMind development instead of chasing business leads. Indirectly, OVOS also benefits, since it’s the reference agent implementation.
 * **FOSS sanity:** SSPL, open-core, or inventing a new license would be **FOSS suicide** or contribute to license proliferation. AGPL is the pragmatic compromise.
 * **GAFAM? Not our audience:** Big players will implement their own alternatives anyway. Copyleft doesn’t scare them into licensing HiveMind; and that’s fine. AGPL protects the community and small-to-medium businesses, not the already-resourced giants.
@@ -56,7 +56,7 @@ In short, sustainable funding ensures HiveMind can grow **intentionally**, inste
 
 ## Looking Ahead: OVOS 2026 and Beyond
 
-Thanks to the **NLnet NGI Zero fund**, the **OVOS bus messages** will be standardized in 2026. Think **“OVOS Protocol via HiveMind”** — because apparently everything is called a protocol in the age of LLMs, so why not us?
+Thanks to the [**NLnet NGI Zero fund**](https://blog.openvoiceos.org/posts/2025-10-20-ngi), the **OVOS bus messages** will be standardized in 2026. Think **“OVOS Protocol via HiveMind”** — because apparently [everything is called a protocol in the age of LLMs, so why not us?](https://blog.openvoiceos.org/posts/2025-10-24-protocol_interoperability)
 
 * HiveMind used to be basically “get message from A to B.”
 * OVOS 2026 introduces a **defined inventory of valid messages**. Arbitrary messages are still possible.
