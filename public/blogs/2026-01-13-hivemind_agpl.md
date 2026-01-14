@@ -13,7 +13,7 @@ ogImage:
 
 # HiveMind-core v4.0: AGPL, History, and the Path Forward
 
-Sometimes necessity doesn’t just spark invention, it drags you along and forces you to make something you didn’t know you needed. HiveMind started exactly like that.
+Sometimes necessity doesn’t just spark invention, it drags you along and forces you to make something you didn’t know you needed. [HiveMind](https://jarbashivemind.github.io/HiveMind-community-docs/) started exactly like that.
 
 Around **2015**, I moved from Windows to Linux. Soon after my main laptop broke, leaving me stuck with a barely functional **32-bit relic**. Mycroft was too heavy to run locally, but a friend lent me access to a server (hello Chris Schantz, if you’re reading this!). The plan: run Mycroft on the server and access it from my laptop. To do that, I needed middleware to bridge the two. And thus, **HiveMind** was born — a tiny, chaotic, stubborn little project that would grow into a full network-first voice middleware.
 
@@ -73,10 +73,9 @@ Thanks to the [**NLnet NGI Zero fund**](https://blog.openvoiceos.org/posts/2025-
 
 * HiveMind used to be basically “get message from A to B.”
 * OVOS 2026 introduces a **defined inventory of valid messages**. Arbitrary messages are still possible.
-* Replacing the brain is standardized: a **hivemind-agent-plugin** translates OVOS Protocol messages to whatever your brain expects — OVOS, LLMs, A2A, Wyoming, whatever.
+* Replacing the brain is standardized: a **hivemind-agent-plugin** translates OVOS Protocol messages to whatever your brain expects — OVOS, LLMs, A2A, whatever.
 
-This keeps HiveMind satellites fully **drop-in compatible**, modular, and future-proof.
-
+This keeps satellites drop-in compatible regardless of your backend and ensures HiveMind remains the neutral transport layer it was meant to be.
 
 ---
 
