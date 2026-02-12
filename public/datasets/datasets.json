@@ -1,0 +1,30 @@
+[
+  {
+    "id": "synthetic-wakeword",
+    "title": "Synthetic Wakeword Datasets",
+    "description": "Synthetically generated wakeword audio datasets for training voice activation systems.",
+    "icon": "Database",
+    "url": "https://huggingface.co/collections/TigreGotico/synthetic-wakeword-datasets"
+  },
+  {
+    "id": "synthetic-tts",
+    "title": "Synthetic TTS Datasets",
+    "description": "High-quality synthetic text-to-speech datasets for training speech synthesis models.",
+    "icon": "Database",
+    "url": "https://huggingface.co/collections/TigreGotico/synthetic-tts-datasets"
+  },
+  {
+    "id": "mirandese",
+    "title": "Mirandese Datasets",
+    "description": "Datasets for the Mirandese language, supporting multilingual voice assistant development.",
+    "icon": "Database",
+    "url": "https://huggingface.co/collections/TigreGotico/mirandese-datasets"
+  },
+  {
+    "id": "grapheme2phoneme",
+    "title": "Grapheme2Phoneme Datasets",
+    "description": "Datasets mapping graphemes to phonemes for speech synthesis and linguistic processing tasks.",
+    "icon": "Database",
+    "url": "https://huggingface.co/collections/TigreGotico/grapheme2phoneme-datasets"
+  }
+]

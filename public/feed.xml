@@ -6,9 +6,269 @@
     <atom:link href="https://tigregotico.github.io/feed.xml" rel="self" type="application/rss+xml" />
     <description>Insights, tutorials, and thoughts on modern web development, technology trends, and best practices.</description>
     <language>en-us</language>
-    <copyright>Copyright © 2025 TigreGotico. All rights reserved.</copyright>
-    <lastBuildDate>Fri, 12 Dec 2025 16:59:06 GMT</lastBuildDate>
-    <pubDate>Wed, 26 Nov 2025 00:00:00 GMT</pubDate>
+    <copyright>Copyright © 2026 TigreGotico. All rights reserved.</copyright>
+    <lastBuildDate>Thu, 12 Feb 2026 19:28:18 GMT</lastBuildDate>
+    <pubDate>Tue, 13 Jan 2026 00:00:00 GMT</pubDate>
+
+    <item>
+      <title>HiveMind-core v4.0: AGPL, History, and the Path Forward</title>
+      <link>https://tigregotico.github.io/blog/2026-01-13-hivemind_agpl</link>
+      <guid isPermaLink="true">https://tigregotico.github.io/blog/2026-01-13-hivemind_agpl</guid>
+      <pubDate>Tue, 13 Jan 2026 00:00:00 GMT</pubDate>
+      <author>Unknown</author>
+      <description>For years, I’ve been chasing business leads and grant opportunities just to keep the lights on, which means HiveMind ideas often stayed in my head; some lost forever, some only half-remembered. This is not sustainable, and it’s not fair to the project or its potential users.</description>
+      <content:encoded><![CDATA[
+HiveMind-core v4.0: AGPL, History, and the Path Forward
+
+Sometimes necessity doesn’t just spark invention, it drags you along and forces you to make something you didn’t know you needed. HiveMind started exactly like that.
+
+Around 2015, I moved from Windows to Linux. Soon after my main laptop broke, leaving me stuck with a barely functional 32-bit relic. Mycroft was too heavy to run locally, but a friend lent me access to a server (hello Chris Schantz, if you’re reading this!). The plan: run Mycroft on the server and access it from my laptop. To do that, I needed middleware to bridge the two. And thus, HiveMind was born — a tiny, chaotic, stubborn little project that would grow into a full network-first voice middleware.
+
+This early hack pushed me deeper into Mycroft contributions and eventually led to the creation of OpenVoiceOS (OVOS). But let’s be clear: HiveMind is my personal project, not an OVOS Foundation project. 
+
+OVOS integration happens naturally; it’s modular, and HiveMind can leverage its plugins: STT, TTS, WakeWord, and even the listener code for satellites. But you don’t need OVOS at all, HiveMind can run any “brain” or agent, from OVOS to a straight-up LLM. Satellites don’t care; they just work. Modularity rocks.
+
+HiveMind Through the Ages
+
+HiveMind has evolved through necessity, experimentation, and stubbornness:
+TCP sockets (2015) - proof-of-concept: can two machines even talk?
+WebSockets - more reliable communication, fewer broken dreams.
+Multiple simultaneous transport protocols - HTTP on one port, WebSockets on another, satellites don’t blink.
+Modular plugin architecture - custom transports, binary audio streams, fully replaceable brains. Drop-in compatible, edge devices oblivious.
+
+Now HiveMind is a network-first transport + authentication middleware, designed for distributing agents (brains) across any number of devices. Replace the brain? Just plug in a different agent. Use an LLM? Satellites don’t care. Permissions may not fully apply in that case (no skills/intents to allow/block), but all infrastructure still works.
+
+License Change: AGPL as a Necessary Evil
+
+Let’s be honest: AGPL is not glamorous. I’ve criticized GPL before; the “my kind of freedom is better than yours” discourse gets old. GPL projects can use my Apache code, but I can’t use theirs. HiveMind will become less free for commercial usage, but users arguably gain more protections. FSF and the Linux world would probably approve.
+
+Why AGPL?
+
+ Networked deployments: HiveMind is almost always used across multiple devices. AGPL ensures modifications remain open.
+ Sustainability: Commercial users who want to avoid AGPL will pursue a commercial license, letting me focus on HiveMind development instead of chasing business leads. Indirectly, OVOS also benefits, since it’s the reference agent implementation.
+ FOSS sanity: SSPL, open-core, or inventing a new license would be FOSS suicide or contribute to license proliferation. AGPL is the pragmatic compromise.
+ GAFAM? Not our audience: Big players will implement their own alternatives anyway. Copyleft doesn’t scare them into licensing HiveMind; and that’s fine. AGPL protects the community and small-to-medium businesses, not the already-resourced giants.
+
+> 💡 Non-profits and permissively licensed projects (MIT, BSD, Apache-2.0, etc.) are eligible for no-cost commercial licenses. Contributions to the ecosystem are considered sufficient — just reach out.
+
+Sustainable Development: Why This Matters
+
+Historically, HiveMind has often taken a backseat to OVOS. OVOS has a vibrant, active community, many eyes on the code, people willing to help with support, and lots of real-world testing. HiveMind, by contrast, is niche, networked, and complex. If I don’t work on it, it doesn’t get done. If I don’t provide support, no one else can.
+
+For years, I’ve been chasing business leads and grant opportunities just to keep the lights on, which means HiveMind ideas often stayed in my head; some lost forever, some only half-remembered. This is not sustainable, and it’s not fair to the project or its potential users.
+
+The AGPL change in v4.0 and the introduction of commercial licensing are not about locking things down. They're about creating a reliable, funded pathway to dedicate time to HiveMind development:
+
+ To implement long-standing features that have been waiting for years.
+ To improve stability, performance, and usability in real-world networked deployments.
+ To ensure that when someone asks “how do I do X with HiveMind?” there’s a real, maintained answer.
+
+In short, sustainable funding ensures HiveMind can grow intentionally, instead of being a series of half-baked ideas lost to time or postponed indefinitely. It’s about giving this project the attention it deserves and keeping the chaos under control, in the best possible way.
+
+Looking Ahead: OVOS 2026 and Beyond
+
+Thanks to the NLnet NGI Zero fund, the OVOS bus messages will be standardized in 2026. Think “OVOS Protocol via HiveMind” — because apparently everything is called a protocol in the age of LLMs, so why not us?
+
+ HiveMind used to be basically “get message from A to B.”
+ OVOS 2026 introduces a defined inventory of valid messages. Arbitrary messages are still possible.
+ Replacing the brain is standardized: a hivemind-agent-plugin translates OVOS Protocol messages to whatever your brain expects — OVOS, LLMs, A2A, whatever.
+
+This keeps satellites drop-in compatible regardless of your backend and ensures HiveMind remains the neutral transport layer it was meant to be.
+
+What This Means
+
+ HiveMind stays open-source and usable, even with AGPL.
+ OVOS continues as the reference agent, while HiveMind grows independently.
+ Commercial users now have a clear licensing path, funding sustainable development.
+ Sustainable, funded development, so I can finally tackle some of those long-forgotten ideas.
+
+From a broken laptop in university to fully-featured, network-first middleware, HiveMind has always been about solving real problems, enabling communities, and letting chaos work beautifully. AGPL is a necessary evil, ensuring HiveMind can grow sustainably, protect contributions, and avoid the trap of pseudo-FOSS licenses.
+
+---
+Read more: <a href="https://tigregotico.github.io/blog/2026-01-13-hivemind_agpl">View full article</a>
+]]></content:encoded>
+    </item>
+
+    <item>
+      <title>Introducing the First Phonemizer for Barranquenho</title>
+      <link>https://tigregotico.github.io/blog/2025-12-12-barranquenho</link>
+      <guid isPermaLink="true">https://tigregotico.github.io/blog/2025-12-12-barranquenho</guid>
+      <pubDate>Fri, 12 Dec 2025 00:00:00 GMT</pubDate>
+      <author>Unknown</author>
+      <description>Today marks an exciting milestone for linguistic preservation! We&apos;re thrilled to announce the development of the very first phonemizer for Barranquenho, a truly unique Ibero-Romance language spoken in the Portuguese municipality of Barrancos.</description>
+      <content:encoded><![CDATA[
+Introducing the First Phonemizer for Barranquenho
+
+Today marks an exciting milestone for linguistic preservation! We're thrilled to announce the release of g2pbarranquenho,  the very first Grapheme-to-Phoneme (G2P) phonemizer for Barranquenho, a truly unique Ibero-Romance language spoken in the Portuguese municipality of Barrancos.
+
+This isn't about a technical achievement; it's a step towards safeguarding and revitalizing a language that embodies a rich cultural heritage.
+
+Why Barranquenho, and Why Now?
+
+Barranquenho stands at a fascinating crossroads of Portuguese and Spanish linguistic traditions, reflecting centuries of cross-border interaction. Despite its distinctiveness, resources for Barranquenho have historically been scarce, making it a challenging language for digital representation and AI development.
+
+However, a monumental effort from the Barrancos Municipal Council is changing that. Just recently, the Council made available three foundational linguistic documents, an "enormous step" for Barranquenho culture:
+
+ Dicionário de Barranquenho (Barranquenho Dictionary)
+ Convenção Ortográfica do Barranquenho (Barranquenho Orthographic Convention)
+ Gramática Básica do Barranquenho (Basic Barranquenho Grammar)
+
+These publications, highlighted in their official announcement "Un Enormi Passu para u Barranquenhu i para a Cultura Barranquenha!", provide the crucial backbone for our work. The Convenção Ortográfica do Barranquenho in particular has been instrumental, offering the consistent rules we needed to build our G2P model.
+
+What is a G2P Phonemizer?
+
+In simple terms, a G2P phonemizer is a system that takes a written word (graphemes) and converts it into its phonetic representation (phonemes). Think of it as teaching a computer how to "pronounce" a word, even if it's never heard it before. For Barranquenho, this means translating its unique spelling into the International Phonetic Alphabet (IPA).
+
+Our rule-based phonemizer accounts for Barranquenho's distinct phonetic features, including vowel allophony, nasalization, and the specific pronunciations of consonants like 'r' and 's', which can vary significantly from standard Portuguese or Spanish. 
+
+> "Un Enormi Passu para u Barranquenhu i para a Cultura Barranquenha" -> "ũ ẽjoɾmj pasu paɾɐ u bɐrɐ͂keɲu j paɾɐ ɐ kultuɾɐ bɐrɐ͂keɲɐ"
+
+The Power of this First Step
+
+There is still a long way to go before Barranquenho speakers no longer need to switch to Portuguese or Spanish to interact with voice technology. The creation of this G2P phonemizer is more than just a cool linguistic tool; it's the foundational layer for developing advanced AI capabilities for Barranquenho. With a reliable way to map written words to their sounds, we can unlock:
+
+ Speech-to-Text (STT) Systems: Imagine speaking in Barranquenho and having your words accurately transcribed. This could revolutionize documentation, communication, and accessibility. 
+Text-to-Speech (TTS) Systems: Give digital voices the ability to speak Barranquenho, opening doors for educational tools, audiobooks, and interactive experiences.
+
+This work aligns perfectly with our mission of making voice AI accessible for everyone in any language.
+
+Join Us: Help Bring Barranquenho Voices to AI!
+
+While the orthographic convention gives us the rules for pronunciation, real-world speech data is invaluable for training robust AI models.
+
+We are putting out a call to the Barranquenho community and anyone passionate about linguistic preservation:
+
+We need recordings of spoken Barranquenho!
+
+Whether you're a native speaker, an enthusiast, or a linguist, your voice can help us create the next generation of Barranquenho AI resources. If you are interested in contributing, please reach out to us!. Every voice counts, and together, we can ensure that Barranquenho thrives in the digital age.
+
+Let's make some noise for Barranquenho! 📢
+
+---
+Read more: <a href="https://tigregotico.github.io/blog/2025-12-12-barranquenho">View full article</a>
+]]></content:encoded>
+    </item>
+
+    <item>
+      <title>Cloning Voices for Endangered Languages: Building a Text-to-Speech Model for Asturian and Aragonese</title>
+      <link>https://tigregotico.github.io/blog/2025-12-09-ast</link>
+      <guid isPermaLink="true">https://tigregotico.github.io/blog/2025-12-09-ast</guid>
+      <pubDate>Tue, 09 Dec 2025 00:00:00 GMT</pubDate>
+      <author>Unknown</author>
+      <description>Have you ever wanted to hear a computer speak in an accent you love, or in a language that&apos;s rarely supported by big tech? Today we’re releasing new experimental Text-to-Speech models for Asturian (ast) and Aragonese (an), two beautiful minority Romance language spoken by communities who almost never get access to modern speech technology.</description>
+      <content:encoded><![CDATA[
+Cloning Voices for Endangered Languages: Building a Text-to-Speech Model for Asturian and Aragonese
+
+> This blog was originally posted in the OpenVoiceOS blog
+
+Have you ever wanted to hear a computer speak in an accent you love, or in a language that's rarely supported by big tech?
+
+Today we’re releasing new experimental Text-to-Speech (TTS) models for Asturian (ast) and Aragonese (an), two beautiful minority Romance language spoken by communities who almost never get access to modern speech technology.
+
+These models represent a small but meaningful step toward a larger mission: help any under-resourced language build openly available TTS voices using only community data and ethical voice-cloning techniques.
+
+Why This Work Matters - A Short Reality Check
+
+Most languages still lack even a single usable open TTS voice. Not because the technology doesn’t exist, but because:
+high-quality monolingual datasets are rare
+speakers often can’t safely provide the many hours required
+dialect diversity makes a single “official” voice unrealistic
+basic tools (phonemizers, lexicons, G2P) often don’t exist
+
+Meanwhile, these communities still need TTS, for education, accessibility, media creation, cultural preservation, and linguistic pride.
+
+Large tech companies rarely prioritise minority languages. Their incentives are simple: supporting a language only brings value if it brings new users or data. 
+
+For speakers of Asturian or Aragonese, who can also use Spanish, this lack of support nudges people away from their own languages. Over time, that invisibility contributes to language shift and erosion.
+
+As a non-profit, we have different priorities: we want to empower all users, preserve linguistic diversity, and treat language as accessibility. This project is part of that mission.
+
+So, how did we do it? We used a clever, hybrid approach that combines existing resources with cutting-edge voice cloning technology.
+
+The "Low-Resource" Challenge
+
+Imagine you want a computer to speak with a very specific voice, perhaps your own, or that of a beloved family member. Now imagine you only have a few seconds of that person speaking. That's our "low-resource donor voice."
+
+At the same time, we have access to large Automatic Speech Recognition (ASR) datasets, like Mozilla Common Voice, which contain recordings of many different people. The problem is, it's not a single, consistent voice.
+
+Our goal was to "transfer" the specific sound of our donor voice onto the vast amount of data available in these multi-speaker ASR datasets.
+
+Our Hybrid Solution: A Step-by-Step Journey
+
+Here's a simplified look at the process we followed (for a more detailed, technical explanation, check out our Whitepaper on Hybrid TTS Dataset Synthesis):
+Gathering Our Raw Materials:
+We started with text and audio from two datasets: Common Voice Scripted Speech 23.0 - Asturian and the Common Voice Scripted Speech 23.0 - Aragonese. These provided us with many text transcripts and their corresponding multi-speaker audio.
+We also had a short recording of our "donor voice" – the target voice we wanted the TTS model to learn.
+Audio Quality Filtering and Preparation:
+We converted all audio to a standard format and ensured the volume was consistent across all recordings (normalization).
+We trimmed silence from the beginning and end of each recording.
+We filtered out recordings where people spoke too fast or too slow (outliers based on Words-Per-Minute), keeping only the most natural and consistent segments. This focused our dataset on the best quality transcripts.
+The Magic of Voice Cloning (Zero-Shot Revoicing):
+This is where modern AI comes in! Instead of training a complex model from scratch, we used an off-the-shelf zero-shot voice cloning solution.
+This system was given a short reference clip of the donor voice. It uses this clip to learn the unique qualities of the voice.
+We then fed our filtered ASR dataset into this cloning system. The original multi-speaker audio was discarded; the cloning tool simply generates new audio in our target donor voice. The result? A new dataset of Asturian/Aragonese audio, all spoken in a single, consistent voice!
+Training the Final TTS Model:
+With our brand-new, high-quality, single-speaker datasets, we could finally train our TTS models. 
+
+About Pronunciation & Phonemizers
+
+These models were trained directly on graphemes, we did not use a phonemizer. Good G2P (grapheme-to-phoneme) tools for Asturian and Aragonese are scarce. A phonemizer usually improves pronunciation and, importantly, allows IPA input at runtime to force pronunciations when needed.
+
+If you know of an existing phonemizer, have lexicons/pronunciation data, or want to help train one, please get in touch. This would materially improve future releases.
+
+The Results:
+
+The results are not perfect, our goal was mainly to validate that this approach works. 
+
+We used phoonnx to train VITS models, VITS is very performant and can run basically anywhere, it is also very easy to train without needing massive GPUS making it perfect for experimentation
+
+There are many better architectures we can explore in the future to train truly natural sounding voices!
+
+> "L'arcu la vieya ye un fenómenu ópticu y meteorolóxicu que produz l'apaición d'un espectru de lluz continu nel cielu cuando los rayos del sol trespasen pequeñes partícules de mugor conteníes n'atmósfera terrestre. La forma ye la d'un arcu multicolor col roxo hacia la parte esterior y el viola hacia la interior. El arco iris duble, ye menos avezau a vese, y tien los colores invertíos, esto ye, el roxo hacia dientro y el viola hacia l'esterior."
+
+<audio controls>
+  <source src="https://blog.openvoiceos.org/assets/blog/ast/diiast.wav" type="audio/wav">
+  Your browser does not support the audio element.
+</audio>
+
+<audio controls>
+  <source src="https://blog.openvoiceos.org/assets/blog/ast/miroast.wav" type="audio/wav">
+  Your browser does not support the audio element.
+</audio>
+
+Download: Asturian — dii (female) and Asturian — miro (male)
+
+> "L'arco de sant Chuan ye un fenomeno optico y meteorolochico que produce l'aparición d'un espectro de luz contino en o cielo cuan os rayos d'o sol trescruzan chicotas particlas d'humidat situatas por l'atmosfera terrestre. A forma suya ye a d'un arco multicolor con o royo en a parti exterior y o morau en a interior. No ye tan cutiano l'arco de sant Chuan dople, que incluye un segundo arco mas tenue con as colors chiratas, ye dicir o royo en l'interior y o morau en l'exterior."
+
+<audio controls>
+  <source src="https://blog.openvoiceos.org/assets/blog/ast/diian.wav" type="audio/wav">
+  Your browser does not support the audio element.
+</audio>
+
+<audio controls>
+  <source src="https://blog.openvoiceos.org/assets/blog/ast/miroan.wav" type="audio/wav">
+  Your browser does not support the audio element.
+</audio>
+
+Download: Aragonese — dii (female) and Aragonese — miro (male)
+
+These models are a significant step forward for Asturian and Aragonese language technology. It demonstrates how modern AI, combined with careful data preparation, can empower underserved languages and bring them into the digital age. We're excited to see what developers and enthusiasts will build with it!
+
+Help Us Build Voice for Everyone
+
+OpenVoiceOS is more than software, it’s a mission. If you believe voice assistants should be open, inclusive, and user-controlled, here’s how you can help:
+💸 Donate: Help us fund development, infrastructure, and legal protection.
+📣 Contribute Open Data: Share voice samples and transcriptions under open licenses.
+🌍 Translate: Help make OVOS accessible in every language.
+
+We're not building this for profit. We're building it for people. With your support, we can keep voice tech transparent, private, and community-owned.
+
+👉 Support the project here
+
+---
+Read more: <a href="https://tigregotico.github.io/blog/2025-12-09-ast">View full article</a>
+]]></content:encoded>
+    </item>
 
     <item>
       <title>OVOS &amp; HiveMind in the Manufacturing Industry</title>

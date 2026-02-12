@@ -4,19 +4,30 @@ import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { ExternalLink, Github } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { projectsList, collaborationsList } from '@/lib/projects-data';
+import { loadData, type Project, type Collaboration } from '@/lib/projects-data';
 
 const Projects = () => {
   const { t } = useLanguage();
-
-  const projects = useMemo(() => projectsList, []);
-  const collaborations = useMemo(() => collaborationsList, []);
-
-  const categories = ['All', 'In-House', 'OVOS-Intents', 'OVOS-Solvers', 'OVOS-Embeddings', 'OVOS-STT', 'OVOS-Translation', 'OVOS-Utils', 'ILENIA'];
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [collaborations, setCollaborations] = useState<Collaboration[]>([]);
+  const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [activeTab, setActiveTab] = useState('projects');
+
+  useEffect(() => {
+    Promise.all([
+      loadData<Project>('/projects/projects.json'),
+      loadData<Collaboration>('/projects/collaborations.json')
+    ]).then(([projectsData, collaborationsData]) => {
+      setProjects(projectsData);
+      setCollaborations(collaborationsData);
+      setLoading(false);
+    }).catch(console.error);
+  }, []);
+
+  const categories = ['All', 'In-House', 'OVOS-Intents', 'OVOS-Solvers', 'OVOS-Embeddings', 'OVOS-STT', 'OVOS-Translation', 'OVOS-Utils', 'ILENIA'];
 
   const filteredProjects = useMemo(
     () => selectedCategory === 'All' 

@@ -1,0 +1,29 @@
+[
+  {
+    "name": "ILENIA",
+    "description": "International collaboration for multilingual speech technology and voice interfaces. ILENIA unites researchers and developers to create sophisticated speech-based solutions across multiple languages and platforms.",
+    "url": "https://ilenia.ai",
+    "repositories": [
+      "https://github.com/OpenVoiceOS/ovos-stt-plugin-nos",
+      "https://github.com/OpenVoiceOS/ovos-stt-plugin-HiTZ",
+      "https://github.com/OpenVoiceOS/ovos-stt-plugin-citrinet",
+      "https://github.com/OpenVoiceOS/ovos-stt-plugin-nemo",
+      "https://github.com/OpenVoiceOS/ovos-stt-plugin-mms",
+      "https://github.com/OpenVoiceOS/ovos-stt-plugin-fasterwhisper-zuazo",
+      "https://github.com/OpenVoiceOS/ovos-stt-plugin-whisper-lm",
+      "https://github.com/OpenVoiceOS/ovos-stt-plugin-wav2vec2",
+      "https://github.com/OpenVoiceOS/ovos-stt-plugin-projectAINA-remote",
+      "https://github.com/OpenVoiceOS/ovos-tts-plugin-nos",
+      "https://github.com/OpenVoiceOS/ovos-tts-plugin-ahotts",
+      "https://github.com/OpenVoiceOS/ovos-tts-plugin-matxa-multispeaker-cat",
+      "https://github.com/OpenVoiceOS/ovos-tts-plugin-coqui",
+      "https://github.com/OpenVoiceOS/ovos-tts-plugin-cotovia-remote",
+      "https://github.com/OpenVoiceOS/ovos-dialog-normalizer-plugin",
+      "https://github.com/OpenVoiceOS/ovos-skill-diagnostics",
+      "https://github.com/OpenVoiceOS/ovos-skill-fuster-quotes",
+      "https://github.com/OpenVoiceOS/ovos-opendata-server",
+      "https://github.com/OpenVoiceOS/raspovos-audio-setup",
+      "https://github.com/TigreGotico/pyAhoTTS"
+    ]
+  }
+]

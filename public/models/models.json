@@ -1,0 +1,16 @@
+[
+  {
+    "id": "phoonnx-tts",
+    "title": "Phoneme ONNX TTS Models",
+    "description": "Text-to-Speech models using phoneme input with ONNX format for optimized inference.",
+    "icon": "Package",
+    "url": "https://huggingface.co/collections/TigreGotico/phoonnx-tts-models"
+  },
+  {
+    "id": "onnx-models",
+    "title": "ONNX Models",
+    "description": "Optimized models in ONNX format for fast, cross-platform inference across various applications.",
+    "icon": "Package",
+    "url": "https://huggingface.co/collections/TigreGotico/onnx-models"
+  }
+]

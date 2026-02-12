@@ -1,0 +1,13 @@
+[
+  {
+    "id": "hybrid-synthetic-tts",
+    "title": "Hybrid Synthetic TTS Dataset",
+    "description": "A whitepaper detailing our methodology for creating high-quality synthetic TTS datasets using hybrid approaches.",
+    "filePath": "research/whitepaper_hybrid_synthetic_tts_dataset.pdf",
+    "fileType": "pdf",
+    "buttonLabel": "Download Whitepaper",
+    "date": "2025",
+    "authors": ["Casimiro Ferreira"],
+    "tags": ["TTS", "Synthetic Data", "Speech Synthesis"]
+  }
+]

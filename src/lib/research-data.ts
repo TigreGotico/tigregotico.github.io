@@ -3,19 +3,29 @@ export interface ResearchPaper {
   title: string;
   description: string;
   filePath: string;
+  fileType?: 'pdf' | 'md' | 'txt'; // Optional, will be auto-detected if not provided
+  buttonLabel?: string; // Optional, custom download button text
   date?: string;
   authors?: string[];
   tags?: string[];
 }
 
-export const researchPapers: ResearchPaper[] = [
-  {
-    id: "hybrid-synthetic-tts",
-    title: "Hybrid Synthetic TTS Dataset",
-    description: "A whitepaper detailing our methodology for creating high-quality synthetic TTS datasets using hybrid approaches.",
-    filePath: "/whitepaper_hybrid_synthetic_tts_dataset.pdf",
-    date: "2025",
-    authors: ["Casimiro Ferreira"],
-    tags: ["TTS", "Synthetic Data", "Speech Synthesis"]
+let cachedResearchPapers: ResearchPaper[] | null = null;
+
+export async function getResearchPapers(): Promise<ResearchPaper[]> {
+  if (cachedResearchPapers) {
+    return cachedResearchPapers;
   }
-];
+
+  const response = await fetch('/research/research-data.json');
+  if (!response.ok) {
+    throw new Error('Failed to load research data');
+  }
+  
+  const data: ResearchPaper[] = await response.json();
+  cachedResearchPapers = data;
+  return data;
+}
+
+// For backward compatibility, export empty array (components should use getResearchPapers())
+export const researchPapers: ResearchPaper[] = [];

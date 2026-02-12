@@ -4,6 +4,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useMobileDetection } from '@/hooks/use-mobile-detection';
+import Grainient from './GradientBackground';
 
 const HeroSection = () => {
   const { t } = useLanguage();
@@ -31,28 +32,43 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Video */}
-      <video
-        className="absolute top-0 left-0 w-full h-full object-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-        style={{ objectFit: 'cover' }}
-      >
-        <source src="/bg.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
+      {/* Grainient Background */}
+      <div style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0 }}>
+        <Grainient
+          color1="#000000"
+          color2="#808080"
+          color3="#404040"
+          timeSpeed={0.25}
+          colorBalance={0}
+          warpStrength={1}
+          warpFrequency={5}
+          warpSpeed={2}
+          warpAmplitude={50}
+          blendAngle={0}
+          blendSoftness={0.05}
+          rotationAmount={500}
+          noiseScale={2}
+          grainAmount={0.1}
+          grainScale={2}
+          grainAnimated={false}
+          contrast={1.5}
+          gamma={1}
+          saturation={1}
+          centerX={0}
+          centerY={0}
+          zoom={0.9}
+        />
+      </div>
 
       {/* Content */}
       <motion.div
-        className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-16 sm:py-20"
+        className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-16 sm:py-20 pointer-events-none"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        <div className="max-w-4xl mx-auto">
+        <div className="mx-auto">
           {/* Gothic ornamental element */}
           <motion.div
             className="mb-8 sm:mb-12"
@@ -98,7 +114,7 @@ const HeroSection = () => {
           </motion.p>
 
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center px-4"
+            className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center px-4 pointer-events-auto"
             variants={buttonVariants}
             transition={{ duration: 0.4, delay: 0.8 }}
           >
@@ -109,8 +125,9 @@ const HeroSection = () => {
             >
               <Link to="/contact" className="block">
                 <Button
+                  variant="outline"
                   size="lg"
-                  className="bg-primary text-primary-foreground hover:bg-primary/90 px-6 sm:px-8 lg:px-12 py-3 sm:py-4 lg:py-6 text-sm sm:text-base font-medium tracking-wide shadow-lg hover:shadow-xl transition-all duration-300 border-0 rounded-lg whitespace-nowrap"
+                  className="text-black hover:bg-white hover:border-white px-6 sm:px-8 lg:px-12 py-3 sm:py-4 lg:py-6 text-sm sm:text-base font-medium tracking-wide rounded-lg whitespace-nowrap"
                 >
                   {isMobile ? t('hero.cta.primary.mobile') : t('hero.cta.primary')}
                   <ArrowRight className="ml-2 w-4 h-4" />
@@ -126,7 +143,7 @@ const HeroSection = () => {
                 <Button
                 variant="outline"
                 size="lg"
-                className="text-black hover:bg-white/10 hover:border-white/50 px-6 sm:px-8 lg:px-12 py-3 sm:py-4 lg:py-6 text-sm sm:text-base font-medium tracking-wide rounded-lg whitespace-nowrap"
+                className="text-black px-6 sm:px-8 lg:px-12 py-3 sm:py-4 lg:py-6 text-sm sm:text-base font-medium tracking-wide rounded-lg whitespace-nowrap"
                 onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
                 >
                 {isMobile ? t('hero.cta.secondary.mobile') : t('hero.cta.secondary')}
