@@ -83,7 +83,7 @@ const translations = {
     'contact.form.submit': 'Send Message',
     
     // Footer
-    'footer.rights': '© 2025 TigreGótico. All rights reserved.',
+    'footer.rights': '© 2026 TigreGótico. All rights reserved.',
     'footer.consulting': 'Privacy-First Voice Technology and FOSS AI Solutions',
     'footer.opensource': 'Open Source',
     'footer.quicklinks': 'Quick Links',
@@ -207,7 +207,7 @@ const translations = {
     
     // Footer
         // Footer
-    'footer.rights': '© 2025 TigreGótico. Todos os direitos reservados.',
+    'footer.rights': '© 2026 TigreGótico. Todos os direitos reservados.',
     'footer.consulting': 'Tecnologia de Voz com Prioridade na Privacidade e Soluções de IA FOSS',
     'footer.opensource': 'Código Aberto',
     'footer.quicklinks': 'Links Rápidos',
