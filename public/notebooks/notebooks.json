@@ -1,0 +1,11 @@
+[
+  {
+    "id": "hybrid-tts-dataset-synthesis",
+    "title": "Hybrid Low-Resource TTS Dataset Synthesis Pipeline",
+    "description": "Complete pipeline implementing the whitepaper workflow: Format Conversion → Denoising → Trimming → Normalization → WPM Filtering → Voice Cloning for creating high-quality TTS datasets.",
+    "url": "/notebooks/asr2tts.ipynb",
+    "language": "python",
+    "tags": ["TTS", "Dataset Creation", "Audio Processing", "Voice Cloning"],
+    "date": "2026"
+  }
+]
