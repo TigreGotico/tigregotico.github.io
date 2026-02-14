@@ -34,14 +34,23 @@ export const NotebookPreviewModal = ({
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  useEffect(() => {
+    setCells([]);
+  }, [notebookUrl]);
+
   const loadNotebook = async () => {
-    if (!notebookUrl || cells.length > 0) return; // Already loaded or no URL
+    if (!notebookUrl) return;
     
     setLoading(true);
     setError(null);
     
     try {
       const response = await fetch(notebookUrl);
+      
+      if (!response.ok) {
+        throw new Error(`Failed to fetch notebook: ${response.status} ${response.statusText}`);
+      }
+      
       const text = await response.text();
       
       try {
@@ -88,17 +97,16 @@ export const NotebookPreviewModal = ({
     onOpenChange(open);
   };
 
-  // Also trigger loading when isOpen becomes true
+  // Load notebook when dialog opens or URL changes
   useEffect(() => {
-    if (isOpen && notebookUrl && cells.length === 0) {
+    if (isOpen && notebookUrl) {
       loadNotebook();
     }
   }, [isOpen, notebookUrl]);
 
   return (
     <Dialog open={isOpen} onOpenChange={handleOpenChange} modal={true}>
-      <DialogContent className="max-w-5xl max-h-[85vh] overflow-y-auto" onPointerDownOutside={(e) => {
-      }}onEscapeKeyDown={(e) => {}}>
+      <DialogContent className="max-w-5xl max-h-[85vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>{title || 'Notebook Preview'}</DialogTitle>
           <DialogDescription>

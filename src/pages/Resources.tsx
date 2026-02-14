@@ -26,6 +26,10 @@ const Resources = () => {
   const handleNotebookDownload = async (notebook: Notebook) => {
     try {
       const response = await fetch(notebook.url);
+      if (!response.ok) {
+        console.error('Failed to download notebook:', response.status);
+        return;
+      }
       const blob = await response.blob();
       const filename = notebook.url.split('/').pop() || `${notebook.id}.ipynb`;
       saveAs(blob, filename);
@@ -292,6 +296,7 @@ const Resources = () => {
 
             {/* Notebook Preview Modal */}
             <NotebookPreviewModal
+              key={selectedNotebook?.id}
               isOpen={isDialogOpen}
               onOpenChange={(open) => {
                 setIsDialogOpen(open);
