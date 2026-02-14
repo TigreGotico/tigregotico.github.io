@@ -7,5 +7,14 @@
     "language": "python",
     "tags": ["TTS", "Dataset Creation", "Audio Processing", "Voice Cloning"],
     "date": "2026"
+  },
+  {
+    "id": "arabic-diacritization-lstm",
+    "title": "Arabic Diacritization with LSTM",
+    "description": "Train a small LSTM model to predict Arabic diacritics, export to ONNX format, and benchmark performance for real-time text processing.",
+    "url": "https://raw.githubusercontent.com/TigreGotico/notebooks/refs/heads/main/arabic_diacritics/lstm.ipynb",
+    "language": "python",
+    "tags": ["NLP", "Arabic", "LSTM", "ONNX", "Diacritization"],
+    "date": "2026"
   }
 ]
