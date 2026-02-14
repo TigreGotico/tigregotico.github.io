@@ -221,7 +221,6 @@ const generateRssFeedFile = async () => {
     posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
     if (posts.length === 0) {
-      console.log('No blog posts found. Skipping RSS feed generation.');
       return;
     }
 
@@ -240,14 +239,12 @@ const generateRssFeedFile = async () => {
     const rssPath = path.join(publicDir, 'rss.xml');
     fs.mkdirSync(path.dirname(rssPath), { recursive: true });
     fs.writeFileSync(rssPath, rssFeed, 'utf-8');
-    console.log(`✓ RSS feed generated at ${rssPath}`);
 
     // Also write to dist if it exists
     if (fs.existsSync(distDir)) {
       const distRssPath = path.join(distDir, 'rss.xml');
       fs.mkdirSync(path.dirname(distRssPath), { recursive: true });
       fs.writeFileSync(distRssPath, rssFeed, 'utf-8');
-      console.log(`✓ RSS feed also written to ${distRssPath}`);
     }
 
   } catch (error) {

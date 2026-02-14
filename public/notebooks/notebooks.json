@@ -1,0 +1,20 @@
+[
+  {
+    "id": "hybrid-tts-dataset-synthesis",
+    "title": "Hybrid Low-Resource TTS Dataset Synthesis Pipeline",
+    "description": "Complete pipeline implementing the whitepaper workflow: Format Conversion → Denoising → Trimming → Normalization → WPM Filtering → Voice Cloning for creating high-quality TTS datasets.",
+    "url": "/notebooks/asr2tts.ipynb",
+    "language": "python",
+    "tags": ["TTS", "Dataset Creation", "Audio Processing", "Voice Cloning"],
+    "date": "2026"
+  },
+  {
+    "id": "arabic-diacritization-lstm",
+    "title": "Arabic Diacritization with LSTM",
+    "description": "Train a small LSTM model to predict Arabic diacritics, export to ONNX format, and benchmark performance for real-time text processing.",
+    "url": "https://raw.githubusercontent.com/TigreGotico/notebooks/refs/heads/main/arabic_diacritics/lstm.ipynb",
+    "language": "python",
+    "tags": ["NLP", "Arabic", "LSTM", "ONNX", "Diacritization"],
+    "date": "2026"
+  }
+]

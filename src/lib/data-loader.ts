@@ -50,5 +50,15 @@ export interface Collaboration {
   repositories: string[];
 }
 
+export interface Notebook {
+  id: string;
+  title: string;
+  description: string;
+  url: string;
+  language?: string;
+  tags?: string[];
+  date?: string;
+}
+
 export type Dataset = Resource;
 export type Model = Resource;

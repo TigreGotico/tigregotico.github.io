@@ -4,23 +4,44 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Database, ExternalLink, Heart, Users, Zap, Package, FileText, Calendar, User } from 'lucide-react';
-import { loadData, type ResearchPaper, type Dataset, type Model } from '@/lib/data-loader';
-import { downloadFile, getFileExtension } from '@/lib/pdf-converter';
+import { Database, ExternalLink, Heart, Users, Zap, Package, FileText, Calendar, User, BookOpen, Code, Download } from 'lucide-react';
+import { loadData, type ResearchPaper, type Dataset, type Model, type Notebook } from '@/lib/data-loader';
+import { downloadFile } from '@/lib/pdf-converter';
 import { useEffect, useState } from 'react';
+import { NotebookPreviewModal } from '@/components/NotebookPreviewModal';
+import { saveAs } from 'file-saver';
 
 const Resources = () => {
   const { t } = useLanguage();
-  const [data, setData] = useState({ models: [] as Model[], datasets: [] as Dataset[], research: [] as ResearchPaper[] });
+  const [data, setData] = useState({ models: [] as Model[], datasets: [] as Dataset[], research: [] as ResearchPaper[], notebooks: [] as Notebook[] });
   const [loading, setLoading] = useState(true);
+  const [selectedNotebook, setSelectedNotebook] = useState<Notebook | null>(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const openNotebookPreview = (notebook: Notebook) => {
+    setSelectedNotebook(notebook);
+    setIsDialogOpen(true);
+  };
+
+  const handleNotebookDownload = async (notebook: Notebook) => {
+    try {
+      const response = await fetch(notebook.url);
+      const blob = await response.blob();
+      const filename = notebook.url.split('/').pop() || `${notebook.id}.ipynb`;
+      saveAs(blob, filename);
+    } catch (error) {
+      console.error('Error downloading notebook:', error);
+    }
+  };
 
   useEffect(() => {
     Promise.all([
       loadData<Model>('/models/models.json'),
       loadData<Dataset>('/datasets/datasets.json'),
-      loadData<ResearchPaper>('/research/research-data.json')
-    ]).then(([models, datasets, research]) => {
-      setData({ models, datasets, research });
+      loadData<ResearchPaper>('/research/research-data.json'),
+      loadData<Notebook>('/notebooks/notebooks.json')
+    ]).then(([models, datasets, research, notebooks]) => {
+      setData({ models, datasets, research, notebooks });
       setLoading(false);
     }).catch(console.error);
   }, []);
@@ -209,6 +230,75 @@ const Resources = () => {
                 ))
               }
             </div>
+          </motion.section>
+
+          {/* Notebooks Section */}
+          <motion.section
+            className="mb-20"
+            variants={itemVariants}
+          >
+            <div className="mb-12">
+              <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-6 flex items-center gap-3">
+                <BookOpen className="w-8 h-8 text-orange-500" />
+                Notebooks
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-4xl">
+                Interactive Jupyter notebooks demonstrating practical implementations of voice technology, machine learning, and NLP techniques.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {loading ? <div className="col-span-2 text-center py-8 text-muted-foreground">Loading...</div> :
+                data.notebooks.map((notebook) => (
+                  <Card key={notebook.id} className="group hover:shadow-lg transition-all duration-300 border-2 hover:border-primary/20">
+                    <CardHeader>
+                      <div className="flex items-start justify-between">
+                        <div className="flex items-center space-x-3">
+                          <div className="p-2 bg-orange-500/10 rounded-lg"><BookOpen className="w-5 h-5 text-orange-500" /></div>
+                          <CardTitle className="text-lg">{notebook.title}</CardTitle>
+                        </div>
+                      </div>
+                    </CardHeader>
+                    <CardContent className="pt-0">
+                      <p className="text-sm text-muted-foreground mb-3">{notebook.description}</p>
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {notebook.date && <span className="inline-flex items-center gap-1 text-xs bg-muted px-2 py-1 rounded"><Calendar className="w-3 h-3" /> {notebook.date}</span>}
+                        {notebook.language && <span className="text-xs text-orange-600 bg-orange-100 dark:bg-orange-900/30 px-2 py-1 rounded font-mono">{notebook.language}</span>}
+                        {notebook.tags?.map((tag) => <span key={tag} className="text-xs text-orange-600 bg-orange-100 dark:bg-orange-900/30 px-2 py-1 rounded">{tag}</span>)}
+                      </div>
+                      <div className="flex gap-2">
+                        <Button 
+                          className="flex-1" 
+                          size="sm"
+                          onClick={() => {
+                            openNotebookPreview(notebook);
+                          }}
+                        >
+                          Preview Notebook <Code className="w-3 h-3 ml-2" />
+                        </Button>
+                        <Button 
+                          variant="outline" 
+                          size="sm"
+                          onClick={() => handleNotebookDownload(notebook)}
+                        >
+                          <Download className="w-4 h-4" />
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))
+              }
+            </div>
+
+            {/* Notebook Preview Modal */}
+            <NotebookPreviewModal
+              isOpen={isDialogOpen}
+              onOpenChange={(open) => {
+                setIsDialogOpen(open);
+              }}
+              title={selectedNotebook?.title || ''}
+              notebookUrl={selectedNotebook?.url || ''}
+            />
           </motion.section>
 
           {/* Call to Action */}
