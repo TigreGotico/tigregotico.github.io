@@ -19,10 +19,8 @@ const Resources = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const openNotebookPreview = (notebook: Notebook) => {
-    console.log('openNotebookPreview called with:', notebook);
     setSelectedNotebook(notebook);
     setIsDialogOpen(true);
-    console.log('Dialog should open now, isDialogOpen set to true');
   };
 
   const handleNotebookDownload = async (notebook: Notebook) => {
@@ -30,7 +28,6 @@ const Resources = () => {
       const response = await fetch(notebook.url);
       const blob = await response.blob();
       const filename = notebook.url.split('/').pop() || `${notebook.id}.ipynb`;
-      console.log('Downloading notebook as:', filename);
       saveAs(blob, filename);
     } catch (error) {
       console.error('Error downloading notebook:', error);
@@ -274,7 +271,6 @@ const Resources = () => {
                           className="flex-1" 
                           size="sm"
                           onClick={() => {
-                            console.log('Preview button clicked for:', notebook.title);
                             openNotebookPreview(notebook);
                           }}
                         >
@@ -298,7 +294,6 @@ const Resources = () => {
             <NotebookPreviewModal
               isOpen={isDialogOpen}
               onOpenChange={(open) => {
-                console.log('NotebookPreviewModal onOpenChange:', open);
                 setIsDialogOpen(open);
               }}
               title={selectedNotebook?.title || ''}

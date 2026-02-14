@@ -126,5 +126,4 @@ export function writeSitemap(): void {
 
   const sitemapContent = generateSitemap();
   fs.writeFileSync(sitemapPath, sitemapContent, "utf-8");
-  console.log(`✓ Sitemap generated at ${sitemapPath}`);
 }

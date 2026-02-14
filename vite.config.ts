@@ -89,7 +89,6 @@ function generateRssFeed() {
   // Write to public directory
   const rssPath = path.join(publicDir, "feed.xml");
   fs.writeFileSync(rssPath, rssFeed, "utf-8");
-  console.log(`✓ RSS feed generated at ${rssPath}`);
 }
 
 function parseFrontMatter(content: string): ParseResult {

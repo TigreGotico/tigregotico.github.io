@@ -120,7 +120,6 @@ export const loadBlogPosts = async (): Promise<BlogPostMetadata[]> => {
 
         // Extract author name from author object or string
         let authorName = 'Unknown';
-        console.log(`[Blog] Processing file: ${file}, author raw data:`, frontMatter.author);
         
         if (typeof frontMatter.author === 'string') {
           authorName = frontMatter.author;
@@ -128,9 +127,6 @@ export const loadBlogPosts = async (): Promise<BlogPostMetadata[]> => {
           const authorObj = frontMatter.author as { name?: string };
           authorName = authorObj.name || 'Unknown';
         }
-        
-        console.log(`[Blog] Extracted author name: ${authorName}`);
-
         posts.push({
           slug,
           title: (frontMatter.title as string) || 'Untitled',
