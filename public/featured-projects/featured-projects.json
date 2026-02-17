@@ -8,13 +8,25 @@
   {
     "name": "ALIGN",
     "description": "Advanced forced alignment toolkit for speech and text. Precise timestamp generation for audio-transcript synchronization.",
-    "image": "https://private-user-images.githubusercontent.com/33701864/547873715-58380d79-56a2-408b-bc2d-898d6686bcdc.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzEwOTI3OTQsIm5iZiI6MTc3MTA5MjQ5NCwicGF0aCI6Ii8zMzcwMTg2NC81NDc4NzM3MTUtNTgzODBkNzktNTZhMi00MDhiLWJjMmQtODk4ZDY2ODZiY2RjLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAyMTQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMjE0VDE4MDgxNFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTAzYjhkMjM0NDZlZTZjOGQ2MDdmOGY0YTI4ZjYzYjdkYTdkZWUxN2I3ZDc1YzM1YWNkZDRiYTg5ZTA1YTAwNTEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.PoFgZLpV6zL4r1X6vW-RlCoMGkdNcp2sJM7vTxKFS1A",
+    "image": "https://github.com/user-attachments/assets/58380d79-56a2-408b-bc2d-898d6686bcdc",
     "github": "https://github.com/TigreGotico/ALIGN"
   },
   {
     "name": "ovoscope",
     "description": "Open Voice Operating System core framework. Privacy-focused, modular voice assistant platform for building custom AI assistants.",
-    "image": "https://private-user-images.githubusercontent.com/33701864/453273175-10a10ff5-64b7-42fd-86bd-cb6a5db769dd.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzEwOTI4MjUsIm5iZiI6MTc3MTA5MjUyNSwicGF0aCI6Ii8zMzcwMTg2NC80NTMyNzMxNzUtMTBhMTBmZjUtNjRiNy00MmZkLTg2YmQtY2I2YTVkYjc2OWRkLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNjAyMTQlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjYwMjE0VDE4MDg0NVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWY4NGMyYWU5MmQ2YjQzNTRhOGU1NmI3ZWQwZGFiZDJkMzNiYjM1ODA4MDRhZWRmYzFkYTdjMDYzYzE3ZTMzYmUmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.YKNE5Lg2AaEPeU9BHYV-9eZbcZf0brPdIunJdP3SMzA",
+    "image": "https://github.com/user-attachments/assets/10a10ff5-64b7-42fd-86bd-cb6a5db769dd",
     "github": "https://github.com/TigreGotico/ovoscope"
+  },
+  {
+    "name": "Open Voice OS",
+    "description": "Community-driven, open-source voice AI platform for creating custom voice-controlled interfaces across devices with NLP, customizable UI, and a focus on privacy and security.",
+    "image": "https://www.openvoiceos.org/images/logo.png",
+    "github": "https://github.com/OpenVoiceOS"
+  },
+  {
+    "name": "HiveMind",
+    "description": "Flexible protocol for communication and collaboration among devices and AI agents. Enables lightweight satellites to connect to central hubs with customizable permissions and hierarchical networking.",
+    "image": "https://github.com/JarbasHiveMind/HiveMind-assets/raw/master/logo/hivemind-512.png",
+    "github": "https://github.com/JarbasHiveMind/HiveMind-core"
   }
 ]
