@@ -267,8 +267,8 @@ const Resources = () => {
                       <p className="text-sm text-muted-foreground mb-3">{notebook.description}</p>
                       <div className="flex flex-wrap gap-2 mb-4">
                         {notebook.date && <span className="inline-flex items-center gap-1 text-xs bg-muted px-2 py-1 rounded"><Calendar className="w-3 h-3" /> {notebook.date}</span>}
-                        {notebook.language && <span className="text-xs text-orange-600 bg-orange-100 dark:bg-orange-900/30 px-2 py-1 rounded font-mono">{notebook.language}</span>}
-                        {notebook.tags?.map((tag) => <span key={tag} className="text-xs text-orange-600 bg-orange-100 dark:bg-orange-900/30 px-2 py-1 rounded">{tag}</span>)}
+                        {notebook.language && <span className="text-xs text-orange-600 dark:text-orange-400 bg-orange-100 dark:bg-orange-900/30 px-2 py-1 rounded font-mono">{notebook.language}</span>}
+                        {notebook.tags?.map((tag) => <span key={tag} className="text-xs text-orange-600 dark:text-orange-400 bg-orange-100 dark:bg-orange-900/30 px-2 py-1 rounded">{tag}</span>)}
                       </div>
                       <div className="flex gap-2">
                         <Button 
@@ -311,7 +311,7 @@ const Resources = () => {
             className="mt-20 text-center"
             variants={itemVariants}
           >
-            <div className="bg-gradient-to-r from-primary/5 to-secondary/5 rounded-2xl p-8 md:p-12">
+            <div className="bg-gradient-to-r from-primary/5 to-secondary/5 dark:from-gray-800 dark:to-gray-800/50 rounded-2xl p-8 md:p-12">
               <h3 className="text-2xl md:text-3xl font-serif font-bold text-foreground mb-4">
                 {t('resources.cta.title')}
               </h3>
@@ -319,7 +319,7 @@ const Resources = () => {
                 {t('resources.cta.description')}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button asChild size="lg" className="min-w-48">
+                <Button asChild size="lg" className="min-w-48 bg-primary text-primary-foreground hover:bg-primary/90">
                   <a href="/contact">
                     {t('resources.cta.contact')}
                   </a>

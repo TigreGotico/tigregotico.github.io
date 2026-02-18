@@ -111,7 +111,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-subtle">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
       <Navigation />
 
       <main className="pt-24 pb-16">
@@ -170,7 +170,7 @@ const Contact = () => {
             <motion.div
               variants={itemVariants}
             >
-              <Card className="shadow-gothic border-0 bg-white">
+              <Card className="shadow-gothic border-0 bg-white dark:bg-gray-800">
                 <CardContent className="p-10">
                   <motion.div
                     className="text-center mb-8"
@@ -350,7 +350,7 @@ const Contact = () => {
               <motion.div
                 variants={itemVariants}
               >
-                <Card className="bg-terracotta-light border-0">
+                <Card className="bg-terracotta-light dark:bg-gray-800 border-0">
                   <CardContent className="p-6">
                     <motion.h3
                       className="text-lg font-semibold text-terracotta-dark mb-4"
@@ -383,7 +383,7 @@ const Contact = () => {
               <motion.div
                 variants={itemVariants}
               >
-                <Card className="bg-gradient-primary border-0 text-white overflow-hidden">
+                <Card className="bg-gray-900 border-0 text-white overflow-hidden">
                   <CardContent className="p-6">
                     <div className="flex items-start space-x-4">
                       <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0">
@@ -397,7 +397,7 @@ const Contact = () => {
                         <Link to="/project-inquiry">
                           <Button 
                             variant="secondary" 
-                            className="bg-white text-primary hover:bg-white/90 font-medium"
+                            className="font-medium"
                           >
                             Start Project Inquiry
                           </Button>

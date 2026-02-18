@@ -77,7 +77,7 @@ const Services = () => {
 
       <main className="pt-24 pb-16">
         {/* Introduction Section */}
-        <section className="py-20 bg-gradient-subtle">
+        <section className="py-20">
           <motion.div
             className="max-w-6xl mx-auto px-6 lg:px-8"
             variants={containerVariants}
@@ -170,7 +170,7 @@ const Services = () => {
                   whileHover="hover"
                   custom={index}
                 >
-                  <Card className="border-0 shadow-gothic bg-white h-full">
+                  <Card className="border-0 shadow-gothic bg-white dark:bg-gray-800 h-full">
                     <CardHeader>
                       <motion.div
                         className="w-12 h-12 bg-gradient-primary rounded-xl flex items-center justify-center mb-4"
@@ -303,7 +303,7 @@ const Services = () => {
         </section>
 
         {/* Website Building Section */}
-        <section className="py-20 bg-gradient-subtle">
+        <section className="py-20">
           <motion.div
             className="max-w-6xl mx-auto px-6 lg:px-8"
             variants={containerVariants}

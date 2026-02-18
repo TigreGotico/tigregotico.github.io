@@ -169,7 +169,7 @@ const Products = () => {
                   whileHover="hover"
                   custom={index}
                 >
-                  <Card className="border-0 shadow-gothic bg-white hover:shadow-xl transition-all duration-300 h-full">
+                  <Card className="border-0 shadow-gothic bg-white dark:bg-gray-800 hover:shadow-xl transition-all duration-300 h-full">
                     <CardHeader>
                       <motion.div
                         className="w-12 h-12 bg-gradient-primary rounded-xl flex items-center justify-center mb-4"
@@ -245,7 +245,7 @@ const Products = () => {
                   whileHover="hover"
                   custom={index}
                 >
-                  <Card className="border-0 shadow-gothic bg-white hover:shadow-xl transition-all duration-300 h-full">
+                  <Card className="border-0 shadow-gothic bg-white dark:bg-gray-800 hover:shadow-xl transition-all duration-300 h-full">
                     <CardHeader>
                       <motion.div
                         className="w-12 h-12 bg-gradient-warm rounded-xl flex items-center justify-center mb-4"

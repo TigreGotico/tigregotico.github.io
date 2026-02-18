@@ -190,7 +190,7 @@ const BlogPost = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
         <Navigation />
         <div className="flex items-center justify-center min-h-[60vh]">
           <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary"></div>
@@ -202,7 +202,7 @@ const BlogPost = () => {
 
   if (error || !post) {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
         <Navigation />
         <div className="container mx-auto px-4 py-20">
           <div className="max-w-2xl mx-auto text-center">
@@ -223,11 +223,11 @@ const BlogPost = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
       <Navigation />
       
       {/* Header */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-gradient-subtle border-b border-border">
+      <section className="py-16 sm:py-20 lg:py-24 bg-gray-50 dark:bg-gray-900 border-b border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -327,7 +327,7 @@ const BlogPost = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="max-w-4xl mx-auto"
         >
-          <Card className="overflow-hidden shadow-lg border-border/50">
+          <Card className="overflow-hidden shadow-lg border-border/50 bg-white dark:bg-gray-800">
             <CardContent className="p-8 sm:p-12 lg:p-16">
               <div className="prose prose-lg max-w-none">
                 <ReactMarkdown
@@ -376,7 +376,7 @@ const BlogPost = () => {
                       const match = /language-(\w+)/.exec(className || '');
                       if (match) {
                         return (
-                          <pre className="bg-slate-900 text-slate-100 p-6 rounded-lg overflow-x-auto mb-6 my-6 border border-border/20">
+                          <pre className="bg-slate-900 dark:bg-gray-950 text-slate-100 p-6 rounded-lg overflow-x-auto mb-6 my-6 border border-border/20">
                             <code className={className} {...props}>
                               {children}
                             </code>
@@ -450,7 +450,7 @@ const BlogPost = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="max-w-4xl mx-auto"
         >
-          <Card className="border-border/50 shadow-lg">
+          <Card className="border-border/50 shadow-lg bg-white dark:bg-gray-800">
             <CardContent className="p-8 sm:p-12 text-center">
               <h3 className="text-xl sm:text-2xl font-serif font-semibold text-foreground mb-4 tracking-tight">Want to read more?</h3>
               <p className="text-muted-foreground mb-8 font-light leading-relaxed">

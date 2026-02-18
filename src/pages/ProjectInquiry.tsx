@@ -956,7 +956,7 @@ ${formData.risksNotes}
   };
 
   return (
-    <div className="min-h-screen bg-gradient-subtle">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
       <Navigation />
 
       <main className="pt-24 pb-16">
@@ -1028,7 +1028,7 @@ ${formData.risksNotes}
               className="lg:col-span-1"
               variants={itemVariants}
             >
-              <Card className="shadow-gothic border-0 bg-white sticky top-24">
+              <Card className="shadow-gothic border-0 bg-white dark:bg-gray-800 sticky top-24">
                 <CardContent className="p-4">
                   <h3 className="font-semibold text-foreground mb-4">Sections</h3>
                   <nav className="space-y-2">
@@ -1038,7 +1038,7 @@ ${formData.risksNotes}
                         onClick={() => setCurrentSection(index)}
                         className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-left text-sm transition-colors ${
                           currentSection === index
-                            ? 'bg-primary text-white'
+                            ? 'bg-primary text-primary-foreground'
                             : 'hover:bg-muted text-muted-foreground'
                         }`}
                       >
@@ -1060,13 +1060,13 @@ ${formData.risksNotes}
                     icon: Mail,
                     title: 'Email',
                     content: 'jarbasai@mailfence.com',
-                    bgColor: 'bg-gradient-primary',
+                    bgColor: 'bg-primary',
                   },
                   {
                     icon: MapPin,
                     title: 'Office',
                     content: 'Matosinhos, Portugal',
-                    bgColor: 'bg-gradient-primary',
+                    bgColor: 'bg-primary',
                   },
                 ].map((contact, index) => (
                   <motion.div
@@ -1098,7 +1098,7 @@ ${formData.risksNotes}
               className="lg:col-span-3"
               variants={itemVariants}
             >
-              <Card className="shadow-gothic border-0 bg-white">
+              <Card className="shadow-gothic border-0 bg-white dark:bg-gray-800">
                 <CardContent className="p-8">
                   {/* Progress bar */}
                   <div className="mb-8">
@@ -1108,7 +1108,7 @@ ${formData.risksNotes}
                     </div>
                     <div className="h-2 bg-muted rounded-full overflow-hidden">
                       <motion.div
-                        className="h-full bg-gradient-primary"
+                        className="h-full bg-primary"
                         initial={{ width: 0 }}
                         animate={{ width: `${((currentSection + 1) / sections.length) * 100}%` }}
                         transition={{ duration: 0.3 }}
@@ -1119,7 +1119,7 @@ ${formData.risksNotes}
                   <form onSubmit={handleSubmit}>
                     {renderSection()}
 
-                    <div className="flex justify-between mt-8 pt-6 border-t">
+                    <div className="flex justify-between mt-8 pt-6 border-t dark:border-gray-700">
                       <Button
                         type="button"
                         variant="outline"
@@ -1133,7 +1133,7 @@ ${formData.risksNotes}
                         <Button
                           type="button"
                           onClick={() => setCurrentSection(currentSection + 1)}
-                          className="bg-gradient-primary text-white"
+                          className="bg-primary text-primary-foreground hover:bg-primary/90"
                         >
                           Next Section
                         </Button>
@@ -1146,7 +1146,7 @@ ${formData.risksNotes}
                           <Button
                             type="submit"
                             disabled={isSubmitting}
-                            className="bg-gradient-primary hover:opacity-90 text-white font-medium py-6 px-8 shadow-gothic"
+                            className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium py-6 px-8 shadow-gothic"
                           >
                             {isSubmitting ? (
                               <motion.div

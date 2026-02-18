@@ -181,7 +181,7 @@ const Projects = () => {
                       className={`px-4 py-2 rounded-full font-medium transition-all duration-200 ${
                         selectedCategory === category
                           ? 'bg-primary text-white shadow-md'
-                          : 'bg-muted text-muted-foreground hover:bg-muted/80'
+                          : 'bg-muted dark:bg-gray-700 text-muted-foreground hover:bg-muted/80 dark:hover:bg-gray-600'
                       }`}
                     >
                       {category}
@@ -262,7 +262,7 @@ const Projects = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
               <Button
-                className="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-lg font-medium transition-transform hover:scale-105 active:scale-95"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 rounded-lg font-medium transition-transform hover:scale-105 active:scale-95"
                 onClick={() => window.location.href = '/contact'}
               >
                 {t('contact.title')}

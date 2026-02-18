@@ -167,7 +167,7 @@ const BlogSection = () => {
               className="text-center"
             >
               <Link to="/blog">
-                <Button className="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-lg font-medium transition-transform hover:scale-105 active:scale-95">
+                <Button className="bg-primary hover:bg-primary/90 px-8 py-3 rounded-lg font-medium transition-transform hover:scale-105 active:scale-95">
                   View All Posts
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>

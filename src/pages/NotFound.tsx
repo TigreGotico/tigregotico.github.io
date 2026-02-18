@@ -109,7 +109,7 @@ const NotFound = () => {
             <Button
               variant="outline"
               onClick={() => window.history.back()}
-              className="px-6 py-3 font-medium tracking-wide border-primary text-primary hover:bg-primary hover:text-white"
+              className="px-6 py-3 font-medium tracking-wide"
             >
               <ArrowLeft className="mr-2 w-4 h-4" />
               Go Back

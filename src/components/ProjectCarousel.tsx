@@ -84,7 +84,7 @@ const ProjectCarousel = ({ projects, autoplay = true, autoplaySpeed = 5000 }: Pr
   return (
     <div className="relative w-full">
       {/* Main Carousel Container */}
-      <div className="relative overflow-hidden rounded-2xl bg-white border border-border shadow-lg">
+      <div className="relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800 border border-border shadow-lg">
         <div className="relative h-[500px] md:h-[600px]">
           <AnimatePresence initial={false} custom={direction}>
             <motion.div
@@ -114,7 +114,7 @@ const ProjectCarousel = ({ projects, autoplay = true, autoplaySpeed = 5000 }: Pr
             >
               <div className="flex flex-col md:flex-row h-full">
                 {/* Image Section */}
-                <div className="w-full md:w-1/2 h-1/2 md:h-full bg-gradient-to-br from-muted/20 to-muted/5 
+                <div className="w-full md:w-1/2 h-1/2 md:h-full bg-gray-100 dark:bg-gray-900
                                 flex items-center justify-center overflow-hidden border-b md:border-b-0 md:border-r border-border/50">
                   <img
                     src={currentProject.image}
@@ -177,7 +177,7 @@ const ProjectCarousel = ({ projects, autoplay = true, autoplaySpeed = 5000 }: Pr
         <button
           onClick={() => paginate(-1)}
           className="absolute left-4 top-1/2 -translate-y-1/2 z-10
-                     bg-white/90 hover:bg-white p-3 rounded-full shadow-lg
+                     bg-white/90 dark:bg-gray-800/90 hover:bg-white dark:hover:bg-gray-700 p-3 rounded-full shadow-lg
                      border border-border hover:border-primary/50
                      transition-all duration-200 hover:scale-110"
           aria-label="Previous project"
@@ -187,7 +187,7 @@ const ProjectCarousel = ({ projects, autoplay = true, autoplaySpeed = 5000 }: Pr
         <button
           onClick={() => paginate(1)}
           className="absolute right-4 top-1/2 -translate-y-1/2 z-10
-                     bg-white/90 hover:bg-white p-3 rounded-full shadow-lg
+                     bg-white/90 dark:bg-gray-800/90 hover:bg-white dark:hover:bg-gray-700 p-3 rounded-full shadow-lg
                      border border-border hover:border-primary/50
                      transition-all duration-200 hover:scale-110"
           aria-label="Next project"
