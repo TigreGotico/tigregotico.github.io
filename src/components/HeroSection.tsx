@@ -127,7 +127,7 @@ const HeroSection = () => {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="text-black hover:bg-white hover:border-white px-6 sm:px-8 lg:px-12 py-3 sm:py-4 lg:py-6 text-sm sm:text-base font-medium tracking-wide rounded-lg whitespace-nowrap"
+                  className="px-6 sm:px-8 lg:px-12 py-3 sm:py-4 lg:py-6 text-sm sm:text-base font-medium tracking-wide rounded-lg whitespace-nowrap"
                 >
                   {isMobile ? t('hero.cta.primary.mobile') : t('hero.cta.primary')}
                   <ArrowRight className="ml-2 w-4 h-4" />
@@ -143,7 +143,7 @@ const HeroSection = () => {
                 <Button
                 variant="outline"
                 size="lg"
-                className="text-black px-6 sm:px-8 lg:px-12 py-3 sm:py-4 lg:py-6 text-sm sm:text-base font-medium tracking-wide rounded-lg whitespace-nowrap"
+                className="px-6 sm:px-8 lg:px-12 py-3 sm:py-4 lg:py-6 text-sm sm:text-base font-medium tracking-wide rounded-lg whitespace-nowrap"
                 onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
                 >
                 {isMobile ? t('hero.cta.secondary.mobile') : t('hero.cta.secondary')}

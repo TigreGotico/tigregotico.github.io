@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Globe, Menu, X } from 'lucide-react';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 const Navigation = () => {
   const { language, setLanguage, t } = useLanguage();
@@ -45,7 +46,7 @@ const Navigation = () => {
 
   return (
     <motion.nav
-      className="fixed top-0 w-full bg-white/95 backdrop-blur-md border-b border-border/50 z-50 shadow-sm"
+      className="fixed top-0 w-full bg-white/95 dark:bg-gray-900/95 backdrop-blur-md border-b border-border/50 z-50 shadow-sm"
       initial="hidden"
       animate="visible"
       variants={navVariants}
@@ -119,11 +120,12 @@ const Navigation = () => {
                 </Button>
               </motion.div>
             </motion.div> */}
+            
+            <ThemeToggle />
           </div>
 
           {/* Mobile menu button */}
-          <div className="lg:hidden">
-            <motion.div
+          <div className="lg:hidden flex items-center space-x-2">            <ThemeToggle />            <motion.div
               whileTap={{ scale: 0.95 }}
             >
               <Button

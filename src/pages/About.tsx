@@ -85,7 +85,7 @@ Summarize your findings into a 'Risk vs. Competence' report for a potential ente
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen dark:bg-gray-950">
       <Navigation />
 
       <main className="pt-24 pb-16">
@@ -121,7 +121,7 @@ Summarize your findings into a 'Risk vs. Competence' report for a potential ente
               variants={cardVariants}
               whileHover="hover"
             >
-              <Card className="border-0 shadow-gothic bg-white">
+              <Card className="border-0 shadow-gothic bg-white dark:bg-gray-800">
                 <CardContent className="p-8 md:p-12">
                   <p className="text-lg text-muted-foreground leading-relaxed font-light tracking-wide">
                     {t('about.story')}
@@ -133,7 +133,7 @@ Summarize your findings into a 'Risk vs. Competence' report for a potential ente
         </section>
 
         {/* Our Expertise Section */}
-        <section className="py-20 bg-gradient-subtle">
+        <section className="py-20 bg-gray-50 dark:bg-gray-900">
           <motion.div
             className="max-w-4xl mx-auto px-6 lg:px-8"
             variants={containerVariants}
@@ -164,7 +164,7 @@ Summarize your findings into a 'Risk vs. Competence' report for a potential ente
               variants={cardVariants}
               whileHover="hover"
             >
-              <Card className="border-0 shadow-gothic bg-white">
+              <Card className="border-0 shadow-gothic">
                 <CardContent className="p-8 md:p-12">
                   <p className="text-lg text-muted-foreground leading-relaxed font-light tracking-wide">
                     {t('about.expertise')}
@@ -207,7 +207,7 @@ Summarize your findings into a 'Risk vs. Competence' report for a potential ente
               variants={cardVariants}
               whileHover="hover"
             >
-              <Card className="border-0 shadow-gothic bg-white">
+              <Card className="border-0 shadow-gothic">
                 <CardContent className="p-8 md:p-12">
                   <blockquote className="text-xl md:text-2xl text-foreground font-light italic text-center leading-relaxed tracking-wide">
                     "{t('about.mission')}"
@@ -219,7 +219,7 @@ Summarize your findings into a 'Risk vs. Competence' report for a potential ente
         </section>
 
         {/* Values Section */}
-        <section className="py-20 bg-gradient-subtle">
+        <section className="py-20 bg-gray-50 dark:bg-gray-900">
           <motion.div
             className="max-w-6xl mx-auto px-6 lg:px-8"
             variants={containerVariants}
@@ -257,7 +257,7 @@ Summarize your findings into a 'Risk vs. Competence' report for a potential ente
                   whileHover="hover"
                   custom={index}
                 >
-                  <Card className="border-0 shadow-gothic bg-white text-center h-full">
+                  <Card className="border-0 shadow-gothic bg-white dark:bg-gray-800 text-center h-full">
                     <CardContent className="p-6">
                       <motion.div
                         className="w-16 h-16 bg-gradient-primary rounded-xl flex items-center justify-center mx-auto mb-6"
@@ -317,7 +317,7 @@ Summarize your findings into a 'Risk vs. Competence' report for a potential ente
                 variants={cardVariants}
                 whileHover="hover"
               >
-                <Card className="border-0 shadow-gothic bg-white">
+                <Card className="border-0 shadow-gothic bg-white dark:bg-gray-800">
                   <CardContent className="p-8 md:p-12">
                     <p className="text-lg text-muted-foreground leading-relaxed font-light tracking-wide mb-6">
                       In the world of Open Source and specialized AI consulting, "trust" shouldn't be based on a sales pitch. It should be based on verifiable code, community contributions, and proven architectural decisions.
@@ -337,12 +337,12 @@ Summarize your findings into a 'Risk vs. Competence' report for a potential ente
                 variants={cardVariants}
                 whileHover="hover"
               >
-                <Card className="border-0 shadow-gothic bg-gradient-to-br from-slate-50 to-slate-100 border-l-4 border-primary">
+                <Card className="border-0 shadow-gothic bg-gradient-to-br from-slate-50 to-slate-100 dark:from-gray-800 dark:to-gray-900 border-l-4 border-primary">
                   <CardContent className="p-8 md:p-12">
                     <h3 className="text-xl font-serif font-semibold text-foreground mb-4 tracking-tight">
                       The Auditor Prompt (Copy & Paste this):
                     </h3>
-                    <div className="bg-white rounded-lg p-6 border border-slate-200 mb-6 relative">
+                    <div className="bg-white dark:bg-gray-950 rounded-lg p-6 border border-slate-200 dark:border-gray-700 mb-6 relative">
                       <p className="text-sm md:text-base text-foreground leading-relaxed font-mono whitespace-pre-wrap break-words">
                         {auditorPrompt}
                       </p>
@@ -392,7 +392,7 @@ Summarize your findings into a 'Risk vs. Competence' report for a potential ente
                     variants={cardVariants}
                     whileHover="hover"
                   >
-                    <Card className="border-0 shadow-gothic bg-white h-full">
+                    <Card className="border-0 shadow-gothic bg-white dark:bg-gray-800 h-full">
                       <CardContent className="p-6">
                         <h4 className="text-lg font-serif font-semibold text-foreground mb-3 tracking-tight">
                           {point.title}
@@ -411,7 +411,7 @@ Summarize your findings into a 'Risk vs. Competence' report for a potential ente
                 variants={cardVariants}
                 whileHover="hover"
               >
-                <Card className="border-0 shadow-gothic bg-gradient-to-r from-primary/5 to-primary/10">
+                <Card className="border-0 shadow-gothic bg-gradient-to-r from-primary/5 to-primary/10 dark:from-gray-800 dark:to-gray-800/50">
                   <CardContent className="p-8 md:p-12">
                     <h3 className="text-xl font-serif font-semibold text-foreground mb-4 tracking-tight">
                       Why We Do This

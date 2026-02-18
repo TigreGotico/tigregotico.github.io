@@ -41,7 +41,7 @@ const Blog = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
         <Navigation />
         <div className="flex items-center justify-center min-h-[60vh]">
           <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
@@ -52,11 +52,11 @@ const Blog = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950">
       <Navigation />
       
       {/* Hero Section */}
-      <section className="py-16 sm:py-20 lg:py-32 bg-gradient-subtle">
+      <section className="py-16 sm:py-20 lg:py-32 bg-gray-50 dark:bg-gray-900">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -118,7 +118,7 @@ const Blog = () => {
               className={`px-4 sm:px-6 py-2 sm:py-3 rounded-lg text-sm font-medium transition-all duration-300 tracking-wide ${
                 selectedTag === null
                   ? 'bg-primary text-primary-foreground shadow-md'
-                  : 'bg-white text-muted-foreground border border-border hover:bg-accent hover:text-accent-foreground'
+                  : 'bg-white dark:bg-gray-800 text-muted-foreground border border-border hover:bg-accent hover:text-accent-foreground'
               }`}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -132,7 +132,7 @@ const Blog = () => {
                 className={`px-4 sm:px-6 py-2 sm:py-3 rounded-lg text-sm font-medium transition-all duration-300 capitalize tracking-wide ${
                   selectedTag === tag
                     ? 'bg-primary text-primary-foreground shadow-md'
-                    : 'bg-white text-muted-foreground border border-border hover:bg-accent hover:text-accent-foreground'
+                    : 'bg-white dark:bg-gray-800 text-muted-foreground border border-border hover:bg-accent hover:text-accent-foreground'
                 }`}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
