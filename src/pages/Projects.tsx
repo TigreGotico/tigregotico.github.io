@@ -106,7 +106,7 @@ const Projects = () => {
                 transition={{ duration: 0.3 }}
               >
                 {collaborations.map((collab, index) => (
-                  <div key={collab.name} className="space-y-8">
+                  <div key={collab.name} className="space-y-8 mb-16">
                     {/* Collaboration Header */}
                     <div className="text-center mb-12">
                       <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-4 tracking-tight">
