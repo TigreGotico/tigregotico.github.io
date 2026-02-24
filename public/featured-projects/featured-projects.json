@@ -1,31 +1,31 @@
 [
   {
     "name": "phoonnx",
-    "description": "Blazingly fast phoneme-to-text and text-to-phoneme conversion using ONNX models. Cross-platform inference engine for phonetic processing.",
+    "description": "A Python library for multilingual phonemization and Text-to-Speech (TTS) using ONNX models.",
     "image": "https://github.com/TigreGotico/phoonnx/blob/dev/thumb.png?raw=true",
     "github": "https://github.com/TigreGotico/phoonnx"
   },
   {
     "name": "ALIGN",
-    "description": "Advanced forced alignment toolkit for speech and text. Precise timestamp generation for audio-transcript synchronization.",
+    "description": "A browser-based tool for aligning audio with text transcriptions and IPA (International Phonetic Alphabet) at word, grapheme, and sentence level. Runs entirely client-side, no server, no dependencies, no build step.",
     "image": "https://github.com/user-attachments/assets/58380d79-56a2-408b-bc2d-898d6686bcdc",
     "github": "https://github.com/TigreGotico/ALIGN"
   },
   {
     "name": "ovoscope",
-    "description": "Open Voice Operating System core framework. Privacy-focused, modular voice assistant platform for building custom AI assistants.",
+    "description": "End-to-end testing framework for OVOS skills with lightweight in-process runtime.",
     "image": "https://github.com/user-attachments/assets/10a10ff5-64b7-42fd-86bd-cb6a5db769dd",
     "github": "https://github.com/TigreGotico/ovoscope"
   },
   {
     "name": "Open Voice OS",
-    "description": "Community-driven, open-source voice AI platform for creating custom voice-controlled interfaces across devices with NLP, customizable UI, and a focus on privacy and security.",
+    "description": "OpenVoiceOS is a community-driven, open-source, privacy-respecting voice assistant framework and operating system that puts users in control of their data.",
     "image": "https://www.openvoiceos.org/images/logo.png",
     "github": "https://github.com/OpenVoiceOS"
   },
   {
     "name": "HiveMind",
-    "description": "Flexible protocol for communication and collaboration among devices and AI agents. Enables lightweight satellites to connect to central hubs with customizable permissions and hierarchical networking.",
+    "description": "A flexible protocol enabling communication among devices and AI agents. Lightweight satellites connect to a central hub with customizable permissions.",
     "image": "https://github.com/JarbasHiveMind/HiveMind-assets/raw/master/logo/hivemind-512.png",
     "github": "https://github.com/JarbasHiveMind/HiveMind-core"
   }
