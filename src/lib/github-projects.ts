@@ -47,8 +47,8 @@ export const TOPIC_CATEGORY_MAP: Record<string, string> = {
 };
 
 
-const CACHE_KEY  = 'gh-projects-v1';
-const CACHE_TTL  = 1; // 30 minutes
+const CACHE_KEY  = 'gh-projects-v2';
+const CACHE_TTL  = 1000 * 60 * 30; // 30 minutes
 
 interface CacheEntry {
   data: GitHubProject[];
