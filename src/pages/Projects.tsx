@@ -2,46 +2,61 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { ExternalLink, Github, ChevronDown, ArrowUpRight, Layers } from 'lucide-react';
+import { ExternalLink, Github, ChevronDown, ArrowUpRight, Layers, Star, RefreshCw, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useState, useMemo, useEffect } from 'react';
-import { loadData, type Project, type Collaboration } from '@/lib/projects-data';
+import { useState, useMemo, useEffect, useCallback } from 'react';
+import { loadProjects, clearProjectsCache, type GitHubProject } from '@/lib/github-projects';
+import { loadData, type Collaboration } from '@/lib/projects-data';
 
 const INITIAL_CARD_COUNT = 6;
 const INITIAL_REPO_COUNT = 6;
 
 const categoryColor = (cat: string) => {
   const map: Record<string, string> = {
-    'In-House':          'text-violet-500 bg-violet-500/10 border-violet-500/20',
-    'OVOS-Intents':      'text-blue-500   bg-blue-500/10   border-blue-500/20',
+    'In-House':          'text-violet-500  bg-violet-500/10  border-violet-500/20',
+    'OVOS-Intents':      'text-blue-500    bg-blue-500/10    border-blue-500/20',
     'OVOS-Solvers':      'text-emerald-500 bg-emerald-500/10 border-emerald-500/20',
-    'OVOS-Embeddings':   'text-amber-500  bg-amber-500/10  border-amber-500/20',
-    'OVOS-STT':          'text-rose-500   bg-rose-500/10   border-rose-500/20',
-    'OVOS-Translation':  'text-cyan-500   bg-cyan-500/10   border-cyan-500/20',
-    'OVOS-Utils':        'text-orange-500 bg-orange-500/10 border-orange-500/20',
-    'ILENIA':            'text-pink-500   bg-pink-500/10   border-pink-500/20',
+    'OVOS-Embeddings':   'text-amber-500   bg-amber-500/10   border-amber-500/20',
+    'OVOS-STT':          'text-rose-500    bg-rose-500/10    border-rose-500/20',
+    'OVOS-Translation':  'text-cyan-500    bg-cyan-500/10    border-cyan-500/20',
+    'OVOS-Utils':        'text-orange-500  bg-orange-500/10  border-orange-500/20',
+    'ILENIA':            'text-pink-500    bg-pink-500/10    border-pink-500/20',
   };
   return map[cat] ?? 'text-primary bg-primary/10 border-primary/20';
 };
 
 const Projects = () => {
   const { t } = useLanguage();
-  const [projects, setProjects] = useState<Project[]>([]);
+  const [projects, setProjects] = useState<GitHubProject[]>([]);
   const [collaborations, setCollaborations] = useState<Collaboration[]>([]);
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [activeTab, setActiveTab] = useState<'projects' | 'collaborations'>('collaborations');
   const [showAllProjects, setShowAllProjects] = useState(false);
   const [expandedCollabs, setExpandedCollabs] = useState<Record<string, boolean>>({});
+  const [loading, setLoading] = useState(true);
+  const [isFromGitHub, setIsFromGitHub] = useState(false);
+
+  const fetchProjects = useCallback(async (bustCache = false) => {
+    setLoading(true);
+    try {
+      if (bustCache) clearProjectsCache();
+      const data = await loadProjects();
+      setProjects(data);
+      // If first item has stars info, it came from the API
+      setIsFromGitHub(data.length > 0 && data[0].stars !== undefined && data[0].stars > 0 || data.some(p => p.stars > 0));
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
   useEffect(() => {
-    Promise.all([
-      loadData<Project>('/projects/projects.json'),
-      loadData<Collaboration>('/projects/collaborations.json'),
-    ]).then(([projectsData, collaborationsData]) => {
-      setProjects(projectsData);
-      setCollaborations(collaborationsData);
-    }).catch(console.error);
-  }, []);
+    fetchProjects();
+    loadData<Collaboration>('/projects/collaborations.json')
+      .then(setCollaborations)
+      .catch(console.error);
+  }, [fetchProjects]);
 
   // Reset expansion when filter changes
   useEffect(() => { setShowAllProjects(false); }, [selectedCategory]);
@@ -113,7 +128,7 @@ const Projects = () => {
               )}
               <span className="relative z-10">
                 {tab === 'projects'
-                  ? `All Projects${projects.length ? ` (${projects.length})` : ''}`
+                  ? `All Projects${loading && projects.length === 0 ? '' : ` (${projects.length})`}`
                   : 'Collaborations'}
               </span>
             </button>
@@ -135,8 +150,8 @@ const Projects = () => {
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.3 }}
               >
-                {/* Category filter pills */}
-                <div className="flex flex-wrap gap-2 justify-center mb-12">
+                {/* Category filter pills + refresh */}
+                <div className="flex flex-wrap gap-2 justify-center mb-12 items-center">
                   {categories.map(cat => (
                     <button
                       key={cat}
@@ -153,9 +168,32 @@ const Projects = () => {
                       </span>
                     </button>
                   ))}
+                  <button
+                    onClick={() => fetchProjects(true)}
+                    disabled={loading}
+                    title="Refresh from GitHub"
+                    className="ml-2 p-2 rounded-full border border-border text-muted-foreground hover:text-foreground hover:border-primary/50 transition-all duration-200 disabled:opacity-40"
+                  >
+                    <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
+                  </button>
                 </div>
 
+                {/* Loading skeleton */}
+                {loading && projects.length === 0 && (
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    {Array.from({ length: 6 }).map((_, i) => (
+                      <div key={i} className="h-48 bg-card border border-border rounded-xl p-6 animate-pulse">
+                        <div className="h-5 w-20 bg-muted rounded-full mb-4" />
+                        <div className="h-4 w-3/4 bg-muted rounded mb-2" />
+                        <div className="h-3 w-full bg-muted rounded mb-1" />
+                        <div className="h-3 w-5/6 bg-muted rounded" />
+                      </div>
+                    ))}
+                  </div>
+                )}
+
                 {/* Initial cards grid */}
+                {!(loading && projects.length === 0) && (
                 <motion.div
                   key={selectedCategory}
                   className="grid md:grid-cols-2 lg:grid-cols-3 gap-5"
@@ -180,7 +218,15 @@ const Projects = () => {
                           <span className={`text-xs font-medium px-2.5 py-1 rounded-full border ${categoryColor(project.category)}`}>
                             {project.category}
                           </span>
-                          <Github className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors shrink-0" />
+                          <div className="flex items-center gap-2 shrink-0">
+                            {project.stars > 0 && (
+                              <span className="flex items-center gap-1 text-xs text-muted-foreground">
+                                <Star className="w-3 h-3" />
+                                {project.stars}
+                              </span>
+                            )}
+                            <Github className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
+                          </div>
                         </div>
 
                         <h3 className="text-base font-semibold text-foreground mb-2 leading-snug group-hover:text-primary transition-colors">
@@ -190,19 +236,28 @@ const Projects = () => {
                           {project.description}
                         </p>
 
-                        {project.tags && project.tags.length > 0 && (
-                          <div className="flex flex-wrap gap-1.5 mt-auto">
-                            {project.tags.map(tag => (
-                              <span key={tag} className="text-xs px-2 py-0.5 bg-muted rounded-md text-muted-foreground">
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
-                        )}
+                        <div className="flex items-center justify-between mt-auto">
+                          {project.tags && project.tags.length > 0 && (
+                            <div className="flex flex-wrap gap-1.5">
+                              {project.tags.slice(0, 4).map(tag => (
+                                <span key={tag} className="text-xs px-2 py-0.5 bg-muted rounded-md text-muted-foreground">
+                                  {tag}
+                                </span>
+                              ))}
+                              {project.tags.length > 4 && (
+                                <span className="text-xs px-2 py-0.5 text-muted-foreground/50">+{project.tags.length - 4}</span>
+                              )}
+                            </div>
+                          )}
+                          {project.language && (
+                            <span className="text-xs text-muted-foreground/60 ml-auto shrink-0">{project.language}</span>
+                          )}
+                        </div>
                       </div>
                     </motion.a>
                   ))}
                 </motion.div>
+                )}
 
                 {/* ── Expand / collapse remaining ── */}
                 {remainingProjects.length > 0 && (
@@ -262,7 +317,13 @@ const Projects = () => {
                                   <p className="text-xs text-muted-foreground truncate">{project.description}</p>
                                 </div>
 
-                                {/* Tags (hidden on smaller screens) */}
+                                {/* Stars + Tags (hidden on smaller screens) */}
+                                {project.stars > 0 && (
+                                  <span className="hidden md:flex items-center gap-1 text-xs text-muted-foreground/50 shrink-0">
+                                    <Star className="w-3 h-3" />
+                                    {project.stars}
+                                  </span>
+                                )}
                                 {project.tags && (
                                   <div className="hidden lg:flex gap-1.5 shrink-0">
                                     {project.tags.slice(0, 2).map(tag => (
