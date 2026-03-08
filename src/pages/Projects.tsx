@@ -2,39 +2,47 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { ExternalLink, Github, ChevronDown, ArrowUpRight, Layers, Star, RefreshCw, Loader2 } from 'lucide-react';
+import { ExternalLink, Github, ChevronDown, ArrowUpRight, Layers, Star, RefreshCw, Loader2, Search, X, Tag } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useState, useMemo, useEffect, useCallback } from 'react';
-import { loadProjects, clearProjectsCache, type GitHubProject } from '@/lib/github-projects';
+import { useState, useMemo, useEffect, useCallback, useRef } from 'react';
+import { loadProjects, clearProjectsCache, TAG_GROUPS, type GitHubProject } from '@/lib/github-projects';
 import { loadData, type Collaboration } from '@/lib/projects-data';
 
-const INITIAL_CARD_COUNT = 6;
+const INITIAL_CARD_COUNT = 9;
 const INITIAL_REPO_COUNT = 6;
 
-const categoryColor = (cat: string) => {
-  const map: Record<string, string> = {
-    'In-House':          'text-violet-500  bg-violet-500/10  border-violet-500/20',
-    'OVOS-Intents':      'text-blue-500    bg-blue-500/10    border-blue-500/20',
-    'OVOS-Solvers':      'text-emerald-500 bg-emerald-500/10 border-emerald-500/20',
-    'OVOS-Embeddings':   'text-amber-500   bg-amber-500/10   border-amber-500/20',
-    'OVOS-STT':          'text-rose-500    bg-rose-500/10    border-rose-500/20',
-    'OVOS-Translation':  'text-cyan-500    bg-cyan-500/10    border-cyan-500/20',
-    'OVOS-Utils':        'text-orange-500  bg-orange-500/10  border-orange-500/20',
-    'ILENIA':            'text-pink-500    bg-pink-500/10    border-pink-500/20',
-  };
-  return map[cat] ?? 'text-primary bg-primary/10 border-primary/20';
+/** Deterministic colour for a tag based on its group. */
+const TAG_GROUP_COLORS: Record<string, string> = {
+  Ecosystem:  'text-violet-500  bg-violet-500/10  border-violet-500/20',
+  Function:   'text-blue-500    bg-blue-500/10    border-blue-500/20',
+  Domain:     'text-emerald-500 bg-emerald-500/10 border-emerald-500/20',
+  Technology: 'text-amber-500   bg-amber-500/10   border-amber-500/20',
+  Platform:   'text-rose-500    bg-rose-500/10    border-rose-500/20',
 };
+
+const TAG_TO_GROUP = new Map<string, string>();
+for (const [group, tags] of Object.entries(TAG_GROUPS)) {
+  for (const tag of tags) TAG_TO_GROUP.set(tag, group);
+}
+
+function tagColor(tag: string): string {
+  const group = TAG_TO_GROUP.get(tag);
+  return group ? TAG_GROUP_COLORS[group] : 'text-primary bg-primary/10 border-primary/20';
+}
 
 const Projects = () => {
   const { t } = useLanguage();
   const [projects, setProjects] = useState<GitHubProject[]>([]);
   const [collaborations, setCollaborations] = useState<Collaboration[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedTags, setSelectedTags] = useState<Set<string>>(new Set());
   const [activeTab, setActiveTab] = useState<'projects' | 'collaborations'>('collaborations');
   const [showAllProjects, setShowAllProjects] = useState(false);
   const [expandedCollabs, setExpandedCollabs] = useState<Record<string, boolean>>({});
   const [loading, setLoading] = useState(true);
   const [isFromGitHub, setIsFromGitHub] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [showTagFilters, setShowTagFilters] = useState(false);
+  const searchInputRef = useRef<HTMLInputElement>(null);
 
   const fetchProjects = useCallback(async (bustCache = false) => {
     setLoading(true);
@@ -42,7 +50,6 @@ const Projects = () => {
       if (bustCache) clearProjectsCache();
       const data = await loadProjects();
       setProjects(data);
-      // If first item has stars info, it came from the API
       setIsFromGitHub(data.length > 0 && data[0].stars !== undefined && data[0].stars > 0 || data.some(p => p.stars > 0));
     } catch (err) {
       console.error(err);
@@ -59,26 +66,69 @@ const Projects = () => {
   }, [fetchProjects]);
 
   // Reset expansion when filter changes
-  useEffect(() => { setShowAllProjects(false); }, [selectedCategory]);
+  useEffect(() => { setShowAllProjects(false); }, [selectedTags, searchQuery]);
 
-  const categories = useMemo(
-    () => ['All', ...Array.from(new Set(projects.map(p => p.category)))],
-    [projects],
-  );
+  const toggleTag = useCallback((tag: string) => {
+    setSelectedTags(prev => {
+      const next = new Set(prev);
+      if (next.has(tag)) next.delete(tag);
+      else next.add(tag);
+      return next;
+    });
+  }, []);
 
-  const filteredProjects = useMemo(
-    () => selectedCategory === 'All' ? projects : projects.filter(p => p.category === selectedCategory),
-    [selectedCategory, projects],
-  );
+  const clearFilters = useCallback(() => {
+    setSelectedTags(new Set());
+    setSearchQuery('');
+  }, []);
 
-  const categoryCounts = useMemo(() => {
-    const counts: Record<string, number> = { All: projects.length };
-    projects.forEach(p => { counts[p.category] = (counts[p.category] || 0) + 1; });
+  /** Tags that actually exist in the loaded projects, grouped. */
+  const availableTagGroups = useMemo(() => {
+    const allTags = new Set<string>();
+    projects.forEach(p => p.tags?.forEach(t => allTags.add(t)));
+    const groups: Record<string, string[]> = {};
+    for (const [group, tags] of Object.entries(TAG_GROUPS)) {
+      const present = tags.filter(t => allTags.has(t));
+      if (present.length > 0) groups[group] = present;
+    }
+    return groups;
+  }, [projects]);
+
+  /** Tag → count in current dataset. */
+  const tagCounts = useMemo(() => {
+    const counts: Record<string, number> = {};
+    projects.forEach(p => p.tags?.forEach(t => { counts[t] = (counts[t] || 0) + 1; }));
     return counts;
   }, [projects]);
 
+  const filteredProjects = useMemo(() => {
+    let result = projects;
+
+    // Tag filter (AND logic: project must have ALL selected tags)
+    if (selectedTags.size > 0) {
+      result = result.filter(p =>
+        Array.from(selectedTags).every(tag => p.tags?.includes(tag))
+      );
+    }
+
+    // Search filter
+    if (searchQuery.trim()) {
+      const q = searchQuery.toLowerCase().trim();
+      result = result.filter(p =>
+        p.name.toLowerCase().includes(q) ||
+        p.description.toLowerCase().includes(q) ||
+        p.tags?.some(t => t.toLowerCase().includes(q)) ||
+        (p.language && p.language.toLowerCase().includes(q))
+      );
+    }
+
+    return result;
+  }, [selectedTags, searchQuery, projects]);
+
   const initialProjects  = filteredProjects.slice(0, INITIAL_CARD_COUNT);
   const remainingProjects = filteredProjects.slice(INITIAL_CARD_COUNT);
+
+  const hasActiveFilters = selectedTags.size > 0 || searchQuery.trim().length > 0;
 
   return (
     <div className="min-h-screen bg-background">
@@ -150,32 +200,137 @@ const Projects = () => {
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.3 }}
               >
-                {/* Category filter pills + refresh */}
-                <div className="flex flex-wrap gap-2 justify-center mb-12 items-center">
-                  {categories.map(cat => (
+                {/* Search bar + controls */}
+                <div className="mb-8 space-y-4">
+                  <div className="flex items-center gap-3 max-w-2xl mx-auto">
+                    <div className="relative flex-1">
+                      <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
+                      <input
+                        ref={searchInputRef}
+                        type="text"
+                        value={searchQuery}
+                        onChange={e => setSearchQuery(e.target.value)}
+                        placeholder="Search projects by name, description, tag, or language…"
+                        className="w-full pl-10 pr-10 py-2.5 bg-card border border-border rounded-xl text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/50 transition-all"
+                      />
+                      {searchQuery && (
+                        <button
+                          onClick={() => setSearchQuery('')}
+                          className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                        >
+                          <X className="w-4 h-4" />
+                        </button>
+                      )}
+                    </div>
                     <button
-                      key={cat}
-                      onClick={() => setSelectedCategory(cat)}
-                      className={`px-3.5 py-1.5 rounded-full text-sm font-medium border transition-all duration-200 ${
-                        selectedCategory === cat
+                      onClick={() => setShowTagFilters(v => !v)}
+                      className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium border transition-all duration-200 shrink-0 ${
+                        showTagFilters || selectedTags.size > 0
                           ? 'bg-primary text-primary-foreground border-primary shadow-sm'
-                          : 'bg-transparent border-border text-muted-foreground hover:border-primary/50 hover:text-foreground'
+                          : 'bg-card border-border text-muted-foreground hover:border-primary/50 hover:text-foreground'
                       }`}
                     >
-                      {cat}
-                      <span className={`ml-1.5 text-xs tabular-nums ${selectedCategory === cat ? 'opacity-70' : 'opacity-40'}`}>
-                        {categoryCounts[cat] ?? 0}
-                      </span>
+                      <Tag className="w-4 h-4" />
+                      Tags
+                      {selectedTags.size > 0 && (
+                        <span className={`text-xs tabular-nums px-1.5 py-0.5 rounded-full ${
+                          showTagFilters || selectedTags.size > 0
+                            ? 'bg-primary-foreground/20'
+                            : 'bg-muted'
+                        }`}>
+                          {selectedTags.size}
+                        </span>
+                      )}
                     </button>
-                  ))}
-                  <button
-                    onClick={() => fetchProjects(true)}
-                    disabled={loading}
-                    title="Refresh from GitHub"
-                    className="ml-2 p-2 rounded-full border border-border text-muted-foreground hover:text-foreground hover:border-primary/50 transition-all duration-200 disabled:opacity-40"
-                  >
-                    <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
-                  </button>
+                    <button
+                      onClick={() => fetchProjects(true)}
+                      disabled={loading}
+                      title="Refresh from GitHub"
+                      className="p-2.5 rounded-xl border border-border text-muted-foreground hover:text-foreground hover:border-primary/50 transition-all duration-200 disabled:opacity-40 shrink-0"
+                    >
+                      <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
+                    </button>
+                  </div>
+
+                  {/* Tag filter panel */}
+                  <AnimatePresence>
+                    {showTagFilters && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.25, ease: 'easeInOut' }}
+                        className="overflow-hidden"
+                      >
+                        <div className="p-5 bg-card border border-border rounded-xl space-y-4">
+                          {Object.entries(availableTagGroups).map(([group, tags]) => (
+                            <div key={group}>
+                              <div className="text-xs font-mono uppercase tracking-wider text-muted-foreground/60 mb-2">
+                                {group}
+                              </div>
+                              <div className="flex flex-wrap gap-1.5">
+                                {tags.map(tag => {
+                                  const isSelected = selectedTags.has(tag);
+                                  return (
+                                    <button
+                                      key={tag}
+                                      onClick={() => toggleTag(tag)}
+                                      className={`px-2.5 py-1 rounded-full text-xs font-medium border transition-all duration-200 ${
+                                        isSelected
+                                          ? 'bg-primary text-primary-foreground border-primary shadow-sm'
+                                          : `${tagColor(tag)} hover:opacity-80`
+                                      }`}
+                                    >
+                                      {tag}
+                                      <span className={`ml-1 tabular-nums ${isSelected ? 'opacity-70' : 'opacity-50'}`}>
+                                        {tagCounts[tag] ?? 0}
+                                      </span>
+                                    </button>
+                                  );
+                                })}
+                              </div>
+                            </div>
+                          ))}
+                          {selectedTags.size > 0 && (
+                            <div className="pt-2 border-t border-border/50">
+                              <button
+                                onClick={clearFilters}
+                                className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+                              >
+                                Clear all filters
+                              </button>
+                            </div>
+                          )}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                  {/* Active filter summary */}
+                  {hasActiveFilters && !showTagFilters && (
+                    <div className="flex items-center gap-2 justify-center flex-wrap">
+                      {Array.from(selectedTags).map(tag => (
+                        <span
+                          key={tag}
+                          className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium bg-primary text-primary-foreground"
+                        >
+                          {tag}
+                          <button onClick={() => toggleTag(tag)} className="hover:opacity-70">
+                            <X className="w-3 h-3" />
+                          </button>
+                        </span>
+                      ))}
+                      <span className="text-sm text-muted-foreground">
+                        {filteredProjects.length} {filteredProjects.length === 1 ? 'project' : 'projects'}
+                      </span>
+                      <button
+                        onClick={clearFilters}
+                        className="text-xs text-muted-foreground hover:text-foreground underline transition-colors"
+                      >
+                        Clear
+                      </button>
+                    </div>
+                  )}
                 </div>
 
                 {/* Loading skeleton */}
@@ -192,10 +347,24 @@ const Projects = () => {
                   </div>
                 )}
 
+                {/* Empty state */}
+                {!loading && filteredProjects.length === 0 && projects.length > 0 && (
+                  <div className="text-center py-16">
+                    <Search className="w-10 h-10 text-muted-foreground/30 mx-auto mb-4" />
+                    <p className="text-muted-foreground mb-2">No projects match your filters</p>
+                    <button
+                      onClick={clearFilters}
+                      className="text-sm text-primary hover:underline"
+                    >
+                      Clear all filters
+                    </button>
+                  </div>
+                )}
+
                 {/* Initial cards grid */}
-                {!(loading && projects.length === 0) && (
+                {!(loading && projects.length === 0) && filteredProjects.length > 0 && (
                 <motion.div
-                  key={selectedCategory}
+                  key={`${Array.from(selectedTags).join(',')}-${searchQuery}`}
                   className="grid md:grid-cols-2 lg:grid-cols-3 gap-5"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -203,21 +372,28 @@ const Projects = () => {
                 >
                   {initialProjects.map((project, i) => (
                     <motion.a
-                      key={`${project.category}-${project.name}`}
+                      key={`${project.name}-${project.url}`}
                       href={project.url}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="group"
                       initial={{ opacity: 0, y: 16 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.3, delay: i * 0.06 }}
+                      transition={{ duration: 0.3, delay: i * 0.04 }}
                       whileHover={{ y: -3 }}
                     >
                       <div className="h-full bg-card border border-border rounded-xl p-6 transition-all duration-300 group-hover:border-primary/40 group-hover:shadow-lg group-hover:shadow-primary/5 flex flex-col">
                         <div className="flex items-start justify-between mb-3">
-                          <span className={`text-xs font-medium px-2.5 py-1 rounded-full border ${categoryColor(project.category)}`}>
-                            {project.category}
-                          </span>
+                          <div className="flex flex-wrap gap-1">
+                            {project.tags.slice(0, 2).map(tag => (
+                              <span key={tag} className={`text-xs font-medium px-2 py-0.5 rounded-full border ${tagColor(tag)}`}>
+                                {tag}
+                              </span>
+                            ))}
+                            {project.tags.length > 2 && (
+                              <span className="text-xs px-1.5 py-0.5 text-muted-foreground/50">+{project.tags.length - 2}</span>
+                            )}
+                          </div>
                           <div className="flex items-center gap-2 shrink-0">
                             {project.stars > 0 && (
                               <span className="flex items-center gap-1 text-xs text-muted-foreground">
@@ -237,15 +413,15 @@ const Projects = () => {
                         </p>
 
                         <div className="flex items-center justify-between mt-auto">
-                          {project.tags && project.tags.length > 0 && (
-                            <div className="flex flex-wrap gap-1.5">
-                              {project.tags.slice(0, 4).map(tag => (
+                          {project.tags.length > 2 && (
+                            <div className="flex flex-wrap gap-1">
+                              {project.tags.slice(2, 5).map(tag => (
                                 <span key={tag} className="text-xs px-2 py-0.5 bg-muted rounded-md text-muted-foreground">
                                   {tag}
                                 </span>
                               ))}
-                              {project.tags.length > 4 && (
-                                <span className="text-xs px-2 py-0.5 text-muted-foreground/50">+{project.tags.length - 4}</span>
+                              {project.tags.length > 5 && (
+                                <span className="text-xs px-1.5 py-0.5 text-muted-foreground/50">+{project.tags.length - 5}</span>
                               )}
                             </div>
                           )}
@@ -290,7 +466,7 @@ const Projects = () => {
                           <div className="border border-border rounded-xl overflow-hidden divide-y divide-border/60">
                             {remainingProjects.map((project, i) => (
                               <motion.a
-                                key={`${project.category}-${project.name}-list`}
+                                key={`${project.name}-${project.url}-list`}
                                 href={project.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -310,9 +486,11 @@ const Projects = () => {
                                     <span className="font-medium text-sm text-foreground group-hover:text-primary transition-colors">
                                       {project.name}
                                     </span>
-                                    <span className={`text-xs px-2 py-0.5 rounded-full border shrink-0 ${categoryColor(project.category)}`}>
-                                      {project.category}
-                                    </span>
+                                    {project.tags.slice(0, 2).map(tag => (
+                                      <span key={tag} className={`text-xs px-2 py-0.5 rounded-full border shrink-0 ${tagColor(tag)}`}>
+                                        {tag}
+                                      </span>
+                                    ))}
                                   </div>
                                   <p className="text-xs text-muted-foreground truncate">{project.description}</p>
                                 </div>
@@ -324,9 +502,9 @@ const Projects = () => {
                                     {project.stars}
                                   </span>
                                 )}
-                                {project.tags && (
+                                {project.tags.length > 2 && (
                                   <div className="hidden lg:flex gap-1.5 shrink-0">
-                                    {project.tags.slice(0, 2).map(tag => (
+                                    {project.tags.slice(2, 4).map(tag => (
                                       <span key={tag} className="text-xs px-1.5 py-0.5 bg-muted rounded text-muted-foreground/70">
                                         {tag}
                                       </span>

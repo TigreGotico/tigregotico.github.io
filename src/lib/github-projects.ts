@@ -1,21 +1,20 @@
 // ─── GitHub-driven project loader ────────────────────────────────────────────
 // Scans repos from configured GitHub orgs/users.
-// If a repo has any topic from TOPIC_CATEGORY_MAP → it's included.
-// First matching topic decides the category. That's it.
+// If a repo has any topic from TOPIC_TO_TAG → it's included.
+// All matched topics become tags on the project.
 // ─────────────────────────────────────────────────────────────────────────────
 
 export interface GitHubSource {
   owner: string;
   type: 'user' | 'org';
-  defaultCategory: string;
 }
 
 export interface GitHubProject {
   name: string;
   description: string;
   url: string;
-  category: string;
-  tags: string[];
+  category: string;          // kept for compat — first ecosystem tag
+  tags: string[];             // normalised display tags
   stars: number;
   language: string | null;
   updatedAt: string;
@@ -24,30 +23,69 @@ export interface GitHubProject {
 // ── Configuration ────────────────────────────────────────────────────────────
 
 export const GITHUB_SOURCES: GitHubSource[] = [
-  { owner: 'TigreGotico', type: 'user', defaultCategory: 'In-House' },
-  { owner: 'OpenVoiceOS', type: 'org',  defaultCategory: 'OVOS-Utils' },
+  { owner: 'TigreGotico', type: 'user' },
+  { owner: 'OpenVoiceOS', type: 'org' },
 ];
 
 /**
- * topic → category.  One key per line.
+ * GitHub topic → display tag name.
  * A repo with at least one of these topics gets listed.
- * First match (iteration order) wins the category.
  */
+export const TOPIC_TO_TAG: Record<string, string> = {
+  // Ecosystem
+  openvoiceos:      'OpenVoiceOS',
+  hivemind:         'HiveMind',
+  ilenia:           'ILENIA',
+  tigregotico:      'TigreGotico',
+  'in-house':       'TigreGotico',
+  // Function
+  'ovos-plugin':    'Plugin',
+  library:          'Library',
+  'ovos-skill':     'Skill',
+  framework:        'Framework',
+  dataset:          'Dataset',
+  tool:             'Tool',
+  server:           'Server',
+  // Domain
+  'ovos-stt':       'Speech-to-Text',
+  'ovos-tts':       'Text-to-Speech',
+  nlp:              'NLP',
+  'ovos-translation': 'Translation',
+  phonetics:        'Phonetics',
+  'ovos-embeddings': 'Embeddings',
+  llm:              'LLM',
+  'ovos-intent':    'Intent',
+  audio:            'Audio',
+  'ovos-solver':    'Solver',
+  reranking:        'Reranking',
+  dialog:           'Dialog',
+  // Technology
+  onnx:             'ONNX',
+  gguf:             'GGUF',
+  whisper:          'Whisper',
+  chromadb:         'ChromaDB',
+  qdrant:           'Qdrant',
+  docker:           'Docker',
+  markov:           'Markov',
+  // Platform
+  'raspberry-pi':   'Raspberry Pi',
+  linux:            'Linux',
+  macos:            'macOS',
+};
 
-
-export const TOPIC_CATEGORY_MAP: Record<string, string> = {
-  'in-house':                'In-House',
-  'ovos-intent':             'OVOS-Intents',
-  'ovos-solver':             'OVOS-Solvers',
-  'ovos-embeddings':         'OVOS-Embeddings',
-  'ovos-stt':                'OVOS-STT',
-  'ovos-translation':        'OVOS-Translation',
-  'ovos-tts':                'OVOS-Utils',
-  'ilenia':                  'ILENIA',
+/** Tag groups for UI filtering. */
+export const TAG_GROUPS: Record<string, string[]> = {
+  Ecosystem:  ['OpenVoiceOS', 'HiveMind', 'ILENIA', 'TigreGotico'],
+  Function:   ['Plugin', 'Library', 'Skill', 'Framework', 'Dataset', 'Tool', 'Server'],
+  Domain:     ['Speech-to-Text', 'Text-to-Speech', 'NLP', 'Translation', 'Phonetics', 'Embeddings', 'LLM', 'Intent', 'Audio', 'Solver', 'Reranking', 'Dialog'],
+  Technology: ['ONNX', 'GGUF', 'Whisper', 'ChromaDB', 'Qdrant', 'Docker', 'Markov'],
+  Platform:   ['Raspberry Pi', 'Linux', 'macOS'],
 };
 
 
-const CACHE_KEY  = 'gh-projects-v2';
+const ECOSYSTEM_TAGS = new Set(TAG_GROUPS.Ecosystem);
+
+const CACHE_KEY  = 'gh-projects-v3';
 const CACHE_TTL  = 1000 * 60 * 30; // 30 minutes
 
 interface CacheEntry {
@@ -110,28 +148,28 @@ async function fetchAllRepos(source: GitHubSource): Promise<any[]> {
 }
 
 /**
- * Determine the category for a repo:
- * 1. Check topics against TOPIC_CATEGORY_MAP — first match wins.
- * 2. Fall back to the source's defaultCategory.
+ * Map all known topics to their display tags.
+ * Return unique set.
  */
-function resolveCategory(topics: string[], defaultCategory: string): string {
-  for (const topic of topics) {
-    if (topic in TOPIC_CATEGORY_MAP) {
-      return TOPIC_CATEGORY_MAP[topic];
-    }
+function resolveTagsFromTopics(topics: string[]): string[] {
+  const tags = new Set<string>();
+  for (const t of topics) {
+    const tag = TOPIC_TO_TAG[t];
+    if (tag) tags.add(tag);
   }
-  return defaultCategory;
+  return Array.from(tags);
 }
 
-/** Check if a topic is in the map. */
-function isValidTag(topic: string): boolean {
-  return topic in TOPIC_CATEGORY_MAP;
+/** Pick a "category" from the resolved tags — first ecosystem tag, else first tag. */
+function pickCategory(tags: string[]): string {
+  const eco = tags.find(t => ECOSYSTEM_TAGS.has(t));
+  return eco ?? tags[0] ?? 'Uncategorised';
 }
 
 // ── Public API ───────────────────────────────────────────────────────────────
 
 /**
- * Fetch projects from GitHub, filtered by TOPIC_CATEGORY_MAP keys.
+ * Fetch projects from GitHub, filtered by TOPIC_TO_TAG keys.
  * Results are cached in localStorage for CACHE_TTL.
  */
 export async function fetchGitHubProjects(): Promise<GitHubProject[]> {
@@ -154,17 +192,17 @@ export async function fetchGitHubProjects(): Promise<GitHubProject[]> {
       if (repo.fork || repo.archived || repo.disabled) continue;
 
       const topics: string[] = (repo.topics ?? []).map((t: string) => t.toLowerCase());
-      const matched = topics.filter(isValidTag);
+      const tags = resolveTagsFromTopics(topics);
 
-      // Must have at least one valid tag
-      if (matched.length === 0) continue;
+      // Must have at least one recognised tag
+      if (tags.length === 0) continue;
 
       projects.push({
         name: repo.name,
         description: repo.description ?? '',
         url: repo.html_url,
-        category: resolveCategory(topics, source.defaultCategory),
-        tags: matched,
+        category: pickCategory(tags),
+        tags,
         stars: repo.stargazers_count ?? 0,
         language: repo.language ?? null,
         updatedAt: repo.updated_at ?? '',
@@ -187,16 +225,19 @@ export async function fetchStaticProjects(): Promise<GitHubProject[]> {
   const res = await fetch('/projects/projects.json');
   if (!res.ok) return [];
   const data: any[] = await res.json();
-  return data.map((p) => ({
-    name: p.name,
-    description: p.description ?? '',
-    url: p.url,
-    category: p.category ?? 'Uncategorised',
-    tags: p.tags ?? [],
-    stars: 0,
-    language: null,
-    updatedAt: '',
-  }));
+  return data.map((p) => {
+    const tags: string[] = p.tags ?? [];
+    return {
+      name: p.name,
+      description: p.description ?? '',
+      url: p.url,
+      category: pickCategory(tags) || p.category || 'Uncategorised',
+      tags,
+      stars: 0,
+      language: null,
+      updatedAt: '',
+    };
+  });
 }
 
 /**
