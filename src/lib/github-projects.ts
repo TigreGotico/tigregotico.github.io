@@ -71,6 +71,7 @@ export const TOPIC_TO_TAG: Record<string, string> = {
   'raspberry-pi':   'Raspberry Pi',
   linux:            'Linux',
   macos:            'macOS',
+  termux:           'Termux',
 };
 
 /** Tag groups for UI filtering. */
@@ -79,7 +80,7 @@ export const TAG_GROUPS: Record<string, string[]> = {
   Function:   ['Plugin', 'Library', 'Skill', 'Framework', 'Dataset', 'Tool', 'Server'],
   Domain:     ['Speech-to-Text', 'Text-to-Speech', 'NLP', 'Translation', 'Phonetics', 'Embeddings', 'LLM', 'Intent', 'Audio', 'Solver', 'Reranking', 'Dialog'],
   Technology: ['ONNX', 'GGUF', 'Whisper', 'ChromaDB', 'Qdrant', 'Docker', 'Markov'],
-  Platform:   ['Raspberry Pi', 'Linux', 'macOS'],
+  Platform:   ['Raspberry Pi', 'Linux', 'macOS', 'Termux'],
 };
 
 
