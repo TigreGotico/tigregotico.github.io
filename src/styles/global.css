@@ -156,6 +156,52 @@
     --grain-opacity: 0.05;
   }
 
+  /* "Purple AI Slop" — a deliberately garish violet/magenta scheme. The house
+     style of every AI-generated site; shipped as a self-aware joke palette. */
+  :root[data-theme='slop'] {
+    --color-bg: 246 240 255;
+    --color-surface: 255 255 255;
+    --color-elevated: 250 245 255;
+    --color-fg: 36 20 60;
+    --color-muted: 99 80 130;
+    --color-border: 216 180 254;
+    --color-primary: 124 58 237;
+    --color-primary-fg: 255 255 255;
+    --color-accent: 192 38 211;
+
+    --grad-from: 139 92 246;
+    --grad-via: 217 70 239;
+    --grad-to: 124 58 237;
+
+    --shadow-elevate: 0 1px 2px rgb(80 20 120 / 0.1),
+      0 12px 32px -16px rgb(124 58 237 / 0.35);
+    --shadow-glow: 0 0 0 1px rgb(217 70 239 / 0.3),
+      0 18px 48px -20px rgb(192 38 211 / 0.6);
+    --grain-opacity: 0.05;
+  }
+
+  :root.dark[data-theme='slop'] {
+    --color-bg: 15 10 31;
+    --color-surface: 28 18 50;
+    --color-elevated: 38 24 64;
+    --color-fg: 240 235 255;
+    --color-muted: 184 168 214;
+    --color-border: 91 60 160;
+    --color-primary: 192 132 252;
+    --color-primary-fg: 20 12 35;
+    --color-accent: 232 121 249;
+
+    --grad-from: 167 139 250;
+    --grad-via: 232 121 249;
+    --grad-to: 139 92 246;
+
+    --shadow-elevate: 0 1px 2px rgb(0 0 0 / 0.5),
+      0 16px 40px -18px rgb(0 0 0 / 0.7);
+    --shadow-glow: 0 0 0 1px rgb(217 70 239 / 0.45),
+      0 24px 70px -22px rgb(192 132 252 / 0.7);
+    --grain-opacity: 0.08;
+  }
+
   html {
     scroll-behavior: smooth;
   }

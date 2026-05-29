@@ -36,6 +36,12 @@ const palettes = [
     hint: 'Monochrome & gold',
     dots: ['#141416', '#f4f4f2', '#8a640f'],
   },
+  {
+    value: 'slop',
+    name: 'Purple AI Slop',
+    hint: 'Every AI site, ever — a red flag 🟣',
+    dots: ['#0f0a1f', '#7c3aed', '#d946ef'],
+  },
 ];
 ---
 
@@ -150,7 +156,7 @@ const palettes = [
     // the wiring only once for the whole document.
     if (window.__paletteSelectorInit) return;
     window.__paletteSelectorInit = true;
-    var VALID = ['tiger', 'hivemind', 'noir'];
+    var VALID = ['tiger', 'hivemind', 'noir', 'slop'];
 
     function current() {
       var p = document.documentElement.dataset.theme;

@@ -68,7 +68,8 @@
       "ONNX",
       "AI",
       "Inference"
-    ]
+    ],
+    "featured": true
   },
   {
     "id": "synthetic-dataset-generator",
@@ -80,7 +81,8 @@
       "Dataset",
       "ML",
       "Synthetic Data"
-    ]
+    ],
+    "featured": true
   },
   {
     "id": "tugaphone",

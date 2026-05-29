@@ -76,7 +76,9 @@ const projectLinks = [
           }
           var palette = localStorage.getItem('palette');
           document.documentElement.dataset.theme =
-            palette === 'hivemind' || palette === 'noir' ? palette : 'tiger';
+            palette === 'hivemind' || palette === 'noir' || palette === 'slop'
+              ? palette
+              : 'tiger';
         } catch (e) {
           document.documentElement.dataset.theme = 'tiger';
         }
