@@ -16,6 +16,12 @@ const { Content } = await render(home!);
 const allProjects = (await getCollection('projects')).map((p) => p.data);
 const featured = allProjects.filter((p) => p.featured);
 
+// One flagship Hugging Face dataset featured alongside the code highlights;
+// the full set lives on the Resources page.
+const flagshipDataset = (await getCollection('datasets'))
+  .map((d) => d.data)
+  .find((d) => d.id === 'synthetic-tts');
+
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 3);
@@ -134,19 +140,41 @@ const stack = ['OpenVoiceOS', 'HiveMind'];
     </div>
   </section>
 
-  <!-- Featured projects -->
+  <!-- Featured projects + a flagship dataset -->
   <Section
     eyebrow="Featured"
-    title="Projects we maintain"
-    lead="A selection of the open-source platforms and tools we build and steward."
+    title="What we build & publish"
+    lead="A selection of the open-source platforms and tools we build and steward — plus a flagship open dataset."
     class="surface-alt -mx-6 rounded-3xl px-6"
   >
     <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {featured.map((project) => <ProjectCard project={project} withImage />)}
+      {
+        flagshipDataset && (
+          <a
+            href={flagshipDataset.url}
+            class="card-hover group flex h-full flex-col reveal"
+            data-reveal
+            rel="noopener"
+          >
+            <span class="badge-accent mb-3 self-start">Open dataset</span>
+            <h3 class="display-3 text-lg group-hover:text-primary">{flagshipDataset.title}</h3>
+            <p class="mt-2 flex-1 text-sm leading-relaxed text-muted">
+              {flagshipDataset.description}
+            </p>
+            <span class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary">
+              View on Hugging Face <Icon name="arrow" class="h-4 w-4" />
+            </span>
+          </a>
+        )
+      }
     </div>
-    <p class="mt-8">
+    <p class="mt-8 flex flex-wrap gap-x-6 gap-y-2">
       <a class="inline-flex items-center gap-1 font-medium text-primary hover:underline" href={link('/projects')}>
         Browse all open source <Icon name="arrow" class="h-4 w-4" />
+      </a>
+      <a class="inline-flex items-center gap-1 font-medium text-primary hover:underline" href={link('/resources')}>
+        Datasets &amp; models <Icon name="arrow" class="h-4 w-4" />
       </a>
     </p>
   </Section>

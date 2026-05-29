@@ -32,6 +32,11 @@ const labels: Record<string, string> = {
 };
 const label = (c: string) => labels[c] ?? c;
 
+// Cross-cutting tag filters (group work that spans categories, e.g. ILENIA).
+const tagFilters = ['ILENIA']
+  .map((t) => ({ tag: t, count: projects.filter((p) => p.tags.includes(t)).length }))
+  .filter((t) => t.count > 0);
+
 const collaborations = (await getCollection('collaborations')).map((c) => c.data);
 ---
 
@@ -130,12 +135,31 @@ const collaborations = (await getCollection('collaborations')).map((c) => c.data
           </button>
         ))
       }
+      {
+        tagFilters.map((t) => (
+          <button
+            type="button"
+            data-filter={`tag:${t.tag}`}
+            aria-pressed="false"
+            class="chip chip-tag"
+            title="Funded by the ILENIA project"
+          >
+            <span class="chip-label">{t.tag}</span>
+            <span class="chip-sep" aria-hidden="true">·</span>
+            <span class="chip-count">{t.count}</span>
+          </button>
+        ))
+      }
     </div>
 
     <div id="project-grid" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {
         projects.map((project) => (
-          <div class="project-item" data-category={project.category}>
+          <div
+            class="project-item"
+            data-category={project.category}
+            data-tags={project.tags.join('|')}
+          >
             <ProjectCard project={project} />
           </div>
         ))
@@ -184,9 +208,14 @@ const collaborations = (await getCollection('collaborations')).map((c) => c.data
           String(chips[i].getAttribute('data-filter') === val)
         );
       }
+      var tag = val.indexOf('tag:') === 0 ? val.slice(4) : null;
       for (var j = 0; j < items.length; j++) {
-        var cat = items[j].getAttribute('data-category');
-        items[j].hidden = !(val === 'all' || cat === val);
+        var show;
+        if (val === 'all') show = true;
+        else if (tag)
+          show = (items[j].getAttribute('data-tags') || '').split('|').indexOf(tag) !== -1;
+        else show = items[j].getAttribute('data-category') === val;
+        items[j].hidden = !show;
       }
     }
     for (var i = 0; i < chips.length; i++) {
