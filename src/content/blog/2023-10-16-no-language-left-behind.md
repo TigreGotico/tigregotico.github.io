@@ -12,8 +12,6 @@ tags:
 draft: false
 ---
 
-# No Language Left Behind
-
 > This post was originally posted in my (now defunct) personal blog
 
 In today's globally connected world, the myriad of languages we speak stands as a testament to our diverse cultures and rich communication. 

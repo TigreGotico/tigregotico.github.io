@@ -1,0 +1,79 @@
+---
+import { Image } from 'astro:assets';
+import { projectImage } from '../lib/projectImages';
+
+interface Project {
+  id: string;
+  name: string;
+  description: string;
+  url: string;
+  category: string;
+  tags: string[];
+  image?: string;
+  imageLocal?: string;
+  featured: boolean;
+}
+
+interface Props {
+  project: Project;
+  /** Show the thumbnail (featured layout). */
+  withImage?: boolean;
+}
+
+const { project, withImage = false } = Astro.props;
+const localImg = projectImage(project.imageLocal);
+---
+
+<article class="card-hover flex h-full flex-col gap-3">
+  {
+    withImage && (localImg || project.image) && (
+      <div class="overflow-hidden rounded-lg border border-border bg-bg">
+        {localImg ? (
+          <Image
+            src={localImg}
+            alt={`${project.name} preview`}
+            class="h-40 w-full object-contain"
+            widths={[320, 640]}
+            sizes="(max-width: 640px) 100vw, 320px"
+          />
+        ) : (
+          <img
+            src={project.image}
+            alt={`${project.name} logo`}
+            class="h-40 w-full object-contain"
+            loading="lazy"
+            decoding="async"
+          />
+        )}
+      </div>
+    )
+  }
+  <div class="flex items-center gap-2">
+    <h3 class="font-serif text-lg font-semibold">
+      <a href={project.url} class="hover:text-primary" rel="noopener">
+        {project.name}
+      </a>
+    </h3>
+    {project.featured && !withImage && (
+      <span class="badge border-primary/50 text-primary">Featured</span>
+    )}
+  </div>
+  <p class="flex-1 text-sm text-muted">{project.description}</p>
+  {
+    project.tags.length > 0 && (
+      <ul class="flex flex-wrap gap-1.5">
+        {project.tags.map((tag) => (
+          <li class="badge">{tag}</li>
+        ))}
+      </ul>
+    )
+  }
+  <a
+    href={project.url}
+    class="mt-1 inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+    rel="noopener"
+  >
+    View repository
+    <span aria-hidden="true">&rarr;</span>
+  </a>
+</article>

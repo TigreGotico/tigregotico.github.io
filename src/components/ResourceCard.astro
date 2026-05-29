@@ -1,0 +1,38 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  url: string;
+  /** Call-to-action label on the link. */
+  cta?: string;
+  /** Optional small meta line (e.g. year, type). */
+  meta?: string;
+  tags?: string[];
+}
+
+const { title, description, url, cta = 'Open', meta, tags = [] } = Astro.props;
+const external = url.startsWith('http');
+---
+
+<article class="card-hover flex h-full flex-col gap-3">
+  {meta && <p class="text-xs uppercase tracking-wide text-muted">{meta}</p>}
+  <h3 class="font-serif text-lg font-semibold">{title}</h3>
+  <p class="flex-1 text-sm text-muted">{description}</p>
+  {
+    tags.length > 0 && (
+      <ul class="flex flex-wrap gap-1.5">
+        {tags.map((tag) => (
+          <li class="badge">{tag}</li>
+        ))}
+      </ul>
+    )
+  }
+  <a
+    href={url}
+    class="mt-1 inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+    rel={external ? 'noopener' : undefined}
+  >
+    {cta}
+    <span aria-hidden="true">&rarr;</span>
+  </a>
+</article>

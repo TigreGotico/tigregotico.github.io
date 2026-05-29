@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import Seo from '../components/Seo.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
 import { site } from '../data/site';
 
 interface Props {
@@ -17,6 +18,14 @@ const props = Astro.props;
 const base = import.meta.env.BASE_URL;
 const navLink = (href: string) =>
   (base.replace(/\/$/, '') + (href === '/' ? '/' : href)).replace(/\/\/+$/, '/');
+
+// Mark the current section active (matches /section and /section/...).
+const here = Astro.url.pathname.replace(/\/$/, '');
+const isActive = (href: string) => {
+  const target = navLink(href).replace(/\/$/, '');
+  if (href === '/') return here === target;
+  return here === target || here.startsWith(target + '/');
+};
 ---
 
 <!doctype html>
@@ -60,7 +69,9 @@ const navLink = (href: string) =>
   <body class="min-h-screen flex flex-col">
     <a href="#main" class="skip-link">Skip to content</a>
 
-    <header class="border-b border-border">
+    <header
+      class="sticky top-0 z-40 border-b border-border bg-bg/80 backdrop-blur"
+    >
       <nav
         class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 py-4"
         aria-label="Primary"
@@ -70,13 +81,19 @@ const navLink = (href: string) =>
           class="font-display text-xl tracking-wide text-fg"
           >TigreGótico</a
         >
-        <ul class="hidden gap-5 text-sm md:flex">
+        <ul class="hidden gap-5 text-sm lg:flex">
           {
             site.nav.map((item) => (
               <li>
                 <a
                   href={navLink(item.href)}
-                  class="text-muted transition-colors hover:text-fg"
+                  aria-current={isActive(item.href) ? 'page' : undefined}
+                  class:list={[
+                    'transition-colors hover:text-fg',
+                    isActive(item.href)
+                      ? 'font-semibold text-primary'
+                      : 'text-muted',
+                  ]}
                 >
                   {item.label}
                 </a>
@@ -84,7 +101,51 @@ const navLink = (href: string) =>
             ))
           }
         </ul>
+        <div class="flex items-center gap-2">
+          <ThemeToggle />
+          <button
+            id="nav-toggle"
+            type="button"
+            class="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border text-fg hover:border-primary hover:text-primary lg:hidden"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+            aria-controls="mobile-nav"
+          >
+            <svg
+              class="h-5 w-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <path d="M4 7h16M4 12h16M4 17h16"></path>
+            </svg>
+          </button>
+        </div>
       </nav>
+      <ul
+        id="mobile-nav"
+        class="hidden border-t border-border px-6 py-3 text-sm lg:hidden"
+      >
+        {
+          site.nav.map((item) => (
+            <li>
+              <a
+                href={navLink(item.href)}
+                aria-current={isActive(item.href) ? 'page' : undefined}
+                class:list={[
+                  'block py-2 transition-colors hover:text-fg',
+                  isActive(item.href) ? 'font-semibold text-primary' : 'text-muted',
+                ]}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
     </header>
 
     <main id="main" class="mx-auto w-full max-w-5xl flex-1 px-6 py-12">
@@ -93,18 +154,53 @@ const navLink = (href: string) =>
 
     <footer class="border-t border-border">
       <div
-        class="mx-auto flex max-w-5xl flex-col gap-2 px-6 py-8 text-sm text-muted"
+        class="mx-auto grid max-w-5xl gap-8 px-6 py-10 text-sm text-muted sm:grid-cols-3"
       >
-        <p>Privacy-First Voice Technology and FOSS AI Solutions</p>
-        <p class="flex flex-wrap gap-4">
-          <a class="hover:text-fg" href={site.socials.github}>GitHub</a>
-          <a class="hover:text-fg" href={site.socials.huggingface}
-            >Hugging Face</a
-          >
-          <a class="hover:text-fg" href={`mailto:${site.email}`}>Email</a>
+        <div class="space-y-2">
+          <p class="font-display text-lg tracking-wide text-fg">TigreGótico</p>
+          <p>Privacy-first voice technology and FOSS AI.</p>
+        </div>
+        <nav aria-label="Footer">
+          <p class="mb-2 font-semibold text-fg">Explore</p>
+          <ul class="space-y-1.5">
+            {
+              site.nav.map((item) => (
+                <li>
+                  <a class="hover:text-fg" href={navLink(item.href)}>
+                    {item.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+        <div>
+          <p class="mb-2 font-semibold text-fg">Connect</p>
+          <ul class="space-y-1.5">
+            <li><a class="hover:text-fg" href={site.socials.github} rel="noopener">GitHub</a></li>
+            <li><a class="hover:text-fg" href={site.socials.huggingface} rel="noopener">Hugging Face</a></li>
+            <li><a class="hover:text-fg" href={site.socials.openvoiceos} rel="noopener">OpenVoiceOS.org</a></li>
+            <li><a class="hover:text-fg" href={`mailto:${site.email}`}>{site.email}</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-border">
+        <p class="mx-auto max-w-5xl px-6 py-4 text-xs text-muted">
+          © {new Date().getFullYear()} {site.legalName}. Free and open-source software.
         </p>
-        <p>© {new Date().getFullYear()} TigreGótico. All rights reserved.</p>
       </div>
     </footer>
+
+    <script is:inline>
+      (function () {
+        var btn = document.getElementById('nav-toggle');
+        var menu = document.getElementById('mobile-nav');
+        if (!btn || !menu) return;
+        btn.addEventListener('click', function () {
+          var open = menu.classList.toggle('hidden') === false;
+          btn.setAttribute('aria-expanded', String(open));
+        });
+      })();
+    </script>
   </body>
 </html>

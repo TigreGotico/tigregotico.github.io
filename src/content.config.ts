@@ -84,7 +84,10 @@ const projects = defineCollection({
     url: z.string().url(),
     category: z.string(),
     tags: z.array(z.string()).default([]),
+    // External logo URL (stable hosts only).
     image: z.string().url().optional(),
+    // Repo-local asset key resolved against src/assets/projects (kills link rot).
+    imageLocal: z.string().optional(),
     // "featured" is a flag, not a second collection.
     featured: z.boolean().default(false),
   }),

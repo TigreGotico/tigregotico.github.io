@@ -1,0 +1,28 @@
+---
+interface Props {
+  /** Optional small uppercase label above the title. */
+  eyebrow?: string;
+  /** Section heading. Rendered as <h2>. Omit for an unlabeled block. */
+  title?: string;
+  /** Supporting line under the title. */
+  lead?: string;
+  /** Anchor id for in-page links. */
+  id?: string;
+  class?: string;
+}
+
+const { eyebrow, title, lead, id, class: className } = Astro.props;
+---
+
+<section id={id} class:list={['py-12', className]}>
+  {
+    (eyebrow || title || lead) && (
+      <header class="mb-8 max-w-2xl">
+        {eyebrow && <p class="eyebrow mb-2">{eyebrow}</p>}
+        {title && <h2 class="font-serif text-2xl font-semibold sm:text-3xl">{title}</h2>}
+        {lead && <p class="mt-3 text-muted">{lead}</p>}
+      </header>
+    )
+  }
+  <slot />
+</section>

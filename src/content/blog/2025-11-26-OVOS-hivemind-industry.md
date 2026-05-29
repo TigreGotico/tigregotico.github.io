@@ -12,8 +12,6 @@ cover: ./2025-11-26-OVOS-hivemind-industry.png
 draft: false
 ---
 
-# OVOS & HiveMind in the Manufacturing Industry
-
 As the lead developer of **[OpenVoiceOS](https://openvoiceos.org)**, maintained by a non-profit, and the creator of **[HiveMind](https://jarbashivemind.github.io/HiveMind-community-docs/)**, I’ve always believed in open, privacy-respecting voice technology. What I did not anticipate was how quickly these tools would end up in industrial research, especially without any direct involvement from me.
 
 The **[COALA](https://coala-ai.de)** and **[WASABI](https://wasabiproject.eu)** EU projects have built an entire industrial voice-assistant framework around [OVOS](https://openvoiceos.org) + [HiveMind](https://jarbashivemind.github.io/HiveMind-community-docs/), integrating them with their own tools, UI, and conversation engines.
@@ -22,7 +20,7 @@ I am not involved with these deployments, but the fact that the stack is being a
 
 ---
 
-# WASABI Open Call
+## WASABI Open Call
 
 The 2nd [WASABI Open Call](https://wasabiproject.eu/wp-content/uploads/2025/08/WASABI_Guide_for_Applicants_2nd-OC_vFIN.pdf) to provide financial support to at least 10 experiments led by SMEs recently closed.
 This open call is designed to support AI-based digital assistance experiments involving SMEs from manufacturing.
@@ -71,7 +69,7 @@ All of these rely on OVOS and on HiveMind for routing communication between devi
 
 ---
 
-# What COALA/WASABI Built on Top of OVOS
+## What COALA/WASABI Built on Top of OVOS
 
 Although the projects produced no open-source industrial skills, they did create several components around OVOS + HiveMind:
 
@@ -113,7 +111,7 @@ COALA published a multilingual speech dataset recorded in factories and workshop
 
 ---
 
-# Why Industry Chooses OVOS + HiveMind
+## Why Industry Chooses OVOS + HiveMind
 
 The appeal is straightforward:
 
@@ -127,7 +125,7 @@ In short: the combination is flexible, vendor-neutral, and respects industrial d
 
 ---
 
-# Closing Thoughts
+## Closing Thoughts
 
 I didn’t set out to build an industrial standard.
 I set out to build something open, reliable, and user-controlled.

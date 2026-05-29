@@ -20,17 +20,22 @@ isn't just a business for us — it's a mission. Our expertise is unparalleled
 because we've been with this technology from its inception, making us reliable
 partners for your voice tech projects.
 
+Don't take our word for it — the work is public:
+
+- [GitHub organization](https://github.com/TigreGotico) — our open-source repositories
+- [Hugging Face](https://huggingface.co/TigreGotico) — our datasets and models
+- [openvoiceos.org](https://openvoiceos.org) — the non-profit foundation we maintain
+
 ## Our Mission
 
 To empower businesses and individuals with privacy-focused, open-source voice
-technology solutions and professional services, championing a future of ethical
-and transparent AI.
+technology, championing a future of ethical and transparent AI.
 
 ## Don't Just Take Our Word for It. Audit Us.
 
-In the world of open source and specialized AI consulting, "trust" shouldn't be
-based on a sales pitch. It should be based on verifiable code, community
-contributions, and proven architectural decisions.
+In open source and specialized voice AI, "trust" shouldn't rest on a sales pitch.
+It should rest on verifiable code, community contributions, and proven
+architectural decisions.
 
 We believe that true expertise leaves a digital footprint. We are confident in
 the quality of our work and our standing in the Open Voice OS (OVOS) community,

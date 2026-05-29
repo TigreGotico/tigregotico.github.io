@@ -11,34 +11,7 @@
       "TTS",
       "NLP"
     ],
-    "image": "https://github.com/TigreGotico/phoonnx/blob/dev/thumb.png?raw=true",
-    "featured": true
-  },
-  {
-    "id": "mediavocab",
-    "name": "mediavocab",
-    "description": "Shared media-metadata vocabulary and normalization layer used across the media client and Music Assistant integrations.",
-    "url": "https://github.com/TigreGotico/mediavocab",
-    "category": "In-House",
-    "tags": [
-      "Media Metadata",
-      "NLP",
-      "Vocabulary"
-    ],
-    "featured": true
-  },
-  {
-    "id": "lilacs",
-    "name": "LILACS",
-    "description": "Neurosymbolic NLP and reasoning toolkit combining knowledge graphs with language models for explainable understanding.",
-    "url": "https://github.com/TigreGotico/LILACS",
-    "category": "In-House",
-    "tags": [
-      "NLP",
-      "Reasoning",
-      "Neurosymbolic",
-      "Knowledge Graph"
-    ],
+    "imageLocal": "phoonnx.png",
     "featured": true
   },
   {
@@ -53,7 +26,7 @@
       "Audio Alignment",
       "Tooling"
     ],
-    "image": "https://github.com/user-attachments/assets/58380d79-56a2-408b-bc2d-898d6686bcdc",
+    "imageLocal": "align.png",
     "featured": true
   },
   {
@@ -67,7 +40,7 @@
       "OVOS",
       "Tooling"
     ],
-    "image": "https://github.com/user-attachments/assets/10a10ff5-64b7-42fd-86bd-cb6a5db769dd",
+    "imageLocal": "ovoscope.png",
     "featured": true
   },
   {

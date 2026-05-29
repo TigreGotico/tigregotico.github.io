@@ -1,63 +1,59 @@
 ---
 title: "Services"
-description: "FOSS voice tech and AI consulting from the lead maintainers of OpenVoiceOS and HiveMind: integration, custom TTS training, and privacy-first web development."
+description: "Engineering engagements from the core maintainers of OpenVoiceOS and HiveMind: platform integration, custom offline TTS voice training, and privacy-first web development."
 order: 2
 ---
 
-We are FOSS AI/Voice tech specialists committed to providing a reliable,
-privacy-focused alternative to proprietary systems. Our services empower your
-business to build voice technology solutions without compromising on user
-privacy, security, or ethical data practices.
+We are FOSS voice and AI specialists. As core maintainers of the OpenVoiceOS
+and HiveMind stack, we build privacy-first, GDPR-compliant voice technology that
+keeps your data on your own hardware.
 
-## Ensure Privacy and Compliance with Expert FOSS Consulting
+## How We Work
 
-As the lead maintainers of the OpenVoiceOS and HiveMind stack, we offer an
-unparalleled depth of knowledge and a commitment to open-source excellence. Our
-consulting services are designed to help you navigate the complexities of voice
-AI development while ensuring your project remains secure and GDPR-compliant.
+We offer focused engineering engagements rather than open-ended retainers. Each
+one is scoped to a concrete outcome, delivered as open source where possible, and
+backed by the people who maintain the underlying stack.
 
-### Onboarding & Integration Package
+### Onboarding & Integration
 
-A foundational service to get your project off the ground. We provide full
-technical onboarding, guided integration into your existing systems, and a clear
-roadmap to a working prototype.
+Full technical onboarding and guided integration into your existing systems, with
+a clear path to a working prototype on the OpenVoiceOS stack.
 
-### Ongoing Technical Retainer
+### Technical Retainer
 
-For long-term projects, our retainer model provides dedicated, on-demand support.
-This includes regular consultations, technical problem-solving, and direct access
-to our core development team.
+Dedicated, on-demand engineering for long-term projects: scheduled reviews,
+problem-solving, and direct access to the core development team.
 
-### Hourly Support Packs
+### Hourly Support
 
-Need a quick hand? Our flexible hourly packs are perfect for troubleshooting,
-minor feature implementation, or simply getting expert advice when you need it
-most.
+Flexible hourly engineering for troubleshooting, targeted features, or expert
+guidance when you need it.
 
-## Integrations
+## Platform Integration
 
-We specialize in making your voice technology dreams a reality. Our expertise
-lies in seamlessly integrating any platform into the OpenVoiceOS stack. Whether
-you need to voice-enable a completely new device, integrate a specific
-Text-to-Speech (TTS) or Speech-to-Text (STT) service, or build a custom solution
-from the ground up, we have the knowledge to make it work. We can either add
-custom functionality directly to OpenVoiceOS or make OVOS voice-enable anything
-you can imagine.
+We make voice technology work on your terms. Our specialty is integrating any
+platform into the OpenVoiceOS stack — voice-enabling a new device, wiring in a
+specific Text-to-Speech (TTS) or Speech-to-Text (STT) service, or building a
+custom component from scratch. We add functionality directly to OpenVoiceOS, or
+make OVOS drive whatever you need it to.
 
-## Custom TTS Voice Training
+## Custom Offline TTS Voice Training
 
-Want a unique voice for your project? We offer a service to train a custom,
-high-quality, and fully offline Text-to-Speech (TTS) voice model for your
-application. Whether you have a ready-to-use dataset for a specific language or
-want to clone a reference audio, our service provides fast, privacy-first TTS
-models perfect for projects like OpenVoiceOS and Home Assistant. The result is a
-seamless and private voice experience that runs locally on your device, giving
-you full control over your data.
+Want a unique voice for your project? We train custom, high-quality,
+fully-offline Text-to-Speech voices. Bring a dataset for a specific language, or
+clone a reference voice — the result is a fast, private TTS model that runs
+locally on your device and slots straight into OpenVoiceOS or Home Assistant. You
+keep full control of your data.
 
-## Professional Web Development with a FOSS-First Approach
+## Minority & Lusophone Language Speech Tech
 
-Your online presence is a reflection of your brand. We design and develop custom
-websites and web applications with an emphasis on performance, security, and a
-privacy-first mindset. We are proud to have developed and maintained the official
-OpenVoiceOS website, a live example of our commitment to clean code, responsive
-design, and open-source principles.
+We build speech technology for languages that mainstream tools ignore — including
+Portuguese variants and other Lusophone and minority languages. From
+phonemization to STT and TTS, we help under-served language communities get
+modern, privacy-respecting voice support.
+
+## FOSS-First Web Development
+
+We design and build websites and web applications with a focus on performance,
+accessibility, and a privacy-first mindset. We develop and maintain the official
+OpenVoiceOS website — a live example of clean, open, responsive work.
