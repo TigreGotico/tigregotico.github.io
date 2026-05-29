@@ -22,11 +22,11 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
 
 // Stats derived from the projects collection (no invented numbers).
 const ovosPlugins = allProjects.filter((p) => p.category.startsWith('OVOS')).length;
-const ileniaRepos = allProjects.filter((p) => p.category === 'ILENIA').length;
+const inHouseProjects = allProjects.filter((p) => p.category === 'In-House').length;
 const stats = [
   { value: `${allProjects.length}`, label: 'Open-source projects' },
   { value: `${ovosPlugins}`, label: 'OVOS plugins maintained' },
-  { value: `${ileniaRepos}`, label: 'ILENIA multilingual repos' },
+  { value: `${inHouseProjects}`, label: 'In-house libraries & tools' },
   { value: '100%', label: 'Runs offline & on-device' },
 ];
 
@@ -54,7 +54,7 @@ const whatWeDo = [
 ];
 
 // "The stack we steward" word-marks.
-const stack = ['OpenVoiceOS', 'HiveMind', 'ILENIA'];
+const stack = ['OpenVoiceOS', 'HiveMind'];
 ---
 
 <Base title={home!.data.title} description={home!.data.description}>
@@ -82,7 +82,7 @@ const stack = ['OpenVoiceOS', 'HiveMind', 'ILENIA'];
   <Section
     eyebrow="What we do"
     title="FOSS voice technology, end to end"
-    lead="As core maintainers of OpenVoiceOS and HiveMind, we build the whole stack — and we keep it open."
+    lead="As creators of HiveMind and core contributors to OpenVoiceOS, we build across the whole stack — and we keep it open."
   >
     <div class="grid gap-5 sm:grid-cols-2">
       {
@@ -99,9 +99,9 @@ const stack = ['OpenVoiceOS', 'HiveMind', 'ILENIA'];
 
   <hr class="rule-gradient" />
 
-  <!-- The stack we steward -->
+  <!-- The stack we build on -->
   <section class="py-12">
-    <p class="eyebrow mb-6 justify-center text-center reveal" data-reveal>The stack we steward</p>
+    <p class="eyebrow mb-6 justify-center text-center reveal" data-reveal>The stack we build on</p>
     <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 reveal" data-reveal data-reveal-delay="80">
       {
         stack.map((name) => (
@@ -175,7 +175,7 @@ const stack = ['OpenVoiceOS', 'HiveMind', 'ILENIA'];
       Have a voice project in mind?
     </h2>
     <p class="mx-auto mt-4 max-w-xl text-muted reveal" data-reveal data-reveal-delay="120">
-      Talk to the people who maintain the stack. No data brokers, no lock-in — just
+      Talk to the people who build the stack. No data brokers, no lock-in — just
       private, open voice technology built to last.
     </p>
     <div class="mt-7 flex flex-wrap justify-center gap-3 reveal" data-reveal data-reveal-delay="180">

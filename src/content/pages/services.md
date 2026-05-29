@@ -1,12 +1,12 @@
 ---
 title: "Services"
-description: "Engineering engagements from the core maintainers of OpenVoiceOS and HiveMind: platform integration, custom offline TTS voice training, and privacy-first web development."
+description: "Engineering engagements from the creators of HiveMind and core contributors to OpenVoiceOS: platform integration, custom offline TTS voice training, and privacy-first web development."
 order: 2
 ---
 
-We are FOSS voice and AI specialists. As core maintainers of the OpenVoiceOS
-and HiveMind stack, we build privacy-first, GDPR-compliant voice technology that
-keeps your data on your own hardware.
+We are FOSS voice and AI specialists. As creators of the HiveMind stack and
+core contributors to OpenVoiceOS, we build privacy-first, GDPR-compliant voice
+technology that keeps your data on your own hardware.
 
 ## How We Work
 

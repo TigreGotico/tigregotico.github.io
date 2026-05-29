@@ -6,7 +6,7 @@ export const site = {
   locale: 'en_US',
   title: 'TigreGótico — Privacy-First Voice Technology',
   description:
-    'FOSS AI and voice technology specialists. Core maintainers of the OpenVoiceOS and HiveMind stack, building privacy-first, GDPR-compliant voice solutions.',
+    'FOSS AI and voice technology specialists. Creators of the HiveMind stack and core contributors to OpenVoiceOS, building privacy-first, GDPR-compliant voice solutions.',
   email: 'jarbasai@mailfence.com',
   defaultOgImage: '/og-default.png',
   socials: {

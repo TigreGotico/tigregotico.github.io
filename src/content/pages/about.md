@@ -1,30 +1,30 @@
 ---
 title: "About"
-description: "TigreGótico provides the professional backbone for the OpenVoiceOS and HiveMind stack — lead developers and maintainers of privacy-first voice technology."
+description: "TigreGótico builds and maintains the HiveMind stack and is a core contributor to OpenVoiceOS — privacy-first voice technology."
 order: 1
 ---
 
 ## Our Story
 
 Founded with a deep passion for open source and a firm belief in digital
-privacy, TigreGótico emerged to provide a professional backbone for the
-OpenVoiceOS and HiveMind stack. While OpenVoiceOS is a non-profit foundation,
-our company exists to ensure the long-term sustainability and expert
-maintenance of its core technologies.
+privacy, TigreGótico builds and maintains the HiveMind stack and is a core
+contributor to OpenVoiceOS — an independent non-profit voice-AI foundation
+whose board includes our founder. Our company exists to ensure the long-term
+sustainability and expert engineering of privacy-first voice technology.
 
 ## Our Expertise
 
-Our company is built on a foundation of unique knowledge: we are the lead
-developers and maintainers of the OpenVoiceOS and HiveMind voice stack. This
-isn't just a business for us — it's a mission. Our expertise is unparalleled
-because we've been with this technology from its inception, making us reliable
-partners for your voice tech projects.
+Our company is built on a foundation of unique knowledge: we are the creators
+and maintainers of the HiveMind voice stack and core contributors to
+OpenVoiceOS. This isn't just a business for us — it's a mission. Our expertise
+is unparalleled because we've been with this technology from its inception,
+making us reliable partners for your voice tech projects.
 
 Don't take our word for it — the work is public:
 
 - [GitHub organization](https://github.com/TigreGotico) — our open-source repositories
 - [Hugging Face](https://huggingface.co/TigreGotico) — our datasets and models
-- [openvoiceos.org](https://openvoiceos.org) — the non-profit foundation we maintain
+- [openvoiceos.org](https://openvoiceos.org) — the independent non-profit foundation we contribute to (our founder serves on its board)
 
 ## Our Mission
 

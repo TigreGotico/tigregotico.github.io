@@ -1,8 +1,8 @@
 # TigreGótico
 
 > FOSS AI and voice technology specialists. We build privacy-first voice
-> assistants, custom TTS models, and web applications, and we are core
-> maintainers of the OpenVoiceOS and HiveMind stack.
+> assistants, custom TTS models, and web applications. We create and maintain
+> the HiveMind stack and are core contributors to OpenVoiceOS.
 
 ## Core Information
 - [Home](https://tigregotico.github.io/tigregotico-website/): Overview of services, featured projects, and latest updates.
@@ -19,4 +19,4 @@
 ## External Links
 - [GitHub](https://github.com/TigreGotico): Open-source repositories.
 - [Hugging Face](https://huggingface.co/TigreGotico): AI models and datasets.
-- [OpenVoiceOS](https://openvoiceos.org): The open-source voice platform we maintain.
+- [OpenVoiceOS](https://openvoiceos.org): An independent non-profit open-source voice platform we are core contributors to; our founder serves on its board.

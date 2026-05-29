@@ -1,6 +1,6 @@
 ---
 title: "Products"
-description: "OpenVoiceOS plugins and integrations on a freemium-but-BSD model, custom offline TTS voice training, and official OVOS merchandise that funds the non-profit."
+description: "OpenVoiceOS plugins and integrations on a freemium-but-BSD model, custom offline TTS voice training, and official OVOS merchandise that funds the independent non-profit."
 order: 3
 ---
 
@@ -31,5 +31,5 @@ described on our Services page.
 ## Official OVOS Merchandise
 
 Every sticker and magnet you buy is a direct investment in the open-source
-community. Proceeds support the OpenVoiceOS non-profit foundation and the ongoing
-maintenance of the stack.
+community. Proceeds support the independent OpenVoiceOS non-profit foundation and
+the ongoing maintenance of the stack.
