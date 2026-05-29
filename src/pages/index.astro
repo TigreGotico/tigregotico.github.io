@@ -6,6 +6,7 @@ import Hero from '../components/Hero.astro';
 import Icon from '../components/Icon.astro';
 import { getEntry, getCollection, render } from 'astro:content';
 import { site } from '../data/site';
+import { loadStars } from '../lib/github';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const link = (href: string) => `${base}${href}`;
@@ -15,6 +16,8 @@ const { Content } = await render(home!);
 
 const allProjects = (await getCollection('projects')).map((p) => p.data);
 const featured = allProjects.filter((p) => p.featured);
+
+const stars = await loadStars(allProjects);
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
@@ -141,7 +144,7 @@ const stack = ['OpenVoiceOS', 'HiveMind'];
     class="surface-alt -mx-6 rounded-3xl px-6"
   >
     <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-      {featured.map((project) => <ProjectCard project={project} withImage />)}
+      {featured.map((project) => <ProjectCard project={project} stars={stars[project.id]} withImage />)}
     </div>
     <p class="mt-8">
       <a class="inline-flex items-center gap-1 font-medium text-primary hover:underline" href={link('/projects')}>

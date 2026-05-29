@@ -6,10 +6,9 @@
     "url": "https://github.com/TigreGotico/phoonnx",
     "category": "In-House",
     "tags": [
-      "Phonetics",
+      "multilingual TTS",
       "ONNX",
-      "TTS",
-      "NLP"
+      "phonemization"
     ],
     "imageLocal": "phoonnx.png",
     "featured": true
@@ -21,8 +20,8 @@
     "url": "https://github.com/OpenVoiceOS",
     "category": "Platform",
     "tags": [
-      "Voice Assistant",
-      "Privacy",
+      "voice platform",
+      "privacy-first",
       "FOSS"
     ],
     "image": "https://www.openvoiceos.org/images/logo.png",
@@ -35,10 +34,9 @@
     "url": "https://github.com/JarbasHiveMind/HiveMind-core",
     "category": "Platform",
     "tags": [
-      "Mesh",
-      "Protocol",
-      "Distributed",
-      "Voice"
+      "device mesh",
+      "protocol",
+      "distributed voice"
     ],
     "image": "https://github.com/JarbasHiveMind/HiveMind-assets/raw/master/logo/hivemind-512.png",
     "featured": true
@@ -50,9 +48,9 @@
     "url": "https://github.com/TigreGotico/ovoscope",
     "category": "OVOS-Utils",
     "tags": [
-      "Testing",
-      "OVOS",
-      "Tooling"
+      "end-to-end testing",
+      "in-process runtime",
+      "OVOS skills"
     ],
     "imageLocal": "ovoscope.png",
     "featured": true
@@ -64,10 +62,9 @@
     "url": "https://github.com/TigreGotico/ALIGN",
     "category": "In-House",
     "tags": [
-      "Phonetics",
+      "audio-text alignment",
       "IPA",
-      "Audio Alignment",
-      "Tooling"
+      "browser-based"
     ],
     "imageLocal": "align.png",
     "featured": true
@@ -78,9 +75,9 @@
     "description": "A shared media-metadata vocabulary and normalization layer that unifies how titles, artists, and identifiers map across media clients and Music Assistant integrations.",
     "category": "In-House",
     "tags": [
-      "Media Metadata",
-      "NLP",
-      "Vocabulary"
+      "media metadata",
+      "normalization",
+      "vocabulary"
     ],
     "featured": true,
     "comingSoon": true
@@ -91,10 +88,9 @@
     "description": "A neurosymbolic NLP and reasoning toolkit that pairs knowledge graphs with language models for explainable, transparent language understanding.",
     "category": "In-House",
     "tags": [
-      "NLP",
-      "Reasoning",
-      "Neurosymbolic",
-      "Knowledge Graph"
+      "neurosymbolic NLP",
+      "knowledge graph",
+      "reasoning"
     ],
     "featured": true,
     "comingSoon": true
@@ -105,10 +101,9 @@
     "description": "An engine for LLM-powered generative narrative worlds — interactive fiction that improvises story, characters, and choices around the player, playable in the terminal or by voice.",
     "category": "Games",
     "tags": [
-      "Games",
-      "Interactive Fiction",
-      "LLM",
-      "Voice"
+      "generative IF",
+      "LLM worlds",
+      "voice-playable"
     ],
     "featured": true,
     "comingSoon": true
@@ -119,10 +114,9 @@
     "description": "TNaLaGmes (a Toolbox for Natural Language Games) — a framework for building classic and voice-playable text adventures, narrated and controlled hands-free.",
     "category": "Games",
     "tags": [
-      "Games",
-      "Interactive Fiction",
-      "Toolkit",
-      "Voice"
+      "interactive fiction",
+      "game toolkit",
+      "voice-playable"
     ],
     "featured": true,
     "comingSoon": true
@@ -134,9 +128,9 @@
     "url": "https://github.com/TigreGotico/chatterbox-onnx",
     "category": "In-House",
     "tags": [
-      "ONNX",
-      "AI",
-      "Inference"
+      "ONNX inference",
+      "conversational TTS",
+      "on-device"
     ],
     "featured": false
   },
@@ -147,9 +141,9 @@
     "url": "https://github.com/TigreGotico/synthetic_dataset_generator",
     "category": "In-House",
     "tags": [
-      "Dataset",
-      "ML",
-      "Synthetic Data"
+      "synthetic data",
+      "dataset generation",
+      "ML training"
     ],
     "featured": false
   },
@@ -160,9 +154,9 @@
     "url": "https://github.com/TigreGotico/tugaphone",
     "category": "In-House",
     "tags": [
-      "Portuguese",
-      "Phonetics",
-      "Dataset"
+      "Portuguese phonemes",
+      "phonetics",
+      "dataset"
     ]
   },
   {
@@ -172,9 +166,9 @@
     "url": "https://github.com/TigreGotico/RAKEkeywords",
     "category": "In-House",
     "tags": [
-      "NLP",
-      "Keywords",
-      "Extraction"
+      "keyword extraction",
+      "RAKE",
+      "NLP"
     ]
   },
   {
@@ -184,9 +178,9 @@
     "url": "https://github.com/TigreGotico/ahocorasick-ner",
     "category": "In-House",
     "tags": [
-      "NER",
-      "NLP",
-      "Named Entities"
+      "named-entity recognition",
+      "Aho-Corasick",
+      "gazetteer"
     ]
   },
   {
@@ -196,9 +190,9 @@
     "url": "https://github.com/TigreGotico/kw-template-matcher",
     "category": "In-House",
     "tags": [
-      "Intent",
-      "Matching",
-      "NLP"
+      "intent matching",
+      "templates",
+      "NLU"
     ]
   },
   {
@@ -208,8 +202,8 @@
     "url": "https://github.com/TigreGotico/markovjson",
     "category": "In-House",
     "tags": [
-      "Markov",
-      "Generation",
+      "Markov chains",
+      "text generation",
       "JSON"
     ]
   },
@@ -220,9 +214,8 @@
     "url": "https://github.com/TigreGotico/silabificador",
     "category": "In-House",
     "tags": [
-      "Portuguese",
-      "Syllables",
-      "Text Processing"
+      "Portuguese syllabification",
+      "text processing"
     ]
   },
   {
@@ -232,9 +225,9 @@
     "url": "https://github.com/TigreGotico/pyFrotz",
     "category": "In-House",
     "tags": [
-      "Interactive Fiction",
-      "Python",
-      "Games"
+      "interactive fiction",
+      "Z-machine",
+      "Python"
     ]
   },
   {
@@ -244,9 +237,9 @@
     "url": "https://github.com/TigreGotico/ovos-m2v-pipeline",
     "category": "OVOS-Intents",
     "tags": [
-      "Intent",
-      "OVOS",
-      "Pipeline"
+      "intent classification",
+      "Model2Vec",
+      "ONNX"
     ]
   },
   {
@@ -256,9 +249,9 @@
     "url": "https://github.com/TigreGotico/ovos-flashrank-reranker-plugin",
     "category": "OVOS-Solvers",
     "tags": [
-      "Reranking",
-      "Solver",
-      "OVOS"
+      "reranking",
+      "FlashRank",
+      "retrieval"
     ]
   },
   {
@@ -268,9 +261,9 @@
     "url": "https://github.com/TigreGotico/ovos-solver-BM25-plugin",
     "category": "OVOS-Solvers",
     "tags": [
-      "BM25",
-      "Solver",
-      "OVOS"
+      "BM25 retrieval",
+      "solver",
+      "search"
     ]
   },
   {
@@ -280,10 +273,9 @@
     "url": "https://github.com/TigreGotico/ovos-solver-gguf-plugin",
     "category": "OVOS-Solvers",
     "tags": [
-      "LLM",
+      "local LLM",
       "GGUF",
-      "Solver",
-      "OVOS"
+      "solver"
     ]
   },
   {
@@ -293,9 +285,9 @@
     "url": "https://github.com/TigreGotico/ovos-MoS",
     "category": "OVOS-Solvers",
     "tags": [
-      "Expert System",
-      "OVOS",
-      "Framework"
+      "mixture of specialists",
+      "routing",
+      "framework"
     ]
   },
   {
@@ -305,9 +297,9 @@
     "url": "https://github.com/TigreGotico/ovos-chromadb-embeddings-plugin",
     "category": "OVOS-Embeddings",
     "tags": [
-      "Embeddings",
+      "embeddings",
       "ChromaDB",
-      "OVOS"
+      "vector search"
     ]
   },
   {
@@ -317,9 +309,9 @@
     "url": "https://github.com/TigreGotico/ovos-gguf-embeddings-plugin",
     "category": "OVOS-Embeddings",
     "tags": [
-      "Embeddings",
+      "embeddings",
       "GGUF",
-      "OVOS"
+      "on-device"
     ]
   },
   {
@@ -329,9 +321,9 @@
     "url": "https://github.com/TigreGotico/ovos-qdrant-embeddings-plugin",
     "category": "OVOS-Embeddings",
     "tags": [
-      "Embeddings",
+      "embeddings",
       "Qdrant",
-      "OVOS"
+      "vector DB"
     ]
   },
   {
@@ -341,9 +333,9 @@
     "url": "https://github.com/TigreGotico/ovos-transcription-validator-plugin",
     "category": "OVOS-STT",
     "tags": [
-      "STT",
-      "Validation",
-      "OVOS"
+      "STT validation",
+      "filtering",
+      "quality"
     ]
   },
   {
@@ -353,9 +345,9 @@
     "url": "https://github.com/TigreGotico/ovos-stt-plugin-MyNorthAI",
     "category": "OVOS-STT",
     "tags": [
-      "STT",
-      "Speech-to-Text",
-      "OVOS"
+      "speech-to-text",
+      "MyNorthAI",
+      "STT plugin"
     ]
   },
   {
@@ -365,9 +357,9 @@
     "url": "https://github.com/TigreGotico/ovos-gguf-translate-plugin",
     "category": "OVOS-Translation",
     "tags": [
-      "Translation",
+      "translation",
       "GGUF",
-      "OVOS"
+      "local LLM"
     ]
   },
   {
@@ -377,9 +369,9 @@
     "url": "https://github.com/TigreGotico/ovos-simple-listener",
     "category": "OVOS-Utils",
     "tags": [
-      "Audio",
-      "Listener",
-      "OVOS"
+      "audio listener",
+      "wake word",
+      "lightweight"
     ]
   },
   {
@@ -391,7 +383,7 @@
     "tags": [
       "Docker",
       "Wyoming",
-      "OVOS"
+      "deployment"
     ]
   },
   {
@@ -401,9 +393,9 @@
     "url": "https://github.com/TigreGotico/pyAhoTTS",
     "category": "In-House",
     "tags": [
-      "TTS",
-      "Python",
-      "Library"
+      "TTS library",
+      "AhoTTS",
+      "Python"
     ]
   }
 ]

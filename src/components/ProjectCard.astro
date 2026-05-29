@@ -20,9 +20,12 @@ interface Props {
   project: Project;
   /** Show the thumbnail (featured layout). */
   withImage?: boolean;
+  /** GitHub stargazer count, resolved at build time. Omitted when unavailable. */
+  stars?: number;
 }
 
-const { project, withImage = false } = Astro.props;
+const { project, withImage = false, stars } = Astro.props;
+const showStars = typeof stars === 'number' && !!project.url;
 const localImg = projectImage(project.imageLocal);
 
 // Per-category accent hue (used to tint the badge) + icon.
@@ -113,21 +116,30 @@ const badgeStyle = `--h:${meta.hue}; color:hsl(${meta.hue} 70% 55%); background:
     )
   }
 
-  {
-    project.url ? (
-      <a
-        href={project.url}
-        class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary transition-transform group-hover:translate-x-0.5 hover:underline"
-        rel="noopener"
-      >
-        View repository
-        <span aria-hidden="true">&rarr;</span>
-      </a>
-    ) : (
-      <span class="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-muted">
-        <span class="inline-block h-1.5 w-1.5 rounded-full bg-primary" aria-hidden="true" />
-        Coming soon — not yet public
+  <div class="mt-4 flex items-center justify-between gap-2">
+    {showStars && (
+      <span class="inline-flex items-center gap-1 text-sm font-medium text-muted" title={`${stars} GitHub stars`}>
+        <span class="text-base leading-none text-primary" aria-hidden="true">&#9733;</span>
+        <span>{stars}</span>
+        <span class="sr-only">GitHub stars</span>
       </span>
-    )
-  }
+    )}
+    {
+      project.url ? (
+        <a
+          href={project.url}
+          class="ml-auto inline-flex items-center gap-1 text-sm font-medium text-primary transition-transform group-hover:translate-x-0.5 hover:underline"
+          rel="noopener"
+        >
+          View repository
+          <span aria-hidden="true">&rarr;</span>
+        </a>
+      ) : (
+        <span class="ml-auto inline-flex items-center gap-1.5 text-sm font-medium text-muted">
+          <span class="inline-block h-1.5 w-1.5 rounded-full bg-primary" aria-hidden="true" />
+          Coming soon — not yet public
+        </span>
+      )
+    }
+  </div>
 </article>
