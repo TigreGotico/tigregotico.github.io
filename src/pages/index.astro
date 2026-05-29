@@ -32,6 +32,12 @@ const stats = [
 
 const whatWeDo = [
   {
+    icon: 'database',
+    wide: true,
+    title: 'Data extraction, clean APIs & datasets',
+    body: 'A first-tier specialty: we unlock public data that is otherwise hard to reach — behind unstructured pages, anti-bot walls, or undocumented endpoints — with resilient scrapers and reverse-engineered APIs, then re-expose it as clean, typed client libraries and build curated, ML-ready datasets from it.',
+  },
+  {
     icon: 'shield',
     title: 'Privacy-first voice assistants',
     body: 'On-device OpenVoiceOS deployments that keep audio and data on your own hardware — GDPR-compliant by design.',
@@ -81,16 +87,28 @@ const stack = ['OpenVoiceOS', 'HiveMind'];
   <!-- What we do -->
   <Section
     eyebrow="What we do"
-    title="FOSS voice technology, end to end"
-    lead="As creators of HiveMind and core contributors to OpenVoiceOS, we build across the whole stack — and we keep it open."
+    title="Voice technology — and the data engineering behind it"
+    lead="We build privacy-first voice across the whole open-source stack, and we turn hard-to-reach public data into clean APIs and datasets. Creators of HiveMind, core contributors to OpenVoiceOS."
   >
     <div class="grid gap-5 sm:grid-cols-2">
       {
         whatWeDo.map((item, i) => (
-          <div class="card-hover reveal" data-reveal data-reveal-delay={i * 70}>
+          <div
+            class:list={['card-hover reveal', item.wide && 'sm:col-span-2']}
+            data-reveal
+            data-reveal-delay={i * 70}
+          >
             <span class="icon-chip mb-4"><Icon name={item.icon} /></span>
             <h3 class="display-3 text-lg">{item.title}</h3>
-            <p class="mt-2 text-sm leading-relaxed text-muted">{item.body}</p>
+            <p class="mt-2 max-w-3xl text-sm leading-relaxed text-muted">{item.body}</p>
+            {item.wide && (
+              <a
+                class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+                href={link('/services')}
+              >
+                Data services <Icon name="arrow" class="h-4 w-4" />
+              </a>
+            )}
           </div>
         ))
       }

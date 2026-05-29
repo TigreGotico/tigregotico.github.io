@@ -1,12 +1,13 @@
 ---
 title: "Services"
-description: "Engineering engagements from the creators of HiveMind and core contributors to OpenVoiceOS: platform integration, custom offline TTS voice training, and privacy-first web development."
+description: "Engineering engagements: data extraction, clean APIs & dataset construction; platform integration; custom offline TTS voice training; and privacy-first web development."
 order: 2
 ---
 
-We are FOSS voice and AI specialists. As creators of the HiveMind stack and
-core contributors to OpenVoiceOS, we build privacy-first, GDPR-compliant voice
-technology that keeps your data on your own hardware.
+We are FOSS voice, AI, and data specialists. As creators of the HiveMind stack
+and core contributors to OpenVoiceOS, we build privacy-first, GDPR-compliant
+voice technology that keeps your data on your own hardware — and we are equally
+at home turning hard-to-reach public data into clean APIs and curated datasets.
 
 ## How We Work
 
@@ -28,6 +29,27 @@ problem-solving, and direct access to the core development team.
 
 Flexible hourly engineering for troubleshooting, targeted features, or expert
 guidance when you need it.
+
+## Data Extraction, Clean APIs & Datasets
+
+A first-tier service. A great deal of valuable data lives on the public web but is
+effectively unreachable — locked in unstructured pages, behind anti-bot defenses,
+exposed only through undocumented endpoints, or in formats no search engine
+indexes. We get it out and make it usable:
+
+- **Resilient scrapers & parsers** for sources that resist automation, engineered
+  to keep working as pages and defenses change.
+- **API reverse-engineering** — we map undocumented or private endpoints and
+  re-expose them as clean, typed, documented client libraries.
+- **One clean API over messy sources** — a single consistent interface instead of
+  bespoke scraping for every consumer.
+- **Dataset construction** — we curate the extracted data into structured,
+  versioned, ML-ready datasets with clear provenance, and we can publish open
+  datasets where it makes sense.
+
+It is the same toolchain behind our own client libraries and the datasets we
+release — and it feeds everything from media-metadata enrichment to training
+corpora for speech and language models.
 
 ## Platform Integration
 
