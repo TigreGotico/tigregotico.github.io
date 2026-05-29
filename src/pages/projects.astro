@@ -13,16 +13,13 @@ const stars = await loadStars(projects);
 
 // Preferred display order for the category filter.
 const categoryOrder = [
-  'Platform',
+  'Speech & Language',
+  'NLP & ML',
+  'OpenVoiceOS',
+  'HiveMind',
   'Games',
-  'In-House',
-  'Utilities',
-  'OVOS-Intents',
-  'OVOS-Solvers',
-  'OVOS-Embeddings',
-  'OVOS-STT',
-  'OVOS-Translation',
-  'OVOS-Utils',
+  'Clients',
+  'Tools',
 ];
 
 const counts = new Map<string, number>();
@@ -34,13 +31,7 @@ const categories = [...counts.keys()].sort((a, b) => {
 });
 
 const labels: Record<string, string> = {
-  'In-House': 'In-House Tools',
-  'OVOS-Intents': 'OVOS — Intents',
-  'OVOS-Solvers': 'OVOS — Solvers',
-  'OVOS-Embeddings': 'OVOS — Embeddings',
-  'OVOS-STT': 'OVOS — Speech-to-Text',
-  'OVOS-Translation': 'OVOS — Translation',
-  'OVOS-Utils': 'OVOS — Utilities',
+  Clients: 'Data Clients',
 };
 const label = (c: string) => labels[c] ?? c;
 
@@ -57,7 +48,60 @@ const collaborations = (await getCollection('collaborations')).map((c) => c.data
     lead="Our open-source work — FOSS, self-hostable libraries and tools spanning voice AI, data extraction, datasets, NLP, and games, plus the OpenVoiceOS and HiveMind ecosystem we help build. No lock-in, no mandatory cloud."
   />
 
-  <Section eyebrow="Featured" title="Highlights" class="pt-0">
+  {
+    collaborations.length > 0 && (
+      <Section
+        eyebrow="Collaborations"
+        title="Working with the community"
+        lead="Independent partners and projects we contribute to."
+        class="pt-0"
+      >
+        <div class="grid gap-4 sm:grid-cols-2">
+          {collaborations.map((collab) => (
+            <article class="card-hover reveal" data-reveal>
+              <h3 class="display-3 text-lg">
+                <a href={collab.url} class="transition-colors hover:text-primary" rel="noopener">
+                  {collab.name}
+                </a>
+              </h3>
+              <p class="mt-2 text-sm leading-relaxed text-muted">{collab.description}</p>
+            </article>
+          ))}
+        </div>
+      </Section>
+    )
+  }
+
+  <Section
+    eyebrow="Community"
+    title="Donated to OpenVoiceOS"
+    lead="Much of our publicly-funded work is transferred to the independent OpenVoiceOS organization, so it lives on regardless of us."
+  >
+    <div class="grid gap-4 sm:grid-cols-2">
+      <article class="card reveal" data-reveal>
+        <h3 class="display-3 text-base">Funded by the ILENIA project</h3>
+        <p class="mt-2 text-sm leading-relaxed text-muted">
+          Multilingual speech and localization for Catalan, Spanish, Galician, and
+          Basque — the ovos-stt-plugin and ovos-tts-plugin families, plus
+          ovos-dialog-normalizer-plugin, ovos-skill-diagnostics,
+          ovos-skill-fuster-quotes, ovos-opendata-server, and raspovos-audio-setup.
+        </p>
+      </article>
+      <article class="card reveal" data-reveal>
+        <h3 class="display-3 text-base">Funded by our NLNet grant</h3>
+        <p class="mt-2 text-sm leading-relaxed text-muted">
+          <a
+            href="https://github.com/OpenVoiceOS/ovos-localize"
+            class="text-primary hover:underline"
+            rel="noopener">ovos-localize</a
+          > (GitHub-native localization) and ww-trainer (custom wake-word training,
+          coming soon).
+        </p>
+      </article>
+    </div>
+  </Section>
+
+  <Section eyebrow="Featured" title="Highlights">
     <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {featured.map((project) => <ProjectCard project={project} stars={stars[project.id]} withImage />)}
     </div>
@@ -102,28 +146,6 @@ const collaborations = (await getCollection('collaborations')).map((c) => c.data
     </div>
   </Section>
 
-  {
-    collaborations.length > 0 && (
-      <Section
-        eyebrow="Collaborations"
-        title="Working with the community"
-        lead="Independent partners and projects we contribute to."
-      >
-        <div class="grid gap-4 sm:grid-cols-2">
-          {collaborations.map((collab) => (
-            <article class="card-hover reveal" data-reveal>
-              <h3 class="display-3 text-lg">
-                <a href={collab.url} class="transition-colors hover:text-primary" rel="noopener">
-                  {collab.name}
-                </a>
-              </h3>
-              <p class="mt-2 text-sm leading-relaxed text-muted">{collab.description}</p>
-            </article>
-          ))}
-        </div>
-      </Section>
-    )
-  }
 </Base>
 
 <style>

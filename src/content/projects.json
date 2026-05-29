@@ -4,7 +4,7 @@
     "name": "phoonnx",
     "description": "A Python library for multilingual phonemization and Text-to-Speech (TTS) using ONNX models.",
     "url": "https://github.com/TigreGotico/phoonnx",
-    "category": "In-House",
+    "category": "Speech & Language",
     "tags": [
       "multilingual TTS",
       "ONNX",
@@ -14,17 +14,17 @@
     "featured": true
   },
   {
-    "id": "open-voice-os",
-    "name": "Open Voice OS",
-    "description": "Community-driven, open-source, privacy-respecting voice assistant platform and operating system that puts users in control of their data.",
-    "url": "https://github.com/OpenVoiceOS",
-    "category": "Platform",
+    "id": "orthography2ipa",
+    "name": "orthography2ipa",
+    "description": "Grapheme-to-IPA and allophone mappings for 350+ languages across 20+ families — a maximal-munch IPA tokenizer, phonological and script distance metrics, dialect transforms, and a pluggable G2P backend.",
+    "url": "https://github.com/TigreGotico/orthography2ipa",
+    "category": "Speech & Language",
     "tags": [
-      "voice platform",
-      "privacy-first",
-      "FOSS"
+      "G2P",
+      "IPA",
+      "phonemization",
+      "350+ languages"
     ],
-    "image": "https://www.openvoiceos.org/images/logo.png",
     "featured": true
   },
   {
@@ -32,7 +32,7 @@
     "name": "HiveMind",
     "description": "A flexible protocol enabling communication among devices and AI agents. Lightweight satellites connect to a central hub with customizable permissions.",
     "url": "https://github.com/JarbasHiveMind/HiveMind-core",
-    "category": "Platform",
+    "category": "HiveMind",
     "tags": [
       "device mesh",
       "protocol",
@@ -42,30 +42,44 @@
     "featured": true
   },
   {
+    "id": "open-voice-os",
+    "name": "Open Voice OS",
+    "description": "Community-driven, open-source, privacy-respecting voice assistant platform and operating system that puts users in control of their data.",
+    "url": "https://github.com/OpenVoiceOS",
+    "category": "OpenVoiceOS",
+    "tags": [
+      "voice platform",
+      "privacy-first",
+      "FOSS"
+    ],
+    "image": "https://www.openvoiceos.org/images/logo.png",
+    "featured": false
+  },
+  {
     "id": "ovos-localize",
     "name": "ovos-localize",
     "description": "A GitHub-native localization platform for OpenVoiceOS skills and plugins — manage translations entirely through Git, with no external service to run.",
     "url": "https://github.com/OpenVoiceOS/ovos-localize",
-    "category": "OVOS-Utils",
+    "category": "OpenVoiceOS",
     "tags": [
       "localization",
       "i18n",
       "GitHub-native",
       "no-infra"
     ],
-    "featured": true
+    "featured": false
   },
   {
     "id": "lilacs",
     "name": "LILACS",
     "description": "A neurosymbolic NLP and reasoning toolkit that pairs knowledge graphs with language models for explainable, transparent language understanding.",
-    "category": "In-House",
+    "category": "NLP & ML",
     "tags": [
       "neurosymbolic NLP",
       "knowledge graph",
       "reasoning"
     ],
-    "featured": true,
+    "featured": false,
     "comingSoon": true
   },
   {
@@ -78,21 +92,21 @@
       "LLM worlds",
       "voice-playable"
     ],
-    "featured": true,
+    "featured": false,
     "comingSoon": true
   },
   {
     "id": "agentic-crm",
     "name": "Agentic CRM",
     "description": "A roadmapped product: an agent-native CRM where people and AI agents collaborate on the same data — driven from your agentic coding session as a skill, with a web UI for humans and agents to work together. Self-hostable, no mandatory cloud.",
-    "category": "In-House",
+    "category": "Tools",
     "tags": [
       "CRM",
       "agentic",
       "human + agent",
       "self-hosted"
     ],
-    "featured": true,
+    "featured": false,
     "comingSoon": true
   },
   {
@@ -100,7 +114,7 @@
     "name": "ovoscope",
     "description": "End-to-end testing framework for OVOS skills with a lightweight in-process runtime.",
     "url": "https://github.com/TigreGotico/ovoscope",
-    "category": "OVOS-Utils",
+    "category": "OpenVoiceOS",
     "tags": [
       "end-to-end testing",
       "in-process runtime",
@@ -114,7 +128,7 @@
     "name": "ALIGN",
     "description": "A browser-based tool for aligning audio with text transcriptions and IPA at word, grapheme, and sentence level. Runs entirely client-side, no server, no dependencies, no build step.",
     "url": "https://github.com/TigreGotico/ALIGN",
-    "category": "In-House",
+    "category": "NLP & ML",
     "tags": [
       "audio-text alignment",
       "IPA",
@@ -127,7 +141,7 @@
     "id": "mediavocab",
     "name": "mediavocab",
     "description": "A shared media-metadata vocabulary and normalization layer that unifies how titles, artists, and identifiers map across media clients and Music Assistant integrations.",
-    "category": "In-House",
+    "category": "NLP & ML",
     "tags": [
       "media metadata",
       "normalization",
@@ -140,7 +154,7 @@
     "id": "ww-trainer",
     "name": "ww-trainer",
     "description": "A wake-word model trainer developed under an NLNet grant for OpenVoiceOS — build custom, on-device wake words from your own samples.",
-    "category": "OVOS-Utils",
+    "category": "OpenVoiceOS",
     "tags": [
       "wake word",
       "training",
@@ -168,7 +182,7 @@
     "name": "Chatterbox ONNX",
     "description": "ONNX-based inference engine for conversational AI.",
     "url": "https://github.com/TigreGotico/chatterbox-onnx",
-    "category": "In-House",
+    "category": "Speech & Language",
     "tags": [
       "ONNX inference",
       "conversational TTS",
@@ -181,7 +195,7 @@
     "name": "Synthetic Dataset Generator",
     "description": "Generate synthetic datasets for machine learning training.",
     "url": "https://github.com/TigreGotico/synthetic_dataset_generator",
-    "category": "In-House",
+    "category": "NLP & ML",
     "tags": [
       "synthetic data",
       "dataset generation",
@@ -194,7 +208,7 @@
     "name": "TugaPhone",
     "description": "Portuguese phoneme dataset and processing tools.",
     "url": "https://github.com/TigreGotico/tugaphone",
-    "category": "In-House",
+    "category": "Speech & Language",
     "tags": [
       "Portuguese phonemes",
       "phonetics",
@@ -207,7 +221,7 @@
     "name": "RAKE Keywords",
     "description": "Rapid Automatic Keyword Extraction implementation.",
     "url": "https://github.com/TigreGotico/RAKEkeywords",
-    "category": "In-House",
+    "category": "NLP & ML",
     "tags": [
       "keyword extraction",
       "RAKE",
@@ -220,7 +234,7 @@
     "name": "Ahocorasick NER",
     "description": "Named Entity Recognition using the Aho-Corasick algorithm.",
     "url": "https://github.com/TigreGotico/ahocorasick-ner",
-    "category": "In-House",
+    "category": "NLP & ML",
     "tags": [
       "named-entity recognition",
       "Aho-Corasick",
@@ -233,7 +247,7 @@
     "name": "KW Template Matcher",
     "description": "Keyword template matching engine for intent recognition.",
     "url": "https://github.com/TigreGotico/kw-template-matcher",
-    "category": "In-House",
+    "category": "NLP & ML",
     "tags": [
       "intent matching",
       "templates",
@@ -246,7 +260,7 @@
     "name": "MarkovJSON",
     "description": "Markov chain text generation from JSON data.",
     "url": "https://github.com/TigreGotico/markovjson",
-    "category": "In-House",
+    "category": "NLP & ML",
     "tags": [
       "Markov chains",
       "text generation",
@@ -259,7 +273,7 @@
     "name": "Silabificador",
     "description": "Portuguese text syllabification tool.",
     "url": "https://github.com/TigreGotico/silabificador",
-    "category": "In-House",
+    "category": "Speech & Language",
     "tags": [
       "Portuguese syllabification",
       "text processing"
@@ -271,7 +285,7 @@
     "name": "pyFrotz",
     "description": "Python wrapper for an interactive fiction engine.",
     "url": "https://github.com/TigreGotico/pyFrotz",
-    "category": "In-House",
+    "category": "Games",
     "tags": [
       "interactive fiction",
       "Z-machine",
@@ -284,7 +298,7 @@
     "name": "OVOS M2V Pipeline",
     "description": "Model2Vec intent pipeline for OpenVoiceOS intent handling.",
     "url": "https://github.com/TigreGotico/ovos-m2v-pipeline",
-    "category": "OVOS-Intents",
+    "category": "OpenVoiceOS",
     "tags": [
       "intent classification",
       "Model2Vec",
@@ -297,7 +311,7 @@
     "name": "OVOS FlashRank Reranker Plugin",
     "description": "Fast semantic reranking plugin for OVOS query results.",
     "url": "https://github.com/TigreGotico/ovos-flashrank-reranker-plugin",
-    "category": "OVOS-Solvers",
+    "category": "OpenVoiceOS",
     "tags": [
       "reranking",
       "FlashRank",
@@ -310,7 +324,7 @@
     "name": "OVOS BM25 Solver Plugin",
     "description": "BM25 retrieval-based solver for OpenVoiceOS.",
     "url": "https://github.com/TigreGotico/ovos-solver-BM25-plugin",
-    "category": "OVOS-Solvers",
+    "category": "OpenVoiceOS",
     "tags": [
       "BM25 retrieval",
       "solver",
@@ -323,7 +337,7 @@
     "name": "OVOS GGUF Solver Plugin",
     "description": "Local LLM solver using GGUF models in OpenVoiceOS.",
     "url": "https://github.com/TigreGotico/ovos-solver-gguf-plugin",
-    "category": "OVOS-Solvers",
+    "category": "OpenVoiceOS",
     "tags": [
       "local LLM",
       "GGUF",
@@ -336,7 +350,7 @@
     "name": "OVOS MoS",
     "description": "Mixture of Specialists framework for OpenVoiceOS.",
     "url": "https://github.com/TigreGotico/ovos-MoS",
-    "category": "OVOS-Solvers",
+    "category": "OpenVoiceOS",
     "tags": [
       "mixture of specialists",
       "routing",
@@ -349,7 +363,7 @@
     "name": "OVOS ChromaDB Embeddings Plugin",
     "description": "ChromaDB vector embeddings plugin for OpenVoiceOS.",
     "url": "https://github.com/TigreGotico/ovos-chromadb-embeddings-plugin",
-    "category": "OVOS-Embeddings",
+    "category": "OpenVoiceOS",
     "tags": [
       "embeddings",
       "ChromaDB",
@@ -362,7 +376,7 @@
     "name": "OVOS GGUF Embeddings Plugin",
     "description": "Local GGUF embeddings plugin for OpenVoiceOS.",
     "url": "https://github.com/TigreGotico/ovos-gguf-embeddings-plugin",
-    "category": "OVOS-Embeddings",
+    "category": "OpenVoiceOS",
     "tags": [
       "embeddings",
       "GGUF",
@@ -375,7 +389,7 @@
     "name": "OVOS Qdrant Embeddings Plugin",
     "description": "Qdrant vector database embeddings plugin for OpenVoiceOS.",
     "url": "https://github.com/TigreGotico/ovos-qdrant-embeddings-plugin",
-    "category": "OVOS-Embeddings",
+    "category": "OpenVoiceOS",
     "tags": [
       "embeddings",
       "Qdrant",
@@ -388,7 +402,7 @@
     "name": "OVOS Transcription Validator Plugin",
     "description": "Validate and filter STT transcriptions in OpenVoiceOS.",
     "url": "https://github.com/TigreGotico/ovos-transcription-validator-plugin",
-    "category": "OVOS-STT",
+    "category": "OpenVoiceOS",
     "tags": [
       "STT validation",
       "filtering",
@@ -401,7 +415,7 @@
     "name": "OVOS STT Plugin - MyNorthAI",
     "description": "MyNorthAI Speech-to-Text plugin for OpenVoiceOS.",
     "url": "https://github.com/TigreGotico/ovos-stt-plugin-MyNorthAI",
-    "category": "OVOS-STT",
+    "category": "OpenVoiceOS",
     "tags": [
       "speech-to-text",
       "MyNorthAI",
@@ -414,7 +428,7 @@
     "name": "OVOS GGUF Translate Plugin",
     "description": "Local translation using GGUF models in OpenVoiceOS.",
     "url": "https://github.com/TigreGotico/ovos-gguf-translate-plugin",
-    "category": "OVOS-Translation",
+    "category": "OpenVoiceOS",
     "tags": [
       "translation",
       "GGUF",
@@ -427,7 +441,7 @@
     "name": "OVOS Simple Listener",
     "description": "Minimal audio listening component for OpenVoiceOS.",
     "url": "https://github.com/TigreGotico/ovos-simple-listener",
-    "category": "OVOS-Utils",
+    "category": "OpenVoiceOS",
     "tags": [
       "audio listener",
       "wake word",
@@ -440,7 +454,7 @@
     "name": "OVOS Wyoming Docker",
     "description": "Docker setup for OpenVoiceOS with Wyoming services.",
     "url": "https://github.com/TigreGotico/ovos-wyoming-docker",
-    "category": "OVOS-Utils",
+    "category": "OpenVoiceOS",
     "tags": [
       "Docker",
       "Wyoming",
@@ -453,7 +467,7 @@
     "name": "pyAhoTTS",
     "description": "Python library for AhoTTS Text-to-Speech synthesis.",
     "url": "https://github.com/TigreGotico/pyAhoTTS",
-    "category": "In-House",
+    "category": "Speech & Language",
     "tags": [
       "TTS library",
       "AhoTTS",
@@ -466,12 +480,181 @@
     "name": "sshfs-keeper",
     "description": "A daemon that monitors SSHFS/rclone mounts and auto-remounts them when they drop — with a live web dashboard, REST API, Prometheus metrics, webhooks, and scheduled rsync/rclone sync jobs.",
     "url": "https://github.com/TigreGotico/sshfs-keeper",
-    "category": "Utilities",
+    "category": "Tools",
     "tags": [
       "sysadmin",
       "SSHFS",
       "monitoring",
       "self-hosted"
+    ],
+    "featured": false
+  },
+  {
+    "id": "audiobooker",
+    "name": "audiobooker",
+    "description": "Search and stream public-domain audiobooks from LibriVox and similar sources.",
+    "url": "https://github.com/TigreGotico/audiobooker",
+    "category": "Clients",
+    "tags": [
+      "audiobooks",
+      "LibriVox",
+      "scraper"
+    ],
+    "featured": false
+  },
+  {
+    "id": "nuvem_de_som",
+    "name": "nuvem_de_som",
+    "description": "SoundCloud client that emits typed media-metadata releases.",
+    "url": "https://github.com/TigreGotico/nuvem_de_som",
+    "category": "Clients",
+    "tags": [
+      "SoundCloud",
+      "music",
+      "scraper"
+    ],
+    "featured": false
+  },
+  {
+    "id": "py_bandcamp",
+    "name": "py_bandcamp",
+    "description": "Bandcamp scraper that emits typed media-metadata releases.",
+    "url": "https://github.com/TigreGotico/py_bandcamp",
+    "category": "Clients",
+    "tags": [
+      "Bandcamp",
+      "music",
+      "scraper"
+    ],
+    "featured": false
+  },
+  {
+    "id": "pyclassicalarchives",
+    "name": "pyclassicalarchives",
+    "description": "Typed Python client for Classical Archives.",
+    "url": "https://github.com/TigreGotico/pyclassicalarchives",
+    "category": "Clients",
+    "tags": [
+      "classical music",
+      "scraper",
+      "typed client"
+    ],
+    "featured": false
+  },
+  {
+    "id": "pyfanedit",
+    "name": "pyfanedit",
+    "description": "Scraping client for fanedit.org / IFDB.",
+    "url": "https://github.com/TigreGotico/pyfanedit",
+    "category": "Clients",
+    "tags": [
+      "film",
+      "IFDB",
+      "scraper"
+    ],
+    "featured": false
+  },
+  {
+    "id": "pyheartradio",
+    "name": "pyheartradio",
+    "description": "iHeartRadio API client.",
+    "url": "https://github.com/TigreGotico/pyheartradio",
+    "category": "Clients",
+    "tags": [
+      "radio",
+      "iHeartRadio",
+      "API"
+    ],
+    "featured": false
+  },
+  {
+    "id": "pyjazzmusicarchives",
+    "name": "pyjazzmusicarchives",
+    "description": "Typed Python client for Jazz Music Archives.",
+    "url": "https://github.com/TigreGotico/pyjazzmusicarchives",
+    "category": "Clients",
+    "tags": [
+      "jazz",
+      "scraper",
+      "typed client"
+    ],
+    "featured": false
+  },
+  {
+    "id": "pymal",
+    "name": "pymal",
+    "description": "Scraper / API client for MyAnimeList — anime and manga.",
+    "url": "https://github.com/TigreGotico/pymal",
+    "category": "Clients",
+    "tags": [
+      "anime",
+      "manga",
+      "scraper"
+    ],
+    "featured": false
+  },
+  {
+    "id": "pymetal",
+    "name": "pymetal",
+    "description": "Encyclopaedia Metallum (Metal Archives) API client.",
+    "url": "https://github.com/TigreGotico/pymetal",
+    "category": "Clients",
+    "tags": [
+      "metal",
+      "Metal Archives",
+      "API"
+    ],
+    "featured": false
+  },
+  {
+    "id": "pyprogarchives",
+    "name": "pyprogarchives",
+    "description": "Typed Python client for Prog Archives.",
+    "url": "https://github.com/TigreGotico/pyprogarchives",
+    "category": "Clients",
+    "tags": [
+      "prog rock",
+      "scraper",
+      "typed client"
+    ],
+    "featured": false
+  },
+  {
+    "id": "radiosoma",
+    "name": "radiosoma",
+    "description": "SomaFM client that emits typed media-metadata releases.",
+    "url": "https://github.com/TigreGotico/radiosoma",
+    "category": "Clients",
+    "tags": [
+      "radio",
+      "SomaFM",
+      "client"
+    ],
+    "featured": false
+  },
+  {
+    "id": "tunein",
+    "name": "tunein",
+    "description": "TuneIn radio scraper that emits typed media-metadata releases.",
+    "url": "https://github.com/TigreGotico/tunein",
+    "category": "Clients",
+    "tags": [
+      "radio",
+      "TuneIn",
+      "scraper"
+    ],
+    "featured": false
+  },
+  {
+    "id": "tutubo",
+    "name": "tutubo",
+    "description": "Lightweight YouTube scraper that emits typed media-metadata releases.",
+    "url": "https://github.com/TigreGotico/tutubo",
+    "category": "Clients",
+    "tags": [
+      "YouTube",
+      "video",
+      "scraper"
     ],
     "featured": false
   }

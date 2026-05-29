@@ -47,24 +47,6 @@ default:
   no-infrastructure delivery keep running costs near zero — which matters for a
   community-owned project.
 
-## Donated to OpenVoiceOS
-
-Much of our publicly-funded work is given to the community: we build it, then
-transfer it to the independent [OpenVoiceOS](https://github.com/OpenVoiceOS)
-organization so it lives on regardless of us.
-
-**Funded by the ILENIA project** — multilingual speech and localization for
-Catalan, Spanish, Galician, and Basque: the `ovos-stt-plugin-*` family (nos,
-HiTZ, citrinet, nemo, mms, fasterwhisper-zuazo, whisper-lm, wav2vec2,
-projectAINA-remote), the `ovos-tts-plugin-*` family (nos, ahotts,
-matxa-multispeaker-cat, coqui, cotovia-remote), `ovos-dialog-normalizer-plugin`,
-`ovos-skill-diagnostics`, `ovos-skill-fuster-quotes`, `ovos-opendata-server`, and
-`raspovos-audio-setup`.
-
-**Funded by our NLNet grant** —
-[`ovos-localize`](https://github.com/OpenVoiceOS/ovos-localize) (GitHub-native
-localization) and `ww-trainer` (custom wake-word training, coming soon).
-
 ## Don't Just Take Our Word for It. Audit Us.
 
 In open source and specialized voice AI, "trust" shouldn't rest on a sales pitch.

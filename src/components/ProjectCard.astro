@@ -30,17 +30,13 @@ const localImg = projectImage(project.imageLocal);
 
 // Per-category accent hue (used to tint the badge) + icon.
 const categoryMeta: Record<string, { hue: number; icon: string; label: string }> = {
-  Platform: { hue: 265, icon: 'layers', label: 'Platform' },
+  OpenVoiceOS: { hue: 265, icon: 'layers', label: 'OpenVoiceOS' },
+  HiveMind: { hue: 210, icon: 'network', label: 'HiveMind' },
+  'Speech & Language': { hue: 28, icon: 'mic', label: 'Speech & Language' },
+  'NLP & ML': { hue: 312, icon: 'cpu', label: 'NLP & ML' },
   Games: { hue: 45, icon: 'scroll', label: 'Games' },
-  'In-House': { hue: 312, icon: 'cpu', label: 'In-House' },
-  Utilities: { hue: 190, icon: 'network', label: 'Utilities' },
-  'OVOS-Intents': { hue: 200, icon: 'spark', label: 'Intents' },
-  'OVOS-Solvers': { hue: 160, icon: 'cpu', label: 'Solvers' },
-  'OVOS-Embeddings': { hue: 220, icon: 'database', label: 'Embeddings' },
-  'OVOS-STT': { hue: 28, icon: 'mic', label: 'Speech-to-Text' },
-  'OVOS-Translation': { hue: 340, icon: 'globe', label: 'Translation' },
-  'OVOS-Utils': { hue: 285, icon: 'flask', label: 'Utilities' },
-  ILENIA: { hue: 12, icon: 'globe', label: 'ILENIA' },
+  Clients: { hue: 175, icon: 'globe', label: 'Data Clients' },
+  Tools: { hue: 190, icon: 'flask', label: 'Tools' },
 };
 const meta = categoryMeta[project.category] ?? {
   hue: 280,
