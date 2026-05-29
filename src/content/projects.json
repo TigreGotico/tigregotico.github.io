@@ -84,12 +84,12 @@
   {
     "id": "agentic-crm",
     "name": "Agentic CRM",
-    "description": "A roadmapped product: an agent-native CRM that lives inside your agentic coding session — operated by your AI agent and packaged as a portable skill, not a separate web app to run.",
+    "description": "A roadmapped product: an agent-native CRM where people and AI agents collaborate on the same data — driven from your agentic coding session as a skill, with a web UI for humans and agents to work together. Self-hostable, no mandatory cloud.",
     "category": "In-House",
     "tags": [
       "CRM",
       "agentic",
-      "agent skill",
+      "human + agent",
       "self-hosted"
     ],
     "featured": true,
