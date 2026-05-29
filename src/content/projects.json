@@ -15,32 +15,17 @@
     "featured": true
   },
   {
-    "id": "align",
-    "name": "ALIGN",
-    "description": "A browser-based tool for aligning audio with text transcriptions and IPA at word, grapheme, and sentence level. Runs entirely client-side, no server, no dependencies, no build step.",
-    "url": "https://github.com/TigreGotico/ALIGN",
-    "category": "In-House",
+    "id": "open-voice-os",
+    "name": "Open Voice OS",
+    "description": "Community-driven, open-source, privacy-respecting voice assistant platform and operating system that puts users in control of their data.",
+    "url": "https://github.com/OpenVoiceOS",
+    "category": "Platform",
     "tags": [
-      "Phonetics",
-      "IPA",
-      "Audio Alignment",
-      "Tooling"
+      "Voice Assistant",
+      "Privacy",
+      "FOSS"
     ],
-    "imageLocal": "align.png",
-    "featured": true
-  },
-  {
-    "id": "ovoscope",
-    "name": "ovoscope",
-    "description": "End-to-end testing framework for OVOS skills with a lightweight in-process runtime.",
-    "url": "https://github.com/TigreGotico/ovoscope",
-    "category": "OVOS-Utils",
-    "tags": [
-      "Testing",
-      "OVOS",
-      "Tooling"
-    ],
-    "imageLocal": "ovoscope.png",
+    "image": "https://www.openvoiceos.org/images/logo.png",
     "featured": true
   },
   {
@@ -59,6 +44,90 @@
     "featured": true
   },
   {
+    "id": "ovoscope",
+    "name": "ovoscope",
+    "description": "End-to-end testing framework for OVOS skills with a lightweight in-process runtime.",
+    "url": "https://github.com/TigreGotico/ovoscope",
+    "category": "OVOS-Utils",
+    "tags": [
+      "Testing",
+      "OVOS",
+      "Tooling"
+    ],
+    "imageLocal": "ovoscope.png",
+    "featured": true
+  },
+  {
+    "id": "align",
+    "name": "ALIGN",
+    "description": "A browser-based tool for aligning audio with text transcriptions and IPA at word, grapheme, and sentence level. Runs entirely client-side, no server, no dependencies, no build step.",
+    "url": "https://github.com/TigreGotico/ALIGN",
+    "category": "In-House",
+    "tags": [
+      "Phonetics",
+      "IPA",
+      "Audio Alignment",
+      "Tooling"
+    ],
+    "imageLocal": "align.png",
+    "featured": true
+  },
+  {
+    "id": "mediavocab",
+    "name": "mediavocab",
+    "description": "A shared media-metadata vocabulary and normalization layer that unifies how titles, artists, and identifiers map across media clients and Music Assistant integrations.",
+    "category": "In-House",
+    "tags": [
+      "Media Metadata",
+      "NLP",
+      "Vocabulary"
+    ],
+    "featured": true,
+    "comingSoon": true
+  },
+  {
+    "id": "lilacs",
+    "name": "LILACS",
+    "description": "A neurosymbolic NLP and reasoning toolkit that pairs knowledge graphs with language models for explainable, transparent language understanding.",
+    "category": "In-House",
+    "tags": [
+      "NLP",
+      "Reasoning",
+      "Neurosymbolic",
+      "Knowledge Graph"
+    ],
+    "featured": true,
+    "comingSoon": true
+  },
+  {
+    "id": "storyforge",
+    "name": "StoryForge",
+    "description": "An engine for LLM-powered generative narrative worlds — interactive fiction that improvises story, characters, and choices around the player, playable in the terminal or by voice.",
+    "category": "Games",
+    "tags": [
+      "Games",
+      "Interactive Fiction",
+      "LLM",
+      "Voice"
+    ],
+    "featured": true,
+    "comingSoon": true
+  },
+  {
+    "id": "tnalagmes",
+    "name": "TNaLaGmes",
+    "description": "TNaLaGmes (a Toolbox for Natural Language Games) — a framework for building classic and voice-playable text adventures, narrated and controlled hands-free.",
+    "category": "Games",
+    "tags": [
+      "Games",
+      "Interactive Fiction",
+      "Toolkit",
+      "Voice"
+    ],
+    "featured": true,
+    "comingSoon": true
+  },
+  {
     "id": "chatterbox-onnx",
     "name": "Chatterbox ONNX",
     "description": "ONNX-based inference engine for conversational AI.",
@@ -69,7 +138,7 @@
       "AI",
       "Inference"
     ],
-    "featured": true
+    "featured": false
   },
   {
     "id": "synthetic-dataset-generator",
@@ -82,7 +151,7 @@
       "ML",
       "Synthetic Data"
     ],
-    "featured": true
+    "featured": false
   },
   {
     "id": "tugaphone",
@@ -336,74 +405,5 @@
       "Python",
       "Library"
     ]
-  },
-  {
-    "id": "mediavocab",
-    "name": "mediavocab",
-    "description": "A shared media-metadata vocabulary and normalization layer that unifies how titles, artists, and identifiers map across media clients and Music Assistant integrations.",
-    "category": "In-House",
-    "tags": [
-      "Media Metadata",
-      "NLP",
-      "Vocabulary"
-    ],
-    "featured": true,
-    "comingSoon": true
-  },
-  {
-    "id": "lilacs",
-    "name": "LILACS",
-    "description": "A neurosymbolic NLP and reasoning toolkit that pairs knowledge graphs with language models for explainable, transparent language understanding.",
-    "category": "In-House",
-    "tags": [
-      "NLP",
-      "Reasoning",
-      "Neurosymbolic",
-      "Knowledge Graph"
-    ],
-    "featured": true,
-    "comingSoon": true
-  },
-  {
-    "id": "storyforge",
-    "name": "StoryForge",
-    "description": "An engine for LLM-powered generative narrative worlds — interactive fiction that improvises story, characters, and choices around the player, playable in the terminal or by voice.",
-    "category": "Games",
-    "tags": [
-      "Games",
-      "Interactive Fiction",
-      "LLM",
-      "Voice"
-    ],
-    "featured": true,
-    "comingSoon": true
-  },
-  {
-    "id": "tnalagmes",
-    "name": "TNaLaGmes",
-    "description": "TNaLaGmes (a Toolbox for Natural Language Games) — a framework for building classic and voice-playable text adventures, narrated and controlled hands-free.",
-    "category": "Games",
-    "tags": [
-      "Games",
-      "Interactive Fiction",
-      "Toolkit",
-      "Voice"
-    ],
-    "featured": true,
-    "comingSoon": true
-  },
-  {
-    "id": "open-voice-os",
-    "name": "Open Voice OS",
-    "description": "Community-driven, open-source, privacy-respecting voice assistant platform and operating system that puts users in control of their data.",
-    "url": "https://github.com/OpenVoiceOS",
-    "category": "Platform",
-    "tags": [
-      "Voice Assistant",
-      "Privacy",
-      "FOSS"
-    ],
-    "image": "https://www.openvoiceos.org/images/logo.png",
-    "featured": true
   }
 ]
