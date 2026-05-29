@@ -1,0 +1,13 @@
+---
+import Base from '../layouts/Base.astro';
+import { getEntry, render } from 'astro:content';
+
+const home = await getEntry('pages', 'home');
+const { Content } = await render(home!);
+---
+
+<Base title={home!.data.title} description={home!.data.description}>
+  <article class="prose-content space-y-6">
+    <Content />
+  </article>
+</Base>

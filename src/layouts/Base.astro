@@ -1,0 +1,110 @@
+---
+import '../styles/global.css';
+import Seo from '../components/Seo.astro';
+import { site } from '../data/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: 'website' | 'article';
+  jsonLd?: Record<string, unknown>;
+  publishedTime?: string;
+  modifiedTime?: string;
+}
+
+const props = Astro.props;
+const base = import.meta.env.BASE_URL;
+const navLink = (href: string) =>
+  (base.replace(/\/$/, '') + (href === '/' ? '/' : href)).replace(/\/\/+$/, '/');
+---
+
+<!doctype html>
+<html lang={site.lang} class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href={base + 'favicon.svg'} type="image/svg+xml" />
+    <link rel="sitemap" href={base + 'sitemap-index.xml'} />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={site.name}
+      href={base + 'rss.xml'}
+    />
+    <Seo {...props} />
+
+    <!-- Brand fonts with font-display: swap (set via &display=swap) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Cinzel:wght@500;600&display=swap"
+    />
+
+    <!-- Apply persisted/preferred theme before paint to avoid a flash. -->
+    <script is:inline>
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme');
+          var prefersDark = window.matchMedia(
+            '(prefers-color-scheme: dark)'
+          ).matches;
+          if (stored === 'dark' || (!stored && prefersDark)) {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <header class="border-b border-border">
+      <nav
+        class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 py-4"
+        aria-label="Primary"
+      >
+        <a
+          href={navLink('/')}
+          class="font-display text-xl tracking-wide text-fg"
+          >TigreGótico</a
+        >
+        <ul class="hidden gap-5 text-sm md:flex">
+          {
+            site.nav.map((item) => (
+              <li>
+                <a
+                  href={navLink(item.href)}
+                  class="text-muted transition-colors hover:text-fg"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main" class="mx-auto w-full max-w-5xl flex-1 px-6 py-12">
+      <slot />
+    </main>
+
+    <footer class="border-t border-border">
+      <div
+        class="mx-auto flex max-w-5xl flex-col gap-2 px-6 py-8 text-sm text-muted"
+      >
+        <p>Privacy-First Voice Technology and FOSS AI Solutions</p>
+        <p class="flex flex-wrap gap-4">
+          <a class="hover:text-fg" href={site.socials.github}>GitHub</a>
+          <a class="hover:text-fg" href={site.socials.huggingface}
+            >Hugging Face</a
+          >
+          <a class="hover:text-fg" href={`mailto:${site.email}`}>Email</a>
+        </p>
+        <p>© {new Date().getFullYear()} TigreGótico. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
