@@ -45,7 +45,11 @@ async function fetchStars(slug: string): Promise<number | null> {
     const tok = token();
     if (tok) headers.Authorization = `Bearer ${tok}`;
 
-    const res = await fetch(`https://api.github.com/repos/${slug}`, { headers });
+    // Cap each request so a slow/rate-limited API can't drag out the build.
+    const res = await fetch(`https://api.github.com/repos/${slug}`, {
+      headers,
+      signal: AbortSignal.timeout(6000),
+    });
     if (res.ok) {
       const data = await res.json();
       if (typeof data?.stargazers_count === 'number') {

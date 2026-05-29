@@ -26,12 +26,13 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
 const testimonials = (await getCollection('testimonials')).map((t) => t.data);
 
 // Stats derived from the projects collection (no invented numbers).
-const ovosPlugins = allProjects.filter((p) => p.category.startsWith('OVOS')).length;
-const inHouseProjects = allProjects.filter((p) => p.category === 'In-House').length;
+const publicProjects = allProjects.filter((p) => !p.comingSoon).length;
+const ovosCount = allProjects.filter((p) => p.category === 'OpenVoiceOS').length;
+const clientCount = allProjects.filter((p) => p.category === 'Clients').length;
 const stats = [
-  { value: `${allProjects.length}`, label: 'Open-source projects' },
-  { value: `${ovosPlugins}`, label: 'OVOS plugins maintained' },
-  { value: `${inHouseProjects}`, label: 'In-house libraries & tools' },
+  { value: `${publicProjects}`, label: 'Open-source projects' },
+  { value: `${ovosCount}`, label: 'OpenVoiceOS plugins & tools' },
+  { value: `${clientCount}`, label: 'Data-source clients' },
   { value: '100%', label: 'Runs offline & on-device' },
 ];
 
