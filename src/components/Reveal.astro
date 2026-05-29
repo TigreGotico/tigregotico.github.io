@@ -1,0 +1,28 @@
+---
+// Tiny scroll-reveal island. Renders nothing; on mount it observes every
+// [data-reveal] element and adds .is-visible as it enters the viewport.
+// Reduced-motion users get content shown immediately (CSS gate + early-out).
+---
+<script>
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const els = document.querySelectorAll<HTMLElement>('[data-reveal]');
+  if (reduce || !('IntersectionObserver' in window)) {
+    els.forEach((el) => el.classList.add('is-visible'));
+  } else {
+    const io = new IntersectionObserver(
+      (entries, obs) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            const el = e.target as HTMLElement;
+            const delay = el.dataset.revealDelay;
+            if (delay) el.style.transitionDelay = `${delay}ms`;
+            el.classList.add('is-visible');
+            obs.unobserve(el);
+          }
+        }
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
+    );
+    els.forEach((el) => io.observe(el));
+  }
+</script>

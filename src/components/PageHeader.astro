@@ -1,0 +1,28 @@
+---
+// Styled page-header band: eyebrow + large display title + lead, over a
+// subtle mesh gradient with a gradient divider beneath.
+interface Props {
+  eyebrow?: string;
+  title: string;
+  lead?: string;
+}
+const { eyebrow, title, lead } = Astro.props;
+---
+<header class="relative -mx-6 mb-12 overflow-hidden px-6 pb-10 pt-4 sm:pb-12">
+  <div
+    class="pointer-events-none absolute inset-0 -z-10 opacity-70"
+    style="background: radial-gradient(60% 120% at 12% 0%, rgb(var(--grad-from) / 0.12), transparent 60%), radial-gradient(50% 120% at 92% 10%, rgb(var(--grad-to) / 0.12), transparent 60%);"
+    aria-hidden="true"
+  >
+  </div>
+  <div class="mx-auto max-w-5xl">
+    <div class="max-w-3xl reveal" data-reveal>
+      {eyebrow && <p class="eyebrow mb-4">{eyebrow}</p>}
+      <h1 class="display-1 text-balance" style="font-size: clamp(2.2rem, 1.5rem + 3vw, 3.5rem);">
+        {title}
+      </h1>
+      {lead && <p class="mt-5 max-w-2xl text-lg text-muted">{lead}</p>}
+    </div>
+  </div>
+  <hr class="rule-gradient mt-10" />
+</header>

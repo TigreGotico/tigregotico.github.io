@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import { projectImage } from '../lib/projectImages';
+import Icon from './Icon.astro';
 
 interface Project {
   id: string;
@@ -22,17 +23,41 @@ interface Props {
 
 const { project, withImage = false } = Astro.props;
 const localImg = projectImage(project.imageLocal);
+
+// Per-category accent hue (used to tint the badge) + icon.
+const categoryMeta: Record<string, { hue: number; icon: string; label: string }> = {
+  Platform: { hue: 265, icon: 'layers', label: 'Platform' },
+  'In-House': { hue: 312, icon: 'cpu', label: 'In-House' },
+  'OVOS-Intents': { hue: 200, icon: 'spark', label: 'Intents' },
+  'OVOS-Solvers': { hue: 160, icon: 'cpu', label: 'Solvers' },
+  'OVOS-Embeddings': { hue: 220, icon: 'database', label: 'Embeddings' },
+  'OVOS-STT': { hue: 28, icon: 'mic', label: 'Speech-to-Text' },
+  'OVOS-Translation': { hue: 340, icon: 'globe', label: 'Translation' },
+  'OVOS-Utils': { hue: 285, icon: 'flask', label: 'Utilities' },
+  ILENIA: { hue: 12, icon: 'globe', label: 'ILENIA' },
+};
+const meta = categoryMeta[project.category] ?? {
+  hue: 280,
+  icon: 'spark',
+  label: project.category,
+};
+const badgeStyle = `--h:${meta.hue}; color:hsl(${meta.hue} 70% 55%); background:hsl(${meta.hue} 70% 55% / 0.12); border-color:hsl(${meta.hue} 70% 55% / 0.3);`;
 ---
 
-<article class="card-hover flex h-full flex-col gap-3">
+<article class="card-hover group flex h-full flex-col overflow-hidden reveal" data-reveal>
   {
     withImage && (localImg || project.image) && (
-      <div class="overflow-hidden rounded-lg border border-border bg-bg">
+      <div class="relative -mx-6 -mt-6 mb-5 overflow-hidden border-b border-border bg-bg">
+        <div
+          class="pointer-events-none absolute inset-0 z-10 opacity-70"
+          style="background: linear-gradient(180deg, transparent 45%, rgb(var(--color-surface)) 100%);"
+          aria-hidden="true"
+        />
         {localImg ? (
           <Image
             src={localImg}
             alt={`${project.name} preview`}
-            class="h-40 w-full object-contain"
+            class="h-44 w-full object-contain p-6 transition-transform duration-500 group-hover:scale-[1.04]"
             widths={[320, 640]}
             sizes="(max-width: 640px) 100vw, 320px"
           />
@@ -40,7 +65,7 @@ const localImg = projectImage(project.imageLocal);
           <img
             src={project.image}
             alt={`${project.name} logo`}
-            class="h-40 w-full object-contain"
+            class="h-44 w-full object-contain p-6 transition-transform duration-500 group-hover:scale-[1.04]"
             loading="lazy"
             decoding="async"
           />
@@ -48,29 +73,41 @@ const localImg = projectImage(project.imageLocal);
       </div>
     )
   }
-  <div class="flex items-center gap-2">
-    <h3 class="font-serif text-lg font-semibold">
-      <a href={project.url} class="hover:text-primary" rel="noopener">
-        {project.name}
-      </a>
-    </h3>
+
+  <div class="mb-3 flex items-center justify-between gap-2">
+    <span
+      class="inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-medium"
+      style={badgeStyle}
+    >
+      <Icon name={meta.icon} class="h-3.5 w-3.5" />
+      {meta.label}
+    </span>
     {project.featured && !withImage && (
-      <span class="badge border-primary/50 text-primary">Featured</span>
+      <span class="badge-accent">Featured</span>
     )}
   </div>
-  <p class="flex-1 text-sm text-muted">{project.description}</p>
+
+  <h3 class="display-3 text-lg">
+    <a href={project.url} class="transition-colors hover:text-primary" rel="noopener">
+      {project.name}
+    </a>
+  </h3>
+
+  <p class="mt-2 flex-1 text-sm leading-relaxed text-muted">{project.description}</p>
+
   {
     project.tags.length > 0 && (
-      <ul class="flex flex-wrap gap-1.5">
-        {project.tags.map((tag) => (
+      <ul class="mt-4 flex flex-wrap gap-1.5">
+        {project.tags.slice(0, 4).map((tag) => (
           <li class="badge">{tag}</li>
         ))}
       </ul>
     )
   }
+
   <a
     href={project.url}
-    class="mt-1 inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+    class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary transition-transform group-hover:translate-x-0.5 hover:underline"
     rel="noopener"
   >
     View repository

@@ -56,14 +56,14 @@ const blogPostingLd = {
   publishedTime={post.data.date.toISOString()}
   modifiedTime={post.data.updated?.toISOString()}
 >
-  <article class="space-y-6">
-    <p>
-      <a class="text-sm text-primary hover:underline" href={`${base}/blog`}
+  <article class="mx-auto max-w-3xl">
+    <p class="mb-8">
+      <a class="inline-flex items-center gap-1 font-display text-xs uppercase tracking-[0.2em] text-primary hover:underline" href={`${base}/blog`}
         >&larr; All posts</a
       >
     </p>
-    <header class="space-y-2">
-      <p class="text-sm text-muted">
+    <header class="space-y-5">
+      <p class="flex flex-wrap items-center gap-x-2 font-display text-xs uppercase tracking-[0.18em] text-muted">
         <time datetime={post.data.date.toISOString()}>
           {
             post.data.date.toLocaleDateString('en-US', {
@@ -73,17 +73,17 @@ const blogPostingLd = {
             })
           }
         </time>
-        {post.data.author && <span> · {post.data.author}</span>}
-        {readingMinutes > 0 && <span> · {readingMinutes} min read</span>}
+        {post.data.author && <span>· {post.data.author}</span>}
+        {readingMinutes > 0 && <span>· {readingMinutes} min read</span>}
       </p>
-      <h1 class="text-3xl font-bold">{post.data.title}</h1>
+      <h1 class="display-1" style="font-size: clamp(2rem, 1.4rem + 2.6vw, 3.25rem);">
+        {post.data.title}
+      </h1>
       {
         post.data.tags.length > 0 && (
-          <ul class="flex flex-wrap gap-2 text-xs text-muted">
+          <ul class="flex flex-wrap gap-1.5">
             {post.data.tags.map((tag) => (
-              <li class="rounded-full border border-border px-2 py-0.5">
-                {tag}
-              </li>
+              <li class="badge">{tag}</li>
             ))}
           </ul>
         )
@@ -91,16 +91,30 @@ const blogPostingLd = {
     </header>
 
     {
-      post.data.cover && (
-        <Image
-          src={post.data.cover}
-          alt={post.data.title}
-          class="rounded-lg"
-          widths={[480, 800, 1200]}
-          sizes="(max-width: 800px) 100vw, 800px"
-        />
+      (post.data.cover || post.data.coverExternal) && (
+        <div class="relative mt-8 overflow-hidden rounded-2xl border border-border" style="box-shadow: var(--shadow-elevate);">
+          {post.data.cover ? (
+            <Image
+              src={post.data.cover}
+              alt={post.data.title}
+              class="w-full"
+              widths={[480, 800, 1200]}
+              sizes="(max-width: 800px) 100vw, 800px"
+            />
+          ) : (
+            <img
+              src={post.data.coverExternal}
+              alt={post.data.title}
+              class="w-full"
+              loading="lazy"
+              decoding="async"
+            />
+          )}
+        </div>
       )
     }
+
+    <hr class="rule-gradient my-10" />
 
     <div class="post-body">
       <Content />
@@ -113,17 +127,17 @@ const blogPostingLd = {
           aria-label="More posts"
         >
           {prev ? (
-            <a href={`${base}/blog/${prev.id}`} class="card-hover">
-              <p class="text-xs uppercase tracking-wide text-muted">Newer</p>
-              <p class="mt-1 font-serif font-semibold">{prev.data.title}</p>
+            <a href={`${base}/blog/${prev.id}`} class="card-hover group">
+              <p class="font-display text-xs uppercase tracking-[0.2em] text-primary">&larr; Newer</p>
+              <p class="mt-2 display-3 text-base group-hover:text-primary">{prev.data.title}</p>
             </a>
           ) : (
             <span />
           )}
           {next && (
-            <a href={`${base}/blog/${next.id}`} class="card-hover sm:text-right">
-              <p class="text-xs uppercase tracking-wide text-muted">Older</p>
-              <p class="mt-1 font-serif font-semibold">{next.data.title}</p>
+            <a href={`${base}/blog/${next.id}`} class="card-hover group sm:text-right">
+              <p class="font-display text-xs uppercase tracking-[0.2em] text-primary">Older &rarr;</p>
+              <p class="mt-2 display-3 text-base group-hover:text-primary">{next.data.title}</p>
             </a>
           )}
         </nav>

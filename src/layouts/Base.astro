@@ -2,6 +2,8 @@
 import '../styles/global.css';
 import Seo from '../components/Seo.astro';
 import ThemeToggle from '../components/ThemeToggle.astro';
+import Reveal from '../components/Reveal.astro';
+import Icon from '../components/Icon.astro';
 import { site } from '../data/site';
 
 interface Props {
@@ -26,6 +28,14 @@ const isActive = (href: string) => {
   if (href === '/') return here === target;
   return here === target || here.startsWith(target + '/');
 };
+
+const year = new Date().getFullYear();
+const projectLinks = [
+  { label: 'OpenVoiceOS', href: 'https://github.com/OpenVoiceOS' },
+  { label: 'HiveMind', href: 'https://github.com/JarbasHiveMind' },
+  { label: 'phoonnx', href: 'https://github.com/TigreGotico/phoonnx' },
+  { label: 'ovoscope', href: 'https://github.com/TigreGotico/ovoscope' },
+];
 ---
 
 <!doctype html>
@@ -48,7 +58,7 @@ const isActive = (href: string) => {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Cinzel:wght@500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&family=Cinzel:wght@500;600;700&display=swap"
     />
 
     <!-- Apply persisted/preferred theme before paint to avoid a flash. -->
@@ -67,10 +77,12 @@ const isActive = (href: string) => {
     </script>
   </head>
   <body class="min-h-screen flex flex-col">
+    <div class="grain-overlay" aria-hidden="true"></div>
     <a href="#main" class="skip-link">Skip to content</a>
 
     <header
-      class="sticky top-0 z-40 border-b border-border bg-bg/80 backdrop-blur"
+      id="site-header"
+      class="sticky top-0 z-40 border-b border-transparent transition-all duration-300"
     >
       <nav
         class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 py-4"
@@ -78,10 +90,18 @@ const isActive = (href: string) => {
       >
         <a
           href={navLink('/')}
-          class="font-display text-xl tracking-wide text-fg"
-          >TigreGótico</a
+          class="group inline-flex items-center gap-2 font-display text-xl font-semibold tracking-wide"
         >
-        <ul class="hidden gap-5 text-sm lg:flex">
+          <span
+            class="inline-flex h-7 w-7 items-center justify-center rounded-lg text-primary-fg"
+            style="background: var(--gradient-brand);"
+            aria-hidden="true"
+          >
+            <Icon name="waveform" class="h-4 w-4" />
+          </span>
+          <span class="text-gradient">TigreGótico</span>
+        </a>
+        <ul class="hidden gap-6 text-sm lg:flex">
           {
             site.nav.map((item) => (
               <li>
@@ -89,10 +109,10 @@ const isActive = (href: string) => {
                   href={navLink(item.href)}
                   aria-current={isActive(item.href) ? 'page' : undefined}
                   class:list={[
-                    'transition-colors hover:text-fg',
+                    'nav-link',
                     isActive(item.href)
-                      ? 'font-semibold text-primary'
-                      : 'text-muted',
+                      ? 'font-semibold text-fg'
+                      : 'text-muted hover:text-fg',
                   ]}
                 >
                   {item.label}
@@ -106,7 +126,7 @@ const isActive = (href: string) => {
           <button
             id="nav-toggle"
             type="button"
-            class="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border text-fg hover:border-primary hover:text-primary lg:hidden"
+            class="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border text-fg transition-colors hover:border-primary hover:text-primary lg:hidden"
             aria-label="Toggle navigation menu"
             aria-expanded="false"
             aria-controls="mobile-nav"
@@ -127,7 +147,7 @@ const isActive = (href: string) => {
       </nav>
       <ul
         id="mobile-nav"
-        class="hidden border-t border-border px-6 py-3 text-sm lg:hidden"
+        class="hidden border-t border-border bg-bg/95 px-6 py-3 text-sm backdrop-blur lg:hidden"
       >
         {
           site.nav.map((item) => (
@@ -136,8 +156,10 @@ const isActive = (href: string) => {
                 href={navLink(item.href)}
                 aria-current={isActive(item.href) ? 'page' : undefined}
                 class:list={[
-                  'block py-2 transition-colors hover:text-fg',
-                  isActive(item.href) ? 'font-semibold text-primary' : 'text-muted',
+                  'block rounded-lg px-3 py-2.5 transition-colors hover:bg-surface',
+                  isActive(item.href)
+                    ? 'font-semibold text-primary'
+                    : 'text-muted hover:text-fg',
                 ]}
               >
                 {item.label}
@@ -152,21 +174,38 @@ const isActive = (href: string) => {
       <slot />
     </main>
 
-    <footer class="border-t border-border">
+    <footer class="relative mt-8 border-t border-border">
       <div
-        class="mx-auto grid max-w-5xl gap-8 px-6 py-10 text-sm text-muted sm:grid-cols-3"
+        class="pointer-events-none absolute inset-0 -z-10 opacity-60"
+        style="background: radial-gradient(60% 100% at 50% 0%, rgb(var(--grad-via) / 0.08), transparent 70%);"
+        aria-hidden="true"
       >
-        <div class="space-y-2">
-          <p class="font-display text-lg tracking-wide text-fg">TigreGótico</p>
-          <p>Privacy-first voice technology and FOSS AI.</p>
+      </div>
+      <div class="mx-auto grid max-w-5xl gap-10 px-6 py-14 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="space-y-3 sm:col-span-2 lg:col-span-1">
+          <p class="inline-flex items-center gap-2 font-display text-lg font-semibold tracking-wide">
+            <span
+              class="inline-flex h-6 w-6 items-center justify-center rounded-md text-primary-fg"
+              style="background: var(--gradient-brand);"
+              aria-hidden="true"
+            >
+              <Icon name="waveform" class="h-3.5 w-3.5" />
+            </span>
+            <span class="text-gradient">TigreGótico</span>
+          </p>
+          <p class="text-sm text-muted">
+            Privacy-first voice technology and FOSS AI — built to run on your own
+            hardware.
+          </p>
         </div>
-        <nav aria-label="Footer">
-          <p class="mb-2 font-semibold text-fg">Explore</p>
-          <ul class="space-y-1.5">
+
+        <nav aria-label="Footer navigation">
+          <p class="mb-3 font-display text-xs uppercase tracking-[0.2em] text-fg">Explore</p>
+          <ul class="space-y-2 text-sm text-muted">
             {
               site.nav.map((item) => (
                 <li>
-                  <a class="hover:text-fg" href={navLink(item.href)}>
+                  <a class="transition-colors hover:text-fg" href={navLink(item.href)}>
                     {item.label}
                   </a>
                 </li>
@@ -174,32 +213,64 @@ const isActive = (href: string) => {
             }
           </ul>
         </nav>
+
+        <nav aria-label="Footer projects">
+          <p class="mb-3 font-display text-xs uppercase tracking-[0.2em] text-fg">Projects</p>
+          <ul class="space-y-2 text-sm text-muted">
+            {
+              projectLinks.map((p) => (
+                <li>
+                  <a class="transition-colors hover:text-fg" href={p.href} rel="noopener">
+                    {p.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+
         <div>
-          <p class="mb-2 font-semibold text-fg">Connect</p>
-          <ul class="space-y-1.5">
-            <li><a class="hover:text-fg" href={site.socials.github} rel="noopener">GitHub</a></li>
-            <li><a class="hover:text-fg" href={site.socials.huggingface} rel="noopener">Hugging Face</a></li>
-            <li><a class="hover:text-fg" href={site.socials.openvoiceos} rel="noopener">OpenVoiceOS.org</a></li>
-            <li><a class="hover:text-fg" href={`mailto:${site.email}`}>{site.email}</a></li>
+          <p class="mb-3 font-display text-xs uppercase tracking-[0.2em] text-fg">Connect</p>
+          <ul class="space-y-2 text-sm text-muted">
+            <li><a class="inline-flex items-center gap-1.5 transition-colors hover:text-fg" href={site.socials.github} rel="noopener"><Icon name="github" class="h-4 w-4" />GitHub</a></li>
+            <li><a class="transition-colors hover:text-fg" href={site.socials.huggingface} rel="noopener">Hugging Face</a></li>
+            <li><a class="transition-colors hover:text-fg" href={site.socials.openvoiceos} rel="noopener">OpenVoiceOS.org</a></li>
+            <li><a class="inline-flex items-center gap-1.5 transition-colors hover:text-fg" href={`mailto:${site.email}`}><Icon name="mail" class="h-4 w-4" />{site.email}</a></li>
           </ul>
         </div>
       </div>
       <div class="border-t border-border">
-        <p class="mx-auto max-w-5xl px-6 py-4 text-xs text-muted">
-          © {new Date().getFullYear()} {site.legalName}. Free and open-source software.
+        <p class="mx-auto max-w-5xl px-6 py-5 text-xs text-muted">
+          © {year} {site.legalName}. Free and open-source software.
         </p>
       </div>
     </footer>
+
+    <Reveal />
 
     <script is:inline>
       (function () {
         var btn = document.getElementById('nav-toggle');
         var menu = document.getElementById('mobile-nav');
-        if (!btn || !menu) return;
-        btn.addEventListener('click', function () {
-          var open = menu.classList.toggle('hidden') === false;
-          btn.setAttribute('aria-expanded', String(open));
-        });
+        if (btn && menu) {
+          btn.addEventListener('click', function () {
+            var open = menu.classList.toggle('hidden') === false;
+            btn.setAttribute('aria-expanded', String(open));
+          });
+        }
+        // Translucent backdrop-blur once the page has scrolled.
+        var header = document.getElementById('site-header');
+        if (header) {
+          var onScroll = function () {
+            if (window.scrollY > 8) {
+              header.classList.add('is-scrolled');
+            } else {
+              header.classList.remove('is-scrolled');
+            }
+          };
+          onScroll();
+          window.addEventListener('scroll', onScroll, { passive: true });
+        }
       })();
     </script>
   </body>

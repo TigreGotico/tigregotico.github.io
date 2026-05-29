@@ -8,19 +8,32 @@ interface Props {
   lead?: string;
   /** Anchor id for in-page links. */
   id?: string;
+  /** Center the header (and constrain it). */
+  center?: boolean;
   class?: string;
 }
 
-const { eyebrow, title, lead, id, class: className } = Astro.props;
+const { eyebrow, title, lead, id, center = false, class: className } =
+  Astro.props;
 ---
 
-<section id={id} class:list={['py-12', className]}>
+<section id={id} class:list={['py-14 sm:py-16', className]}>
   {
     (eyebrow || title || lead) && (
-      <header class="mb-8 max-w-2xl">
-        {eyebrow && <p class="eyebrow mb-2">{eyebrow}</p>}
-        {title && <h2 class="font-serif text-2xl font-semibold sm:text-3xl">{title}</h2>}
-        {lead && <p class="mt-3 text-muted">{lead}</p>}
+      <header
+        class:list={[
+          'mb-10 max-w-2xl reveal',
+          center && 'mx-auto text-center',
+        ]}
+        data-reveal
+      >
+        {eyebrow && (
+          <p class:list={['eyebrow mb-3', center && 'justify-center']}>
+            {eyebrow}
+          </p>
+        )}
+        {title && <h2 class="display-2">{title}</h2>}
+        {lead && <p class="mt-4 text-lg text-muted">{lead}</p>}
       </header>
     )
   }

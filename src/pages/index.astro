@@ -2,6 +2,8 @@
 import Base from '../layouts/Base.astro';
 import Section from '../components/Section.astro';
 import ProjectCard from '../components/ProjectCard.astro';
+import Hero from '../components/Hero.astro';
+import Icon from '../components/Icon.astro';
 import { getEntry, getCollection, render } from 'astro:content';
 import { site } from '../data/site';
 
@@ -11,54 +13,69 @@ const link = (href: string) => `${base}${href}`;
 const home = await getEntry('pages', 'home');
 const { Content } = await render(home!);
 
-const featured = (await getCollection('projects'))
-  .filter((p) => p.data.featured)
-  .map((p) => p.data);
+const allProjects = (await getCollection('projects')).map((p) => p.data);
+const featured = allProjects.filter((p) => p.featured);
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 3);
 
+// Stats derived from the projects collection (no invented numbers).
+const ovosPlugins = allProjects.filter((p) => p.category.startsWith('OVOS')).length;
+const ileniaRepos = allProjects.filter((p) => p.category === 'ILENIA').length;
+const stats = [
+  { value: `${allProjects.length}`, label: 'Open-source projects' },
+  { value: `${ovosPlugins}`, label: 'OVOS plugins maintained' },
+  { value: `${ileniaRepos}`, label: 'ILENIA multilingual repos' },
+  { value: '100%', label: 'Runs offline & on-device' },
+];
+
 const whatWeDo = [
   {
+    icon: 'shield',
     title: 'Privacy-first voice assistants',
     body: 'On-device OpenVoiceOS deployments that keep audio and data on your own hardware — GDPR-compliant by design.',
   },
   {
+    icon: 'mic',
     title: 'Custom offline TTS voices',
     body: 'High-quality text-to-speech voices trained for your language or brand, running fully offline.',
   },
   {
+    icon: 'globe',
     title: 'Minority & Lusophone speech tech',
     body: 'Phonemization, STT, and TTS for under-served languages that mainstream tools overlook.',
   },
   {
+    icon: 'network',
     title: 'HiveMind device meshes',
     body: 'Distributed voice across satellites and hubs with fine-grained permissions and no central cloud.',
   },
 ];
+
+// "The stack we steward" word-marks.
+const stack = ['OpenVoiceOS', 'HiveMind', 'ILENIA'];
 ---
 
 <Base title={home!.data.title} description={home!.data.description}>
-  <!-- Hero -->
-  <section class="motion-safe-fade relative overflow-hidden rounded-2xl border border-border bg-surface px-6 py-16 sm:px-12 sm:py-20">
-    <div
-      class="pointer-events-none absolute inset-0 -z-10 opacity-60"
-      style="background: radial-gradient(60% 80% at 80% 10%, rgb(var(--color-accent) / 0.18), transparent 70%), radial-gradient(50% 60% at 10% 90%, rgb(var(--color-primary) / 0.16), transparent 70%);"
-      aria-hidden="true"
-    >
-    </div>
-    <p class="eyebrow mb-3">Privacy-First Voice AI</p>
-    <h1 class="max-w-3xl font-serif text-4xl font-bold leading-tight sm:text-5xl">
-      Voice technology that respects your data.
-    </h1>
-    <div class="prose-content mt-5 max-w-2xl text-lg">
-      <Content />
-    </div>
-    <div class="mt-8 flex flex-wrap gap-3">
-      <a class="btn-primary" href={link('/contact')}>Start a project</a>
-      <a class="btn-ghost" href={link('/projects')}>Explore our work</a>
-    </div>
+  <Hero link={link}>
+    <Content />
+  </Hero>
+
+  <!-- Stats band -->
+  <section class="surface-alt -mx-6 border-y border-border px-6 py-10">
+    <dl class="mx-auto grid max-w-5xl grid-cols-2 gap-6 sm:grid-cols-4">
+      {
+        stats.map((s, i) => (
+          <div class="reveal text-center sm:text-left" data-reveal data-reveal-delay={i * 80}>
+            <dt class="text-gradient font-serif text-4xl font-bold sm:text-5xl">
+              {s.value}
+            </dt>
+            <dd class="mt-1 text-sm text-muted">{s.label}</dd>
+          </div>
+        ))
+      }
+    </dl>
   </section>
 
   <!-- What we do -->
@@ -67,43 +84,61 @@ const whatWeDo = [
     title="FOSS voice technology, end to end"
     lead="As core maintainers of OpenVoiceOS and HiveMind, we build the whole stack — and we keep it open."
   >
-    <div class="grid gap-4 sm:grid-cols-2">
+    <div class="grid gap-5 sm:grid-cols-2">
       {
-        whatWeDo.map((item) => (
-          <div class="card">
-            <h3 class="font-serif text-lg font-semibold">{item.title}</h3>
-            <p class="mt-2 text-sm text-muted">{item.body}</p>
+        whatWeDo.map((item, i) => (
+          <div class="card-hover reveal" data-reveal data-reveal-delay={i * 70}>
+            <span class="icon-chip mb-4"><Icon name={item.icon} /></span>
+            <h3 class="display-3 text-lg">{item.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-muted">{item.body}</p>
           </div>
         ))
       }
     </div>
   </Section>
 
+  <hr class="rule-gradient" />
+
+  <!-- The stack we steward -->
+  <section class="py-12">
+    <p class="eyebrow mb-6 justify-center text-center reveal" data-reveal>The stack we steward</p>
+    <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 reveal" data-reveal data-reveal-delay="80">
+      {
+        stack.map((name) => (
+          <span class="font-display text-2xl uppercase tracking-[0.18em] text-fg/70 transition-colors hover:text-fg sm:text-3xl">
+            {name}
+          </span>
+        ))
+      }
+    </div>
+  </section>
+
   <!-- Featured projects -->
   <Section
     eyebrow="Featured"
     title="Projects we maintain"
     lead="A selection of the open-source platforms and tools we build and steward."
+    class="surface-alt -mx-6 rounded-3xl px-6"
   >
-    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {featured.map((project) => <ProjectCard project={project} withImage />)}
     </div>
-    <p class="mt-6">
-      <a class="font-medium text-primary hover:underline" href={link('/projects')}
-        >See all projects &rarr;</a
-      >
+    <p class="mt-8">
+      <a class="inline-flex items-center gap-1 font-medium text-primary hover:underline" href={link('/projects')}>
+        See all projects <Icon name="arrow" class="h-4 w-4" />
+      </a>
     </p>
   </Section>
 
   <!-- Latest posts -->
   <Section eyebrow="From the blog" title="Latest writing">
-    <ul class="grid gap-4 sm:grid-cols-3">
+    <ul class="grid gap-5 sm:grid-cols-3">
       {
-        posts.map((post) => (
-          <li>
-            <a href={`${base}/blog/${post.id}`} class="card-hover block h-full">
+        posts.map((post, i) => (
+          <li class="reveal" data-reveal data-reveal-delay={i * 70}>
+            <a href={`${base}/blog/${post.id}`} class="card-hover group flex h-full flex-col">
               <time
-                class="text-xs uppercase tracking-wide text-muted"
+                class="font-display text-xs uppercase tracking-[0.2em] text-muted"
                 datetime={post.data.date.toISOString()}
               >
                 {post.data.date.toLocaleDateString('en-US', {
@@ -112,7 +147,7 @@ const whatWeDo = [
                   day: 'numeric',
                 })}
               </time>
-              <h3 class="mt-2 font-serif text-base font-semibold">
+              <h3 class="mt-2 display-3 text-base group-hover:text-primary">
                 {post.data.title}
               </h3>
             </a>
@@ -120,23 +155,30 @@ const whatWeDo = [
         ))
       }
     </ul>
-    <p class="mt-6">
-      <a class="font-medium text-primary hover:underline" href={link('/blog')}
-        >Read the blog &rarr;</a
-      >
+    <p class="mt-8">
+      <a class="inline-flex items-center gap-1 font-medium text-primary hover:underline" href={link('/blog')}>
+        Read the blog <Icon name="arrow" class="h-4 w-4" />
+      </a>
     </p>
   </Section>
 
   <!-- CTA -->
-  <section class="mt-8 rounded-2xl border border-primary/40 bg-surface px-6 py-12 text-center">
-    <h2 class="font-serif text-2xl font-semibold sm:text-3xl">
+  <section class="relative my-10 overflow-hidden rounded-3xl border border-border px-6 py-16 text-center">
+    <div
+      class="pointer-events-none absolute inset-0 -z-10 opacity-90"
+      style="background: var(--gradient-brand-soft);"
+      aria-hidden="true"
+    >
+    </div>
+    <p class="eyebrow mb-4 justify-center reveal" data-reveal>Let's build</p>
+    <h2 class="display-2 reveal" data-reveal data-reveal-delay="60">
       Have a voice project in mind?
     </h2>
-    <p class="mx-auto mt-3 max-w-xl text-muted">
+    <p class="mx-auto mt-4 max-w-xl text-muted reveal" data-reveal data-reveal-delay="120">
       Talk to the people who maintain the stack. No data brokers, no lock-in — just
       private, open voice technology built to last.
     </p>
-    <div class="mt-6 flex flex-wrap justify-center gap-3">
+    <div class="mt-7 flex flex-wrap justify-center gap-3 reveal" data-reveal data-reveal-delay="180">
       <a class="btn-primary" href={link('/contact')}>Get in touch</a>
       <a class="btn-ghost" href={`mailto:${site.email}`}>{site.email}</a>
     </div>

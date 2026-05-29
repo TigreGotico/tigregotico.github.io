@@ -1,4 +1,6 @@
 ---
+import Icon from './Icon.astro';
+
 interface Props {
   title: string;
   description: string;
@@ -8,16 +10,35 @@ interface Props {
   /** Optional small meta line (e.g. year, type). */
   meta?: string;
   tags?: string[];
+  /** Icon name from the Icon component. */
+  icon?: string;
 }
 
-const { title, description, url, cta = 'Open', meta, tags = [] } = Astro.props;
+const {
+  title,
+  description,
+  url,
+  cta = 'Open',
+  meta,
+  tags = [],
+  icon = 'spark',
+} = Astro.props;
 const external = url.startsWith('http');
 ---
 
-<article class="card-hover flex h-full flex-col gap-3">
-  {meta && <p class="text-xs uppercase tracking-wide text-muted">{meta}</p>}
-  <h3 class="font-serif text-lg font-semibold">{title}</h3>
-  <p class="flex-1 text-sm text-muted">{description}</p>
+<article class="card-hover group flex h-full flex-col gap-3 reveal" data-reveal>
+  <div class="flex items-start gap-3">
+    <span class="icon-chip shrink-0"><Icon name={icon} /></span>
+    <div class="min-w-0">
+      {meta && (
+        <p class="font-display text-xs uppercase tracking-[0.2em] text-muted">
+          {meta}
+        </p>
+      )}
+      <h3 class="display-3 text-lg">{title}</h3>
+    </div>
+  </div>
+  <p class="flex-1 text-sm leading-relaxed text-muted">{description}</p>
   {
     tags.length > 0 && (
       <ul class="flex flex-wrap gap-1.5">
@@ -29,7 +50,7 @@ const external = url.startsWith('http');
   }
   <a
     href={url}
-    class="mt-1 inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+    class="mt-1 inline-flex items-center gap-1 text-sm font-medium text-primary transition-transform group-hover:translate-x-0.5 hover:underline"
     rel={external ? 'noopener' : undefined}
   >
     {cta}
