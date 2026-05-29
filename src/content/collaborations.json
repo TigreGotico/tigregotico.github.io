@@ -16,7 +16,7 @@
   {
     "id": "ilenia",
     "name": "ILENIA",
-    "description": "A one-time subcontracted project for multilingual speech technology that TigreGótico contributed to, delivering speech-to-text and text-to-speech components across several languages.",
+    "description": "A one-time subcontracted project to bring Catalan, Spanish, Galician, and Basque support to OpenVoiceOS and improve its localization tooling — delivering STT and TTS plugins and dialog/normalization components for those languages.",
     "url": "https://proyectoilenia.es",
     "repositories": []
   }
