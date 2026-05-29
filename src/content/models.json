@@ -1,8 +1,8 @@
 [
   {
     "id": "phoonnx-tts",
-    "title": "Phoneme ONNX TTS Models",
-    "description": "Text-to-Speech models using phoneme input with ONNX format for optimized inference.",
+    "title": "Miro & Dii — Universal Voices",
+    "description": "Two consistent TTS voice identities — Miro (male) and Dii (female) — that sound the same across every language, built with OpenVoiceOS. Monolingual models per language, including endangered ones like Frisian, Asturian, and Aragonese.",
     "icon": "Package",
     "url": "https://huggingface.co/collections/TigreGotico/phoonnx-tts-models"
   },
