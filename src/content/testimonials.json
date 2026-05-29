@@ -33,9 +33,17 @@
   },
   {
     "id": "visio",
-    "org": "Visio",
+    "org": "Koninklijke Visio",
     "url": "https://www.visio.org",
-    "quote": "A statement from Visio will appear here once provided.",
+    "quote": "A statement from Koninklijke Visio will appear here once provided.",
+    "author": "Name, Role — pending",
+    "placeholder": true
+  },
+  {
+    "id": "neonai",
+    "org": "Neon AI",
+    "url": "https://neon.ai",
+    "quote": "A statement from Neon AI will appear here once provided.",
     "author": "Name, Role — pending",
     "placeholder": true
   }
