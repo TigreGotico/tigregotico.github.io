@@ -13,14 +13,14 @@
     --color-fg: 26 22 30;
     --color-muted: 88 82 96;
     --color-border: 226 220 228;
-    --color-primary: 124 58 237;
-    --color-primary-fg: 255 255 255;
-    --color-accent: 199 36 177;
+    --color-primary: 180 83 9;
+    --color-primary-fg: 26 20 10;
+    --color-accent: 217 119 6;
 
-    /* Gradient + glow system. */
-    --grad-from: 139 92 246;
-    --grad-via: 168 56 214;
-    --grad-to: 219 39 119;
+    /* Gradient + glow system — amber to ember. */
+    --grad-from: 245 158 11;
+    --grad-via: 217 119 6;
+    --grad-to: 180 83 9;
     --gradient-brand: linear-gradient(
       120deg,
       rgb(var(--grad-from)),
@@ -41,20 +41,20 @@
   }
 
   :root.dark {
-    /* Dark theme — near-black with a cool violet tint. */
-    --color-bg: 9 8 13;
-    --color-surface: 19 17 26;
-    --color-elevated: 27 24 36;
-    --color-fg: 244 242 248;
-    --color-muted: 167 161 180;
-    --color-border: 42 38 54;
-    --color-primary: 178 150 255;
-    --color-primary-fg: 12 10 18;
-    --color-accent: 240 120 220;
+    /* Dark theme — warm near-black, gold ink. */
+    --color-bg: 13 12 10;
+    --color-surface: 23 21 17;
+    --color-elevated: 32 28 22;
+    --color-fg: 245 242 236;
+    --color-muted: 176 168 152;
+    --color-border: 52 46 36;
+    --color-primary: 251 191 36;
+    --color-primary-fg: 26 20 10;
+    --color-accent: 245 158 11;
 
-    --grad-from: 139 92 246;
-    --grad-via: 192 78 234;
-    --grad-to: 244 114 182;
+    --grad-from: 251 191 36;
+    --grad-via: 245 158 11;
+    --grad-to: 180 83 9;
 
     --shadow-elevate: 0 1px 2px rgb(0 0 0 / 0.5),
       0 16px 40px -18px rgb(0 0 0 / 0.7);
@@ -335,9 +335,10 @@
   line-height: 0.78;
 }
 
-/* Scroll-reveal: hidden until the observer adds .is-visible. */
+/* Scroll-reveal: hidden until the observer adds .is-visible. Gated on `html.js`
+   so without JS (or if the observer never runs) all content stays visible. */
 @media (prefers-reduced-motion: no-preference) {
-  .reveal {
+  html.js .reveal {
     opacity: 0;
     transform: translateY(18px);
     transition:
@@ -345,7 +346,7 @@
       transform 0.6s ease;
     will-change: opacity, transform;
   }
-  .reveal.is-visible {
+  html.js .reveal.is-visible {
     opacity: 1;
     transform: none;
   }
