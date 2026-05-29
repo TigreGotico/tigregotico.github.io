@@ -46,5 +46,13 @@
     "quote": "A statement from Neon AI will appear here once provided.",
     "author": "Name, Role — pending",
     "placeholder": true
+  },
+  {
+    "id": "smartgic",
+    "org": "Smartgic",
+    "url": "https://github.com/smartgic",
+    "quote": "A statement from Smartgic will appear here once provided.",
+    "author": "Name, Role — pending",
+    "placeholder": true
   }
 ]
