@@ -53,11 +53,13 @@ corpora for speech and language models.
 
 ## We Voice-Enable Anything
 
-We make voice technology work on your terms. Our specialty is integrating any
-platform into the **Open Voice Operating System** — voice-enabling a new device,
-wiring in a specific Text-to-Speech (TTS) or Speech-to-Text (STT) service, or
-building a custom component from scratch. We add functionality directly to the
-Open Voice Operating System, or make it drive whatever you need it to.
+We create voice interfaces for anything. Whatever you want to talk to — a device,
+an app, a service, or a whole product line — we build the voice layer for it,
+reusing the expertise and battle-tested stack we've built around the **Open Voice
+Operating System** and **HiveMind**. Custom wake words, Text-to-Speech (TTS) and
+Speech-to-Text (STT) wiring, intent handling, and bespoke components — assembled
+from a proven open-source foundation instead of from scratch, and running on your
+own hardware.
 
 ## Custom Offline TTS Voice Training
 
