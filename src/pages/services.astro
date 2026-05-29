@@ -21,4 +21,10 @@ const { Content } = await render(page!);
     <a class="btn-primary" href={`${base}/contact`}>Contact us</a>
     <a class="btn-ghost" href={`mailto:${site.email}`}>{site.email}</a>
   </div>
+
+  <p class="mt-6 max-w-3xl text-sm text-muted">
+    This site is a live sample of our static web-building: prerendered pages, no
+    server to run, no database to keep. The palette switcher in the header is
+    part of it — swap the color scheme and it persists, all in the browser.
+  </p>
 </Base>

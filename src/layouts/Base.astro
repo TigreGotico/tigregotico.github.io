@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Seo from '../components/Seo.astro';
 import ThemeToggle from '../components/ThemeToggle.astro';
+import PaletteSelector from '../components/PaletteSelector.astro';
 import Reveal from '../components/Reveal.astro';
 import Icon from '../components/Icon.astro';
 import { site } from '../data/site';
@@ -73,7 +74,12 @@ const projectLinks = [
           if (stored === 'dark' || (!stored && prefersDark)) {
             document.documentElement.classList.add('dark');
           }
-        } catch (e) {}
+          var palette = localStorage.getItem('palette');
+          document.documentElement.dataset.theme =
+            palette === 'hivemind' || palette === 'noir' ? palette : 'tiger';
+        } catch (e) {
+          document.documentElement.dataset.theme = 'tiger';
+        }
       })();
     </script>
   </head>
@@ -123,6 +129,7 @@ const projectLinks = [
           }
         </ul>
         <div class="flex items-center gap-2">
+          <PaletteSelector id="palette-desktop" />
           <ThemeToggle />
           <button
             id="nav-toggle"
@@ -168,6 +175,12 @@ const projectLinks = [
             </li>
           ))
         }
+        <li class="mt-1 flex items-center justify-between gap-3 border-t border-border px-3 pb-1 pt-3">
+          <span class="font-display text-xs uppercase tracking-[0.2em] text-muted">
+            Appearance
+          </span>
+          <PaletteSelector id="palette-mobile" compact />
+        </li>
       </ul>
     </header>
 
