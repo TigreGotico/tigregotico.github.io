@@ -27,8 +27,6 @@ jobs:
         uses: withastro/action@v3
         with:
           node-version: ${{ steps.nvm.outputs.version }}
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
 
   deploy:
     needs: build

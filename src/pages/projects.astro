@@ -4,12 +4,9 @@ import Section from '../components/Section.astro';
 import PageHeader from '../components/PageHeader.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import { getCollection } from 'astro:content';
-import { loadStars } from '../lib/github';
 
 const projects = (await getCollection('projects')).map((p) => p.data);
 const featured = projects.filter((p) => p.featured);
-
-const stars = await loadStars(projects);
 
 // Preferred display order for the category filter.
 const categoryOrder = [
@@ -103,7 +100,7 @@ const collaborations = (await getCollection('collaborations')).map((c) => c.data
 
   <Section eyebrow="Featured" title="Highlights">
     <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {featured.map((project) => <ProjectCard project={project} stars={stars[project.id]} withImage />)}
+      {featured.map((project) => <ProjectCard project={project} withImage />)}
     </div>
   </Section>
 
@@ -139,7 +136,7 @@ const collaborations = (await getCollection('collaborations')).map((c) => c.data
       {
         projects.map((project) => (
           <div class="project-item" data-category={project.category}>
-            <ProjectCard project={project} stars={stars[project.id]} />
+            <ProjectCard project={project} />
           </div>
         ))
       }

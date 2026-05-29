@@ -14,18 +14,17 @@ interface Project {
   imageLocal?: string;
   featured: boolean;
   comingSoon?: boolean;
+  selfHosted?: boolean;
 }
 
 interface Props {
   project: Project;
   /** Show the thumbnail (featured layout). */
   withImage?: boolean;
-  /** GitHub stargazer count, resolved at build time. Omitted when unavailable. */
-  stars?: number;
 }
 
-const { project, withImage = false, stars } = Astro.props;
-const showStars = typeof stars === 'number' && !!project.url;
+const { project, withImage = false } = Astro.props;
+const selfHosted = project.selfHosted !== false;
 const localImg = projectImage(project.imageLocal);
 
 // Per-category accent hue (used to tint the badge) + icon.
@@ -114,11 +113,13 @@ const badgeStyle = `--h:${meta.hue}; color:hsl(${meta.hue} 70% 55%); background:
   }
 
   <div class="mt-4 flex items-center justify-between gap-2">
-    {showStars && (
-      <span class="inline-flex items-center gap-1 text-sm font-medium text-muted" title={`${stars} GitHub stars`}>
-        <span class="text-base leading-none text-primary" aria-hidden="true">&#9733;</span>
-        <span>{stars}</span>
-        <span class="sr-only">GitHub stars</span>
+    {selfHosted && (
+      <span
+        class="inline-flex items-center gap-1 text-xs font-medium text-muted"
+        title="Runs on your own hardware — no mandatory cloud"
+      >
+        <Icon name="home" class="h-3.5 w-3.5 text-primary" />
+        Self-hosted
       </span>
     )}
     {
