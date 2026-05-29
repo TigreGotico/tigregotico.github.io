@@ -1,6 +1,6 @@
 ---
 title: "Services"
-description: "Engineering engagements: data extraction, clean APIs & dataset construction; platform integration; custom offline TTS voice training; and privacy-first web development."
+description: "Engineering engagements: data extraction, clean APIs & dataset construction; voice interfaces; custom offline TTS voice training and speech-recognition (ASR) model fine-tuning; and privacy-first web development."
 order: 2
 ---
 
@@ -68,6 +68,16 @@ fully-offline Text-to-Speech voices. Bring a dataset for a specific language, or
 clone a reference voice — the result is a fast, private TTS model that runs
 locally on your device and slots straight into OpenVoiceOS or Home Assistant. You
 keep full control of your data.
+
+## Fine-Tuned Speech Recognition for Your Language & Domain
+
+We fine-tune state-of-the-art speech-to-text models — Zipformer, Parakeet,
+Whisper, and others — for your specific language, accent, and domain vocabulary,
+so recognition holds up on the words and conditions that actually matter to you.
+When the training data doesn't exist yet, we find it — and synthesize it where
+appropriate — using our dataset-construction toolchain. This work is backed by
+our partnership with **Alpha Cephei**, bringing decades of automatic speech
+recognition expertise to your project.
 
 ## Minority & Lusophone Language Speech Tech
 
