@@ -658,5 +658,380 @@
       "scraper"
     ],
     "featured": false
+  },
+  {
+    "id": "unblock_requests",
+    "name": "unblock_requests",
+    "description": "A requests.Session subclass that bypasses Cloudflare (curl_cffi impersonation, FlareSolverr, Wayback fallback) — the anti-bot transport behind our scrapers.",
+    "url": "https://github.com/TigreGotico/unblock_requests",
+    "category": "Tools",
+    "tags": [
+      "anti-bot",
+      "scraping",
+      "HTTP"
+    ],
+    "featured": false
+  },
+  {
+    "id": "anon_requests",
+    "name": "anon_requests",
+    "description": "Anonymous HTTP with IP rotation; composes with unblock_requests for rotation plus bot-wall bypass.",
+    "url": "https://github.com/TigreGotico/anon_requests",
+    "category": "Tools",
+    "tags": [
+      "IP rotation",
+      "privacy",
+      "HTTP"
+    ],
+    "featured": false
+  },
+  {
+    "id": "json_database",
+    "name": "json_database",
+    "description": "A simple JSON-file database for Python.",
+    "url": "https://github.com/TigreGotico/json_database",
+    "category": "Tools",
+    "tags": [
+      "database",
+      "JSON",
+      "Python"
+    ],
+    "featured": false
+  },
+  {
+    "id": "metadatarr",
+    "name": "metadatarr",
+    "description": "Pydantic-powered media-metadata clients and a keyless cross-source entity resolver.",
+    "url": "https://github.com/TigreGotico/metadatarr",
+    "category": "Clients",
+    "tags": [
+      "media metadata",
+      "resolver",
+      "Pydantic"
+    ],
+    "featured": false
+  },
+  {
+    "id": "media-archivist",
+    "name": "media-archivist",
+    "description": "Index, canonicalize, deduplicate and serve media catalogues from YouTube and other sources.",
+    "url": "https://github.com/TigreGotico/media-archivist",
+    "category": "Clients",
+    "tags": [
+      "media",
+      "catalogue",
+      "indexing"
+    ],
+    "featured": false
+  },
+  {
+    "id": "pywikihow",
+    "name": "PyWikiHow",
+    "description": "Python client for WikiHow.",
+    "url": "https://github.com/TigreGotico/PyWikiHow",
+    "category": "Clients",
+    "tags": [
+      "WikiHow",
+      "scraper",
+      "API"
+    ],
+    "featured": false
+  },
+  {
+    "id": "tugalex",
+    "name": "tugalex",
+    "description": "A lexicon handler and linguistic utility for Portuguese dialects.",
+    "url": "https://github.com/TigreGotico/tugalex",
+    "category": "Speech & Language",
+    "tags": [
+      "Portuguese",
+      "lexicon",
+      "NLP"
+    ],
+    "featured": false
+  },
+  {
+    "id": "tugamorph",
+    "name": "tugamorph",
+    "description": "Rule-based morphological analyzer for Portuguese — segments words into morphemes.",
+    "url": "https://github.com/TigreGotico/tugamorph",
+    "category": "Speech & Language",
+    "tags": [
+      "Portuguese",
+      "morphology",
+      "NLP"
+    ],
+    "featured": false
+  },
+  {
+    "id": "tugatagger",
+    "name": "tugatagger",
+    "description": "Lightweight Portuguese part-of-speech (POS) tagger.",
+    "url": "https://github.com/TigreGotico/tugatagger",
+    "category": "Speech & Language",
+    "tags": [
+      "Portuguese",
+      "POS",
+      "NLP"
+    ],
+    "featured": false
+  },
+  {
+    "id": "mwl_phonemizer",
+    "name": "mwl_phonemizer",
+    "description": "Rule-based phonemizer for the Mirandese language.",
+    "url": "https://github.com/TigreGotico/mwl_phonemizer",
+    "category": "Speech & Language",
+    "tags": [
+      "Mirandese",
+      "phonemizer",
+      "G2P"
+    ],
+    "featured": false
+  },
+  {
+    "id": "g2p_barranquenho",
+    "name": "g2p_barranquenho",
+    "description": "Grapheme-to-phoneme for Barranquenho.",
+    "url": "https://github.com/TigreGotico/g2p_barranquenho",
+    "category": "Speech & Language",
+    "tags": [
+      "Barranquenho",
+      "G2P",
+      "phonetics"
+    ],
+    "featured": false
+  },
+  {
+    "id": "sotaque_forcado",
+    "name": "sotaque_forcado",
+    "description": "Phonemizer for European Portuguese regional accents.",
+    "url": "https://github.com/TigreGotico/sotaque_forcado",
+    "category": "Speech & Language",
+    "tags": [
+      "Portuguese",
+      "accents",
+      "phonemizer"
+    ],
+    "featured": false
+  },
+  {
+    "id": "phonematcher",
+    "name": "phonematcher",
+    "description": "Phonetic fuzzy searching and segment-to-segment distance.",
+    "url": "https://github.com/TigreGotico/phonematcher",
+    "category": "Speech & Language",
+    "tags": [
+      "phonetics",
+      "fuzzy match",
+      "search"
+    ],
+    "featured": false
+  },
+  {
+    "id": "simple_NER",
+    "name": "simple_NER",
+    "description": "Simple rule-based named-entity recognition.",
+    "url": "https://github.com/TigreGotico/simple_NER",
+    "category": "NLP & ML",
+    "tags": [
+      "NER",
+      "rule-based",
+      "NLP"
+    ],
+    "featured": false
+  },
+  {
+    "id": "little_questions",
+    "name": "little_questions",
+    "description": "Parse and classify questions.",
+    "url": "https://github.com/TigreGotico/little_questions",
+    "category": "NLP & ML",
+    "tags": [
+      "questions",
+      "classification",
+      "NLP"
+    ],
+    "featured": false
+  },
+  {
+    "id": "pronomial",
+    "name": "pronomial",
+    "description": "Coreference resolution via pronoun POS and word-gender heuristics.",
+    "url": "https://github.com/TigreGotico/pronomial",
+    "category": "NLP & ML",
+    "tags": [
+      "coreference",
+      "NLP"
+    ],
+    "featured": false
+  },
+  {
+    "id": "jurebes",
+    "name": "jurebes",
+    "description": "A lightweight intent engine.",
+    "url": "https://github.com/TigreGotico/jurebes",
+    "category": "NLP & ML",
+    "tags": [
+      "intent",
+      "NLU",
+      "NLP"
+    ],
+    "featured": false
+  },
+  {
+    "id": "difficult_dialogs",
+    "name": "difficult_dialogs",
+    "description": "Tools to guide conversations toward an objective.",
+    "url": "https://github.com/TigreGotico/difficult_dialogs",
+    "category": "NLP & ML",
+    "tags": [
+      "dialog",
+      "conversation",
+      "NLP"
+    ],
+    "featured": false
+  },
+  {
+    "id": "lingua-podre",
+    "name": "lingua-podre",
+    "description": "Dead-simple word-list-based pure-Python language detector.",
+    "url": "https://github.com/TigreGotico/lingua-podre",
+    "category": "NLP & ML",
+    "tags": [
+      "language detection",
+      "NLP"
+    ],
+    "featured": false
+  },
+  {
+    "id": "emotion-algebra",
+    "name": "emotion-algebra",
+    "description": "Structured data and operations for working with human emotions.",
+    "url": "https://github.com/TigreGotico/emotion-algebra",
+    "category": "NLP & ML",
+    "tags": [
+      "emotions",
+      "NLP",
+      "research"
+    ],
+    "featured": false
+  },
+  {
+    "id": "deepmoji-onnx",
+    "name": "deepmoji-onnx",
+    "description": "DeepMoji emotion/emoji prediction in ONNX.",
+    "url": "https://github.com/TigreGotico/deepmoji-onnx",
+    "category": "NLP & ML",
+    "tags": [
+      "emotions",
+      "ONNX",
+      "ML"
+    ],
+    "featured": false
+  },
+  {
+    "id": "markovonnx",
+    "name": "markovonnx",
+    "description": "Markov-chain models exported to ONNX.",
+    "url": "https://github.com/TigreGotico/markovonnx",
+    "category": "NLP & ML",
+    "tags": [
+      "Markov",
+      "ONNX",
+      "ML"
+    ],
+    "featured": false
+  },
+  {
+    "id": "ovos-gguf-plugin",
+    "name": "ovos-gguf-plugin",
+    "description": "Local LLM (GGUF) plugin for OpenVoiceOS.",
+    "url": "https://github.com/TigreGotico/ovos-gguf-plugin",
+    "category": "OpenVoiceOS",
+    "tags": [
+      "LLM",
+      "GGUF",
+      "OVOS"
+    ],
+    "featured": false
+  },
+  {
+    "id": "ovos-markov-pipeline-plugin",
+    "name": "ovos-markov-pipeline-plugin",
+    "description": "OVOS intent pipeline using a Markov-chain perplexity ensemble.",
+    "url": "https://github.com/TigreGotico/ovos-markov-pipeline-plugin",
+    "category": "OpenVoiceOS",
+    "tags": [
+      "intent",
+      "Markov",
+      "OVOS"
+    ],
+    "featured": false
+  },
+  {
+    "id": "ovos-stt-plugin-whisper",
+    "name": "ovos-stt-plugin-whisper",
+    "description": "Whisper speech-to-text plugin for OpenVoiceOS.",
+    "url": "https://github.com/TigreGotico/ovos-stt-plugin-whisper",
+    "category": "OpenVoiceOS",
+    "tags": [
+      "STT",
+      "Whisper",
+      "OVOS"
+    ],
+    "featured": false
+  },
+  {
+    "id": "ovos-stt-plugin-sherpa-onnx",
+    "name": "ovos-stt-plugin-sherpa-onnx",
+    "description": "Sherpa-ONNX speech-to-text plugin for OpenVoiceOS.",
+    "url": "https://github.com/TigreGotico/ovos-stt-plugin-sherpa-onnx",
+    "category": "OpenVoiceOS",
+    "tags": [
+      "STT",
+      "ONNX",
+      "OVOS"
+    ],
+    "featured": false
+  },
+  {
+    "id": "ovos-coreferee-plugin",
+    "name": "ovos-coreferee-plugin",
+    "description": "Coreference-resolution plugin for OpenVoiceOS.",
+    "url": "https://github.com/TigreGotico/ovos-coreferee-plugin",
+    "category": "OpenVoiceOS",
+    "tags": [
+      "coreference",
+      "NLU",
+      "OVOS"
+    ],
+    "featured": false
+  },
+  {
+    "id": "ovos-document-chunkers",
+    "name": "ovos-document-chunkers",
+    "description": "Document chunking for retrieval/RAG in OpenVoiceOS.",
+    "url": "https://github.com/TigreGotico/ovos-document-chunkers",
+    "category": "OpenVoiceOS",
+    "tags": [
+      "RAG",
+      "chunking",
+      "OVOS"
+    ],
+    "featured": false
+  },
+  {
+    "id": "ovos-claude-plugin",
+    "name": "ovos-claude-plugin",
+    "description": "Anthropic Claude solver plugin for OpenVoiceOS.",
+    "url": "https://github.com/TigreGotico/ovos-claude-plugin",
+    "category": "OpenVoiceOS",
+    "tags": [
+      "LLM",
+      "Claude",
+      "OVOS"
+    ],
+    "featured": false
   }
 ]
