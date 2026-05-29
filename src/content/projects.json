@@ -110,6 +110,20 @@
     "comingSoon": true
   },
   {
+    "id": "ww-trainer",
+    "name": "ww-trainer",
+    "description": "A wake-word model trainer developed under an NLNet grant for OpenVoiceOS — build custom, on-device wake words from your own samples.",
+    "category": "OVOS-Utils",
+    "tags": [
+      "wake word",
+      "training",
+      "NLNet",
+      "on-device"
+    ],
+    "featured": true,
+    "comingSoon": true
+  },
+  {
     "id": "storyforge",
     "name": "StoryForge",
     "description": "An engine for LLM-powered generative narrative worlds — interactive fiction that improvises story, characters, and choices around the player, playable in the terminal or by voice.",
