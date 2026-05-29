@@ -1,0 +1,42 @@
+[
+  {
+    "id": "pilotgpt",
+    "org": "PilotGPT",
+    "url": "https://pilotgpt.net",
+    "quote": "A statement from PilotGPT will appear here once provided.",
+    "author": "Name, Role — pending",
+    "placeholder": true
+  },
+  {
+    "id": "openvoiceos",
+    "org": "OpenVoiceOS",
+    "url": "https://openvoiceos.org",
+    "quote": "A statement from the OpenVoiceOS community will appear here once provided.",
+    "author": "Name, Role — pending",
+    "placeholder": true
+  },
+  {
+    "id": "alphacephei",
+    "org": "Alpha Cephei",
+    "url": "https://alphacephei.com",
+    "quote": "A statement from Alpha Cephei will appear here once provided.",
+    "author": "Name, Role — pending",
+    "placeholder": true
+  },
+  {
+    "id": "oscillatelabs",
+    "org": "Oscillate Labs",
+    "url": "https://oscillatelabs.net",
+    "quote": "A statement from Oscillate Labs will appear here once provided.",
+    "author": "Name, Role — pending",
+    "placeholder": true
+  },
+  {
+    "id": "visio",
+    "org": "Visio",
+    "url": "https://www.visio.org",
+    "quote": "A statement from Visio will appear here once provided.",
+    "author": "Name, Role — pending",
+    "placeholder": true
+  }
+]

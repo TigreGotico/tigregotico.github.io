@@ -1,0 +1,82 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Section from '../components/Section.astro';
+import Icon from '../components/Icon.astro';
+import { getEntry, render } from 'astro:content';
+import { site } from '../data/site';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const link = (href: string) => `${base}${href}`;
+const page = await getEntry('pages', 'games');
+const { Content } = await render(page!);
+
+const kinds = [
+  {
+    icon: 'scroll',
+    title: 'Classic interactive fiction',
+    body: 'Parser-style text adventures in the Infocom lineage — Z-machine stories and the classics — narrated and controlled by voice or keyboard.',
+  },
+  {
+    icon: 'spark',
+    title: 'LLM-powered generative worlds',
+    body: 'Open-ended worlds where a language model improvises the story, characters, and choices around you — a fresh adventure every play-through.',
+  },
+  {
+    icon: 'waveform',
+    title: 'Audio-first & accessible',
+    body: 'Built for ears, not eyes. Screen-reader-friendly in the terminal and fully voice-driven on the Open Voice Operating System — designed with blind players.',
+  },
+];
+
+const howToPlay = [
+  { icon: 'cpu', title: 'In your command line', body: 'A keyboard-and-text client you can run anywhere a terminal runs.' },
+  { icon: 'mic', title: 'By voice', body: 'Hands-free on the Open Voice Operating System and HiveMind — just talk and listen.' },
+];
+---
+
+<Base title={page!.data.title} description={page!.data.description}>
+  <PageHeader eyebrow="Play" title="Text & Voice Games" lead={page!.data.description} />
+
+  <article class="prose-content max-w-3xl">
+    <Content />
+  </article>
+
+  <Section eyebrow="What we make" title="From classics to generative worlds">
+    <div class="grid gap-5 sm:grid-cols-3">
+      {
+        kinds.map((k, i) => (
+          <div class="card-hover reveal" data-reveal data-reveal-delay={i * 70}>
+            <span class="icon-chip mb-4"><Icon name={k.icon} /></span>
+            <h3 class="display-3 text-lg">{k.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-muted">{k.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section eyebrow="How to play" title="Command line or voice — your call">
+    <div class="grid gap-5 sm:grid-cols-2">
+      {
+        howToPlay.map((h, i) => (
+          <div class="card reveal" data-reveal data-reveal-delay={i * 70}>
+            <span class="icon-chip mb-4"><Icon name={h.icon} /></span>
+            <h3 class="display-3 text-lg">{h.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-muted">{h.body}</p>
+          </div>
+        ))
+      }
+    </div>
+    <p class="mt-6 text-sm text-muted">More titles are in active development — follow along on the blog.</p>
+  </Section>
+
+  <div
+    class="mt-12 flex flex-wrap items-center gap-3 rounded-2xl border border-border bg-surface p-6"
+    style="box-shadow: var(--shadow-elevate);"
+  >
+    <p class="w-full display-3 text-lg">Want a voice game built — or your world voice-enabled?</p>
+    <a class="btn-primary" href={link('/contact')}>Get in touch</a>
+    <a class="btn-ghost" href={link('/blog')}>Read the blog</a>
+  </div>
+</Base>

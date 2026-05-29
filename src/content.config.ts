@@ -107,6 +107,19 @@ const collaborations = defineCollection({
   }),
 });
 
+const testimonials = defineCollection({
+  loader: file('src/content/testimonials.json'),
+  schema: z.object({
+    id: z.string(),
+    org: z.string(),
+    url: z.string().url().optional(),
+    quote: z.string(),
+    author: z.string(),
+    // Marks a quote as not-yet-supplied (shows a "pending" treatment).
+    placeholder: z.boolean().default(false),
+  }),
+});
+
 export const collections = {
   blog,
   pages,
@@ -116,4 +129,5 @@ export const collections = {
   research,
   projects,
   collaborations,
+  testimonials,
 };

@@ -20,6 +20,8 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 3);
 
+const testimonials = (await getCollection('testimonials')).map((t) => t.data);
+
 // Stats derived from the projects collection (no invented numbers).
 const ovosPlugins = allProjects.filter((p) => p.category.startsWith('OVOS')).length;
 const inHouseProjects = allProjects.filter((p) => p.category === 'In-House').length;
@@ -148,6 +150,25 @@ const stack = ['OpenVoiceOS', 'HiveMind'];
     </p>
   </Section>
 
+  <!-- Games teaser -->
+  <Section
+    eyebrow="Play"
+    title="Text & voice games"
+    lead="From classic interactive fiction to LLM-powered generative worlds — playable in your command line or entirely by voice, designed audio-first for everyone."
+  >
+    <div class="flex flex-wrap items-center gap-3 reveal" data-reveal>
+      <span class="icon-chip"><Icon name="scroll" /></span>
+      <span class="icon-chip"><Icon name="spark" /></span>
+      <span class="icon-chip"><Icon name="waveform" /></span>
+      <a
+        class="ml-auto inline-flex items-center gap-1 font-medium text-primary hover:underline"
+        href={link('/games')}
+      >
+        Explore games <Icon name="arrow" class="h-4 w-4" />
+      </a>
+    </div>
+  </Section>
+
   <!-- Latest posts -->
   <Section eyebrow="From the blog" title="Latest writing">
     <ul class="grid gap-5 sm:grid-cols-3">
@@ -178,6 +199,41 @@ const stack = ['OpenVoiceOS', 'HiveMind'];
         Read the blog <Icon name="arrow" class="h-4 w-4" />
       </a>
     </p>
+  </Section>
+
+  <!-- Testimonials -->
+  <Section
+    eyebrow="Testimonials"
+    title="What partners &amp; users say"
+    lead="Words from the people and projects we build with."
+    class="surface-alt -mx-6 rounded-3xl px-6"
+  >
+    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        testimonials.map((t, i) => (
+          <figure
+            class:list={['card reveal', t.placeholder && 'border-dashed']}
+            data-reveal
+            data-reveal-delay={i * 70}
+          >
+            {t.placeholder && <span class="badge mb-3">Placeholder — quote pending</span>}
+            <blockquote class="text-sm italic leading-relaxed text-muted">
+              &ldquo;{t.quote}&rdquo;
+            </blockquote>
+            <figcaption class="mt-4">
+              <span class="block text-sm font-semibold">{t.author}</span>
+              {t.url ? (
+                <a href={t.url} class="text-xs text-primary hover:underline" rel="noopener">
+                  {t.org}
+                </a>
+              ) : (
+                <span class="text-xs text-muted">{t.org}</span>
+              )}
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
   </Section>
 
   <!-- CTA -->

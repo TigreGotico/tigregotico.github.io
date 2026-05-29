@@ -363,5 +363,33 @@
     ],
     "featured": true,
     "comingSoon": true
+  },
+  {
+    "id": "storyforge",
+    "name": "StoryForge",
+    "description": "An engine for LLM-powered generative narrative worlds — interactive fiction that improvises story, characters, and choices around the player, playable in the terminal or by voice.",
+    "category": "Games",
+    "tags": [
+      "Games",
+      "Interactive Fiction",
+      "LLM",
+      "Voice"
+    ],
+    "featured": true,
+    "comingSoon": true
+  },
+  {
+    "id": "tnalagmes",
+    "name": "TNaLaGmes",
+    "description": "TNaLaGmes (a Toolbox for Natural Language Games) — a framework for building classic and voice-playable text adventures, narrated and controlled hands-free.",
+    "category": "Games",
+    "tags": [
+      "Games",
+      "Interactive Fiction",
+      "Toolkit",
+      "Voice"
+    ],
+    "featured": true,
+    "comingSoon": true
   }
 ]
