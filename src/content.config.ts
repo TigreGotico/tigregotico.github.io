@@ -1,0 +1,113 @@
+import { defineCollection, z } from 'astro:content';
+import { glob, file } from 'astro/loaders';
+
+// Blog posts: markdown, auto-discovered via glob (no registration array).
+const blog = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: 'src/content/blog' }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      description: z.string().max(500),
+      date: z.coerce.date(),
+      updated: z.coerce.date().optional(),
+      author: z.string().default('Casimiro Ferreira'),
+      tags: z.array(z.string()).default([]),
+      cover: image().optional(),
+      coverExternal: z.string().url().optional(),
+      draft: z.boolean().default(false),
+    }),
+});
+
+// Prose pages: markdown, one file per route (home, about, services, ...).
+const pages = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: 'src/content/pages' }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().max(300),
+    order: z.number().default(0),
+  }),
+});
+
+// Datasets + models share this resource shape.
+const resource = z.object({
+  id: z.string(),
+  title: z.string(),
+  description: z.string(),
+  icon: z.string(),
+  url: z.string().url(),
+});
+
+const datasets = defineCollection({
+  loader: file('src/content/datasets.json'),
+  schema: resource,
+});
+
+const models = defineCollection({
+  loader: file('src/content/models.json'),
+  schema: resource,
+});
+
+const notebooks = defineCollection({
+  loader: file('src/content/notebooks.json'),
+  schema: z.object({
+    id: z.string(),
+    title: z.string(),
+    description: z.string(),
+    url: z.string(),
+    language: z.string().default('python'),
+    tags: z.array(z.string()).default([]),
+    year: z.number(),
+  }),
+});
+
+const research = defineCollection({
+  loader: file('src/content/research.json'),
+  schema: z.object({
+    id: z.string(),
+    title: z.string(),
+    description: z.string(),
+    filePath: z.string(),
+    fileType: z.string().default('pdf'),
+    buttonLabel: z.string().default('Download'),
+    year: z.number(),
+    authors: z.array(z.string()).default([]),
+    tags: z.array(z.string()).default([]),
+  }),
+});
+
+const projects = defineCollection({
+  loader: file('src/content/projects.json'),
+  schema: z.object({
+    id: z.string(),
+    name: z.string(),
+    description: z.string(),
+    url: z.string().url(),
+    category: z.string(),
+    tags: z.array(z.string()).default([]),
+    image: z.string().url().optional(),
+    // "featured" is a flag, not a second collection.
+    featured: z.boolean().default(false),
+  }),
+});
+
+const collaborations = defineCollection({
+  loader: file('src/content/collaborations.json'),
+  schema: z.object({
+    id: z.string(),
+    name: z.string(),
+    description: z.string(),
+    url: z.string().url(),
+    repositories: z.array(z.string().url()).default([]),
+  }),
+});
+
+export const collections = {
+  blog,
+  pages,
+  datasets,
+  models,
+  notebooks,
+  research,
+  projects,
+  collaborations,
+};
