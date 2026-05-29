@@ -7,12 +7,13 @@ interface Project {
   id: string;
   name: string;
   description: string;
-  url: string;
+  url?: string;
   category: string;
   tags: string[];
   image?: string;
   imageLocal?: string;
   featured: boolean;
+  comingSoon?: boolean;
 }
 
 interface Props {
@@ -82,15 +83,21 @@ const badgeStyle = `--h:${meta.hue}; color:hsl(${meta.hue} 70% 55%); background:
       <Icon name={meta.icon} class="h-3.5 w-3.5" />
       {meta.label}
     </span>
-    {project.featured && !withImage && (
+    {project.comingSoon ? (
+      <span class="badge-accent">Coming soon</span>
+    ) : project.featured && !withImage ? (
       <span class="badge-accent">Featured</span>
-    )}
+    ) : null}
   </div>
 
   <h3 class="display-3 text-lg">
-    <a href={project.url} class="transition-colors hover:text-primary" rel="noopener">
-      {project.name}
-    </a>
+    {project.url ? (
+      <a href={project.url} class="transition-colors hover:text-primary" rel="noopener">
+        {project.name}
+      </a>
+    ) : (
+      <span>{project.name}</span>
+    )}
   </h3>
 
   <p class="mt-2 flex-1 text-sm leading-relaxed text-muted">{project.description}</p>
@@ -105,12 +112,21 @@ const badgeStyle = `--h:${meta.hue}; color:hsl(${meta.hue} 70% 55%); background:
     )
   }
 
-  <a
-    href={project.url}
-    class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary transition-transform group-hover:translate-x-0.5 hover:underline"
-    rel="noopener"
-  >
-    View repository
-    <span aria-hidden="true">&rarr;</span>
-  </a>
+  {
+    project.url ? (
+      <a
+        href={project.url}
+        class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary transition-transform group-hover:translate-x-0.5 hover:underline"
+        rel="noopener"
+      >
+        View repository
+        <span aria-hidden="true">&rarr;</span>
+      </a>
+    ) : (
+      <span class="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-muted">
+        <span class="inline-block h-1.5 w-1.5 rounded-full bg-primary" aria-hidden="true" />
+        Coming soon — not yet public
+      </span>
+    )
+  }
 </article>

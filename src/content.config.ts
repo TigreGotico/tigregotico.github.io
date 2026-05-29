@@ -81,7 +81,8 @@ const projects = defineCollection({
     id: z.string(),
     name: z.string(),
     description: z.string(),
-    url: z.string().url(),
+    // Optional: "coming soon" entries have no public repo yet.
+    url: z.string().url().optional(),
     category: z.string(),
     tags: z.array(z.string()).default([]),
     // External logo URL (stable hosts only).
@@ -90,6 +91,8 @@ const projects = defineCollection({
     imageLocal: z.string().optional(),
     // "featured" is a flag, not a second collection.
     featured: z.boolean().default(false),
+    // Tease not-yet-public work: shows a "Coming soon" badge and no link.
+    comingSoon: z.boolean().default(false),
   }),
 });
 

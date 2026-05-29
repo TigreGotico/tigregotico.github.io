@@ -336,5 +336,32 @@
       "Python",
       "Library"
     ]
+  },
+  {
+    "id": "mediavocab",
+    "name": "mediavocab",
+    "description": "A shared media-metadata vocabulary and normalization layer that unifies how titles, artists, and identifiers map across media clients and Music Assistant integrations.",
+    "category": "In-House",
+    "tags": [
+      "Media Metadata",
+      "NLP",
+      "Vocabulary"
+    ],
+    "featured": true,
+    "comingSoon": true
+  },
+  {
+    "id": "lilacs",
+    "name": "LILACS",
+    "description": "A neurosymbolic NLP and reasoning toolkit that pairs knowledge graphs with language models for explainable, transparent language understanding.",
+    "category": "In-House",
+    "tags": [
+      "NLP",
+      "Reasoning",
+      "Neurosymbolic",
+      "Knowledge Graph"
+    ],
+    "featured": true,
+    "comingSoon": true
   }
 ]
