@@ -31,6 +31,22 @@ Don't take our word for it — the work is public:
 To empower businesses and individuals with privacy-focused, open-source voice
 technology, championing a future of ethical and transparent AI.
 
+## FOSS, Self-Hosted, Yours
+
+We don't build on someone else's cloud — and you shouldn't have to either. Our
+work is **free and open source**, **self-hostable**, and **cloud-independent** by
+default:
+
+- **You own the stack.** Everything runs on your own hardware — no mandatory
+  cloud, no per-seat SaaS, no vendor that can switch you off.
+- **No lock-in.** Open licenses and open formats mean you can fork, audit, and
+  outlive us. The OpenVoiceOS non-profit exists so the community owns the core.
+- **Privacy by architecture.** Data stays on-device; nothing leaves it unless you
+  choose to send it.
+- **Sustainable by design.** Static sites, on-device models, and
+  no-infrastructure delivery keep running costs near zero — which matters for a
+  community-owned project.
+
 ## Don't Just Take Our Word for It. Audit Us.
 
 In open source and specialized voice AI, "trust" shouldn't rest on a sales pitch.
