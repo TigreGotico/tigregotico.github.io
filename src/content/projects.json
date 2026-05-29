@@ -391,5 +391,19 @@
     ],
     "featured": true,
     "comingSoon": true
+  },
+  {
+    "id": "open-voice-os",
+    "name": "Open Voice OS",
+    "description": "Community-driven, open-source, privacy-respecting voice assistant platform and operating system that puts users in control of their data.",
+    "url": "https://github.com/OpenVoiceOS",
+    "category": "Platform",
+    "tags": [
+      "Voice Assistant",
+      "Privacy",
+      "FOSS"
+    ],
+    "image": "https://www.openvoiceos.org/images/logo.png",
+    "featured": true
   }
 ]

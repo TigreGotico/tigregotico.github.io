@@ -8,14 +8,6 @@
     "placeholder": true
   },
   {
-    "id": "openvoiceos",
-    "org": "OpenVoiceOS",
-    "url": "https://openvoiceos.org",
-    "quote": "A statement from the OpenVoiceOS community will appear here once provided.",
-    "author": "Name, Role — pending",
-    "placeholder": true
-  },
-  {
     "id": "alphacephei",
     "org": "Alpha Cephei",
     "url": "https://alphacephei.com",
