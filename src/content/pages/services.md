@@ -51,13 +51,13 @@ It is the same toolchain behind our own client libraries and the datasets we
 release — and it feeds everything from media-metadata enrichment to training
 corpora for speech and language models.
 
-## Platform Integration
+## We Voice-Enable Anything
 
 We make voice technology work on your terms. Our specialty is integrating any
-platform into the OpenVoiceOS stack — voice-enabling a new device, wiring in a
-specific Text-to-Speech (TTS) or Speech-to-Text (STT) service, or building a
-custom component from scratch. We add functionality directly to OpenVoiceOS, or
-make OVOS drive whatever you need it to.
+platform into the **Open Voice Operating System** — voice-enabling a new device,
+wiring in a specific Text-to-Speech (TTS) or Speech-to-Text (STT) service, or
+building a custom component from scratch. We add functionality directly to the
+Open Voice Operating System, or make it drive whatever you need it to.
 
 ## Custom Offline TTS Voice Training
 
