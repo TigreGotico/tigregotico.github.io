@@ -14,6 +14,7 @@ const stars = await loadStars(projects);
 // Preferred display order for the category filter.
 const categoryOrder = [
   'Platform',
+  'Games',
   'In-House',
   'OVOS-Intents',
   'OVOS-Solvers',
@@ -46,13 +47,13 @@ const collaborations = (await getCollection('collaborations')).map((c) => c.data
 ---
 
 <Base
-  title="Projects"
-  description="Open-source platforms, plugins, and tools built and maintained by TigreGótico for the OpenVoiceOS and HiveMind ecosystem."
+  title="Open Source"
+  description="TigreGótico's open-source work — FOSS, self-hostable libraries and tools spanning voice AI, data extraction, datasets, NLP, and games, plus the OpenVoiceOS and HiveMind ecosystem."
 >
   <PageHeader
     eyebrow="Portfolio"
-    title="Projects"
-    lead="Open-source platforms, plugins, and tools we build and maintain for the OpenVoiceOS and HiveMind ecosystem."
+    title="Open Source"
+    lead="Our open-source work — FOSS, self-hostable libraries and tools spanning voice AI, data extraction, datasets, NLP, and games, plus the OpenVoiceOS and HiveMind ecosystem we help build. No lock-in, no mandatory cloud."
   />
 
   <Section eyebrow="Featured" title="Highlights" class="pt-0">

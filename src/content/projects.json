@@ -70,6 +70,20 @@
     "featured": true
   },
   {
+    "id": "ovos-localize",
+    "name": "ovos-localize",
+    "description": "A GitHub-native localization platform for OpenVoiceOS skills and plugins — manage translations entirely through Git, with no external service to run.",
+    "url": "https://github.com/OpenVoiceOS/ovos-localize",
+    "category": "OVOS-Utils",
+    "tags": [
+      "localization",
+      "i18n",
+      "GitHub-native",
+      "no-infra"
+    ],
+    "featured": true
+  },
+  {
     "id": "mediavocab",
     "name": "mediavocab",
     "description": "A shared media-metadata vocabulary and normalization layer that unifies how titles, artists, and identifiers map across media clients and Music Assistant integrations.",

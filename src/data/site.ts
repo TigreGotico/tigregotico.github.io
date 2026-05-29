@@ -19,7 +19,7 @@ export const site = {
     { label: 'Services', href: '/services' },
     { label: 'Products', href: '/products' },
     { label: 'Games', href: '/games' },
-    { label: 'Projects', href: '/projects' },
+    { label: 'Open Source', href: '/projects' },
     { label: 'Resources', href: '/resources' },
     { label: 'Blog', href: '/blog' },
     { label: 'About', href: '/about' },
