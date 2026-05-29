@@ -42,34 +42,6 @@
     "featured": true
   },
   {
-    "id": "ovoscope",
-    "name": "ovoscope",
-    "description": "End-to-end testing framework for OVOS skills with a lightweight in-process runtime.",
-    "url": "https://github.com/TigreGotico/ovoscope",
-    "category": "OVOS-Utils",
-    "tags": [
-      "end-to-end testing",
-      "in-process runtime",
-      "OVOS skills"
-    ],
-    "imageLocal": "ovoscope.png",
-    "featured": true
-  },
-  {
-    "id": "align",
-    "name": "ALIGN",
-    "description": "A browser-based tool for aligning audio with text transcriptions and IPA at word, grapheme, and sentence level. Runs entirely client-side, no server, no dependencies, no build step.",
-    "url": "https://github.com/TigreGotico/ALIGN",
-    "category": "In-House",
-    "tags": [
-      "audio-text alignment",
-      "IPA",
-      "browser-based"
-    ],
-    "imageLocal": "align.png",
-    "featured": true
-  },
-  {
     "id": "ovos-localize",
     "name": "ovos-localize",
     "description": "A GitHub-native localization platform for OpenVoiceOS skills and plugins — manage translations entirely through Git, with no external service to run.",
@@ -84,19 +56,6 @@
     "featured": true
   },
   {
-    "id": "mediavocab",
-    "name": "mediavocab",
-    "description": "A shared media-metadata vocabulary and normalization layer that unifies how titles, artists, and identifiers map across media clients and Music Assistant integrations.",
-    "category": "In-House",
-    "tags": [
-      "media metadata",
-      "normalization",
-      "vocabulary"
-    ],
-    "featured": true,
-    "comingSoon": true
-  },
-  {
     "id": "lilacs",
     "name": "LILACS",
     "description": "A neurosymbolic NLP and reasoning toolkit that pairs knowledge graphs with language models for explainable, transparent language understanding.",
@@ -105,20 +64,6 @@
       "neurosymbolic NLP",
       "knowledge graph",
       "reasoning"
-    ],
-    "featured": true,
-    "comingSoon": true
-  },
-  {
-    "id": "ww-trainer",
-    "name": "ww-trainer",
-    "description": "A wake-word model trainer developed under an NLNet grant for OpenVoiceOS — build custom, on-device wake words from your own samples.",
-    "category": "OVOS-Utils",
-    "tags": [
-      "wake word",
-      "training",
-      "NLNet",
-      "on-device"
     ],
     "featured": true,
     "comingSoon": true
@@ -137,6 +82,75 @@
     "comingSoon": true
   },
   {
+    "id": "agentic-crm",
+    "name": "Agentic CRM",
+    "description": "A roadmapped product: an agent-native CRM that lives inside your agentic coding session — operated by your AI agent and packaged as a portable skill, not a separate web app to run.",
+    "category": "In-House",
+    "tags": [
+      "CRM",
+      "agentic",
+      "agent skill",
+      "self-hosted"
+    ],
+    "featured": true,
+    "comingSoon": true
+  },
+  {
+    "id": "ovoscope",
+    "name": "ovoscope",
+    "description": "End-to-end testing framework for OVOS skills with a lightweight in-process runtime.",
+    "url": "https://github.com/TigreGotico/ovoscope",
+    "category": "OVOS-Utils",
+    "tags": [
+      "end-to-end testing",
+      "in-process runtime",
+      "OVOS skills"
+    ],
+    "imageLocal": "ovoscope.png",
+    "featured": false
+  },
+  {
+    "id": "align",
+    "name": "ALIGN",
+    "description": "A browser-based tool for aligning audio with text transcriptions and IPA at word, grapheme, and sentence level. Runs entirely client-side, no server, no dependencies, no build step.",
+    "url": "https://github.com/TigreGotico/ALIGN",
+    "category": "In-House",
+    "tags": [
+      "audio-text alignment",
+      "IPA",
+      "browser-based"
+    ],
+    "imageLocal": "align.png",
+    "featured": false
+  },
+  {
+    "id": "mediavocab",
+    "name": "mediavocab",
+    "description": "A shared media-metadata vocabulary and normalization layer that unifies how titles, artists, and identifiers map across media clients and Music Assistant integrations.",
+    "category": "In-House",
+    "tags": [
+      "media metadata",
+      "normalization",
+      "vocabulary"
+    ],
+    "featured": false,
+    "comingSoon": true
+  },
+  {
+    "id": "ww-trainer",
+    "name": "ww-trainer",
+    "description": "A wake-word model trainer developed under an NLNet grant for OpenVoiceOS — build custom, on-device wake words from your own samples.",
+    "category": "OVOS-Utils",
+    "tags": [
+      "wake word",
+      "training",
+      "NLNet",
+      "on-device"
+    ],
+    "featured": false,
+    "comingSoon": true
+  },
+  {
     "id": "tnalagmes",
     "name": "TNaLaGmes",
     "description": "TNaLaGmes (a Toolbox for Natural Language Games) — a framework for building classic and voice-playable text adventures, narrated and controlled hands-free.",
@@ -146,7 +160,7 @@
       "game toolkit",
       "voice-playable"
     ],
-    "featured": true,
+    "featured": false,
     "comingSoon": true
   },
   {
@@ -185,7 +199,8 @@
       "Portuguese phonemes",
       "phonetics",
       "dataset"
-    ]
+    ],
+    "featured": false
   },
   {
     "id": "rake-keywords",
@@ -197,7 +212,8 @@
       "keyword extraction",
       "RAKE",
       "NLP"
-    ]
+    ],
+    "featured": false
   },
   {
     "id": "ahocorasick-ner",
@@ -209,7 +225,8 @@
       "named-entity recognition",
       "Aho-Corasick",
       "gazetteer"
-    ]
+    ],
+    "featured": false
   },
   {
     "id": "kw-template-matcher",
@@ -221,7 +238,8 @@
       "intent matching",
       "templates",
       "NLU"
-    ]
+    ],
+    "featured": false
   },
   {
     "id": "markovjson",
@@ -233,7 +251,8 @@
       "Markov chains",
       "text generation",
       "JSON"
-    ]
+    ],
+    "featured": false
   },
   {
     "id": "silabificador",
@@ -244,7 +263,8 @@
     "tags": [
       "Portuguese syllabification",
       "text processing"
-    ]
+    ],
+    "featured": false
   },
   {
     "id": "pyfrotz",
@@ -256,7 +276,8 @@
       "interactive fiction",
       "Z-machine",
       "Python"
-    ]
+    ],
+    "featured": false
   },
   {
     "id": "ovos-m2v-pipeline",
@@ -268,7 +289,8 @@
       "intent classification",
       "Model2Vec",
       "ONNX"
-    ]
+    ],
+    "featured": false
   },
   {
     "id": "ovos-flashrank-reranker-plugin",
@@ -280,7 +302,8 @@
       "reranking",
       "FlashRank",
       "retrieval"
-    ]
+    ],
+    "featured": false
   },
   {
     "id": "ovos-bm25-solver-plugin",
@@ -292,7 +315,8 @@
       "BM25 retrieval",
       "solver",
       "search"
-    ]
+    ],
+    "featured": false
   },
   {
     "id": "ovos-gguf-solver-plugin",
@@ -304,7 +328,8 @@
       "local LLM",
       "GGUF",
       "solver"
-    ]
+    ],
+    "featured": false
   },
   {
     "id": "ovos-mos",
@@ -316,7 +341,8 @@
       "mixture of specialists",
       "routing",
       "framework"
-    ]
+    ],
+    "featured": false
   },
   {
     "id": "ovos-chromadb-embeddings-plugin",
@@ -328,7 +354,8 @@
       "embeddings",
       "ChromaDB",
       "vector search"
-    ]
+    ],
+    "featured": false
   },
   {
     "id": "ovos-gguf-embeddings-plugin",
@@ -340,7 +367,8 @@
       "embeddings",
       "GGUF",
       "on-device"
-    ]
+    ],
+    "featured": false
   },
   {
     "id": "ovos-qdrant-embeddings-plugin",
@@ -352,7 +380,8 @@
       "embeddings",
       "Qdrant",
       "vector DB"
-    ]
+    ],
+    "featured": false
   },
   {
     "id": "ovos-transcription-validator-plugin",
@@ -364,7 +393,8 @@
       "STT validation",
       "filtering",
       "quality"
-    ]
+    ],
+    "featured": false
   },
   {
     "id": "ovos-stt-plugin-mynorthai",
@@ -376,7 +406,8 @@
       "speech-to-text",
       "MyNorthAI",
       "STT plugin"
-    ]
+    ],
+    "featured": false
   },
   {
     "id": "ovos-gguf-translate-plugin",
@@ -388,7 +419,8 @@
       "translation",
       "GGUF",
       "local LLM"
-    ]
+    ],
+    "featured": false
   },
   {
     "id": "ovos-simple-listener",
@@ -400,7 +432,8 @@
       "audio listener",
       "wake word",
       "lightweight"
-    ]
+    ],
+    "featured": false
   },
   {
     "id": "ovos-wyoming-docker",
@@ -412,7 +445,8 @@
       "Docker",
       "Wyoming",
       "deployment"
-    ]
+    ],
+    "featured": false
   },
   {
     "id": "pyahotts",
@@ -424,6 +458,21 @@
       "TTS library",
       "AhoTTS",
       "Python"
-    ]
+    ],
+    "featured": false
+  },
+  {
+    "id": "sshfs-keeper",
+    "name": "sshfs-keeper",
+    "description": "A daemon that monitors SSHFS/rclone mounts and auto-remounts them when they drop — with a live web dashboard, REST API, Prometheus metrics, webhooks, and scheduled rsync/rclone sync jobs.",
+    "url": "https://github.com/TigreGotico/sshfs-keeper",
+    "category": "Utilities",
+    "tags": [
+      "sysadmin",
+      "SSHFS",
+      "monitoring",
+      "self-hosted"
+    ],
+    "featured": false
   }
 ]
