@@ -1,28 +1,37 @@
 ---
-// Tiny scroll-reveal island. Renders nothing; on mount it observes every
-// [data-reveal] element and adds .is-visible as it enters the viewport.
-// Reduced-motion users get content shown immediately (CSS gate + early-out).
+// Scroll-reveal island. Renders nothing; observes every [data-reveal] element
+// and adds .is-visible as it enters the viewport. Robust by design: content is
+// only hidden when `html.js` is set (see global.css), reduced-motion shows it
+// immediately, and a safety timeout reveals anything the observer ever misses.
 ---
-<script>
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const els = document.querySelectorAll<HTMLElement>('[data-reveal]');
-  if (reduce || !('IntersectionObserver' in window)) {
-    els.forEach((el) => el.classList.add('is-visible'));
-  } else {
-    const io = new IntersectionObserver(
-      (entries, obs) => {
-        for (const e of entries) {
+<script is:inline>
+  (function () {
+    var els = document.querySelectorAll('[data-reveal]');
+    var showAll = function () {
+      els.forEach(function (el) { el.classList.add('is-visible'); });
+    };
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || !('IntersectionObserver' in window)) {
+      showAll();
+      return;
+    }
+    var io = new IntersectionObserver(
+      function (entries, obs) {
+        entries.forEach(function (e) {
           if (e.isIntersecting) {
-            const el = e.target as HTMLElement;
-            const delay = el.dataset.revealDelay;
-            if (delay) el.style.transitionDelay = `${delay}ms`;
+            var el = e.target;
+            if (el.dataset.revealDelay) {
+              el.style.transitionDelay = el.dataset.revealDelay + 'ms';
+            }
             el.classList.add('is-visible');
             obs.unobserve(el);
           }
-        }
+        });
       },
       { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
     );
-    els.forEach((el) => io.observe(el));
-  }
+    els.forEach(function (el) { io.observe(el); });
+    // Safety net: nothing should ever stay hidden if the observer misses it.
+    setTimeout(showAll, 2500);
+  })();
 </script>
