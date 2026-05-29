@@ -1,0 +1,147 @@
+---
+import { getCollection, render } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import { site } from '../../data/site';
+
+export const getStaticPaths = (async () => {
+  const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+    (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+  );
+  return posts.map((post, i) => ({
+    params: { slug: post.id },
+    props: {
+      post,
+      // Chronological neighbours (newer = prev, older = next).
+      prev: posts[i - 1] ?? null,
+      next: posts[i + 1] ?? null,
+    },
+  }));
+}) satisfies GetStaticPaths;
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const { post, prev, next } = Astro.props;
+const { Content, remarkPluginFrontmatter } = await render(post);
+
+// Reading time from rendered word count (~200 wpm).
+const words: number = remarkPluginFrontmatter?.words ?? 0;
+const readingMinutes = words ? Math.max(1, Math.round(words / 200)) : 0;
+
+const ogImage = post.data.cover
+  ? post.data.cover.src
+  : post.data.coverExternal;
+
+const blogPostingLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.date.toISOString(),
+  ...(post.data.updated
+    ? { dateModified: post.data.updated.toISOString() }
+    : {}),
+  author: { '@type': 'Person', name: post.data.author },
+  publisher: { '@type': 'Organization', name: site.name },
+  keywords: post.data.tags.join(', '),
+};
+---
+
+<Base
+  title={post.data.title}
+  description={post.data.description}
+  image={ogImage}
+  type="article"
+  jsonLd={blogPostingLd}
+  publishedTime={post.data.date.toISOString()}
+  modifiedTime={post.data.updated?.toISOString()}
+>
+  <article class="mx-auto max-w-3xl">
+    <p class="mb-8">
+      <a class="inline-flex items-center gap-1 font-display text-xs uppercase tracking-[0.2em] text-primary hover:underline" href={`${base}/blog`}
+        >&larr; All posts</a
+      >
+    </p>
+    <header class="space-y-5">
+      <p class="flex flex-wrap items-center gap-x-2 font-display text-xs uppercase tracking-[0.18em] text-muted">
+        <time datetime={post.data.date.toISOString()}>
+          {
+            post.data.date.toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })
+          }
+        </time>
+        {post.data.author && <span>· {post.data.author}</span>}
+        {readingMinutes > 0 && <span>· {readingMinutes} min read</span>}
+      </p>
+      <h1 class="display-1" style="font-size: clamp(2rem, 1.4rem + 2.6vw, 3.25rem);">
+        {post.data.title}
+      </h1>
+      {
+        post.data.tags.length > 0 && (
+          <ul class="flex flex-wrap gap-1.5">
+            {post.data.tags.map((tag) => (
+              <li class="badge">{tag}</li>
+            ))}
+          </ul>
+        )
+      }
+    </header>
+
+    {
+      (post.data.cover || post.data.coverExternal) && (
+        <div class="relative mt-8 overflow-hidden rounded-2xl border border-border" style="box-shadow: var(--shadow-elevate);">
+          {post.data.cover ? (
+            <Image
+              src={post.data.cover}
+              alt={post.data.title}
+              class="w-full"
+              widths={[480, 800, 1200]}
+              sizes="(max-width: 800px) 100vw, 800px"
+            />
+          ) : (
+            <img
+              src={post.data.coverExternal}
+              alt={post.data.title}
+              class="w-full"
+              loading="lazy"
+              decoding="async"
+            />
+          )}
+        </div>
+      )
+    }
+
+    <hr class="rule-gradient my-10" />
+
+    <div class="post-body">
+      <Content />
+    </div>
+
+    {
+      (prev || next) && (
+        <nav
+          class="mt-12 grid gap-4 border-t border-border pt-6 sm:grid-cols-2"
+          aria-label="More posts"
+        >
+          {prev ? (
+            <a href={`${base}/blog/${prev.id}`} class="card-hover group">
+              <p class="font-display text-xs uppercase tracking-[0.2em] text-primary">&larr; Newer</p>
+              <p class="mt-2 display-3 text-base group-hover:text-primary">{prev.data.title}</p>
+            </a>
+          ) : (
+            <span />
+          )}
+          {next && (
+            <a href={`${base}/blog/${next.id}`} class="card-hover group sm:text-right">
+              <p class="font-display text-xs uppercase tracking-[0.2em] text-primary">Older &rarr;</p>
+              <p class="mt-2 display-3 text-base group-hover:text-primary">{next.data.title}</p>
+            </a>
+          )}
+        </nav>
+      )
+    }
+  </article>
+</Base>

@@ -1,0 +1,88 @@
+---
+// Full-bleed hero: animated aurora mesh background + animated equalizer
+// soundwave motif. All motion is CSS-gated behind prefers-reduced-motion
+// (see global.css .aurora / .eq-bar); static fallback otherwise.
+interface Props {
+  link: (href: string) => string;
+}
+const { link } = Astro.props;
+
+// Equalizer bars — varied heights/delays for an organic waveform.
+const bars = [0.35, 0.6, 0.85, 1, 0.7, 0.45, 0.9, 0.55, 0.75, 1, 0.5, 0.8, 0.4, 0.65, 0.95, 0.6];
+---
+<section
+  class="relative -mx-6 -mt-12 overflow-hidden px-6 pb-20 pt-24 sm:pb-28 sm:pt-32"
+>
+  <!-- Animated aurora / mesh background -->
+  <div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden" aria-hidden="true">
+    <div
+      class="aurora absolute -inset-[20%] opacity-90"
+      style="background:
+        radial-gradient(28% 38% at 22% 28%, rgb(var(--grad-from) / 0.42), transparent 62%),
+        radial-gradient(30% 34% at 78% 22%, rgb(var(--grad-to) / 0.4), transparent 60%),
+        radial-gradient(34% 40% at 60% 80%, rgb(var(--grad-via) / 0.36), transparent 64%),
+        radial-gradient(26% 30% at 18% 78%, rgb(var(--grad-to) / 0.3), transparent 60%);
+        filter: blur(46px);"
+    >
+    </div>
+    <!-- top fade so text stays legible against the header -->
+    <div
+      class="absolute inset-0"
+      style="background: linear-gradient(180deg, rgb(var(--color-bg) / 0.6), transparent 30%, transparent 70%, rgb(var(--color-bg) / 0.85));"
+    >
+    </div>
+  </div>
+
+  <div class="mx-auto max-w-5xl">
+    <p class="eyebrow mb-5 reveal" data-reveal>Privacy-First Voice AI</p>
+
+    <h1 class="display-1 max-w-4xl text-balance reveal" data-reveal data-reveal-delay="60">
+      Voice technology that
+      <span class="text-gradient">respects your data.</span>
+    </h1>
+
+    <!-- Animated soundwave / equalizer motif -->
+    <div
+      class="mt-8 flex h-12 items-end gap-1.5 reveal"
+      data-reveal
+      data-reveal-delay="120"
+      role="img"
+      aria-label="Audio waveform"
+    >
+      {
+        bars.map((h, i) => (
+          <span
+            class="eq-bar w-1.5 rounded-full"
+            style={`height:${Math.round(h * 100)}%; background: var(--gradient-brand); animation-delay:${(i * 90) % 1300}ms;`}
+          />
+        ))
+      }
+    </div>
+
+    <p class="mt-8 max-w-2xl text-lg leading-relaxed text-fg/85 reveal" data-reveal data-reveal-delay="180">
+      <slot />
+    </p>
+
+    <div class="mt-9 flex flex-wrap gap-3 reveal" data-reveal data-reveal-delay="240">
+      <a class="btn-primary" href={link('/contact')}>Start a project</a>
+      <a class="btn-ghost" href={link('/projects')}>Explore our work</a>
+    </div>
+
+    <!-- Trust / credential strip -->
+    <div
+      class="mt-10 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-muted reveal"
+      data-reveal
+      data-reveal-delay="300"
+    >
+      <span
+        class="inline-flex h-2 w-2 rounded-full"
+        style="background: var(--gradient-brand);"
+        aria-hidden="true"
+      ></span>
+      Creators of
+      <span class="font-display tracking-wide text-fg">HiveMind</span>
+      &amp; core contributors to
+      <span class="font-display tracking-wide text-fg">OpenVoiceOS</span>
+    </div>
+  </div>
+</section>

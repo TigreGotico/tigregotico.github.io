@@ -1,0 +1,50 @@
+[
+  {
+    "id": "pilotgpt",
+    "org": "PilotGPT",
+    "url": "https://pilotgpt.net",
+    "quote": "A statement from PilotGPT will appear here once provided.",
+    "author": "Name, Role — pending",
+    "placeholder": true
+  },
+  {
+    "id": "alphacephei",
+    "org": "Alpha Cephei",
+    "url": "https://alphacephei.com",
+    "quote": "A statement from Alpha Cephei will appear here once provided.",
+    "author": "Name, Role — pending",
+    "placeholder": true
+  },
+  {
+    "id": "oscillatelabs",
+    "org": "Oscillate Labs",
+    "url": "https://oscillatelabs.net",
+    "quote": "A statement from Oscillate Labs will appear here once provided.",
+    "author": "Name, Role — pending",
+    "placeholder": true
+  },
+  {
+    "id": "visio",
+    "org": "Koninklijke Visio",
+    "url": "https://www.visio.org",
+    "quote": "A statement from Koninklijke Visio will appear here once provided.",
+    "author": "Name, Role — pending",
+    "placeholder": true
+  },
+  {
+    "id": "neonai",
+    "org": "Neon AI",
+    "url": "https://neon.ai",
+    "quote": "A statement from Neon AI will appear here once provided.",
+    "author": "Name, Role — pending",
+    "placeholder": true
+  },
+  {
+    "id": "smartgic",
+    "org": "Smartgic",
+    "url": "https://github.com/smartgic",
+    "quote": "A statement from Smartgic will appear here once provided.",
+    "author": "Name, Role — pending",
+    "placeholder": true
+  }
+]

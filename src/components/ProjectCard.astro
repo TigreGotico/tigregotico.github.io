@@ -1,0 +1,143 @@
+---
+import { Image } from 'astro:assets';
+import { projectImage } from '../lib/projectImages';
+import Icon from './Icon.astro';
+
+interface Project {
+  id: string;
+  name: string;
+  description: string;
+  url?: string;
+  category: string;
+  tags: string[];
+  image?: string;
+  imageLocal?: string;
+  featured: boolean;
+  comingSoon?: boolean;
+  selfHosted?: boolean;
+}
+
+interface Props {
+  project: Project;
+  /** Show the thumbnail (featured layout). */
+  withImage?: boolean;
+}
+
+const { project, withImage = false } = Astro.props;
+const selfHosted = project.selfHosted !== false;
+const localImg = projectImage(project.imageLocal);
+
+// Per-category accent hue (used to tint the badge) + icon.
+const categoryMeta: Record<string, { hue: number; icon: string; label: string }> = {
+  OpenVoiceOS: { hue: 265, icon: 'layers', label: 'OpenVoiceOS' },
+  HiveMind: { hue: 210, icon: 'network', label: 'HiveMind' },
+  'Speech & Language': { hue: 28, icon: 'mic', label: 'Speech & Language' },
+  'NLP & ML': { hue: 312, icon: 'cpu', label: 'NLP & ML' },
+  Games: { hue: 45, icon: 'scroll', label: 'Games' },
+  Clients: { hue: 175, icon: 'globe', label: 'Data Clients' },
+  Tools: { hue: 190, icon: 'flask', label: 'Tools' },
+};
+const meta = categoryMeta[project.category] ?? {
+  hue: 280,
+  icon: 'spark',
+  label: project.category,
+};
+const badgeStyle = `--h:${meta.hue}; color:hsl(${meta.hue} 70% 55%); background:hsl(${meta.hue} 70% 55% / 0.12); border-color:hsl(${meta.hue} 70% 55% / 0.3);`;
+---
+
+<article class="card-hover group flex h-full flex-col overflow-hidden reveal" data-reveal>
+  {
+    withImage && (localImg || project.image) && (
+      <div class="relative -mx-6 -mt-6 mb-5 overflow-hidden border-b border-border bg-bg">
+        <div
+          class="pointer-events-none absolute inset-0 z-10 opacity-70"
+          style="background: linear-gradient(180deg, transparent 45%, rgb(var(--color-surface)) 100%);"
+          aria-hidden="true"
+        />
+        {localImg ? (
+          <Image
+            src={localImg}
+            alt={`${project.name} preview`}
+            class="h-44 w-full object-contain p-6 transition-transform duration-500 group-hover:scale-[1.04]"
+            widths={[320, 640]}
+            sizes="(max-width: 640px) 100vw, 320px"
+          />
+        ) : (
+          <img
+            src={project.image}
+            alt={`${project.name} logo`}
+            class="h-44 w-full object-contain p-6 transition-transform duration-500 group-hover:scale-[1.04]"
+            loading="lazy"
+            decoding="async"
+          />
+        )}
+      </div>
+    )
+  }
+
+  <div class="mb-3 flex items-center justify-between gap-2">
+    <span
+      class="inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-medium"
+      style={badgeStyle}
+    >
+      <Icon name={meta.icon} class="h-3.5 w-3.5" />
+      {meta.label}
+    </span>
+    {project.comingSoon ? (
+      <span class="badge-accent">Coming soon</span>
+    ) : project.featured && !withImage ? (
+      <span class="badge-accent">Featured</span>
+    ) : null}
+  </div>
+
+  <h3 class="display-3 text-lg">
+    {project.url ? (
+      <a href={project.url} class="transition-colors hover:text-primary" rel="noopener">
+        {project.name}
+      </a>
+    ) : (
+      <span>{project.name}</span>
+    )}
+  </h3>
+
+  <p class="mt-2 flex-1 text-sm leading-relaxed text-muted">{project.description}</p>
+
+  {
+    project.tags.length > 0 && (
+      <ul class="mt-4 flex flex-wrap gap-1.5">
+        {project.tags.slice(0, 4).map((tag) => (
+          <li class="badge">{tag}</li>
+        ))}
+      </ul>
+    )
+  }
+
+  <div class="mt-4 flex items-center justify-between gap-2">
+    {selfHosted && (
+      <span
+        class="inline-flex items-center gap-1 text-xs font-medium text-muted"
+        title="Runs on your own hardware — no mandatory cloud"
+      >
+        <Icon name="home" class="h-3.5 w-3.5 text-primary" />
+        Self-hosted
+      </span>
+    )}
+    {
+      project.url ? (
+        <a
+          href={project.url}
+          class="ml-auto inline-flex items-center gap-1 text-sm font-medium text-primary transition-transform group-hover:translate-x-0.5 hover:underline"
+          rel="noopener"
+        >
+          View repository
+          <span aria-hidden="true">&rarr;</span>
+        </a>
+      ) : (
+        <span class="ml-auto inline-flex items-center gap-1.5 text-sm font-medium text-muted">
+          <span class="inline-block h-1.5 w-1.5 rounded-full bg-primary" aria-hidden="true" />
+          Coming soon — not yet public
+        </span>
+      )
+    }
+  </div>
+</article>

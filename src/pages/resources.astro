@@ -1,0 +1,98 @@
+---
+import Base from '../layouts/Base.astro';
+import Section from '../components/Section.astro';
+import PageHeader from '../components/PageHeader.astro';
+import ResourceCard from '../components/ResourceCard.astro';
+import { getEntry, getCollection, render } from 'astro:content';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const page = await getEntry('pages', 'resources');
+const { Content } = await render(page!);
+
+const datasets = (await getCollection('datasets')).map((d) => d.data);
+const models = (await getCollection('models')).map((m) => m.data);
+const notebooks = (await getCollection('notebooks')).map((n) => n.data);
+const research = (await getCollection('research')).map((r) => r.data);
+
+// Notebook/research file paths are public assets → prefix base, tolerating
+// values with or without a leading slash.
+const asset = (url: string) =>
+  url.startsWith('http') ? url : `${base}/${url.replace(/^\//, '')}`;
+---
+
+<Base title={page!.data.title} description={page!.data.description}>
+  <PageHeader eyebrow="Open & free" title="Resources" lead={page!.data.description} />
+
+  <article class="prose-content mb-4 max-w-3xl">
+    <Content />
+  </article>
+
+  <Section title="Datasets" lead="Open speech and language datasets on Hugging Face.">
+    <div class="grid gap-4 sm:grid-cols-2">
+      {
+        datasets.map((d) => (
+          <ResourceCard
+            title={d.title}
+            description={d.description}
+            url={d.url}
+            cta="View on Hugging Face"
+            icon="database"
+          />
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section title="Models" lead="Optimized, Piper-compatible models for offline inference.">
+    <div class="grid gap-4 sm:grid-cols-2">
+      {
+        models.map((m) => (
+          <ResourceCard
+            title={m.title}
+            description={m.description}
+            url={m.url}
+            cta="View on Hugging Face"
+            icon="mic"
+          />
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section title="Notebooks" lead="Reproducible pipelines and experiments.">
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        notebooks.map((n) => (
+          <ResourceCard
+            title={n.title}
+            description={n.description}
+            url={asset(n.url)}
+            cta="Open notebook"
+            meta={`${n.year} · ${n.language}`}
+            tags={n.tags}
+            icon="notebook"
+          />
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section title="Research" lead="Whitepapers and technical write-ups.">
+    <div class="grid gap-4 sm:grid-cols-2">
+      {
+        research.map((r) => (
+          <ResourceCard
+            title={r.title}
+            description={r.description}
+            url={asset(r.filePath)}
+            cta={r.buttonLabel}
+            meta={`${r.year} · ${r.fileType.toUpperCase()}`}
+            tags={r.tags}
+            icon="scroll"
+          />
+        ))
+      }
+    </div>
+  </Section>
+</Base>

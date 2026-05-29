@@ -1,0 +1,293 @@
+---
+import '../styles/global.css';
+import Seo from '../components/Seo.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
+import PaletteSelector from '../components/PaletteSelector.astro';
+import Reveal from '../components/Reveal.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../data/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: 'website' | 'article';
+  jsonLd?: Record<string, unknown>;
+  publishedTime?: string;
+  modifiedTime?: string;
+}
+
+const props = Astro.props;
+const base = import.meta.env.BASE_URL;
+const navLink = (href: string) =>
+  (base.replace(/\/$/, '') + (href === '/' ? '/' : href)).replace(/\/\/+$/, '/');
+
+// Mark the current section active (matches /section and /section/...).
+const here = Astro.url.pathname.replace(/\/$/, '');
+const isActive = (href: string) => {
+  const target = navLink(href).replace(/\/$/, '');
+  if (href === '/') return here === target;
+  return here === target || here.startsWith(target + '/');
+};
+
+const year = new Date().getFullYear();
+const projectLinks = [
+  { label: 'OpenVoiceOS', href: 'https://github.com/OpenVoiceOS' },
+  { label: 'HiveMind', href: 'https://github.com/JarbasHiveMind' },
+  { label: 'phoonnx', href: 'https://github.com/TigreGotico/phoonnx' },
+  { label: 'ovoscope', href: 'https://github.com/TigreGotico/ovoscope' },
+];
+---
+
+<!doctype html>
+<html lang={site.lang} class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href={base + 'favicon.svg'} type="image/svg+xml" />
+    <link rel="sitemap" href={base + 'sitemap-index.xml'} />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={site.name}
+      href={base + 'rss.xml'}
+    />
+    <Seo {...props} />
+
+    <!-- Brand fonts with font-display: swap (set via &display=swap) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&family=Cinzel:wght@500;600;700&display=swap"
+    />
+
+    <!-- Apply persisted/preferred theme before paint to avoid a flash. -->
+    <script is:inline>
+      (function () {
+        document.documentElement.classList.add('js');
+        try {
+          var stored = localStorage.getItem('theme');
+          var prefersDark = window.matchMedia(
+            '(prefers-color-scheme: dark)'
+          ).matches;
+          if (stored === 'dark' || (!stored && prefersDark)) {
+            document.documentElement.classList.add('dark');
+          }
+          var palette = localStorage.getItem('palette');
+          document.documentElement.dataset.theme =
+            palette === 'hivemind' || palette === 'noir' || palette === 'slop'
+              ? palette
+              : 'tiger';
+        } catch (e) {
+          document.documentElement.dataset.theme = 'tiger';
+        }
+      })();
+    </script>
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <div class="grain-overlay" aria-hidden="true"></div>
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <header
+      id="site-header"
+      class="sticky top-0 z-40 border-b border-transparent transition-all duration-300"
+    >
+      <nav
+        class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 py-4"
+        aria-label="Primary"
+      >
+        <a
+          href={navLink('/')}
+          class="group inline-flex items-center gap-2 font-display text-xl font-semibold tracking-wide"
+        >
+          <span
+            class="inline-flex h-7 w-7 items-center justify-center rounded-lg text-primary-fg"
+            style="background: var(--gradient-brand);"
+            aria-hidden="true"
+          >
+            <Icon name="waveform" class="h-4 w-4" />
+          </span>
+          <span class="text-gradient">TigreGótico</span>
+        </a>
+        <ul class="hidden gap-6 text-sm lg:flex">
+          {
+            site.nav.map((item) => (
+              <li>
+                <a
+                  href={navLink(item.href)}
+                  aria-current={isActive(item.href) ? 'page' : undefined}
+                  class:list={[
+                    'nav-link',
+                    isActive(item.href)
+                      ? 'font-semibold text-fg'
+                      : 'text-muted hover:text-fg',
+                  ]}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <div class="flex items-center gap-2">
+          <PaletteSelector id="palette-desktop" />
+          <ThemeToggle />
+          <button
+            id="nav-toggle"
+            type="button"
+            class="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border text-fg transition-colors hover:border-primary hover:text-primary lg:hidden"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+            aria-controls="mobile-nav"
+          >
+            <svg
+              class="h-5 w-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <path d="M4 7h16M4 12h16M4 17h16"></path>
+            </svg>
+          </button>
+        </div>
+      </nav>
+      <ul
+        id="mobile-nav"
+        class="hidden border-t border-border bg-bg/95 px-6 py-3 text-sm backdrop-blur lg:hidden"
+      >
+        {
+          site.nav.map((item) => (
+            <li>
+              <a
+                href={navLink(item.href)}
+                aria-current={isActive(item.href) ? 'page' : undefined}
+                class:list={[
+                  'block rounded-lg px-3 py-2.5 transition-colors hover:bg-surface',
+                  isActive(item.href)
+                    ? 'font-semibold text-primary'
+                    : 'text-muted hover:text-fg',
+                ]}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+        <li class="mt-1 flex items-center justify-between gap-3 border-t border-border px-3 pb-1 pt-3">
+          <span class="font-display text-xs uppercase tracking-[0.2em] text-muted">
+            Appearance
+          </span>
+          <PaletteSelector id="palette-mobile" compact />
+        </li>
+      </ul>
+    </header>
+
+    <main id="main" class="mx-auto w-full max-w-5xl flex-1 px-6 py-12">
+      <slot />
+    </main>
+
+    <footer class="relative mt-8 border-t border-border">
+      <div
+        class="pointer-events-none absolute inset-0 -z-10 opacity-60"
+        style="background: radial-gradient(60% 100% at 50% 0%, rgb(var(--grad-via) / 0.08), transparent 70%);"
+        aria-hidden="true"
+      >
+      </div>
+      <div class="mx-auto grid max-w-5xl gap-10 px-6 py-14 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="space-y-3 sm:col-span-2 lg:col-span-1">
+          <p class="inline-flex items-center gap-2 font-display text-lg font-semibold tracking-wide">
+            <span
+              class="inline-flex h-6 w-6 items-center justify-center rounded-md text-primary-fg"
+              style="background: var(--gradient-brand);"
+              aria-hidden="true"
+            >
+              <Icon name="waveform" class="h-3.5 w-3.5" />
+            </span>
+            <span class="text-gradient">TigreGótico</span>
+          </p>
+          <p class="text-sm text-muted">
+            Privacy-first voice technology and FOSS AI — built to run on your own
+            hardware.
+          </p>
+        </div>
+
+        <nav aria-label="Footer navigation">
+          <p class="mb-3 font-display text-xs uppercase tracking-[0.2em] text-fg">Explore</p>
+          <ul class="space-y-2 text-sm text-muted">
+            {
+              site.nav.map((item) => (
+                <li>
+                  <a class="transition-colors hover:text-fg" href={navLink(item.href)}>
+                    {item.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+
+        <nav aria-label="Footer projects">
+          <p class="mb-3 font-display text-xs uppercase tracking-[0.2em] text-fg">Projects</p>
+          <ul class="space-y-2 text-sm text-muted">
+            {
+              projectLinks.map((p) => (
+                <li>
+                  <a class="transition-colors hover:text-fg" href={p.href} rel="noopener">
+                    {p.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+
+        <div>
+          <p class="mb-3 font-display text-xs uppercase tracking-[0.2em] text-fg">Connect</p>
+          <ul class="space-y-2 text-sm text-muted">
+            <li><a class="inline-flex items-center gap-1.5 transition-colors hover:text-fg" href={site.socials.github} rel="noopener"><Icon name="github" class="h-4 w-4" />GitHub</a></li>
+            <li><a class="transition-colors hover:text-fg" href={site.socials.huggingface} rel="noopener">Hugging Face</a></li>
+            <li><a class="transition-colors hover:text-fg" href={site.socials.openvoiceos} rel="noopener">OpenVoiceOS.org</a></li>
+            <li><a class="inline-flex items-center gap-1.5 transition-colors hover:text-fg" href={`mailto:${site.email}`}><Icon name="mail" class="h-4 w-4" />{site.email}</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-border">
+        <p class="mx-auto max-w-5xl px-6 py-5 text-xs text-muted">
+          © {year} {site.legalName}. Free and open-source software.
+        </p>
+      </div>
+    </footer>
+
+    <Reveal />
+
+    <script is:inline>
+      (function () {
+        var btn = document.getElementById('nav-toggle');
+        var menu = document.getElementById('mobile-nav');
+        if (btn && menu) {
+          btn.addEventListener('click', function () {
+            var open = menu.classList.toggle('hidden') === false;
+            btn.setAttribute('aria-expanded', String(open));
+          });
+        }
+        // Translucent backdrop-blur once the page has scrolled.
+        var header = document.getElementById('site-header');
+        if (header) {
+          var onScroll = function () {
+            if (window.scrollY > 8) {
+              header.classList.add('is-scrolled');
+            } else {
+              header.classList.remove('is-scrolled');
+            }
+          };
+          onScroll();
+          window.addEventListener('scroll', onScroll, { passive: true });
+        }
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+---
+interface Props {
+  /** Optional small uppercase label above the title. */
+  eyebrow?: string;
+  /** Section heading. Rendered as <h2>. Omit for an unlabeled block. */
+  title?: string;
+  /** Supporting line under the title. */
+  lead?: string;
+  /** Anchor id for in-page links. */
+  id?: string;
+  /** Center the header (and constrain it). */
+  center?: boolean;
+  class?: string;
+}
+
+const { eyebrow, title, lead, id, center = false, class: className } =
+  Astro.props;
+---
+
+<section id={id} class:list={['py-14 sm:py-16', className]}>
+  {
+    (eyebrow || title || lead) && (
+      <header
+        class:list={[
+          'mb-10 max-w-2xl reveal',
+          center && 'mx-auto text-center',
+        ]}
+        data-reveal
+      >
+        {eyebrow && (
+          <p class:list={['eyebrow mb-3', center && 'justify-center']}>
+            {eyebrow}
+          </p>
+        )}
+        {title && <h2 class="display-2">{title}</h2>}
+        {lead && <p class="mt-4 text-lg text-muted">{lead}</p>}
+      </header>
+    )
+  }
+  <slot />
+</section>

@@ -1,0 +1,275 @@
+---
+// Live palette (color-scheme) selector. The no-flash inline script in
+// Base.astro sets `document.documentElement.dataset.theme` before paint from
+// localStorage('palette'); this island lets the visitor switch it at runtime.
+//
+// Each palette ships both a light and dark token set in global.css, so this is
+// orthogonal to the light/dark ThemeToggle. Vanilla JS, no framework.
+//
+// `compact` renders a smaller trigger suited to the mobile menu row.
+interface Props {
+  compact?: boolean;
+  id?: string;
+}
+const { compact = false, id = 'palette-selector' } = Astro.props;
+const menuId = `${id}-menu`;
+const labelId = `${id}-label`;
+
+// Swatch dots per palette (small previews). Plain CSS colors so they render
+// regardless of the live theme.
+const palettes = [
+  {
+    value: 'tiger',
+    name: 'Gothic Tiger',
+    hint: 'Amber & gold on charcoal',
+    dots: ['#0d0c0a', '#fbbf24', '#d97706'],
+  },
+  {
+    value: 'hivemind',
+    name: 'HiveMind',
+    hint: 'Blue & gold',
+    dots: ['#0a0b10', '#1d4ed8', '#d4af37'],
+  },
+  {
+    value: 'noir',
+    name: 'Noir',
+    hint: 'Monochrome & gold',
+    dots: ['#141416', '#f4f4f2', '#8a640f'],
+  },
+  {
+    value: 'slop',
+    name: 'Purple AI Slop',
+    hint: 'Every AI site, ever — a red flag 🟣',
+    dots: ['#0f0a1f', '#7c3aed', '#d946ef'],
+  },
+];
+---
+
+<div class="palette-selector relative" data-palette-selector data-id={id}>
+  <button
+    type="button"
+    data-palette-trigger
+    class:list={[
+      'inline-flex items-center justify-center rounded-lg border border-border text-fg transition-colors hover:border-primary hover:text-primary',
+      compact ? 'h-9 gap-2 px-3 text-sm' : 'h-9 w-9',
+    ]}
+    aria-label="Choose color palette"
+    aria-haspopup="menu"
+    aria-expanded="false"
+    aria-controls={menuId}
+  >
+    <svg
+      class="h-5 w-5"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <circle cx="13.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"></circle>
+      <circle cx="17.5" cy="10.5" r="1.5" fill="currentColor" stroke="none"></circle>
+      <circle cx="8.5" cy="7.5" r="1.5" fill="currentColor" stroke="none"></circle>
+      <circle cx="6.5" cy="12.5" r="1.5" fill="currentColor" stroke="none"></circle>
+      <path d="M12 2a10 10 0 1 0 0 20 2.5 2.5 0 0 0 2.5-2.5c0-.69-.28-1.31-.73-1.76A2.5 2.5 0 0 1 15.5 14H18a4 4 0 0 0 4-4 8 8 0 0 0-10-8z"></path>
+    </svg>
+    {compact && <span data-palette-trigger-label>Palette</span>}
+  </button>
+
+  <div
+    id={menuId}
+    data-palette-menu
+    role="menu"
+    aria-labelledby={labelId}
+    hidden
+    class="palette-menu absolute right-0 z-50 mt-2 w-60 origin-top-right rounded-xl border border-border bg-elevated p-1.5"
+    style="box-shadow: var(--shadow-elevate);"
+  >
+    <p
+      id={labelId}
+      class="px-2.5 pb-1 pt-1.5 font-display text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-muted"
+    >
+      Palette
+    </p>
+    {
+      palettes.map((p) => (
+        <button
+          type="button"
+          role="menuitemradio"
+          aria-checked="false"
+          data-palette-option
+          data-value={p.value}
+          class="palette-option flex w-full items-center gap-3 rounded-lg px-2.5 py-2 text-left text-sm text-fg transition-colors hover:bg-surface focus-visible:bg-surface"
+        >
+          <span class="palette-swatch flex shrink-0 items-center gap-0.5" aria-hidden="true">
+            {p.dots.map((c) => (
+              <span
+                class="h-3.5 w-3.5 rounded-full ring-1 ring-border/60"
+                style={`background:${c}`}
+              />
+            ))}
+          </span>
+          <span class="min-w-0 flex-1">
+            <span class="block font-medium leading-tight">{p.name}</span>
+            <span class="block text-xs leading-tight text-muted">{p.hint}</span>
+          </span>
+          <svg
+            class="palette-check h-4 w-4 shrink-0 text-primary opacity-0"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M20 6 9 17l-5-5" />
+          </svg>
+        </button>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  @media (prefers-reduced-motion: no-preference) {
+    .palette-menu {
+      animation: palette-pop 0.14s ease-out;
+    }
+  }
+  @keyframes palette-pop {
+    from {
+      opacity: 0;
+      transform: translateY(-4px) scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    // Both selector instances (desktop + mobile) emit this inline script; run
+    // the wiring only once for the whole document.
+    if (window.__paletteSelectorInit) return;
+    window.__paletteSelectorInit = true;
+    var VALID = ['tiger', 'hivemind', 'noir', 'slop'];
+
+    function current() {
+      var p = document.documentElement.dataset.theme;
+      return VALID.indexOf(p) === -1 ? 'tiger' : p;
+    }
+
+    function apply(value) {
+      if (VALID.indexOf(value) === -1) value = 'tiger';
+      document.documentElement.dataset.theme = value;
+      try {
+        localStorage.setItem('palette', value);
+      } catch (e) {}
+      // Keep every selector instance (desktop + mobile) in sync.
+      var all = document.querySelectorAll('[data-palette-selector]');
+      for (var i = 0; i < all.length; i++) syncMarks(all[i], value);
+    }
+
+    function syncMarks(root, value) {
+      var opts = root.querySelectorAll('[data-palette-option]');
+      for (var i = 0; i < opts.length; i++) {
+        var on = opts[i].getAttribute('data-value') === value;
+        opts[i].setAttribute('aria-checked', String(on));
+        var check = opts[i].querySelector('.palette-check');
+        if (check) check.style.opacity = on ? '1' : '0';
+      }
+    }
+
+    function init(root) {
+      var trigger = root.querySelector('[data-palette-trigger]');
+      var menu = root.querySelector('[data-palette-menu]');
+      var options = root.querySelectorAll('[data-palette-option]');
+      if (!trigger || !menu) return;
+
+      function isOpen() {
+        return !menu.hidden;
+      }
+
+      function open() {
+        menu.hidden = false;
+        trigger.setAttribute('aria-expanded', 'true');
+        // Focus the active option (or the first) once visible.
+        var active = menu.querySelector('[aria-checked="true"]') || options[0];
+        if (active) active.focus();
+        document.addEventListener('keydown', onKeydown, true);
+        document.addEventListener('click', onDocClick, true);
+      }
+
+      function close(focusTrigger) {
+        if (!isOpen()) return;
+        menu.hidden = true;
+        trigger.setAttribute('aria-expanded', 'false');
+        document.removeEventListener('keydown', onKeydown, true);
+        document.removeEventListener('click', onDocClick, true);
+        if (focusTrigger) trigger.focus();
+      }
+
+      function onDocClick(e) {
+        if (!root.contains(e.target)) close(false);
+      }
+
+      function focusByOffset(delta) {
+        var list = Array.prototype.slice.call(options);
+        var idx = list.indexOf(document.activeElement);
+        var next = (idx + delta + list.length) % list.length;
+        if (idx === -1) next = delta > 0 ? 0 : list.length - 1;
+        list[next].focus();
+      }
+
+      function onKeydown(e) {
+        if (!isOpen()) return;
+        switch (e.key) {
+          case 'Escape':
+            e.preventDefault();
+            close(true);
+            break;
+          case 'ArrowDown':
+            e.preventDefault();
+            focusByOffset(1);
+            break;
+          case 'ArrowUp':
+            e.preventDefault();
+            focusByOffset(-1);
+            break;
+          case 'Home':
+            e.preventDefault();
+            options[0].focus();
+            break;
+          case 'End':
+            e.preventDefault();
+            options[options.length - 1].focus();
+            break;
+          case 'Tab':
+            close(false);
+            break;
+        }
+      }
+
+      trigger.addEventListener('click', function () {
+        if (isOpen()) close(true);
+        else open();
+      });
+
+      for (var i = 0; i < options.length; i++) {
+        options[i].addEventListener('click', function () {
+          apply(this.getAttribute('data-value'));
+          close(true);
+        });
+      }
+
+      syncMarks(root, current());
+    }
+
+    var roots = document.querySelectorAll('[data-palette-selector]');
+    for (var i = 0; i < roots.length; i++) init(roots[i]);
+  })();
+</script>

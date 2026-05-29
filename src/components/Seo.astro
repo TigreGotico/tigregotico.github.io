@@ -1,0 +1,87 @@
+---
+import { site } from '../data/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  /** Per-page OG image, root-relative (e.g. /og-blog.png) or absolute URL. */
+  image?: string;
+  /** 'website' for pages, 'article' for blog posts. */
+  type?: 'website' | 'article';
+  /** Extra JSON-LD object (e.g. BlogPosting) merged alongside Organization. */
+  jsonLd?: Record<string, unknown>;
+  publishedTime?: string;
+  modifiedTime?: string;
+}
+
+const {
+  title,
+  description = site.description,
+  image = site.defaultOgImage,
+  type = 'website',
+  jsonLd,
+  publishedTime,
+  modifiedTime,
+} = Astro.props;
+
+const pageTitle = title ? `${title} — ${site.name}` : site.title;
+
+// Canonical = current page resolved against the configured site origin.
+const canonical = new URL(Astro.url.pathname, Astro.site ?? site.url).href;
+
+// Resolve OG image to an absolute URL. Astro-processed assets (under the
+// configured base, e.g. /tigregotico-website/_astro/...) and external URLs are
+// used as-is; bare root-relative paths get the base prefixed.
+const baseUrl = import.meta.env.BASE_URL;
+const ogImagePath =
+  image.startsWith('http') || image.startsWith(baseUrl)
+    ? image
+    : baseUrl.replace(/\/$/, '') + image;
+const ogImage = ogImagePath.startsWith('http')
+  ? ogImagePath
+  : new URL(ogImagePath, Astro.site ?? site.url).href;
+
+const organizationLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: site.name,
+  legalName: site.legalName,
+  url: site.url,
+  email: site.email,
+  sameAs: [site.socials.github, site.socials.huggingface, site.socials.openvoiceos],
+};
+---
+
+<title>{pageTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+
+<meta property="og:type" content={type} />
+<meta property="og:site_name" content={site.name} />
+<meta property="og:title" content={pageTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:locale" content={site.locale} />
+{publishedTime && <meta property="article:published_time" content={publishedTime} />}
+{modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={pageTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+
+<script
+  is:inline
+  type="application/ld+json"
+  set:html={JSON.stringify(organizationLd)}
+/>
+{
+  jsonLd && (
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(jsonLd)}
+    />
+  )
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "id": "open-voice-os",
+    "name": "OpenVoiceOS",
+    "description": "An independent non-profit foundation building a community-driven, privacy-respecting open-source voice-AI platform. TigreGótico is a core contributor to OpenVoiceOS, and its founder serves on the foundation's board.",
+    "url": "https://openvoiceos.org",
+    "repositories": []
+  },
+  {
+    "id": "alpha-cephei",
+    "name": "Alpha Cephei",
+    "description": "A speech-recognition partnership bringing decades of automatic speech recognition (ASR) expertise — the team behind Vosk and Kaldi-based models — to our voice-model fine-tuning and dataset work.",
+    "url": "https://alphacephei.com",
+    "repositories": []
+  },
+  {
+    "id": "ilenia",
+    "name": "ILENIA",
+    "description": "A one-time subcontracted project to bring Catalan, Spanish, Galician, and Basque support to OpenVoiceOS and improve its localization tooling — delivering STT and TTS plugins and dialog/normalization components for those languages.",
+    "url": "https://proyectoilenia.es",
+    "repositories": []
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "hybrid-tts-dataset-synthesis",
+    "title": "Hybrid Low-Resource TTS Dataset Synthesis Pipeline",
+    "description": "Complete pipeline implementing the whitepaper workflow: Format Conversion, Denoising, Trimming, Normalization, WPM Filtering and Voice Cloning for creating high-quality TTS datasets.",
+    "url": "/notebooks/asr2tts.ipynb",
+    "language": "python",
+    "tags": ["TTS", "Dataset Creation", "Audio Processing", "Voice Cloning"],
+    "year": 2025
+  },
+  {
+    "id": "arabic-diacritization-lstm",
+    "title": "Arabic Diacritization with LSTM",
+    "description": "Train a small LSTM model to predict Arabic diacritics, export to ONNX format, and benchmark performance for real-time text processing.",
+    "url": "https://raw.githubusercontent.com/TigreGotico/notebooks/refs/heads/main/arabic_diacritics/lstm.ipynb",
+    "language": "python",
+    "tags": ["NLP", "Arabic", "LSTM", "ONNX", "Diacritization"],
+    "year": 2025
+  },
+  {
+    "id": "ovos-intent-classifier-multilingual",
+    "title": "OVOS Multilingual Intent Classifier with Model2Vec",
+    "description": "Train a multilingual intent classifier for OVOS skills using Model2Vec embeddings. Supports 11+ languages with ONNX export for efficient deployment.",
+    "url": "https://raw.githubusercontent.com/TigreGotico/ml-notebooks/main/m2v/ovos_intent_classifier_multilingual.ipynb",
+    "language": "python",
+    "tags": ["NLP", "OVOS", "Intent Classification", "Model2Vec", "ONNX", "Multilingual"],
+    "year": 2025
+  },
+  {
+    "id": "tts-to-wake-word-pipeline",
+    "title": "Wake Word Dataset Generation & Augmentation Pipeline",
+    "description": "End-to-end pipeline for generating, augmenting, and benchmarking wake-word datasets using TTS synthesis, voice conversion, adversarial generation, and acoustic augmentation.",
+    "url": "https://raw.githubusercontent.com/TigreGotico/ml-notebooks/main/ww/tts2ww.ipynb",
+    "language": "python",
+    "tags": ["Wake Word", "TTS", "Voice Conversion", "Dataset Generation", "Audio Augmentation"],
+    "year": 2025
+  }
+]

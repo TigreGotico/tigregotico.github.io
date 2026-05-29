@@ -1,0 +1,108 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import Icon from '../../components/Icon.astro';
+import { Image } from 'astro:assets';
+import { getCollection, render } from 'astro:content';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const raw = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+// Resolve a reading-time estimate per post from the rendered word count.
+const posts = await Promise.all(
+  raw.map(async (post) => {
+    const { remarkPluginFrontmatter } = await render(post);
+    const words: number = remarkPluginFrontmatter?.words ?? 0;
+    const minutes = words ? Math.max(1, Math.round(words / 200)) : 0;
+    return { post, minutes };
+  })
+);
+---
+
+<Base
+  title="Blog"
+  description="Articles and insights on voice AI, OpenVoiceOS development, synthetic data, and minority-language speech technology."
+>
+  <PageHeader
+    eyebrow="Writing"
+    title="From the workshop"
+    lead="Notes on voice AI, OpenVoiceOS development, synthetic data, and minority-language speech technology."
+  />
+
+  <ul class="grid gap-6 sm:grid-cols-2">
+    {
+      posts.map(({ post, minutes }, i) => {
+        const cover = post.data.cover ?? null;
+        const coverExternal = post.data.coverExternal ?? null;
+        return (
+          <li class="reveal" data-reveal data-reveal-delay={(i % 2) * 80}>
+            <a
+              href={`${base}/blog/${post.id}`}
+              class="card-hover group flex h-full flex-col overflow-hidden"
+            >
+              {(cover || coverExternal) && (
+                <div class="relative -mx-6 -mt-6 mb-5 aspect-[16/9] overflow-hidden border-b border-border bg-bg">
+                  <div
+                    class="pointer-events-none absolute inset-0 z-10"
+                    style="background: linear-gradient(180deg, transparent 55%, rgb(var(--color-surface) / 0.85) 100%);"
+                    aria-hidden="true"
+                  />
+                  {cover ? (
+                    <Image
+                      src={cover}
+                      alt={post.data.title}
+                      class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      widths={[400, 800]}
+                      sizes="(max-width: 640px) 100vw, 400px"
+                    />
+                  ) : (
+                    <img
+                      src={coverExternal!}
+                      alt={post.data.title}
+                      class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  )}
+                </div>
+              )}
+              <div class="flex items-center gap-2 font-display text-xs uppercase tracking-[0.18em] text-muted">
+                <time datetime={post.data.date.toISOString()}>
+                  {post.data.date.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                  })}
+                </time>
+                {minutes > 0 && (
+                  <>
+                    <span aria-hidden="true">·</span>
+                    <span>{minutes} min read</span>
+                  </>
+                )}
+              </div>
+              <h2 class="mt-2 display-3 text-lg group-hover:text-primary">
+                {post.data.title}
+              </h2>
+              <p class="mt-2 flex-1 text-sm leading-relaxed text-muted">
+                {post.data.description}
+              </p>
+              {post.data.tags.length > 0 && (
+                <ul class="mt-4 flex flex-wrap gap-1.5">
+                  {post.data.tags.slice(0, 4).map((tag) => (
+                    <li class="badge">{tag}</li>
+                  ))}
+                </ul>
+              )}
+              <span class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary transition-transform group-hover:translate-x-0.5">
+                Read article <Icon name="arrow" class="h-4 w-4" />
+              </span>
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</Base>
