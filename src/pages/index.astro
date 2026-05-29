@@ -22,7 +22,9 @@ const flagshipDataset = (await getCollection('datasets'))
   .map((d) => d.data)
   .find((d) => d.id === 'synthetic-tts');
 
-const posts = (await getCollection('blog', ({ data }) => !data.draft))
+// Only render posts whose date has arrived — future-dated posts stay hidden
+// until a (re)build after their date (see the weekly cron in deploy.yml).
+const posts = (await getCollection('blog', ({ data }) => !data.draft && data.date.valueOf() <= Date.now()))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 3);
 

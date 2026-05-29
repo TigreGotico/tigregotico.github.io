@@ -6,7 +6,8 @@ import Base from '../../layouts/Base.astro';
 import { site } from '../../data/site';
 
 export const getStaticPaths = (async () => {
-  const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  // Don't generate pages for future-dated posts until a build after their date.
+  const posts = (await getCollection('blog', ({ data }) => !data.draft && data.date.valueOf() <= Date.now())).sort(
     (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
   );
   return posts.map((post, i) => ({

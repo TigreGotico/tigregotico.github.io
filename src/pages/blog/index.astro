@@ -6,7 +6,8 @@ import { Image } from 'astro:assets';
 import { getCollection, render } from 'astro:content';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const raw = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+// Future-dated posts stay hidden until a (re)build after their date.
+const raw = (await getCollection('blog', ({ data }) => !data.draft && data.date.valueOf() <= Date.now())).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
 
