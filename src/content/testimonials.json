@@ -1,5 +1,21 @@
 [
   {
+    "id": "oscillatelabs",
+    "org": "Oscillate Labs",
+    "url": "https://oscillatelabs.net",
+    "quote": "If you need privacy-first voice and AI solutions, TigreGotico is our top pick for a partner. Privacy is part of their DNA. You won't find another organization as dedicated to keeping your data local and safe.",
+    "author": "Mike J. Gray",
+    "placeholder": false
+  },
+  {
+    "id": "visio",
+    "org": "Koninklijke Visio",
+    "url": "https://www.visio.org",
+    "quote": "Miro is truly a \"one-of-a-kind\" Python developer and AI specialist. I've worked with many large development parties, but what makes him unique is his creative ability to develop custom solutions in the open-source space, combined with a healthy, critical, problem-solving attitude instead of just doing what is asked. Combine that with a deep knowledge of the inner workings of his products and being at the forefront of new developments in the AI and conversational/voice space — creating datasets, models, and workflows himself — and you will always have a state-of-the-art solution.",
+    "author": "Timon Van Hasselt",
+    "placeholder": false
+  },
+  {
     "id": "pilotgpt",
     "org": "PilotGPT",
     "url": "https://pilotgpt.net",
@@ -12,22 +28,6 @@
     "org": "Alpha Cephei",
     "url": "https://alphacephei.com",
     "quote": "A statement from Alpha Cephei will appear here once provided.",
-    "author": "Name, Role — pending",
-    "placeholder": true
-  },
-  {
-    "id": "oscillatelabs",
-    "org": "Oscillate Labs",
-    "url": "https://oscillatelabs.net",
-    "quote": "If you need privacy-first voice and AI solutions, TigreGotico is our top pick for a partner. Privacy is part of their DNA. You won't find another organization as dedicated to keeping your data local and safe.",
-    "author": "Mike J. Gray",
-    "placeholder": false
-  },
-  {
-    "id": "visio",
-    "org": "Koninklijke Visio",
-    "url": "https://www.visio.org",
-    "quote": "A statement from Koninklijke Visio will appear here once provided.",
     "author": "Name, Role — pending",
     "placeholder": true
   },
