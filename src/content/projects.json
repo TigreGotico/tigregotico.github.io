@@ -70,21 +70,6 @@
     "featured": false
   },
   {
-    "id": "storyforge",
-    "name": "StoryForge",
-    "description": "An engine for LLM-powered generative narrative worlds — interactive fiction that improvises story, characters, and choices around the player, playable in the terminal or by voice.",
-    "category": "Games",
-    "tags": [
-      "LLM worlds",
-      "game",
-      "generative IF",
-      "interactive fiction",
-      "voice-playable"
-    ],
-    "featured": false,
-    "comingSoon": true
-  },
-  {
     "id": "agentic-crm",
     "name": "Agentic CRM",
     "description": "A roadmapped product: an agent-native CRM where people and AI agents collaborate on the same data — driven from your agentic coding session as a skill, with a web UI for humans and agents to work together. Self-hostable, no mandatory cloud.",
@@ -149,20 +134,6 @@
       "on-device",
       "training",
       "wake word"
-    ],
-    "featured": false,
-    "comingSoon": true
-  },
-  {
-    "id": "tnalagmes",
-    "name": "TNaLaGmes",
-    "description": "TNaLaGmes (a Toolbox for Natural Language Games) — a framework for building classic and voice-playable text adventures, narrated and controlled hands-free.",
-    "category": "Games",
-    "tags": [
-      "game",
-      "game toolkit",
-      "interactive fiction",
-      "voice-playable"
     ],
     "featured": false,
     "comingSoon": true
@@ -717,7 +688,7 @@
     "name": "PyWikiHow",
     "description": "Python client for WikiHow.",
     "url": "https://github.com/TigreGotico/PyWikiHow",
-    "category": "Clients",
+    "category": "Tools",
     "tags": [
       "API client",
       "WikiHow",
@@ -1483,20 +1454,6 @@
     "selfHosted": true
   },
   {
-    "id": "tnalagmes-tower_of_silence",
-    "name": "Tnalagmes Tower Of Silence",
-    "description": "TNaLaGmes game: tower_of_silence",
-    "url": "https://github.com/VoiceGamez/tnalagmes-tower_of_silence",
-    "category": "Games",
-    "tags": [
-      "Interactive Fiction",
-      "Audio-first",
-      "Text Adventure"
-    ],
-    "featured": false,
-    "selfHosted": true
-  },
-  {
     "id": "tnalagmes-tokaido_road",
     "name": "Tnalagmes Tokaido Road",
     "description": "TNaLaGmes game: tokaido_road",
@@ -2169,51 +2126,9 @@
     "selfHosted": true
   },
   {
-    "id": "story-forge",
-    "name": "Story Forge",
-    "description": "A voice-enabled game built with the StoryForge or TNaLaGmes platform.",
-    "url": "https://github.com/VoiceGamez/story-forge",
-    "category": "Games",
-    "tags": [
-      "Interactive Fiction",
-      "Audio-first",
-      "Text Adventure"
-    ],
-    "featured": false,
-    "selfHosted": true
-  },
-  {
-    "id": "tnalagmes-games",
-    "name": "Tnalagmes Games",
-    "description": "Games built with the TNaLaGmes NLP game library",
-    "url": "https://github.com/VoiceGamez/tnalagmes-games",
-    "category": "Games",
-    "tags": [
-      "Interactive Fiction",
-      "Audio-first",
-      "Text Adventure"
-    ],
-    "featured": false,
-    "selfHosted": true
-  },
-  {
-    "id": "storyforge-games",
-    "name": "Storyforge Games",
-    "description": "Games built with the storyforge interactive fiction engine",
-    "url": "https://github.com/VoiceGamez/storyforge-games",
-    "category": "Games",
-    "tags": [
-      "Interactive Fiction",
-      "Audio-first",
-      "Text Adventure"
-    ],
-    "featured": false,
-    "selfHosted": true
-  },
-  {
     "id": "ovos-skill-cave-adventure-game",
-    "name": "Ovos Skill Cave Adventure Game",
-    "description": "play colossal cave adventure by voice",
+    "name": "Colossal Cave Adventure",
+    "description": "OVOS voice skill for the classic Colossal Cave text adventure.",
     "url": "https://github.com/VoiceGamez/ovos-skill-cave-adventure-game",
     "category": "Games",
     "tags": [
@@ -2226,8 +2141,8 @@
   },
   {
     "id": "ovos-skill-zork3-game",
-    "name": "Ovos Skill Zork3 Game",
-    "description": "A voice-enabled game built with the StoryForge or TNaLaGmes platform.",
+    "name": "Zork III",
+    "description": "OVOS voice skill for Zork III: The Dungeon Master.",
     "url": "https://github.com/VoiceGamez/ovos-skill-zork3-game",
     "category": "Games",
     "tags": [
@@ -2240,8 +2155,8 @@
   },
   {
     "id": "ovos-skill-zork2-game",
-    "name": "Ovos Skill Zork2 Game",
-    "description": "A voice-enabled game built with the StoryForge or TNaLaGmes platform.",
+    "name": "Zork II",
+    "description": "OVOS voice skill for Zork II: The Wizard of Frobozz.",
     "url": "https://github.com/VoiceGamez/ovos-skill-zork2-game",
     "category": "Games",
     "tags": [
@@ -2254,8 +2169,8 @@
   },
   {
     "id": "ovos-skill-zork0-game",
-    "name": "Ovos Skill Zork0 Game",
-    "description": "A voice-enabled game built with the StoryForge or TNaLaGmes platform.",
+    "name": "Zork Zero",
+    "description": "OVOS voice skill for Zork Zero: The Revenge of Megaboz.",
     "url": "https://github.com/VoiceGamez/ovos-skill-zork0-game",
     "category": "Games",
     "tags": [
@@ -2268,8 +2183,8 @@
   },
   {
     "id": "ovos-skill-station-fall-game",
-    "name": "Ovos Skill Station Fall Game",
-    "description": "station fall voice port of infocom game",
+    "name": "Stationfall",
+    "description": "OVOS voice skill for Steve Meretzky's Stationfall.",
     "url": "https://github.com/VoiceGamez/ovos-skill-station-fall-game",
     "category": "Games",
     "tags": [
@@ -2282,8 +2197,8 @@
   },
   {
     "id": "ovos-skill-starcross-game",
-    "name": "Ovos Skill Starcross Game",
-    "description": "infocom's starcross voice port",
+    "name": "Starcross",
+    "description": "OVOS voice skill for the Infocom sci-fi adventure Starcross.",
     "url": "https://github.com/VoiceGamez/ovos-skill-starcross-game",
     "category": "Games",
     "tags": [
@@ -2296,8 +2211,8 @@
   },
   {
     "id": "ovos-skill-planet-fall-game",
-    "name": "Ovos Skill Planet Fall Game",
-    "description": "planet fall infocom game voice port",
+    "name": "Planetfall",
+    "description": "OVOS voice skill for Steve Meretzky's Planetfall.",
     "url": "https://github.com/VoiceGamez/ovos-skill-planet-fall-game",
     "category": "Games",
     "tags": [
@@ -2310,8 +2225,8 @@
   },
   {
     "id": "ovos-skill-hhgg-game",
-    "name": "Ovos Skill Hhgg Game",
-    "description": "infocom's Hitchhiker's Guide to the Galaxy voice port",
+    "name": "Hitchhiker's Guide to the Galaxy",
+    "description": "OVOS voice skill for the Infocom text adventure based on Douglas Adams' novel.",
     "url": "https://github.com/VoiceGamez/ovos-skill-hhgg-game",
     "category": "Games",
     "tags": [
@@ -2323,66 +2238,10 @@
     "selfHosted": true
   },
   {
-    "id": "TNaLaGmes",
-    "name": "Tnalagmes",
-    "description": "TNaLaGmes is a Toolbox for Natural Language Games",
-    "url": "https://github.com/VoiceGamez/TNaLaGmes",
-    "category": "Games",
-    "tags": [
-      "Interactive Fiction",
-      "Audio-first",
-      "Text Adventure"
-    ],
-    "featured": false,
-    "selfHosted": true
-  },
-  {
     "id": "ovos-skill-moon-game",
-    "name": "Ovos Skill Moon Game",
-    "description": "adventure game for OpenVoiceOS",
+    "name": "Moonmist",
+    "description": "OVOS voice skill for the Infocom mystery adventure Moonmist.",
     "url": "https://github.com/VoiceGamez/ovos-skill-moon-game",
-    "category": "Games",
-    "tags": [
-      "Interactive Fiction",
-      "Audio-first",
-      "Text Adventure"
-    ],
-    "featured": false,
-    "selfHosted": true
-  },
-  {
-    "id": "storyforge-landing-page",
-    "name": "Storyforge Landing Page",
-    "description": "A voice-enabled game built with the StoryForge or TNaLaGmes platform.",
-    "url": "https://github.com/VoiceGamez/storyforge-landing-page",
-    "category": "Games",
-    "tags": [
-      "Interactive Fiction",
-      "Audio-first",
-      "Text Adventure"
-    ],
-    "featured": false,
-    "selfHosted": true
-  },
-  {
-    "id": "pyFrotz",
-    "name": "Pyfrotz",
-    "description": "A voice-enabled game built with the StoryForge or TNaLaGmes platform.",
-    "url": "https://github.com/VoiceGamez/pyFrotz",
-    "category": "Games",
-    "tags": [
-      "Interactive Fiction",
-      "Audio-first",
-      "Text Adventure"
-    ],
-    "featured": false,
-    "selfHosted": true
-  },
-  {
-    "id": "GameSkills",
-    "name": "Gameskills",
-    "description": "A voice-enabled game built with the StoryForge or TNaLaGmes platform.",
-    "url": "https://github.com/VoiceGamez/GameSkills",
     "category": "Games",
     "tags": [
       "Interactive Fiction",
@@ -2399,11 +2258,10 @@
     "url": "https://github.com/TigreGotico/sitemapper",
     "category": "Web Automation",
     "tags": [
-      "Web scraping",
-      "Site mapping",
-      "Robots.txt",
-      "Sitemap",
-      "Link graph"
+      "web scraping",
+      "site mapping",
+      "robots.txt",
+      "sitemap"
     ],
     "featured": false,
     "selfHosted": true
