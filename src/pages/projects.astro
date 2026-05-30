@@ -122,15 +122,18 @@ const collaborations = (await getCollection('collaborations')).map((c) => c.data
 
     <div id="project-grid" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {
-        projects.map((project) => (
-          <div
-            class="project-item"
-            data-category={project.category}
-            data-tags={project.tags.join('|')}
-          >
-            <ProjectCard project={project} />
-          </div>
-        ))
+        projects.map((project) => {
+          const categories = Array.isArray(project.category) ? project.category : [project.category];
+          return (
+            <div
+              class="project-item"
+              data-categories={categories.join('|')}
+              data-tags={project.tags.join('|')}
+            >
+              <ProjectCard project={project} />
+            </div>
+          );
+        })
       }
     </div>
   </Section>
@@ -181,7 +184,10 @@ const collaborations = (await getCollection('collaborations')).map((c) => c.data
         var show;
         if (tag)
           show = (items[j].getAttribute('data-tags') || '').split('|').indexOf(tag) !== -1;
-        else show = items[j].getAttribute('data-category') === val;
+        else {
+          var projectCategories = (items[j].getAttribute('data-categories') || '').split('|');
+          show = projectCategories.indexOf(val) !== -1;
+        }
         items[j].hidden = !show;
       }
     }

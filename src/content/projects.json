@@ -185,7 +185,10 @@
     "name": "TugaPhone",
     "description": "Portuguese phoneme dataset and processing tools.",
     "url": "https://github.com/TigreGotico/tugaphone",
-    "category": "Portuguese",
+    "category": [
+      "Portuguese",
+      "TTS"
+    ],
     "tags": [
       "Portuguese phonemes",
       "dataset",
@@ -250,7 +253,10 @@
     "name": "Silabificador",
     "description": "Portuguese text syllabification tool.",
     "url": "https://github.com/TigreGotico/silabificador",
-    "category": "Portuguese",
+    "category": [
+      "Portuguese",
+      "Speech & Language"
+    ],
     "tags": [
       "Portuguese syllabification",
       "text processing"
@@ -724,7 +730,10 @@
     "name": "tugalex",
     "description": "A lexicon handler and linguistic utility for Portuguese dialects.",
     "url": "https://github.com/TigreGotico/tugalex",
-    "category": "Portuguese",
+    "category": [
+      "Portuguese",
+      "NLP"
+    ],
     "tags": [
       "NLP",
       "Portuguese",
@@ -737,7 +746,10 @@
     "name": "tugamorph",
     "description": "Rule-based morphological analyzer for Portuguese \u2014 segments words into morphemes.",
     "url": "https://github.com/TigreGotico/tugamorph",
-    "category": "Portuguese",
+    "category": [
+      "Portuguese",
+      "NLP"
+    ],
     "tags": [
       "NLP",
       "Portuguese",
@@ -750,7 +762,10 @@
     "name": "tugatagger",
     "description": "Lightweight Portuguese part-of-speech (POS) tagger.",
     "url": "https://github.com/TigreGotico/tugatagger",
-    "category": "Portuguese",
+    "category": [
+      "Portuguese",
+      "NLP"
+    ],
     "tags": [
       "NLP",
       "POS",
@@ -763,7 +778,10 @@
     "name": "mwl_phonemizer",
     "description": "Rule-based phonemizer for the Mirandese language.",
     "url": "https://github.com/TigreGotico/mwl_phonemizer",
-    "category": "Portuguese",
+    "category": [
+      "Portuguese",
+      "Speech & Language"
+    ],
     "tags": [
       "G2P",
       "Mirandese",
@@ -776,7 +794,10 @@
     "name": "g2p_barranquenho",
     "description": "Grapheme-to-phoneme for Barranquenho.",
     "url": "https://github.com/TigreGotico/g2p_barranquenho",
-    "category": "Portuguese",
+    "category": [
+      "Portuguese",
+      "Speech & Language"
+    ],
     "tags": [
       "Barranquenho",
       "G2P",
@@ -789,7 +810,10 @@
     "name": "sotaque_forcado",
     "description": "Phonemizer for European Portuguese regional accents.",
     "url": "https://github.com/TigreGotico/sotaque_forcado",
-    "category": "Portuguese",
+    "category": [
+      "Portuguese",
+      "Speech & Language"
+    ],
     "tags": [
       "Portuguese",
       "accents",
