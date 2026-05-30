@@ -1,12 +1,19 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHeader from '../components/PageHeader.astro';
-import voices from '../data/phoonnx-voices.json';
+import { voices } from 'phoonnx/voices';
 
+// Dii first, then Miro, then the extra voices.
+const VOICE_ORDER: Record<string, number> = { Dii: 0, Miro: 1, 'Voice 3': 2, 'Voice 4': 3 };
 const VOICE_LABELS: Record<string, string> = { Miro: 'Miro (male)', Dii: 'Dii (female)' };
+const sorted = [...voices].sort(
+  (a, b) =>
+    (VOICE_ORDER[a.voice] ?? 9) - (VOICE_ORDER[b.voice] ?? 9) ||
+    a.langLabel.localeCompare(b.langLabel),
+);
 const order: string[] = [];
-const byVoice = new Map<string, typeof voices>();
-for (const v of voices) {
+const byVoice = new Map<string, typeof sorted>();
+for (const v of sorted) {
   if (!byVoice.has(v.voice)) {
     byVoice.set(v.voice, []);
     order.push(v.voice);
@@ -185,13 +192,36 @@ const groups = order.map((name) => ({
         > (TTS, wake-word, and intent-classifier pipelines).
       </p>
     </div>
+
+    <div class="card mt-6 text-sm">
+      <p class="display-3 text-base">Want to use phoonnx voices in your browser?</p>
+      <p class="mt-2 text-muted">
+        This whole demo is powered by
+        <a class="text-primary hover:underline" href="https://www.npmjs.com/package/phoonnx" rel="noopener"
+          ><code>phoonnx</code></a
+        >, our open-source npm package for in-browser VITS TTS with onnxruntime-web —
+        Unicode and espeak phonemizer paths, no server. Drop it into your own site or app:
+      </p>
+      <pre class="mt-3 overflow-x-auto rounded-lg border border-border bg-elevated p-3"><code>npm i phoonnx onnxruntime-web</code></pre>
+      <p class="mt-2 text-muted">
+        Source &amp; docs:
+        <a class="text-primary hover:underline" href="https://github.com/TigreGotico/phoonnx.js" rel="noopener"
+          >github.com/TigreGotico/phoonnx.js</a
+        >.
+      </p>
+    </div>
   </div>
 
   <script>
-    import voices from '../data/phoonnx-voices.json';
-    import { loadVoice, synthesize, type VoiceEntry, type LoadedVoice } from '../scripts/phoonnx-tts';
+    import { loadVoice, synthesize, encodeWav, type LoadedVoice } from 'phoonnx';
+    import { voices } from 'phoonnx/voices';
+    import { makeEspeakTokenizer } from 'phoonnx/espeak';
+    // @ts-expect-error — emscripten module ships no types
+    import espeakFactory from 'espeak-ng';
+    import espeakWasmUrl from 'espeak-ng/dist/espeak-ng.wasm?url';
 
-    const byId = new Map(voices.map((v) => [v.id, v as VoiceEntry]));
+    const espeakTokenize = makeEspeakTokenizer(espeakFactory, espeakWasmUrl);
+    const byId = new Map(voices.map((v) => [v.id, v]));
     const sel = document.getElementById('voice') as HTMLSelectElement;
     const textEl = document.getElementById('text') as HTMLTextAreaElement;
     const btn = document.getElementById('synth') as HTMLButtonElement;
@@ -247,19 +277,32 @@ const groups = order.map((name) => ({
           loaded = cache.get(entry.id)!;
         } else {
           status.textContent = 'loading voice…';
-          loaded = await loadVoice(entry, (frac, label) => {
-            status.textContent = `${label}${frac ? ` — ${Math.round(frac * 100)}%` : ''}`;
+          loaded = await loadVoice(entry, {
+            onProgress: (frac, label) => {
+              status.textContent = `${label}${frac ? ` — ${Math.round(frac * 100)}%` : ''}`;
+            },
           });
           cache.set(entry.id, loaded);
           status.textContent = `ready (${loaded.provider})`;
         }
         status.textContent = 'synthesizing…';
-        const blob = await synthesize(loaded, text, {
+        const tokenize =
+          entry.phonemeType === 'espeak'
+            ? (t: string, idMap: Record<string, number>) =>
+                espeakTokenize(t, idMap, entry.espeakVoice ?? undefined)
+            : undefined;
+        const { samples, sampleRate } = await synthesize(loaded, text, {
           lengthScale: 1 / +speed.value, // higher speed = shorter duration
-          volume: +volume.value,
           noiseScale: +noise.value,
           noiseW: +noisew.value,
+          tokenize,
         });
+        const vol = +volume.value;
+        const out =
+          vol !== 1
+            ? Float32Array.from(samples, (s) => Math.max(-1, Math.min(1, s * vol)))
+            : samples;
+        const blob = encodeWav(out, sampleRate);
         const u = URL.createObjectURL(blob);
         player.src = u;
         download.href = u;
