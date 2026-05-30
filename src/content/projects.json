@@ -1329,33 +1329,6 @@
     "featured": false
   },
   {
-    "id": "storyforge-tower-of-silence",
-    "name": "StoryForge: Tower of Silence",
-    "description": "Immersive audio-only adventure game in a mysterious tower — explore by voice and make choices that shape your story.",
-    "url": "https://github.com/VoiceGamez/storyforge-tower_of_silence",
-    "category": "Games",
-    "tags": [
-      "voice-playable",
-      "interactive fiction",
-      "generative",
-      "adventure"
-    ],
-    "featured": false
-  },
-  {
-    "id": "tnalagmes-games",
-    "name": "TNaLaGmes Games Collection",
-    "description": "A suite of 40+ classic and original voice-playable games — from turn-based adventures to real-time challenges.",
-    "url": "https://github.com/VoiceGamez/tnalagmes-games",
-    "category": "Games",
-    "tags": [
-      "voice-playable",
-      "game collection",
-      "interactive fiction"
-    ],
-    "featured": false
-  },
-  {
     "id": "virtual-habitat",
     "name": "Virtual Habitat",
     "description": "A voice-enabled game built with the StoryForge or TNaLaGmes platform.",
