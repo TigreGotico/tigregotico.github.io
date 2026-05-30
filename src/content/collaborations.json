@@ -16,14 +16,14 @@
   {
     "id": "ilenia",
     "name": "ILENIA",
-    "description": "A one-time subcontracted project to bring Catalan, Spanish, Galician, and Basque support to OpenVoiceOS and improve its localization tooling — delivering STT and TTS plugins and dialog/normalization components for those languages.",
+    "description": "Spanish program advancing language technology across the nation's official languages (Spanish, Catalan, Basque, Galician). Funding OVOS development to create downloadable, privacy-respecting voice assistants that run on Raspberry Pi and personal computers. Funded by Spain's Ministry of Digital Transformation and EU Recovery Plan.",
     "url": "https://proyectoilenia.es/en/demonstrators-2025/ovos-prototype/",
     "repositories": []
   },
   {
     "id": "nlnet",
-    "name": "NLnet / NGI0 Commons Fund",
-    "description": "Internet-for-all funding program supporting the development of privacy-first voice technology — sponsoring wake-word training, localization, and open-source voice AI infrastructure.",
+    "name": "NGI0 Commons Fund / NLnet",
+    "description": "European Commission's Next Generation Internet program (with Swiss SERI co-funding) supporting OpenVoiceOS as a stable, privacy-first alternative to Big Tech voice assistants. Focus: multi-language support, user onboarding, platform stabilization, and documentation.",
     "url": "https://nlnet.nl/project/OpenVoiceOS",
     "repositories": []
   }
