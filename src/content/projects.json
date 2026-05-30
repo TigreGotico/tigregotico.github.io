@@ -567,7 +567,7 @@
     "name": "pyheartradio",
     "description": "iHeartRadio API client.",
     "url": "https://github.com/TigreGotico/pyheartradio",
-    "category": "TTS",
+    "category": "Media",
     "tags": [
       "API client",
       "iHeartRadio",
