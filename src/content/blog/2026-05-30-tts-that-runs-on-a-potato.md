@@ -1,7 +1,7 @@
 ---
 title: "TTS Models That Run on a Potato"
 description: "phoonnx is a research framework for VITS-based text-to-speech built to run comfortably on low-end hardware. No GPU, no cloud, no API key — just a ~15.65 million-parameter ONNX voice and a CPU. Here is how small a good voice can be, and how we train them."
-date: 2026-05-30
+date: 2026-05-10
 author: "Casimiro Ferreira"
 tags:
   - "phoonnx"
@@ -69,6 +69,8 @@ work *up front*, in the phonemizer. A phonemizer (grapheme-to-phoneme, or G2P)
 converts written text into the sequence of sound units the model actually speaks — so
 the VITS network never has to learn spelling, just sound.
 
+Our phoneme work is grounded in **[grapheme-to-IPA for 350+ languages](/blog/2026-01-15-grapheme-to-ipa-for-350-languages)** and **[classical Portuguese phonetics](/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**, which make it possible to train voices for low-resource languages without weeks of expert annotation.
+
 phoonnx is deliberately phonemizer-agnostic and bundles a small army of them:
 `espeak-ng`, [gruut](https://github.com/rhasspy/gruut),
 [epitran](https://github.com/dmort27/epitran),
@@ -76,7 +78,7 @@ phoonnx is deliberately phonemizer-agnostic and bundles a small army of them:
 [transphone](https://github.com/xinjli/transphone) (which reaches into the thousands
 of languages catalogued in Glottolog), plus specialists like
 [mantoq](https://github.com/mush42/mantoq) for Arabic,
-[cotovia](https://github.com/TigreGotico/cotovia-mirror) for Galician, OpenJTalk for
+**[cotovia](https://github.com/TigreGotico/cotovia)** for Galician, OpenJTalk for
 Japanese, and KoG2P for Korean. They emit IPA, ARPA, Pinyin, Hangul, Buckwalter —
 whatever the language needs. There is even a model-based multilingual G2P built on
 ByT5, exported to ONNX like everything else.

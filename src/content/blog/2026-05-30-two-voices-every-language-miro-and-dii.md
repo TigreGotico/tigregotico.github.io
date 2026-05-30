@@ -1,7 +1,7 @@
 ---
 title: "Two Voices, Every Language: Miro & Dii"
 description: "TigreGótico is partnering with OpenVoiceOS to give the assistant two consistent voice identities — Miro and Dii — that sound the same in every language, built with our voice-cloning technology and the phoonnx engine. Two TTS models for every language someone requests, endangered tongues included."
-date: 2026-05-30
+date: 2026-06-15
 author: "Casimiro Ferreira"
 tags:
   - "phoonnx"
@@ -32,7 +32,9 @@ These models are trained and served with [**phoonnx**](https://github.com/TigreG
 
 Speaking a language well is not only about the voice — it is about knowing how the writing is *meant* to sound. That is the job of **grapheme-to-phoneme (G2P)** conversion: turning written text into the sequence of phonemes the model actually pronounces. Every new language we take on comes with its own G2P research, and that research is where a lot of the real work lives.
 
-phoonnx is deliberately flexible here. It can drive a whole range of phonemizers — eSpeak, Gruut, Epitran, model-based [ByT5 G2P](https://huggingface.co/collections/OpenVoiceOS/g2p-models-6886a8d612825c3fe65befa0), and language-specific tools where general engines fall short. This connects directly to our broader phonetics stack: our `orthography2ipa` work and the Lusophone phonemizers we have built for the Portuguese family feed the same goal — accurate IPA for languages that the big TTS providers have never bothered to model carefully. When a language has no good off-the-shelf phonemizer, that gap *is* the project. We do the spelling-to-sound research first, then the voice follows.
+phoonnx is deliberately flexible here. It can drive a whole range of phonemizers — eSpeak, Gruut, Epitran, model-based [ByT5 G2P](https://huggingface.co/collections/OpenVoiceOS/g2p-models-6886a8d612825c3fe65befa0), and language-specific tools where general engines fall short. This connects directly to our broader phonetics stack: our **[orthography-to-IPA research](/blog/2026-01-15-grapheme-to-ipa-for-350-languages)** and the **[Lusophone phonemizers](/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)** we have built for the Portuguese family feed the same goal — accurate IPA for languages that the big TTS providers have never bothered to model carefully. When a language has no good off-the-shelf phonemizer, that gap *is* the project. We do the spelling-to-sound research first, then the voice follows.
+
+Miro and Dii voices are built on **[phoonnx](/blog/2026-05-10-tts-that-runs-on-a-potato)**, our offline TTS engine, making them available everywhere — without cloud, API keys, or infrastructure costs.
 
 ## Two models for every language asked for
 

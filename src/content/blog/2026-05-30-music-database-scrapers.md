@@ -1,7 +1,7 @@
 ---
 title: "Introducing Our Music Database Scrapers"
 description: "A tour of the family of typed Python clients we maintain for music sources — Bandcamp, SoundCloud, SomaFM, TuneIn, iHeartRadio, and the great music encyclopedias — all emitting consistent, typed media metadata behind one clean interface and riding the same resilient anti-bot transport."
-date: 2026-05-30
+date: 2026-04-20
 author: "Casimiro Ferreira"
 tags:
   - "Scrapers"
@@ -40,6 +40,8 @@ The second half of the family targets the great community catalogues — the sit
 
 **[pymetal](https://github.com/TigreGotico/pymetal)** is our client for Encyclopaedia Metallum, the Metal Archives — and the most ambitious of the set. Most scrapers flatten a track to `(id, title, band, album)`. pymetal refuses to lose what Metal Archives keeps separate: a track can credit **multiple bands** (splits, collaborations), a band's **lineup is sliced over time**, and a track can **appear on many releases** (compilations, re-issues, singles). It models each as a first-class entity keyed by archive id, so re-scrapes are idempotent. The endpoint surface is broad — advanced band/album/song search, full release pages with per-band attribution on splits, lineups partitioned by status with role-date ranges, reviews, recommendations, external links, and lyrics — all as Pydantic v2 models that round-trip through JSON.
 
+Beyond music, **[tutubo](https://github.com/TigreGotico/tutubo)** scrapes YouTube and YouTube Music, and **[pymal](https://github.com/TigreGotico/pymal)** covers MyAnimeList — extending the same typed metadata patterns across broader media categories. All emit the same vocabulary so a single downstream consumer handles everything uniformly.
+
 ## Built to survive the modern web
 
 A scraper that breaks the first time a site puts up a bot wall is worthless. Across the family the HTTP layer is **pluggable**, and where sites are actively bot-defended the clients default to a browser-impersonating transport — `curl_cffi` matching real Chrome TLS/JA3 fingerprints — to clear challenges that reject vanilla `requests`. The Cloudflare-fronted encyclopedias can additionally route through a FlareSolverr instance for live data, or read from the Internet Archive's Wayback Machine when you just need *something*. The parsing layer is deliberately independent of how the HTML arrives, so the same code works whichever transport you choose.
@@ -49,3 +51,5 @@ A scraper that breaks the first time a site puts up a bot wall is worthless. Acr
 The real payoff is what happens when you stop thinking of these as nine separate tools. Because they all emit the same typed metadata vocabulary and all expose canonical external ids, you can fan out a single artist across Bandcamp, SoundCloud, the radio directories, and the encyclopedias, then fold the results into one coherent catalogue — deduplicated by identity, licence-aware, and ready to feed a recommendation engine, a media server, or a research dataset.
 
 Every one of these clients is free software, self-hostable, and runs on your own hardware with no API keys to beg for. Pick the source you care about, `pip install`, and start building.
+
+These scrapers are built on our **[data extraction pipeline](/blog/2026-04-05-data-extraction-clean-apis-and-datasets)** and powered by our **[anti-bot transport layers](/blog/2026-03-15-beating-bot-walls-with-drop-in-requests-sessions)**. All emit the **[mediavocab](https://github.com/OpenVoiceOS/mediavocab)** schema so music metadata integrates seamlessly with **[media-archivist](https://github.com/TigreGotico/media-archivist)**, our cross-source indexer and metadata server that deduplicates and catalogs everything into one searchable archive.

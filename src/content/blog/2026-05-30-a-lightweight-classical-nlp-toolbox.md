@@ -1,7 +1,7 @@
 ---
 title: "A Lightweight Classical NLP Toolbox"
 description: "Four small, fast, dependency-light, fully-offline NLP libraries — RAKE keyword extraction, Aho-Corasick NER, keyword/template intent matching, and Markov-chain text generation. Classical algorithms that stay transparent, deterministic, and instant, and compose cleanly over Portuguese and multilingual text."
-date: 2026-05-30
+date: 2026-02-10
 author: "Casimiro Ferreira"
 tags:
   - "NLP"
@@ -87,3 +87,5 @@ Beyond generation, it carries a few analytical tools: a `MarkovTopic` class that
 These libraries share a philosophy. They are tiny and have few dependencies, so they install fast and audit easily. They run entirely on your own hardware with no API key and no network — which matters for privacy, for cost, and for the many places where there simply is no reliable connection. And their behaviour is legible: a RAKE score, an Aho-Corasick match span, a matched template, a Markov transition table are all things a human can read and reason about.
 
 They also chain naturally. RAKE surfaces candidate phrases from raw text; those phrases seed gazetteers for the Aho-Corasick tagger; tagged spans fill slots that the template matcher routes to actions; MarkovJson generates or classifies on top. Each piece does one job, in microseconds, offline, in any language — Portuguese included. Reach for the transformer when the problem genuinely needs one. For everything else, the classics still earn their keep.
+
+All four are available from [TigreGotico](https://github.com/TigreGotico). They compose with our phonetic work: see **[grapheme-to-IPA for 350+ languages](/blog/2026-01-15-grapheme-to-ipa-for-350-languages)** for pronunciation grounding. Together, these form the foundation for **[classical NLP for Portuguese](/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)** and underpin intent-matching in OpenVoiceOS voice applications.

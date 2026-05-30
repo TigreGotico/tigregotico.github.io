@@ -1,7 +1,7 @@
 ---
 title: "Usenet & Remailers in 2026: a clean time capsule and a privacy network that refuses to die"
 description: "Usenet is a pristine archive of pre-AI human discourse — LLM-free training data from decades of internet history. But it's not just archaeology: the cypherpunk remailer network still works in 2026, offering real anonymous messaging. We built two small tools to show you both."
-date: 2026-05-30
+date: 2026-07-01
 author: "Casimiro Ferreira"
 tags:
   - "Usenet"
@@ -193,6 +193,8 @@ I'll be honest: in 2026, if you want to send truly anonymous messages, Signal is
 But it's not about Signal. It's about **having options**. It's about a **privacy network that nobody owns, nobody controls, and nobody can shut down** (because it's decentralized and the operators aren't doing it for money). It's about cypherpunks proving that their 30-year-old vision *still works*.
 
 And it's about **data.** Usenet is a priceless archive of human-authored text from the era before AI. If you're training models, building datasets, or just studying how humans actually think and argue, Usenet is there. Clean. Uncorrupted. Free.
+
+This philosophy connects to our broader work in **[data extraction and dataset construction](/blog/2026-04-05-data-extraction-clean-apis-and-datasets)** — Usenet is a rare example of provenance-clean public data. The same principles apply whether you're scraping encyclopedias, curating music metadata, or harvesting decades of human-authored text: know your source, document your lineage, and share what you build.
 
 The tools are small, simple, and open-source. Use them.
 

@@ -1,7 +1,7 @@
 ---
 title: "From Hard-to-Reach Web Data to Clean APIs and ML-Ready Datasets"
 description: "How we turn unstructured, bot-defended public web data into typed Python client libraries and curated datasets — resilient anti-bot scraping with CloudflareSession, API reverse-engineering, one consistent typed interface over messy sources, and dataset construction with clear provenance."
-date: 2026-05-30
+date: 2026-04-05
 author: "Casimiro Ferreira"
 tags:
   - "Data Extraction"
@@ -140,3 +140,5 @@ enrichment, recommendation graphs, and training corpora for speech and language
 models. When the data a model needs does not exist yet, this is how we go and
 build it: resilient scraping at the bottom, a typed API in the middle, and a
 clean dataset at the top, every layer self-hosted and open by default.
+
+This pipeline builds on our **[anti-bot transport layer](/blog/2026-03-15-beating-bot-walls-with-drop-in-requests-sessions)** and enables the **[music database scrapers](/blog/2026-04-20-music-database-scrapers)** that follow. For site reconnaissance before scraping, start with **[sitemapper](https://github.com/TigreGotico/sitemapper)**. All clients emit the shared **[mediavocab](https://github.com/OpenVoiceOS/mediavocab)** vocabulary so **[media-archivist](https://github.com/TigreGotico/media-archivist)**, our cross-source indexer, can deduplicate and serve everything as one unified catalogue.

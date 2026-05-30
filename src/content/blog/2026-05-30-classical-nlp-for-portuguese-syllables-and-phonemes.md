@@ -1,7 +1,7 @@
 ---
 title: "Classical NLP for Portuguese: Syllabification and Grapheme-to-Phoneme"
 description: "A look at our rule-based, fully offline Portuguese NLP stack — silabificador for syllabification and TugaPhone for dialect-aware grapheme-to-phoneme — and how they connect to the broader orthography2ipa work for Lusophone varieties. No deep-learning black boxes: deterministic, fast, and dependency-light."
-date: 2026-05-30
+date: 2026-02-28
 author: "Casimiro Ferreira"
 tags:
   - "NLP"
@@ -61,7 +61,7 @@ normalize_numbers("1ª vez")                # primeira vez
 
 It even respects scale conventions — long-scale `biliões` for `pt-PT`, short-scale `trilhões` for `pt-BR`. **Homograph disambiguation** uses part-of-speech context, so `para` as a preposition is treated differently from `para` as a verb. TugaPhone can use a spaCy or Brill tagger when available, but also ships a no-dependency rule-based fallback, staying true to the offline-first principle.
 
-The architecture is a clean hierarchy — sentence → word → grapheme → character — with context-sensitive rules applied at each level: vowel quality and consonant allophones at the character level, digraphs like ⟨ch⟩ and ⟨nh⟩ and diphthongs like ⟨ai⟩ and ⟨ou⟩ at the grapheme level, stress and syllabification at the word level. TugaPhone reuses `silabificador` for the syllable layer, alongside companion libraries [Tugalex](https://github.com/TigreGotico/tugalex) (lexicon and exceptions) and [TugaTagger](https://github.com/TigreGotico/tugatagger) (POS tagging). Small, composable pieces — each useful on its own.
+The architecture is a clean hierarchy — sentence → word → grapheme → character — with context-sensitive rules applied at each level: vowel quality and consonant allophones at the character level, digraphs like ⟨ch⟩ and ⟨nh⟩ and diphthongs like ⟨ai⟩ and ⟨ou⟩ at the grapheme level, stress and syllabification at the word level. TugaPhone reuses `silabificador` for the syllable layer, alongside companion libraries **[Tugalex](https://github.com/TigreGotico/tugalex)** (lexicon and exceptions) and **[TugaTagger](https://github.com/TigreGotico/tugatagger)** (POS tagging). Small, composable pieces — each useful on its own.
 
 TugaPhone is honest about its edges: lexicon coverage is sparser for the African and Timorese dialects, the sub-regional accents (Porto, Minho, Braga, and others) are experimental approximations of documented features, and sentence-level prosody is simplified. These are openly documented limitations, not hidden failure modes — exactly the kind of transparency a rule-based system makes possible.
 
@@ -81,3 +81,5 @@ pip install git+https://github.com/TigreGotico/silabificador
 ```
 
 For the broader multilingual mappings, see [orthography2ipa](https://github.com/TigreGotico/orthography2ipa). Deterministic, fast, offline, and built for the full breadth of the Portuguese-speaking world.
+
+This Portuguese phonetics stack builds on our **[grapheme-to-IPA work for 350+ languages](/blog/2026-01-15-grapheme-to-ipa-for-350-languages)** and extends the **[lightweight classical NLP toolbox](/blog/2026-02-10-a-lightweight-classical-nlp-toolbox)** with dialect awareness. Together, they form the phonetic backbone for **[TTS that runs on a potato](/blog/2026-05-10-tts-that-runs-on-a-potato)** and **[Miro & Dii multilingual voices](/blog/2026-06-15-two-voices-every-language-miro-and-dii)**.

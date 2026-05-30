@@ -1,7 +1,7 @@
 ---
 title: "Grapheme-to-IPA for 350+ Languages"
 description: "orthography2ipa is a pure-data, linguistically grounded resource that maps spelling to IPA and models how phonemes surface as allophones across 350+ language codes and 20+ language families. A maximal-munch tokenizer, phonological and script distance metrics, dialect lineage, and a schema-validated spec set — no trained weights, fully self-hostable."
-date: 2026-05-30
+date: 2026-01-15
 author: "Casimiro Ferreira"
 tags:
   - "G2P"
@@ -16,6 +16,8 @@ draft: false
 ---
 
 Most pronunciation resources collapse a hard question into a lookup table: feed in a word, get back a phoneme string, hope the model behind it knew what it was doing. **[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)** takes the opposite stance. It is a pure-data Python package — declarative JSON, thin pluggable logic, no trained weights to ship — that maps spelling to IPA and models how those phonemes actually surface in context, across **350+ language codes and 20+ language families**. Install it, read the data, fork the data. There is nothing hidden in a checkpoint.
+
+This foundational work powers everything downstream: text-to-speech models need accurate pronunciation, ASR systems need phonetic grounding, and low-resource language synthesis depends on auditable mappings. See also our Portuguese-specific work in **[classical NLP for Portuguese syllables and phonemes](/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)** and how this feeds into **[TTS that runs on a potato](/blog/2026-05-10-tts-that-runs-on-a-potato)**.
 
 ## Two maps, not one
 

@@ -1,7 +1,7 @@
 ---
 title: "Beating Bot Walls With Drop-In requests Sessions"
 description: "How we keep resilient access to public data without firing up a headless browser in the hot path: TLS fingerprint impersonation, a FlareSolverr proxy for JS challenges, a Wayback Machine fallback, and IP rotation — all behind two composable requests.Session subclasses, unblock_requests and anon_requests."
-date: 2026-05-30
+date: 2026-03-15
 author: "Casimiro Ferreira"
 tags:
   - "HTTP"
@@ -149,3 +149,5 @@ done cleanly.
 Both are FOSS and self-hostable:
 [`unblock_requests`](https://github.com/TigreGotico/unblock_requests) and
 [`anon_requests`](https://github.com/TigreGotico/anon_requests).
+
+These transport libraries form the foundation for **[extracting data from hard-to-reach sources](/blog/2026-04-05-data-extraction-clean-apis-and-datasets)** and power all of our **[music database scrapers](/blog/2026-04-20-music-database-scrapers)**. See also **[sitemapper](https://github.com/TigreGotico/sitemapper)**, our site-recon utility that pairs with these transports to learn site structure before building any scraper.
