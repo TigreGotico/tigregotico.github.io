@@ -130,7 +130,7 @@
     "name": "ALIGN",
     "description": "A browser-based tool for aligning audio with text transcriptions and IPA at word, grapheme, and sentence level. Runs entirely client-side, no server, no dependencies, no build step.",
     "url": "https://github.com/TigreGotico/ALIGN",
-    "category": "NLP & ML",
+    "category": "Speech & Language",
     "tags": [
       "IPA",
       "audio-text alignment",
@@ -143,7 +143,7 @@
     "id": "mediavocab",
     "name": "mediavocab",
     "description": "A shared media-metadata vocabulary and normalization layer that unifies how titles, artists, and identifiers map across media clients and Music Assistant integrations.",
-    "category": "NLP & ML",
+    "category": "Media",
     "tags": [
       "media metadata",
       "normalization",
@@ -420,7 +420,7 @@
     "name": "OVOS STT Plugin - MyNorthAI",
     "description": "MyNorthAI Speech-to-Text plugin for OpenVoiceOS.",
     "url": "https://github.com/TigreGotico/ovos-stt-plugin-MyNorthAI",
-    "category": "OpenVoiceOS",
+    "category": "STT",
     "tags": [
       "MyNorthAI",
       "STT plugin",
@@ -487,7 +487,7 @@
     "name": "sshfs-keeper",
     "description": "A daemon that monitors SSHFS/rclone mounts and auto-remounts them when they drop \u2014 with a live web dashboard, REST API, Prometheus metrics, webhooks, and scheduled rsync/rclone sync jobs.",
     "url": "https://github.com/TigreGotico/sshfs-keeper",
-    "category": "Homelab",
+    "category": "Tools",
     "tags": [
       "SSHFS",
       "homelab",
@@ -502,7 +502,7 @@
     "name": "audiobooker",
     "description": "Search and stream public-domain audiobooks from LibriVox and similar sources.",
     "url": "https://github.com/TigreGotico/audiobooker",
-    "category": "Clients",
+    "category": "Media",
     "tags": [
       "LibriVox",
       "audiobooks",
@@ -515,7 +515,7 @@
     "name": "nuvem_de_som",
     "description": "SoundCloud client that emits typed media-metadata releases.",
     "url": "https://github.com/TigreGotico/nuvem_de_som",
-    "category": "Clients",
+    "category": "Media",
     "tags": [
       "SoundCloud",
       "music",
@@ -528,7 +528,7 @@
     "name": "py_bandcamp",
     "description": "Bandcamp scraper that emits typed media-metadata releases.",
     "url": "https://github.com/TigreGotico/py_bandcamp",
-    "category": "Clients",
+    "category": "Media",
     "tags": [
       "Bandcamp",
       "music",
@@ -541,7 +541,7 @@
     "name": "pyclassicalarchives",
     "description": "Typed Python client for Classical Archives.",
     "url": "https://github.com/TigreGotico/pyclassicalarchives",
-    "category": "Clients",
+    "category": "Media",
     "tags": [
       "classical music",
       "scraper",
@@ -580,7 +580,7 @@
     "name": "pyjazzmusicarchives",
     "description": "Typed Python client for Jazz Music Archives.",
     "url": "https://github.com/TigreGotico/pyjazzmusicarchives",
-    "category": "Clients",
+    "category": "Media",
     "tags": [
       "jazz",
       "scraper",
@@ -593,7 +593,7 @@
     "name": "pymal",
     "description": "Scraper / API client for MyAnimeList \u2014 anime and manga.",
     "url": "https://github.com/TigreGotico/pymal",
-    "category": "Clients",
+    "category": "Media",
     "tags": [
       "anime",
       "manga",
@@ -606,7 +606,7 @@
     "name": "pymetal",
     "description": "Encyclopaedia Metallum (Metal Archives) API client.",
     "url": "https://github.com/TigreGotico/pymetal",
-    "category": "Clients",
+    "category": "Media",
     "tags": [
       "API client",
       "Metal Archives",
@@ -619,7 +619,7 @@
     "name": "pyprogarchives",
     "description": "Typed Python client for Prog Archives.",
     "url": "https://github.com/TigreGotico/pyprogarchives",
-    "category": "Clients",
+    "category": "Media",
     "tags": [
       "prog rock",
       "scraper",
@@ -632,7 +632,7 @@
     "name": "radiosoma",
     "description": "SomaFM client that emits typed media-metadata releases.",
     "url": "https://github.com/TigreGotico/radiosoma",
-    "category": "Clients",
+    "category": "Media",
     "tags": [
       "SomaFM",
       "client",
@@ -645,7 +645,7 @@
     "name": "tunein",
     "description": "TuneIn radio scraper that emits typed media-metadata releases.",
     "url": "https://github.com/TigreGotico/tunein",
-    "category": "Clients",
+    "category": "Media",
     "tags": [
       "TuneIn",
       "radio",
@@ -658,7 +658,7 @@
     "name": "tutubo",
     "description": "Lightweight YouTube scraper that emits typed media-metadata releases.",
     "url": "https://github.com/TigreGotico/tutubo",
-    "category": "Clients",
+    "category": "Media",
     "tags": [
       "YouTube",
       "scraper",
@@ -710,7 +710,7 @@
     "name": "metadatarr",
     "description": "Pydantic-powered media-metadata clients and a keyless cross-source entity resolver.",
     "url": "https://github.com/TigreGotico/metadatarr",
-    "category": "Clients",
+    "category": "Media",
     "tags": [
       "Pydantic",
       "media metadata",
