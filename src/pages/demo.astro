@@ -22,6 +22,15 @@ const groups = [
   />
 
   <div class="mx-auto max-w-3xl">
+    <div
+      class="mb-6 rounded-xl border border-amber-500/40 bg-amber-500/10 px-4 py-3 text-sm"
+      role="note"
+    >
+      <strong>Preview models.</strong> These voices are a work in progress — they
+      are still being trained and do <strong>not</strong> represent the final
+      quality. Expect rough edges; they will keep improving.
+    </div>
+
     <div class="card">
       <label class="eyebrow mb-2 block" for="voice">Voice</label>
       <select
@@ -82,6 +91,25 @@ const groups = [
       <p class="mt-2 text-muted">
         First synthesis of a voice downloads its model (~63 MB) from Hugging Face and
         caches it; later runs are instant and fully offline.
+      </p>
+    </div>
+
+    <div class="card mt-6 text-sm">
+      <p class="display-3 text-base">An OpenVoiceOS collaboration</p>
+      <p class="mt-2 text-muted">
+        Miro & Dii are built with
+        <a class="text-primary hover:underline" href="https://www.openvoiceos.org" rel="noopener"
+          >OpenVoiceOS</a
+        >, the community non-profit voice platform — a collaboration in progress.
+        The models are published openly on
+        <a
+          class="text-primary hover:underline"
+          href="https://huggingface.co/collections/TigreGotico/phoonnx-tts-models"
+          rel="noopener">Hugging Face</a
+        > and run on the
+        <a class="text-primary hover:underline" href="https://github.com/OpenVoiceOS/phoonnx" rel="noopener"
+          >phoonnx</a
+        > engine. Everything here is FOSS and self-hostable.
       </p>
     </div>
   </div>
