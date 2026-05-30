@@ -16,7 +16,7 @@
   {
     "id": "orthography2ipa",
     "name": "orthography2ipa",
-    "description": "Grapheme-to-IPA and allophone mappings for 350+ languages across 20+ families \u2014 a maximal-munch IPA tokenizer, phonological and script distance metrics, dialect transforms, and a pluggable G2P backend.",
+    "description": "Grapheme-to-IPA and allophone mappings for 350+ languages across 20+ families — a maximal-munch IPA tokenizer, phonological and script distance metrics, dialect transforms, and a pluggable G2P backend.",
     "url": "https://github.com/TigreGotico/orthography2ipa",
     "category": "Speech & Language",
     "tags": [
@@ -58,7 +58,7 @@
   {
     "id": "ovos-localize",
     "name": "ovos-localize",
-    "description": "A GitHub-native localization platform for OpenVoiceOS skills and plugins \u2014 manage translations entirely through Git, with no external service to run.",
+    "description": "A GitHub-native localization platform for OpenVoiceOS skills and plugins — manage translations entirely through Git, with no external service to run.",
     "url": "https://github.com/OpenVoiceOS/ovos-localize",
     "category": "OpenVoiceOS",
     "tags": [
@@ -72,7 +72,7 @@
   {
     "id": "storyforge",
     "name": "StoryForge",
-    "description": "An engine for LLM-powered generative narrative worlds \u2014 interactive fiction that improvises story, characters, and choices around the player, playable in the terminal or by voice.",
+    "description": "An engine for LLM-powered generative narrative worlds — interactive fiction that improvises story, characters, and choices around the player, playable in the terminal or by voice.",
     "category": "Games",
     "tags": [
       "LLM worlds",
@@ -87,7 +87,7 @@
   {
     "id": "agentic-crm",
     "name": "Agentic CRM",
-    "description": "A roadmapped product: an agent-native CRM where people and AI agents collaborate on the same data \u2014 driven from your agentic coding session as a skill, with a web UI for humans and agents to work together. Self-hostable, no mandatory cloud.",
+    "description": "A roadmapped product: an agent-native CRM where people and AI agents collaborate on the same data — driven from your agentic coding session as a skill, with a web UI for humans and agents to work together. Self-hostable, no mandatory cloud.",
     "category": "Tools",
     "tags": [
       "CRM",
@@ -142,7 +142,7 @@
   {
     "id": "ww-trainer",
     "name": "ww-trainer",
-    "description": "A wake-word model trainer developed under an NLNet grant for OpenVoiceOS \u2014 build custom, on-device wake words from your own samples.",
+    "description": "A wake-word model trainer developed under an NLNet grant for OpenVoiceOS — build custom, on-device wake words from your own samples.",
     "category": "Wake-words",
     "tags": [
       "NLNet",
@@ -156,7 +156,7 @@
   {
     "id": "tnalagmes",
     "name": "TNaLaGmes",
-    "description": "TNaLaGmes (a Toolbox for Natural Language Games) \u2014 a framework for building classic and voice-playable text adventures, narrated and controlled hands-free.",
+    "description": "TNaLaGmes (a Toolbox for Natural Language Games) — a framework for building classic and voice-playable text adventures, narrated and controlled hands-free.",
     "category": "Games",
     "tags": [
       "game",
@@ -465,7 +465,7 @@
   {
     "id": "sshfs-keeper",
     "name": "sshfs-keeper",
-    "description": "A daemon that monitors SSHFS/rclone mounts and auto-remounts them when they drop \u2014 with a live web dashboard, REST API, Prometheus metrics, webhooks, and scheduled rsync/rclone sync jobs.",
+    "description": "A daemon that monitors SSHFS/rclone mounts and auto-remounts them when they drop — with a live web dashboard, REST API, Prometheus metrics, webhooks, and scheduled rsync/rclone sync jobs.",
     "url": "https://github.com/TigreGotico/sshfs-keeper",
     "category": "Tools",
     "tags": [
@@ -571,7 +571,7 @@
   {
     "id": "pymal",
     "name": "pymal",
-    "description": "Scraper / API client for MyAnimeList \u2014 anime and manga.",
+    "description": "Scraper / API client for MyAnimeList — anime and manga.",
     "url": "https://github.com/TigreGotico/pymal",
     "category": "Media",
     "tags": [
@@ -649,7 +649,7 @@
   {
     "id": "unblock_requests",
     "name": "unblock_requests",
-    "description": "A requests.Session subclass that bypasses Cloudflare (curl_cffi impersonation, FlareSolverr, Wayback fallback) \u2014 the anti-bot transport behind our scrapers.",
+    "description": "A requests.Session subclass that bypasses Cloudflare (curl_cffi impersonation, FlareSolverr, Wayback fallback) — the anti-bot transport behind our scrapers.",
     "url": "https://github.com/TigreGotico/unblock_requests",
     "category": "Tools",
     "tags": [
@@ -744,7 +744,7 @@
   {
     "id": "tugamorph",
     "name": "tugamorph",
-    "description": "Rule-based morphological analyzer for Portuguese \u2014 segments words into morphemes.",
+    "description": "Rule-based morphological analyzer for Portuguese — segments words into morphemes.",
     "url": "https://github.com/TigreGotico/tugamorph",
     "category": [
       "Portuguese",
@@ -1071,7 +1071,7 @@
   {
     "id": "wyoming-ovos-stt",
     "name": "Wyoming OVOS STT",
-    "description": "OpenVoiceOS STT service for the Wyoming protocol \u2014 lightweight speech recognition.",
+    "description": "OpenVoiceOS STT service for the Wyoming protocol — lightweight speech recognition.",
     "url": "https://github.com/TigreGotico/wyoming-ovos-stt",
     "category": "Home Assistant",
     "tags": [
@@ -1086,7 +1086,7 @@
   {
     "id": "wyoming-ovos-tts",
     "name": "Wyoming OVOS TTS",
-    "description": "OpenVoiceOS TTS service for the Wyoming protocol \u2014 lightweight text-to-speech.",
+    "description": "OpenVoiceOS TTS service for the Wyoming protocol — lightweight text-to-speech.",
     "url": "https://github.com/TigreGotico/wyoming-ovos-tts",
     "category": "Home Assistant",
     "tags": [
@@ -1116,7 +1116,7 @@
   {
     "id": "ovos-hub",
     "name": "OVOS Hub",
-    "description": "Plugin registry and marketplace for OpenVoiceOS \u2014 discover, install, and manage plugins.",
+    "description": "Plugin registry and marketplace for OpenVoiceOS — discover, install, and manage plugins.",
     "url": "https://github.com/TigreGotico/ovos-hub",
     "category": "Homelab",
     "tags": [
@@ -1130,7 +1130,7 @@
   {
     "id": "ovos-agentic-loop",
     "name": "OVOS Agentic Loop",
-    "description": "Agent integration framework for OpenVoiceOS \u2014 enable voice-driven agentic workflows.",
+    "description": "Agent integration framework for OpenVoiceOS — enable voice-driven agentic workflows.",
     "url": "https://github.com/TigreGotico/ovos-agentic-loop",
     "category": "OpenVoiceOS",
     "tags": [
@@ -1144,7 +1144,7 @@
   {
     "id": "agent-skills",
     "name": "Agent Skills",
-    "description": "A framework for building portable, reusable skills for AI coding agents \u2014 Claude, OpenCode, Gemini, Qwen.",
+    "description": "A framework for building portable, reusable skills for AI coding agents — Claude, OpenCode, Gemini, Qwen.",
     "url": "https://github.com/TigreGotico/Agent-Skills",
     "category": "Tools",
     "tags": [
@@ -1158,7 +1158,7 @@
   {
     "id": "baresipy",
     "name": "baresipy",
-    "description": "Minimal HTTP client library for Python \u2014 lightweight alternative to requests.",
+    "description": "Minimal HTTP client library for Python — lightweight alternative to requests.",
     "url": "https://github.com/TigreGotico/baresipy",
     "category": "Tools",
     "tags": [
@@ -1172,7 +1172,7 @@
   {
     "id": "hivemind-core",
     "name": "HiveMind Core",
-    "description": "Central HiveMind hub \u2014 coordinates connected devices and agents. The core routing and permission system for the HiveMind mesh network.",
+    "description": "Central HiveMind hub — coordinates connected devices and agents. The core routing and permission system for the HiveMind mesh network.",
     "url": "https://github.com/JarbasHiveMind/hivemind-core",
     "category": "Homelab",
     "tags": [
@@ -1200,7 +1200,7 @@
   {
     "id": "hivemind-js",
     "name": "HiveMind JS",
-    "description": "JavaScript client library for HiveMind \u2014 connect web applications to the mesh network.",
+    "description": "JavaScript client library for HiveMind — connect web applications to the mesh network.",
     "url": "https://github.com/JarbasHiveMind/HiveMind-js",
     "category": "HiveMind",
     "tags": [
@@ -1213,7 +1213,7 @@
   {
     "id": "hivemind-docker",
     "name": "HiveMind Docker",
-    "description": "Docker deployment for HiveMind hub \u2014 run the mesh network in containers.",
+    "description": "Docker deployment for HiveMind hub — run the mesh network in containers.",
     "url": "https://github.com/JarbasHiveMind/hivemind-docker",
     "category": "HiveMind",
     "tags": [
@@ -1226,7 +1226,7 @@
   {
     "id": "hivemind-ovos-agent-plugin",
     "name": "HiveMind OVOS Agent Plugin",
-    "description": "OpenVoiceOS plugin for HiveMind \u2014 integrate voice assistants into the mesh network.",
+    "description": "OpenVoiceOS plugin for HiveMind — integrate voice assistants into the mesh network.",
     "url": "https://github.com/JarbasHiveMind/hivemind-ovos-agent-plugin",
     "category": "HiveMind",
     "tags": [
@@ -1239,7 +1239,7 @@
   {
     "id": "hivemind-matrix-bridge",
     "name": "HiveMind Matrix Bridge",
-    "description": "Bridge HiveMind to Matrix \u2014 communicate with devices via Matrix chat protocol.",
+    "description": "Bridge HiveMind to Matrix — communicate with devices via Matrix chat protocol.",
     "url": "https://github.com/JarbasHiveMind/HiveMind-matrix-bridge",
     "category": "HiveMind",
     "tags": [
@@ -1252,7 +1252,7 @@
   {
     "id": "hivemind-deltachat-bridge",
     "name": "HiveMind DeltaChat Bridge",
-    "description": "Bridge HiveMind to DeltaChat \u2014 privacy-first email-based messaging for device control.",
+    "description": "Bridge HiveMind to DeltaChat — privacy-first email-based messaging for device control.",
     "url": "https://github.com/JarbasHiveMind/HiveMind-deltachat-bridge",
     "category": "HiveMind",
     "tags": [
@@ -1265,7 +1265,7 @@
   {
     "id": "hivemind-http-protocol",
     "name": "HiveMind HTTP Protocol",
-    "description": "HTTP protocol implementation for HiveMind \u2014 REST API for mesh communication.",
+    "description": "HTTP protocol implementation for HiveMind — REST API for mesh communication.",
     "url": "https://github.com/JarbasHiveMind/hivemind-http-protocol",
     "category": "HiveMind",
     "tags": [
@@ -1278,7 +1278,7 @@
   {
     "id": "hivemind-audio-binary-protocol",
     "name": "HiveMind Audio Binary Protocol",
-    "description": "Efficient binary protocol for audio over HiveMind \u2014 low-latency voice communication.",
+    "description": "Efficient binary protocol for audio over HiveMind — low-latency voice communication.",
     "url": "https://github.com/JarbasHiveMind/hivemind-audio-binary-protocol",
     "category": "HiveMind",
     "tags": [
@@ -1292,7 +1292,7 @@
   {
     "id": "hivemind-esp32-client",
     "name": "HiveMind ESP32 Client",
-    "description": "ESP32 firmware for HiveMind \u2014 run mesh nodes on microcontrollers.",
+    "description": "ESP32 firmware for HiveMind — run mesh nodes on microcontrollers.",
     "url": "https://github.com/JarbasHiveMind/hivemind-esp32-client",
     "category": "HiveMind",
     "tags": [
@@ -1305,7 +1305,7 @@
   {
     "id": "hivemind-micropython-client",
     "name": "HiveMind MicroPython Client",
-    "description": "MicroPython implementation for HiveMind \u2014 lightweight client for IoT devices.",
+    "description": "MicroPython implementation for HiveMind — lightweight client for IoT devices.",
     "url": "https://github.com/JarbasHiveMind/hivemind-micropython-client",
     "category": "HiveMind",
     "tags": [
@@ -1318,7 +1318,7 @@
   {
     "id": "hivemind-homeassistant",
     "name": "HiveMind Home Assistant",
-    "description": "Home Assistant integration for HiveMind \u2014 control and monitor mesh devices from Home Assistant.",
+    "description": "Home Assistant integration for HiveMind — control and monitor mesh devices from Home Assistant.",
     "url": "https://github.com/JarbasHiveMind/hivemind-homeassistant",
     "category": "Home Assistant",
     "tags": [
@@ -1331,7 +1331,7 @@
   {
     "id": "storyforge-tower-of-silence",
     "name": "StoryForge: Tower of Silence",
-    "description": "Immersive audio-only adventure game in a mysterious tower \u2014 explore by voice and make choices that shape your story.",
+    "description": "Immersive audio-only adventure game in a mysterious tower — explore by voice and make choices that shape your story.",
     "url": "https://github.com/VoiceGamez/storyforge-tower_of_silence",
     "category": "Games",
     "tags": [
@@ -1345,7 +1345,7 @@
   {
     "id": "tnalagmes-games",
     "name": "TNaLaGmes Games Collection",
-    "description": "A suite of 40+ classic and original voice-playable games \u2014 from turn-based adventures to real-time challenges.",
+    "description": "A suite of 40+ classic and original voice-playable games — from turn-based adventures to real-time challenges.",
     "url": "https://github.com/VoiceGamez/tnalagmes-games",
     "category": "Games",
     "tags": [
@@ -1354,5 +1354,1069 @@
       "interactive fiction"
     ],
     "featured": false
+  },
+  {
+    "id": "virtual-habitat",
+    "name": "Virtual Habitat",
+    "description": "A voice-enabled game built with the StoryForge or TNaLaGmes platform.",
+    "url": "https://github.com/VoiceGamez/virtual-habitat",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "pokepython",
+    "name": "Pokepython",
+    "description": "Faithful multi-generation Pokémon engine (Gen 1/2/3) in Python",
+    "url": "https://github.com/VoiceGamez/pokepython",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "storyforge-tower_of_silence",
+    "name": "Storyforge Tower Of Silence",
+    "description": "StoryForge game: tower_of_silence",
+    "url": "https://github.com/VoiceGamez/storyforge-tower_of_silence",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "storyforge-space_program",
+    "name": "Storyforge Space Program",
+    "description": "StoryForge game: space_program",
+    "url": "https://github.com/VoiceGamez/storyforge-space_program",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "storyforge-eldritch_escape",
+    "name": "Storyforge Eldritch Escape",
+    "description": "StoryForge game: eldritch_escape",
+    "url": "https://github.com/VoiceGamez/storyforge-eldritch_escape",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "storyforge-discovery_age",
+    "name": "Storyforge Discovery Age",
+    "description": "StoryForge game: discovery_age",
+    "url": "https://github.com/VoiceGamez/storyforge-discovery_age",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-zvirus",
+    "name": "Tnalagmes Zvirus",
+    "description": "TNaLaGmes game: zvirus",
+    "url": "https://github.com/VoiceGamez/tnalagmes-zvirus",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-wumpus",
+    "name": "Tnalagmes Wumpus",
+    "description": "TNaLaGmes game: wumpus",
+    "url": "https://github.com/VoiceGamez/tnalagmes-wumpus",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-wild_west_stage",
+    "name": "Tnalagmes Wild West Stage",
+    "description": "TNaLaGmes game: wild_west_stage",
+    "url": "https://github.com/VoiceGamez/tnalagmes-wild_west_stage",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-trivia",
+    "name": "Tnalagmes Trivia",
+    "description": "TNaLaGmes game: trivia",
+    "url": "https://github.com/VoiceGamez/tnalagmes-trivia",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-tribe_of_dawn",
+    "name": "Tnalagmes Tribe Of Dawn",
+    "description": "TNaLaGmes game: tribe_of_dawn",
+    "url": "https://github.com/VoiceGamez/tnalagmes-tribe_of_dawn",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-tower_of_silence",
+    "name": "Tnalagmes Tower Of Silence",
+    "description": "TNaLaGmes game: tower_of_silence",
+    "url": "https://github.com/VoiceGamez/tnalagmes-tower_of_silence",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-tokaido_road",
+    "name": "Tnalagmes Tokaido Road",
+    "description": "TNaLaGmes game: tokaido_road",
+    "url": "https://github.com/VoiceGamez/tnalagmes-tokaido_road",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-tictactoe",
+    "name": "Tnalagmes Tictactoe",
+    "description": "TNaLaGmes game: tictactoe",
+    "url": "https://github.com/VoiceGamez/tnalagmes-tictactoe",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-taipan",
+    "name": "Tnalagmes Taipan",
+    "description": "TNaLaGmes game: taipan",
+    "url": "https://github.com/VoiceGamez/tnalagmes-taipan",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-sumer",
+    "name": "Tnalagmes Sumer",
+    "description": "TNaLaGmes game: sumer",
+    "url": "https://github.com/VoiceGamez/tnalagmes-sumer",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-stock_market",
+    "name": "Tnalagmes Stock Market",
+    "description": "TNaLaGmes game: stock_market",
+    "url": "https://github.com/VoiceGamez/tnalagmes-stock_market",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-star_trek",
+    "name": "Tnalagmes Star Trek",
+    "description": "TNaLaGmes game: star_trek",
+    "url": "https://github.com/VoiceGamez/tnalagmes-star_trek",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-star_trader",
+    "name": "Tnalagmes Star Trader",
+    "description": "TNaLaGmes game: star_trader",
+    "url": "https://github.com/VoiceGamez/tnalagmes-star_trader",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-space_colony",
+    "name": "Tnalagmes Space Colony",
+    "description": "TNaLaGmes game: space_colony",
+    "url": "https://github.com/VoiceGamez/tnalagmes-space_colony",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-silk_road",
+    "name": "Tnalagmes Silk Road",
+    "description": "TNaLaGmes game: silk_road",
+    "url": "https://github.com/VoiceGamez/tnalagmes-silk_road",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-rpg_battle",
+    "name": "Tnalagmes Rpg Battle",
+    "description": "TNaLaGmes game: rpg_battle",
+    "url": "https://github.com/VoiceGamez/tnalagmes-rpg_battle",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-plague_doctor",
+    "name": "Tnalagmes Plague Doctor",
+    "description": "TNaLaGmes game: plague_doctor",
+    "url": "https://github.com/VoiceGamez/tnalagmes-plague_doctor",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-oregon_trail_classic",
+    "name": "Tnalagmes Oregon Trail Classic",
+    "description": "TNaLaGmes game: oregon_trail_classic",
+    "url": "https://github.com/VoiceGamez/tnalagmes-oregon_trail_classic",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-oregon_trail",
+    "name": "Tnalagmes Oregon Trail",
+    "description": "TNaLaGmes game: oregon_trail",
+    "url": "https://github.com/VoiceGamez/tnalagmes-oregon_trail",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-nim",
+    "name": "Tnalagmes Nim",
+    "description": "TNaLaGmes game: nim",
+    "url": "https://github.com/VoiceGamez/tnalagmes-nim",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-mines",
+    "name": "Tnalagmes Mines",
+    "description": "TNaLaGmes game: mines",
+    "url": "https://github.com/VoiceGamez/tnalagmes-mines",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-market",
+    "name": "Tnalagmes Market",
+    "description": "TNaLaGmes game: market",
+    "url": "https://github.com/VoiceGamez/tnalagmes-market",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-mammoth_hunt",
+    "name": "Tnalagmes Mammoth Hunt",
+    "description": "TNaLaGmes game: mammoth_hunt",
+    "url": "https://github.com/VoiceGamez/tnalagmes-mammoth_hunt",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-lunar_lander",
+    "name": "Tnalagmes Lunar Lander",
+    "description": "TNaLaGmes game: lunar_lander",
+    "url": "https://github.com/VoiceGamez/tnalagmes-lunar_lander",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-lemonade_stand",
+    "name": "Tnalagmes Lemonade Stand",
+    "description": "TNaLaGmes game: lemonade_stand",
+    "url": "https://github.com/VoiceGamez/tnalagmes-lemonade_stand",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-lemonade",
+    "name": "Tnalagmes Lemonade",
+    "description": "TNaLaGmes game: lemonade",
+    "url": "https://github.com/VoiceGamez/tnalagmes-lemonade",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-ice_age_trek",
+    "name": "Tnalagmes Ice Age Trek",
+    "description": "TNaLaGmes game: ice_age_trek",
+    "url": "https://github.com/VoiceGamez/tnalagmes-ice_age_trek",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-hunt_the_wumpus",
+    "name": "Tnalagmes Hunt The Wumpus",
+    "description": "TNaLaGmes game: hunt_the_wumpus",
+    "url": "https://github.com/VoiceGamez/tnalagmes-hunt_the_wumpus",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-haunted_manor",
+    "name": "Tnalagmes Haunted Manor",
+    "description": "TNaLaGmes game: haunted_manor",
+    "url": "https://github.com/VoiceGamez/tnalagmes-haunted_manor",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-hangman",
+    "name": "Tnalagmes Hangman",
+    "description": "TNaLaGmes game: hangman",
+    "url": "https://github.com/VoiceGamez/tnalagmes-hangman",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-hamurabi",
+    "name": "Tnalagmes Hamurabi",
+    "description": "TNaLaGmes game: hamurabi",
+    "url": "https://github.com/VoiceGamez/tnalagmes-hamurabi",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-great_migration",
+    "name": "Tnalagmes Great Migration",
+    "description": "TNaLaGmes game: great_migration",
+    "url": "https://github.com/VoiceGamez/tnalagmes-great_migration",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-garden_of_wonders",
+    "name": "Tnalagmes Garden Of Wonders",
+    "description": "TNaLaGmes game: garden_of_wonders",
+    "url": "https://github.com/VoiceGamez/tnalagmes-garden_of_wonders",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-flint_road",
+    "name": "Tnalagmes Flint Road",
+    "description": "TNaLaGmes game: flint_road",
+    "url": "https://github.com/VoiceGamez/tnalagmes-flint_road",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-eliza",
+    "name": "Tnalagmes Eliza",
+    "description": "TNaLaGmes game: eliza",
+    "url": "https://github.com/VoiceGamez/tnalagmes-eliza",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-ecosystem",
+    "name": "Tnalagmes Ecosystem",
+    "description": "TNaLaGmes game: ecosystem",
+    "url": "https://github.com/VoiceGamez/tnalagmes-ecosystem",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-dungeon_crawler",
+    "name": "Tnalagmes Dungeon Crawler",
+    "description": "TNaLaGmes game: dungeon_crawler",
+    "url": "https://github.com/VoiceGamez/tnalagmes-dungeon_crawler",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-dragon_quest",
+    "name": "Tnalagmes Dragon Quest",
+    "description": "TNaLaGmes game: dragon_quest",
+    "url": "https://github.com/VoiceGamez/tnalagmes-dragon_quest",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-depth_charge",
+    "name": "Tnalagmes Depth Charge",
+    "description": "TNaLaGmes game: depth_charge",
+    "url": "https://github.com/VoiceGamez/tnalagmes-depth_charge",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-demo_world",
+    "name": "Tnalagmes Demo World",
+    "description": "TNaLaGmes game: demo_world",
+    "url": "https://github.com/VoiceGamez/tnalagmes-demo_world",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-cthulhu_expedition",
+    "name": "Tnalagmes Cthulhu Expedition",
+    "description": "TNaLaGmes game: cthulhu_expedition",
+    "url": "https://github.com/VoiceGamez/tnalagmes-cthulhu_expedition",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-creature_quest",
+    "name": "Tnalagmes Creature Quest",
+    "description": "TNaLaGmes game: creature_quest",
+    "url": "https://github.com/VoiceGamez/tnalagmes-creature_quest",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-craps",
+    "name": "Tnalagmes Craps",
+    "description": "TNaLaGmes game: craps",
+    "url": "https://github.com/VoiceGamez/tnalagmes-craps",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-civil_war",
+    "name": "Tnalagmes Civil War",
+    "description": "TNaLaGmes game: civil_war",
+    "url": "https://github.com/VoiceGamez/tnalagmes-civil_war",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-chess",
+    "name": "Tnalagmes Chess",
+    "description": "TNaLaGmes game: chess",
+    "url": "https://github.com/VoiceGamez/tnalagmes-chess",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-cave_painter",
+    "name": "Tnalagmes Cave Painter",
+    "description": "TNaLaGmes game: cave_painter",
+    "url": "https://github.com/VoiceGamez/tnalagmes-cave_painter",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-camel",
+    "name": "Tnalagmes Camel",
+    "description": "TNaLaGmes game: camel",
+    "url": "https://github.com/VoiceGamez/tnalagmes-camel",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-blackjack",
+    "name": "Tnalagmes Blackjack",
+    "description": "TNaLaGmes game: blackjack",
+    "url": "https://github.com/VoiceGamez/tnalagmes-blackjack",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-battleship",
+    "name": "Tnalagmes Battleship",
+    "description": "TNaLaGmes game: battleship",
+    "url": "https://github.com/VoiceGamez/tnalagmes-battleship",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-bagels",
+    "name": "Tnalagmes Bagels",
+    "description": "TNaLaGmes game: bagels",
+    "url": "https://github.com/VoiceGamez/tnalagmes-bagels",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-arctic_expedition",
+    "name": "Tnalagmes Arctic Expedition",
+    "description": "TNaLaGmes game: arctic_expedition",
+    "url": "https://github.com/VoiceGamez/tnalagmes-arctic_expedition",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-arcade_hub",
+    "name": "Tnalagmes Arcade Hub",
+    "description": "TNaLaGmes game: arcade_hub",
+    "url": "https://github.com/VoiceGamez/tnalagmes-arcade_hub",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-adventure",
+    "name": "Tnalagmes Adventure",
+    "description": "TNaLaGmes game: adventure",
+    "url": "https://github.com/VoiceGamez/tnalagmes-adventure",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-acey_ducey",
+    "name": "Tnalagmes Acey Ducey",
+    "description": "TNaLaGmes game: acey_ducey",
+    "url": "https://github.com/VoiceGamez/tnalagmes-acey_ducey",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "story-forge",
+    "name": "Story Forge",
+    "description": "A voice-enabled game built with the StoryForge or TNaLaGmes platform.",
+    "url": "https://github.com/VoiceGamez/story-forge",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "tnalagmes-games",
+    "name": "Tnalagmes Games",
+    "description": "Games built with the TNaLaGmes NLP game library",
+    "url": "https://github.com/VoiceGamez/tnalagmes-games",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "storyforge-games",
+    "name": "Storyforge Games",
+    "description": "Games built with the storyforge interactive fiction engine",
+    "url": "https://github.com/VoiceGamez/storyforge-games",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "ovos-skill-cave-adventure-game",
+    "name": "Ovos Skill Cave Adventure Game",
+    "description": "play colossal cave adventure by voice",
+    "url": "https://github.com/VoiceGamez/ovos-skill-cave-adventure-game",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "ovos-skill-zork3-game",
+    "name": "Ovos Skill Zork3 Game",
+    "description": "A voice-enabled game built with the StoryForge or TNaLaGmes platform.",
+    "url": "https://github.com/VoiceGamez/ovos-skill-zork3-game",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "ovos-skill-zork2-game",
+    "name": "Ovos Skill Zork2 Game",
+    "description": "A voice-enabled game built with the StoryForge or TNaLaGmes platform.",
+    "url": "https://github.com/VoiceGamez/ovos-skill-zork2-game",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "ovos-skill-zork0-game",
+    "name": "Ovos Skill Zork0 Game",
+    "description": "A voice-enabled game built with the StoryForge or TNaLaGmes platform.",
+    "url": "https://github.com/VoiceGamez/ovos-skill-zork0-game",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "ovos-skill-station-fall-game",
+    "name": "Ovos Skill Station Fall Game",
+    "description": "station fall voice port of infocom game",
+    "url": "https://github.com/VoiceGamez/ovos-skill-station-fall-game",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "ovos-skill-starcross-game",
+    "name": "Ovos Skill Starcross Game",
+    "description": "infocom's starcross voice port",
+    "url": "https://github.com/VoiceGamez/ovos-skill-starcross-game",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "ovos-skill-planet-fall-game",
+    "name": "Ovos Skill Planet Fall Game",
+    "description": "planet fall infocom game voice port",
+    "url": "https://github.com/VoiceGamez/ovos-skill-planet-fall-game",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "ovos-skill-hhgg-game",
+    "name": "Ovos Skill Hhgg Game",
+    "description": "infocom's Hitchhiker's Guide to the Galaxy voice port",
+    "url": "https://github.com/VoiceGamez/ovos-skill-hhgg-game",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "TNaLaGmes",
+    "name": "Tnalagmes",
+    "description": "TNaLaGmes is a Toolbox for Natural Language Games",
+    "url": "https://github.com/VoiceGamez/TNaLaGmes",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "ovos-skill-moon-game",
+    "name": "Ovos Skill Moon Game",
+    "description": "adventure game for OpenVoiceOS",
+    "url": "https://github.com/VoiceGamez/ovos-skill-moon-game",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "storyforge-landing-page",
+    "name": "Storyforge Landing Page",
+    "description": "A voice-enabled game built with the StoryForge or TNaLaGmes platform.",
+    "url": "https://github.com/VoiceGamez/storyforge-landing-page",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "pyFrotz",
+    "name": "Pyfrotz",
+    "description": "A voice-enabled game built with the StoryForge or TNaLaGmes platform.",
+    "url": "https://github.com/VoiceGamez/pyFrotz",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "GameSkills",
+    "name": "Gameskills",
+    "description": "A voice-enabled game built with the StoryForge or TNaLaGmes platform.",
+    "url": "https://github.com/VoiceGamez/GameSkills",
+    "category": "Games",
+    "tags": [
+      "Interactive Fiction",
+      "Audio-first",
+      "Text Adventure"
+    ],
+    "featured": false,
+    "selfHosted": true
   }
 ]
