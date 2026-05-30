@@ -26,7 +26,7 @@ const groups = order.map((name) => ({
   <PageHeader
     eyebrow="Try it in your browser"
     title="Speak with Miro & Dii"
-    lead="Pick a voice, type a sentence, and hear it. The model is downloaded straight from Hugging Face and runs entirely in your browser with onnxruntime-web — nothing is sent to a server."
+    lead="Pick a voice, type a sentence, and hear it. Each voice is a tiny ~15.6M-parameter model, downloaded straight from Hugging Face and run entirely in your browser with onnxruntime-web — nothing is sent to a server."
   />
 
   <div class="mx-auto max-w-3xl">
@@ -65,6 +65,44 @@ const groups = order.map((name) => ({
         class="w-full rounded-lg border border-border bg-elevated px-3 py-2 text-fg"
       ></textarea>
 
+      <div class="mt-5 grid gap-4 sm:grid-cols-2">
+        <label class="block text-sm">
+          <span class="mb-1 flex justify-between text-muted">
+            <span>Speed</span><span id="speedVal" class="tabular-nums">1.00×</span>
+          </span>
+          <input id="speed" type="range" min="0.5" max="2" step="0.05" value="1"
+            class="w-full accent-primary" />
+        </label>
+        <label class="block text-sm">
+          <span class="mb-1 flex justify-between text-muted">
+            <span>Volume</span><span id="volumeVal" class="tabular-nums">100%</span>
+          </span>
+          <input id="volume" type="range" min="0" max="2" step="0.05" value="1"
+            class="w-full accent-primary" />
+        </label>
+      </div>
+
+      <details class="mt-3 text-sm">
+        <summary class="cursor-pointer text-muted hover:text-fg">Advanced (piper inference)</summary>
+        <div class="mt-3 grid gap-4 sm:grid-cols-2">
+          <label class="block">
+            <span class="mb-1 flex justify-between text-muted">
+              <span>Variation (noise_scale)</span><span id="noiseVal" class="tabular-nums">0.667</span>
+            </span>
+            <input id="noise" type="range" min="0" max="1" step="0.01" value="0.667"
+              class="w-full accent-primary" />
+          </label>
+          <label class="block">
+            <span class="mb-1 flex justify-between text-muted">
+              <span>Phoneme width (noise_w)</span><span id="noisewVal" class="tabular-nums">0.800</span>
+            </span>
+            <input id="noisew" type="range" min="0" max="1" step="0.01" value="0.8"
+              class="w-full accent-primary" />
+          </label>
+        </div>
+        <button id="reset" type="button" class="btn-ghost mt-3 text-xs">Reset to defaults</button>
+      </details>
+
       <div class="mt-5 flex flex-wrap items-center gap-3">
         <button id="synth" class="btn btn-primary">Synthesize</button>
         <span id="status" class="text-sm text-muted" aria-live="polite"></span>
@@ -76,6 +114,18 @@ const groups = order.map((name) => ({
           Download .wav
         </a>
       </div>
+    </div>
+
+    <div class="card mt-6 text-sm">
+      <p class="display-3 text-base">Tiny models — runs on a potato 🥔</p>
+      <p class="mt-2 text-muted">
+        Each voice is a <strong>~15.6&nbsp;million-parameter</strong> model — small
+        enough to run on a Raspberry&nbsp;Pi, a phone, or the very browser tab
+        you're in right now, fully offline, no GPU and no cloud. While the big TTS
+        labs brag about <em>billions</em> of parameters, we optimize for the
+        opposite: <strong>tiny, fast, private, on-device</strong> voices that anyone
+        can run and own.
+      </p>
     </div>
 
     <div class="card mt-6 text-sm">
@@ -150,8 +200,34 @@ const groups = order.map((name) => ({
     const player = document.getElementById('player') as HTMLAudioElement;
     const download = document.getElementById('download') as HTMLAnchorElement;
 
+    const speed = document.getElementById('speed') as HTMLInputElement;
+    const volume = document.getElementById('volume') as HTMLInputElement;
+    const noise = document.getElementById('noise') as HTMLInputElement;
+    const noisew = document.getElementById('noisew') as HTMLInputElement;
+    const reset = document.getElementById('reset') as HTMLButtonElement;
+
     let loaded: LoadedVoice | null = null;
     const cache = new Map<string, LoadedVoice>();
+
+    const DEFAULTS = { speed: '1', volume: '1', noise: '0.667', noisew: '0.8' };
+
+    function syncLabels() {
+      (document.getElementById('speedVal') as HTMLElement).textContent =
+        `${(+speed.value).toFixed(2)}×`;
+      (document.getElementById('volumeVal') as HTMLElement).textContent =
+        `${Math.round(+volume.value * 100)}%`;
+      (document.getElementById('noiseVal') as HTMLElement).textContent = (+noise.value).toFixed(3);
+      (document.getElementById('noisewVal') as HTMLElement).textContent = (+noisew.value).toFixed(3);
+    }
+    for (const el of [speed, volume, noise, noisew]) el.addEventListener('input', syncLabels);
+    reset.addEventListener('click', () => {
+      speed.value = DEFAULTS.speed;
+      volume.value = DEFAULTS.volume;
+      noise.value = DEFAULTS.noise;
+      noisew.value = DEFAULTS.noisew;
+      syncLabels();
+    });
+    syncLabels();
 
     function prefill() {
       const v = byId.get(sel.value);
@@ -178,7 +254,12 @@ const groups = order.map((name) => ({
           status.textContent = `ready (${loaded.provider})`;
         }
         status.textContent = 'synthesizing…';
-        const blob = await synthesize(loaded, text);
+        const blob = await synthesize(loaded, text, {
+          lengthScale: 1 / +speed.value, // higher speed = shorter duration
+          volume: +volume.value,
+          noiseScale: +noise.value,
+          noiseW: +noisew.value,
+        });
         const u = URL.createObjectURL(blob);
         player.src = u;
         download.href = u;

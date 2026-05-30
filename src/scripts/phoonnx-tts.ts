@@ -179,7 +179,25 @@ export function encodeWav(samples: Float32Array, sampleRate: number): Blob {
   return new Blob([buffer], { type: "audio/wav" });
 }
 
-export async function synthesize(voice: LoadedVoice, text: string): Promise<Blob> {
+export interface SynthOptions {
+  /** length_scale — phoneme duration; >1 slower, <1 faster (default from config, ~1.0). */
+  lengthScale?: number;
+  /** noise_scale — generator variation/expressiveness (default ~0.667). */
+  noiseScale?: number;
+  /** noise_w — phoneme-width variation (default ~0.8). */
+  noiseW?: number;
+  /** post-synthesis gain, 1.0 = unchanged. */
+  volume?: number;
+}
+
+/** Default inference scales when a voice config omits them. */
+export const DEFAULT_SCALES = { noiseScale: 0.667, lengthScale: 1.0, noiseW: 0.8, volume: 1.0 };
+
+export async function synthesize(
+  voice: LoadedVoice,
+  text: string,
+  opts: SynthOptions = {},
+): Promise<Blob> {
   let ids: number[];
   if (voice.entry.phonemeType === "unicode") {
     ids = tokenizeUnicode(text, voice.idMap);
@@ -190,11 +208,10 @@ export async function synthesize(voice: LoadedVoice, text: string): Promise<Blob
   if (ids.length <= 3) throw new Error("nothing to synthesize for this text");
 
   const inf = voice.config.inference || {};
-  const scales = Float32Array.from([
-    inf.noise_scale ?? 0.667,
-    inf.length_scale ?? 1.0,
-    inf.noise_w ?? 0.8,
-  ]);
+  const noiseScale = opts.noiseScale ?? inf.noise_scale ?? DEFAULT_SCALES.noiseScale;
+  const lengthScale = opts.lengthScale ?? inf.length_scale ?? DEFAULT_SCALES.lengthScale;
+  const noiseW = opts.noiseW ?? inf.noise_w ?? DEFAULT_SCALES.noiseW;
+  const scales = Float32Array.from([noiseScale, lengthScale, noiseW]);
   const feeds: Record<string, ort.Tensor> = {
     input: new ort.Tensor("int64", BigInt64Array.from(ids, BigInt), [1, ids.length]),
     input_lengths: new ort.Tensor("int64", BigInt64Array.from([BigInt(ids.length)]), [1]),
@@ -206,6 +223,10 @@ export async function synthesize(voice: LoadedVoice, text: string): Promise<Blob
 
   const results = await voice.session.run(feeds);
   const out = results[voice.session.outputNames[0]];
-  const audio = out.data as Float32Array;
+  let audio = out.data as Float32Array;
+  const volume = opts.volume ?? DEFAULT_SCALES.volume;
+  if (volume !== 1.0) {
+    audio = Float32Array.from(audio, (s) => Math.max(-1, Math.min(1, s * volume)));
+  }
   return encodeWav(audio, voice.sampleRate);
 }
