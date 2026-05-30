@@ -490,6 +490,7 @@
     "category": "Tools",
     "tags": [
       "SSHFS",
+      "homelab",
       "monitoring",
       "self-hosted",
       "sysadmin"
@@ -725,6 +726,7 @@
     "category": "Clients",
     "tags": [
       "catalogue",
+      "homelab",
       "indexing",
       "media"
     ],
@@ -1120,6 +1122,7 @@
     "url": "https://github.com/TigreGotico/ovos-hub",
     "category": "OpenVoiceOS",
     "tags": [
+      "homelab",
       "marketplace",
       "package management",
       "plugin registry"
@@ -1218,10 +1221,11 @@
     "url": "https://github.com/JarbasHiveMind/hivemind-core",
     "category": "HiveMind",
     "tags": [
+      "coordination",
+      "homelab",
       "hub",
       "mesh network",
-      "protocol",
-      "coordination"
+      "protocol"
     ],
     "featured": false
   },
