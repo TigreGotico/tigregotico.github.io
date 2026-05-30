@@ -11,22 +11,9 @@ at home turning hard-to-reach public data into clean APIs and curated datasets.
 
 ## How We Work
 
-We offer **focused engineering engagements** rather than open-ended retainers. Each one is scoped to a concrete outcome, delivered as open source where possible, and backed by the people who maintain the underlying stack.
+The standard engagement is a **monthly retainer** for ongoing access and support, with discrete deliverables — datasets, trained models, custom plugins, integrations — scoped and billed separately as they are defined. This keeps the relationship predictable on both sides: you have direct access to the team, and each concrete output has its own scope and price.
 
-### Onboarding & Integration
-
-Full technical onboarding and guided integration into your existing systems, with
-a clear path to a working prototype on the OpenVoiceOS stack.
-
-### Technical Retainer
-
-Dedicated, on-demand engineering for long-term projects: scheduled reviews,
-problem-solving, and direct access to the core development team.
-
-### Hourly Support
-
-Flexible hourly engineering for troubleshooting, targeted features, or expert
-guidance when you need it.
+We also take on standalone project work where the scope is well-defined from the start.
 
 ## We Voice-Enable Anything
 
