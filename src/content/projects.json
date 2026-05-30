@@ -2229,5 +2229,200 @@
     ],
     "featured": false,
     "selfHosted": true
+  },
+  {
+    "id": "ovos-stt-plugin-citrinet",
+    "name": "ovos-stt-plugin-citrinet",
+    "description": "OVOS STT plugin using Citrinet acoustic model, trained on ILENIA speech data.",
+    "url": "https://github.com/OpenVoiceOS/ovos-stt-plugin-citrinet",
+    "category": "OpenVoiceOS",
+    "tags": [
+      "ILENIA",
+      "OpenVoiceOS"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "ovos-tts-plugin-coqui",
+    "name": "ovos-tts-plugin-coqui",
+    "description": "OVOS TTS plugin wrapping Coqui TTS for Spanish-language voices.",
+    "url": "https://github.com/OpenVoiceOS/ovos-tts-plugin-coqui",
+    "category": "OpenVoiceOS",
+    "tags": [
+      "ILENIA",
+      "OpenVoiceOS"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "ovos-dialog-normalizer-plugin",
+    "name": "ovos-dialog-normalizer-plugin",
+    "description": "OVOS plugin normalizing dialog text before TTS synthesis (number expansion, abbreviations).",
+    "url": "https://github.com/OpenVoiceOS/ovos-dialog-normalizer-plugin",
+    "category": "OpenVoiceOS",
+    "tags": [
+      "ILENIA",
+      "OpenVoiceOS"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "ovos-stt-plugin-mms",
+    "name": "ovos-stt-plugin-mms",
+    "description": "OVOS STT plugin using Meta MMS massively multilingual speech recognition.",
+    "url": "https://github.com/OpenVoiceOS/ovos-stt-plugin-mms",
+    "category": "OpenVoiceOS",
+    "tags": [
+      "ILENIA",
+      "OpenVoiceOS"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "ovos-tts-plugin-ahotts",
+    "name": "ovos-tts-plugin-ahotts",
+    "description": "OVOS TTS plugin for AhoTTS, a Basque speech synthesis system developed under ILENIA.",
+    "url": "https://github.com/OpenVoiceOS/ovos-tts-plugin-ahotts",
+    "category": "OpenVoiceOS",
+    "tags": [
+      "ILENIA",
+      "OpenVoiceOS"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "ovos-stt-plugin-nos",
+    "name": "ovos-stt-plugin-nos",
+    "description": "OVOS STT plugin for NOS Galician speech recognition.",
+    "url": "https://github.com/OpenVoiceOS/ovos-stt-plugin-nos",
+    "category": "OpenVoiceOS",
+    "tags": [
+      "ILENIA",
+      "OpenVoiceOS"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "ovos-stt-plugin-wav2vec2",
+    "name": "ovos-stt-plugin-wav2vec2",
+    "description": "OVOS STT plugin using wav2vec 2.0 models for Spanish and co-official languages.",
+    "url": "https://github.com/OpenVoiceOS/ovos-stt-plugin-wav2vec2",
+    "category": "OpenVoiceOS",
+    "tags": [
+      "ILENIA",
+      "OpenVoiceOS"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "ovos-stt-plugin-nemo",
+    "name": "ovos-stt-plugin-nemo",
+    "description": "OVOS STT plugin using NVIDIA NeMo ASR models.",
+    "url": "https://github.com/OpenVoiceOS/ovos-stt-plugin-nemo",
+    "category": "OpenVoiceOS",
+    "tags": [
+      "ILENIA",
+      "OpenVoiceOS"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "ovos-tts-plugin-matxa-multispeaker-cat",
+    "name": "ovos-tts-plugin-matxa-multispeaker-cat",
+    "description": "OVOS TTS plugin for Matxa multispeaker Catalan synthesis.",
+    "url": "https://github.com/OpenVoiceOS/ovos-tts-plugin-matxa-multispeaker-cat",
+    "category": "OpenVoiceOS",
+    "tags": [
+      "ILENIA",
+      "OpenVoiceOS"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "ovos-stt-plugin-hitz",
+    "name": "ovos-stt-plugin-HiTZ",
+    "description": "OVOS STT plugin for HiTZ Basque speech recognition.",
+    "url": "https://github.com/OpenVoiceOS/ovos-stt-plugin-HiTZ",
+    "category": "OpenVoiceOS",
+    "tags": [
+      "ILENIA",
+      "OpenVoiceOS"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "ovos-tts-plugin-cotovia-remote",
+    "name": "ovos-tts-plugin-cotovia-remote",
+    "description": "OVOS TTS plugin for Cotovia, a Galician text-to-speech engine.",
+    "url": "https://github.com/OpenVoiceOS/ovos-tts-plugin-cotovia-remote",
+    "category": "OpenVoiceOS",
+    "tags": [
+      "ILENIA",
+      "OpenVoiceOS"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "ovos-stt-plugin-fasterwhisper-zuazo",
+    "name": "ovos-stt-plugin-fasterwhisper-zuazo",
+    "description": "OVOS STT plugin using Zuazo fine-tuned Faster-Whisper models for Basque.",
+    "url": "https://github.com/OpenVoiceOS/ovos-stt-plugin-fasterwhisper-zuazo",
+    "category": "OpenVoiceOS",
+    "tags": [
+      "ILENIA",
+      "OpenVoiceOS"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "ovos-tts-plugin-nos",
+    "name": "ovos-tts-plugin-nos",
+    "description": "OVOS TTS plugin for NOS Galician speech synthesis.",
+    "url": "https://github.com/OpenVoiceOS/ovos-tts-plugin-nos",
+    "category": "OpenVoiceOS",
+    "tags": [
+      "ILENIA",
+      "OpenVoiceOS"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "ovos-stt-plugin-whisper-lm",
+    "name": "ovos-stt-plugin-whisper-lm",
+    "description": "OVOS STT plugin combining Whisper with a language model for improved accuracy.",
+    "url": "https://github.com/OpenVoiceOS/ovos-stt-plugin-whisper-lm",
+    "category": "OpenVoiceOS",
+    "tags": [
+      "ILENIA",
+      "OpenVoiceOS"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "ovos-stt-plugin-projectaina-remote",
+    "name": "ovos-stt-plugin-projectAINA-remote",
+    "description": "OVOS STT plugin for ProjectAINA remote Catalan speech recognition.",
+    "url": "https://github.com/OpenVoiceOS/ovos-stt-plugin-projectAINA-remote",
+    "category": "OpenVoiceOS",
+    "tags": [
+      "ILENIA",
+      "OpenVoiceOS"
+    ],
+    "featured": false,
+    "selfHosted": true
   }
 ]
