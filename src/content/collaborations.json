@@ -17,7 +17,14 @@
     "id": "ilenia",
     "name": "ILENIA",
     "description": "A one-time subcontracted project to bring Catalan, Spanish, Galician, and Basque support to OpenVoiceOS and improve its localization tooling — delivering STT and TTS plugins and dialog/normalization components for those languages.",
-    "url": "https://proyectoilenia.es",
+    "url": "https://proyectoilenia.es/en/demonstrators-2025/ovos-prototype/",
+    "repositories": []
+  },
+  {
+    "id": "nlnet",
+    "name": "NLnet / NGI0 Commons Fund",
+    "description": "Internet-for-all funding program supporting the development of privacy-first voice technology — sponsoring wake-word training, localization, and open-source voice AI infrastructure.",
+    "url": "https://nlnet.nl/project/OpenVoiceOS",
     "repositories": []
   }
 ]
