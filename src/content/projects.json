@@ -1075,7 +1075,7 @@
     "name": "Wyoming OVOS STT",
     "description": "OpenVoiceOS STT service for the Wyoming protocol \u2014 lightweight speech recognition.",
     "url": "https://github.com/TigreGotico/wyoming-ovos-stt",
-    "category": "STT",
+    "category": "Home Assistant",
     "tags": [
       "Home Assistant",
       "STT",
@@ -1105,7 +1105,7 @@
     "name": "Wyoming OVOS Wakeword",
     "description": "OpenVoiceOS wake-word detection service for the Wyoming protocol.",
     "url": "https://github.com/TigreGotico/wyoming-ovos-wakeword",
-    "category": "Wake-words",
+    "category": "Home Assistant",
     "tags": [
       "Home Assistant",
       "Wyoming",
