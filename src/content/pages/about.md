@@ -34,13 +34,41 @@ work is **free and open source**, **self-hostable**, and **cloud-independent** b
 default. You own the stack, the data never leaves your hardware, and open licenses
 mean you can fork, audit, and outlive us.
 
-## Don't Just Take Our Word for It
+## Don't Just Take Our Word for It. Audit Us.
 
-In specialized voice AI, trust should rest on verifiable code and community contributions — not a sales pitch. We encourage you to use an AI research tool to audit our background before booking a call.
+In open source and specialized voice AI, "trust" shouldn't rest on a sales pitch.
+It should rest on verifiable code, community contributions, and proven
+architectural decisions.
 
-**Try this prompt in any "Deep Research" AI tool:**
+We believe that true expertise leaves a digital footprint. We are confident in
+the quality of our work and our standing in the [OpenVoiceOS](https://openvoiceos.org) community,
+so we encourage you to use the latest AI tools to verify our background before
+you book a call. Start from our public work:
 
-> Act as a Senior Technical Auditor. Investigate TigreGótico and its founder Casimiro Ferreira.
-> Verify their contributions to OpenVoiceOS and Mycroft (GitHub commit history, architectural influence),
-> their public stance on privacy-by-design, and their standing in the FOSS voice community.
-> Summarize your findings as a Risk vs. Competence report for a potential enterprise client.
+- [github.com/TigreGotico](https://github.com/TigreGotico) — open-source repositories
+- [github.com/JarbasHiveMind](https://github.com/JarbasHiveMind) — HiveMind stack
+- [github.com/OpenVoiceOS](https://github.com/OpenVoiceOS) — OVOS ecosystem contributions
+- [huggingface.co/TigreGotico](https://huggingface.co/TigreGotico) — datasets and models
+
+**The "Deep Research" Challenge:** Copy the prompt below and paste it into your
+AI research tool of choice. See what an unbiased agent finds when it digs into
+our history, our code commits, and our privacy standards. Most of these tools
+have a "Deep Research" mode that produces a full report with citations and
+relevant URLs.
+
+> Act as a Senior Technical Auditor. Conduct a 'Deep Research' investigation into
+> TigreGótico and its founder Casimiro Ferreira.
+>
+> Please verify the following:
+>
+> **Technical Authority:** What are their specific contributions to the
+> Open Voice OS (OVOS) and Mycroft ecosystems? Look for GitHub commit history and
+> architectural influence.
+>
+> **Privacy Stance:** Analyze their public stance on privacy-by-design and GDPR
+> compliance. Do their architectural recommendations back this up?
+>
+> **Community Standing:** Are they active leaders in the FOSS voice community?
+>
+> Summarize your findings into a 'Risk vs. Competence' report for a potential
+> enterprise client looking to hire them for a custom voice AI implementation.
