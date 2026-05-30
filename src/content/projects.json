@@ -70,19 +70,6 @@
     "featured": false
   },
   {
-    "id": "lilacs",
-    "name": "LILACS",
-    "description": "A neurosymbolic NLP and reasoning toolkit that pairs knowledge graphs with language models for explainable, transparent language understanding.",
-    "category": "NLP & ML",
-    "tags": [
-      "knowledge graph",
-      "neurosymbolic NLP",
-      "reasoning"
-    ],
-    "featured": false,
-    "comingSoon": true
-  },
-  {
     "id": "storyforge",
     "name": "StoryForge",
     "description": "An engine for LLM-powered generative narrative worlds \u2014 interactive fiction that improvises story, characters, and choices around the player, playable in the terminal or by voice.",
@@ -554,7 +541,7 @@
     "name": "pyfanedit",
     "description": "Scraping client for fanedit.org / IFDB.",
     "url": "https://github.com/TigreGotico/pyfanedit",
-    "category": "Clients",
+    "category": "Media",
     "tags": [
       "IFDB",
       "film",
@@ -1172,49 +1159,6 @@
     "featured": false
   },
   {
-    "id": "pombo-correio",
-    "name": "Pombo Correio",
-    "description": "Portuguese postal/mail service client \u2014 handle address validation and shipping.",
-    "url": "https://github.com/TigreGotico/pombo_correio",
-    "category": "Clients",
-    "tags": [
-      "postal",
-      "Portugal",
-      "client",
-      "shipping"
-    ],
-    "featured": false
-  },
-  {
-    "id": "ovos-technical-manual",
-    "name": "OVOS Technical Manual",
-    "description": "Comprehensive technical documentation for OpenVoiceOS developers \u2014 architecture, plugins, and best practices.",
-    "url": "https://github.com/TigreGotico/ovos-technical-manual",
-    "category": "OpenVoiceOS",
-    "tags": [
-      "documentation",
-      "guide",
-      "technical",
-      "OVOS"
-    ],
-    "featured": false
-  },
-  {
-    "id": "ovos-skill-white-house-adventure",
-    "name": "OVOS White House Adventure",
-    "description": "Interactive text adventure game skill for OpenVoiceOS \u2014 explore the White House by voice.",
-    "url": "https://github.com/TigreGotico/ovos-skill-white-house-adventure",
-    "category": "Games",
-    "tags": [
-      "OVOS",
-      "adventure game",
-      "game",
-      "interactive fiction",
-      "voice-playable"
-    ],
-    "featured": false
-  },
-  {
     "id": "hivemind-core",
     "name": "HiveMind Core",
     "description": "Central HiveMind hub \u2014 coordinates connected devices and agents. The core routing and permission system for the HiveMind mesh network.",
@@ -1370,6 +1314,33 @@
       "Home Assistant",
       "integration",
       "smart home"
+    ],
+    "featured": false
+  },
+  {
+    "id": "storyforge-tower-of-silence",
+    "name": "StoryForge: Tower of Silence",
+    "description": "Immersive audio-only adventure game in a mysterious tower \u2014 explore by voice and make choices that shape your story.",
+    "url": "https://github.com/VoiceGamez/storyforge-tower_of_silence",
+    "category": "Games",
+    "tags": [
+      "voice-playable",
+      "interactive fiction",
+      "generative",
+      "adventure"
+    ],
+    "featured": false
+  },
+  {
+    "id": "tnalagmes-games",
+    "name": "TNaLaGmes Games Collection",
+    "description": "A suite of 40+ classic and original voice-playable games \u2014 from turn-based adventures to real-time challenges.",
+    "url": "https://github.com/VoiceGamez/tnalagmes-games",
+    "category": "Games",
+    "tags": [
+      "voice-playable",
+      "game collection",
+      "interactive fiction"
     ],
     "featured": false
   }
