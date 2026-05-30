@@ -2418,5 +2418,21 @@
     ],
     "featured": false,
     "selfHosted": true
+  },
+  {
+    "id": "sitemapper",
+    "name": "sitemapper",
+    "description": "Site reconnaissance utility for learning site structure before building scrapers. Maps robots.txt, sitemaps, and link graphs using unblock_requests transport for resilient exploration of protected or complex sites.",
+    "url": "https://github.com/TigreGotico/sitemapper",
+    "category": "Web Automation",
+    "tags": [
+      "Web scraping",
+      "Site mapping",
+      "Robots.txt",
+      "Sitemap",
+      "Link graph"
+    ],
+    "featured": false,
+    "selfHosted": true
   }
 ]
