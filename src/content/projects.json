@@ -4,10 +4,7 @@
     "name": "phoonnx",
     "description": "A Python library for multilingual phonemization and Text-to-Speech (TTS) using ONNX models.",
     "url": "https://github.com/TigreGotico/phoonnx",
-    "category": [
-      "JavaScript",
-      "TTS"
-    ],
+    "category": "TTS",
     "tags": [
       "ONNX models",
       "multilingual TTS",
@@ -377,7 +374,7 @@
     "name": "OVOS STT Plugin - MyNorthAI",
     "description": "MyNorthAI Speech-to-Text plugin for OpenVoiceOS.",
     "url": "https://github.com/TigreGotico/ovos-stt-plugin-MyNorthAI",
-    "category": "STT",
+    "category": "OpenVoiceOS",
     "tags": [
       "MyNorthAI",
       "STT plugin",
@@ -954,7 +951,7 @@
     "name": "ovos-stt-plugin-whisper",
     "description": "Whisper speech-to-text plugin for OpenVoiceOS.",
     "url": "https://github.com/TigreGotico/ovos-stt-plugin-whisper",
-    "category": "STT",
+    "category": "OpenVoiceOS",
     "tags": [
       "OpenVoiceOS",
       "STT",
@@ -967,7 +964,7 @@
     "name": "ovos-stt-plugin-sherpa-onnx",
     "description": "Sherpa-ONNX speech-to-text plugin for OpenVoiceOS.",
     "url": "https://github.com/TigreGotico/ovos-stt-plugin-sherpa-onnx",
-    "category": "STT",
+    "category": "OpenVoiceOS",
     "tags": [
       "ONNX models",
       "OpenVoiceOS",
@@ -1129,10 +1126,7 @@
     "name": "HiveMind Core",
     "description": "Central HiveMind hub — coordinates connected devices and agents. The core routing and permission system for the HiveMind mesh network.",
     "url": "https://github.com/JarbasHiveMind/hivemind-core",
-    "category": [
-      "Homelab",
-      "HiveMind"
-    ],
+    "category": "HiveMind",
     "tags": [
       "coordination",
       "homelab",
@@ -1176,7 +1170,10 @@
     "name": "HiveMind Docker",
     "description": "Docker deployment for HiveMind hub — run the mesh network in containers.",
     "url": "https://github.com/JarbasHiveMind/hivemind-docker",
-    "category": "HiveMind",
+    "category": [
+      "Homelab",
+      "HiveMind"
+    ],
     "tags": [
       "Docker",
       "deployment",
@@ -1331,7 +1328,10 @@
     "name": "Storyforge Tower Of Silence",
     "description": "StoryForge game: tower_of_silence",
     "url": "https://github.com/VoiceGamez/storyforge-tower_of_silence",
-    "category": "StoryForge",
+    "category": [
+      "Games",
+      "StoryForge"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1345,7 +1345,10 @@
     "name": "Storyforge Space Program",
     "description": "StoryForge game: space_program",
     "url": "https://github.com/VoiceGamez/storyforge-space_program",
-    "category": "StoryForge",
+    "category": [
+      "Games",
+      "StoryForge"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1359,7 +1362,10 @@
     "name": "Storyforge Eldritch Escape",
     "description": "StoryForge game: eldritch_escape",
     "url": "https://github.com/VoiceGamez/storyforge-eldritch_escape",
-    "category": "StoryForge",
+    "category": [
+      "Games",
+      "StoryForge"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1373,7 +1379,10 @@
     "name": "Storyforge Discovery Age",
     "description": "StoryForge game: discovery_age",
     "url": "https://github.com/VoiceGamez/storyforge-discovery_age",
-    "category": "StoryForge",
+    "category": [
+      "Games",
+      "StoryForge"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1387,7 +1396,10 @@
     "name": "Tnalagmes Zvirus",
     "description": "TNaLaGmes game: zvirus",
     "url": "https://github.com/VoiceGamez/tnalagmes-zvirus",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1401,7 +1413,10 @@
     "name": "Tnalagmes Wumpus",
     "description": "TNaLaGmes game: wumpus",
     "url": "https://github.com/VoiceGamez/tnalagmes-wumpus",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1415,7 +1430,10 @@
     "name": "Tnalagmes Wild West Stage",
     "description": "TNaLaGmes game: wild_west_stage",
     "url": "https://github.com/VoiceGamez/tnalagmes-wild_west_stage",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1429,7 +1447,10 @@
     "name": "Tnalagmes Trivia",
     "description": "TNaLaGmes game: trivia",
     "url": "https://github.com/VoiceGamez/tnalagmes-trivia",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1443,7 +1464,10 @@
     "name": "Tnalagmes Tribe Of Dawn",
     "description": "TNaLaGmes game: tribe_of_dawn",
     "url": "https://github.com/VoiceGamez/tnalagmes-tribe_of_dawn",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1457,7 +1481,10 @@
     "name": "Tnalagmes Tokaido Road",
     "description": "TNaLaGmes game: tokaido_road",
     "url": "https://github.com/VoiceGamez/tnalagmes-tokaido_road",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1471,7 +1498,10 @@
     "name": "Tnalagmes Tictactoe",
     "description": "TNaLaGmes game: tictactoe",
     "url": "https://github.com/VoiceGamez/tnalagmes-tictactoe",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1485,7 +1515,10 @@
     "name": "Tnalagmes Taipan",
     "description": "TNaLaGmes game: taipan",
     "url": "https://github.com/VoiceGamez/tnalagmes-taipan",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1499,7 +1532,10 @@
     "name": "Tnalagmes Sumer",
     "description": "TNaLaGmes game: sumer",
     "url": "https://github.com/VoiceGamez/tnalagmes-sumer",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1513,7 +1549,10 @@
     "name": "Tnalagmes Stock Market",
     "description": "TNaLaGmes game: stock_market",
     "url": "https://github.com/VoiceGamez/tnalagmes-stock_market",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1527,7 +1566,10 @@
     "name": "Tnalagmes Star Trek",
     "description": "TNaLaGmes game: star_trek",
     "url": "https://github.com/VoiceGamez/tnalagmes-star_trek",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1541,7 +1583,10 @@
     "name": "Tnalagmes Star Trader",
     "description": "TNaLaGmes game: star_trader",
     "url": "https://github.com/VoiceGamez/tnalagmes-star_trader",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1555,7 +1600,10 @@
     "name": "Tnalagmes Space Colony",
     "description": "TNaLaGmes game: space_colony",
     "url": "https://github.com/VoiceGamez/tnalagmes-space_colony",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1569,7 +1617,10 @@
     "name": "Tnalagmes Silk Road",
     "description": "TNaLaGmes game: silk_road",
     "url": "https://github.com/VoiceGamez/tnalagmes-silk_road",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1583,7 +1634,10 @@
     "name": "Tnalagmes Rpg Battle",
     "description": "TNaLaGmes game: rpg_battle",
     "url": "https://github.com/VoiceGamez/tnalagmes-rpg_battle",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1597,7 +1651,10 @@
     "name": "Tnalagmes Plague Doctor",
     "description": "TNaLaGmes game: plague_doctor",
     "url": "https://github.com/VoiceGamez/tnalagmes-plague_doctor",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1611,7 +1668,10 @@
     "name": "Tnalagmes Oregon Trail Classic",
     "description": "TNaLaGmes game: oregon_trail_classic",
     "url": "https://github.com/VoiceGamez/tnalagmes-oregon_trail_classic",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1625,7 +1685,10 @@
     "name": "Tnalagmes Oregon Trail",
     "description": "TNaLaGmes game: oregon_trail",
     "url": "https://github.com/VoiceGamez/tnalagmes-oregon_trail",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1639,7 +1702,10 @@
     "name": "Tnalagmes Nim",
     "description": "TNaLaGmes game: nim",
     "url": "https://github.com/VoiceGamez/tnalagmes-nim",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1653,7 +1719,10 @@
     "name": "Tnalagmes Mines",
     "description": "TNaLaGmes game: mines",
     "url": "https://github.com/VoiceGamez/tnalagmes-mines",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1667,7 +1736,10 @@
     "name": "Tnalagmes Market",
     "description": "TNaLaGmes game: market",
     "url": "https://github.com/VoiceGamez/tnalagmes-market",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1681,7 +1753,10 @@
     "name": "Tnalagmes Mammoth Hunt",
     "description": "TNaLaGmes game: mammoth_hunt",
     "url": "https://github.com/VoiceGamez/tnalagmes-mammoth_hunt",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1695,7 +1770,10 @@
     "name": "Tnalagmes Lunar Lander",
     "description": "TNaLaGmes game: lunar_lander",
     "url": "https://github.com/VoiceGamez/tnalagmes-lunar_lander",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1709,7 +1787,10 @@
     "name": "Tnalagmes Lemonade Stand",
     "description": "TNaLaGmes game: lemonade_stand",
     "url": "https://github.com/VoiceGamez/tnalagmes-lemonade_stand",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1723,7 +1804,10 @@
     "name": "Tnalagmes Lemonade",
     "description": "TNaLaGmes game: lemonade",
     "url": "https://github.com/VoiceGamez/tnalagmes-lemonade",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1737,7 +1821,10 @@
     "name": "Tnalagmes Ice Age Trek",
     "description": "TNaLaGmes game: ice_age_trek",
     "url": "https://github.com/VoiceGamez/tnalagmes-ice_age_trek",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1751,7 +1838,10 @@
     "name": "Tnalagmes Hunt The Wumpus",
     "description": "TNaLaGmes game: hunt_the_wumpus",
     "url": "https://github.com/VoiceGamez/tnalagmes-hunt_the_wumpus",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1765,7 +1855,10 @@
     "name": "Tnalagmes Haunted Manor",
     "description": "TNaLaGmes game: haunted_manor",
     "url": "https://github.com/VoiceGamez/tnalagmes-haunted_manor",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1779,7 +1872,10 @@
     "name": "Tnalagmes Hangman",
     "description": "TNaLaGmes game: hangman",
     "url": "https://github.com/VoiceGamez/tnalagmes-hangman",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1793,7 +1889,10 @@
     "name": "Tnalagmes Hamurabi",
     "description": "TNaLaGmes game: hamurabi",
     "url": "https://github.com/VoiceGamez/tnalagmes-hamurabi",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1807,7 +1906,10 @@
     "name": "Tnalagmes Great Migration",
     "description": "TNaLaGmes game: great_migration",
     "url": "https://github.com/VoiceGamez/tnalagmes-great_migration",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1821,7 +1923,10 @@
     "name": "Tnalagmes Garden Of Wonders",
     "description": "TNaLaGmes game: garden_of_wonders",
     "url": "https://github.com/VoiceGamez/tnalagmes-garden_of_wonders",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1835,7 +1940,10 @@
     "name": "Tnalagmes Flint Road",
     "description": "TNaLaGmes game: flint_road",
     "url": "https://github.com/VoiceGamez/tnalagmes-flint_road",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1849,7 +1957,10 @@
     "name": "Tnalagmes Eliza",
     "description": "TNaLaGmes game: eliza",
     "url": "https://github.com/VoiceGamez/tnalagmes-eliza",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1863,7 +1974,10 @@
     "name": "Tnalagmes Ecosystem",
     "description": "TNaLaGmes game: ecosystem",
     "url": "https://github.com/VoiceGamez/tnalagmes-ecosystem",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1877,7 +1991,10 @@
     "name": "Tnalagmes Dungeon Crawler",
     "description": "TNaLaGmes game: dungeon_crawler",
     "url": "https://github.com/VoiceGamez/tnalagmes-dungeon_crawler",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1891,7 +2008,10 @@
     "name": "Tnalagmes Dragon Quest",
     "description": "TNaLaGmes game: dragon_quest",
     "url": "https://github.com/VoiceGamez/tnalagmes-dragon_quest",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1905,7 +2025,10 @@
     "name": "Tnalagmes Depth Charge",
     "description": "TNaLaGmes game: depth_charge",
     "url": "https://github.com/VoiceGamez/tnalagmes-depth_charge",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1919,7 +2042,10 @@
     "name": "Tnalagmes Demo World",
     "description": "TNaLaGmes game: demo_world",
     "url": "https://github.com/VoiceGamez/tnalagmes-demo_world",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1933,7 +2059,10 @@
     "name": "Tnalagmes Cthulhu Expedition",
     "description": "TNaLaGmes game: cthulhu_expedition",
     "url": "https://github.com/VoiceGamez/tnalagmes-cthulhu_expedition",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1947,7 +2076,10 @@
     "name": "Tnalagmes Creature Quest",
     "description": "TNaLaGmes game: creature_quest",
     "url": "https://github.com/VoiceGamez/tnalagmes-creature_quest",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1961,7 +2093,10 @@
     "name": "Tnalagmes Craps",
     "description": "TNaLaGmes game: craps",
     "url": "https://github.com/VoiceGamez/tnalagmes-craps",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1975,7 +2110,10 @@
     "name": "Tnalagmes Civil War",
     "description": "TNaLaGmes game: civil_war",
     "url": "https://github.com/VoiceGamez/tnalagmes-civil_war",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -1989,7 +2127,10 @@
     "name": "Tnalagmes Chess",
     "description": "TNaLaGmes game: chess",
     "url": "https://github.com/VoiceGamez/tnalagmes-chess",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -2003,7 +2144,10 @@
     "name": "Tnalagmes Cave Painter",
     "description": "TNaLaGmes game: cave_painter",
     "url": "https://github.com/VoiceGamez/tnalagmes-cave_painter",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -2017,7 +2161,10 @@
     "name": "Tnalagmes Camel",
     "description": "TNaLaGmes game: camel",
     "url": "https://github.com/VoiceGamez/tnalagmes-camel",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -2031,7 +2178,10 @@
     "name": "Tnalagmes Blackjack",
     "description": "TNaLaGmes game: blackjack",
     "url": "https://github.com/VoiceGamez/tnalagmes-blackjack",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -2045,7 +2195,10 @@
     "name": "Tnalagmes Battleship",
     "description": "TNaLaGmes game: battleship",
     "url": "https://github.com/VoiceGamez/tnalagmes-battleship",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -2059,7 +2212,10 @@
     "name": "Tnalagmes Bagels",
     "description": "TNaLaGmes game: bagels",
     "url": "https://github.com/VoiceGamez/tnalagmes-bagels",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -2073,7 +2229,10 @@
     "name": "Tnalagmes Arctic Expedition",
     "description": "TNaLaGmes game: arctic_expedition",
     "url": "https://github.com/VoiceGamez/tnalagmes-arctic_expedition",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -2087,7 +2246,10 @@
     "name": "Tnalagmes Arcade Hub",
     "description": "TNaLaGmes game: arcade_hub",
     "url": "https://github.com/VoiceGamez/tnalagmes-arcade_hub",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -2101,7 +2263,10 @@
     "name": "Tnalagmes Adventure",
     "description": "TNaLaGmes game: adventure",
     "url": "https://github.com/VoiceGamez/tnalagmes-adventure",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -2115,7 +2280,10 @@
     "name": "Tnalagmes Acey Ducey",
     "description": "TNaLaGmes game: acey_ducey",
     "url": "https://github.com/VoiceGamez/tnalagmes-acey_ducey",
-    "category": "TNaLaGmes",
+    "category": [
+      "Games",
+      "TNaLaGmes"
+    ],
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -2171,6 +2339,24 @@
       "web",
       "chat",
       "client"
+    ],
+    "featured": false,
+    "selfHosted": true
+  },
+  {
+    "id": "phoonnx-js",
+    "name": "phoonnx.js",
+    "description": "In-browser VITS TTS inference with onnxruntime-web. Unicode and espeak-ng paths. No server, no API.",
+    "url": "https://github.com/TigreGotico/phoonnx.js",
+    "category": [
+      "JavaScript",
+      "TTS"
+    ],
+    "tags": [
+      "ONNX",
+      "TTS",
+      "browser",
+      "VITS"
     ],
     "featured": false,
     "selfHosted": true
