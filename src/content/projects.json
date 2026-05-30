@@ -651,7 +651,7 @@
     "name": "unblock_requests",
     "description": "A requests.Session subclass that bypasses Cloudflare (curl_cffi impersonation, FlareSolverr, Wayback fallback) — the anti-bot transport behind our scrapers.",
     "url": "https://github.com/TigreGotico/unblock_requests",
-    "category": "Tools",
+    "category": "Web Automation",
     "tags": [
       "HTTP",
       "anti-bot",
@@ -664,7 +664,7 @@
     "name": "anon_requests",
     "description": "Anonymous HTTP with IP rotation; composes with unblock_requests for rotation plus bot-wall bypass.",
     "url": "https://github.com/TigreGotico/anon_requests",
-    "category": "Tools",
+    "category": "Web Automation",
     "tags": [
       "HTTP",
       "IP rotation",
@@ -1045,7 +1045,7 @@
     "name": "usenet",
     "description": "Live USENET reader and article scraper for alternative protocols research and archival.",
     "url": "https://github.com/TigreGotico/usenet",
-    "category": "Tools",
+    "category": "Web Automation",
     "tags": [
       "USENET",
       "privacy",
@@ -1059,7 +1059,7 @@
     "name": "remailers",
     "description": "Anonymous email remailer client with support for Cypherpunk and Mixmaster protocols.",
     "url": "https://github.com/TigreGotico/remailers",
-    "category": "Tools",
+    "category": "Web Automation",
     "tags": [
       "anonymity",
       "email",
