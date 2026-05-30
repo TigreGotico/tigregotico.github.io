@@ -71,6 +71,32 @@ const howToPlay = [
     <p class="mt-6 text-sm text-muted">More titles are in active development — follow along on the blog.</p>
   </Section>
 
+  <Section eyebrow="Our engines" title="Under the hood">
+    <div class="grid gap-5 sm:grid-cols-3">
+      <div class="card-hover reveal" data-reveal>
+        <h3 class="display-3 text-lg">TNaLaGmes <span class="text-xs font-normal text-muted">beta</span></h3>
+        <p class="mt-2 text-sm leading-relaxed text-muted">
+          <strong>T(oolbox) Na(tural) La(nguage) G(a)mes</strong> — the framework behind dozens of titles, from Oregon Trail to Lunar Lander. Handles game state, voice I/O, and NLP so authors focus on story and rules.
+        </p>
+        <a href="https://github.com/VoiceGamez/TNaLaGmes" class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary" rel="noopener">GitHub →</a>
+      </div>
+      <div class="card-hover reveal" data-reveal data-reveal-delay="70">
+        <h3 class="display-3 text-lg">StoryForge <span class="text-xs font-normal text-muted">beta</span></h3>
+        <p class="mt-2 text-sm leading-relaxed text-muted">
+          Our engine for story-driven interactive fiction — branching narratives where choices matter. The flagship title is <em>Tower of Silence</em>, built with blind and low-vision players as the primary audience.
+        </p>
+        <a href="https://github.com/VoiceGamez/story-forge" class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary" rel="noopener">GitHub →</a>
+      </div>
+      <div class="card-hover reveal" data-reveal data-reveal-delay="140">
+        <h3 class="display-3 text-lg">pyFrotz</h3>
+        <p class="mt-2 text-sm leading-relaxed text-muted">
+          Python wrapper around the Frotz Z-machine interpreter. Runs classic Z5 story files by voice, and we use it to expand and translate Infocom and community-made games for new languages and voice-first audiences.
+        </p>
+        <a href="https://github.com/VoiceGamez/pyFrotz" class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary" rel="noopener">GitHub →</a>
+      </div>
+    </div>
+  </Section>
+
   <div
     class="mt-12 flex flex-wrap items-center gap-3 rounded-2xl border border-border bg-surface p-6"
     style="box-shadow: var(--shadow-elevate);"
