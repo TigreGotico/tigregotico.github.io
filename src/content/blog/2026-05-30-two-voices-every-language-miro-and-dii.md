@@ -13,6 +13,9 @@ tags:
 draft: false
 ---
 
+> **Hear them now:** the [Voices Demo](../../demo) runs Miro & Dii live in your
+> browser — pick a language, type a sentence, and listen. No install, no server.
+
 A voice assistant is, before anything else, a voice. It is the part people remember, the part they trust or distrust, the part that makes a piece of software feel like a presence in the room rather than a process on a disk. So when we talk about a partnership with [OpenVoiceOS](https://www.openvoiceos.org/), we are really talking about something quite intimate: who the assistant *is* when it speaks.
 
 Together with OpenVoiceOS, we are giving the platform two consistent voice identities — **Miro**, a male voice, and **Dii**, a female voice. The promise behind them is simple to state and hard to deliver: Miro and Dii should sound like the *same person* no matter which language the assistant is configured for. A user who sets up OpenVoiceOS in Lisbon, switches their device to German on a trip, and later helps a relative configure it in Spanish should hear one familiar voice throughout. A universal brand voice — recognisable everywhere, owned by everyone.

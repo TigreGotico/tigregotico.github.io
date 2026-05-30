@@ -3,12 +3,20 @@ import Base from '../layouts/Base.astro';
 import PageHeader from '../components/PageHeader.astro';
 import voices from '../data/phoonnx-voices.json';
 
-const miro = voices.filter((v) => v.voice === 'Miro');
-const dii = voices.filter((v) => v.voice === 'Dii');
-const groups = [
-  { label: 'Miro (male)', items: miro },
-  { label: 'Dii (female)', items: dii },
-];
+const VOICE_LABELS: Record<string, string> = { Miro: 'Miro (male)', Dii: 'Dii (female)' };
+const order: string[] = [];
+const byVoice = new Map<string, typeof voices>();
+for (const v of voices) {
+  if (!byVoice.has(v.voice)) {
+    byVoice.set(v.voice, []);
+    order.push(v.voice);
+  }
+  byVoice.get(v.voice)!.push(v);
+}
+const groups = order.map((name) => ({
+  label: VOICE_LABELS[name] || name,
+  items: byVoice.get(name)!,
+}));
 ---
 
 <Base
@@ -41,12 +49,8 @@ const groups = [
           groups.map((g) => (
             <optgroup label={g.label}>
               {g.items.map((v) => (
-                <option
-                  value={v.id}
-                  data-ha={v.haCompatible ? '1' : '0'}
-                >
-                  {v.langLabel}
-                  {v.haCompatible ? '  •  Home Assistant compatible' : ''}
+                <option value={v.id} data-ha={v.haCompatible ? '1' : '0'}>
+                  {v.langLabel} · {v.haCompatible ? 'eSpeak (Home Assistant)' : 'Unicode'}
                 </option>
               ))}
             </optgroup>
