@@ -89,8 +89,8 @@ const collaborations = (await getCollection('collaborations')).map((c) => c.data
       aria-label="Filter projects by category"
     >
       {
-        categories.map((c, i) => (
-          <button type="button" data-filter={c} aria-pressed={i === 0} class={i === 0 ? "chip chip-active" : "chip"}>
+        categories.map((c) => (
+          <button type="button" data-filter={c} aria-pressed="false" class="chip">
             <span class="chip-label">{label(c)}</span>
             <span class="chip-sep" aria-hidden="true">·</span>
             <span class="chip-count">{counts.get(c)}</span>
@@ -200,7 +200,7 @@ const collaborations = (await getCollection('collaborations')).map((c) => c.data
       }
     }
 
-    // Show featured by default
+    // Show featured projects by default
     showFeatured();
 
     for (var i = 0; i < chips.length; i++) {
