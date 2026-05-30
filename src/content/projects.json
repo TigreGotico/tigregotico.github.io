@@ -181,19 +181,6 @@
     "featured": false
   },
   {
-    "id": "synthetic-dataset-generator",
-    "name": "Synthetic Dataset Generator",
-    "description": "Generate synthetic datasets for machine learning training.",
-    "url": "https://github.com/TigreGotico/synthetic_dataset_generator",
-    "category": "NLP & ML",
-    "tags": [
-      "ML training",
-      "dataset generation",
-      "synthetic data"
-    ],
-    "featured": false
-  },
-  {
     "id": "tugaphone",
     "name": "TugaPhone",
     "description": "Portuguese phoneme dataset and processing tools.",
@@ -211,7 +198,7 @@
     "name": "RAKE Keywords",
     "description": "Rapid Automatic Keyword Extraction implementation.",
     "url": "https://github.com/TigreGotico/RAKEkeywords",
-    "category": "NLP & ML",
+    "category": "NLP",
     "tags": [
       "NLP",
       "RAKE",
@@ -224,7 +211,7 @@
     "name": "Ahocorasick NER",
     "description": "Named Entity Recognition using the Aho-Corasick algorithm.",
     "url": "https://github.com/TigreGotico/ahocorasick-ner",
-    "category": "NLP & ML",
+    "category": "NLP",
     "tags": [
       "Aho-Corasick",
       "gazetteer",
@@ -237,7 +224,7 @@
     "name": "KW Template Matcher",
     "description": "Keyword template matching engine for intent recognition.",
     "url": "https://github.com/TigreGotico/kw-template-matcher",
-    "category": "NLP & ML",
+    "category": "NLP",
     "tags": [
       "NLU",
       "intent matching",
@@ -250,7 +237,7 @@
     "name": "MarkovJSON",
     "description": "Markov chain text generation from JSON data.",
     "url": "https://github.com/TigreGotico/markovjson",
-    "category": "NLP & ML",
+    "category": "Machine Learning",
     "tags": [
       "JSON",
       "Markov chains",
@@ -828,7 +815,7 @@
     "name": "simple_NER",
     "description": "Simple rule-based named-entity recognition.",
     "url": "https://github.com/TigreGotico/simple_NER",
-    "category": "NLP & ML",
+    "category": "NLP",
     "tags": [
       "NER",
       "NLP",
@@ -841,7 +828,7 @@
     "name": "little_questions",
     "description": "Parse and classify questions.",
     "url": "https://github.com/TigreGotico/little_questions",
-    "category": "NLP & ML",
+    "category": "NLP",
     "tags": [
       "NLP",
       "classification",
@@ -854,7 +841,7 @@
     "name": "pronomial",
     "description": "Coreference resolution via pronoun POS and word-gender heuristics.",
     "url": "https://github.com/TigreGotico/pronomial",
-    "category": "NLP & ML",
+    "category": "NLP",
     "tags": [
       "NLP",
       "coreference"
@@ -866,7 +853,7 @@
     "name": "jurebes",
     "description": "A lightweight intent engine.",
     "url": "https://github.com/TigreGotico/jurebes",
-    "category": "NLP & ML",
+    "category": "NLP",
     "tags": [
       "NLP",
       "NLU",
@@ -879,7 +866,7 @@
     "name": "difficult_dialogs",
     "description": "Tools to guide conversations toward an objective.",
     "url": "https://github.com/TigreGotico/difficult_dialogs",
-    "category": "NLP & ML",
+    "category": "NLP",
     "tags": [
       "NLP",
       "conversation",
@@ -892,7 +879,7 @@
     "name": "lingua-podre",
     "description": "Dead-simple word-list-based pure-Python language detector.",
     "url": "https://github.com/TigreGotico/lingua-podre",
-    "category": "NLP & ML",
+    "category": "NLP",
     "tags": [
       "NLP",
       "language detection"
@@ -904,7 +891,7 @@
     "name": "emotion-algebra",
     "description": "Structured data and operations for working with human emotions.",
     "url": "https://github.com/TigreGotico/emotion-algebra",
-    "category": "NLP & ML",
+    "category": "Sentiment Analysis",
     "tags": [
       "NLP",
       "emotions",
@@ -917,7 +904,7 @@
     "name": "deepmoji-onnx",
     "description": "DeepMoji emotion/emoji prediction in ONNX.",
     "url": "https://github.com/TigreGotico/deepmoji-onnx",
-    "category": "NLP & ML",
+    "category": "Sentiment Analysis",
     "tags": [
       "ONNX models",
       "emotions",
@@ -930,7 +917,7 @@
     "name": "markovonnx",
     "description": "Markov-chain models exported to ONNX.",
     "url": "https://github.com/TigreGotico/markovonnx",
-    "category": "NLP & ML",
+    "category": "Machine Learning",
     "tags": [
       "Markov",
       "ONNX models",
