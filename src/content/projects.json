@@ -258,7 +258,8 @@
     "tags": [
       "Model2Vec",
       "ONNX models",
-      "intent classification"
+      "intent classification",
+      "NLNet"
     ],
     "featured": false
   },
@@ -271,7 +272,8 @@
     "tags": [
       "FlashRank",
       "reranking",
-      "retrieval"
+      "retrieval",
+      "Visio"
     ],
     "featured": false
   },
@@ -323,7 +325,8 @@
     "tags": [
       "ChromaDB",
       "embeddings",
-      "vector search"
+      "vector search",
+      "Visio"
     ],
     "featured": false
   },
@@ -336,7 +339,8 @@
     "tags": [
       "GGUF",
       "embeddings",
-      "on-device"
+      "on-device",
+      "Visio"
     ],
     "featured": false
   },
@@ -432,7 +436,8 @@
       "AhoTTS",
       "ILENIA project",
       "Python",
-      "TTS library"
+      "TTS library",
+      "ILENIA"
     ],
     "featured": false
   },
@@ -926,7 +931,8 @@
     "tags": [
       "GGUF",
       "LLM",
-      "OpenVoiceOS"
+      "OpenVoiceOS",
+      "Visio"
     ],
     "featured": false
   },
@@ -991,7 +997,8 @@
     "tags": [
       "OpenVoiceOS",
       "RAG",
-      "chunking"
+      "chunking",
+      "Visio"
     ],
     "featured": false
   },
@@ -1004,7 +1011,8 @@
     "tags": [
       "Claude",
       "LLM",
-      "OpenVoiceOS"
+      "OpenVoiceOS",
+      "Visio"
     ],
     "featured": false
   },

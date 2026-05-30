@@ -49,7 +49,7 @@ const labels: Record<string, string> = {
 const label = (c: string) => labels[c] ?? c;
 
 // Cross-cutting tag filters (group work that spans categories, e.g. ILENIA).
-const tagFilters = ['ILENIA']
+const tagFilters = ['ILENIA', 'NLNet', 'Visio']
   .map((t) => ({ tag: t, count: projects.filter((p) => p.tags.includes(t)).length }))
   .filter((t) => t.count > 0);
 
@@ -111,7 +111,7 @@ const collaborations = (await getCollection('collaborations')).map((c) => c.data
             data-filter={`tag:${t.tag}`}
             aria-pressed="false"
             class="chip chip-tag"
-            title="Funded by the ILENIA project"
+            title={t.tag === 'ILENIA' ? 'Funded by the ILENIA project' : t.tag === 'NLNet' ? 'Funded by NLnet / NGI0 Commons Fund' : 'Funded by the Visio project'}
           >
             <span class="chip-label">{t.tag}</span>
             <span class="chip-sep" aria-hidden="true">·</span>
