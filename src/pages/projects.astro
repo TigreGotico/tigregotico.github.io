@@ -81,13 +81,7 @@ const collaborations = (await getCollection('collaborations')).map((c) => c.data
     )}
   </Section>
 
-  <Section eyebrow="Featured" title="Highlights">
-    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      {featured.map((project) => <ProjectCard project={project} withImage />)}
-    </div>
-  </Section>
-
-  <Section eyebrow="Explore" title="All projects" lead="Filter by area — everything is open source.">
+  <Section eyebrow="Explore" title="Featured highlights" lead="Filter by area to explore more — everything is open source.">
     <div
       id="project-filter"
       class="mb-6 flex flex-wrap gap-2"
@@ -129,8 +123,9 @@ const collaborations = (await getCollection('collaborations')).map((c) => c.data
               class="project-item"
               data-categories={categories.join('|')}
               data-tags={project.tags.join('|')}
+              data-featured={project.featured ? 'true' : 'false'}
             >
-              <ProjectCard project={project} />
+              <ProjectCard project={project} withImage={project.featured} />
             </div>
           );
         })
@@ -172,7 +167,10 @@ const collaborations = (await getCollection('collaborations')).map((c) => c.data
     if (!bar || !grid) return;
     var chips = bar.querySelectorAll('[data-filter]');
     var items = grid.querySelectorAll('.project-item');
+    var filterActive = false;
+
     function set(val) {
+      filterActive = true;
       for (var i = 0; i < chips.length; i++) {
         chips[i].setAttribute(
           'aria-pressed',
@@ -191,6 +189,20 @@ const collaborations = (await getCollection('collaborations')).map((c) => c.data
         items[j].hidden = !show;
       }
     }
+
+    function showFeatured() {
+      filterActive = false;
+      for (var i = 0; i < chips.length; i++) {
+        chips[i].setAttribute('aria-pressed', 'false');
+      }
+      for (var j = 0; j < items.length; j++) {
+        items[j].hidden = items[j].getAttribute('data-featured') !== 'true';
+      }
+    }
+
+    // Show featured by default
+    showFeatured();
+
     for (var i = 0; i < chips.length; i++) {
       chips[i].addEventListener('click', function () {
         set(this.getAttribute('data-filter'));
