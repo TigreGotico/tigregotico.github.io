@@ -12,6 +12,7 @@ export const site = {
   socials: {
     github: 'https://github.com/TigreGotico',
     huggingface: 'https://huggingface.co/TigreGotico',
+    linkedin: 'https://www.linkedin.com/company/tigregotico',
     openvoiceos: 'https://openvoiceos.org',
   },
   nav: [
