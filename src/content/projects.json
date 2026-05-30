@@ -2434,5 +2434,20 @@
     ],
     "featured": false,
     "selfHosted": true
+  },
+  {
+    "id": "precise-onnx-js",
+    "name": "precise-onnx-js",
+    "description": "Browser/Node.js port of precise-onnx wake word detection. MFCC feature extraction + ONNX-based detection compatible with Precise .onnx models.",
+    "url": "https://github.com/TigreGotico/precise-onnx-js",
+    "category": "JavaScript",
+    "tags": [
+      "ONNX",
+      "Wake words",
+      "Web",
+      "Audio"
+    ],
+    "featured": false,
+    "selfHosted": true
   }
 ]
