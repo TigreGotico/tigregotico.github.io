@@ -89,7 +89,9 @@
     "category": "Games",
     "tags": [
       "LLM worlds",
+      "game",
       "generative IF",
+      "interactive fiction",
       "voice-playable"
     ],
     "featured": false,
@@ -170,6 +172,7 @@
     "description": "TNaLaGmes (a Toolbox for Natural Language Games) \u2014 a framework for building classic and voice-playable text adventures, narrated and controlled hands-free.",
     "category": "Games",
     "tags": [
+      "game",
       "game toolkit",
       "interactive fiction",
       "voice-playable"
@@ -289,7 +292,9 @@
     "tags": [
       "Python",
       "Z-machine",
-      "interactive fiction"
+      "game",
+      "interactive fiction",
+      "voice-playable"
     ],
     "featured": false
   },
@@ -457,6 +462,7 @@
     "category": "OpenVoiceOS",
     "tags": [
       "Docker",
+      "Home Assistant",
       "Wyoming",
       "deployment"
     ],
@@ -1069,6 +1075,7 @@
     "url": "https://github.com/TigreGotico/wyoming-ovos-stt",
     "category": "OpenVoiceOS",
     "tags": [
+      "Home Assistant",
       "STT",
       "Wyoming",
       "protocol",
@@ -1083,6 +1090,7 @@
     "url": "https://github.com/TigreGotico/wyoming-ovos-tts",
     "category": "OpenVoiceOS",
     "tags": [
+      "Home Assistant",
       "TTS",
       "Wyoming",
       "protocol",
@@ -1097,6 +1105,7 @@
     "url": "https://github.com/TigreGotico/wyoming-ovos-wakeword",
     "category": "OpenVoiceOS",
     "tags": [
+      "Home Assistant",
       "Wyoming",
       "hotword detection",
       "protocol",
@@ -1194,10 +1203,11 @@
     "url": "https://github.com/TigreGotico/ovos-skill-white-house-adventure",
     "category": "Games",
     "tags": [
+      "OVOS",
       "adventure game",
+      "game",
       "interactive fiction",
-      "voice-playable",
-      "OVOS"
+      "voice-playable"
     ],
     "featured": false
   }
