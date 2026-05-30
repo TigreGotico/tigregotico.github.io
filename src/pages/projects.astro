@@ -167,8 +167,10 @@ const collaborations = (await getCollection('collaborations')).map((c) => c.data
     if (!bar || !grid) return;
     var chips = bar.querySelectorAll('[data-filter]');
     var items = grid.querySelectorAll('.project-item');
+    var filterActive = false;
 
     function set(val) {
+      filterActive = true;
       for (var i = 0; i < chips.length; i++) {
         chips[i].setAttribute(
           'aria-pressed',
@@ -188,10 +190,18 @@ const collaborations = (await getCollection('collaborations')).map((c) => c.data
       }
     }
 
-    // Show all projects by default
-    for (var j = 0; j < items.length; j++) {
-      items[j].hidden = false;
+    function showFeatured() {
+      filterActive = false;
+      for (var i = 0; i < chips.length; i++) {
+        chips[i].setAttribute('aria-pressed', 'false');
+      }
+      for (var j = 0; j < items.length; j++) {
+        items[j].hidden = items[j].getAttribute('data-featured') !== 'true';
+      }
     }
+
+    // Show featured projects by default
+    showFeatured();
 
     for (var i = 0; i < chips.length; i++) {
       chips[i].addEventListener('click', function () {
