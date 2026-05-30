@@ -69,7 +69,7 @@ work *up front*, in the phonemizer. A phonemizer (grapheme-to-phoneme, or G2P)
 converts written text into the sequence of sound units the model actually speaks — so
 the VITS network never has to learn spelling, just sound.
 
-Our phoneme work is grounded in **[grapheme-to-IPA for 350+ languages](/blog/2026-01-15-grapheme-to-ipa-for-350-languages)** and **[classical Portuguese phonetics](/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**, which make it possible to train voices for low-resource languages without weeks of expert annotation.
+Our phoneme work is grounded in **[grapheme-to-IPA for 350+ languages](/blog/2026-05-30-grapheme-to-ipa-for-350-languages)** and **[classical Portuguese phonetics](/blog/2026-05-30-classical-nlp-for-portuguese-syllables-and-phonemes)**, which make it possible to train voices for low-resource languages without weeks of expert annotation.
 
 phoonnx is deliberately phonemizer-agnostic and bundles a small army of them:
 `espeak-ng`, [gruut](https://github.com/rhasspy/gruut),
@@ -146,17 +146,3 @@ and an open training framework so anyone can grow the catalogue.
 Fifteen and a half million parameters. No GPU. No cloud. No excuses. If it runs on a
 potato, it runs everywhere.
 
----
-
-## Help Us Build Voice for Everyone
-
-If you believe voice assistants should be open, inclusive, and user-controlled, here is
-how to help:
-
-- **💸 Donate**: fund development, infrastructure, and legal protection.
-- **📣 Contribute Open Data**: share voice samples and transcriptions under open licenses.
-- **🌍 Translate**: help make open voice reach every language.
-
-We are not building this for profit. We are building it for people.
-
-👉 [Support the project here](https://www.openvoiceos.org/contribution)

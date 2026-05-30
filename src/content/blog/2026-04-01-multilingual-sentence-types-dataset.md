@@ -13,13 +13,18 @@ tags:
 draft: false
 ---
 
-## Intent starts with sentence type
+A voice assistant's routing logic depends on knowing what kind of sentence it received before it tries to answer anything. A question needs an answer. A command needs execution. A statement might need acknowledgment or storage. Getting that classification right, in any language the user speaks, is the prerequisite for everything else.
 
-A voice assistant needs to understand **intent** — what does the user want? Is it a question ("What time is it?"), a command ("Set an alarm"), or a statement ("I like jazz")?
+**[sentence-types-multilingual](https://huggingface.co/datasets/TigreGotico/sentence-types-multilingual)** is the training corpus behind that layer — 100,000+ labeled sentences across 50+ languages.
 
-Sentence type is the foundation. A question has different grammar, word order, and prosody than a command. Different languages encode this differently.
+## What the labels mean in practice
 
-We published **[sentence-types-multilingual](https://huggingface.co/datasets/TigreGotico/sentence-types-multilingual)** — an **original dataset of 100,000+ sentences across 50+ languages**, each classified by type:
+The dataset uses four top-level types, which map directly to how `little_questions` (the inference library that consumes this data) routes utterances:
+
+- **question** — further split by sub-type: `yes_no_question`, `wh_question`, `tag_question`. The EAT taxonomy inside `little_questions` adds 53 fine-grained answer-type labels (person, location, quantity, definition, and so on), but sentence-type classification is the first gate.
+- **command** — imperative and request forms. Commands don't expect an answer; they expect an action.
+- **statement** — declarative. Statements in a dialogue context often carry polarity that matters downstream: a yes/no/maybe classifier runs on statements to interpret answers to prior questions.
+- **exclamation** — emotionally marked utterances that need different handling than neutral declaratives.
 
 ```json
 {
@@ -30,51 +35,29 @@ We published **[sentence-types-multilingual](https://huggingface.co/datasets/Tig
 }
 ```
 
-## Sentence types in the dataset
+## Why cross-linguistic coverage is non-trivial
 
-Each sentence is labeled as one of:
+The same communicative intent surfaces differently in different grammars:
 
-- **Question** — yes/no, wh-, tag questions
-- **Command** — imperative, requests, suggestions
-- **Statement** — declarative, affirmations
-- **Exclamation** — emotional emphasis, surprises
+- English and Spanish mark questions with word-order inversion and punctuation.
+- Mandarin uses sentence-final particles ("你喜欢吗?").
+- Japanese uses rising intonation; the grammar doesn't change.
+- Many languages use dedicated imperative morphology for commands that English expresses with bare infinitives.
 
-Languages covered include:
+A model trained only on English gets these wrong everywhere else. The multilingual dataset provides the cross-lingual signal a single-model classifier needs to generalize.
 
-Portuguese, Brazilian Portuguese, Spanish, English, German, French, Italian, Dutch, Japanese, Arabic, Mandarin, Hindi, Russian, Polish, Swedish, Danish, and 34 more.
+## The downstream stack
 
-## Use cases
-
-Train multilingual intent detectors:
+The models trained on this data ship inside **[little_questions](https://github.com/TigreGotico/little_questions)** — a zero-dependency offline library (numpy + onnxruntime) with per-language ONNX classifiers for sentence type and a 43-language yes/no polarity model. Models are bundled in-wheel for English and lazy-downloaded for other languages. The HuggingFace sources are `TigreGotico/sentence-types` and `TigreGotico/eat-classifiers`.
 
 ```python
-from sentence_types import load_dataset
+from little_questions import Sentence
 
-# Train a model to classify sentence type across languages
-model = train_classifier(load_dataset('sentence-types-multilingual'))
-
-# Detect intent in any language
-intent = model.classify("What time is it?", language="en")  # → "question"
+s = Sentence("What time is it?")
+print(s.sentence_type)     # "question"
+print(s.classification)    # e.g. "NUM:date"
 ```
 
-Use for:
+`little_questions` is the natural-language routing layer for OVOS and LILACS: classifying whether an utterance is a question, command, or statement is the first dispatch decision a voice pipeline makes.
 
-- Voice command systems that understand intent
-- Dialogue systems that respond appropriately
-- Sentiment/intent classification at scale
-- Linguistic research on cross-linguistic patterns
-
-## Why multilingual?
-
-Sentence type encoding varies wildly across languages:
-
-- English: questions use word order inversion ("do you like...?")
-- Spanish: questions use inverted subject-verb ("¿Te gusta...?")
-- Mandarin: questions use particles at sentence end ("你喜欢吗?")
-- Japanese: questions use rising intonation, no grammar change
-
-A single monolingual model fails across this diversity. A multilingual dataset shows patterns.
-
-[**sentence-types-multilingual**](https://huggingface.co/datasets/TigreGotico/sentence-types-multilingual)
-
-Intent detection for the world.
+[**sentence-types-multilingual on HuggingFace**](https://huggingface.co/datasets/TigreGotico/sentence-types-multilingual) · [**little_questions on GitHub**](https://github.com/TigreGotico/little_questions)

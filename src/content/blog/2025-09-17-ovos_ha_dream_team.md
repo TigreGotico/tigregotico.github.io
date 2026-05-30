@@ -13,21 +13,15 @@ draft: false
 
 > This blog was originally posted in the [OpenVoiceOS blog](https://blog.openvoiceos.org/posts/2025-09-17-ovos_ha_dream_team)
 
-In the world of open-source smart homes, some things just click. When you let Home Assistant handle the automation and let OVOS (Open Voice OS) handle the voice, you get a powerful partnership where each project shines. It’s a perfect synergy: one is the undisputed champion of home automation, and the other is a flexible, private powerhouse for voice interaction.
+Home Assistant handles automation; OVOS handles voice. Neither tries to be the other. That division of responsibility is why the combination works: HA’s device integrations and automation engine paired with OVOS’s flexible, fully local voice stack.
 
-Home Assistant excels at orchestrating your devices and routines, while OVOS provides unparalleled flexibility and privacy in voice interactions. Together, they create a system that's not only robust but also truly yours.
-
-Let's explore how you can bring these two together to create a truly magical smart home experience.
+This post covers the three integration layers: Wyoming bridges for HA’s voice pipeline, ovos-persona-server as a conversational agent, and HiveMind for surfacing OVOS devices as native HA entities.
 
 -----
 
 ## Give Home Assistant an OVOS-Powered Voice
 
-The most direct way to get started is to enhance Home Assistant's built-in voice capabilities with the specialized tools from the OVOS ecosystem. Our main goal is to make OVOS's powerful tools accessible to as many people as possible. 
-
-To achieve this, we've developed dedicated Wyoming integrations that act as bridges, allowing **any** OVOS Text-to-Speech (TTS), Speech-to-Text (STT), or Wakeword plugin to be exposed to Home Assistant. 
-
-This means you're not limited to a few options; you gain immediate access to the **entire rich ecosystem** of OVOS voice plugins, bringing a vast array of languages, voices, and recognition models directly into your Home Assistant setup.
+The Wyoming protocol is HA's standard interface for external STT, TTS, and wakeword services. We built Wyoming bridges that expose any OVOS plugin over that protocol — meaning HA gains access to every plugin in the OVOS ecosystem, not just a curated shortlist.
 
 
 * [Wyoming OVOS STT](https://github.com/TigreGotico/wyoming-ovos-stt): Convert spoken commands into text for Home Assistant to understand.
@@ -73,9 +67,9 @@ Here’s the cool part: because [ovos-persona-server](https://github.com/OpenVoi
 -----
 
 
-## OVOS with the Voice Pe
+## OVOS with the Voice PE
 
-Everyone is talking about [Home Assistant Voice Preview Edition](https://www.home-assistant.io/voice-pe), a dedicated hardware device for voice control. If you own one, you can now easily integrate it with everything discussed so far.
+The [Home Assistant Voice Preview Edition](https://www.home-assistant.io/voice-pe) is a dedicated hardware satellite for HA's voice pipeline. It works with all the Wyoming services described above — point it at any running wyoming-ovos-stt, wyoming-ovos-tts, or wyoming-ovos-wakeword instance.
 
 ![Configuring Home Assistant Voice Preview Edition](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/voice_pe_config.png)
 
@@ -125,21 +119,15 @@ A fantastic feature of HiveMind integration is that your OVOS devices will show 
 
 ## Give OVOS the Keys to the Kingdom
 
-Finally, with the fantastic [Skill HomeAssistant](https://github.com/OscillateLabsLLC/skill-homeassistant) from community member mikejgray, you can give OVOS direct control over Home Assistant.
-
-Install this skill, and your OVOS device can now command your smart home. Just say, "Hey Mycroft, turn on the living room lights," and watch the magic happen. It’s the classic voice assistant experience, but fully private, customizable, and powered by two best-in-class open-source projects.
+The community-maintained [skill-homeassistant](https://github.com/OscillateLabsLLC/skill-homeassistant) gives OVOS direct control over Home Assistant entities via the HA REST API. Install it on your OVOS device and you can say "turn on the living room lights" or "set the thermostat to 21 degrees" — fully local, no cloud.
 
 -----
 
-## The Perfect Match
+## The Right Tool for Each Job
 
-When you let OVOS do the talking and Home Assistant do the automating, you get the best of both worlds. It’s a flexible, powerful, and fun combination that lets you build a smart home that is truly your own.
+OVOS handles voice; Home Assistant handles automation. Neither compromises to do the other’s job, and the integration points are clean enough that each project keeps its own release cycle.
 
-**A Note on This Early Preview Release**:
-
-We're incredibly excited to share this integration with you! Please keep in mind that this is an early preview release and is still under active development. While it's functional and powerful, it hasn't undergone extensive testing and may have rough edges. We're actively working to refine it, and your feedback is invaluable! 
-
-If you encounter any pain points or have ideas for improvements, please consider opening an issue or, even better, a Pull Request on our GitHub repositories. Your contributions help us make this even better for everyone. Thanks for being an early adopter and helping us shape the future of open-source voice!
+Bug reports and PRs are welcome across the repos linked above.
 
 ---
 

@@ -13,51 +13,26 @@ tags:
 draft: false
 ---
 
-## Two voices, every language
+## What we are releasing
 
-Today we are publishing the training data behind **Miro and Dii** — the two voice identities we built in partnership with OpenVoiceOS. These are not multilingual models blurred across 20 languages. Each language is a **monolingual, native-quality voice** that shares timbre and character with Miro and Dii voices in every other language.
+The **synthetic training datasets** used to build Miro and Dii — the voice identities we developed in partnership with OpenVoiceOS. The collection spans European Portuguese, Brazilian Portuguese, Dutch, German, French, Italian, Japanese, Spanish, Romanian, Polish, Swedish, Hindi, Danish, Farsi, English, Basque, and more. Each dataset follows a consistent naming convention: `tts-train-synthetic-miro_pt-PT`, `tts-train-synthetic-dii_pt-BR`, `tts-train-synthetic-miro_nl-NL`, and so on for each language pair.
 
-We are releasing the **synthetic training datasets** used to build these voices — 40+ datasets covering Portuguese (PT & BR), Dutch, German, French, Italian, Japanese, Spanish, Romanian, Polish, Swedish, Hindi, Danish, Farsi, English, Basque, and more.
+Every dataset is fully synthetic — generated text paired with synthesised audio, no studio sessions — includes IPA phoneme labels derived from our [G2P research for 350+ languages](/blog/2026-05-30-grapheme-to-ipa-for-350-languages), and is released under an open licence so anyone can retrain or extend the voice.
 
-## How this works
+## How the voice identity stays consistent across languages
 
-Voice cloning keeps identity consistent across languages:
+We do not train one multilingual blob and hope the accent sorts itself out. Every language gets a **monolingual model** — trained to sound like a native speaker of that language. The shared identity across models comes from **voice cloning**: each Miro and each Dii model is cloned from the same source voice before being adapted to a new language. The timbre, the character, the recognisable quality of the voice — that transfers. The accent does not, deliberately.
 
-1. **Train a source voice** in one language (e.g., Portuguese) with native pronunciation
-2. **Phonemize new languages** using our **[orthography-to-IPA work](/blog/2026-01-15-grapheme-to-ipa-for-350-languages)** and language-specific phonemizers
-3. **Clone the voice** into the new language, preserving Miro/Dii timbre while learning native accent
-4. **Publish the training data** so the model is reproducible and auditable
+The practical upshot: a Portuguese speaker, a Dutch speaker, a Japanese speaker — all unmistakably **the same person**, each sounding native.
 
-The result: a Portuguese speaker, a Dutch speaker, a Japanese speaker — all unmistakably **the same person** (Miro or Dii), yet each sounding like a native.
+## Why publish the training data
 
-## The datasets
+A checkpoint without its training data is a black box. Publishing it makes the voice **auditable** (you can see exactly what it learned from), **reproducible** (run `phoonnx_train` on the same data, get the same result), and **extensible** (add sentences, fine-tune for a dialect, build a new speaker on top).
 
-All available on HuggingFace under **TigreGotico**:
+This matters most for the low-resource languages on this list. When the training data is open, the community that speaks a language can improve its own voice — without waiting for a vendor to decide it is commercially interesting.
 
-- **tts-train-synthetic-miro_pt-PT** — Miro for European Portuguese
-- **tts-train-synthetic-dii_pt-BR** — Dii for Brazilian Portuguese
-- **tts-train-synthetic-miro_nl-NL** — Miro for Dutch
-- (... and 37 more across all listed languages)
+## Where to find everything
 
-Each dataset:
-- Is fully synthetic, generated from text
-- Includes IPA phoneme labels
-- Is released under an open license
-- Can be used to retrain or extend the voice
+All datasets and trained models live under [**TigreGotico on HuggingFace**](https://huggingface.co/TigreGotico), with Piper-compatible voice checkpoints also mirrored under [OpenVoiceOS](https://huggingface.co/OpenVoiceOS).
 
-See **[phoonnx training framework](/blog/2026-05-10-tts-that-runs-on-a-potato)** for how to use these to build your own voices.
-
-## Why publish training data?
-
-Transparency. A voice system locked in a checkpoint is a black box. Publish the training data and the model becomes:
-
-- **Auditable** — you can see exactly what the voice learned
-- **Reproducible** — train it yourself, get the same result
-- **Extensible** — add more data, fine-tune, remix
-- **Trustworthy** — no hidden biases baked into weights
-
-This is the data future: voices built in the open, trained on datasets you can inspect, owned by communities not corporations.
-
-[**All Miro & Dii datasets on HuggingFace**](https://huggingface.co/datasets?author=TigreGotico&tags=tts)
-
-Miro and Dii, now for your language too.
+For the inference and training framework that consumes these datasets, see [**phoonnx**](https://github.com/TigreGotico/phoonnx).

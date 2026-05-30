@@ -1,5 +1,5 @@
 ---
-title: "Beating Bot Walls With Drop-In requests Sessions"
+title: "Beating Bot Walls With Composable, Drop-In requests Sessions"
 description: "How we keep resilient access to public data without firing up a headless browser in the hot path: TLS fingerprint impersonation, a FlareSolverr proxy for JS challenges, a Wayback Machine fallback, and IP rotation — all behind two composable requests.Session subclasses, unblock_requests and anon_requests."
 date: 2026-03-15
 author: "Casimiro Ferreira"
@@ -15,14 +15,19 @@ draft: false
 
 A lot of our work — media-metadata clients, catalog enrichment, archival —
 depends on reading **public** web pages reliably. The problem is rarely the
-data; it is the wall in front of it. Cloudflare and friends increasingly block
-requests not for *what* you ask but for *how* you look on the wire: your TLS
-handshake, your JA3 fingerprint, whether you can run a JavaScript challenge.
+data; it is the wall in front of it. And the wall asks two separate questions:
 
-We solve this at the transport layer with two small libraries that each subclass
-`requests.Session`, so they are genuine drop-in replacements. This post is about
-that layer specifically — the bytes-on-the-wire part — not the parsing or the
-pipeline that sits above it.
+- **"What are you?"** — Cloudflare and friends block requests not for *what* you
+  ask but for *how* you look on the wire: your TLS handshake, your JA3
+  fingerprint, whether you can run a JavaScript challenge.
+- **"Who are you?"** — IP reputation and rate limits ignore your fingerprint
+  entirely; they count how many requests come from one address.
+
+The two questions are orthogonal, so we answer them with two small libraries
+that each subclass `requests.Session` and stack cleanly: **unblock_requests**
+answers *what are you*, **anon_requests** answers *who are you*. Both are genuine
+drop-in replacements. This post is about that transport layer specifically — the
+bytes-on-the-wire part — not the parsing or the pipeline that sits above it.
 
 ## The design constraint: stay a `requests.Session`
 
@@ -34,7 +39,7 @@ Anything typed against `requests.Session` accepts them unchanged:
 from unblock_requests import CloudflareSession   # alias: Session
 import requests
 
-s = CloudflareSession(flaresolverr_url="http://192.168.1.116:8191")
+s = CloudflareSession(flaresolverr_url="http://your-flaresolverr-host:8191")
 html = s.get("https://www.progarchives.com/artist.asp?id=1").text
 assert isinstance(s, requests.Session)            # True
 ```
@@ -143,11 +148,16 @@ rotation-plus-solve stack, or anything between — by swapping a constructor, no
 by rewriting their HTTP code. The expensive, heavyweight tool (a real browser)
 stays *out of process* in FlareSolverr and is summoned only when a JS challenge
 genuinely demands it; the common case is a cheap impersonated handshake. And
-when the live web refuses, the archive answers. Resilient access to public data,
-done cleanly.
+when the live web refuses, the archive answers.
+
+The `session_factory` seam is the only place the two libraries touch, and that
+keeps them independently extensible: add a transport mode to `unblock_requests`
+and `anon_requests` composes it for free; add a rotation strategy to
+`anon_requests` and `unblock_requests` never has to know. Resilient access to
+public data, done cleanly.
 
 Both are FOSS and self-hostable:
 [`unblock_requests`](https://github.com/TigreGotico/unblock_requests) and
 [`anon_requests`](https://github.com/TigreGotico/anon_requests).
 
-These transport libraries form the foundation for **[extracting data from hard-to-reach sources](/blog/2026-04-05-data-extraction-clean-apis-and-datasets)** and power all of our **[music database scrapers](/blog/2026-04-20-music-database-scrapers)**. See also **[sitemapper](https://github.com/TigreGotico/sitemapper)**, our site-recon utility that pairs with these transports to learn site structure before building any scraper.
+These transports power all of our **[music database scrapers](/blog/2026-05-30-music-database-scrapers)**. For site recon before you build any scraper, see **[sitemapper](https://github.com/TigreGotico/sitemapper)** and the **[robots.txt &amp; sitemaps post](/blog/2026-03-01-robot-txt-sitemaps-ethical-web-scraping)**.

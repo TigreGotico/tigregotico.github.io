@@ -15,13 +15,13 @@ tags:
 draft: false
 ---
 
-Most pronunciation resources collapse a hard question into a lookup table: feed in a word, get back a phoneme string, hope the model behind it knew what it was doing. **[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)** takes the opposite stance. It is a pure-data Python package — declarative JSON, thin pluggable logic, no trained weights to ship — that maps spelling to IPA and models how those phonemes actually surface in context, across **350+ language codes and 20+ language families**. Install it, read the data, fork the data. There is nothing hidden in a checkpoint.
+**[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)** is a pure-data Python package — declarative JSON, thin pluggable logic, no trained weights — that maps spelling to IPA and models how those phonemes surface in context across **356 language specs and 20+ language families**. Install it, read the data, fork the data. Nothing is hidden in a checkpoint.
 
-This foundational work powers everything downstream: text-to-speech models need accurate pronunciation, ASR systems need phonetic grounding, and low-resource language synthesis depends on auditable mappings. See also our Portuguese-specific work in **[classical NLP for Portuguese syllables and phonemes](/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)** and how this feeds into **[TTS that runs on a potato](/blog/2026-05-10-tts-that-runs-on-a-potato)**.
+It powers everything downstream: the Portuguese-specific [silabificador](https://github.com/TigreGotico/silabificador) and [TugaPhone](https://github.com/TigreGotico/tugaphone) stacks (see **[classical NLP for Portuguese syllables and phonemes](/blog/2026-05-30-classical-nlp-for-portuguese-syllables-and-phonemes)**), the Barranquenho G2P, and the phoneme grounding for **[TTS that runs on a potato](/blog/2026-05-30-tts-that-runs-on-a-potato)**.
 
 ## Two maps, not one
 
-The single most important idea in the package is a distinction that conflated tables quietly destroy. A **grapheme map** tells you which phonemes a spelling *can* represent. A **allophone map** tells you how a phoneme *surfaces* once it is in a word.
+The critical distinction: a **grapheme map** tells you which phonemes a spelling *can* represent. An **allophone map** tells you how a phoneme *surfaces* in context. Conflating them is the most common failure mode in G2P systems.
 
 ```python
 import orthography2ipa

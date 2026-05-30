@@ -27,7 +27,7 @@ That is what **[sitemapper](https://github.com/TigreGotico/sitemapper)** does. I
 
 ## How sitemapper works
 
-The tool is simple and composable. Start a discovery:
+The tool is simple and composable. The examples below are illustrative of the API shape — consult the [repo](https://github.com/TigreGotico/sitemapper) for current usage. Start a discovery:
 
 ```python
 from sitemapper import discover
@@ -126,7 +126,7 @@ This tells you the actual topology of the site — which pages link to what, and
 
 **Scope discovery**: Before writing a parser, know if the site is even scrapable. Some sites explicitly forbid scraping in robots.txt. Some have broken/incomplete sitemaps. Sitemapper tells you what you're actually dealing with.
 
-See also: how we use sitemapper as step 0 in our **[data extraction pipeline](/blog/2026-04-05-data-extraction-clean-apis-and-datasets)** and integrate it with **[anti-bot transport layers](/blog/2026-03-15-beating-bot-walls-with-drop-in-requests-sessions)**.
+See also: **[anti-bot transport layers](/blog/2026-05-30-beating-bot-walls-with-drop-in-requests-sessions)** — sitemapper pairs with these transports so you know the site structure before you start hitting it.
 
 ## The tool
 

@@ -13,48 +13,30 @@ draft: false
 
 ## Introducing the First Phonemizer for Barranquenho
 
-Today marks an exciting milestone for linguistic preservation! We're thrilled to announce the release of [g2p_barranquenho](https://github.com/TigreGotico/g2p_barranquenho),  the **very first Grapheme-to-Phoneme (G2P) phonemizer for [Barranquenho](https://en.wikipedia.org/wiki/Barranquenho)**, a truly unique Ibero-Romance language spoken in the Portuguese municipality of Barrancos.
+[g2p_barranquenho](https://github.com/TigreGotico/g2p_barranquenho) is the first open Grapheme-to-Phoneme converter for [Barranquenho](https://en.wikipedia.org/wiki/Barranquenho), an Ibero-Romance contact language spoken in Barrancos, Portugal — a municipality on the Spanish border where Portuguese and Extremaduran/Andalusian Spanish have coexisted for centuries.
 
-This isn't about a technical achievement; it's a step towards safeguarding and revitalizing a language that embodies a rich cultural heritage.
+### What makes Barranquenho phonologically interesting
 
-### Why Barranquenho, and Why Now?
+Barranquenho isn't a dialect of either Portuguese or Spanish; it's a genuinely distinct system. The Barrancos Municipal Council recently published three foundational documents — a dictionary, an orthographic convention, and a basic grammar — which provided the rules we needed. The announcement: ["Un Enormi Passu para u Barranquenhu i para a Cultura Barranquenha!"](https://cm-barrancos.pt/21976/un-enormi-passu-para-u-barranquenhu-i-para-a-cultura-barranquenha).
 
-Barranquenho stands at a fascinating crossroads of Portuguese and Spanish linguistic traditions, reflecting centuries of cross-border interaction. Despite its distinctiveness, resources for Barranquenho have historically been scarce, making it a challenging language for digital representation and AI development.
+From that orthographic convention we derived the rule set. The phonemizer runs two passes over lowercased input:
 
-However, a monumental effort from the Barrancos Municipal Council is changing that. Just recently, the Council made available three foundational linguistic documents, an "enormous step" for Barranquenho culture:
+1. **Digraph pass** — collapses multi-letter graphemes: `tch` → /tʃ/, `ch` → /ʃ/, `nh` → /ɲ/, `lh` → /ʎ/, and `qu`/`gu` before front vowels → /k//g/.
+2. **Grapheme pass** — maps remaining characters to IPA with context-sensitive rules: nasal diphthongs before `m`/`n` (e.g. `an` → /ɐ͂/), word-final `e` → /ɨ/, `v` always → /b/, `s` voiced to /z/ except word-initial, `r` vs `rr` (tap vs trill), and `h` as a pronounced /h/ — unlike either parent language.
 
-* **Dicionário de Barranquenho (Barranquenho Dictionary)**
-* **Convenção Ortográfica do Barranquenho (Barranquenho Orthographic Convention)**
-* **Gramática Básica do Barranquenho (Basic Barranquenho Grammar)**
+The `x` grapheme has the most complex logic, falling back to Portuguese contextual heuristics where Barranquenho convention is silent.
 
-These publications, highlighted in their official announcement ["Un Enormi Passu para u Barranquenhu i para a Cultura Barranquenha!"](https://cm-barrancos.pt/21976/un-enormi-passu-para-u-barranquenhu-i-para-a-cultura-barranquenha), provide the crucial backbone for our work. The **Convenção Ortográfica do Barranquenho** in particular has been instrumental, offering the consistent rules we needed to build our G2P model.
+In practice:
 
-### What is a G2P Phonemizer?
+> "Un Enormi Passu para u Barranquenhu i para a Cultura Barranquenha" → `ũ ẽjoɾmj pasu paɾɐ u bɐrɐ͂keɲu j paɾɐ ɐ kultuɾɐ bɐrɐ͂keɲɐ`
 
-In simple terms, a G2P phonemizer is a system that takes a written word (graphemes) and converts it into its phonetic representation (phonemes). Think of it as teaching a computer how to "pronounce" a word, even if it's never heard it before. For Barranquenho, this means translating its unique spelling into the [International Phonetic Alphabet (IPA)](https://en.wikipedia.org/wiki/International_Phonetic_Alphabet).
+The library is a single function, `phonemize(word: str) -> list[str]`, with no runtime dependencies — pure Python. The source PDFs (convention, dictionary, grammar) are committed to the repo root so the rules are auditable against their source.
 
-Our rule-based phonemizer accounts for Barranquenho's distinct phonetic features, including vowel allophony, nasalization, and the specific pronunciations of consonants like 'r' and 's', which can vary significantly from standard Portuguese or Spanish. 
+### What comes next
 
-> "Un Enormi Passu para u Barranquenhu i para a Cultura Barranquenha" -> "ũ ẽjoɾmj pasu paɾɐ u bɐrɐ͂keɲu j paɾɐ ɐ kultuɾɐ bɐrɐ͂keɲɐ"
+A G2P converter is the minimum prerequisite for TTS and ASR work. Without it, a model trained on text has no principled phonetic grounding. With it, the path to a Barranquenho voice model follows the same hybrid pipeline we used for Asturian and Aragonese — the blocker is speech data, not the tooling.
 
-### The Power of this First Step
+**If you have recordings of spoken Barranquenho or access to speakers willing to contribute under an open license, get in touch.** Native speaker recordings, even a few hours, would make a TTS model viable.
 
-There is still a long way to go before Barranquenho speakers no longer need to switch to Portuguese or Spanish to interact with voice technology. The creation of this G2P phonemizer is more than just a cool linguistic tool; it's the **foundational layer** for developing advanced AI capabilities for Barranquenho. With a reliable way to map written words to their sounds, we can unlock:
-
-* **Speech-to-Text (STT) Systems:** Imagine speaking in Barranquenho and having your words accurately transcribed. This could revolutionize documentation, communication, and accessibility. 
-* **Text-to-Speech (TTS) Systems:** Give digital voices the ability to speak Barranquenho, opening doors for educational tools, audiobooks, and interactive experiences.
-
-This work aligns perfectly with our mission of making voice AI accessible for everyone in any language.
-
-### Join Us: Help Bring Barranquenho Voices to AI!
-
-While the orthographic convention gives us the rules for pronunciation, **real-world speech data is invaluable** for training robust AI models.
-
-**We are putting out a call to the Barranquenho community and anyone passionate about linguistic preservation:**
-
-**We need recordings of spoken Barranquenho!**
-
-Whether you're a native speaker, an enthusiast, or a linguist, your voice can help us create the next generation of Barranquenho AI resources. If you are interested in contributing, please reach out to us!. Every voice counts, and together, we can ensure that Barranquenho thrives in the digital age.
-
-Let's make some noise for Barranquenho! 📢
+→ [g2p_barranquenho on GitHub](https://github.com/TigreGotico/g2p_barranquenho)
 

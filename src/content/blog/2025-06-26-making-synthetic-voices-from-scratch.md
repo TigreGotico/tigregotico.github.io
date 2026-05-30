@@ -15,65 +15,23 @@ draft: false
 
 > This blog was originally posted in the [OpenVoiceOS blog](https://blog.openvoiceos.org/posts/2025-06-26-making-synthetic-voices-from-scratch)
 
-### What’s the problem?
+A good offline TTS voice for European Portuguese did not exist. Studio recording is expensive, takes months, and in most of the world’s languages the recordings have simply never happened. So we built four from scratch — no recording booth, no voice actor, no cloud.
 
-Creating a voice for a text-to-speech (TTS) system usually requires a real person to spend hours recording audio. That’s expensive, time-consuming, and in many languages or accents, the voices just don’t exist at all, especially for open-source or offline use.
+### The three-step pipeline
 
-### What did we do?
+**1. Generate synthetic speech pairs.** We use an existing TTS voice as a donor — any source that can produce intelligible audio — and run it over a large text corpus to produce thousands of audio/text pairs. The donor voice does not need to be high quality. It just needs to be coherent enough to learn from.
 
-We developed a technique that allows us to **create synthetic voices completely from scratch**, even if we don’t have recordings from a real person. These voices:
+**2. Apply voice conversion.** A voice-conversion step transforms the donor’s timbre into a new identity — different gender, age, or character. The resulting audio sounds like the target voice, not the donor. This is where a new personality is born.
 
-* Work **offline**, even on small devices like a Raspberry Pi,
-* Can speak any language, if there’s a good donor system available,
-* Are fully customizable in sound and tone.
+**3. Train a compact VITS model.** The converted audio becomes the training set for a small VITS-architecture model via [phoonnx_train](https://github.com/TigreGotico/phoonnx). The finished model is exported to ONNX and runs entirely offline — on a Raspberry Pi if needed.
 
-### How does it work?
+### Ethical guardrails
 
-1. **Start with an existing voice** - We use an existing TTS voice (from any source) to generate lots of fake speech and text pairs.
+If the donor is a real person’s voice, we obtain explicit permission first. When no permission is possible, we use public-domain recordings or generate a fully original voice that does not copy anyone’s identity. The voice-conversion step also has a useful privacy property: the output is acoustically distinct enough from the donor that impersonation risk is negligible.
 
-2. **Transform it into a new voice** - We apply a special voice conversion process to change the sound of the voice to something new, like a different gender, age, or accent.
+### Applied to European Portuguese
 
-3. **Train a compact model** - With this synthetic data, we train a new voice model that sounds natural, speaks fluently, and runs entirely offline.
+European Portuguese had no high-quality open offline voice. We produced four voices — including the Miro and Dii identities that are now the default OVOS voices for `pt-PT` — using exactly this pipeline. They run comfortably on modest hardware, require no internet connection, and the training data is [published openly](https://huggingface.co/TigreGotico) so anyone can reproduce or extend them.
 
-### Why is this special?
-
-* We can create a new voice **without needing anyone to record lines**.
-* The voices don’t rely on cloud services, they work **100% offline**.
-* Each voice can be **customized** to sound unique or to match a character, personality, or accent.
-
-### What about ethics?
-
-We take voice rights seriously.
-
-* If we’re using a real person’s voice, we always get **clear permission**.
-* If no permission is available, we use **public domain recordings** or create **original voices** that don’t copy anyone.
-* Our process actually makes the voice **less recognizable**, which helps protect privacy and avoid impersonation risks.
-
-### Real-world example
-
-We applied this method to **European Portuguese**, a language that had no good offline voice options. In a short time, we built **4 brand-new, high-quality voices**, no recordings needed, and they all run on small local devices.
-
-> 💡 Did we mention OpenVoiceOS now has a huggingface account? find all our TTS voices and more at [huggingface.co/OpenVoiceOS](https://huggingface.co/OpenVoiceOS)
-
----
-
-### In short:
-
-> We’ve found a way to build natural-sounding, offline-ready synthetic voices, **without needing a real speaker**. It’s fast, ethical, and opens the door for more voices in more languages, for everyone.
-
----
-
-## Help Us Build Voice for Everyone 
-
-If you believe that voice assistants should be open, inclusive, and user-controlled, we invite you to support OVOS: 
-
-- **💸 Donate**: Your contributions help us pay for infrastructure, development, and legal protections. 
-
-- **📣 Contribute Open Data**: Speech models need diverse, high-quality data. If you can share voice samples, transcripts, or datasets under open licenses, let's collaborate. 
-
-- **🌍 Help Translate**: OVOS is global by nature. Translators make our platform accessible to more communities every day. 
-
-We're not building this for profit. We're building it for people. And with your help, we can ensure open voice has a future—transparent, private, and community-owned. 
-
-👉 [Support the project here](https://www.openvoiceos.org/contribution)
+All models and datasets live at [huggingface.co/OpenVoiceOS](https://huggingface.co/OpenVoiceOS) and [huggingface.co/TigreGotico](https://huggingface.co/TigreGotico).
 
