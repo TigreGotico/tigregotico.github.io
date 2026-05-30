@@ -64,7 +64,7 @@ const collaborations = (await getCollection('collaborations')).map((c) => c.data
     class="pt-0"
   >
     {collaborations.length > 0 && (
-      <div class="grid gap-4 sm:grid-cols-2 mb-8">
+      <div class="grid gap-4 sm:grid-cols-2">
         {collaborations.map((collab) => (
           <article class="card-hover reveal" data-reveal>
             <h3 class="display-3 text-lg">
@@ -77,10 +77,6 @@ const collaborations = (await getCollection('collaborations')).map((c) => c.data
         ))}
       </div>
     )}
-
-    <p class="text-sm leading-relaxed text-muted">
-      <strong>Publicly funded:</strong> ILENIA localization effort for languages of Spain (Catalan, Galician, Basque, Spanish) and raspOVOS.
-    </p>
   </Section>
 
   <Section eyebrow="Featured" title="Highlights">
