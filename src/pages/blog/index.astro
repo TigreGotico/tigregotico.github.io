@@ -97,7 +97,7 @@ for (const { category } of posts) {
         const coverExternal = post.data.coverExternal ?? null;
         return (
           <li class="blog-item reveal" data-reveal data-reveal-delay={(i % 2) * 80} data-category={category}>
-            <
+            <a
               href={`${base}/blog/${post.id}`}
               class="card-hover group flex h-full flex-col overflow-hidden"
             >

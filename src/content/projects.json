@@ -1210,5 +1210,163 @@
       "voice-playable"
     ],
     "featured": false
+  },
+  {
+    "id": "hivemind-core",
+    "name": "HiveMind Core",
+    "description": "Central HiveMind hub \u2014 coordinates connected devices and agents. The core routing and permission system for the HiveMind mesh network.",
+    "url": "https://github.com/JarbasHiveMind/hivemind-core",
+    "category": "HiveMind",
+    "tags": [
+      "hub",
+      "mesh network",
+      "protocol",
+      "coordination"
+    ],
+    "featured": false
+  },
+  {
+    "id": "hivemind-cli",
+    "name": "HiveMind CLI",
+    "description": "Command-line client for interacting with HiveMind hubs and managing the mesh network.",
+    "url": "https://github.com/JarbasHiveMind/HiveMind-cli",
+    "category": "HiveMind",
+    "tags": [
+      "CLI",
+      "client",
+      "interface"
+    ],
+    "featured": false
+  },
+  {
+    "id": "hivemind-js",
+    "name": "HiveMind JS",
+    "description": "JavaScript client library for HiveMind \u2014 connect web applications to the mesh network.",
+    "url": "https://github.com/JarbasHiveMind/HiveMind-js",
+    "category": "HiveMind",
+    "tags": [
+      "JavaScript",
+      "client",
+      "web"
+    ],
+    "featured": false
+  },
+  {
+    "id": "hivemind-docker",
+    "name": "HiveMind Docker",
+    "description": "Docker deployment for HiveMind hub \u2014 run the mesh network in containers.",
+    "url": "https://github.com/JarbasHiveMind/hivemind-docker",
+    "category": "HiveMind",
+    "tags": [
+      "Docker",
+      "deployment",
+      "containerization"
+    ],
+    "featured": false
+  },
+  {
+    "id": "hivemind-ovos-agent-plugin",
+    "name": "HiveMind OVOS Agent Plugin",
+    "description": "OpenVoiceOS plugin for HiveMind \u2014 integrate voice assistants into the mesh network.",
+    "url": "https://github.com/JarbasHiveMind/hivemind-ovos-agent-plugin",
+    "category": "HiveMind",
+    "tags": [
+      "OpenVoiceOS",
+      "plugin",
+      "voice"
+    ],
+    "featured": false
+  },
+  {
+    "id": "hivemind-matrix-bridge",
+    "name": "HiveMind Matrix Bridge",
+    "description": "Bridge HiveMind to Matrix \u2014 communicate with devices via Matrix chat protocol.",
+    "url": "https://github.com/JarbasHiveMind/HiveMind-matrix-bridge",
+    "category": "HiveMind",
+    "tags": [
+      "Matrix",
+      "bridge",
+      "chat"
+    ],
+    "featured": false
+  },
+  {
+    "id": "hivemind-deltachat-bridge",
+    "name": "HiveMind DeltaChat Bridge",
+    "description": "Bridge HiveMind to DeltaChat \u2014 privacy-first email-based messaging for device control.",
+    "url": "https://github.com/JarbasHiveMind/HiveMind-deltachat-bridge",
+    "category": "HiveMind",
+    "tags": [
+      "DeltaChat",
+      "bridge",
+      "privacy"
+    ],
+    "featured": false
+  },
+  {
+    "id": "hivemind-http-protocol",
+    "name": "HiveMind HTTP Protocol",
+    "description": "HTTP protocol implementation for HiveMind \u2014 REST API for mesh communication.",
+    "url": "https://github.com/JarbasHiveMind/hivemind-http-protocol",
+    "category": "HiveMind",
+    "tags": [
+      "HTTP",
+      "protocol",
+      "REST"
+    ],
+    "featured": false
+  },
+  {
+    "id": "hivemind-audio-binary-protocol",
+    "name": "HiveMind Audio Binary Protocol",
+    "description": "Efficient binary protocol for audio over HiveMind \u2014 low-latency voice communication.",
+    "url": "https://github.com/JarbasHiveMind/hivemind-audio-binary-protocol",
+    "category": "HiveMind",
+    "tags": [
+      "audio",
+      "protocol",
+      "binary",
+      "low-latency"
+    ],
+    "featured": false
+  },
+  {
+    "id": "hivemind-esp32-client",
+    "name": "HiveMind ESP32 Client",
+    "description": "ESP32 firmware for HiveMind \u2014 run mesh nodes on microcontrollers.",
+    "url": "https://github.com/JarbasHiveMind/hivemind-esp32-client",
+    "category": "HiveMind",
+    "tags": [
+      "ESP32",
+      "microcontroller",
+      "firmware"
+    ],
+    "featured": false
+  },
+  {
+    "id": "hivemind-micropython-client",
+    "name": "HiveMind MicroPython Client",
+    "description": "MicroPython implementation for HiveMind \u2014 lightweight client for IoT devices.",
+    "url": "https://github.com/JarbasHiveMind/hivemind-micropython-client",
+    "category": "HiveMind",
+    "tags": [
+      "MicroPython",
+      "IoT",
+      "embedded"
+    ],
+    "featured": false
+  },
+  {
+    "id": "hivemind-homeassistant",
+    "name": "HiveMind Home Assistant",
+    "description": "Home Assistant integration for HiveMind \u2014 control and monitor mesh devices from Home Assistant.",
+    "url": "https://github.com/JarbasHiveMind/hivemind-homeassistant",
+    "category": "HiveMind",
+    "tags": [
+      "Home Assistant",
+      "integration",
+      "smart home"
+    ],
+    "featured": false
   }
 ]
