@@ -4,8 +4,8 @@ description: "Engineering engagements: data extraction, clean APIs & dataset con
 order: 2
 ---
 
-We are FOSS voice, AI, and data specialists. As creators of the HiveMind stack
-and core contributors to OpenVoiceOS, we build privacy-first, GDPR-compliant
+We are FOSS voice, AI, and data specialists. As creators of the [HiveMind](https://jarbashivemind.github.io/HiveMind-community-docs/) stack
+and core contributors to [OpenVoiceOS](https://openvoiceos.org), we build privacy-first, GDPR-compliant
 voice technology that keeps your data on your own hardware — and we are equally
 at home turning hard-to-reach public data into clean APIs and curated datasets.
 
@@ -19,8 +19,7 @@ We also take on standalone project work where the scope is well-defined from the
 
 We create voice interfaces for anything. Whatever you want to talk to — a device,
 an app, a service, or a whole product line — we build the voice layer for it,
-reusing the expertise and battle-tested stack we've built around the **Open Voice
-Operating System** and **HiveMind**. Custom wake words, Text-to-Speech (TTS) and
+reusing the expertise and battle-tested stack we've built around the **[Open Voice Operating System](https://openvoiceos.org)** and **[HiveMind](https://jarbashivemind.github.io/HiveMind-community-docs/)**. Custom wake words, Text-to-Speech (TTS) and
 Speech-to-Text (STT) wiring, intent handling, and bespoke components — assembled
 from a proven open-source foundation instead of from scratch, and running on your
 own hardware.
@@ -43,7 +42,7 @@ Whisper, and others — for your specific language, accent, and domain vocabular
 so recognition holds up on the words and conditions that actually matter to you.
 When the training data doesn't exist yet, we find it — and synthesize it where
 appropriate — using our dataset-construction toolchain. This work is backed by
-our partnership with **Alpha Cephei**, bringing decades of automatic speech
+our partnership with **[Alpha Cephei](https://alphacephei.com)**, bringing decades of automatic speech
 recognition expertise to your project.
 
 ## Minority & Lusophone Language Speech Tech

@@ -7,8 +7,8 @@ order: 1
 ## Our Story
 
 Founded with a deep passion for open source and a firm belief in digital
-privacy, TigreGótico builds and maintains the HiveMind stack and is a core
-contributor to OpenVoiceOS — an independent non-profit voice-AI foundation
+privacy, TigreGótico builds and maintains the [HiveMind](https://jarbashivemind.github.io/HiveMind-community-docs/) stack and is a core
+contributor to [OpenVoiceOS](https://openvoiceos.org) — an independent non-profit voice-AI foundation
 whose board includes our founder. Our company exists to ensure the long-term
 sustainability and expert engineering of privacy-first voice technology.
 
@@ -31,9 +31,9 @@ Don't take our word for it — the work is public:
 
 ## HiveMind vs OpenVoiceOS: What's the Difference?
 
-**OpenVoiceOS** is a community-driven, independent non-profit voice platform that runs on a single device. It's the modern successor to Mycroft — a fully-featured, privacy-first voice assistant that handles wake words, speech recognition, intent routing, and synthesis, all on your own hardware.
+**[OpenVoiceOS](https://openvoiceos.org)** is a community-driven, independent non-profit voice platform that runs on a single device. It's the modern successor to Mycroft — a fully-featured, privacy-first voice assistant that handles wake words, speech recognition, intent routing, and synthesis, all on your own hardware.
 
-**HiveMind** is a distributed mesh protocol that connects multiple devices and agents together. Think of it as the "networking layer" for voice — it lets a fleet of devices collaborate without sending data to the cloud. You might run OpenVoiceOS on each device, but use HiveMind to coordinate them.
+**[HiveMind](https://jarbashivemind.github.io/HiveMind-community-docs/)** is a distributed mesh protocol that connects multiple devices and agents together. Think of it as the "networking layer" for voice — it lets a fleet of devices collaborate without sending data to the cloud. You might run OpenVoiceOS on each device, but use HiveMind to coordinate them.
 
 For most projects, **OpenVoiceOS** is your starting point. HiveMind is the answer when you need a mesh network of devices communicating privately.
 

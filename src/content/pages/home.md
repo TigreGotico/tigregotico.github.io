@@ -6,6 +6,6 @@ order: 0
 
 In a world of data-hungry voice assistants, there is a better way. TigreGótico
 builds voice technology on privacy, open source, and data sovereignty. As
-creators of the HiveMind stack and core contributors to OpenVoiceOS, we help you ship secure,
+creators of the [HiveMind](https://jarbashivemind.github.io/HiveMind-community-docs/) stack and core contributors to [OpenVoiceOS](https://openvoiceos.org), we help you ship secure,
 GDPR-compliant voice solutions that run on your own hardware — no data sent to
 anyone else's cloud.
