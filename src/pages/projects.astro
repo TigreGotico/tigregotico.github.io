@@ -94,19 +94,9 @@ const collaborations = (await getCollection('collaborations')).map((c) => c.data
       role="group"
       aria-label="Filter projects by category"
     >
-      <button
-        type="button"
-        data-filter="all"
-        aria-pressed="true"
-        class="chip"
-      >
-        <span class="chip-label">All</span>
-        <span class="chip-sep" aria-hidden="true">·</span>
-        <span class="chip-count">{projects.length}</span>
-      </button>
       {
-        categories.map((c) => (
-          <button type="button" data-filter={c} aria-pressed="false" class="chip">
+        categories.map((c, i) => (
+          <button type="button" data-filter={c} aria-pressed={i === 0} class={i === 0 ? "chip chip-active" : "chip"}>
             <span class="chip-label">{label(c)}</span>
             <span class="chip-sep" aria-hidden="true">·</span>
             <span class="chip-count">{counts.get(c)}</span>
@@ -189,8 +179,7 @@ const collaborations = (await getCollection('collaborations')).map((c) => c.data
       var tag = val.indexOf('tag:') === 0 ? val.slice(4) : null;
       for (var j = 0; j < items.length; j++) {
         var show;
-        if (val === 'all') show = true;
-        else if (tag)
+        if (tag)
           show = (items[j].getAttribute('data-tags') || '').split('|').indexOf(tag) !== -1;
         else show = items[j].getAttribute('data-category') === val;
         items[j].hidden = !show;
