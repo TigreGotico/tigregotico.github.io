@@ -53,54 +53,23 @@ const collaborations = (await getCollection('collaborations')).map((c) => c.data
   <Section
     eyebrow="Community"
     title="Working with the community"
-    lead="We contribute to independent partners, donate publicly-funded work to OpenVoiceOS, and collaborate with the FOSS ecosystem."
+    lead="We contribute to independent partners and donate publicly-funded work to the OpenVoiceOS foundation."
     class="pt-0"
   >
     {collaborations.length > 0 && (
-      <>
-        <h3 class="mb-4 text-lg font-semibold">Partners & collaborations</h3>
-        <div class="mb-8 grid gap-4 sm:grid-cols-2">
-          {collaborations.map((collab) => (
-            <article class="card-hover reveal" data-reveal>
-              <h3 class="display-3 text-base">
-                <a href={collab.url} class="transition-colors hover:text-primary" rel="noopener">
-                  {collab.name}
-                </a>
-              </h3>
-              <p class="mt-2 text-sm leading-relaxed text-muted">{collab.description}</p>
-            </article>
-          ))}
-        </div>
-      </>
+      <div class="grid gap-4 sm:grid-cols-2">
+        {collaborations.map((collab) => (
+          <article class="card-hover reveal" data-reveal>
+            <h3 class="display-3 text-lg">
+              <a href={collab.url} class="transition-colors hover:text-primary" rel="noopener">
+                {collab.name}
+              </a>
+            </h3>
+            <p class="mt-2 text-sm leading-relaxed text-muted">{collab.description}</p>
+          </article>
+        ))}
+      </div>
     )}
-
-    <h3 class="mb-4 text-lg font-semibold">Donated to OpenVoiceOS</h3>
-    <p class="mb-6 text-sm leading-relaxed text-muted">
-      Much of our publicly-funded work is transferred to the independent OpenVoiceOS
-      organization, so it lives on regardless of us.
-    </p>
-    <div class="grid gap-4 sm:grid-cols-2">
-      <article class="card reveal" data-reveal>
-        <h3 class="display-3 text-base">Funded by the ILENIA project</h3>
-        <p class="mt-2 text-sm leading-relaxed text-muted">
-          Multilingual speech and localization for Catalan, Spanish, Galician, and
-          Basque — the ovos-stt-plugin and ovos-tts-plugin families, plus
-          ovos-dialog-normalizer-plugin, ovos-skill-diagnostics,
-          ovos-skill-fuster-quotes, ovos-opendata-server, and raspovos-audio-setup.
-        </p>
-      </article>
-      <article class="card reveal" data-reveal>
-        <h3 class="display-3 text-base">Funded by our NLNet grant</h3>
-        <p class="mt-2 text-sm leading-relaxed text-muted">
-          <a
-            href="https://github.com/OpenVoiceOS/ovos-localize"
-            class="text-primary hover:underline"
-            rel="noopener">ovos-localize</a
-          > (GitHub-native localization) and ww-trainer (custom wake-word training,
-          coming soon).
-        </p>
-      </article>
-    </div>
   </Section>
 
   <Section eyebrow="Featured" title="Highlights">
