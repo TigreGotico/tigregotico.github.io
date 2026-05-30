@@ -8,7 +8,6 @@ tags:
   - "HiveMind"
   - "Industry"
   - "manufacturing"
-cover: ./2025-11-26-OVOS-hivemind-industry.png
 draft: false
 ---
 

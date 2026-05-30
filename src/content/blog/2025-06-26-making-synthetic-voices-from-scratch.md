@@ -8,7 +8,6 @@ tags:
   - "Synthetic Data"
   - "Voice Cloning"
   - "OVOS"
-coverExternal: "https://github.com/OpenVoiceOS/ovos_assets/blob/master/ovos_tts.png?raw=true"
 draft: false
 ---
 

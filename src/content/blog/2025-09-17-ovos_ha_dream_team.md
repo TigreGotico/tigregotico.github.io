@@ -8,7 +8,6 @@ tags:
   - "Home Assistant"
   - "Smart Home"
   - "Voice Automation"
-coverExternal: "https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/thumb.png"
 draft: false
 ---
 
