@@ -76,9 +76,13 @@ OpenVoiceOS website — a live example of clean, open, responsive work.
 
 ## How We Work
 
-We offer focused engineering engagements rather than open-ended retainers. Each
-one is scoped to a concrete outcome, delivered as open source where possible, and
-backed by the people who maintain the underlying stack.
+We offer **focused engineering engagements** rather than open-ended retainers. Each one is scoped to a concrete outcome, delivered as open source where possible, and backed by the people who maintain the underlying stack.
+
+**Typical project scope:**
+- **Data extraction** — 4–8 weeks to build a resilient scraper, reverse-engineer an API, or curate a dataset
+- **Voice integration** — 6–12 weeks to add voice interfaces to existing products or build a new voice-first application
+- **Custom TTS voice** — 3–6 weeks to train and integrate a unique voice for your language/brand
+- **Model fine-tuning** — 4–8 weeks to fine-tune STT or NLU models for your domain and accent
 
 ### Onboarding & Integration
 

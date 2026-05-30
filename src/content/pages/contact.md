@@ -6,9 +6,32 @@ order: 5
 
 ## Get in Touch
 
-Whether you need a quote for a custom project, have a question about our products,
-or just want to discuss a FOSS collaboration, we're ready to listen.
+Whether you need a quote for a custom project, have a question about our products, or just want to discuss a FOSS collaboration, we're ready to listen.
 
-Reach us at [jarbasai@mailfence.com](mailto:jarbasai@mailfence.com), or find our
-work on [GitHub](https://github.com/TigreGotico) and
-[Hugging Face](https://huggingface.co/TigreGotico).
+**Email:** [jarbasai@mailfence.com](mailto:jarbasai@mailfence.com)
+
+**Response time:** We typically respond within 24 hours.
+
+### What to include in your message
+
+To help us scope your project quickly:
+
+- **What you're building** — a new voice product, integrating voice into an existing app, custom dataset, etc.
+- **Your timeline** — when do you need this working?
+- **Language(s)** — English, Portuguese, other?
+- **Scope idea** — rough budget range or team size?
+
+We'll reply with next steps, timeline estimates, and a conversation plan.
+
+## Find Our Work
+
+- **GitHub:** [github.com/TigreGotico](https://github.com/TigreGotico) — 91 open-source projects
+- **Datasets:** [huggingface.co/TigreGotico](https://huggingface.co/TigreGotico) — 124+ datasets
+- **OpenVoiceOS:** [openvoiceos.org](https://openvoiceos.org) — the independent foundation we support
+- **Community:** Join the [OpenVoiceOS Matrix chat](https://matrix.to/#/!roomhere) to chat with us and the community
+
+## Questions Before Reaching Out?
+
+- **Can you handle my language?** Check our [phonemization tools](/projects) and [language datasets](/resources) — if it's there, we can extend it
+- **Privacy?** All our work is on-device by default — nothing leaves your hardware without your consent
+- **Timeline?** [See typical project scopes](/services) — this gives you a sense of what's realistic

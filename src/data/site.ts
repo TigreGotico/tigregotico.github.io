@@ -17,12 +17,12 @@ export const site = {
   },
   nav: [
     { label: 'Home', href: '/' },
-    { label: 'Services', href: '/services' },
-    { label: 'Games', href: '/games' },
-    { label: 'Open Source', href: '/projects' },
-    { label: 'Resources', href: '/resources' },
-    { label: 'Blog', href: '/blog' },
     { label: 'About', href: '/about' },
+    { label: 'Blog', href: '/blog' },
+    { label: 'Open Source', href: '/projects' },
+    { label: 'Services', href: '/services' },
+    { label: 'Resources', href: '/resources' },
+    { label: 'Games', href: '/games' },
     { label: 'Contact', href: '/contact' },
   ],
 } as const;

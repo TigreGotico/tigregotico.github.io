@@ -12,19 +12,32 @@ contributor to OpenVoiceOS — an independent non-profit voice-AI foundation
 whose board includes our founder. Our company exists to ensure the long-term
 sustainability and expert engineering of privacy-first voice technology.
 
-## Our Expertise
+## Why Choose TigreGotico
 
-Our company is built on a foundation of unique knowledge: we are the creators
-and maintainers of the HiveMind voice stack and core contributors to
-OpenVoiceOS. This isn't just a business for us — it's a mission. Our expertise
-is unparalleled because we've been with this technology from its inception,
-making us reliable partners for your voice tech projects.
+We're not a generalist consulting firm applying off-the-shelf solutions to voice AI. We're the **creators and maintainers** of the underlying technology itself. You hire the people who built the stack you're using.
+
+**Unique advantages:**
+- **Deep architecture knowledge** — we built HiveMind and are core OVOS maintainers, so we understand the system at the lowest levels
+- **Battle-tested in production** — our work powers real deployments across accessibility projects, smart homes, and enterprise systems
+- **Direct influence on roadmap** — we shape the future of OpenVoiceOS (our founder is on the board)
+- **Integrated data/voice expertise** — we also maintain 91 open-source tools for data extraction and processing, so we understand both the data layer and the voice layer
+- **Open-source first** — work we deliver becomes reusable code the community benefits from
 
 Don't take our word for it — the work is public:
 
 - [GitHub organization](https://github.com/TigreGotico) — our open-source repositories
 - [Hugging Face](https://huggingface.co/TigreGotico) — our datasets and models
 - [openvoiceos.org](https://openvoiceos.org) — the independent non-profit foundation we contribute to (our founder serves on its board)
+
+## HiveMind vs OpenVoiceOS: What's the Difference?
+
+**OpenVoiceOS** is a community-driven, independent non-profit voice platform that runs on a single device. It's the modern successor to Mycroft — a fully-featured, privacy-first voice assistant that handles wake words, speech recognition, intent routing, and synthesis, all on your own hardware.
+
+**HiveMind** is a distributed mesh protocol that connects multiple devices and agents together. Think of it as the "networking layer" for voice — it lets a fleet of devices collaborate without sending data to the cloud. You might run OpenVoiceOS on each device, but use HiveMind to coordinate them.
+
+For most projects, **OpenVoiceOS** is your starting point. HiveMind is the answer when you need a mesh network of devices communicating privately.
+
+We maintain both and are equally invested in their long-term success.
 
 ## Our Mission
 
