@@ -17,7 +17,7 @@ export const site = {
   nav: [
     { label: 'Home', href: '/' },
     { label: 'Services', href: '/services' },
-    { label: 'Demo', href: '/demo' },
+    { label: 'Voices Demo', href: '/demo' },
     { label: 'Games', href: '/games' },
     { label: 'Open Source', href: '/projects' },
     { label: 'Resources', href: '/resources' },
