@@ -50,18 +50,19 @@ const collaborations = (await getCollection('collaborations')).map((c) => c.data
     lead="Our open-source work — FOSS, self-hostable libraries and tools spanning voice AI, data extraction, datasets, NLP, and games, plus the OpenVoiceOS and HiveMind ecosystem we help build. No lock-in, no mandatory cloud."
   />
 
-  {
-    collaborations.length > 0 && (
-      <Section
-        eyebrow="Collaborations"
-        title="Working with the community"
-        lead="Independent partners and projects we contribute to."
-        class="pt-0"
-      >
-        <div class="grid gap-4 sm:grid-cols-2">
+  <Section
+    eyebrow="Community"
+    title="Working with the community"
+    lead="We contribute to independent partners, donate publicly-funded work to OpenVoiceOS, and collaborate with the FOSS ecosystem."
+    class="pt-0"
+  >
+    {collaborations.length > 0 && (
+      <>
+        <h3 class="mb-4 text-lg font-semibold">Partners & collaborations</h3>
+        <div class="mb-8 grid gap-4 sm:grid-cols-2">
           {collaborations.map((collab) => (
             <article class="card-hover reveal" data-reveal>
-              <h3 class="display-3 text-lg">
+              <h3 class="display-3 text-base">
                 <a href={collab.url} class="transition-colors hover:text-primary" rel="noopener">
                   {collab.name}
                 </a>
@@ -70,15 +71,14 @@ const collaborations = (await getCollection('collaborations')).map((c) => c.data
             </article>
           ))}
         </div>
-      </Section>
-    )
-  }
+      </>
+    )}
 
-  <Section
-    eyebrow="Community"
-    title="Donated to OpenVoiceOS"
-    lead="Much of our publicly-funded work is transferred to the independent OpenVoiceOS organization, so it lives on regardless of us."
-  >
+    <h3 class="mb-4 text-lg font-semibold">Donated to OpenVoiceOS</h3>
+    <p class="mb-6 text-sm leading-relaxed text-muted">
+      Much of our publicly-funded work is transferred to the independent OpenVoiceOS
+      organization, so it lives on regardless of us.
+    </p>
     <div class="grid gap-4 sm:grid-cols-2">
       <article class="card reveal" data-reveal>
         <h3 class="display-3 text-base">Funded by the ILENIA project</h3>
