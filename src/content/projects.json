@@ -211,7 +211,7 @@
     "name": "TugaPhone",
     "description": "Portuguese phoneme dataset and processing tools.",
     "url": "https://github.com/TigreGotico/tugaphone",
-    "category": "Speech & Language",
+    "category": "Portuguese",
     "tags": [
       "Portuguese phonemes",
       "dataset",
@@ -276,7 +276,7 @@
     "name": "Silabificador",
     "description": "Portuguese text syllabification tool.",
     "url": "https://github.com/TigreGotico/silabificador",
-    "category": "Speech & Language",
+    "category": "Portuguese",
     "tags": [
       "Portuguese syllabification",
       "text processing"
@@ -459,7 +459,7 @@
     "name": "OVOS Wyoming Docker",
     "description": "Docker setup for OpenVoiceOS with Wyoming services.",
     "url": "https://github.com/TigreGotico/ovos-wyoming-docker",
-    "category": "OpenVoiceOS",
+    "category": "Home Assistant",
     "tags": [
       "Docker",
       "Home Assistant",
@@ -487,7 +487,7 @@
     "name": "sshfs-keeper",
     "description": "A daemon that monitors SSHFS/rclone mounts and auto-remounts them when they drop \u2014 with a live web dashboard, REST API, Prometheus metrics, webhooks, and scheduled rsync/rclone sync jobs.",
     "url": "https://github.com/TigreGotico/sshfs-keeper",
-    "category": "Tools",
+    "category": "Homelab",
     "tags": [
       "SSHFS",
       "homelab",
@@ -723,7 +723,7 @@
     "name": "media-archivist",
     "description": "Index, canonicalize, deduplicate and serve media catalogues from YouTube and other sources.",
     "url": "https://github.com/TigreGotico/media-archivist",
-    "category": "Clients",
+    "category": "Homelab",
     "tags": [
       "catalogue",
       "homelab",
@@ -750,7 +750,7 @@
     "name": "tugalex",
     "description": "A lexicon handler and linguistic utility for Portuguese dialects.",
     "url": "https://github.com/TigreGotico/tugalex",
-    "category": "Speech & Language",
+    "category": "Portuguese",
     "tags": [
       "NLP",
       "Portuguese",
@@ -776,7 +776,7 @@
     "name": "tugatagger",
     "description": "Lightweight Portuguese part-of-speech (POS) tagger.",
     "url": "https://github.com/TigreGotico/tugatagger",
-    "category": "Speech & Language",
+    "category": "Portuguese",
     "tags": [
       "NLP",
       "POS",
@@ -789,7 +789,7 @@
     "name": "mwl_phonemizer",
     "description": "Rule-based phonemizer for the Mirandese language.",
     "url": "https://github.com/TigreGotico/mwl_phonemizer",
-    "category": "Speech & Language",
+    "category": "Portuguese",
     "tags": [
       "G2P",
       "Mirandese",
@@ -802,7 +802,7 @@
     "name": "g2p_barranquenho",
     "description": "Grapheme-to-phoneme for Barranquenho.",
     "url": "https://github.com/TigreGotico/g2p_barranquenho",
-    "category": "Speech & Language",
+    "category": "Portuguese",
     "tags": [
       "Barranquenho",
       "G2P",
@@ -815,7 +815,7 @@
     "name": "sotaque_forcado",
     "description": "Phonemizer for European Portuguese regional accents.",
     "url": "https://github.com/TigreGotico/sotaque_forcado",
-    "category": "Speech & Language",
+    "category": "Portuguese",
     "tags": [
       "Portuguese",
       "accents",
@@ -1075,7 +1075,7 @@
     "name": "Wyoming OVOS STT",
     "description": "OpenVoiceOS STT service for the Wyoming protocol \u2014 lightweight speech recognition.",
     "url": "https://github.com/TigreGotico/wyoming-ovos-stt",
-    "category": "OpenVoiceOS",
+    "category": "Home Assistant",
     "tags": [
       "Home Assistant",
       "STT",
@@ -1090,7 +1090,7 @@
     "name": "Wyoming OVOS TTS",
     "description": "OpenVoiceOS TTS service for the Wyoming protocol \u2014 lightweight text-to-speech.",
     "url": "https://github.com/TigreGotico/wyoming-ovos-tts",
-    "category": "OpenVoiceOS",
+    "category": "Home Assistant",
     "tags": [
       "Home Assistant",
       "TTS",
@@ -1105,7 +1105,7 @@
     "name": "Wyoming OVOS Wakeword",
     "description": "OpenVoiceOS wake-word detection service for the Wyoming protocol.",
     "url": "https://github.com/TigreGotico/wyoming-ovos-wakeword",
-    "category": "OpenVoiceOS",
+    "category": "Home Assistant",
     "tags": [
       "Home Assistant",
       "Wyoming",
@@ -1120,7 +1120,7 @@
     "name": "OVOS Hub",
     "description": "Plugin registry and marketplace for OpenVoiceOS \u2014 discover, install, and manage plugins.",
     "url": "https://github.com/TigreGotico/ovos-hub",
-    "category": "OpenVoiceOS",
+    "category": "Homelab",
     "tags": [
       "homelab",
       "marketplace",
@@ -1219,7 +1219,7 @@
     "name": "HiveMind Core",
     "description": "Central HiveMind hub \u2014 coordinates connected devices and agents. The core routing and permission system for the HiveMind mesh network.",
     "url": "https://github.com/JarbasHiveMind/hivemind-core",
-    "category": "HiveMind",
+    "category": "Homelab",
     "tags": [
       "coordination",
       "homelab",
@@ -1365,7 +1365,7 @@
     "name": "HiveMind Home Assistant",
     "description": "Home Assistant integration for HiveMind \u2014 control and monitor mesh devices from Home Assistant.",
     "url": "https://github.com/JarbasHiveMind/hivemind-homeassistant",
-    "category": "HiveMind",
+    "category": "Home Assistant",
     "tags": [
       "Home Assistant",
       "integration",
