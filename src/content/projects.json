@@ -4,7 +4,7 @@
     "name": "phoonnx",
     "description": "A Python library for multilingual phonemization and Text-to-Speech (TTS) using ONNX models.",
     "url": "https://github.com/TigreGotico/phoonnx",
-    "category": "Speech & Language",
+    "category": "TTS",
     "tags": [
       "ONNX models",
       "multilingual TTS",
@@ -156,7 +156,7 @@
     "id": "ww-trainer",
     "name": "ww-trainer",
     "description": "A wake-word model trainer developed under an NLNet grant for OpenVoiceOS \u2014 build custom, on-device wake words from your own samples.",
-    "category": "OpenVoiceOS",
+    "category": "Wake-words",
     "tags": [
       "NLNet",
       "on-device",
@@ -185,7 +185,7 @@
     "name": "Chatterbox ONNX",
     "description": "ONNX-based inference engine for conversational AI.",
     "url": "https://github.com/TigreGotico/chatterbox-onnx",
-    "category": "Speech & Language",
+    "category": "TTS",
     "tags": [
       "ONNX inference",
       "conversational TTS",
@@ -473,7 +473,7 @@
     "name": "pyAhoTTS",
     "description": "Python library for AhoTTS Text-to-Speech synthesis.",
     "url": "https://github.com/TigreGotico/pyAhoTTS",
-    "category": "Speech & Language",
+    "category": "TTS",
     "tags": [
       "AhoTTS",
       "ILENIA project",
@@ -567,7 +567,7 @@
     "name": "pyheartradio",
     "description": "iHeartRadio API client.",
     "url": "https://github.com/TigreGotico/pyheartradio",
-    "category": "Clients",
+    "category": "TTS",
     "tags": [
       "API client",
       "iHeartRadio",
@@ -763,7 +763,7 @@
     "name": "tugamorph",
     "description": "Rule-based morphological analyzer for Portuguese \u2014 segments words into morphemes.",
     "url": "https://github.com/TigreGotico/tugamorph",
-    "category": "Speech & Language",
+    "category": "Portuguese",
     "tags": [
       "NLP",
       "Portuguese",
@@ -982,7 +982,7 @@
     "name": "ovos-stt-plugin-whisper",
     "description": "Whisper speech-to-text plugin for OpenVoiceOS.",
     "url": "https://github.com/TigreGotico/ovos-stt-plugin-whisper",
-    "category": "OpenVoiceOS",
+    "category": "STT",
     "tags": [
       "OpenVoiceOS",
       "STT",
@@ -995,7 +995,7 @@
     "name": "ovos-stt-plugin-sherpa-onnx",
     "description": "Sherpa-ONNX speech-to-text plugin for OpenVoiceOS.",
     "url": "https://github.com/TigreGotico/ovos-stt-plugin-sherpa-onnx",
-    "category": "OpenVoiceOS",
+    "category": "STT",
     "tags": [
       "ONNX models",
       "OpenVoiceOS",
@@ -1075,7 +1075,7 @@
     "name": "Wyoming OVOS STT",
     "description": "OpenVoiceOS STT service for the Wyoming protocol \u2014 lightweight speech recognition.",
     "url": "https://github.com/TigreGotico/wyoming-ovos-stt",
-    "category": "Home Assistant",
+    "category": "STT",
     "tags": [
       "Home Assistant",
       "STT",
@@ -1105,7 +1105,7 @@
     "name": "Wyoming OVOS Wakeword",
     "description": "OpenVoiceOS wake-word detection service for the Wyoming protocol.",
     "url": "https://github.com/TigreGotico/wyoming-ovos-wakeword",
-    "category": "Home Assistant",
+    "category": "Wake-words",
     "tags": [
       "Home Assistant",
       "Wyoming",
