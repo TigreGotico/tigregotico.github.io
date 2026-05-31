@@ -1,7 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
 import Section from '../components/Section.astro';
-import ProjectCard from '../components/ProjectCard.astro';
 import Hero from '../components/Hero.astro';
 import Icon from '../components/Icon.astro';
 import { getEntry, getCollection, render } from 'astro:content';
@@ -12,15 +11,6 @@ const link = (href: string) => `${base}${href}`;
 
 const home = await getEntry('pages', 'home');
 const { Content } = await render(home!);
-
-const allProjects = (await getCollection('projects')).map((p) => p.data);
-const featured = allProjects.filter((p) => p.featured);
-
-// One flagship Hugging Face dataset featured alongside the code highlights;
-// the full set lives on Hugging Face.
-const flagshipDataset = (await getCollection('datasets'))
-  .map((d) => d.data)
-  .find((d) => d.id === 'synthetic-tts');
 
 // Only render posts whose date has arrived — future-dated posts stay hidden
 // until a (re)build after their date (see the weekly cron in deploy.yml).
@@ -72,7 +62,7 @@ const stack = ['OpenVoiceOS', 'HiveMind'];
   <Section
     eyebrow="What we do"
     title="Voice technology — and the data engineering behind it"
-    lead="We build privacy-first voice across the whole open-source stack, and we turn hard-to-reach public data into clean APIs and datasets. Creators of HiveMind, core contributors to OpenVoiceOS."
+    lead="We build privacy-first voice across the whole open-source stack, and we turn hard-to-reach public data into clean APIs and datasets."
   >
     <div class="grid gap-5 sm:grid-cols-2">
       {
@@ -97,6 +87,12 @@ const stack = ['OpenVoiceOS', 'HiveMind'];
         ))
       }
     </div>
+    <p class="mt-8 text-muted">
+      Creators of
+      <a class="font-medium text-primary hover:underline" href="https://jarbashivemind.github.io/HiveMind-community-docs/" rel="noopener">HiveMind</a>
+      &amp; core contributors to
+      <a class="font-medium text-primary hover:underline" href={site.socials.openvoiceos} rel="noopener">OpenVoiceOS</a>.
+    </p>
   </Section>
 
   <hr class="rule-gradient" />
@@ -147,32 +143,10 @@ const stack = ['OpenVoiceOS', 'HiveMind'];
   <Section
     eyebrow="Featured"
     title="What we build & publish"
-    lead="A selection of the open-source platforms and tools we build and steward — plus a flagship open dataset."
+    lead="Everything we build is FOSS and self-hostable — no lock-in, no mandatory cloud."
     class="surface-alt -mx-6 rounded-3xl px-6"
   >
-    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-      {featured.map((project) => <ProjectCard project={project} withImage />)}
-      {
-        flagshipDataset && (
-          <a
-            href={flagshipDataset.url}
-            class="card-hover group flex h-full flex-col reveal"
-            data-reveal
-            rel="noopener"
-          >
-            <span class="badge-accent mb-3 self-start">Open dataset</span>
-            <h3 class="display-3 text-lg group-hover:text-primary">{flagshipDataset.title}</h3>
-            <p class="mt-2 flex-1 text-sm leading-relaxed text-muted">
-              {flagshipDataset.description}
-            </p>
-            <span class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary">
-              View on Hugging Face <Icon name="arrow" class="h-4 w-4" />
-            </span>
-          </a>
-        )
-      }
-    </div>
-    <p class="mt-8 flex flex-wrap gap-x-6 gap-y-2">
+    <p class="flex flex-wrap gap-x-6 gap-y-2">
       <a class="inline-flex items-center gap-1 font-medium text-primary hover:underline" href={link('/projects')}>
         Browse all open source <Icon name="arrow" class="h-4 w-4" />
       </a>
