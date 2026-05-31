@@ -17,7 +17,7 @@ const allProjects = (await getCollection('projects')).map((p) => p.data);
 const featured = allProjects.filter((p) => p.featured);
 
 // One flagship Hugging Face dataset featured alongside the code highlights;
-// the full set lives on the Resources page.
+// the full set lives on Hugging Face.
 const flagshipDataset = (await getCollection('datasets'))
   .map((d) => d.data)
   .find((d) => d.id === 'synthetic-tts');
@@ -203,7 +203,7 @@ const stack = ['OpenVoiceOS', 'HiveMind'];
       <a class="inline-flex items-center gap-1 font-medium text-primary hover:underline" href={link('/projects')}>
         Browse all open source <Icon name="arrow" class="h-4 w-4" />
       </a>
-      <a class="inline-flex items-center gap-1 font-medium text-primary hover:underline" href={link('/resources')}>
+      <a class="inline-flex items-center gap-1 font-medium text-primary hover:underline" href={site.socials.huggingface} rel="noopener">
         Datasets &amp; models <Icon name="arrow" class="h-4 w-4" />
       </a>
     </p>

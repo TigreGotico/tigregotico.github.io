@@ -32,6 +32,6 @@ We'll reply with next steps, timeline estimates, and a conversation plan.
 
 ## Questions Before Reaching Out?
 
-- **Can you handle my language?** Check our [phonemization tools](/projects) and [language datasets](/resources) — if it's there, we can extend it
+- **Can you handle my language?** Check our [phonemization tools and language datasets](/projects) — if it's there, we can extend it
 - **Privacy?** All our work is on-device by default — nothing leaves your hardware without your consent
 - **Timeline?** [See typical project scopes](/services) — this gives you a sense of what's realistic
