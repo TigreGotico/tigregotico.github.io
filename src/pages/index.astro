@@ -146,7 +146,18 @@ const stack = ['OpenVoiceOS', 'HiveMind'];
     lead="Everything we build is FOSS and self-hostable — no lock-in, no mandatory cloud."
     class="surface-alt -mx-6 rounded-3xl px-6"
   >
-    <p class="flex flex-wrap gap-x-6 gap-y-2">
+    <p class="max-w-3xl text-muted">
+      Our work spans the whole voice stack — text-to-speech, speech recognition,
+      and wake-word detection, plus the OpenVoiceOS plugins that tie them
+      together and the HiveMind mesh that runs assistants across many devices. On
+      the data side, a family of scraping, anti-bot transport, and
+      entity-resolution libraries turns hard-to-reach public web data into clean,
+      typed APIs and reproducible datasets. Each piece is a small, composable
+      library you can run on your own hardware — and the datasets and models
+      behind them, including our Miro and Dii multilingual voices and Portuguese
+      language tooling, are published openly on Hugging Face.
+    </p>
+    <p class="mt-8 flex flex-wrap gap-x-6 gap-y-2">
       <a class="inline-flex items-center gap-1 font-medium text-primary hover:underline" href={link('/projects')}>
         Browse all open source <Icon name="arrow" class="h-4 w-4" />
       </a>
