@@ -30,17 +30,6 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft && data.dat
 
 const testimonials = (await getCollection('testimonials')).map((t) => t.data);
 
-// Stats derived from the projects collection (no invented numbers).
-const publicProjects = allProjects.filter((p) => !p.comingSoon).length;
-const ovosCount = allProjects.filter((p) => p.category === 'OpenVoiceOS').length;
-const clientCount = allProjects.filter((p) => p.category === 'Clients').length;
-const stats = [
-  { value: `${publicProjects}`, label: 'Open-source projects' },
-  { value: `${ovosCount}`, label: 'OpenVoiceOS plugins & tools' },
-  { value: `${clientCount}`, label: 'Data-source clients' },
-  { value: '100%', label: 'Runs offline & on-device' },
-];
-
 const whatWeDo = [
   {
     icon: 'database',
@@ -78,22 +67,6 @@ const stack = ['OpenVoiceOS', 'HiveMind'];
   <Hero link={link}>
     <Content />
   </Hero>
-
-  <!-- Stats band -->
-  <section class="surface-alt -mx-6 border-y border-border px-6 py-10">
-    <dl class="mx-auto grid max-w-5xl grid-cols-2 gap-6 sm:grid-cols-4">
-      {
-        stats.map((s, i) => (
-          <div class="reveal text-center sm:text-left" data-reveal data-reveal-delay={i * 80}>
-            <dt class="text-gradient font-serif text-4xl font-bold sm:text-5xl">
-              {s.value}
-            </dt>
-            <dd class="mt-1 text-sm text-muted">{s.label}</dd>
-          </div>
-        ))
-      }
-    </dl>
-  </section>
 
   <!-- What we do -->
   <Section
