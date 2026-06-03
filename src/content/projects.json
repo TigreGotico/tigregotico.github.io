@@ -2325,5 +2325,240 @@
     ],
     "featured": false,
     "selfHosted": true
+  },
+  {
+    "id": "classical-archives",
+    "name": "classical-archives",
+    "description": "Python package to fetch information about classical composers from Classical Archives.",
+    "url": "https://github.com/TigreGotico/classical-archives",
+    "category": "Music",
+    "tags": [
+      "Classical music",
+      "API client",
+      "Music archives"
+    ],
+    "featured": false
+  },
+  {
+    "id": "pygutenberg",
+    "name": "pygutenberg",
+    "description": "Python client for Project Gutenberg — book metadata via the open catalogue.",
+    "url": "https://github.com/TigreGotico/pygutenberg",
+    "category": "Books",
+    "tags": [
+      "Project Gutenberg",
+      "Books",
+      "API client",
+      "Literature"
+    ],
+    "featured": false
+  },
+  {
+    "id": "pyvndb",
+    "name": "pyvndb",
+    "description": "Python client for the VNDB (Visual Novel Database) kana public JSON API.",
+    "url": "https://github.com/TigreGotico/pyvndb",
+    "category": "Games",
+    "tags": [
+      "Visual Novels",
+      "Games",
+      "API client",
+      "VNDB"
+    ],
+    "featured": false
+  },
+  {
+    "id": "pywod",
+    "name": "pywod",
+    "description": "Multi-language Word-of-the-Day aggregator client.",
+    "url": "https://github.com/TigreGotico/pywod",
+    "category": "Language",
+    "tags": [
+      "Word of the Day",
+      "Language",
+      "API client",
+      "Dictionary"
+    ],
+    "featured": false
+  },
+  {
+    "id": "pywiktionary",
+    "name": "pywiktionary",
+    "description": "Typed Python client for the English Wiktionary MediaWiki API.",
+    "url": "https://github.com/TigreGotico/pywiktionary",
+    "category": "Language",
+    "tags": [
+      "Wiktionary",
+      "Dictionary",
+      "API client",
+      "Language"
+    ],
+    "featured": false
+  },
+  {
+    "id": "pyportaldalingua",
+    "name": "pyportaldalingua",
+    "description": "Typed Python client for the Portal da Lingua Portuguesa.",
+    "url": "https://github.com/TigreGotico/pyportaldalingua",
+    "category": "Language",
+    "tags": [
+      "Portuguese",
+      "Language",
+      "API client",
+      "Dictionary"
+    ],
+    "featured": false
+  },
+  {
+    "id": "pymusicbrainz",
+    "name": "pymusicbrainz",
+    "description": "Python metadata client for MusicBrainz — the open music encyclopedia.",
+    "url": "https://github.com/TigreGotico/pymusicbrainz",
+    "category": "Music",
+    "tags": [
+      "MusicBrainz",
+      "Music metadata",
+      "API client"
+    ],
+    "featured": false
+  },
+  {
+    "id": "pyshazam",
+    "name": "pyshazam",
+    "description": "A modular, async Python client for the Shazam API, built on top of shazamio_core for robust audio fingerprinting.",
+    "url": "https://github.com/TigreGotico/pyshazam",
+    "category": "Music",
+    "tags": [
+      "Shazam",
+      "Audio fingerprinting",
+      "Music recognition",
+      "API client"
+    ],
+    "featured": false
+  },
+  {
+    "id": "pydiscogs",
+    "name": "pydiscogs",
+    "description": "Streaming Python client for the Discogs monthly data dumps.",
+    "url": "https://github.com/TigreGotico/pydiscogs",
+    "category": "Music",
+    "tags": [
+      "Discogs",
+      "Music metadata",
+      "Data dumps",
+      "API client"
+    ],
+    "featured": false
+  },
+  {
+    "id": "pyrateyourmusic",
+    "name": "pyrateyourmusic",
+    "description": "Python HTML scraper for rateyourmusic.com.",
+    "url": "https://github.com/TigreGotico/pyrateyourmusic",
+    "category": "Music",
+    "tags": [
+      "RateYourMusic",
+      "Music reviews",
+      "Scraper"
+    ],
+    "featured": false
+  },
+  {
+    "id": "pyerowid",
+    "name": "pyerowid",
+    "description": "Typed Python client + markdown dataset dumper for Erowid (erowid.org).",
+    "url": "https://github.com/TigreGotico/pyerowid",
+    "category": "Psychonautics",
+    "tags": [
+      "Erowid",
+      "Harm reduction",
+      "API client",
+      "Dataset"
+    ],
+    "featured": false
+  },
+  {
+    "id": "pypsychonaut",
+    "name": "pypsychonaut",
+    "description": "Typed Python client + markdown dataset dumper for PsychonautWiki (psychonautwiki.org).",
+    "url": "https://github.com/TigreGotico/pypsychonaut",
+    "category": "Psychonautics",
+    "tags": [
+      "PsychonautWiki",
+      "Harm reduction",
+      "API client",
+      "Dataset"
+    ],
+    "featured": false
+  },
+  {
+    "id": "pytripsit",
+    "name": "pytripsit",
+    "description": "TripSit drug factsheets + interaction matrix client (harm-reduction).",
+    "url": "https://github.com/TigreGotico/pytripsit",
+    "category": "Psychonautics",
+    "tags": [
+      "TripSit",
+      "Harm reduction",
+      "Drug interactions",
+      "API client"
+    ],
+    "featured": false
+  },
+  {
+    "id": "pyinspirobot",
+    "name": "pyinspirobot",
+    "description": "A Python package to interact with InspiroBot (inspirobot.me).",
+    "url": "https://github.com/TigreGotico/pyinspirobot",
+    "category": "Fun",
+    "tags": [
+      "InspiroBot",
+      "Quotes",
+      "API client",
+      "Fun"
+    ],
+    "featured": false
+  },
+  {
+    "id": "pytvtropes",
+    "name": "pytvtropes",
+    "description": "Python HTML scraper for the tvtropes.org PmWiki.",
+    "url": "https://github.com/TigreGotico/pytvtropes",
+    "category": "Reference",
+    "tags": [
+      "TV Tropes",
+      "Media analysis",
+      "Scraper"
+    ],
+    "featured": false
+  },
+  {
+    "id": "pyimdb",
+    "name": "pyimdb",
+    "description": "Python metadata client for IMDb. Resolves free-text queries to canonical IMDb titles.",
+    "url": "https://github.com/TigreGotico/pyimdb",
+    "category": "Video",
+    "tags": [
+      "IMDb",
+      "Movies",
+      "Metadata",
+      "API client"
+    ],
+    "featured": false
+  },
+  {
+    "id": "temporalis",
+    "name": "temporalis",
+    "description": "Unified multi-provider weather abstraction library for Python. Query OpenWeatherMap, Open-Meteo, MetNo, IPMA, NWS and more through one consistent API.",
+    "url": "https://github.com/JarbasAl/temporalis",
+    "category": "Weather",
+    "tags": [
+      "Weather",
+      "Multi-provider",
+      "API client",
+      "Open-Meteo",
+      "OpenWeatherMap"
+    ],
+    "featured": false
   }
 ]
