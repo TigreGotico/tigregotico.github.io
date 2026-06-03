@@ -492,6 +492,37 @@
     "featured": false
   },
   {
+    "id": "shazam2mqtt",
+    "name": "shazam2mqtt",
+    "description": "Dockerised bridge that fingerprints room audio with Shazam and publishes track metadata (title, artist, artwork, lyrics, Apple Music / Spotify / Deezer links) to MQTT with Home Assistant auto-discovery.",
+    "url": "https://github.com/TigreGotico/shazam2mqtt",
+    "category": "Homelab",
+    "tags": [
+      "Shazam",
+      "MQTT",
+      "Home Assistant",
+      "music recognition",
+      "Docker"
+    ],
+    "featured": false
+  },
+  {
+    "id": "vad2mqtt",
+    "name": "vad2mqtt",
+    "description": "Real-time Voice Activity Detection bridge using ovos-plugin-manager. Publishes speech probability (0–100 %), noise level (dB), and a debounced speech-detected binary sensor to MQTT — with Home Assistant auto-discovery.",
+    "url": "https://github.com/TigreGotico/vad2mqtt",
+    "category": "Homelab",
+    "tags": [
+      "VAD",
+      "MQTT",
+      "Home Assistant",
+      "OpenVoiceOS",
+      "IoT",
+      "Docker"
+    ],
+    "featured": false
+  },
+  {
     "id": "sshfs-keeper",
     "name": "sshfs-keeper",
     "description": "A daemon that monitors SSHFS/rclone mounts and auto-remounts them when they drop — with a live web dashboard, REST API, Prometheus metrics, webhooks, and scheduled rsync/rclone sync jobs.",
