@@ -496,7 +496,10 @@
     "name": "shazam2mqtt",
     "description": "Dockerised bridge that fingerprints room audio with Shazam and publishes track metadata (title, artist, artwork, lyrics, Apple Music / Spotify / Deezer links) to MQTT with Home Assistant auto-discovery.",
     "url": "https://github.com/TigreGotico/shazam2mqtt",
-    "category": "Homelab",
+    "category": [
+      "Homelab",
+      "Home Assistant"
+    ],
     "tags": [
       "Shazam",
       "MQTT",
@@ -511,7 +514,10 @@
     "name": "vad2mqtt",
     "description": "Real-time Voice Activity Detection bridge using ovos-plugin-manager. Publishes speech probability (0–100 %), noise level (dB), and a debounced speech-detected binary sensor to MQTT — with Home Assistant auto-discovery.",
     "url": "https://github.com/TigreGotico/vad2mqtt",
-    "category": "Homelab",
+    "category": [
+      "Homelab",
+      "Home Assistant"
+    ],
     "tags": [
       "VAD",
       "MQTT",
@@ -2344,7 +2350,7 @@
     "name": "pygutenberg",
     "description": "Python client for Project Gutenberg — book metadata via the open catalogue.",
     "url": "https://github.com/TigreGotico/pygutenberg",
-    "category": "Books",
+    "category": "Media",
     "tags": [
       "Project Gutenberg",
       "Books",
