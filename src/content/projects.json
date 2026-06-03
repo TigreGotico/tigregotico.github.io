@@ -2524,7 +2524,7 @@
     "name": "pytvtropes",
     "description": "Python HTML scraper for the tvtropes.org PmWiki.",
     "url": "https://github.com/TigreGotico/pytvtropes",
-    "category": "Reference",
+    "category": "Media",
     "tags": [
       "TV Tropes",
       "Media analysis",
@@ -2537,7 +2537,7 @@
     "name": "pyimdb",
     "description": "Python metadata client for IMDb. Resolves free-text queries to canonical IMDb titles.",
     "url": "https://github.com/TigreGotico/pyimdb",
-    "category": "Video",
+    "category": "Media",
     "tags": [
       "IMDb",
       "Movies",
