@@ -2566,5 +2566,45 @@
       "OpenWeatherMap"
     ],
     "featured": false
+  },
+  {
+    "id": "powerguess",
+    "name": "powerguess",
+    "description": "Estimate or measure the power draw of a Linux device — a dependency-light Python library with provenance on every reading (INA219, RAPL, Raspberry Pi PMIC, battery, or a calibrated bounded estimate).",
+    "url": "https://github.com/TigreGotico/powerguess",
+    "category": [
+      "Homelab",
+      "Tools"
+    ],
+    "tags": [
+      "power",
+      "energy",
+      "RAPL",
+      "INA219",
+      "Raspberry Pi",
+      "Python library"
+    ],
+    "featured": false
+  },
+  {
+    "id": "linux2mqtt",
+    "name": "linux2mqtt",
+    "description": "Publish a Linux/SBC's power and system telemetry to Home Assistant over MQTT — CPU/GPU/RAM/disk, temperatures, throttling, audio + MPRIS, WiFi/Bluetooth — all auto-discovered. Built on powerguess.",
+    "url": "https://github.com/TigreGotico/linux2mqtt",
+    "category": [
+      "Homelab",
+      "Home Assistant"
+    ],
+    "tags": [
+      "MQTT",
+      "Home Assistant",
+      "power",
+      "system monitoring",
+      "RAPL",
+      "GPU",
+      "Docker",
+      "IoT"
+    ],
+    "featured": false
   }
 ]
