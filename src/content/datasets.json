@@ -26,5 +26,12 @@
     "description": "Datasets mapping graphemes to phonemes for speech synthesis and linguistic processing tasks.",
     "icon": "Database",
     "url": "https://huggingface.co/collections/TigreGotico/grapheme2phoneme-datasets"
+  },
+  {
+    "id": "heterophone-homographs",
+    "title": "Portuguese Heterophone Homographs",
+    "description": "Meaning-labelled European-Portuguese sentences for heterophonic homograph disambiguation (word, sense, POS, IPA), with a real-world out-of-distribution test set.",
+    "icon": "Database",
+    "url": "https://huggingface.co/collections/TigreGotico/portuguese-heterophone-homographs-6a2c3e8f8e258cbed49098d5"
   }
 ]

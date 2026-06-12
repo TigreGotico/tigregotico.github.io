@@ -2606,5 +2606,23 @@
       "IoT"
     ],
     "featured": false
+  },
+  {
+    "id": "bifonia",
+    "name": "bifonia",
+    "description": "European-Portuguese heterophonic homograph disambiguation for TTS — picks the right pronunciation of words spelled alike but read differently by meaning (sede = thirst vs headquarters, forma = mould vs shape). Pure-Python rules plus learned models, with open datasets.",
+    "url": "https://github.com/TigreGotico/bifonia",
+    "category": [
+      "Portuguese",
+      "NLP"
+    ],
+    "tags": [
+      "grapheme-to-phoneme",
+      "TTS",
+      "homographs",
+      "word-sense disambiguation",
+      "IPA"
+    ],
+    "featured": false
   }
 ]
