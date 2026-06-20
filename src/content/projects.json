@@ -2864,5 +2864,51 @@
       "async",
       "audio fingerprinting"
     ]
+  },
+  {
+    "id": "pyeye",
+    "name": "pyeye",
+    "description": "Pure-Python port of the EYE N3 reasoning engine — feed it Notation3 facts and rules and it derives new facts via forward/backward chaining, RDFS and OWL 2 RL entailment, proof trees and 280+ built-ins. One dependency (rdflib).",
+    "url": "https://github.com/TigreGotico/pyeye",
+    "category": [
+      "NLP"
+    ],
+    "tags": [
+      "N3",
+      "reasoner",
+      "RDF",
+      "forward chaining",
+      "symbolic"
+    ]
+  },
+  {
+    "id": "arbtok",
+    "name": "arbtok",
+    "description": "Rule-based Arabic (MSA) text-to-IPA with tashkeel diacritization, built on orthography2ipa — a context-sensitive token tree handles sun-letter assimilation, hamzat al-waṣl, tanwīn and tāʾ marbūṭa, diacritizing bare text first via bundled ONNX models.",
+    "url": "https://github.com/TigreGotico/arbtok",
+    "category": [
+      "Speech & Language"
+    ],
+    "tags": [
+      "Arabic",
+      "G2P",
+      "IPA",
+      "diacritization"
+    ]
+  },
+  {
+    "id": "pyahotts-iparrahotsa",
+    "name": "pyAhoTTS-Iparrahotsa",
+    "description": "Python port of AhoTTS Iparrahotsa, a Text-to-Speech engine for Northern (continental) Basque — the Iparralde-dialect counterpart to pyAhoTTS, with hts_engine and the AhoCoder vocoder. Developed with Aholab (UPV/EHU).",
+    "url": "https://github.com/TigreGotico/pyAhoTTS-Iparrahotsa",
+    "category": [
+      "TTS"
+    ],
+    "tags": [
+      "AhoTTS",
+      "Basque",
+      "ILENIA",
+      "TTS library"
+    ]
   }
 ]
