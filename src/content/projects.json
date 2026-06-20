@@ -132,7 +132,6 @@
     "imageLocal": "ovoscope.png",
     "featured": false
   },
-
   {
     "id": "ovos-mos",
     "name": "OVOS MoS",
@@ -2293,7 +2292,7 @@
     "featured": false,
     "selfHosted": true
   },
-    {
+  {
     "id": "ovos-stt-plugin-citrinet",
     "name": "ovos-stt-plugin-citrinet",
     "description": "OVOS STT plugin using Citrinet acoustic model, trained on ILENIA speech data.",
@@ -2624,5 +2623,246 @@
       "IPA"
     ],
     "featured": false
+  },
+  {
+    "id": "voiceclonnx",
+    "name": "voiceclonnx",
+    "description": "Pure-ONNX, multi-engine voice conversion — recast any speech to a reference speaker's voice with zero PyTorch at inference. 14 engines (kNN-VC, FreeVC, OpenVoice, RVC, CosyVoice…) behind one VoiceCloner API, plus a CLI and INT8 builds.",
+    "url": "https://github.com/TigreGotico/voiceclonnx",
+    "category": [
+      "TTS",
+      "Machine Learning"
+    ],
+    "tags": [
+      "ONNX",
+      "voice conversion",
+      "zero-shot",
+      "multilingual"
+    ],
+    "featured": true
+  },
+  {
+    "id": "vadonnx",
+    "name": "vadonnx",
+    "description": "Voice Activity Detection the ONNX way — load any VAD model behind one streaming API with a tiny runtime (numpy + onnxruntime). The VAD counterpart to phoonnx; most backends are data, not code.",
+    "url": "https://github.com/TigreGotico/vadonnx",
+    "category": [
+      "Speech & Language"
+    ],
+    "tags": [
+      "ONNX",
+      "VAD",
+      "audio",
+      "streaming"
+    ]
+  },
+  {
+    "id": "pycotovia",
+    "name": "pycotovia",
+    "description": "Pure-Python port of the Cotovia G2P front-end for Galician and Spanish. Reproduces the compiled C binary's syllabification, stress and transcription pipeline with no subprocess.",
+    "url": "https://github.com/TigreGotico/pycotovia",
+    "category": [
+      "Speech & Language"
+    ],
+    "tags": [
+      "G2P",
+      "Galician",
+      "Spanish",
+      "phonemization"
+    ]
+  },
+  {
+    "id": "opentone",
+    "name": "OpenTone",
+    "description": "Data-over-sound toolkit in pure Python — carry text and data through an audio channel (DTMF and more) using shared WAV/sine/Goertzel primitives. Core schemes are dependency-free.",
+    "url": "https://github.com/JarbasAl/OpenTone",
+    "category": [
+      "Tools"
+    ],
+    "tags": [
+      "data-over-sound",
+      "DTMF",
+      "audio",
+      "signal processing"
+    ]
+  },
+  {
+    "id": "phoonnx-addonnvda",
+    "name": "phoonnx-AddonNVDA",
+    "description": "Windows NVDA screen-reader add-on that speaks through phoonnx neural ONNX voices, demonstrating phoonnx as an accessibility TTS backend.",
+    "url": "https://github.com/TigreGotico/phoonnx-AddonNVDA",
+    "category": [
+      "TTS"
+    ],
+    "tags": [
+      "NVDA",
+      "accessibility",
+      "screen reader",
+      "ONNX"
+    ]
+  },
+  {
+    "id": "pyhermit",
+    "name": "pyhermit",
+    "description": "Pure-Python port of HermiT, the OWL 2 DL reasoner from Oxford — consistency, classification and instance retrieval via a hyperresolution tableau, with no JVM and zero runtime dependencies.",
+    "url": "https://github.com/TigreGotico/pyhermit",
+    "category": [
+      "NLP"
+    ],
+    "tags": [
+      "OWL 2",
+      "reasoner",
+      "symbolic",
+      "logic"
+    ]
+  },
+  {
+    "id": "brill_postaggers",
+    "name": "brill_postaggers",
+    "description": "Pre-trained Brill part-of-speech taggers for 11 languages, shipped as ready-to-use pickled models over NLTK — tag text without training.",
+    "url": "https://github.com/TigreGotico/brill_postaggers",
+    "category": [
+      "NLP"
+    ],
+    "tags": [
+      "POS tagging",
+      "11 languages",
+      "NLTK"
+    ]
+  },
+  {
+    "id": "crf_query_xtract",
+    "name": "crf_query_xtract",
+    "description": "Multilingual CRF keyword/search-term extractor — pulls the query out of a natural-language question using a CRF over POS and orthographic features, with pretrained per-language models.",
+    "url": "https://github.com/TigreGotico/crf_query_xtract",
+    "category": [
+      "NLP"
+    ],
+    "tags": [
+      "keyword extraction",
+      "CRF",
+      "multilingual"
+    ]
+  },
+  {
+    "id": "calendar-event-extractor",
+    "name": "calendar-event-extractor",
+    "description": "Rule-based natural-language to calendar-event extractor — turns phrases like 'every monday at 9 am' or 'from X until Y' into structured iCalendar events with recurrence rules.",
+    "url": "https://github.com/TigreGotico/calendar-event-extractor",
+    "category": [
+      "NLP"
+    ],
+    "tags": [
+      "calendar",
+      "iCalendar",
+      "datetime",
+      "rule-based"
+    ]
+  },
+  {
+    "id": "agentpipe",
+    "name": "agentpipe",
+    "description": "Async Python wrapper for coding-agent CLIs (Claude Code, Gemini, opencode, Antigravity) behind one Provider API — one-shot, multi-turn sessions, typed streaming events, and fan-out/delegate/retry pipeline patterns.",
+    "url": "https://github.com/TigreGotico/agentpipe",
+    "category": [
+      "Tools"
+    ],
+    "tags": [
+      "agents",
+      "async",
+      "CLI",
+      "orchestration"
+    ]
+  },
+  {
+    "id": "claude-memory-ui",
+    "name": "claude-memory-ui",
+    "description": "Local web UI for viewing and managing Claude Code data — memories, plans, sessions and settings — reading and writing ~/.claude/ directly. No cloud, no API key.",
+    "url": "https://github.com/TigreGotico/claude-memory-ui",
+    "category": [
+      "Tools"
+    ],
+    "tags": [
+      "Claude Code",
+      "local-first",
+      "FastAPI"
+    ]
+  },
+  {
+    "id": "ww_tagger",
+    "name": "ww_tagger",
+    "description": "Flask web app for hand-labeling wake-word audio — play each clip and tag word, speaker gender and noise type, persisting a corpus ready for training or evaluation.",
+    "url": "https://github.com/TigreGotico/ww_tagger",
+    "category": [
+      "Tools",
+      "Wake-words"
+    ],
+    "tags": [
+      "labeling",
+      "dataset",
+      "Flask"
+    ]
+  },
+  {
+    "id": "synthetic_dataset_generator",
+    "name": "synthetic_dataset_generator",
+    "description": "Toolbox for building wake-word training data end to end — synthesize positives from many TTS voices, diversify speakers via voice conversion, apply real-world distortions, and mine hard negatives. Funded by the NGI0 Commons Fund.",
+    "url": "https://github.com/TigreGotico/synthetic_dataset_generator",
+    "category": [
+      "Wake-words",
+      "Machine Learning"
+    ],
+    "tags": [
+      "dataset",
+      "synthetic data",
+      "wake words",
+      "NGI0"
+    ]
+  },
+  {
+    "id": "stt-benchmarks",
+    "name": "stt-benchmarks",
+    "description": "Benchmark corpus and report generator for speech-to-text plugins — scores plugin/model combinations by WER and Damerau-Levenshtein similarity and ranks them per language.",
+    "url": "https://github.com/TigreGotico/stt-benchmarks",
+    "category": [
+      "Speech & Language",
+      "Machine Learning"
+    ],
+    "tags": [
+      "benchmark",
+      "STT",
+      "WER",
+      "evaluation"
+    ]
+  },
+  {
+    "id": "tts-benchmarks",
+    "name": "tts-benchmarks",
+    "description": "Benchmark harness comparing TTS voices across languages on RTF, round-trip WER, similarity and pitch variability — with published Markdown leaderboards.",
+    "url": "https://github.com/TigreGotico/tts-benchmarks",
+    "category": [
+      "TTS",
+      "Machine Learning"
+    ],
+    "tags": [
+      "benchmark",
+      "TTS",
+      "RTF",
+      "evaluation"
+    ]
+  },
+  {
+    "id": "xazam",
+    "name": "xazam",
+    "description": "Modular, async Python client for the Shazam API — audio fingerprinting via shazamio-core with typed Track/Artist models and a catalog scraper.",
+    "url": "https://github.com/TigreGotico/xazam",
+    "category": [
+      "Music"
+    ],
+    "tags": [
+      "Shazam",
+      "async",
+      "audio fingerprinting"
+    ]
   }
 ]
