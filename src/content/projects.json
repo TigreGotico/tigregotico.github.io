@@ -2622,7 +2622,7 @@
       "word-sense disambiguation",
       "IPA"
     ],
-    "featured": false
+    "featured": true
   },
   {
     "id": "voiceclonnx",
@@ -2847,6 +2847,100 @@
       "Basque",
       "ILENIA",
       "TTS library"
+    ]
+  },
+  {
+    "id": "espyak",
+    "name": "espyak",
+    "description": "Pure-Python, dependency-free reimplementation of espeak-ng's grapheme-to-phoneme front-end — text to phonemes only, no C extension. Reproduces the espeak-ng binary byte-for-byte across an 86-language headword sweep and a 31-language sentence corpus; 117 languages bundled.",
+    "url": "https://github.com/TigreGotico/espyak",
+    "category": [
+      "Speech & Language"
+    ],
+    "tags": [
+      "G2P",
+      "IPA",
+      "phonemization",
+      "espeak-ng",
+      "117 languages"
+    ],
+    "featured": true
+  },
+  {
+    "id": "speakeronnx",
+    "name": "speakeronnx",
+    "description": "Pure-onnxruntime speaker-embedding library — extract speaker embeddings, compute cosine similarity and verify speaker identity from ONNX models, with no PyTorch at runtime.",
+    "url": "https://github.com/TigreGotico/speakeronnx",
+    "category": [
+      "Speech & Language",
+      "Machine Learning"
+    ],
+    "tags": [
+      "ONNX",
+      "speaker embeddings",
+      "speaker verification"
+    ]
+  },
+  {
+    "id": "text2tashkeel",
+    "name": "text2tashkeel",
+    "description": "Lightweight Arabic diacritization (tashkeel) — a single tiny API over interchangeable ONNX models that restore the missing vowel marks, no PyTorch and offline by default. Powers arbtok's diacritization step.",
+    "url": "https://github.com/TigreGotico/text2tashkeel",
+    "category": [
+      "Speech & Language"
+    ],
+    "tags": [
+      "Arabic",
+      "diacritization",
+      "tashkeel",
+      "ONNX"
+    ]
+  },
+  {
+    "id": "desacordo_ortografico",
+    "name": "desacordo_ortografico",
+    "description": "Detect and convert between seven Portuguese orthographic norms — the pre-1911 etymological writing, the 1911/1943/1945/1971/1973 reforms, and the Acordo Ortográfico de 1990 with its European and Brazilian sub-variants.",
+    "url": "https://github.com/TigreGotico/desacordo_ortografico",
+    "category": [
+      "Portuguese",
+      "NLP"
+    ],
+    "tags": [
+      "Portuguese",
+      "orthography",
+      "AO1990",
+      "text conversion"
+    ]
+  },
+  {
+    "id": "ahotts-g2p",
+    "name": "ahotts-g2p",
+    "description": "Pure-Python, zero-dependency, version-aware grapheme-to-phoneme for Basque and Spanish — faithfully reproducing the AhoTTS front-end and emitting the single-char IPA string used to train StyleTTS2/VITS voices.",
+    "url": "https://github.com/TigreGotico/ahotts-g2p",
+    "category": [
+      "Speech & Language"
+    ],
+    "tags": [
+      "G2P",
+      "Basque",
+      "Spanish",
+      "IPA"
+    ]
+  },
+  {
+    "id": "pyinfopedia",
+    "name": "pyinfopedia",
+    "description": "Typed Python client for Infopédia, Porto Editora's European-Portuguese dictionary — parses each entry into IPA pronunciations, syllabification, etymology and senses, correctly separating heterophonic homographs for G2P and disambiguation work.",
+    "url": "https://github.com/TigreGotico/pyinfopedia",
+    "category": [
+      "Portuguese",
+      "Language"
+    ],
+    "tags": [
+      "Portuguese",
+      "dictionary",
+      "IPA",
+      "lexicon"
     ]
   }
 ]
