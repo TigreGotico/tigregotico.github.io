@@ -2775,20 +2775,6 @@
     ]
   },
   {
-    "id": "claude-memory-ui",
-    "name": "claude-memory-ui",
-    "description": "Local web UI for viewing and managing Claude Code data — memories, plans, sessions and settings — reading and writing ~/.claude/ directly. No cloud, no API key.",
-    "url": "https://github.com/TigreGotico/claude-memory-ui",
-    "category": [
-      "Tools"
-    ],
-    "tags": [
-      "Claude Code",
-      "local-first",
-      "FastAPI"
-    ]
-  },
-  {
     "id": "ww_tagger",
     "name": "ww_tagger",
     "description": "Flask web app for hand-labeling wake-word audio — play each clip and tag word, speaker gender and noise type, persisting a corpus ready for training or evaluation.",
@@ -2801,54 +2787,6 @@
       "labeling",
       "dataset",
       "Flask"
-    ]
-  },
-  {
-    "id": "synthetic_dataset_generator",
-    "name": "synthetic_dataset_generator",
-    "description": "Toolbox for building wake-word training data end to end — synthesize positives from many TTS voices, diversify speakers via voice conversion, apply real-world distortions, and mine hard negatives. Funded by the NGI0 Commons Fund.",
-    "url": "https://github.com/TigreGotico/synthetic_dataset_generator",
-    "category": [
-      "Wake-words",
-      "Machine Learning"
-    ],
-    "tags": [
-      "dataset",
-      "synthetic data",
-      "wake words",
-      "NGI0"
-    ]
-  },
-  {
-    "id": "stt-benchmarks",
-    "name": "stt-benchmarks",
-    "description": "Benchmark corpus and report generator for speech-to-text plugins — scores plugin/model combinations by WER and Damerau-Levenshtein similarity and ranks them per language.",
-    "url": "https://github.com/TigreGotico/stt-benchmarks",
-    "category": [
-      "Speech & Language",
-      "Machine Learning"
-    ],
-    "tags": [
-      "benchmark",
-      "STT",
-      "WER",
-      "evaluation"
-    ]
-  },
-  {
-    "id": "tts-benchmarks",
-    "name": "tts-benchmarks",
-    "description": "Benchmark harness comparing TTS voices across languages on RTF, round-trip WER, similarity and pitch variability — with published Markdown leaderboards.",
-    "url": "https://github.com/TigreGotico/tts-benchmarks",
-    "category": [
-      "TTS",
-      "Machine Learning"
-    ],
-    "tags": [
-      "benchmark",
-      "TTS",
-      "RTF",
-      "evaluation"
     ]
   },
   {
