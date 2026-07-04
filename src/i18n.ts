@@ -3,11 +3,16 @@
 //
 // Portuguese is European Portuguese (pt-PT) throughout.
 
-export type Locale = 'en' | 'pt' | 'es' | 'de' | 'nl' | 'fr' | 'it' | 'ru';
+export type Locale = 'en' | 'pt' | 'es' | 'de' | 'nl' | 'fr' | 'it' | 'ru' | 'ar';
 
-export const locales: Locale[] = ['en', 'pt', 'es', 'de', 'nl', 'fr', 'it', 'ru'];
+export const locales: Locale[] = ['en', 'pt', 'es', 'de', 'nl', 'fr', 'it', 'ru', 'ar'];
 
 /** Endonym shown in the language switcher. */
+/** Text direction per locale. */
+export const dir: Record<Locale, 'ltr' | 'rtl'> = {
+  en: 'ltr', pt: 'ltr', es: 'ltr', de: 'ltr', nl: 'ltr', fr: 'ltr', it: 'ltr', ru: 'ltr', ar: 'rtl',
+};
+
 export const languageNames: Record<Locale, string> = {
   en: 'English',
   pt: 'Português',
@@ -17,10 +22,11 @@ export const languageNames: Record<Locale, string> = {
   fr: 'Français',
   it: 'Italiano',
   ru: 'Русский',
+  ar: 'العربية',
 };
 
 /** Locales that have fully translated blog posts (others fall back to English). */
-export const blogLocales: Locale[] = ['en', 'pt', 'es', 'de', 'nl', 'fr', 'it', 'ru'];
+export const blogLocales: Locale[] = ['en', 'pt', 'es', 'de', 'nl', 'fr', 'it', 'ru', 'ar'];
 
 /** Pages that exist in every locale (path without base, no trailing slash). */
 export const translatedPaths = [
@@ -131,6 +137,18 @@ export const ui = {
     },
     a11y: { skip: 'Перейти к содержимому', primaryNav: 'Основная', mobileNav: 'Основная (мобильная)', openMenu: 'Открыть меню навигации', closeMenu: 'Закрыть меню навигации' },
   },
+  ar: {
+    lang: 'ar',
+    locale: 'ar_AR',
+    chooseLanguage: 'اختر اللغة',
+    nav: { home: 'الرئيسية', about: 'من نحن', blog: 'المدونة', projects: 'مفتوح المصدر', services: 'الخدمات', games: 'الألعاب', contact: 'اتصل بنا' },
+    footer: {
+      tagline: 'تقنية صوتية تحترم الخصوصية وذكاء اصطناعي مفتوح المصدر — مصمّمة للعمل على أجهزتك الخاصة.',
+      explore: 'استكشف', projects: 'المشاريع', connect: 'تواصل', voicesDemo: 'عرض الأصوات',
+      privacy: 'الخصوصية', foss: 'برمجيات حرّة ومفتوحة المصدر.', appearance: 'المظهر', vat: 'الرقم الضريبي',
+    },
+    a11y: { skip: 'انتقل إلى المحتوى', primaryNav: 'الرئيسية', mobileNav: 'الرئيسية (للجوال)', openMenu: 'افتح قائمة التنقل', closeMenu: 'أغلق قائمة التنقل' },
+  },
 } as const;
 
 /** Nav in display order, localized. */
@@ -160,7 +178,7 @@ export function pageEntryId(locale: Locale, name: string) {
 
 /** Strip any locale sub-folder from a blog entry id to get its clean slug. */
 export function blogSlug(id: string) {
-  return id.replace(/^(pt|es|de|nl|fr|it|ru)\//, '');
+  return id.replace(/^(pt|es|de|nl|fr|it|ru|ar)\//, '');
 }
 
 /** URL (without base) for a blog post in the given locale. */
@@ -178,6 +196,7 @@ export const blogUI: Record<Locale, { allPosts: string; minRead: string; newer: 
   fr: { allPosts: 'Tous les articles', minRead: 'min de lecture', newer: 'Plus récent', older: 'Plus ancien', more: "Plus d'articles" },
   it: { allPosts: 'Tutti gli articoli', minRead: 'min di lettura', newer: 'Più recente', older: 'Più vecchio', more: 'Altri articoli' },
   ru: { allPosts: 'Все статьи', minRead: 'мин чтения', newer: 'Новее', older: 'Старее', more: 'Ещё статьи' },
+  ar: { allPosts: 'كل المقالات', minRead: 'دقيقة قراءة', newer: 'الأحدث', older: 'الأقدم', more: 'مزيد من المقالات' },
 };
 
 /** Project-card chrome, per locale. */
@@ -190,6 +209,7 @@ export const cardUI: Record<Locale, { selfHosted: string; selfHostedTitle: strin
   fr: { selfHosted: 'Auto-hébergé', selfHostedTitle: 'Fonctionne sur votre propre matériel — aucun cloud obligatoire', viewRepo: 'Voir le dépôt', featured: 'En vedette', comingSoon: 'Bientôt disponible', comingSoonLong: 'Bientôt disponible — pas encore public' },
   it: { selfHosted: 'Self-hosted', selfHostedTitle: 'Funziona sul tuo hardware — nessun cloud obbligatorio', viewRepo: 'Vedi il repository', featured: 'In evidenza', comingSoon: 'Prossimamente', comingSoonLong: 'Prossimamente — non ancora pubblico' },
   ru: { selfHosted: 'Self-hosted', selfHostedTitle: 'Работает на вашем оборудовании — без обязательного облака', viewRepo: 'Открыть репозиторий', featured: 'Рекомендуемое', comingSoon: 'Скоро', comingSoonLong: 'Скоро — пока не опубликовано' },
+  ar: { selfHosted: 'استضافة ذاتية', selfHostedTitle: 'يعمل على أجهزتك الخاصة — دون سحابة إلزامية', viewRepo: 'عرض المستودع', featured: 'مميّز', comingSoon: 'قريبًا', comingSoonLong: 'قريبًا — ليس عامًّا بعد' },
 };
 
 /** Footer note on native languages + machine translation, per locale. */
@@ -202,4 +222,18 @@ export const langNote: Record<Locale, string> = {
   fr: "Cette page est traduite automatiquement ; nos langues natives sont le portugais et l'anglais. Écrivez-nous dans n'importe quelle langue — nous utiliserons la traduction automatique si nécessaire.",
   it: 'Questa pagina è tradotta automaticamente; le nostre lingue native sono il portoghese e l’inglese. Scrivici in qualsiasi lingua — useremo la traduzione automatica se necessario.',
   ru: 'Эта страница переведена машинно; наши родные языки — португальский и английский. Пишите нам на любом языке — при необходимости мы воспользуемся машинным переводом.',
+  ar: 'هذه الصفحة مُترجَمة آليًا؛ لغتانا الأصليتان هما البرتغالية والإنجليزية. راسِلنا بأي لغة — وسنستخدم الترجمة الآلية عند الحاجة.',
+};
+
+/** Games page banner: most game repos are private for now. */
+export const gamesComingSoon: Record<Locale, string> = {
+  en: "Our games are in active development — most aren't public yet. pyFrotz is available today; the rest are coming soon.",
+  pt: 'Os nossos jogos estão em desenvolvimento ativo — a maioria ainda não é pública. O pyFrotz já está disponível; os restantes estão para breve.',
+  es: 'Nuestros juegos están en desarrollo activo: la mayoría aún no son públicos. pyFrotz ya está disponible; el resto llegará pronto.',
+  de: 'Unsere Spiele befinden sich in aktiver Entwicklung — die meisten sind noch nicht öffentlich. pyFrotz ist bereits verfügbar; der Rest folgt in Kürze.',
+  nl: 'Onze games zijn volop in ontwikkeling — de meeste zijn nog niet openbaar. pyFrotz is nu beschikbaar; de rest komt binnenkort.',
+  fr: "Nos jeux sont en développement actif — la plupart ne sont pas encore publics. pyFrotz est disponible dès aujourd'hui ; le reste arrive bientôt.",
+  it: 'I nostri giochi sono in fase di sviluppo attivo — la maggior parte non è ancora pubblica. pyFrotz è già disponibile; il resto arriverà presto.',
+  ru: 'Наши игры в активной разработке — большинство ещё не опубликованы. pyFrotz уже доступен; остальное скоро появится.',
+  ar: 'ألعابنا قيد التطوير النشط — معظمها ليس عامًّا بعد. pyFrotz متاح اليوم؛ والبقية قريبًا.',
 };

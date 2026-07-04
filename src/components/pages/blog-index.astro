@@ -17,6 +17,7 @@ const S = {
     header: 'From the workshop',
     lead: 'Notes on voice AI, OpenVoiceOS development, synthetic data, and minority-language speech technology.',
     filterLabel: 'Filter posts by category',
+    resultsWord: 'results',
     all: 'All',
     minRead: 'min read',
     readArticle: 'Read article',
@@ -32,6 +33,7 @@ const S = {
     header: 'Da oficina',
     lead: 'Notas sobre IA de voz, desenvolvimento do OpenVoiceOS, dados sintéticos e tecnologia de fala para línguas minoritárias. Os artigos são publicados em inglês.',
     filterLabel: 'Filtrar artigos por categoria',
+    resultsWord: 'resultados',
     all: 'Todos',
     minRead: 'min de leitura',
     readArticle: 'Ler artigo',
@@ -56,6 +58,7 @@ const S = {
     "header": "Desde el taller",
     "lead": "Notas sobre IA de voz, desarrollo de OpenVoiceOS, datos sintéticos y tecnología del habla para lenguas minoritarias.",
     "filterLabel": "Filtrar artículos por categoría",
+    resultsWord: 'resultados',
     "all": "Todos",
     "minRead": "min de lectura",
     "readArticle": "Leer artículo",
@@ -70,6 +73,7 @@ const S = {
     "header": "Aus der Werkstatt",
     "lead": "Notizen zu Sprach-KI, OpenVoiceOS-Entwicklung, synthetischen Daten und Sprachtechnologie für Minderheitensprachen.",
     "filterLabel": "Beiträge nach Kategorie filtern",
+    resultsWord: 'Ergebnisse',
     "all": "Alle",
     "minRead": "Min. Lesezeit",
     "readArticle": "Artikel lesen",
@@ -84,6 +88,7 @@ const S = {
     "header": "Uit de werkplaats",
     "lead": "Notities over spraak-AI, OpenVoiceOS-ontwikkeling, synthetische data en spraaktechnologie voor minderheidstalen.",
     "filterLabel": "Berichten filteren op categorie",
+    resultsWord: 'resultaten',
     "all": "Alle",
     "minRead": "min lezen",
     "readArticle": "Artikel lezen",
@@ -98,6 +103,7 @@ const S = {
     "header": "Depuis l'atelier",
     "lead": "Notes sur l'IA vocale, le développement d'OpenVoiceOS, les données synthétiques et la technologie vocale pour les langues minoritaires.",
     "filterLabel": "Filtrer les articles par catégorie",
+    resultsWord: 'résultats',
     "all": "Tous",
     "minRead": "min de lecture",
     "readArticle": "Lire l'article",
@@ -112,6 +118,7 @@ const S = {
     "header": "Dall'officina",
     "lead": "Note su IA vocale, sviluppo di OpenVoiceOS, dati sintetici e tecnologia vocale per lingue minoritarie.",
     "filterLabel": "Filtra gli articoli per categoria",
+    resultsWord: 'risultati',
     "all": "Tutti",
     "minRead": "min di lettura",
     "readArticle": "Leggi l'articolo",
@@ -126,12 +133,28 @@ const S = {
     "header": "Из мастерской",
     "lead": "Заметки о голосовом ИИ, разработке OpenVoiceOS, синтетических данных и речевых технологиях для языков меньшинств.",
     "filterLabel": "Фильтровать статьи по категории",
+    resultsWord: 'результатов',
     "all": "Все",
     "minRead": "мин чтения",
     "readArticle": "Читать статью",
     "note": "",
     "dateLocale": "ru-RU",
     "catLabels": {"Datasets": "Наборы данных", "Voice Tech": "Голосовые технологии", "NLP & Language": "NLP и язык", "Infrastructure": "Инфраструктура", "Privacy & Security": "Конфиденциальность и безопасность", "Games & Accessibility": "Игры и доступность", "JavaScript": "JavaScript", "Community": "Сообщество", "General": "Общее"} as Record<string, string>
+  },
+  ar: {
+    "title": "المدونة",
+    "description": "مقالات ورؤى حول الذكاء الاصطناعي الصوتي، وتطوير OpenVoiceOS، والبيانات الاصطناعية، وتقنية الكلام للغات الأقليات.",
+    "eyebrow": "كتابات",
+    "header": "من الورشة",
+    "lead": "ملاحظات حول الذكاء الاصطناعي الصوتي، وتطوير OpenVoiceOS، والبيانات الاصطناعية، وتقنية الكلام للغات الأقليات.",
+    "filterLabel": "تصفية المقالات حسب الفئة",
+    resultsWord: 'نتيجة',
+    "all": "الكل",
+    "minRead": "دقيقة قراءة",
+    "readArticle": "اقرأ المقال",
+    "note": "",
+    "dateLocale": "ar",
+    "catLabels": {"Datasets": "مجموعات البيانات", "Voice Tech": "تقنية الصوت", "NLP & Language": "معالجة اللغة الطبيعية واللغة", "Infrastructure": "البنية التحتية", "Privacy & Security": "الخصوصية والأمان", "Games & Accessibility": "الألعاب وإمكانية الوصول", "JavaScript": "JavaScript", "Community": "المجتمع", "General": "عام"} as Record<string, string>
   }
 }[locale];
 
@@ -216,6 +239,7 @@ for (const { category } of posts) {
       ))}
   </div>
 
+  <p id="blog-status" role="status" aria-live="polite" class="sr-only" data-word={S.resultsWord}></p>
   <ul id="blog-grid" class="grid gap-6 sm:grid-cols-2">
     {
       posts.map(({ post, minutes, category }, i) => {
@@ -321,6 +345,7 @@ for (const { category } of posts) {
   (function () {
     var filterButtons = document.querySelectorAll('[data-filter]');
     var items = document.querySelectorAll('.blog-item');
+    var statusEl = document.getElementById('blog-status');
 
     function setFilter(filterValue) {
       // Update button states
@@ -338,6 +363,11 @@ for (const { category } of posts) {
           item.hidden = item.getAttribute('data-category') !== filterValue;
         }
       });
+      if (statusEl) {
+        var n = 0;
+        items.forEach(function (it) { if (!it.hidden) n++; });
+        statusEl.textContent = n + ' ' + (statusEl.getAttribute('data-word') || '');
+      }
     }
 
     filterButtons.forEach(btn => {

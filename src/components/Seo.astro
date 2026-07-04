@@ -40,7 +40,7 @@ const baseNoSlash = import.meta.env.BASE_URL.replace(/\/$/, '');
 const herePath = Astro.url.pathname.replace(/\/$/, '');
 const sitePath =
   (herePath.startsWith(baseNoSlash) ? herePath.slice(baseNoSlash.length) : herePath) || '/';
-const enPath = sitePath.replace(/^\/(pt|es|de|nl|fr)(?=\/|$)/, '') || '/';
+const enPath = sitePath.replace(/^\/(pt|es|de|nl|fr|it|ru|ar)(?=\/|$)/, '') || '/';
 const withSlash = (p: string) => (p === '/' ? '/' : p + '/');
 const abs = (path: string) => new URL(baseNoSlash + withSlash(path), Astro.site ?? site.url).href;
 // Blog posts exist only in en + pt; other pages exist in every locale.

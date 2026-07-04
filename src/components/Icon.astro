@@ -46,7 +46,7 @@ const paths: Record<string, string> = {
 const d = paths[name] ?? paths.spark;
 ---
 <svg
-  class={className}
+  class={[className, name === "arrow" ? "i-arrow" : ""].filter(Boolean).join(" ")}
   viewBox="0 0 24 24"
   fill="none"
   stroke="currentColor"

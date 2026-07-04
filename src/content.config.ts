@@ -16,7 +16,7 @@ const blog = defineCollection({
       coverExternal: z.string().url().optional(),
       draft: z.boolean().default(false),
       // 'en' at the root, 'pt' for translations under src/content/blog/pt/.
-      lang: z.enum(['en', 'pt', 'es', 'de', 'nl', 'fr', 'it', 'ru']).default('en'),
+      lang: z.enum(['en', 'pt', 'es', 'de', 'nl', 'fr', 'it', 'ru', 'ar']).default('en'),
     }),
 });
 
@@ -97,6 +97,9 @@ const projects = defineCollection({
     comingSoon: z.boolean().default(false),
     // Self-hostable (runs on your own hardware). True for our FOSS work by default.
     selfHosted: z.boolean().default(true),
+    // Private/not-yet-public repo: kept in the data but not listed. Flip to
+    // re-enable once the repo goes public.
+    hidden: z.boolean().default(false),
   }),
 });
 

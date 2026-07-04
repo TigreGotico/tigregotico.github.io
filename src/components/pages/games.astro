@@ -4,7 +4,7 @@ import PageHeader from '../PageHeader.astro';
 import Section from '../Section.astro';
 import Icon from '../Icon.astro';
 import { getEntry, render } from 'astro:content';
-import { pageEntryId, localePath, type Locale } from '../../i18n';
+import { pageEntryId, localePath, cardUI, gamesComingSoon, type Locale } from '../../i18n';
 
 interface Props { locale?: Locale }
 const locale: Locale = Astro.props.locale ?? 'en';
@@ -205,6 +205,25 @@ const S = {
     "blog": "Читать блог",
     "kinds": [{"icon": "scroll", "title": "Классическая интерактивная проза", "body": "Текстовые приключения с парсером в традиции Infocom — истории Z-machine и классика — с озвучиванием и управлением голосом или клавиатурой."}, {"icon": "spark", "title": "Генеративные миры на основе LLM", "body": "Открытые миры, где языковая модель импровизирует сюжет, персонажей и выборы вокруг вас — новое приключение в каждом прохождении."}, {"icon": "waveform", "title": "Сначала звук и доступность", "body": "Создано для ушей, а не для глаз. Совместимо с программами чтения с экрана в терминале и полностью управляется голосом в Open Voice Operating System — разработано вместе с незрячими игроками."}],
     "howToPlay": [{"icon": "cpu", "title": "В командной строке", "body": "Клиент с клавиатурой и текстом, который можно запустить везде, где работает терминал."}, {"icon": "mic", "title": "Голосом", "body": "Без рук на Open Voice Operating System и HiveMind — просто говорите и слушайте."}]
+  },
+  ar: {
+    "eyebrow": "العب",
+    "title": "ألعاب النص والصوت",
+    "whatWeMake": "ما نصنعه",
+    "whatWeMakeTitle": "من الكلاسيكيات إلى العوالم التوليدية",
+    "howToPlayEyebrow": "كيف تلعب",
+    "howToPlayTitle": "سطر الأوامر أو الصوت — القرار لك",
+    "more": "هناك المزيد من العناوين قيد التطوير النشط — تابعها على المدونة.",
+    "engines": "محركاتنا",
+    "enginesTitle": "تحت الغطاء",
+    "tnalagmes": "إطار العمل الذي يقف خلف عشرات العناوين، من Oregon Trail إلى Lunar Lander. يتولى حالة اللعبة والإدخال والإخراج الصوتي و NLP كي يركّز المؤلفون على القصة والقواعد.",
+    "storyforge": "محركنا للخيال التفاعلي المدفوع بالقصة — سرديات متفرعة حيث تهم الاختيارات، وتحسم النرد النتائج فتبقى نزيهة. مبنيّ بمنهج الصوت أولًا، مع اللاعبين المكفوفين وضعاف البصر بوصفهم الجمهور الأساسي.",
+    "pyfrotz": "غلاف Python حول مفسّر Frotz لآلة Z. يشغّل ملفات القصص الكلاسيكية Z3/Z5/Z8 بالصوت، مع ترجمة تلقائية مدمجة كي تصل ألعاب Infocom وألعاب المجتمع إلى لغات جديدة وإلى جماهير الصوت أولًا.",
+    "cta": "هل تريد بناء لعبة صوتية — أو تمكين عالمك بالصوت؟",
+    "contact": "تواصل معنا",
+    "blog": "اقرأ المدونة",
+    "kinds": [{"icon": "scroll", "title": "الخيال التفاعلي الكلاسيكي", "body": "مغامرات نصية بأسلوب المحلّل النحوي في سلالة Infocom — قصص آلة Z والكلاسيكيات — تُروى وتُتحكَّم بها بالصوت أو لوحة المفاتيح."}, {"icon": "spark", "title": "عوالم توليدية مدعومة بنماذج LLM", "body": "عوالم مفتوحة النهاية حيث يرتجل نموذج لغوي القصة والشخصيات والاختيارات من حولك — مغامرة جديدة في كل مرة تلعب فيها."}, {"icon": "waveform", "title": "الصوت أولًا وقابل للوصول", "body": "مصمَّم للآذان لا للعيون. متوافق مع قارئات الشاشة في الطرفية ومُتحكَّم به بالكامل بالصوت على Open Voice Operating System — صُمِّم بمشاركة لاعبين مكفوفين."}],
+    "howToPlay": [{"icon": "cpu", "title": "في سطر الأوامر", "body": "عميل بلوحة مفاتيح ونص يمكنك تشغيله أينما تعمل الطرفية."}, {"icon": "mic", "title": "بالصوت", "body": "دون استخدام اليدين على Open Voice Operating System و HiveMind — فقط تكلّم واستمع."}]
   }
 }[locale];
 
@@ -219,6 +238,11 @@ const howToPlay = S.howToPlay;
 
 <Base title={page!.data.title} description={page!.data.description} locale={locale}>
   <PageHeader eyebrow={S.eyebrow} title={S.title} lead={page!.data.description} />
+
+  <p class="mb-8 flex items-start gap-2 rounded-xl border border-primary/30 bg-primary/5 px-4 py-3 text-sm text-fg">
+    <span class="badge-accent shrink-0">{cardUI[locale].comingSoon}</span>
+    <span>{gamesComingSoon[locale]}</span>
+  </p>
 
   <article class="prose-content max-w-3xl">
     <Content />
@@ -260,21 +284,21 @@ const howToPlay = S.howToPlay;
         <p class="mt-2 text-sm leading-relaxed text-muted">
           <strong>T(oolbox) Na(tural) La(nguage) G(a)mes</strong> — {S.tnalagmes}
         </p>
-        <a href="https://github.com/VoiceGamez/TNaLaGmes" class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary" rel="noopener">GitHub →</a>
+        <span class="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-muted"><span class="inline-block h-1.5 w-1.5 rounded-full bg-primary" aria-hidden="true"></span>{cardUI[locale].comingSoon}</span>
       </div>
       <div class="card-hover reveal" data-reveal data-reveal-delay="70">
         <h3 class="display-3 text-lg">StoryForge <span class="text-xs font-normal text-muted">beta</span></h3>
         <p class="mt-2 text-sm leading-relaxed text-muted">
           {S.storyforge}
         </p>
-        <a href="https://github.com/VoiceGamez/story-forge" class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary" rel="noopener">GitHub →</a>
+        <span class="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-muted"><span class="inline-block h-1.5 w-1.5 rounded-full bg-primary" aria-hidden="true"></span>{cardUI[locale].comingSoon}</span>
       </div>
       <div class="card-hover reveal" data-reveal data-reveal-delay="140">
         <h3 class="display-3 text-lg">pyFrotz</h3>
         <p class="mt-2 text-sm leading-relaxed text-muted">
           {S.pyfrotz}
         </p>
-        <a href="https://github.com/VoiceGamez/pyFrotz" class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary" rel="noopener">GitHub →</a>
+        <a href="https://github.com/VoiceGamez/pyFrotz" class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary" rel="noopener">GitHub <span aria-hidden="true">→</span></a>
       </div>
     </div>
   </Section>

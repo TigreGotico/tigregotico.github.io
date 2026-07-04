@@ -1266,7 +1266,8 @@
       "microcontroller",
       "firmware"
     ],
-    "featured": false
+    "featured": false,
+    "hidden": true
   },
   {
     "id": "hivemind-micropython-client",
@@ -1279,7 +1280,8 @@
       "IoT",
       "embedded"
     ],
-    "featured": false
+    "featured": false,
+    "hidden": true
   },
   {
     "id": "hivemind-homeassistant",
@@ -1306,7 +1308,8 @@
       "Text Adventure"
     ],
     "featured": false,
-    "selfHosted": true
+    "selfHosted": true,
+    "hidden": true
   },
   {
     "id": "pokepython",
@@ -1320,7 +1323,8 @@
       "Text Adventure"
     ],
     "featured": false,
-    "selfHosted": true
+    "selfHosted": true,
+    "hidden": true
   },
   {
     "id": "story-forge-engine",
@@ -1334,7 +1338,8 @@
       "engine"
     ],
     "featured": false,
-    "selfHosted": true
+    "selfHosted": true,
+    "hidden": true
   },
   {
     "id": "tnalagmes-engine",
@@ -1349,7 +1354,8 @@
       "NLP"
     ],
     "featured": false,
-    "selfHosted": true
+    "selfHosted": true,
+    "hidden": true
   },
   {
     "id": "sitemapper",

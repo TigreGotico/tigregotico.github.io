@@ -53,7 +53,7 @@ const categoryMeta: Record<string, { hue: number; icon: string }> = {
 };
 const label = categoryLabel ?? project.category;
 const meta = categoryMeta[project.category] ?? { hue: 280, icon: 'spark' };
-const badgeStyle = `--h:${meta.hue}; color:hsl(${meta.hue} 70% 55%); background:hsl(${meta.hue} 70% 55% / 0.12); border-color:hsl(${meta.hue} 70% 55% / 0.3);`;
+const badgeStyle = `--h:${meta.hue}; background:hsl(${meta.hue} 70% 55% / 0.12); border-color:hsl(${meta.hue} 70% 55% / 0.3);`;
 ---
 
 <article class="card-hover group flex h-full flex-col overflow-hidden reveal" data-reveal>
@@ -88,7 +88,7 @@ const badgeStyle = `--h:${meta.hue}; color:hsl(${meta.hue} 70% 55%); background:
 
   <div class="mb-3 flex items-center justify-between gap-2">
     <span
-      class="inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-medium"
+      class="cat-badge inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-medium"
       style={badgeStyle}
     >
       <Icon name={meta.icon} class="h-3.5 w-3.5" />
@@ -141,7 +141,7 @@ const badgeStyle = `--h:${meta.hue}; color:hsl(${meta.hue} 70% 55%); background:
           rel="noopener"
         >
           {c.viewRepo}
-          <span aria-hidden="true">&rarr;</span>
+          <span class="arrow-flip" aria-hidden="true">&rarr;</span>
         </a>
       ) : (
         <span class="ml-auto inline-flex items-center gap-1.5 text-sm font-medium text-muted">

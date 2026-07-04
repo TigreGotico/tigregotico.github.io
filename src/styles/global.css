@@ -562,3 +562,35 @@
     transform: scaleY(1);
   }
 }
+
+/* ─── Right-to-left support (Arabic) ─────────────────────────────────────
+   Flexbox rows and start-based text mirror automatically from the `dir`
+   attribute; these rules handle the physical-direction utilities and the
+   details that don't auto-flip. */
+[dir='rtl'] .ml-auto { margin-left: 0; margin-inline-start: auto; }
+[dir='rtl'] .mr-auto { margin-right: 0; margin-inline-end: auto; }
+
+/* Language dropdown: anchor to the inline-end edge in both directions. */
+.lang-menu { inset-inline-end: 0; }
+
+/* Section-scoped right alignment should follow the reading direction. */
+@media (min-width: 640px) {
+  [dir='rtl'] .sm\:text-right { text-align: left; }
+}
+
+/* Forward/back arrow glyphs and icons point along the reading direction. */
+[dir='rtl'] .i-arrow,
+[dir='rtl'] .arrow-flip { display: inline-block; transform: scaleX(-1); }
+
+/* Code, commands and identifiers are always left-to-right, even in RTL prose. */
+[dir='rtl'] pre,
+[dir='rtl'] code,
+[dir='rtl'] kbd,
+[dir='rtl'] samp { direction: ltr; unicode-bidi: isolate; }
+[dir='rtl'] .post-body pre { text-align: left; }
+/* Latin-script inline tokens (package names, URLs) read correctly in RTL text. */
+[dir='rtl'] .post-body :not(pre) > code { unicode-bidi: isolate; }
+
+/* Category badge foreground: dark-enough on light themes, light-enough on dark. */
+.cat-badge { color: hsl(var(--h) 65% 34%); }
+.dark .cat-badge { color: hsl(var(--h) 80% 74%); }

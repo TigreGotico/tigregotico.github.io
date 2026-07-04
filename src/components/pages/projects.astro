@@ -26,6 +26,7 @@ const S = {
     exploreTitle: 'Featured highlights',
     exploreLead: 'Filter by area to explore more — everything is open source.',
     filterLabel: 'Filter projects by category',
+    resultsWord: 'results',
     catLabels: {} as Record<string, string>,
     tagILENIA: 'Funded by the ILENIA project',
     tagNLnet: 'Funded by NLnet / NGI0 Commons Fund',
@@ -50,6 +51,7 @@ const S = {
     exploreTitle: 'Destaques',
     exploreLead: 'Filtre por área para explorar mais — tudo é código aberto.',
     filterLabel: 'Filtrar projetos por categoria',
+    resultsWord: 'resultados',
     catLabels: {
       'Speech Synthesis': 'Síntese de Fala',
       'Speech Recognition': 'Reconhecimento de Fala',
@@ -86,6 +88,7 @@ const S = {
     "exploreTitle": "Destacados",
     "exploreLead": "Filtre por área para explorar más: todo es código abierto.",
     "filterLabel": "Filtrar proyectos por categoría",
+    resultsWord: 'resultados',
     "catLabels": {"Speech Synthesis": "Síntesis de Voz", "Speech Recognition": "Reconocimiento de Voz", "Wake Words": "Palabras de Activación", "Phonetics & G2P": "Fonética y G2P", "NLP & Language": "NLP y Lenguaje", "LLM & Agents": "LLM y Agentes", "Media & Music": "Medios y Música", "Data & Scraping": "Datos y Scraping", "Voice Platform (OVOS)": "Plataforma de Voz (OVOS)", "HiveMind": "HiveMind", "Smart Home": "Hogar Inteligente", "Games": "Juegos", "Developer Tools": "Herramientas para Desarrolladores"} as Record<string, string>,
     "tagILENIA": "Financiado por el proyecto ILENIA",
     "tagNLnet": "Financiado por NLnet / NGI0 Commons Fund",
@@ -108,6 +111,7 @@ const S = {
     "exploreTitle": "Highlights",
     "exploreLead": "Filtern Sie nach Bereich, um mehr zu entdecken – alles ist Open Source.",
     "filterLabel": "Projekte nach Kategorie filtern",
+    resultsWord: 'Ergebnisse',
     "catLabels": {"Speech Synthesis": "Sprachsynthese", "Speech Recognition": "Spracherkennung", "Wake Words": "Aktivierungswörter", "Phonetics & G2P": "Phonetik & G2P", "NLP & Language": "NLP & Sprache", "LLM & Agents": "LLM & Agenten", "Media & Music": "Medien & Musik", "Data & Scraping": "Daten & Scraping", "Voice Platform (OVOS)": "Sprachplattform (OVOS)", "HiveMind": "HiveMind", "Smart Home": "Smart Home", "Games": "Spiele", "Developer Tools": "Entwicklerwerkzeuge"} as Record<string, string>,
     "tagILENIA": "Gefördert durch das ILENIA-Projekt",
     "tagNLnet": "Gefördert durch NLnet / NGI0 Commons Fund",
@@ -130,6 +134,7 @@ const S = {
     "exploreTitle": "Uitgelicht",
     "exploreLead": "Filter op gebied om meer te verkennen – alles is open source.",
     "filterLabel": "Projecten filteren op categorie",
+    resultsWord: 'resultaten',
     "catLabels": {"Speech Synthesis": "Spraaksynthese", "Speech Recognition": "Spraakherkenning", "Wake Words": "Activeringswoorden", "Phonetics & G2P": "Fonetiek & G2P", "NLP & Language": "NLP & Taal", "LLM & Agents": "LLM & Agents", "Media & Music": "Media & Muziek", "Data & Scraping": "Data & Scraping", "Voice Platform (OVOS)": "Spraakplatform (OVOS)", "HiveMind": "HiveMind", "Smart Home": "Smarthome", "Games": "Games", "Developer Tools": "Ontwikkelaarstools"} as Record<string, string>,
     "tagILENIA": "Gefinancierd door het ILENIA-project",
     "tagNLnet": "Gefinancierd door NLnet / NGI0 Commons Fund",
@@ -152,6 +157,7 @@ const S = {
     "exploreTitle": "À la une",
     "exploreLead": "Filtrez par domaine pour en explorer davantage : tout est open source.",
     "filterLabel": "Filtrer les projets par catégorie",
+    resultsWord: 'résultats',
     "catLabels": {"Speech Synthesis": "Synthèse vocale", "Speech Recognition": "Reconnaissance vocale", "Wake Words": "Mots d'activation", "Phonetics & G2P": "Phonétique et G2P", "NLP & Language": "NLP et langue", "LLM & Agents": "LLM et agents", "Media & Music": "Médias et musique", "Data & Scraping": "Données et scraping", "Voice Platform (OVOS)": "Plateforme vocale (OVOS)", "HiveMind": "HiveMind", "Smart Home": "Maison connectée", "Games": "Jeux", "Developer Tools": "Outils pour développeurs"} as Record<string, string>,
     "tagILENIA": "Financé par le projet ILENIA",
     "tagNLnet": "Financé par NLnet / NGI0 Commons Fund",
@@ -174,6 +180,7 @@ const S = {
     "exploreTitle": "In primo piano",
     "exploreLead": "Filtra per area per esplorare di più — tutto è open source.",
     "filterLabel": "Filtra i progetti per categoria",
+    resultsWord: 'risultati',
     "catLabels": {"Speech Synthesis": "Sintesi vocale", "Speech Recognition": "Riconoscimento vocale", "Wake Words": "Parole di attivazione", "Phonetics & G2P": "Fonetica e G2P", "NLP & Language": "NLP e Lingua", "LLM & Agents": "LLM e Agenti", "Media & Music": "Media e Musica", "Data & Scraping": "Dati e Scraping", "Voice Platform (OVOS)": "Piattaforma vocale (OVOS)", "HiveMind": "HiveMind", "Smart Home": "Casa intelligente", "Games": "Giochi", "Developer Tools": "Strumenti per sviluppatori"} as Record<string, string>,
     "tagILENIA": "Finanziato dal progetto ILENIA",
     "tagNLnet": "Finanziato da NLnet / NGI0 Commons Fund",
@@ -196,16 +203,40 @@ const S = {
     "exploreTitle": "Избранное",
     "exploreLead": "Фильтруйте по области, чтобы узнать больше — всё это открытый код.",
     "filterLabel": "Фильтровать проекты по категории",
+    resultsWord: 'результатов',
     "catLabels": {"Speech Synthesis": "Синтез речи", "Speech Recognition": "Распознавание речи", "Wake Words": "Слова активации", "Phonetics & G2P": "Фонетика и G2P", "NLP & Language": "NLP и язык", "LLM & Agents": "LLM и агенты", "Media & Music": "Медиа и музыка", "Data & Scraping": "Данные и скрейпинг", "Voice Platform (OVOS)": "Голосовая платформа (OVOS)", "HiveMind": "HiveMind", "Smart Home": "Умный дом", "Games": "Игры", "Developer Tools": "Инструменты разработчика"} as Record<string, string>,
     "tagILENIA": "Финансируется проектом ILENIA",
     "tagNLnet": "Финансируется NLnet / NGI0 Commons Fund",
     "tagVisio": "Финансируется проектом Visio",
     "tagPortuguese": "Работа на португальском языке и для лузофонии",
     "tagJavaScript": "Работает в браузере / Node.js"
+  },
+  ar: {
+    "title": "المصادر المفتوحة",
+    "description": "أعمال TigreGótico مفتوحة المصدر — مكتبات وأدوات حرة وقابلة للاستضافة الذاتية تشمل الذكاء الاصطناعي الصوتي واستخراج البيانات ومجموعات البيانات ومعالجة اللغة الطبيعية والألعاب، إضافة إلى منظومة OpenVoiceOS وHiveMind.",
+    "eyebrow": "أعمالنا",
+    "lead": "أعمالنا مفتوحة المصدر — مكتبات وأدوات حرة وقابلة للاستضافة الذاتية تشمل الذكاء الاصطناعي الصوتي واستخراج البيانات ومجموعات البيانات ومعالجة اللغة الطبيعية والألعاب، إضافة إلى منظومة OpenVoiceOS وHiveMind التي نساهم في بنائها. دون اعتماد قسري، ودون سحابة إلزامية.",
+    "beyond1": "إلى جانب الشيفرة، تُنشَر مجموعات بياناتنا ونماذجنا المفتوحة على",
+    "beyond2": "وتوجد دفاتر التدريب الخاصة بنا في مستودع",
+    "beyond3": ".",
+    "community": "المجتمع",
+    "communityTitle": "العمل مع المجتمع",
+    "communityLead": "نساهم مع شركاء مستقلين ونتبرع بالأعمال الممولة من المال العام لمؤسسة OpenVoiceOS.",
+    "explore": "استكشف",
+    "exploreTitle": "أبرز الأعمال",
+    "exploreLead": "صفِّ حسب المجال لاستكشاف المزيد — كل شيء مفتوح المصدر.",
+    "filterLabel": "تصفية المشاريع حسب الفئة",
+    resultsWord: 'نتيجة',
+    "catLabels": {"Speech Synthesis": "توليف الكلام", "Speech Recognition": "التعرف على الكلام", "Wake Words": "كلمات التنبيه", "Phonetics & G2P": "الصوتيات وG2P", "NLP & Language": "معالجة اللغة الطبيعية واللغة", "LLM & Agents": "نماذج اللغة الكبيرة والوكلاء", "Media & Music": "الوسائط والموسيقى", "Data & Scraping": "البيانات والكشط", "Voice Platform (OVOS)": "منصة الصوت (OVOS)", "HiveMind": "HiveMind", "Smart Home": "المنزل الذكي", "Games": "الألعاب", "Developer Tools": "أدوات المطورين"} as Record<string, string>,
+    "tagILENIA": "بتمويل من مشروع ILENIA",
+    "tagNLnet": "بتمويل من NLnet / NGI0 Commons Fund",
+    "tagVisio": "بتمويل من مشروع Visio",
+    "tagPortuguese": "أعمال باللغة البرتغالية واللغات الناطقة بها",
+    "tagJavaScript": "يعمل في المتصفح / Node.js"
   }
 }[locale];
 
-const projects = (await getCollection('projects')).map((p) => p.data);
+const projects = (await getCollection('projects')).map((p) => p.data).filter((p) => !p.hidden);
 const featured = projects.filter((p) => p.featured);
 
 // Single-axis taxonomy (by capability). Display order for the filter row.
@@ -321,6 +352,7 @@ const collaborations = (await getCollection('collaborations')).map((c) => c.data
       }
     </div>
 
+    <p id="project-status" role="status" aria-live="polite" class="sr-only" data-word={S.resultsWord}></p>
     <div id="project-grid" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {
         projects.map((project) => {
@@ -374,7 +406,14 @@ const collaborations = (await getCollection('collaborations')).map((c) => c.data
     if (!bar || !grid) return;
     var chips = bar.querySelectorAll('[data-filter]');
     var items = grid.querySelectorAll('.project-item');
+    var statusEl = document.getElementById('project-status');
     var filterActive = false;
+    function announce() {
+      if (!statusEl) return;
+      var n = 0;
+      for (var k = 0; k < items.length; k++) if (!items[k].hidden) n++;
+      statusEl.textContent = n + ' ' + (statusEl.getAttribute('data-word') || '');
+    }
 
     function set(val) {
       filterActive = true;
@@ -395,6 +434,7 @@ const collaborations = (await getCollection('collaborations')).map((c) => c.data
         }
         items[j].hidden = !show;
       }
+      announce();
     }
 
     function showFeatured() {
@@ -405,6 +445,7 @@ const collaborations = (await getCollection('collaborations')).map((c) => c.data
       for (var j = 0; j < items.length; j++) {
         items[j].hidden = items[j].getAttribute('data-featured') !== 'true';
       }
+      announce();
     }
 
     // Show featured projects by default
