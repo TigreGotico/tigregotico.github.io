@@ -15,12 +15,14 @@ interface Props {
   jsonLd?: Record<string, unknown>;
   publishedTime?: string;
   modifiedTime?: string;
+  noindex?: boolean;
 }
 
 const props = Astro.props;
 const base = import.meta.env.BASE_URL;
+// Emit trailing-slash URLs to match canonicals/sitemap and avoid Pages 301s.
 const navLink = (href: string) =>
-  (base.replace(/\/$/, '') + (href === '/' ? '/' : href)).replace(/\/\/+$/, '/');
+  (base.replace(/\/$/, '') + (href === '/' ? '/' : href + '/')).replace(/\/\/+$/, '/');
 
 // Mark the current section active (matches /section and /section/...).
 const here = Astro.url.pathname.replace(/\/$/, '');
@@ -53,13 +55,7 @@ const projectLinks = [
     />
     <Seo {...props} />
 
-    <!-- Brand fonts with font-display: swap (set via &display=swap) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&family=Cinzel:wght@500;600;700&display=swap"
-    />
+    <!-- Brand fonts are self-hosted (src/styles/fonts.css) — no third-party requests. -->
 
     <!-- Apply persisted/preferred theme before paint to avoid a flash. -->
     <script is:inline>
@@ -136,12 +132,12 @@ const projectLinks = [
             id="nav-toggle"
             type="button"
             class="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border text-fg transition-colors hover:border-primary hover:text-primary lg:hidden"
-            aria-label="Toggle navigation menu"
+            aria-label="Open navigation menu"
             aria-expanded="false"
             aria-controls="mobile-nav"
           >
             <svg
-              class="h-5 w-5"
+              class="nav-icon-open h-5 w-5"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -151,9 +147,21 @@ const projectLinks = [
             >
               <path d="M4 7h16M4 12h16M4 17h16"></path>
             </svg>
+            <svg
+              class="nav-icon-close hidden h-5 w-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <path d="M6 6l12 12M18 6L6 18"></path>
+            </svg>
           </button>
         </div>
       </nav>
+      <nav aria-label="Primary (mobile)">
       <ul
         id="mobile-nav"
         class="hidden border-t border-border bg-bg/95 px-6 py-3 text-sm backdrop-blur lg:hidden"
@@ -183,6 +191,7 @@ const projectLinks = [
           <PaletteSelector id="palette-mobile" compact />
         </li>
       </ul>
+      </nav>
     </header>
 
     <main id="main" class="mx-auto w-full max-w-5xl flex-1 px-6 py-12">
@@ -261,8 +270,9 @@ const projectLinks = [
         </div>
       </div>
       <div class="border-t border-border">
-        <p class="mx-auto max-w-5xl px-6 py-5 text-xs text-muted">
-          © {year} {site.legalName}. Free and open-source software.
+        <p class="mx-auto flex max-w-5xl flex-wrap items-center gap-x-4 gap-y-1 px-6 py-5 text-xs text-muted">
+          <span>© {year} {site.legalName}. Free and open-source software.</span>
+          <a class="transition-colors hover:text-fg" href={navLink('/privacy')}>Privacy</a>
         </p>
       </div>
     </footer>
@@ -274,9 +284,32 @@ const projectLinks = [
         var btn = document.getElementById('nav-toggle');
         var menu = document.getElementById('mobile-nav');
         if (btn && menu) {
-          btn.addEventListener('click', function () {
-            var open = menu.classList.toggle('hidden') === false;
+          var setOpen = function (open) {
+            menu.classList.toggle('hidden', !open);
             btn.setAttribute('aria-expanded', String(open));
+            btn.setAttribute(
+              'aria-label',
+              open ? 'Close navigation menu' : 'Open navigation menu'
+            );
+            btn.querySelector('.nav-icon-open').classList.toggle('hidden', open);
+            btn.querySelector('.nav-icon-close').classList.toggle('hidden', !open);
+          };
+          var isOpen = function () {
+            return !menu.classList.contains('hidden');
+          };
+          btn.addEventListener('click', function () {
+            setOpen(!isOpen());
+          });
+          document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && isOpen()) {
+              setOpen(false);
+              btn.focus();
+            }
+          });
+          document.addEventListener('click', function (e) {
+            if (isOpen() && !menu.contains(e.target) && !btn.contains(e.target)) {
+              setOpen(false);
+            }
           });
         }
         // Translucent backdrop-blur once the page has scrolled.
