@@ -4,27 +4,87 @@
     "name": "OpenVoiceOS",
     "description": "An independent non-profit foundation building a community-driven, privacy-respecting open-source voice-AI platform. TigreGótico is a core contributor to OpenVoiceOS, and its founder serves on the foundation's board.",
     "url": "https://openvoiceos.org",
-    "repositories": []
+    "repositories": [],
+    "descriptions": {
+      "pt": "Uma fundação independente sem fins lucrativos que constrói uma plataforma de IA de voz de código aberto, orientada pela comunidade e respeitadora da privacidade. A TigreGótico é um contribuidor central do OpenVoiceOS e o seu fundador integra a direção da fundação.",
+      "es": "Una fundación independiente sin ánimo de lucro que construye una plataforma de IA de voz de código abierto, impulsada por la comunidad y respetuosa con la privacidad. TigreGótico es un contribuidor principal de OpenVoiceOS, y su fundador forma parte de la junta de la fundación.",
+      "de": "Eine unabhängige gemeinnützige Stiftung, die eine community-getriebene, datenschutzfreundliche und quelloffene Sprach-KI-Plattform aufbaut. TigreGótico ist ein zentraler Beitragender zu OpenVoiceOS, und sein Gründer sitzt im Vorstand der Stiftung.",
+      "nl": "Een onafhankelijke non-profitstichting die een gemeenschapsgedreven, privacyvriendelijk opensource spraak-AI-platform bouwt. TigreGótico is een kernbijdrager aan OpenVoiceOS, en zijn oprichter zetelt in het bestuur van de stichting.",
+      "fr": "Une fondation indépendante à but non lucratif qui construit une plateforme d'IA vocale open source, communautaire et respectueuse de la vie privée. TigreGótico est un contributeur central d'OpenVoiceOS, et son fondateur siège au conseil d'administration de la fondation.",
+      "it": "Una fondazione indipendente senza scopo di lucro che costruisce una piattaforma di IA vocale open source, guidata dalla comunità e rispettosa della privacy. TigreGótico è un contributore fondamentale di OpenVoiceOS e il suo fondatore fa parte del consiglio della fondazione.",
+      "ru": "Независимый некоммерческий фонд, создающий управляемую сообществом, уважающую приватность открытую платформу голосового ИИ. TigreGótico является ключевым контрибьютором OpenVoiceOS, а его основатель входит в совет директоров фонда.",
+      "ar": "مؤسسة غير ربحية مستقلة تبني منصة ذكاء اصطناعي صوتي مفتوحة المصدر يقودها المجتمع وتحترم الخصوصية. TigreGótico مساهم أساسي في OpenVoiceOS، ومؤسسها عضو في مجلس إدارة المؤسسة.",
+      "fa": "یک بنیاد غیرانتفاعی مستقل که یک بستر هوش مصنوعی صوتی متن‌باز، جامعه‌محور و محترم به حریم خصوصی می‌سازد. TigreGótico یکی از مشارکت‌کنندگان اصلی OpenVoiceOS است و بنیان‌گذار آن عضو هیئت‌مدیرهٔ بنیاد است.",
+      "hi": "एक स्वतंत्र गैर-लाभकारी फ़ाउंडेशन जो एक समुदाय-संचालित, गोपनीयता का सम्मान करने वाला ओपन-सोर्स वॉइस-AI प्लेटफ़ॉर्म बना रहा है। TigreGótico OpenVoiceOS का एक कोर योगदानकर्ता है, और इसके संस्थापक फ़ाउंडेशन के बोर्ड में सेवा देते हैं।",
+      "zh": "一个独立的非营利基金会，致力于构建由社区驱动、尊重隐私的开源语音 AI 平台。TigreGótico 是 OpenVoiceOS 的核心贡献者，其创始人也任职于该基金会董事会。",
+      "ko": "커뮤니티 주도의 프라이버시를 존중하는 오픈소스 음성 AI 플랫폼을 구축하는 독립 비영리 재단. TigreGótico는 OpenVoiceOS의 핵심 기여자이며, 그 설립자는 재단 이사회에서 활동하고 있습니다.",
+      "ja": "コミュニティ主導でプライバシーを尊重するオープンソースの音声AIプラットフォームを構築する、独立した非営利財団。TigreGóticoはOpenVoiceOSの中核的な貢献者であり、その創設者は財団の理事を務めている。"
+    }
   },
   {
     "id": "alpha-cephei",
     "name": "Alpha Cephei",
     "description": "A speech-recognition partnership bringing decades of automatic speech recognition (ASR) expertise — the team behind Vosk and Kaldi-based models — to our voice-model fine-tuning and dataset work.",
     "url": "https://alphacephei.com",
-    "repositories": []
+    "repositories": [],
+    "descriptions": {
+      "pt": "Uma parceria de reconhecimento de fala que traz décadas de experiência em reconhecimento automático de fala (ASR) — a equipa por detrás dos modelos Vosk e baseados em Kaldi — ao nosso trabalho de afinação de modelos de voz e de datasets.",
+      "es": "Una colaboración en reconocimiento de voz que aporta décadas de experiencia en reconocimiento automático del habla (ASR) —el equipo tras Vosk y los modelos basados en Kaldi— a nuestro trabajo de ajuste de modelos de voz y de conjuntos de datos.",
+      "de": "Eine Partnerschaft im Bereich Spracherkennung, die jahrzehntelange Expertise in der automatischen Spracherkennung (ASR) — das Team hinter Vosk und Kaldi-basierten Modellen — in unsere Sprachmodell-Feinabstimmung und Datensatzarbeit einbringt.",
+      "nl": "Een spraakherkenningspartnerschap dat decennia aan expertise in automatische spraakherkenning (ASR) inbrengt — het team achter Vosk en Kaldi-gebaseerde modellen — voor ons fijnafstemmings- en datasetwerk voor spraakmodellen.",
+      "fr": "Un partenariat en reconnaissance vocale apportant des décennies d'expertise en reconnaissance automatique de la parole (ASR) — l'équipe derrière Vosk et les modèles basés sur Kaldi — à notre travail d'affinage de modèles vocaux et de jeux de données.",
+      "it": "Una partnership sul riconoscimento vocale che porta decenni di competenza nel riconoscimento vocale automatico (ASR) — il team dietro Vosk e i modelli basati su Kaldi — al nostro lavoro di fine-tuning dei modelli vocali e sui dataset.",
+      "ru": "Партнёрство в области распознавания речи, привносящее десятилетия опыта в автоматическом распознавании речи (ASR) — команда, стоящая за Vosk и моделями на базе Kaldi — в нашу работу по дообучению голосовых моделей и созданию датасетов.",
+      "ar": "شراكة في التعرّف على الكلام تجلب عقودًا من الخبرة في التعرّف الآلي على الكلام (ASR) — الفريق وراء نماذج Vosk وKaldi — إلى أعمالنا في ضبط النماذج الصوتية ومجموعات البيانات.",
+      "fa": "یک مشارکت در حوزه تشخیص گفتار که دهه‌ها تخصص تشخیص خودکار گفتار (ASR) را — تیم پشت مدل‌های مبتنی بر Vosk و Kaldi — به کار تنظیم دقیق مدل‌های صوتی و دیتاست‌های ما می‌آورد.",
+      "hi": "एक भाषण-पहचान साझेदारी जो दशकों की स्वचालित भाषण पहचान (ASR) विशेषज्ञता लाती है — Vosk और Kaldi-आधारित मॉडल के पीछे की टीम — हमारे वॉइस-मॉडल फ़ाइन-ट्यूनिंग और डेटासेट कार्य में।",
+      "zh": "一项语音识别合作，带来数十年的自动语音识别（ASR）专长——即 Vosk 和基于 Kaldi 的模型背后的团队——助力我们的语音模型微调与数据集工作。",
+      "ko": "수십 년간의 자동 음성 인식(ASR) 전문성을 우리의 음성 모델 파인튜닝 및 데이터셋 작업에 제공하는 음성 인식 파트너십 — Vosk 및 Kaldi 기반 모델을 만든 팀입니다.",
+      "ja": "数十年にわたる自動音声認識（ASR）の専門知識を、当社の音声モデルのファインチューニングとデータセット作業にもたらす音声認識パートナーシップ。VoskおよびKaldiベースモデルを手がけたチーム。"
+    }
   },
   {
     "id": "ilenia",
     "name": "ILENIA",
     "description": "Spanish program advancing language technology across the nation's official languages (Spanish, Catalan, Basque, Galician). Funding OVOS development to create downloadable, privacy-respecting voice assistants that run on Raspberry Pi and personal computers. Funded by Spain's Ministry of Digital Transformation and EU Recovery Plan.",
     "url": "https://proyectoilenia.es/en/demonstrators-2025/ovos-prototype/",
-    "repositories": []
+    "repositories": [],
+    "descriptions": {
+      "pt": "Programa espanhol que faz avançar a tecnologia da língua nas línguas oficiais do país (espanhol, catalão, basco, galego). Financia o desenvolvimento do OVOS para criar assistentes de voz descarregáveis e respeitadores da privacidade que funcionam em Raspberry Pi e computadores pessoais. Financiado pelo Ministério da Transformação Digital de Espanha e pelo Plano de Recuperação da UE.",
+      "es": "Programa español que impulsa la tecnología del lenguaje en las lenguas oficiales del país (español, catalán, euskera, gallego). Financia el desarrollo de OVOS para crear asistentes de voz descargables y respetuosos con la privacidad que funcionan en Raspberry Pi y ordenadores personales. Financiado por el Ministerio de Transformación Digital de España y el Plan de Recuperación de la UE.",
+      "de": "Spanisches Programm zur Förderung der Sprachtechnologie für die offiziellen Sprachen des Landes (Spanisch, Katalanisch, Baskisch, Galicisch). Finanziert die OVOS-Entwicklung zur Schaffung herunterladbarer, datenschutzfreundlicher Sprachassistenten, die auf Raspberry Pi und Personalcomputern laufen. Finanziert vom spanischen Ministerium für digitale Transformation und dem EU-Aufbauplan.",
+      "nl": "Spaans programma dat taaltechnologie bevordert voor de officiële talen van het land (Spaans, Catalaans, Baskisch, Galicisch). Financiert OVOS-ontwikkeling om downloadbare, privacyvriendelijke spraakassistenten te maken die draaien op Raspberry Pi en personal computers. Gefinancierd door het Spaanse Ministerie van Digitale Transformatie en het EU-herstelplan.",
+      "fr": "Programme espagnol faisant progresser les technologies du langage pour les langues officielles du pays (espagnol, catalan, basque, galicien). Finance le développement d'OVOS pour créer des assistants vocaux téléchargeables et respectueux de la vie privée qui fonctionnent sur Raspberry Pi et ordinateurs personnels. Financé par le ministère espagnol de la Transformation numérique et le Plan de relance de l'UE.",
+      "it": "Programma spagnolo che promuove la tecnologia linguistica per le lingue ufficiali del paese (spagnolo, catalano, basco, galiziano). Finanzia lo sviluppo di OVOS per creare assistenti vocali scaricabili e rispettosi della privacy che funzionano su Raspberry Pi e personal computer. Finanziato dal Ministero spagnolo della Trasformazione Digitale e dal Piano di Ripresa dell'UE.",
+      "ru": "Испанская программа, развивающая языковые технологии для официальных языков страны (испанский, каталанский, баскский, галисийский). Финансирует разработку OVOS для создания загружаемых, уважающих приватность голосовых помощников, работающих на Raspberry Pi и персональных компьютерах. Финансируется Министерством цифровой трансформации Испании и Планом восстановления ЕС.",
+      "ar": "برنامج إسباني يطوّر تقنية اللغة عبر اللغات الرسمية للبلاد (الإسبانية، الكتالانية، الباسكية، الغاليسية). يموّل تطوير OVOS لإنشاء مساعدين صوتيين قابلين للتنزيل يحترمون الخصوصية ويعملون على Raspberry Pi والحواسيب الشخصية. بتمويل من وزارة التحوّل الرقمي الإسبانية وخطة التعافي الأوروبية.",
+      "fa": "برنامه‌ای اسپانیایی که فناوری زبان را در سراسر زبان‌های رسمی کشور (اسپانیایی، کاتالان، باسکی، گالیسیایی) پیش می‌برد. تأمین مالی توسعه OVOS برای ساخت دستیارهای صوتی قابل‌دانلود و محترم به حریم خصوصی که روی Raspberry Pi و رایانه‌های شخصی اجرا می‌شوند. تأمین مالی از سوی وزارت تحول دیجیتال اسپانیا و طرح بازیابی اتحادیه اروپا.",
+      "hi": "स्पेनिश कार्यक्रम जो देश की आधिकारिक भाषाओं (स्पेनिश, कैटलन, बास्क, गैलिशियन) में भाषा प्रौद्योगिकी को आगे बढ़ाता है। Raspberry Pi और व्यक्तिगत कंप्यूटरों पर चलने वाले डाउनलोड करने योग्य, गोपनीयता का सम्मान करने वाले वॉइस असिस्टेंट बनाने के लिए OVOS विकास को वित्तपोषित करता है। स्पेन के डिजिटल परिवर्तन मंत्रालय और EU रिकवरी प्लान द्वारा वित्तपोषित।",
+      "zh": "一项西班牙国家计划，推进覆盖该国官方语言（西班牙语、加泰罗尼亚语、巴斯克语、加利西亚语）的语言技术。资助 OVOS 开发，以打造可下载、尊重隐私、能在 Raspberry Pi 和个人电脑上运行的语音助手。由西班牙数字化转型部和欧盟复苏计划资助。",
+      "ko": "스페인의 공용어(스페인어, 카탈루냐어, 바스크어, 갈리시아어) 전반의 언어 기술을 발전시키는 스페인 프로그램. Raspberry Pi와 개인용 컴퓨터에서 실행되는 다운로드 가능하고 프라이버시를 존중하는 음성 비서를 만들기 위해 OVOS 개발에 자금을 지원합니다. 스페인 디지털 전환부와 EU 회복 계획의 지원을 받습니다.",
+      "ja": "国の公用語（スペイン語、カタルーニャ語、バスク語、ガリシア語）にわたる言語技術を推進するスペインのプログラム。Raspberry Piやパソコンで動作するダウンロード可能でプライバシーを尊重する音声アシスタントを作るため、OVOSの開発に資金を提供している。スペインのデジタル変革省とEU復興計画による資金提供。"
+    }
   },
   {
     "id": "nlnet",
     "name": "NGI0 Commons Fund / NLnet",
     "description": "European Commission's Next Generation Internet program (with Swiss SERI co-funding) supporting OpenVoiceOS as a stable, privacy-first alternative to Big Tech voice assistants. Focus: multi-language support, user onboarding, platform stabilization, and documentation.",
     "url": "https://nlnet.nl/project/OpenVoiceOS",
-    "repositories": []
+    "repositories": [],
+    "descriptions": {
+      "pt": "Programa Next Generation Internet da Comissão Europeia (com cofinanciamento suíço da SERI) que apoia o OpenVoiceOS como uma alternativa estável e centrada na privacidade aos assistentes de voz das grandes tecnológicas. Foco: suporte multilingue, integração de utilizadores, estabilização da plataforma e documentação.",
+      "es": "Programa Next Generation Internet de la Comisión Europea (con cofinanciación del SERI suizo) que apoya a OpenVoiceOS como una alternativa estable y centrada en la privacidad a los asistentes de voz de las grandes tecnológicas. Enfoque: soporte multilingüe, incorporación de usuarios, estabilización de la plataforma y documentación.",
+      "de": "Das Next-Generation-Internet-Programm der Europäischen Kommission (mit Kofinanzierung durch das Schweizer SERI), das OpenVoiceOS als stabile, datenschutzorientierte Alternative zu den Sprachassistenten der großen Tech-Konzerne unterstützt. Schwerpunkt: Mehrsprachigkeit, Nutzer-Onboarding, Plattformstabilisierung und Dokumentation.",
+      "nl": "Het Next Generation Internet-programma van de Europese Commissie (met Zwitserse SERI-cofinanciering) dat OpenVoiceOS ondersteunt als een stabiel, privacyvriendelijk alternatief voor de spraakassistenten van Big Tech. Focus: meertalige ondersteuning, gebruikersonboarding, platformstabilisatie en documentatie.",
+      "fr": "Programme Next Generation Internet de la Commission européenne (avec cofinancement du SERI suisse) soutenant OpenVoiceOS comme alternative stable et axée sur la vie privée aux assistants vocaux des géants de la tech. Axes : prise en charge multilingue, intégration des utilisateurs, stabilisation de la plateforme et documentation.",
+      "it": "Programma Next Generation Internet della Commissione Europea (con cofinanziamento svizzero SERI) che supporta OpenVoiceOS come alternativa stabile e attenta alla privacy agli assistenti vocali delle Big Tech. Obiettivo: supporto multilingue, onboarding degli utenti, stabilizzazione della piattaforma e documentazione.",
+      "ru": "Программа Next Generation Internet Европейской комиссии (при софинансировании швейцарского SERI), поддерживающая OpenVoiceOS как стабильную, приоритизирующую приватность альтернативу голосовым помощникам от бигтеха. Фокус: поддержка нескольких языков, онбординг пользователей, стабилизация платформы и документация.",
+      "ar": "برنامج الإنترنت للجيل القادم التابع للمفوضية الأوروبية (بتمويل مشترك من SERI السويسري) يدعم OpenVoiceOS كبديل مستقر يضع الخصوصية أولًا عن مساعدي الشركات الكبرى الصوتيين. التركيز: دعم متعدد اللغات، وتهيئة المستخدمين، وتثبيت المنصة، والتوثيق.",
+      "fa": "برنامه اینترنت نسل بعد (Next Generation Internet) کمیسیون اروپا (با هم‌تأمین مالی SERI سوئیس) که از OpenVoiceOS به‌عنوان جایگزینی پایدار و حریم‌خصوصی‌محور برای دستیارهای صوتی شرکت‌های بزرگ فناوری پشتیبانی می‌کند. تمرکز: پشتیبانی چندزبانه، آشناسازی کاربر، پایدارسازی بستر و مستندسازی.",
+      "hi": "यूरोपीय आयोग का Next Generation Internet कार्यक्रम (स्विस SERI सह-वित्तपोषण के साथ) OpenVoiceOS को Big Tech वॉइस असिस्टेंट के एक स्थिर, गोपनीयता-प्रथम विकल्प के रूप में समर्थन देता है। फ़ोकस: बहु-भाषा समर्थन, उपयोगकर्ता ऑनबोर्डिंग, प्लेटफ़ॉर्म स्थिरीकरण और दस्तावेज़ीकरण।",
+      "zh": "欧盟委员会的下一代互联网（Next Generation Internet）计划（并由瑞士 SERI 共同资助），支持 OpenVoiceOS 成为大型科技公司语音助手之外稳定、隐私优先的替代方案。重点：多语言支持、用户引导、平台稳定化和文档。",
+      "ko": "OpenVoiceOS를 빅테크 음성 비서에 대한 안정적이고 프라이버시 우선의 대안으로 지원하는 유럽 위원회의 차세대 인터넷(Next Generation Internet) 프로그램(스위스 SERI 공동 지원 포함). 초점: 다국어 지원, 사용자 온보딩, 플랫폼 안정화, 문서화.",
+      "ja": "欧州委員会のNext Generation Internetプログラム（スイスSERIの共同出資を伴う）で、大手テック企業の音声アシスタントに代わる、安定してプライバシーを最優先するOpenVoiceOSを支援する。重点は多言語対応、ユーザーオンボーディング、プラットフォームの安定化、ドキュメント整備。"
+    }
   }
 ]
