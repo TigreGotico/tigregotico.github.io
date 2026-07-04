@@ -26,6 +26,12 @@ const S = {
     exploreTitle: 'Featured highlights',
     exploreLead: 'Filter by area to explore more — everything is open source.',
     filterLabel: 'Filter projects by category',
+    catLabels: {} as Record<string, string>,
+    tagILENIA: 'Funded by the ILENIA project',
+    tagNLnet: 'Funded by NLnet / NGI0 Commons Fund',
+    tagVisio: 'Funded by the Visio project',
+    tagPortuguese: 'Portuguese-language and Lusophone work',
+    tagJavaScript: 'Runs in the browser / Node.js',
   },
   pt: {
     title: 'Código Aberto',
@@ -44,32 +50,47 @@ const S = {
     exploreTitle: 'Destaques',
     exploreLead: 'Filtre por área para explorar mais — tudo é código aberto.',
     filterLabel: 'Filtrar projetos por categoria',
+    catLabels: {
+      'Speech Synthesis': 'Síntese de Fala',
+      'Speech Recognition': 'Reconhecimento de Fala',
+      'Wake Words': 'Palavras de Ativação',
+      'Phonetics & G2P': 'Fonética e G2P',
+      'NLP & Language': 'NLP e Linguagem',
+      'LLM & Agents': 'LLM e Agentes',
+      'Media & Music': 'Media e Música',
+      'Data & Scraping': 'Dados e Scraping',
+      'Voice Platform (OVOS)': 'Plataforma de Voz (OVOS)',
+      'HiveMind': 'HiveMind',
+      'Smart Home': 'Casa Inteligente',
+      'Games': 'Jogos',
+      'Developer Tools': 'Ferramentas de Programação',
+    } as Record<string, string>,
+    tagILENIA: 'Financiado pelo projeto ILENIA',
+    tagNLnet: 'Financiado pela NLnet / NGI0 Commons Fund',
+    tagVisio: 'Financiado pelo projeto Visio',
+    tagPortuguese: 'Trabalho em português e lusófono',
+    tagJavaScript: 'Corre no navegador / Node.js',
   },
 }[locale];
 
 const projects = (await getCollection('projects')).map((p) => p.data);
 const featured = projects.filter((p) => p.featured);
 
-// Preferred display order for the category filter.
+// Single-axis taxonomy (by capability). Display order for the filter row.
 const categoryOrder = [
-  'TTS',
-  'STT',
-  'Wake-words',
-  'Speech & Language',
-  'NLP',
-  'Sentiment Analysis',
-  'Machine Learning',
-  'Portuguese',
-  'Media',
-  'OpenVoiceOS',
-  'Home Assistant',
+  'Speech Synthesis',
+  'Speech Recognition',
+  'Wake Words',
+  'Phonetics & G2P',
+  'NLP & Language',
+  'LLM & Agents',
+  'Media & Music',
+  'Data & Scraping',
+  'Voice Platform (OVOS)',
   'HiveMind',
-  'Homelab',
+  'Smart Home',
   'Games',
-  'Clients',
-  'Web Automation',
-  'JavaScript',
-  'Tools',
+  'Developer Tools',
 ];
 
 const counts = new Map<string, number>();
@@ -85,14 +106,18 @@ const categories = [...counts.keys()].sort((a, b) => {
   return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib);
 });
 
-const labels: Record<string, string> = {
-  Clients: 'Data Clients',
-};
-const label = (c: string) => labels[c] ?? c;
+const label = (c: string) => S.catLabels[c] ?? c;
 
-// Cross-cutting tag filters (group work that spans categories, e.g. ILENIA).
-const tagFilters = ['ILENIA', 'NLnet', 'Visio']
-  .map((t) => ({ tag: t, count: projects.filter((p) => p.tags.includes(t)).length }))
+// Cross-cutting tag filters — axes that span categories (funding, language, platform).
+const tagMeta: Record<string, string> = {
+  ILENIA: S.tagILENIA,
+  NLnet: S.tagNLnet,
+  Visio: S.tagVisio,
+  Portuguese: S.tagPortuguese,
+  JavaScript: S.tagJavaScript,
+};
+const tagFilters = ['Portuguese', 'JavaScript', 'ILENIA', 'NLnet', 'Visio']
+  .map((t) => ({ tag: t, count: projects.filter((p) => p.tags.includes(t)).length, title: tagMeta[t] }))
   .filter((t) => t.count > 0);
 
 const collaborations = (await getCollection('collaborations')).map((c) => c.data);
@@ -153,7 +178,7 @@ const collaborations = (await getCollection('collaborations')).map((c) => c.data
             data-filter={`tag:${t.tag}`}
             aria-pressed="false"
             class="chip chip-tag"
-            title={t.tag === 'ILENIA' ? 'Funded by the ILENIA project' : t.tag === 'NLnet' ? 'Funded by NLnet / NGI0 Commons Fund' : 'Funded by the Visio project'}
+            title={t.title}
           >
             <span class="chip-label">{t.tag}</span>
             <span class="chip-sep" aria-hidden="true">·</span>
