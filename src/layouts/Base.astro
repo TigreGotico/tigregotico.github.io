@@ -6,7 +6,7 @@ import PaletteSelector from '../components/PaletteSelector.astro';
 import Reveal from '../components/Reveal.astro';
 import Icon from '../components/Icon.astro';
 import { site } from '../data/site';
-import { ui, navItems, localePath, translatedPaths, locales, languageNames, type Locale } from '../i18n';
+import { ui, navItems, localePath, translatedPaths, locales, languageNames, langNote, type Locale } from '../i18n';
 
 interface Props {
   title?: string;
@@ -345,6 +345,7 @@ const projectLinks = [
           <address class="mt-2 not-italic">
             {site.address.lines.join(', ')} · {t.footer.vat} {site.nif}
           </address>
+          <p class="mt-2 max-w-3xl opacity-80">{langNote[locale]}</p>
         </div>
       </div>
     </footer>

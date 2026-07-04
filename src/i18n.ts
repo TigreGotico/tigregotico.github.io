@@ -191,3 +191,15 @@ export const cardUI: Record<Locale, { selfHosted: string; selfHostedTitle: strin
   it: { selfHosted: 'Self-hosted', selfHostedTitle: 'Funziona sul tuo hardware — nessun cloud obbligatorio', viewRepo: 'Vedi il repository', featured: 'In evidenza', comingSoon: 'Prossimamente', comingSoonLong: 'Prossimamente — non ancora pubblico' },
   ru: { selfHosted: 'Self-hosted', selfHostedTitle: 'Работает на вашем оборудовании — без обязательного облака', viewRepo: 'Открыть репозиторий', featured: 'Рекомендуемое', comingSoon: 'Скоро', comingSoonLong: 'Скоро — пока не опубликовано' },
 };
+
+/** Footer note on native languages + machine translation, per locale. */
+export const langNote: Record<Locale, string> = {
+  en: "English and Portuguese are our native languages; every other translation is machine-generated. Write to us in any language — we'll use machine translation if needed.",
+  pt: 'O português e o inglês são as nossas línguas nativas; todas as outras traduções são geradas automaticamente. Escreva-nos em qualquer língua — usaremos tradução automática se necessário.',
+  es: 'Esta página está traducida automáticamente; nuestras lenguas nativas son el portugués y el inglés. Escríbanos en cualquier idioma: usaremos traducción automática si es necesario.',
+  de: 'Diese Seite wurde maschinell übersetzt; unsere Muttersprachen sind Portugiesisch und Englisch. Schreiben Sie uns in einer beliebigen Sprache — wir nutzen bei Bedarf maschinelle Übersetzung.',
+  nl: 'Deze pagina is machinaal vertaald; onze moedertalen zijn Portugees en Engels. Schrijf ons in elke taal — we gebruiken indien nodig machinevertaling.',
+  fr: "Cette page est traduite automatiquement ; nos langues natives sont le portugais et l'anglais. Écrivez-nous dans n'importe quelle langue — nous utiliserons la traduction automatique si nécessaire.",
+  it: 'Questa pagina è tradotta automaticamente; le nostre lingue native sono il portoghese e l’inglese. Scrivici in qualsiasi lingua — useremo la traduzione automatica se necessario.',
+  ru: 'Эта страница переведена машинно; наши родные языки — португальский и английский. Пишите нам на любом языке — при необходимости мы воспользуемся машинным переводом.',
+};
