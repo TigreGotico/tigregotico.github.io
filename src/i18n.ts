@@ -3,14 +3,14 @@
 //
 // Portuguese is European Portuguese (pt-PT) throughout.
 
-export type Locale = 'en' | 'pt' | 'es' | 'de' | 'nl' | 'fr' | 'it' | 'ru' | 'ar';
+export type Locale = 'en' | 'pt' | 'es' | 'de' | 'nl' | 'fr' | 'it' | 'ru' | 'ar' | 'fa';
 
-export const locales: Locale[] = ['en', 'pt', 'es', 'de', 'nl', 'fr', 'it', 'ru', 'ar'];
+export const locales: Locale[] = ['en', 'pt', 'es', 'de', 'nl', 'fr', 'it', 'ru', 'ar', 'fa'];
 
 /** Endonym shown in the language switcher. */
 /** Text direction per locale. */
 export const dir: Record<Locale, 'ltr' | 'rtl'> = {
-  en: 'ltr', pt: 'ltr', es: 'ltr', de: 'ltr', nl: 'ltr', fr: 'ltr', it: 'ltr', ru: 'ltr', ar: 'rtl',
+  en: 'ltr', pt: 'ltr', es: 'ltr', de: 'ltr', nl: 'ltr', fr: 'ltr', it: 'ltr', ru: 'ltr', ar: 'rtl', fa: 'rtl',
 };
 
 export const languageNames: Record<Locale, string> = {
@@ -23,10 +23,11 @@ export const languageNames: Record<Locale, string> = {
   it: 'Italiano',
   ru: 'Русский',
   ar: 'العربية',
+  fa: 'فارسی',
 };
 
 /** Locales that have fully translated blog posts (others fall back to English). */
-export const blogLocales: Locale[] = ['en', 'pt', 'es', 'de', 'nl', 'fr', 'it', 'ru', 'ar'];
+export const blogLocales: Locale[] = ['en', 'pt', 'es', 'de', 'nl', 'fr', 'it', 'ru', 'ar', 'fa'];
 
 /** Pages that exist in every locale (path without base, no trailing slash). */
 export const translatedPaths = [
@@ -149,6 +150,18 @@ export const ui = {
     },
     a11y: { skip: 'انتقل إلى المحتوى', primaryNav: 'الرئيسية', mobileNav: 'الرئيسية (للجوال)', openMenu: 'افتح قائمة التنقل', closeMenu: 'أغلق قائمة التنقل' },
   },
+  fa: {
+    lang: 'fa',
+    locale: 'fa_IR',
+    chooseLanguage: 'انتخاب زبان',
+    nav: { home: 'خانه', about: 'درباره ما', blog: 'وبلاگ', projects: 'متن‌باز', services: 'خدمات', games: 'بازی‌ها', contact: 'تماس' },
+    footer: {
+      tagline: 'فناوری صوتی حریم‌خصوصی‌محور و هوش مصنوعی متن‌باز — ساخته‌شده برای اجرا روی سخت‌افزار خودتان.',
+      explore: 'کاوش', projects: 'پروژه‌ها', connect: 'ارتباط', voicesDemo: 'نمایش صداها',
+      privacy: 'حریم خصوصی', foss: 'نرم‌افزار آزاد و متن‌باز.', appearance: 'ظاهر', vat: 'شناسهٔ مالیاتی',
+    },
+    a11y: { skip: 'پرش به محتوا', primaryNav: 'اصلی', mobileNav: 'اصلی (موبایل)', openMenu: 'باز کردن منوی ناوبری', closeMenu: 'بستن منوی ناوبری' },
+  },
 } as const;
 
 /** Nav in display order, localized. */
@@ -178,7 +191,7 @@ export function pageEntryId(locale: Locale, name: string) {
 
 /** Strip any locale sub-folder from a blog entry id to get its clean slug. */
 export function blogSlug(id: string) {
-  return id.replace(/^(pt|es|de|nl|fr|it|ru|ar)\//, '');
+  return id.replace(/^(pt|es|de|nl|fr|it|ru|ar|fa)\//, '');
 }
 
 /** URL (without base) for a blog post in the given locale. */
@@ -197,6 +210,7 @@ export const blogUI: Record<Locale, { allPosts: string; minRead: string; newer: 
   it: { allPosts: 'Tutti gli articoli', minRead: 'min di lettura', newer: 'Più recente', older: 'Più vecchio', more: 'Altri articoli' },
   ru: { allPosts: 'Все статьи', minRead: 'мин чтения', newer: 'Новее', older: 'Старее', more: 'Ещё статьи' },
   ar: { allPosts: 'كل المقالات', minRead: 'دقيقة قراءة', newer: 'الأحدث', older: 'الأقدم', more: 'مزيد من المقالات' },
+  fa: { allPosts: 'همهٔ مقاله‌ها', minRead: 'دقیقه مطالعه', newer: 'جدیدتر', older: 'قدیمی‌تر', more: 'مقاله‌های بیشتر' },
 };
 
 /** Project-card chrome, per locale. */
@@ -210,6 +224,7 @@ export const cardUI: Record<Locale, { selfHosted: string; selfHostedTitle: strin
   it: { selfHosted: 'Self-hosted', selfHostedTitle: 'Funziona sul tuo hardware — nessun cloud obbligatorio', viewRepo: 'Vedi il repository', featured: 'In evidenza', comingSoon: 'Prossimamente', comingSoonLong: 'Prossimamente — non ancora pubblico' },
   ru: { selfHosted: 'Self-hosted', selfHostedTitle: 'Работает на вашем оборудовании — без обязательного облака', viewRepo: 'Открыть репозиторий', featured: 'Рекомендуемое', comingSoon: 'Скоро', comingSoonLong: 'Скоро — пока не опубликовано' },
   ar: { selfHosted: 'استضافة ذاتية', selfHostedTitle: 'يعمل على أجهزتك الخاصة — دون سحابة إلزامية', viewRepo: 'عرض المستودع', featured: 'مميّز', comingSoon: 'قريبًا', comingSoonLong: 'قريبًا — ليس عامًّا بعد' },
+  fa: { selfHosted: 'خودمیزبان', selfHostedTitle: 'روی سخت‌افزار خودتان اجرا می‌شود — بدون ابر اجباری', viewRepo: 'مشاهدهٔ مخزن', featured: 'برگزیده', comingSoon: 'به‌زودی', comingSoonLong: 'به‌زودی — هنوز عمومی نشده' },
 };
 
 /** Footer note on native languages + machine translation, per locale. */
@@ -223,6 +238,7 @@ export const langNote: Record<Locale, string> = {
   it: 'Questa pagina è tradotta automaticamente; le nostre lingue native sono il portoghese e l’inglese. Scrivici in qualsiasi lingua — useremo la traduzione automatica se necessario.',
   ru: 'Эта страница переведена машинно; наши родные языки — португальский и английский. Пишите нам на любом языке — при необходимости мы воспользуемся машинным переводом.',
   ar: 'هذه الصفحة مُترجَمة آليًا؛ لغتانا الأصليتان هما البرتغالية والإنجليزية. راسِلنا بأي لغة — وسنستخدم الترجمة الآلية عند الحاجة.',
+  fa: 'این صفحه به‌صورت ماشینی ترجمه شده است؛ زبان‌های مادری ما پرتغالی و انگلیسی هستند. به هر زبانی برای ما بنویسید — در صورت نیاز از ترجمهٔ ماشینی استفاده می‌کنیم.',
 };
 
 /** Games page banner: most game repos are private for now. */
@@ -236,4 +252,5 @@ export const gamesComingSoon: Record<Locale, string> = {
   it: 'I nostri giochi sono in fase di sviluppo attivo — la maggior parte non è ancora pubblica. pyFrotz è già disponibile; il resto arriverà presto.',
   ru: 'Наши игры в активной разработке — большинство ещё не опубликованы. pyFrotz уже доступен; остальное скоро появится.',
   ar: 'ألعابنا قيد التطوير النشط — معظمها ليس عامًّا بعد. pyFrotz متاح اليوم؛ والبقية قريبًا.',
+  fa: 'بازی‌های ما در حال توسعهٔ فعال هستند — بیشترشان هنوز عمومی نشده‌اند. pyFrotz هم‌اکنون در دسترس است؛ بقیه به‌زودی می‌آیند.',
 };

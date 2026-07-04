@@ -45,7 +45,7 @@ const isActive = (href: string) => {
 // page has no translation).
 const baseNoSlash = base.replace(/\/$/, '');
 const sitePath = (here.startsWith(baseNoSlash) ? here.slice(baseNoSlash.length) : here) || '/';
-const localePrefix = /^\/(pt|es|de|nl|fr|it|ru|ar)(?=\/|$)/;
+const localePrefix = /^\/(pt|es|de|nl|fr|it|ru|ar|fa)(?=\/|$)/;
 const enPath = sitePath.replace(localePrefix, '') || '/';
 // Blog posts exist only in en + pt; other locales point at their /blog index.
 const isBlogPost = /^\/blog\/.+/.test(enPath);
