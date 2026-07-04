@@ -310,10 +310,15 @@ const projectLinks = [
         </div>
       </div>
       <div class="border-t border-border">
-        <p class="mx-auto flex max-w-5xl flex-wrap items-center gap-x-4 gap-y-1 px-6 py-5 text-xs text-muted">
-          <span>© {year} {site.legalName}. {t.footer.foss}</span>
-          <a class="transition-colors hover:text-fg" href={navLink('/privacy')}>{t.footer.privacy}</a>
-        </p>
+        <div class="mx-auto max-w-5xl px-6 py-5 text-xs text-muted">
+          <p class="flex flex-wrap items-center gap-x-4 gap-y-1">
+            <span>© {year} {site.legalName}. {t.footer.foss}</span>
+            <a class="transition-colors hover:text-fg" href={navLink('/privacy')}>{t.footer.privacy}</a>
+          </p>
+          <address class="mt-2 not-italic">
+            {site.address.lines.join(', ')} · {t.footer.vat} {site.nif}
+          </address>
+        </div>
       </div>
     </footer>
 

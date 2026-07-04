@@ -44,6 +44,7 @@ export const ui = {
       privacy: 'Privacy',
       foss: 'Free and open-source software.',
       appearance: 'Appearance',
+      vat: 'VAT',
     },
     a11y: {
       skip: 'Skip to content',
@@ -76,6 +77,7 @@ export const ui = {
       privacy: 'Privacidade',
       foss: 'Software livre e de código aberto.',
       appearance: 'Aspeto',
+      vat: 'NIF',
     },
     a11y: {
       skip: 'Saltar para o conteúdo',

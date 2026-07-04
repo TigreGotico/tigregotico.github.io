@@ -8,6 +8,13 @@ export const site = {
   description:
     'FOSS AI and voice technology specialists. Creators of the HiveMind stack and core contributors to OpenVoiceOS, building privacy-first, GDPR-compliant voice solutions.',
   email: 'jarbasai@mailfence.com',
+  nif: 'PT517914190',
+  address: {
+    lines: ['Praceta António Sérgio, nº 317, 4º Esquerdo', '4450-048 Matosinhos', 'Portugal'],
+    locality: 'Matosinhos',
+    postalCode: '4450-048',
+    country: 'PT',
+  },
   defaultOgImage: '/og-default.png',
   socials: {
     github: 'https://github.com/TigreGotico',

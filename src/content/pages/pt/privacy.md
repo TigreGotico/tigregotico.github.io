@@ -47,6 +47,15 @@ Se nos [contactar](/pt/contact) por email, usamos o que nos enviar apenas para
 lhe responder. Não o adicionamos a listas de correio nem partilhamos o seu
 endereço com ninguém.
 
+## Responsável pelo tratamento
+
+A entidade responsável por este sítio é:
+
+**TigreGótico Lda**
+Praceta António Sérgio, nº 317, 4º Esquerdo
+4450-048 Matosinhos, Portugal
+NIF: PT517914190
+
 ## Dúvidas
 
 Pergunte-nos o que quiser sobre esta política em

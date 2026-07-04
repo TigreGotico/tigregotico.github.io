@@ -43,6 +43,15 @@ If you [contact us](/contact) by email, we use what you send us solely to
 answer you. We don't add you to mailing lists and we don't share your address
 with anyone.
 
+## Data controller
+
+The entity responsible for this website is:
+
+**TigreGótico Lda**
+Praceta António Sérgio, nº 317, 4º Esquerdo
+4450-048 Matosinhos, Portugal
+VAT (NIF): PT517914190
+
 ## Questions
 
 Ask us anything about this policy at
