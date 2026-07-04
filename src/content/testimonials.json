@@ -22,5 +22,13 @@
     "quote": "Casimiro did excellent work on ATC transcription for PilotGPT. He was thoughtful, technically strong, and able to work through a difficult real-world audio problem with speed and creativity. He consistently delivered high-quality work and was great to collaborate with. I'd strongly recommend him for any AI/audio engineering role.",
     "author": "Murti Hussain, Founder @ PilotGPT",
     "placeholder": false
+  },
+  {
+    "id": "thalovant",
+    "org": "Thalovant",
+    "url": "https://thalovant.com",
+    "quote": "Casimiro (JarbasAI) has been one of the driving forces behind making privacy-first voice assistants practical instead of just aspirational. His work on HiveMind and OpenVoiceOS consistently balances strong engineering with a deep respect for user privacy, openness, and long-term maintainability. When he builds infrastructure, it's designed to empower both developers and users—not to lock them into someone else's ecosystem.",
+    "author": "Gaëtan Trellu, Founder @ Thalovant",
+    "placeholder": false
   }
 ]
