@@ -181,7 +181,7 @@
       "Model2Vec",
       "ONNX models",
       "intent classification",
-      "NLNet",
+      "NLnet",
       "ILENIA"
     ],
     "featured": false
@@ -224,21 +224,21 @@
       "vocabulary"
     ],
     "featured": false,
-    "comingSoon": true
+    "url": "https://github.com/TigreGotico/mediavocab"
   },
   {
-    "id": "ww-trainer",
-    "name": "ww-trainer",
-    "description": "A wake-word model trainer developed under an NLNet grant for OpenVoiceOS — build custom, on-device wake words from your own samples.",
+    "id": "wakeforge",
+    "name": "wakeforge",
+    "description": "A wake-word model trainer developed under an NLnet grant for OpenVoiceOS — build custom, on-device wake words from your own samples.",
     "category": "Wake-words",
     "tags": [
-      "NLNet",
+      "NLnet",
       "on-device",
       "training",
       "wake word"
     ],
     "featured": false,
-    "comingSoon": true
+    "url": "https://github.com/TigreGotico/wakeforge"
   },
   {
     "id": "chatterbox-onnx",

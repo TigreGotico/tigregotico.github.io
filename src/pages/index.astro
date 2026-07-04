@@ -18,7 +18,9 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft && data.dat
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 3);
 
-const testimonials = (await getCollection('testimonials')).map((t) => t.data);
+const testimonials = (await getCollection('testimonials'))
+  .map((t) => t.data)
+  .filter((t) => !t.placeholder);
 
 const whatWeDo = [
   {

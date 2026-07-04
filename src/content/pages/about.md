@@ -12,7 +12,7 @@ contributor to [OpenVoiceOS](https://openvoiceos.org) — an independent non-pro
 whose board includes our founder. Our company exists to ensure the long-term
 sustainability and expert engineering of privacy-first voice technology.
 
-## Why Choose TigreGotico
+## Why Choose TigreGótico
 
 We're not a generalist firm applying off-the-shelf solutions. We're the **creators and maintainers** of the underlying technology — you hire the people who built the stack you're using.
 
