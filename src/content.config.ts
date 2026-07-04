@@ -16,7 +16,7 @@ const blog = defineCollection({
       coverExternal: z.string().url().optional(),
       draft: z.boolean().default(false),
       // 'en' at the root, 'pt' for translations under src/content/blog/pt/.
-      lang: z.enum(['en', 'pt', 'es', 'de', 'nl', 'fr', 'it', 'ru', 'ar', 'fa']).default('en'),
+      lang: z.enum(['en', 'pt', 'es', 'de', 'nl', 'fr', 'it', 'ru', 'ar', 'fa', 'hi', 'zh', 'ko', 'ja']).default('en'),
     }),
 });
 
@@ -100,6 +100,8 @@ const projects = defineCollection({
     // Private/not-yet-public repo: kept in the data but not listed. Flip to
     // re-enable once the repo goes public.
     hidden: z.boolean().default(false),
+    // Per-locale translated descriptions (id -> text); English stays in `description`.
+    descriptions: z.record(z.string(), z.string()).optional(),
   }),
 });
 
@@ -111,6 +113,7 @@ const collaborations = defineCollection({
     description: z.string(),
     url: z.string().url(),
     repositories: z.array(z.string().url()).default([]),
+    descriptions: z.record(z.string(), z.string()).optional(),
   }),
 });
 

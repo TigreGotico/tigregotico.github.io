@@ -1,0 +1,20 @@
+---
+import { getCollection } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+import BlogPost from '../../../components/pages/BlogPost.astro';
+import { blogSlug } from '../../../i18n';
+
+export const getStaticPaths = (async () => {
+  const posts = (await getCollection('blog', ({ data }) => data.lang === 'ko' && !data.draft && data.date.valueOf() <= Date.now())).sort(
+    (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+  );
+  return posts.map((post, i) => ({
+    params: { slug: blogSlug(post.id) },
+    props: { post, prev: posts[i - 1] ?? null, next: posts[i + 1] ?? null },
+  }));
+}) satisfies GetStaticPaths;
+
+const { post, prev, next } = Astro.props;
+---
+
+<BlogPost post={post} prev={prev} next={next} locale="ko" />
