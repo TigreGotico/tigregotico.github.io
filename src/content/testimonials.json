@@ -5,7 +5,16 @@
     "url": "https://oscillatelabs.net",
     "quote": "If you need privacy-first voice and AI solutions, TigreGotico is our top pick for a partner. Privacy is part of their DNA. You won't find another organization as dedicated to keeping your data local and safe.",
     "author": "Mike J. Gray",
-    "placeholder": false
+    "placeholder": false,
+    "quotes": {
+      "pt": "Se precisa de soluções de voz e IA que priorizam a privacidade, a TigreGotico é a nossa primeira escolha como parceiro. A privacidade faz parte do seu ADN. Não encontrará outra organização tão dedicada a manter os seus dados locais e seguros.",
+      "es": "Si necesita soluciones de voz e IA que priorizan la privacidad, TigreGotico es nuestra opción preferida como socio. La privacidad forma parte de su ADN. No encontrará otra organización tan dedicada a mantener sus datos locales y seguros.",
+      "de": "Wenn Sie datenschutzorientierte Sprach- und KI-Lösungen benötigen, ist TigreGotico unser bevorzugter Partner. Datenschutz gehört zu ihrer DNA. Sie werden keine andere Organisation finden, die so engagiert dafür sorgt, dass Ihre Daten lokal und sicher bleiben.",
+      "nl": "Als u privacygerichte spraak- en AI-oplossingen nodig heeft, is TigreGotico onze favoriete partner. Privacy zit in hun DNA. U zult geen andere organisatie vinden die zich zo toewijdt aan het lokaal en veilig houden van uw gegevens.",
+      "fr": "Si vous avez besoin de solutions vocales et d'IA axées sur la confidentialité, TigreGotico est notre partenaire de choix. La confidentialité fait partie de leur ADN. Vous ne trouverez aucune autre organisation aussi déterminée à conserver vos données en local et en sécurité.",
+      "it": "Se avete bisogno di soluzioni vocali e di IA orientate alla privacy, TigreGotico è il nostro partner preferito. La privacy fa parte del loro DNA. Non troverete un'altra organizzazione così dedicata a mantenere i vostri dati locali e sicuri.",
+      "ru": "Если вам нужны решения в области голоса и ИИ, ориентированные на конфиденциальность, TigreGotico — наш главный выбор в качестве партнёра. Конфиденциальность заложена в их ДНК. Вы не найдёте другой организации, столь же преданной тому, чтобы ваши данные оставались локальными и защищёнными."
+    }
   },
   {
     "id": "visio",
@@ -13,7 +22,16 @@
     "url": "https://www.visio.org",
     "quote": "Casimiro is a one-of-a-kind Python developer and AI specialist. What makes him unique is his creative ability to build custom solutions in the open-source space, paired with a healthy, critical, problem-solving attitude instead of just doing what is asked. Combine that with deep knowledge of how his products work — creating the datasets, models, and workflows himself — and you always get a state-of-the-art solution.",
     "author": "Timon van Hasselt, VisioLab",
-    "placeholder": false
+    "placeholder": false,
+    "quotes": {
+      "pt": "Casimiro é um programador de Python e especialista em IA único no seu género. O que o torna especial é a sua capacidade criativa de construir soluções personalizadas no espaço do código aberto, aliada a uma atitude saudável, crítica e voltada para a resolução de problemas, em vez de fazer apenas o que lhe é pedido. Junte a isso um conhecimento profundo do funcionamento dos seus produtos — criando ele próprio os conjuntos de dados, os modelos e os fluxos de trabalho — e obtém sempre uma solução de última geração.",
+      "es": "Casimiro es un desarrollador de Python y especialista en IA único en su tipo. Lo que lo hace especial es su capacidad creativa para construir soluciones personalizadas en el ámbito del código abierto, combinada con una actitud sana, crítica y orientada a la resolución de problemas, en lugar de limitarse a hacer lo que se le pide. Añada a eso un profundo conocimiento del funcionamiento de sus productos —creando él mismo los conjuntos de datos, los modelos y los flujos de trabajo— y siempre obtendrá una solución de vanguardia.",
+      "de": "Casimiro ist ein einzigartiger Python-Entwickler und KI-Spezialist. Was ihn besonders macht, ist seine kreative Fähigkeit, im Open-Source-Bereich maßgeschneiderte Lösungen zu entwickeln, gepaart mit einer gesunden, kritischen und problemlösungsorientierten Haltung, anstatt einfach nur das Geforderte umzusetzen. Kombinieren Sie das mit einem tiefen Verständnis dafür, wie seine Produkte funktionieren — er erstellt die Datensätze, Modelle und Arbeitsabläufe selbst — und Sie erhalten stets eine hochmoderne Lösung.",
+      "nl": "Casimiro is een unieke Python-ontwikkelaar en AI-specialist. Wat hem bijzonder maakt, is zijn creatieve vermogen om op maat gemaakte oplossingen te bouwen binnen de open-source-wereld, gecombineerd met een gezonde, kritische en probleemoplossende houding in plaats van alleen te doen wat gevraagd wordt. Combineer dat met een diepgaande kennis van hoe zijn producten werken — hij maakt zelf de datasets, modellen en workflows — en u krijgt altijd een oplossing van het hoogste niveau.",
+      "fr": "Casimiro est un développeur Python et un spécialiste de l'IA unique en son genre. Ce qui le rend unique, c'est sa capacité créative à concevoir des solutions sur mesure dans l'univers de l'open source, associée à une attitude saine, critique et axée sur la résolution de problèmes plutôt que de se contenter de faire ce qui est demandé. Ajoutez à cela une connaissance approfondie du fonctionnement de ses produits — il crée lui-même les jeux de données, les modèles et les flux de travail — et vous obtenez toujours une solution à la pointe de la technologie.",
+      "it": "Casimiro è uno sviluppatore Python e uno specialista di IA unico nel suo genere. Ciò che lo rende speciale è la sua capacità creativa di costruire soluzioni su misura nel mondo dell'open source, unita a un atteggiamento sano, critico e orientato alla risoluzione dei problemi, invece di limitarsi a fare ciò che gli viene chiesto. Aggiungete a questo una profonda conoscenza del funzionamento dei suoi prodotti — crea egli stesso i set di dati, i modelli e i flussi di lavoro — e otterrete sempre una soluzione all'avanguardia.",
+      "ru": "Касимиро — уникальный Python-разработчик и специалист по ИИ. Что делает его особенным, так это его творческая способность создавать индивидуальные решения в пространстве открытого кода в сочетании со здоровым, критическим подходом к решению задач, а не простым выполнением того, о чём его просят. Добавьте к этому глубокое понимание того, как работают его продукты — он сам создаёт наборы данных, модели и рабочие процессы — и вы всегда получите решение, соответствующее самым современным стандартам."
+    }
   },
   {
     "id": "pilotgpt",
@@ -21,7 +39,16 @@
     "url": "https://pilotgpt.net",
     "quote": "Casimiro did excellent work on ATC transcription for PilotGPT. He was thoughtful, technically strong, and able to work through a difficult real-world audio problem with speed and creativity. He consistently delivered high-quality work and was great to collaborate with. I'd strongly recommend him for any AI/audio engineering role.",
     "author": "Murti Hussain, Founder @ PilotGPT",
-    "placeholder": false
+    "placeholder": false,
+    "quotes": {
+      "pt": "Casimiro fez um excelente trabalho na transcrição de ATC para a PilotGPT. Foi cuidadoso, tecnicamente forte e capaz de resolver um problema de áudio complexo do mundo real com rapidez e criatividade. Entregou consistentemente trabalho de alta qualidade e foi ótimo colaborar com ele. Recomendo-o vivamente para qualquer função de engenharia de IA/áudio.",
+      "es": "Casimiro hizo un trabajo excelente en la transcripción de ATC para PilotGPT. Fue meticuloso, técnicamente sólido y capaz de resolver un problema de audio complejo del mundo real con rapidez y creatividad. Entregó de forma constante un trabajo de alta calidad y fue un placer colaborar con él. Lo recomendaría encarecidamente para cualquier puesto de ingeniería de IA/audio.",
+      "de": "Casimiro hat hervorragende Arbeit bei der ATC-Transkription für PilotGPT geleistet. Er war umsichtig, technisch versiert und in der Lage, ein schwieriges reales Audioproblem schnell und kreativ zu lösen. Er lieferte durchgängig qualitativ hochwertige Arbeit und die Zusammenarbeit mit ihm war ausgezeichnet. Ich würde ihn für jede Position im Bereich KI-/Audio-Engineering nachdrücklich empfehlen.",
+      "nl": "Casimiro heeft uitstekend werk geleverd bij de ATC-transcriptie voor PilotGPT. Hij was zorgvuldig, technisch sterk en in staat om een lastig audioprobleem uit de praktijk snel en creatief op te lossen. Hij leverde consequent werk van hoge kwaliteit en het was fijn om met hem samen te werken. Ik zou hem van harte aanbevelen voor elke functie op het gebied van AI-/audio-engineering.",
+      "fr": "Casimiro a réalisé un excellent travail sur la transcription ATC pour PilotGPT. Il a été réfléchi, techniquement solide et capable de résoudre un problème audio complexe du monde réel avec rapidité et créativité. Il a constamment fourni un travail de grande qualité et il a été très agréable de collaborer avec lui. Je le recommanderais vivement pour tout poste d'ingénierie IA/audio.",
+      "it": "Casimiro ha svolto un lavoro eccellente sulla trascrizione ATC per PilotGPT. È stato attento, tecnicamente valido e capace di risolvere un difficile problema audio del mondo reale con rapidità e creatività. Ha costantemente fornito un lavoro di alta qualità ed è stato un piacere collaborare con lui. Lo raccomanderei vivamente per qualsiasi ruolo di ingegneria IA/audio.",
+      "ru": "Касимиро проделал отличную работу над транскрипцией ATC для PilotGPT. Он был вдумчивым, технически сильным и способным быстро и творчески решить сложную реальную задачу с обработкой звука. Он неизменно выполнял работу высокого качества, и сотрудничать с ним было прекрасно. Я настоятельно рекомендую его на любую должность в области ИИ- и аудиоинженерии."
+    }
   },
   {
     "id": "thalovant",
@@ -29,6 +56,15 @@
     "url": "https://thalovant.com",
     "quote": "Casimiro has been one of the driving forces behind making privacy-first voice assistants practical instead of just aspirational. His work on HiveMind and OpenVoiceOS balances strong engineering with a deep respect for privacy, openness, and long-term maintainability. When he builds infrastructure, it's designed to empower developers and users—not to lock them into someone else's ecosystem.",
     "author": "Gaëtan Trellu, Founder @ Thalovant",
-    "placeholder": false
+    "placeholder": false,
+    "quotes": {
+      "pt": "Casimiro tem sido uma das forças motrizes por trás de tornar os assistentes de voz que priorizam a privacidade algo prático, em vez de apenas aspiracional. O seu trabalho no HiveMind e no OpenVoiceOS equilibra uma engenharia sólida com um profundo respeito pela privacidade, pela abertura e pela manutenção a longo prazo. Quando ele constrói infraestrutura, esta é concebida para capacitar programadores e utilizadores — e não para os prender ao ecossistema de outra pessoa.",
+      "es": "Casimiro ha sido una de las fuerzas impulsoras a la hora de hacer que los asistentes de voz que priorizan la privacidad sean algo práctico, en lugar de meramente aspiracional. Su trabajo en HiveMind y OpenVoiceOS equilibra una ingeniería sólida con un profundo respeto por la privacidad, la apertura y el mantenimiento a largo plazo. Cuando construye infraestructura, está diseñada para empoderar a desarrolladores y usuarios, y no para atarlos al ecosistema de otra persona.",
+      "de": "Casimiro war eine der treibenden Kräfte dabei, datenschutzorientierte Sprachassistenten praktikabel und nicht nur wünschenswert zu machen. Seine Arbeit an HiveMind und OpenVoiceOS verbindet solide Technik mit einem tiefen Respekt für Datenschutz, Offenheit und langfristige Wartbarkeit. Wenn er Infrastruktur aufbaut, ist sie darauf ausgelegt, Entwickler und Nutzer zu stärken — und nicht, sie an das Ökosystem eines anderen zu binden.",
+      "nl": "Casimiro is een van de drijvende krachten geweest achter het praktisch maken van privacygerichte spraakassistenten, in plaats van louter een streven. Zijn werk aan HiveMind en OpenVoiceOS combineert sterke techniek met een diep respect voor privacy, openheid en onderhoudbaarheid op de lange termijn. Wanneer hij infrastructuur bouwt, is die ontworpen om ontwikkelaars en gebruikers kracht te geven — niet om hen op te sluiten in het ecosysteem van iemand anders.",
+      "fr": "Casimiro a été l'une des forces motrices qui ont rendu les assistants vocaux axés sur la confidentialité concrets plutôt que simplement ambitieux. Son travail sur HiveMind et OpenVoiceOS allie une ingénierie solide à un profond respect de la confidentialité, de l'ouverture et de la maintenabilité à long terme. Lorsqu'il conçoit une infrastructure, celle-ci est pensée pour donner du pouvoir aux développeurs et aux utilisateurs — et non pour les enfermer dans l'écosystème de quelqu'un d'autre.",
+      "it": "Casimiro è stato una delle forze trainanti nel rendere gli assistenti vocali orientati alla privacy concreti anziché semplicemente auspicabili. Il suo lavoro su HiveMind e OpenVoiceOS unisce una solida ingegneria a un profondo rispetto per la privacy, l'apertura e la manutenibilità a lungo termine. Quando costruisce un'infrastruttura, questa è progettata per dare potere a sviluppatori e utenti — non per vincolarli all'ecosistema di qualcun altro.",
+      "ru": "Касимиро был одной из движущих сил, благодаря которым голосовые ассистенты, ориентированные на конфиденциальность, стали практичными, а не просто желаемыми. Его работа над HiveMind и OpenVoiceOS сочетает сильную инженерию с глубоким уважением к конфиденциальности, открытости и долгосрочной сопровождаемости. Когда он создаёт инфраструктуру, она спроектирована так, чтобы расширять возможности разработчиков и пользователей, а не привязывать их к чужой экосистеме."
+    }
   }
 ]

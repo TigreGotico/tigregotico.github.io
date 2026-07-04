@@ -32,7 +32,7 @@ probada que hemos desarrollado en torno al
 **[Open Voice Operating System](https://openvoiceos.org)** y a
 **[HiveMind](https://jarbashivemind.github.io/HiveMind-community-docs/)**.
 Palabras de activación personalizadas, conexión de síntesis de voz (TTS) y
-reconocimiento de voz (STT), gestión de intenciones y componentes a medida —
+reconocimiento de voz (ASR), gestión de intenciones y componentes a medida —
 ensamblados sobre una base de código abierto probada en producción, y
 funcionando en su propio hardware.
 
@@ -64,7 +64,7 @@ en reconocimiento automático de voz a su proyecto.
 
 Construimos tecnología de voz para lenguas que las herramientas convencionales
 ignoran — incluidas las variantes del portugués y otras lenguas lusófonas y
-minoritarias. De la fonemización al STT y el TTS, ayudamos a las comunidades
+minoritarias. De la fonemización al ASR y el TTS, ayudamos a las comunidades
 lingüísticas desatendidas a contar con soporte de voz moderno y respetuoso con
 la privacidad.
 

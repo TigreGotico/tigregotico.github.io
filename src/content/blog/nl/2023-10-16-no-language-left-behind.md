@@ -20,7 +20,7 @@ OpenVoiceOS (OVOS) is een door de gemeenschap gedreven, opensource spraakassiste
 
 ## Taaldetectie op basis van audio
 
-OVOS identificeert de taal die in de audio wordt gesproken voordat deze bij de STT-transcriptiestap aankomt, zodat de STT-plugin nauwkeurig kan transcriberen in plaats van te gokken. Ik heb hiervoor verschillende plugins gebouwd:
+OVOS identificeert de taal die in de audio wordt gesproken voordat deze bij de ASR-transcriptiestap aankomt, zodat de ASR-plugin nauwkeurig kan transcriberen in plaats van te gokken. Ik heb hiervoor verschillende plugins gebouwd:
 
 - [ovos-audio-transformer-plugin-speechbrain-langdetect](https://github.com/OpenVoiceOS/ovos-audio-transformer-plugin-speechbrain-langdetect)
 - [ovos-audio-transformer-plugin-speechflow-langdetect](https://github.com/OpenVoiceOS/ovos-audio-transformer-plugin-speechflow-langdetect)
@@ -99,7 +99,7 @@ De optionele modus `verify_lang` controleert de gedetecteerde taal van de tekst 
 
 Elke component is op zichzelf nuttig, maar ze laten zich schoon samenstellen:
 
-1. **Audiotaaldetectie** — vertelt de STT-plugin welke taal te transcriberen.
+1. **Audiotaaldetectie** — vertelt de ASR-plugin welke taal te transcriberen.
 2. **Uitingsvertaling** — zet niet-native uitingen om naar de geconfigureerde taal van de assistent vóór de skill-matching.
 3. **Dialoogvertaling** — vertaalt het antwoord van de assistent terug naar de taal van de gebruiker vóór de TTS.
 

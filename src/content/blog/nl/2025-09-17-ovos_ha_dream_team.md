@@ -22,10 +22,10 @@ Dit artikel behandelt de drie integratielagen: Wyoming-bruggen voor de spraakpij
 
 ## Geef Home Assistant een stem op basis van OVOS
 
-Het Wyoming-protocol is de standaardinterface van HA voor externe STT-, TTS- en wakeword-diensten. We hebben Wyoming-bruggen gebouwd die elke OVOS-plugin via dat protocol beschikbaar maken — wat betekent dat HA toegang krijgt tot elke plugin in het OVOS-ecosysteem, en niet slechts tot een zorgvuldig samengestelde selectie.
+Het Wyoming-protocol is de standaardinterface van HA voor externe ASR-, TTS- en wakeword-diensten. We hebben Wyoming-bruggen gebouwd die elke OVOS-plugin via dat protocol beschikbaar maken — wat betekent dat HA toegang krijgt tot elke plugin in het OVOS-ecosysteem, en niet slechts tot een zorgvuldig samengestelde selectie.
 
 
-* [Wyoming OVOS STT](https://github.com/TigreGotico/wyoming-ovos-stt): Zet gesproken opdrachten om in tekst zodat Home Assistant ze kan begrijpen.
+* [Wyoming OVOS ASR](https://github.com/TigreGotico/wyoming-ovos-stt): Zet gesproken opdrachten om in tekst zodat Home Assistant ze kan begrijpen.
 * [Wyoming OVOS TTS](https://github.com/TigreGotico/wyoming-ovos-tts): Stelt Home Assistant in staat antwoorden uit te spreken met de uiteenlopende stemopties van OVOS.
 * [Wyoming OVOS Wakeword](https://github.com/TigreGotico/wyoming-ovos-wakeword): Integreert aangepaste wakewords, zodat uw Home Assistant-opstelling alleen reageert wanneer ze de door u gekozen triggerzin hoort.
 

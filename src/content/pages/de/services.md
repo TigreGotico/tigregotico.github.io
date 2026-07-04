@@ -34,7 +34,7 @@ Praxis bewährten Stack wieder, den wir rund um das
 **[Open Voice Operating System](https://openvoiceos.org)** und
 **[HiveMind](https://jarbashivemind.github.io/HiveMind-community-docs/)** gebaut
 haben. Individuelle Aktivierungswörter, Verdrahtung von Sprachsynthese (TTS) und
-Spracherkennung (STT), Intent-Verarbeitung und maßgeschneiderte Komponenten —
+Spracherkennung (ASR), Intent-Verarbeitung und maßgeschneiderte Komponenten —
 zusammengesetzt aus einer bewährten Open-Source-Grundlage statt von Grund auf
 neu, und laufend auf Ihrer eigenen Hardware.
 
@@ -67,7 +67,7 @@ Erfahrung in der automatischen Spracherkennung in Ihr Projekt einbringt.
 
 Wir bauen Sprachtechnologie für Sprachen, die von gängigen Werkzeugen ignoriert
 werden — darunter Varianten des Portugiesischen sowie andere lusophone und
-Minderheitensprachen. Von der Phonemisierung über STT bis TTS helfen wir
+Minderheitensprachen. Von der Phonemisierung über ASR bis TTS helfen wir
 unterversorgten Sprachgemeinschaften, moderne, die Privatsphäre achtende
 Sprachunterstützung zu erhalten.
 

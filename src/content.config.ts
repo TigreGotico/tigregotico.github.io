@@ -16,7 +16,7 @@ const blog = defineCollection({
       coverExternal: z.string().url().optional(),
       draft: z.boolean().default(false),
       // 'en' at the root, 'pt' for translations under src/content/blog/pt/.
-      lang: z.enum(['en', 'pt', 'es', 'de', 'nl', 'fr']).default('en'),
+      lang: z.enum(['en', 'pt', 'es', 'de', 'nl', 'fr', 'it', 'ru']).default('en'),
     }),
 });
 
@@ -118,6 +118,7 @@ const testimonials = defineCollection({
     org: z.string(),
     url: z.string().url().optional(),
     quote: z.string(),
+    quotes: z.record(z.string(), z.string()).optional(),
     author: z.string(),
     // Marks a quote as not-yet-supplied (shows a "pending" treatment).
     placeholder: z.boolean().default(false),

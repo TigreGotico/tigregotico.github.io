@@ -34,7 +34,7 @@ stack éprouvée que nous avons bâtie autour de l'**[Open Voice Operating
 System](https://openvoiceos.org)** et de
 **[HiveMind](https://jarbashivemind.github.io/HiveMind-community-docs/)**. Mots
 d'activation personnalisés, câblage de la synthèse vocale (TTS) et de la
-reconnaissance vocale (STT), traitement des intentions et composants sur mesure —
+reconnaissance vocale (ASR), traitement des intentions et composants sur mesure —
 assemblés à partir d'une base open source éprouvée plutôt que de zéro, et
 s'exécutant sur votre propre matériel.
 
@@ -67,7 +67,7 @@ d'expertise en reconnaissance automatique de la parole.
 
 Nous construisons de la technologie vocale pour les langues que les outils grand
 public ignorent — y compris les variantes du portugais et d'autres langues
-lusophones et minoritaires. De la phonémisation au STT et au TTS, nous aidons les
+lusophones et minoritaires. De la phonémisation au ASR et au TTS, nous aidons les
 communautés linguistiques mal desservies à obtenir un support vocal moderne et
 respectueux de la vie privée.
 

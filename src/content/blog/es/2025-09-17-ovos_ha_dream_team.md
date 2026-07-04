@@ -22,10 +22,10 @@ Este artículo cubre las tres capas de integración: puentes Wyoming para la can
 
 ## Dale a Home Assistant una Voz con la Potencia de OVOS
 
-El protocolo Wyoming es la interfaz estándar de HA para servicios externos de STT, TTS y palabra de activación. Hemos construido puentes Wyoming que exponen cualquier plugin OVOS a través de ese protocolo, lo que significa que HA obtiene acceso a todos los plugins del ecosistema OVOS, y no solo a una lista restringida y seleccionada.
+El protocolo Wyoming es la interfaz estándar de HA para servicios externos de ASR, TTS y palabra de activación. Hemos construido puentes Wyoming que exponen cualquier plugin OVOS a través de ese protocolo, lo que significa que HA obtiene acceso a todos los plugins del ecosistema OVOS, y no solo a una lista restringida y seleccionada.
 
 
-* [Wyoming OVOS STT](https://github.com/TigreGotico/wyoming-ovos-stt): Convierte los comandos hablados en texto para que Home Assistant los entienda.
+* [Wyoming OVOS ASR](https://github.com/TigreGotico/wyoming-ovos-stt): Convierte los comandos hablados en texto para que Home Assistant los entienda.
 * [Wyoming OVOS TTS](https://github.com/TigreGotico/wyoming-ovos-tts): Permite que Home Assistant hable las respuestas usando las diversas opciones de voz de OVOS.
 * [Wyoming OVOS Wakeword](https://github.com/TigreGotico/wyoming-ovos-wakeword): Integra palabras de activación personalizadas, permitiendo que tu configuración de Home Assistant responda solo cuando oye la frase de activación que hayas elegido.
 

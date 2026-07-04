@@ -20,7 +20,7 @@ O OpenVoiceOS (OVOS) é uma plataforma de assistente de voz de código aberto e 
 
 ## Deteção de Língua a partir de Áudio
 
-O OVOS identifica a língua falada no áudio antes de esta chegar à etapa de transcrição de STT, permitindo que o plugin de STT transcreva com exatidão em vez de adivinhar. Construí vários plugins para isto:
+O OVOS identifica a língua falada no áudio antes de esta chegar à etapa de transcrição de ASR, permitindo que o plugin de ASR transcreva com exatidão em vez de adivinhar. Construí vários plugins para isto:
 
 - [ovos-audio-transformer-plugin-speechbrain-langdetect](https://github.com/OpenVoiceOS/ovos-audio-transformer-plugin-speechbrain-langdetect)
 - [ovos-audio-transformer-plugin-speechflow-langdetect](https://github.com/OpenVoiceOS/ovos-audio-transformer-plugin-speechflow-langdetect)
@@ -99,7 +99,7 @@ O modo opcional `verify_lang` verifica de forma cruzada a língua detetada do te
 
 Cada componente é útil de forma independente, mas compõem-se de forma limpa:
 
-1. **Deteção de língua do áudio** — indica ao plugin de STT que língua transcrever.
+1. **Deteção de língua do áudio** — indica ao plugin de ASR que língua transcrever.
 2. **Tradução do enunciado** — converte enunciados não nativos para a língua configurada do assistente antes da correspondência de skills.
 3. **Tradução do diálogo** — traduz a resposta do assistente de volta para a língua do utilizador antes do TTS.
 

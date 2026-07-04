@@ -144,11 +144,11 @@
   {
     "id": "ovos-transcription-validator-plugin",
     "name": "OVOS Transcription Validator Plugin",
-    "description": "Validate and filter STT transcriptions in OpenVoiceOS.",
+    "description": "Validate and filter ASR transcriptions in OpenVoiceOS.",
     "url": "https://github.com/TigreGotico/ovos-transcription-validator-plugin",
     "category": "OpenVoiceOS",
     "tags": [
-      "STT validation",
+      "ASR validation",
       "filtering",
       "quality"
     ],
@@ -427,13 +427,13 @@
   },
   {
     "id": "ovos-stt-plugin-mynorthai",
-    "name": "OVOS STT Plugin - MyNorthAI",
+    "name": "OVOS ASR Plugin - MyNorthAI",
     "description": "MyNorthAI Speech-to-Text plugin for OpenVoiceOS.",
     "url": "https://github.com/TigreGotico/ovos-stt-plugin-MyNorthAI",
     "category": "OpenVoiceOS",
     "tags": [
       "MyNorthAI",
-      "STT plugin",
+      "ASR plugin",
       "speech-to-text"
     ],
     "featured": false
@@ -1002,7 +1002,7 @@
     "category": "OpenVoiceOS",
     "tags": [
       "OpenVoiceOS",
-      "STT",
+      "ASR",
       "Whisper"
     ],
     "featured": false
@@ -1016,7 +1016,7 @@
     "tags": [
       "ONNX models",
       "OpenVoiceOS",
-      "STT"
+      "ASR"
     ],
     "featured": false
   },
@@ -1077,13 +1077,13 @@
   },
   {
     "id": "wyoming-ovos-stt",
-    "name": "Wyoming OVOS STT",
-    "description": "OpenVoiceOS STT service for the Wyoming protocol — lightweight speech recognition.",
+    "name": "Wyoming OVOS ASR",
+    "description": "OpenVoiceOS ASR service for the Wyoming protocol — lightweight speech recognition.",
     "url": "https://github.com/TigreGotico/wyoming-ovos-stt",
     "category": "OpenVoiceOS",
     "tags": [
       "Home Assistant",
-      "STT",
+      "ASR",
       "Wyoming",
       "protocol",
       "speech recognition"
@@ -1423,7 +1423,7 @@
   {
     "id": "ovos-stt-plugin-nos",
     "name": "ovos-stt-plugin-nos",
-    "description": "OVOS STT plugin for NOS Galician speech recognition.",
+    "description": "OVOS ASR plugin for NOS Galician speech recognition.",
     "url": "https://github.com/OpenVoiceOS/ovos-stt-plugin-nos",
     "category": "ILENIA",
     "tags": [
@@ -1436,7 +1436,7 @@
   {
     "id": "ovos-stt-plugin-hitz",
     "name": "ovos-stt-plugin-HiTZ",
-    "description": "OVOS STT plugin for HiTZ Basque speech recognition.",
+    "description": "OVOS ASR plugin for HiTZ Basque speech recognition.",
     "url": "https://github.com/OpenVoiceOS/ovos-stt-plugin-HiTZ",
     "category": "ILENIA",
     "tags": [
@@ -1449,7 +1449,7 @@
   {
     "id": "ovos-stt-plugin-whisper-lm",
     "name": "ovos-stt-plugin-whisper-lm",
-    "description": "OVOS STT plugin combining Whisper with a language model for improved accuracy.",
+    "description": "OVOS ASR plugin combining Whisper with a language model for improved accuracy.",
     "url": "https://github.com/OpenVoiceOS/ovos-stt-plugin-whisper-lm",
     "category": "ILENIA",
     "tags": [
@@ -1475,7 +1475,7 @@
   {
     "id": "ovos-stt-plugin-fasterwhisper-zuazo",
     "name": "ovos-stt-plugin-fasterwhisper-zuazo",
-    "description": "OVOS STT plugin using Zuazo fine-tuned Faster-Whisper models for Basque.",
+    "description": "OVOS ASR plugin using Zuazo fine-tuned Faster-Whisper models for Basque.",
     "url": "https://github.com/OpenVoiceOS/ovos-stt-plugin-fasterwhisper-zuazo",
     "category": "ILENIA",
     "tags": [
@@ -1488,7 +1488,7 @@
   {
     "id": "ovos-stt-plugin-wav2vec2",
     "name": "ovos-stt-plugin-wav2vec2",
-    "description": "OVOS STT plugin using wav2vec 2.0 models for Spanish and co-official languages.",
+    "description": "OVOS ASR plugin using wav2vec 2.0 models for Spanish and co-official languages.",
     "url": "https://github.com/OpenVoiceOS/ovos-stt-plugin-wav2vec2",
     "category": "ILENIA",
     "tags": [
@@ -1501,7 +1501,7 @@
   {
     "id": "ovos-stt-plugin-nemo",
     "name": "ovos-stt-plugin-nemo",
-    "description": "OVOS STT plugin using NVIDIA NeMo ASR models.",
+    "description": "OVOS ASR plugin using NVIDIA NeMo ASR models.",
     "url": "https://github.com/OpenVoiceOS/ovos-stt-plugin-nemo",
     "category": "ILENIA",
     "tags": [
@@ -1514,7 +1514,7 @@
   {
     "id": "ovos-stt-plugin-citrinet",
     "name": "ovos-stt-plugin-citrinet",
-    "description": "OVOS STT plugin using Citrinet acoustic model, trained on ILENIA speech data.",
+    "description": "OVOS ASR plugin using Citrinet acoustic model, trained on ILENIA speech data.",
     "url": "https://github.com/OpenVoiceOS/ovos-stt-plugin-citrinet",
     "category": "ILENIA",
     "tags": [
@@ -1540,7 +1540,7 @@
   {
     "id": "ovos-stt-plugin-mms",
     "name": "ovos-stt-plugin-mms",
-    "description": "OVOS STT plugin using Meta MMS massively multilingual speech recognition.",
+    "description": "OVOS ASR plugin using Meta MMS massively multilingual speech recognition.",
     "url": "https://github.com/OpenVoiceOS/ovos-stt-plugin-mms",
     "category": "ILENIA",
     "tags": [
@@ -2199,7 +2199,7 @@
     "url": "https://github.com/TigreGotico/ovos-stt-plugin-coreml",
     "category": "OpenVoiceOS",
     "tags": [
-      "STT",
+      "ASR",
       "CoreML",
       "on-device",
       "Apple"
@@ -2209,11 +2209,11 @@
   {
     "id": "ovos-stt-plugin-rover",
     "name": "ovos-stt-plugin-rover",
-    "description": "Meta-STT engine for OVOS that aggregates several STT backends with the ROVER (Recognizer Output Voting Error Reduction) algorithm for higher transcription accuracy.",
+    "description": "Meta-ASR engine for OVOS that aggregates several ASR backends with the ROVER (Recognizer Output Voting Error Reduction) algorithm for higher transcription accuracy.",
     "url": "https://github.com/TigreGotico/ovos-stt-plugin-rover",
     "category": "OpenVoiceOS",
     "tags": [
-      "STT",
+      "ASR",
       "ROVER",
       "ensemble"
     ],

@@ -20,7 +20,7 @@ We also take on standalone project work where the scope is well-defined from the
 We create voice interfaces for anything. Whatever you want to talk to — a device,
 an app, a service, or a whole product line — we build the voice layer for it,
 reusing the expertise and battle-tested stack we've built around the **[Open Voice Operating System](https://openvoiceos.org)** and **[HiveMind](https://jarbashivemind.github.io/HiveMind-community-docs/)**. Custom wake words, Text-to-Speech (TTS) and
-Speech-to-Text (STT) wiring, intent handling, and bespoke components — assembled
+Speech-to-Text (ASR) wiring, intent handling, and bespoke components — assembled
 from a proven open-source foundation instead of from scratch, and running on your
 own hardware.
 
@@ -49,7 +49,7 @@ recognition expertise to your project.
 
 We build speech technology for languages that mainstream tools ignore — including
 Portuguese variants and other Lusophone and minority languages. From
-phonemization to STT and TTS, we help under-served language communities get
+phonemization to ASR and TTS, we help under-served language communities get
 modern, privacy-respecting voice support.
 
 ## Data Extraction, Clean APIs & Datasets

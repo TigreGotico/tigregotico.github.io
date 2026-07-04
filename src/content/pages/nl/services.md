@@ -22,7 +22,7 @@ Wij creëren spraakinterfaces voor alles. Waarmee u ook wilt praten — een
 apparaat, een app, een dienst of een hele productlijn — wij bouwen de spraaklaag
 ervoor, waarbij wij de expertise en de in de praktijk beproefde stack hergebruiken
 die wij hebben opgebouwd rond het **[Open Voice Operating System](https://openvoiceos.org)** en **[HiveMind](https://jarbashivemind.github.io/HiveMind-community-docs/)**. Aangepaste wake words, bedrading voor Text-to-Speech (TTS) en
-Speech-to-Text (STT), intentieafhandeling en op maat gemaakte componenten —
+Speech-to-Text (ASR), intentieafhandeling en op maat gemaakte componenten —
 samengesteld uit een bewezen open-source-fundament in plaats van vanaf nul, en
 draaiend op uw eigen hardware.
 
@@ -52,7 +52,7 @@ project brengt.
 
 Wij bouwen spraaktechnologie voor talen die reguliere tools negeren — waaronder
 Portugese varianten en andere Lusofone en minderheidstalen. Van fonemisatie tot
-STT en TTS helpen wij ondervertegenwoordigde taalgemeenschappen aan moderne,
+ASR en TTS helpen wij ondervertegenwoordigde taalgemeenschappen aan moderne,
 privacyrespecterende spraakondersteuning.
 
 ## Data-extractie, schone API's en datasets

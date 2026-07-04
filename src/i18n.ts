@@ -3,9 +3,9 @@
 //
 // Portuguese is European Portuguese (pt-PT) throughout.
 
-export type Locale = 'en' | 'pt' | 'es' | 'de' | 'nl' | 'fr';
+export type Locale = 'en' | 'pt' | 'es' | 'de' | 'nl' | 'fr' | 'it' | 'ru';
 
-export const locales: Locale[] = ['en', 'pt', 'es', 'de', 'nl', 'fr'];
+export const locales: Locale[] = ['en', 'pt', 'es', 'de', 'nl', 'fr', 'it', 'ru'];
 
 /** Endonym shown in the language switcher. */
 export const languageNames: Record<Locale, string> = {
@@ -15,10 +15,12 @@ export const languageNames: Record<Locale, string> = {
   de: 'Deutsch',
   nl: 'Nederlands',
   fr: 'Français',
+  it: 'Italiano',
+  ru: 'Русский',
 };
 
 /** Locales that have fully translated blog posts (others fall back to English). */
-export const blogLocales: Locale[] = ['en', 'pt', 'es', 'de', 'nl', 'fr'];
+export const blogLocales: Locale[] = ['en', 'pt', 'es', 'de', 'nl', 'fr', 'it', 'ru'];
 
 /** Pages that exist in every locale (path without base, no trailing slash). */
 export const translatedPaths = [
@@ -105,6 +107,30 @@ export const ui = {
     },
     a11y: { skip: 'Aller au contenu', primaryNav: 'Principale', mobileNav: 'Principale (mobile)', openMenu: 'Ouvrir le menu de navigation', closeMenu: 'Fermer le menu de navigation' },
   },
+  it: {
+    lang: 'it',
+    locale: 'it_IT',
+    chooseLanguage: 'Scegli la lingua',
+    nav: { home: 'Home', about: 'Chi siamo', blog: 'Blog', projects: 'Open Source', services: 'Servizi', games: 'Giochi', contact: 'Contatti' },
+    footer: {
+      tagline: 'Tecnologia vocale attenta alla privacy e IA open source — pensata per funzionare sul tuo hardware.',
+      explore: 'Esplora', projects: 'Progetti', connect: 'Seguici', voicesDemo: 'Demo delle voci',
+      privacy: 'Privacy', foss: 'Software libero e open source.', appearance: 'Aspetto', vat: 'P.IVA',
+    },
+    a11y: { skip: 'Vai al contenuto', primaryNav: 'Principale', mobileNav: 'Principale (mobile)', openMenu: 'Apri il menu di navigazione', closeMenu: 'Chiudi il menu di navigazione' },
+  },
+  ru: {
+    lang: 'ru',
+    locale: 'ru_RU',
+    chooseLanguage: 'Выберите язык',
+    nav: { home: 'Главная', about: 'О нас', blog: 'Блог', projects: 'Открытый код', services: 'Услуги', games: 'Игры', contact: 'Контакты' },
+    footer: {
+      tagline: 'Голосовые технологии с приоритетом приватности и открытый ИИ — работают на вашем собственном оборудовании.',
+      explore: 'Обзор', projects: 'Проекты', connect: 'Связаться', voicesDemo: 'Демо голосов',
+      privacy: 'Конфиденциальность', foss: 'Свободное ПО с открытым исходным кодом.', appearance: 'Оформление', vat: 'НДС',
+    },
+    a11y: { skip: 'Перейти к содержимому', primaryNav: 'Основная', mobileNav: 'Основная (мобильная)', openMenu: 'Открыть меню навигации', closeMenu: 'Закрыть меню навигации' },
+  },
 } as const;
 
 /** Nav in display order, localized. */
@@ -134,7 +160,7 @@ export function pageEntryId(locale: Locale, name: string) {
 
 /** Strip any locale sub-folder from a blog entry id to get its clean slug. */
 export function blogSlug(id: string) {
-  return id.replace(/^(pt|es|de|nl|fr)\//, '');
+  return id.replace(/^(pt|es|de|nl|fr|it|ru)\//, '');
 }
 
 /** URL (without base) for a blog post in the given locale. */
@@ -150,6 +176,8 @@ export const blogUI: Record<Locale, { allPosts: string; minRead: string; newer: 
   de: { allPosts: 'Alle Beiträge', minRead: 'Min. Lesezeit', newer: 'Neuer', older: 'Älter', more: 'Weitere Beiträge' },
   nl: { allPosts: 'Alle artikelen', minRead: 'min leestijd', newer: 'Nieuwer', older: 'Ouder', more: 'Meer artikelen' },
   fr: { allPosts: 'Tous les articles', minRead: 'min de lecture', newer: 'Plus récent', older: 'Plus ancien', more: "Plus d'articles" },
+  it: { allPosts: 'Tutti gli articoli', minRead: 'min di lettura', newer: 'Più recente', older: 'Più vecchio', more: 'Altri articoli' },
+  ru: { allPosts: 'Все статьи', minRead: 'мин чтения', newer: 'Новее', older: 'Старее', more: 'Ещё статьи' },
 };
 
 /** Project-card chrome, per locale. */
@@ -160,4 +188,6 @@ export const cardUI: Record<Locale, { selfHosted: string; selfHostedTitle: strin
   de: { selfHosted: 'Selbst gehostet', selfHostedTitle: 'Läuft auf Ihrer eigenen Hardware — keine verpflichtende Cloud', viewRepo: 'Repository ansehen', featured: 'Empfohlen', comingSoon: 'Demnächst', comingSoonLong: 'Demnächst — noch nicht öffentlich' },
   nl: { selfHosted: 'Zelf gehost', selfHostedTitle: 'Draait op je eigen hardware — geen verplichte cloud', viewRepo: 'Repository bekijken', featured: 'Uitgelicht', comingSoon: 'Binnenkort', comingSoonLong: 'Binnenkort — nog niet openbaar' },
   fr: { selfHosted: 'Auto-hébergé', selfHostedTitle: 'Fonctionne sur votre propre matériel — aucun cloud obligatoire', viewRepo: 'Voir le dépôt', featured: 'En vedette', comingSoon: 'Bientôt disponible', comingSoonLong: 'Bientôt disponible — pas encore public' },
+  it: { selfHosted: 'Self-hosted', selfHostedTitle: 'Funziona sul tuo hardware — nessun cloud obbligatorio', viewRepo: 'Vedi il repository', featured: 'In evidenza', comingSoon: 'Prossimamente', comingSoonLong: 'Prossimamente — non ancora pubblico' },
+  ru: { selfHosted: 'Self-hosted', selfHostedTitle: 'Работает на вашем оборудовании — без обязательного облака', viewRepo: 'Открыть репозиторий', featured: 'Рекомендуемое', comingSoon: 'Скоро', comingSoonLong: 'Скоро — пока не опубликовано' },
 };
