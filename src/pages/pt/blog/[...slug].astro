@@ -2,19 +2,18 @@
 import { getCollection, render } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
 import { Image } from 'astro:assets';
-import Base from '../../layouts/Base.astro';
-import { site } from '../../data/site';
+import Base from '../../../layouts/Base.astro';
+import { site } from '../../../data/site';
+import { blogSlug } from '../../../i18n';
 
 export const getStaticPaths = (async () => {
-  // Don't generate pages for future-dated posts until a build after their date.
-  const posts = (await getCollection('blog', ({ data }) => data.lang === 'en' && !data.draft && data.date.valueOf() <= Date.now())).sort(
+  const posts = (await getCollection('blog', ({ data }) => data.lang === 'pt' && !data.draft && data.date.valueOf() <= Date.now())).sort(
     (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
   );
   return posts.map((post, i) => ({
-    params: { slug: post.id },
+    params: { slug: blogSlug(post.id) },
     props: {
       post,
-      // Chronological neighbours (newer = prev, older = next).
       prev: posts[i - 1] ?? null,
       next: posts[i + 1] ?? null,
     },
@@ -25,23 +24,19 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const { post, prev, next } = Astro.props;
 const { Content, remarkPluginFrontmatter } = await render(post);
 
-// Reading time from rendered word count (~200 wpm).
 const words: number = remarkPluginFrontmatter?.words ?? 0;
 const readingMinutes = words ? Math.max(1, Math.round(words / 200)) : 0;
 
-const ogImage = post.data.cover
-  ? post.data.cover.src
-  : post.data.coverExternal;
+const ogImage = post.data.cover ? post.data.cover.src : post.data.coverExternal;
 
 const blogPostingLd = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
+  inLanguage: 'pt-PT',
   headline: post.data.title,
   description: post.data.description,
   datePublished: post.data.date.toISOString(),
-  ...(post.data.updated
-    ? { dateModified: post.data.updated.toISOString() }
-    : {}),
+  ...(post.data.updated ? { dateModified: post.data.updated.toISOString() } : {}),
   author: { '@type': 'Person', name: post.data.author },
   publisher: { '@type': 'Organization', name: site.name },
   keywords: post.data.tags.join(', '),
@@ -53,21 +48,22 @@ const blogPostingLd = {
   description={post.data.description}
   image={ogImage}
   type="article"
+  locale="pt"
   jsonLd={blogPostingLd}
   publishedTime={post.data.date.toISOString()}
   modifiedTime={post.data.updated?.toISOString()}
 >
   <article class="mx-auto max-w-3xl">
     <p class="mb-8">
-      <a class="inline-flex items-center gap-1 font-display text-xs uppercase tracking-[0.2em] text-primary hover:underline" href={`${base}/blog`}
-        >&larr; All posts</a
+      <a class="inline-flex items-center gap-1 font-display text-xs uppercase tracking-[0.2em] text-primary hover:underline" href={`${base}/pt/blog/`}
+        >&larr; Todos os artigos</a
       >
     </p>
     <header class="space-y-5">
       <p class="flex flex-wrap items-center gap-x-2 font-display text-xs uppercase tracking-[0.18em] text-muted">
         <time datetime={post.data.date.toISOString()}>
           {
-            post.data.date.toLocaleDateString('en-US', {
+            post.data.date.toLocaleDateString('pt-PT', {
               year: 'numeric',
               month: 'long',
               day: 'numeric',
@@ -75,7 +71,7 @@ const blogPostingLd = {
           }
         </time>
         {post.data.author && <span>· {post.data.author}</span>}
-        {readingMinutes > 0 && <span>· {readingMinutes} min read</span>}
+        {readingMinutes > 0 && <span>· {readingMinutes} min de leitura</span>}
       </p>
       <h1 class="display-1" style="font-size: clamp(2rem, 1.4rem + 2.6vw, 3.25rem);">
         {post.data.title}
@@ -125,19 +121,19 @@ const blogPostingLd = {
       (prev || next) && (
         <nav
           class="mt-12 grid gap-4 border-t border-border pt-6 sm:grid-cols-2"
-          aria-label="More posts"
+          aria-label="Mais artigos"
         >
           {prev ? (
-            <a href={`${base}/blog/${prev.id}`} class="card-hover group">
-              <p class="font-display text-xs uppercase tracking-[0.2em] text-primary">&larr; Newer</p>
+            <a href={`${base}/pt/blog/${blogSlug(prev.id)}/`} class="card-hover group">
+              <p class="font-display text-xs uppercase tracking-[0.2em] text-primary">&larr; Mais recente</p>
               <p class="mt-2 display-3 text-base group-hover:text-primary">{prev.data.title}</p>
             </a>
           ) : (
             <span />
           )}
           {next && (
-            <a href={`${base}/blog/${next.id}`} class="card-hover group sm:text-right">
-              <p class="font-display text-xs uppercase tracking-[0.2em] text-primary">Older &rarr;</p>
+            <a href={`${base}/pt/blog/${blogSlug(next.id)}/`} class="card-hover group sm:text-right">
+              <p class="font-display text-xs uppercase tracking-[0.2em] text-primary">Mais antigo &rarr;</p>
               <p class="mt-2 display-3 text-base group-hover:text-primary">{next.data.title}</p>
             </a>
           )}

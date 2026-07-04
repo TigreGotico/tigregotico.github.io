@@ -111,3 +111,13 @@ export function localePath(locale: Locale, href: string) {
 export function pageEntryId(locale: Locale, name: string) {
   return locale === 'en' ? name : `pt/${name}`;
 }
+
+/** Strip the locale sub-folder from a blog entry id to get its clean slug. */
+export function blogSlug(id: string) {
+  return id.replace(/^pt\//, '');
+}
+
+/** URL (without base) for a blog post in the given locale. */
+export function blogPath(locale: Locale, slug: string) {
+  return locale === 'en' ? `/blog/${slug}` : `/pt/blog/${slug}`;
+}

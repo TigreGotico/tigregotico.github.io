@@ -44,12 +44,17 @@ const isActive = (href: string) => {
 const baseNoSlash = base.replace(/\/$/, '');
 const sitePath = (here.startsWith(baseNoSlash) ? here.slice(baseNoSlash.length) : here) || '/';
 const enPath = sitePath === '/pt' ? '/' : sitePath.replace(/^\/pt(?=\/|$)/, '') || '/';
-const counterpartPath = translatedPaths.includes(enPath)
+// Individual blog posts are translated 1:1, so switch straight to the same
+// slug in the other language; other pages fall back to their section root.
+const isBlogPost = /^\/blog\/.+/.test(enPath);
+const counterpartPath = isBlogPost
   ? enPath
-  : '/' + (enPath.split('/')[1] ?? '');
+  : translatedPaths.includes(enPath)
+    ? enPath
+    : '/' + (enPath.split('/')[1] ?? '');
 const switchTarget = locale === 'en' ? ('pt' as Locale) : ('en' as Locale);
 const switchBase =
-  translatedPaths.includes(counterpartPath) ? counterpartPath : '/';
+  isBlogPost || translatedPaths.includes(counterpartPath) ? counterpartPath : '/';
 const switchHref = (baseNoSlash + (() => {
   const p = localePath(switchTarget, switchBase);
   return p === '/' ? '/' : p + '/';

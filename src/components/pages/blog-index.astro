@@ -4,7 +4,7 @@ import PageHeader from '../../components/PageHeader.astro';
 import Icon from '../../components/Icon.astro';
 import { Image } from 'astro:assets';
 import { getCollection, render } from 'astro:content';
-import { type Locale } from '../../i18n';
+import { blogPath, blogSlug, type Locale } from '../../i18n';
 
 interface Props { locale?: Locale }
 const locale: Locale = Astro.props.locale ?? 'en';
@@ -22,6 +22,7 @@ const S = {
     readArticle: 'Read article',
     note: '',
     dateLocale: 'en-US',
+    catLabels: {} as Record<string, string>,
   },
   pt: {
     title: 'Blogue',
@@ -36,6 +37,17 @@ const S = {
     readArticle: 'Ler artigo',
     note: '',
     dateLocale: 'pt-PT',
+    catLabels: {
+      'Datasets': 'Conjuntos de Dados',
+      'Voice Tech': 'Tecnologia de Voz',
+      'NLP & Language': 'NLP e Linguagem',
+      'Infrastructure': 'Infraestrutura',
+      'Privacy & Security': 'Privacidade e Segurança',
+      'Games & Accessibility': 'Jogos e Acessibilidade',
+      'JavaScript': 'JavaScript',
+      'Community': 'Comunidade',
+      'General': 'Geral',
+    } as Record<string, string>,
   },
 }[locale];
 
@@ -66,7 +78,7 @@ const getCategory = (tags: string[]): string => {
 };
 
 // Future-dated posts stay hidden until a (re)build after their date.
-const raw = (await getCollection('blog', ({ data }) => !data.draft && data.date.valueOf() <= Date.now())).sort(
+const raw = (await getCollection('blog', ({ data }) => data.lang === locale && !data.draft && data.date.valueOf() <= Date.now())).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
 
@@ -111,7 +123,7 @@ for (const { category } of posts) {
           aria-pressed="false"
           class="chip"
         >
-          <span class="chip-label">{category}</span>
+          <span class="chip-label">{S.catLabels[category] ?? category}</span>
           <span class="chip-sep" aria-hidden="true">·</span>
           <span class="chip-count">{count}</span>
         </button>
@@ -126,7 +138,7 @@ for (const { category } of posts) {
         return (
           <li class="blog-item reveal" data-reveal data-reveal-delay={(i % 2) * 80} data-category={category}>
             <a
-              href={`${base}/blog/${post.id}`}
+              href={`${base}${blogPath(locale, blogSlug(post.id))}/`}
               class="card-hover group flex h-full flex-col overflow-hidden"
             >
               {(cover || coverExternal) && (

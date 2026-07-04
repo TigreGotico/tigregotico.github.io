@@ -5,7 +5,7 @@ import Hero from '../Hero.astro';
 import Icon from '../Icon.astro';
 import { getEntry, getCollection, render } from 'astro:content';
 import { site } from '../../data/site';
-import { pageEntryId, localePath, type Locale } from '../../i18n';
+import { pageEntryId, localePath, blogPath, blogSlug, type Locale } from '../../i18n';
 
 interface Props { locale?: Locale }
 const locale: Locale = Astro.props.locale ?? 'en';
@@ -163,7 +163,7 @@ const { Content } = await render(home!);
 
 // Only render posts whose date has arrived — future-dated posts stay hidden
 // until a (re)build after their date (see the weekly cron in deploy.yml).
-const posts = (await getCollection('blog', ({ data }) => !data.draft && data.date.valueOf() <= Date.now()))
+const posts = (await getCollection('blog', ({ data }) => data.lang === locale && !data.draft && data.date.valueOf() <= Date.now()))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 3);
 
@@ -293,7 +293,7 @@ const stack = ['OpenVoiceOS', 'HiveMind'];
       {
         posts.map((post, i) => (
           <li class="reveal" data-reveal data-reveal-delay={i * 70}>
-            <a href={`${base}/blog/${post.id}`} class="card-hover group flex h-full flex-col">
+            <a href={`${base}${blogPath(locale, blogSlug(post.id))}/`} class="card-hover group flex h-full flex-col">
               <time
                 class="font-display text-xs uppercase tracking-[0.2em] text-muted"
                 datetime={post.data.date.toISOString()}
