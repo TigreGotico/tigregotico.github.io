@@ -32,7 +32,7 @@ clone a reference voice — the result is a fast, private TTS model that runs
 locally on your device and slots straight into OpenVoiceOS or Home Assistant. You
 keep full control of your data.
 
-Curious what our voices sound like? **[Try the Voices Demo](../demo)** — our
+Curious what our voices sound like? **[Try the Voices Demo](/demo)** — our
 Miro & Dii voices synthesize live in your browser, in 20+ languages.
 
 ## Fine-Tuned Speech Recognition for Your Language & Domain
