@@ -82,4 +82,4 @@ pip install git+https://github.com/TigreGotico/silabificador
 
 For the broader multilingual mappings, see [orthography2ipa](https://github.com/TigreGotico/orthography2ipa). Deterministic, fast, offline, and built for the full breadth of the Portuguese-speaking world.
 
-This Portuguese phonetics stack builds on our **[grapheme-to-IPA work for 350+ languages](/blog/2026-05-30-grapheme-to-ipa-for-350-languages)**, forming the phonetic backbone for **[TTS that runs on a potato](/blog/2026-05-30-tts-that-runs-on-a-potato)** and **[Miro & Dii multilingual voices](/blog/2026-05-30-two-voices-every-language-miro-and-dii)**.
+This Portuguese phonetics stack builds on our **[grapheme-to-IPA work for 350+ languages](/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**, forming the phonetic backbone for **[TTS that runs on a potato](/blog/2026-05-10-tts-that-runs-on-a-potato)** and **[Miro & Dii multilingual voices](/blog/2026-06-15-two-voices-every-language-miro-and-dii)**.

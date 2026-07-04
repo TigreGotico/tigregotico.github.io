@@ -126,7 +126,7 @@ This tells you the actual topology of the site — which pages link to what, and
 
 **Scope discovery**: Before writing a parser, know if the site is even scrapable. Some sites explicitly forbid scraping in robots.txt. Some have broken/incomplete sitemaps. Sitemapper tells you what you're actually dealing with.
 
-See also: **[anti-bot transport layers](/blog/2026-05-30-beating-bot-walls-with-drop-in-requests-sessions)** — sitemapper pairs with these transports so you know the site structure before you start hitting it.
+See also: **[anti-bot transport layers](/blog/2026-03-15-beating-bot-walls-with-drop-in-requests-sessions)** — sitemapper pairs with these transports so you know the site structure before you start hitting it.
 
 ## The tool
 

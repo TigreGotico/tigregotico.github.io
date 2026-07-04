@@ -17,7 +17,7 @@ draft: false
 
 **[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)** is a pure-data Python package — declarative JSON, thin pluggable logic, no trained weights — that maps spelling to IPA and models how those phonemes surface in context across **356 language specs and 20+ language families**. Install it, read the data, fork the data. Nothing is hidden in a checkpoint.
 
-It powers everything downstream: the Portuguese-specific [silabificador](https://github.com/TigreGotico/silabificador) and [TugaPhone](https://github.com/TigreGotico/tugaphone) stacks (see **[classical NLP for Portuguese syllables and phonemes](/blog/2026-05-30-classical-nlp-for-portuguese-syllables-and-phonemes)**), the Barranquenho G2P, and the phoneme grounding for **[TTS that runs on a potato](/blog/2026-05-30-tts-that-runs-on-a-potato)**.
+It powers everything downstream: the Portuguese-specific [silabificador](https://github.com/TigreGotico/silabificador) and [TugaPhone](https://github.com/TigreGotico/tugaphone) stacks (see **[classical NLP for Portuguese syllables and phonemes](/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**), the Barranquenho G2P, and the phoneme grounding for **[TTS that runs on a potato](/blog/2026-05-10-tts-that-runs-on-a-potato)**.
 
 ## Two maps, not one
 

@@ -17,7 +17,7 @@ draft: false
 
 The **synthetic training datasets** used to build Miro and Dii — the voice identities we developed in partnership with OpenVoiceOS. The collection spans European Portuguese, Brazilian Portuguese, Dutch, German, French, Italian, Japanese, Spanish, Romanian, Polish, Swedish, Hindi, Danish, Farsi, English, Basque, and more. Each dataset follows a consistent naming convention: `tts-train-synthetic-miro_pt-PT`, `tts-train-synthetic-dii_pt-BR`, `tts-train-synthetic-miro_nl-NL`, and so on for each language pair.
 
-Every dataset is fully synthetic — generated text paired with synthesised audio, no studio sessions — includes IPA phoneme labels derived from our [G2P research for 350+ languages](/blog/2026-05-30-grapheme-to-ipa-for-350-languages), and is released under an open licence so anyone can retrain or extend the voice.
+Every dataset is fully synthetic — generated text paired with synthesised audio, no studio sessions — includes IPA phoneme labels derived from our [G2P research for 350+ languages](/blog/2026-01-15-grapheme-to-ipa-for-350-languages), and is released under an open licence so anyone can retrain or extend the voice.
 
 ## How the voice identity stays consistent across languages
 

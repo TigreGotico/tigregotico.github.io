@@ -160,4 +160,4 @@ Both are FOSS and self-hostable:
 [`unblock_requests`](https://github.com/TigreGotico/unblock_requests) and
 [`anon_requests`](https://github.com/TigreGotico/anon_requests).
 
-These transports power all of our **[music database scrapers](/blog/2026-05-30-music-database-scrapers)**. For site recon before you build any scraper, see **[sitemapper](https://github.com/TigreGotico/sitemapper)** and the **[robots.txt &amp; sitemaps post](/blog/2026-03-01-robot-txt-sitemaps-ethical-web-scraping)**.
+These transports power all of our **[music database scrapers](/blog/2026-04-20-music-database-scrapers)**. For site recon before you build any scraper, see **[sitemapper](https://github.com/TigreGotico/sitemapper)** and the **[robots.txt &amp; sitemaps post](/blog/2026-03-01-robot-txt-sitemaps-ethical-web-scraping)**.
