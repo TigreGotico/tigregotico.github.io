@@ -64,20 +64,46 @@ app for searching and playing music with no browser in sight. Once a site is an
 API, it stops being a visual artifact and becomes something a machine — or a
 voice pipeline — can drive.
 
-**Layer two — a voice skill that speaks that API.** On top of the client sits
-an [OpenVoiceOS](https://openvoiceos.org) skill: it maps spoken intents to API
-calls, narrates the results with our
-[offline TTS voices](/blog/2026-06-15-two-voices-every-language-miro-and-dii),
-and handles the back-and-forth of a conversation. No screen required. The site
-becomes something you *talk to*.
+**Layer two — an OVOS plugin that speaks that API.** On top of the client sits
+an [OpenVoiceOS](https://openvoiceos.org) plugin that maps spoken intents to
+API calls and narrates the results with our
+[offline TTS voices](/blog/2026-06-15-two-voices-every-language-miro-and-dii).
+It is deliberately *not* a bespoke skill per site — that road leads to dozens
+of one-off skills nobody can maintain. For anything media-shaped it is an
+[OCP](https://openvoiceos.github.io/ovos-technical-manual/) provider plugin:
+one small adapter that exposes a site's search-and-play surface to the whole
+Open Common Play framework, so "search", "play", "next", and "resume" already
+work the same way they do for every other source. The site drops into a
+uniform voice interface instead of inventing its own.
 
-This is not hypothetical. The pattern already exists across our skills —
-`ovos-skill-bandcamp`, `ovos-skill-soundcloud`, `ovos-skill-somafm`,
-`ovos-skill-tunein`, `ovos-skill-news`, and more. Each is a site, wrapped: a
-typed client from our media-metadata family, plus a thin skill that lets you
-search and play by voice. "Play the SomaFM Groove Salad channel." "Search
-Bandcamp for Creative-Commons ambient." The website, turned into something you
-can use without looking at it.
+The result: "Play the SomaFM Groove Salad channel." "Search Bandcamp for
+Creative-Commons ambient." The website, turned into something you can use
+without looking at it — and without a new grammar to learn for every site.
+
+## In the age of LLMs, a typed API is a natural-language UI waiting to happen
+
+There is a second reason this shape matters more now than it would have five
+years ago. A clean, typed client is exactly what a large language model needs
+to become a *natural-language front-end* to a website.
+
+Give an LLM a documented set of functions — `search_albums`, `get_recommendations`,
+`stream_url` — and it will happily translate "find me something like Naxatras
+but heavier" into the right calls, chain them, and speak the result back. The
+structured API is the hard part; the conversational interface on top is
+increasingly something the model just *provides*, as long as the tools it is
+handed are well-typed and honest about what they return. Messy HTML gives an
+LLM nothing to hold onto. A typed client gives it a control surface.
+
+So our website clients ship a **`SKILL.md`** — a plain-language
+description of what the API does, its verbs, its return types, and example
+calls, written for an agent to read. Point an LLM-driven assistant at it and the
+client becomes a tool the model can use immediately: no glue code, no bespoke
+integration, just "here is what this site can do, in words." One document turns
+a scraper into something a language model can operate on your behalf.
+
+It is the same structured data serving three front-ends at once: a **CLI** for
+terminal users, an **OCP/voice plugin** for hands-free use, and an **LLM tool**
+for natural-language control. Build the API once; wear it three ways.
 
 ## Why this matters most for people who can't see the screen
 
