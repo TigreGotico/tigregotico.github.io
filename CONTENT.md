@@ -77,10 +77,11 @@ highlights), and one optional image:
 - `image` — an external logo URL. Only use stable hosts (e.g. `*.github.io`,
   `raw` URLs on a default branch).
 
-Known categories (display order is defined in `src/pages/projects.astro`):
-`Platform`, `In-House`, `OVOS-Intents`, `OVOS-Solvers`, `OVOS-Embeddings`,
-`OVOS-STT`, `OVOS-Translation`, `OVOS-Utils`, `ILENIA`. A new category renders
-after the known ones with its raw name.
+`category` may be a single string or an array of strings; a project appears in
+every category it lists. Categories in current use include `OpenVoiceOS`,
+`HiveMind`, `TTS`, `NLP`, `Portuguese`, `Media`, `Music`, `Games`, `Tools`,
+`Machine Learning`, and `Wake-words` — check `src/content/projects.json` for
+the full set before inventing a new one.
 
 ---
 
@@ -172,7 +173,7 @@ Schema fields: `id`, `name`, `description`, `url` (valid URL),
 ## Edit a prose page
 
 Page copy lives in `src/content/pages/*.md` (`home`, `about`, `services`,
-`products`, `resources`, `contact`). Edit the markdown body to change a page's
+`games`, `contact`, `privacy`). Edit the markdown body to change a page's
 text; edit the front-matter `description` to change its meta description.
 
 ```yaml

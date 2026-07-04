@@ -2,7 +2,6 @@
 
 ## Content gaps
 
-- No README.md — should be created from CONTENT.md or a subset
 - Blog posts: only seeded, many more repos not yet covered
 - Projects/datasets/models JSON files need gap analysis against actual GitHub repos
 - PT i18n is planned but not implemented (CONTENT.md milestone M8)
@@ -16,9 +15,8 @@
 
 ## Design / UX
 
-- Mobile nav toggle and palette selector could use better accessible labels
+- Palette selector could use better accessible labels
 - No print stylesheet
-- No 404 page content beyond minimal Astro default
 
 ## Deployment
 
