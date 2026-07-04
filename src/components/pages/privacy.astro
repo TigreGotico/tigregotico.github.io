@@ -9,6 +9,18 @@ const locale: Locale = Astro.props.locale ?? 'en';
 const S = {
   en: { eyebrow: 'No small print' },
   pt: { eyebrow: 'Sem letras pequenas' },
+  es: {
+    "eyebrow": "Sin letra pequeña"
+  },
+  de: {
+    "eyebrow": "Kein Kleingedrucktes"
+  },
+  nl: {
+    "eyebrow": "Geen kleine lettertjes"
+  },
+  fr: {
+    "eyebrow": "Pas de petits caractères"
+  }
 }[locale];
 
 const page = await getEntry('pages', pageEntryId(locale, 'privacy'));

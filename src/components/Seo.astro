@@ -1,6 +1,6 @@
 ---
 import { site } from '../data/site';
-import { ui, localePath, translatedPaths, type Locale } from '../i18n';
+import { ui, localePath, translatedPaths, locales, blogLocales, type Locale } from '../i18n';
 
 interface Props {
   title?: string;
@@ -40,17 +40,19 @@ const baseNoSlash = import.meta.env.BASE_URL.replace(/\/$/, '');
 const herePath = Astro.url.pathname.replace(/\/$/, '');
 const sitePath =
   (herePath.startsWith(baseNoSlash) ? herePath.slice(baseNoSlash.length) : herePath) || '/';
-const enPath = sitePath === '/pt' ? '/' : sitePath.replace(/^\/pt(?=\/|$)/, '') || '/';
+const enPath = sitePath.replace(/^\/(pt|es|de|nl|fr)(?=\/|$)/, '') || '/';
 const withSlash = (p: string) => (p === '/' ? '/' : p + '/');
-// Blog posts are translated 1:1, so they get alternates too.
+const abs = (path: string) => new URL(baseNoSlash + withSlash(path), Astro.site ?? site.url).href;
+// Blog posts exist only in en + pt; other pages exist in every locale.
 const isBlogPost = /^\/blog\/.+/.test(enPath);
-const alternates = translatedPaths.includes(enPath) || isBlogPost
-  ? ([
-      { hreflang: 'en', href: new URL(baseNoSlash + withSlash(enPath), Astro.site ?? site.url).href },
-      { hreflang: 'pt-PT', href: new URL(baseNoSlash + withSlash(localePath('pt', enPath)), Astro.site ?? site.url).href },
-      { hreflang: 'x-default', href: new URL(baseNoSlash + withSlash(enPath), Astro.site ?? site.url).href },
-    ] as const)
-  : [];
+const altLocales: Locale[] = isBlogPost ? blogLocales : locales;
+const alternates =
+  translatedPaths.includes(enPath) || isBlogPost
+    ? [
+        ...altLocales.map((l) => ({ hreflang: ui[l].lang, href: abs(localePath(l, enPath)) })),
+        { hreflang: 'x-default', href: abs(enPath) },
+      ]
+    : [];
 
 // Resolve OG image to an absolute URL. Astro-processed assets (under the
 // configured base, e.g. /tigregotico-website/_astro/...) and external URLs are

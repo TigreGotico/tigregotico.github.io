@@ -91,7 +91,7 @@
     "name": "Open Voice OS",
     "description": "Community-driven, open-source, privacy-respecting voice assistant platform and operating system that puts users in control of their data.",
     "url": "https://github.com/OpenVoiceOS",
-    "category": "Voice Platform (OVOS)",
+    "category": "OpenVoiceOS",
     "tags": [
       "FOSS",
       "privacy-first",
@@ -105,7 +105,7 @@
     "name": "ovos-localize",
     "description": "A GitHub-native localization platform for OpenVoiceOS skills and plugins — manage translations entirely through Git, with no external service to run.",
     "url": "https://github.com/OpenVoiceOS/ovos-localize",
-    "category": "Voice Platform (OVOS)",
+    "category": "OpenVoiceOS",
     "tags": [
       "GitHub-native",
       "i18n",
@@ -119,7 +119,7 @@
     "name": "ovoscope",
     "description": "End-to-end testing framework for OVOS skills with a lightweight in-process runtime.",
     "url": "https://github.com/TigreGotico/ovoscope",
-    "category": "Voice Platform (OVOS)",
+    "category": "OpenVoiceOS",
     "tags": [
       "OVOS skills",
       "end-to-end testing",
@@ -133,7 +133,7 @@
     "name": "OVOS MoS",
     "description": "Mixture of Specialists framework for OpenVoiceOS.",
     "url": "https://github.com/TigreGotico/ovos-MoS",
-    "category": "Voice Platform (OVOS)",
+    "category": "OpenVoiceOS",
     "tags": [
       "framework",
       "mixture of specialists",
@@ -146,7 +146,7 @@
     "name": "OVOS Transcription Validator Plugin",
     "description": "Validate and filter STT transcriptions in OpenVoiceOS.",
     "url": "https://github.com/TigreGotico/ovos-transcription-validator-plugin",
-    "category": "Speech Recognition",
+    "category": "OpenVoiceOS",
     "tags": [
       "STT validation",
       "filtering",
@@ -159,7 +159,7 @@
     "name": "ovos-dialog-normalizer-plugin",
     "description": "OVOS plugin normalizing dialog text before TTS synthesis (number expansion, abbreviations).",
     "url": "https://github.com/OpenVoiceOS/ovos-dialog-normalizer-plugin",
-    "category": "NLP & Language",
+    "category": "ILENIA",
     "tags": [
       "ILENIA",
       "OpenVoiceOS"
@@ -172,7 +172,7 @@
     "name": "OVOS M2V Pipeline",
     "description": "Model2Vec intent pipeline for OpenVoiceOS intent handling.",
     "url": "https://github.com/TigreGotico/ovos-m2v-pipeline",
-    "category": "NLP & Language",
+    "category": "ILENIA",
     "tags": [
       "Model2Vec",
       "ONNX models",
@@ -187,7 +187,7 @@
     "name": "OVOS Simple Listener",
     "description": "Minimal audio listening component for OpenVoiceOS.",
     "url": "https://github.com/TigreGotico/ovos-simple-listener",
-    "category": "Voice Platform (OVOS)",
+    "category": "OpenVoiceOS",
     "tags": [
       "audio listener",
       "lightweight",
@@ -220,7 +220,7 @@
       "normalization",
       "vocabulary"
     ],
-    "featured": false,
+    "featured": true,
     "url": "https://github.com/TigreGotico/mediavocab"
   },
   {
@@ -349,7 +349,7 @@
     "name": "OVOS FlashRank Reranker Plugin",
     "description": "Fast semantic reranking plugin for OVOS query results.",
     "url": "https://github.com/TigreGotico/ovos-flashrank-reranker-plugin",
-    "category": "LLM & Agents",
+    "category": "Visio",
     "tags": [
       "FlashRank",
       "reranking",
@@ -363,7 +363,7 @@
     "name": "OVOS BM25 Solver Plugin",
     "description": "BM25 retrieval-based solver for OpenVoiceOS.",
     "url": "https://github.com/TigreGotico/ovos-solver-BM25-plugin",
-    "category": "LLM & Agents",
+    "category": "OpenVoiceOS",
     "tags": [
       "BM25 retrieval",
       "search",
@@ -376,7 +376,7 @@
     "name": "OVOS GGUF Solver Plugin",
     "description": "Local LLM solver using GGUF models in OpenVoiceOS.",
     "url": "https://github.com/TigreGotico/ovos-solver-gguf-plugin",
-    "category": "LLM & Agents",
+    "category": "OpenVoiceOS",
     "tags": [
       "GGUF",
       "local LLM",
@@ -389,7 +389,7 @@
     "name": "OVOS ChromaDB Embeddings Plugin",
     "description": "ChromaDB vector embeddings plugin for OpenVoiceOS.",
     "url": "https://github.com/TigreGotico/ovos-chromadb-embeddings-plugin",
-    "category": "LLM & Agents",
+    "category": "Visio",
     "tags": [
       "ChromaDB",
       "embeddings",
@@ -403,7 +403,7 @@
     "name": "OVOS GGUF Embeddings Plugin",
     "description": "Local GGUF embeddings plugin for OpenVoiceOS.",
     "url": "https://github.com/TigreGotico/ovos-gguf-embeddings-plugin",
-    "category": "LLM & Agents",
+    "category": "Visio",
     "tags": [
       "GGUF",
       "embeddings",
@@ -417,7 +417,7 @@
     "name": "OVOS Qdrant Embeddings Plugin",
     "description": "Qdrant vector database embeddings plugin for OpenVoiceOS.",
     "url": "https://github.com/TigreGotico/ovos-qdrant-embeddings-plugin",
-    "category": "LLM & Agents",
+    "category": "OpenVoiceOS",
     "tags": [
       "Qdrant",
       "embeddings",
@@ -430,7 +430,7 @@
     "name": "OVOS STT Plugin - MyNorthAI",
     "description": "MyNorthAI Speech-to-Text plugin for OpenVoiceOS.",
     "url": "https://github.com/TigreGotico/ovos-stt-plugin-MyNorthAI",
-    "category": "Speech Recognition",
+    "category": "OpenVoiceOS",
     "tags": [
       "MyNorthAI",
       "STT plugin",
@@ -443,7 +443,7 @@
     "name": "OVOS GGUF Translate Plugin",
     "description": "Local translation using GGUF models in OpenVoiceOS.",
     "url": "https://github.com/TigreGotico/ovos-gguf-translate-plugin",
-    "category": "LLM & Agents",
+    "category": "OpenVoiceOS",
     "tags": [
       "GGUF",
       "local LLM",
@@ -456,7 +456,7 @@
     "name": "OVOS Wyoming Docker",
     "description": "Docker setup for OpenVoiceOS with Wyoming services.",
     "url": "https://github.com/TigreGotico/ovos-wyoming-docker",
-    "category": "Voice Platform (OVOS)",
+    "category": "OpenVoiceOS",
     "tags": [
       "Docker",
       "Home Assistant",
@@ -470,7 +470,7 @@
     "name": "pyAhoTTS",
     "description": "Python library for AhoTTS Text-to-Speech synthesis.",
     "url": "https://github.com/TigreGotico/pyAhoTTS",
-    "category": "Speech Synthesis",
+    "category": "ILENIA",
     "tags": [
       "AhoTTS",
       "ILENIA project",
@@ -706,7 +706,7 @@
       "anti-bot",
       "scraping"
     ],
-    "featured": false
+    "featured": true
   },
   {
     "id": "anon_requests",
@@ -876,7 +876,7 @@
       "classification",
       "questions"
     ],
-    "featured": false
+    "featured": true
   },
   {
     "id": "pronomial",
@@ -972,7 +972,7 @@
     "name": "ovos-gguf-plugin",
     "description": "Local LLM (GGUF) plugin for OpenVoiceOS.",
     "url": "https://github.com/TigreGotico/ovos-gguf-plugin",
-    "category": "LLM & Agents",
+    "category": "Visio",
     "tags": [
       "GGUF",
       "LLM",
@@ -986,7 +986,7 @@
     "name": "ovos-markov-pipeline-plugin",
     "description": "OVOS intent pipeline using a Markov-chain perplexity ensemble.",
     "url": "https://github.com/TigreGotico/ovos-markov-pipeline-plugin",
-    "category": "NLP & Language",
+    "category": "OpenVoiceOS",
     "tags": [
       "Markov",
       "OpenVoiceOS",
@@ -999,7 +999,7 @@
     "name": "ovos-stt-plugin-whisper",
     "description": "Whisper speech-to-text plugin for OpenVoiceOS.",
     "url": "https://github.com/TigreGotico/ovos-stt-plugin-whisper",
-    "category": "Speech Recognition",
+    "category": "OpenVoiceOS",
     "tags": [
       "OpenVoiceOS",
       "STT",
@@ -1012,7 +1012,7 @@
     "name": "ovos-stt-plugin-sherpa-onnx",
     "description": "Sherpa-ONNX speech-to-text plugin for OpenVoiceOS.",
     "url": "https://github.com/TigreGotico/ovos-stt-plugin-sherpa-onnx",
-    "category": "Speech Recognition",
+    "category": "OpenVoiceOS",
     "tags": [
       "ONNX models",
       "OpenVoiceOS",
@@ -1025,7 +1025,7 @@
     "name": "ovos-coreferee-plugin",
     "description": "Coreference-resolution plugin for OpenVoiceOS.",
     "url": "https://github.com/TigreGotico/ovos-coreferee-plugin",
-    "category": "NLP & Language",
+    "category": "OpenVoiceOS",
     "tags": [
       "NLU",
       "OpenVoiceOS",
@@ -1038,7 +1038,7 @@
     "name": "ovos-document-chunkers",
     "description": "Document chunking for retrieval/RAG in OpenVoiceOS.",
     "url": "https://github.com/TigreGotico/ovos-document-chunkers",
-    "category": "LLM & Agents",
+    "category": "Visio",
     "tags": [
       "OpenVoiceOS",
       "RAG",
@@ -1080,7 +1080,7 @@
     "name": "Wyoming OVOS STT",
     "description": "OpenVoiceOS STT service for the Wyoming protocol — lightweight speech recognition.",
     "url": "https://github.com/TigreGotico/wyoming-ovos-stt",
-    "category": "Speech Recognition",
+    "category": "OpenVoiceOS",
     "tags": [
       "Home Assistant",
       "STT",
@@ -1095,7 +1095,7 @@
     "name": "Wyoming OVOS TTS",
     "description": "OpenVoiceOS TTS service for the Wyoming protocol — lightweight text-to-speech.",
     "url": "https://github.com/TigreGotico/wyoming-ovos-tts",
-    "category": "Speech Synthesis",
+    "category": "OpenVoiceOS",
     "tags": [
       "Home Assistant",
       "TTS",
@@ -1110,7 +1110,7 @@
     "name": "Wyoming OVOS Wakeword",
     "description": "OpenVoiceOS wake-word detection service for the Wyoming protocol.",
     "url": "https://github.com/TigreGotico/wyoming-ovos-wakeword",
-    "category": "Wake Words",
+    "category": "OpenVoiceOS",
     "tags": [
       "Home Assistant",
       "Wyoming",
@@ -1125,7 +1125,7 @@
     "name": "OVOS Agentic Loop",
     "description": "Agent integration framework for OpenVoiceOS — enable voice-driven agentic workflows.",
     "url": "https://github.com/TigreGotico/ovos-agentic-loop",
-    "category": "LLM & Agents",
+    "category": "OpenVoiceOS",
     "tags": [
       "OpenVoiceOS",
       "agentic",
@@ -1386,7 +1386,7 @@
     "name": "ovos-tts-plugin-matxa-multispeaker-cat",
     "description": "OVOS TTS plugin for Matxa multispeaker Catalan synthesis.",
     "url": "https://github.com/OpenVoiceOS/ovos-tts-plugin-matxa-multispeaker-cat",
-    "category": "Speech Synthesis",
+    "category": "ILENIA",
     "tags": [
       "ILENIA",
       "OpenVoiceOS"
@@ -1399,7 +1399,7 @@
     "name": "ovos-tts-plugin-nos",
     "description": "OVOS TTS plugin for NOS Galician speech synthesis.",
     "url": "https://github.com/OpenVoiceOS/ovos-tts-plugin-nos",
-    "category": "Speech Synthesis",
+    "category": "ILENIA",
     "tags": [
       "ILENIA",
       "OpenVoiceOS"
@@ -1412,7 +1412,7 @@
     "name": "ovos-tts-plugin-ahotts",
     "description": "OVOS TTS plugin for AhoTTS, a Basque speech synthesis system developed under ILENIA.",
     "url": "https://github.com/OpenVoiceOS/ovos-tts-plugin-ahotts",
-    "category": "Speech Synthesis",
+    "category": "ILENIA",
     "tags": [
       "ILENIA",
       "OpenVoiceOS"
@@ -1425,7 +1425,7 @@
     "name": "ovos-stt-plugin-nos",
     "description": "OVOS STT plugin for NOS Galician speech recognition.",
     "url": "https://github.com/OpenVoiceOS/ovos-stt-plugin-nos",
-    "category": "Speech Recognition",
+    "category": "ILENIA",
     "tags": [
       "ILENIA",
       "OpenVoiceOS"
@@ -1438,7 +1438,7 @@
     "name": "ovos-stt-plugin-HiTZ",
     "description": "OVOS STT plugin for HiTZ Basque speech recognition.",
     "url": "https://github.com/OpenVoiceOS/ovos-stt-plugin-HiTZ",
-    "category": "Speech Recognition",
+    "category": "ILENIA",
     "tags": [
       "ILENIA",
       "OpenVoiceOS"
@@ -1451,7 +1451,7 @@
     "name": "ovos-stt-plugin-whisper-lm",
     "description": "OVOS STT plugin combining Whisper with a language model for improved accuracy.",
     "url": "https://github.com/OpenVoiceOS/ovos-stt-plugin-whisper-lm",
-    "category": "Speech Recognition",
+    "category": "ILENIA",
     "tags": [
       "ILENIA",
       "OpenVoiceOS"
@@ -1464,7 +1464,7 @@
     "name": "ovos-tts-plugin-cotovia-remote",
     "description": "OVOS TTS plugin for Cotovia, a Galician text-to-speech engine.",
     "url": "https://github.com/OpenVoiceOS/ovos-tts-plugin-cotovia-remote",
-    "category": "Speech Synthesis",
+    "category": "ILENIA",
     "tags": [
       "ILENIA",
       "OpenVoiceOS"
@@ -1477,7 +1477,7 @@
     "name": "ovos-stt-plugin-fasterwhisper-zuazo",
     "description": "OVOS STT plugin using Zuazo fine-tuned Faster-Whisper models for Basque.",
     "url": "https://github.com/OpenVoiceOS/ovos-stt-plugin-fasterwhisper-zuazo",
-    "category": "Speech Recognition",
+    "category": "ILENIA",
     "tags": [
       "ILENIA",
       "OpenVoiceOS"
@@ -1490,7 +1490,7 @@
     "name": "ovos-stt-plugin-wav2vec2",
     "description": "OVOS STT plugin using wav2vec 2.0 models for Spanish and co-official languages.",
     "url": "https://github.com/OpenVoiceOS/ovos-stt-plugin-wav2vec2",
-    "category": "Speech Recognition",
+    "category": "ILENIA",
     "tags": [
       "ILENIA",
       "OpenVoiceOS"
@@ -1503,7 +1503,7 @@
     "name": "ovos-stt-plugin-nemo",
     "description": "OVOS STT plugin using NVIDIA NeMo ASR models.",
     "url": "https://github.com/OpenVoiceOS/ovos-stt-plugin-nemo",
-    "category": "Speech Recognition",
+    "category": "ILENIA",
     "tags": [
       "ILENIA",
       "OpenVoiceOS"
@@ -1516,7 +1516,7 @@
     "name": "ovos-stt-plugin-citrinet",
     "description": "OVOS STT plugin using Citrinet acoustic model, trained on ILENIA speech data.",
     "url": "https://github.com/OpenVoiceOS/ovos-stt-plugin-citrinet",
-    "category": "Speech Recognition",
+    "category": "ILENIA",
     "tags": [
       "ILENIA",
       "OpenVoiceOS"
@@ -1529,7 +1529,7 @@
     "name": "ovos-tts-plugin-coqui",
     "description": "OVOS TTS plugin wrapping Coqui TTS for Spanish-language voices.",
     "url": "https://github.com/OpenVoiceOS/ovos-tts-plugin-coqui",
-    "category": "Speech Synthesis",
+    "category": "ILENIA",
     "tags": [
       "ILENIA",
       "OpenVoiceOS"
@@ -1542,7 +1542,7 @@
     "name": "ovos-stt-plugin-mms",
     "description": "OVOS STT plugin using Meta MMS massively multilingual speech recognition.",
     "url": "https://github.com/OpenVoiceOS/ovos-stt-plugin-mms",
-    "category": "Speech Recognition",
+    "category": "ILENIA",
     "tags": [
       "ILENIA",
       "OpenVoiceOS"
@@ -1833,7 +1833,7 @@
       "IPA",
       "Portuguese"
     ],
-    "featured": true
+    "featured": false
   },
   {
     "id": "voiceclonnx",
@@ -1847,7 +1847,7 @@
       "zero-shot",
       "multilingual"
     ],
-    "featured": true
+    "featured": false
   },
   {
     "id": "vadonnx",
@@ -1860,7 +1860,8 @@
       "VAD",
       "audio",
       "streaming"
-    ]
+    ],
+    "featured": false
   },
   {
     "id": "pycotovia",
@@ -1873,7 +1874,8 @@
       "Galician",
       "Spanish",
       "phonemization"
-    ]
+    ],
+    "featured": false
   },
   {
     "id": "opentone",
@@ -1886,7 +1888,8 @@
       "DTMF",
       "audio",
       "signal processing"
-    ]
+    ],
+    "featured": false
   },
   {
     "id": "phoonnx-addonnvda",
@@ -1899,7 +1902,8 @@
       "accessibility",
       "screen reader",
       "ONNX"
-    ]
+    ],
+    "featured": false
   },
   {
     "id": "pyhermit",
@@ -1912,7 +1916,8 @@
       "reasoner",
       "symbolic",
       "logic"
-    ]
+    ],
+    "featured": false
   },
   {
     "id": "brill_postaggers",
@@ -1924,7 +1929,8 @@
       "POS tagging",
       "11 languages",
       "NLTK"
-    ]
+    ],
+    "featured": false
   },
   {
     "id": "crf_query_xtract",
@@ -1936,7 +1942,8 @@
       "keyword extraction",
       "CRF",
       "multilingual"
-    ]
+    ],
+    "featured": false
   },
   {
     "id": "calendar-event-extractor",
@@ -1949,20 +1956,22 @@
       "iCalendar",
       "datetime",
       "rule-based"
-    ]
+    ],
+    "featured": false
   },
   {
     "id": "agentpipe",
     "name": "agentpipe",
     "description": "Async Python wrapper for coding-agent CLIs (Claude Code, Gemini, opencode, Antigravity) behind one Provider API — one-shot, multi-turn sessions, typed streaming events, and fan-out/delegate/retry pipeline patterns.",
     "url": "https://github.com/TigreGotico/agentpipe",
-    "category": "LLM & Agents",
+    "category": "Developer Tools",
     "tags": [
       "agents",
       "async",
       "CLI",
       "orchestration"
-    ]
+    ],
+    "featured": false
   },
   {
     "id": "ww_tagger",
@@ -1974,7 +1983,8 @@
       "labeling",
       "dataset",
       "Flask"
-    ]
+    ],
+    "featured": false
   },
   {
     "id": "xazam",
@@ -1986,7 +1996,8 @@
       "Shazam",
       "async",
       "audio fingerprinting"
-    ]
+    ],
+    "featured": false
   },
   {
     "id": "pyeye",
@@ -2000,7 +2011,8 @@
       "RDF",
       "forward chaining",
       "symbolic"
-    ]
+    ],
+    "featured": false
   },
   {
     "id": "arbtok",
@@ -2013,20 +2025,22 @@
       "G2P",
       "IPA",
       "diacritization"
-    ]
+    ],
+    "featured": false
   },
   {
     "id": "pyahotts-iparrahotsa",
     "name": "pyAhoTTS-Iparrahotsa",
     "description": "Python port of AhoTTS Iparrahotsa, a Text-to-Speech engine for Northern (continental) Basque — the Iparralde-dialect counterpart to pyAhoTTS, with hts_engine and the AhoCoder vocoder. Developed with Aholab (UPV/EHU).",
     "url": "https://github.com/TigreGotico/pyAhoTTS-Iparrahotsa",
-    "category": "Speech Synthesis",
+    "category": "ILENIA",
     "tags": [
       "AhoTTS",
       "Basque",
       "ILENIA",
       "TTS library"
-    ]
+    ],
+    "featured": false
   },
   {
     "id": "espyak",
@@ -2041,7 +2055,7 @@
       "espeak-ng",
       "117 languages"
     ],
-    "featured": true
+    "featured": false
   },
   {
     "id": "speakeronnx",
@@ -2053,7 +2067,8 @@
       "ONNX",
       "speaker embeddings",
       "speaker verification"
-    ]
+    ],
+    "featured": false
   },
   {
     "id": "text2tashkeel",
@@ -2066,7 +2081,8 @@
       "diacritization",
       "tashkeel",
       "ONNX"
-    ]
+    ],
+    "featured": false
   },
   {
     "id": "desacordo_ortografico",
@@ -2079,7 +2095,8 @@
       "orthography",
       "AO1990",
       "text conversion"
-    ]
+    ],
+    "featured": false
   },
   {
     "id": "ahotts-g2p",
@@ -2092,7 +2109,8 @@
       "Basque",
       "Spanish",
       "IPA"
-    ]
+    ],
+    "featured": false
   },
   {
     "id": "pyinfopedia",
@@ -2105,7 +2123,8 @@
       "dictionary",
       "IPA",
       "lexicon"
-    ]
+    ],
+    "featured": false
   },
   {
     "id": "pyliveatc",
@@ -2178,7 +2197,7 @@
     "name": "ovos-stt-plugin-coreml",
     "description": "OVOS Speech-to-Text plugin that runs recognition models natively on Apple devices via CoreML, auto-detecting the model architecture from metadata.",
     "url": "https://github.com/TigreGotico/ovos-stt-plugin-coreml",
-    "category": "Speech Recognition",
+    "category": "OpenVoiceOS",
     "tags": [
       "STT",
       "CoreML",
@@ -2192,7 +2211,7 @@
     "name": "ovos-stt-plugin-rover",
     "description": "Meta-STT engine for OVOS that aggregates several STT backends with the ROVER (Recognizer Output Voting Error Reduction) algorithm for higher transcription accuracy.",
     "url": "https://github.com/TigreGotico/ovos-stt-plugin-rover",
-    "category": "Speech Recognition",
+    "category": "OpenVoiceOS",
     "tags": [
       "STT",
       "ROVER",

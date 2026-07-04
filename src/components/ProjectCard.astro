@@ -21,27 +21,35 @@ interface Props {
   project: Project;
   /** Show the thumbnail (featured layout). */
   withImage?: boolean;
+  /** Localized display name for the category badge. */
+  categoryLabel?: string;
 }
 
-const { project, withImage = false } = Astro.props;
+const { project, withImage = false, categoryLabel } = Astro.props;
 const selfHosted = project.selfHosted !== false;
 const localImg = projectImage(project.imageLocal);
 
 // Per-category accent hue (used to tint the badge) + icon.
-const categoryMeta: Record<string, { hue: number; icon: string; label: string }> = {
-  OpenVoiceOS: { hue: 265, icon: 'layers', label: 'OpenVoiceOS' },
-  HiveMind: { hue: 210, icon: 'network', label: 'HiveMind' },
-  'Speech & Language': { hue: 28, icon: 'mic', label: 'Speech & Language' },
-  'NLP & ML': { hue: 312, icon: 'cpu', label: 'NLP & ML' },
-  Games: { hue: 45, icon: 'scroll', label: 'Games' },
-  Clients: { hue: 175, icon: 'globe', label: 'Data Clients' },
-  Tools: { hue: 190, icon: 'flask', label: 'Tools' },
+const categoryMeta: Record<string, { hue: number; icon: string }> = {
+  'Speech Synthesis': { hue: 28, icon: 'mic' },
+  'Speech Recognition': { hue: 200, icon: 'waveform' },
+  'Wake Words': { hue: 330, icon: 'spark' },
+  'Phonetics & G2P': { hue: 12, icon: 'flask' },
+  'NLP & Language': { hue: 265, icon: 'book' },
+  'LLM & Agents': { hue: 288, icon: 'cpu' },
+  'Media & Music': { hue: 340, icon: 'notebook' },
+  'Data & Scraping': { hue: 175, icon: 'globe' },
+  'Voice Platform (OVOS)': { hue: 255, icon: 'layers' },
+  HiveMind: { hue: 210, icon: 'network' },
+  'Smart Home': { hue: 140, icon: 'home' },
+  Games: { hue: 45, icon: 'scroll' },
+  'Developer Tools': { hue: 190, icon: 'database' },
+  OpenVoiceOS: { hue: 255, icon: 'layers' },
+  ILENIA: { hue: 95, icon: 'globe' },
+  Visio: { hue: 320, icon: 'network' },
 };
-const meta = categoryMeta[project.category] ?? {
-  hue: 280,
-  icon: 'spark',
-  label: project.category,
-};
+const label = categoryLabel ?? project.category;
+const meta = categoryMeta[project.category] ?? { hue: 280, icon: 'spark' };
 const badgeStyle = `--h:${meta.hue}; color:hsl(${meta.hue} 70% 55%); background:hsl(${meta.hue} 70% 55% / 0.12); border-color:hsl(${meta.hue} 70% 55% / 0.3);`;
 ---
 
@@ -81,7 +89,7 @@ const badgeStyle = `--h:${meta.hue}; color:hsl(${meta.hue} 70% 55%); background:
       style={badgeStyle}
     >
       <Icon name={meta.icon} class="h-3.5 w-3.5" />
-      {meta.label}
+      {label}
     </span>
     {project.comingSoon ? (
       <span class="badge-accent">Coming soon</span>

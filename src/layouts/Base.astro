@@ -6,7 +6,7 @@ import PaletteSelector from '../components/PaletteSelector.astro';
 import Reveal from '../components/Reveal.astro';
 import Icon from '../components/Icon.astro';
 import { site } from '../data/site';
-import { ui, navItems, localePath, translatedPaths, type Locale } from '../i18n';
+import { ui, navItems, localePath, translatedPaths, locales, languageNames, type Locale } from '../i18n';
 
 interface Props {
   title?: string;
@@ -39,26 +39,30 @@ const isActive = (href: string) => {
   return here === target || here.startsWith(target + '/');
 };
 
-// Language-switcher target: the same page in the other locale when it exists,
-// its section root otherwise.
+// Language switcher: for each locale, resolve the counterpart of the current
+// page. Strip the current locale prefix to a canonical path, then map it into
+// each target locale (falling back to a section root or home when the exact
+// page has no translation).
 const baseNoSlash = base.replace(/\/$/, '');
 const sitePath = (here.startsWith(baseNoSlash) ? here.slice(baseNoSlash.length) : here) || '/';
-const enPath = sitePath === '/pt' ? '/' : sitePath.replace(/^\/pt(?=\/|$)/, '') || '/';
-// Individual blog posts are translated 1:1, so switch straight to the same
-// slug in the other language; other pages fall back to their section root.
+const localePrefix = /^\/(pt|es|de|nl|fr)(?=\/|$)/;
+const enPath = sitePath.replace(localePrefix, '') || '/';
+// Blog posts exist only in en + pt; other locales point at their /blog index.
 const isBlogPost = /^\/blog\/.+/.test(enPath);
-const counterpartPath = isBlogPost
-  ? enPath
-  : translatedPaths.includes(enPath)
-    ? enPath
-    : '/' + (enPath.split('/')[1] ?? '');
-const switchTarget = locale === 'en' ? ('pt' as Locale) : ('en' as Locale);
-const switchBase =
-  isBlogPost || translatedPaths.includes(counterpartPath) ? counterpartPath : '/';
-const switchHref = (baseNoSlash + (() => {
-  const p = localePath(switchTarget, switchBase);
-  return p === '/' ? '/' : p + '/';
-})()).replace(/\/\/+$/, '/');
+const withSlash = (p: string) => (p === '/' ? '/' : p + '/');
+const targetPath = (target: Locale) => {
+  let path: string;
+  if (isBlogPost) {
+    path = target === 'en' || target === 'pt' ? enPath : '/blog';
+  } else if (translatedPaths.includes(enPath)) {
+    path = enPath;
+  } else {
+    const root = '/' + (enPath.split('/')[1] ?? '');
+    path = translatedPaths.includes(root) ? root : '/';
+  }
+  return (baseNoSlash + withSlash(localePath(target, path))).replace(/\/\/+$/, '/');
+};
+const langLinks = locales.map((l) => ({ locale: l, name: languageNames[l], href: targetPath(l), current: l === locale }));
 
 // Pages that exist only in English (e.g. the demo) keep unprefixed URLs.
 const enLink = (href: string) =>
@@ -158,15 +162,38 @@ const projectLinks = [
           }
         </ul>
         <div class="flex items-center gap-2">
-          <a
-            href={switchHref}
-            class="inline-flex h-9 items-center justify-center rounded-lg border border-border px-2.5 font-display text-xs font-semibold uppercase tracking-wider text-fg transition-colors hover:border-primary hover:text-primary"
-            title={t.switcher.hint}
-            aria-label={t.switcher.hint}
-            data-lang-switch
-          >
-            {locale === 'en' ? 'PT' : 'EN'}
-          </a>
+          <details class="lang-switch relative">
+            <summary
+              class="flex h-9 cursor-pointer list-none items-center gap-1 rounded-lg border border-border px-2.5 font-display text-xs font-semibold uppercase tracking-wider text-fg transition-colors hover:border-primary hover:text-primary"
+              title={t.chooseLanguage}
+              aria-label={t.chooseLanguage}
+            >
+              <Icon name="globe" class="h-4 w-4" />
+              {locale.toUpperCase()}
+            </summary>
+            <ul
+              class="absolute right-0 z-50 mt-2 min-w-[9rem] overflow-hidden rounded-lg border border-border bg-elevated py-1 text-sm shadow-lg"
+              style="box-shadow: var(--shadow-elevate);"
+            >
+              {
+                langLinks.map((l) => (
+                  <li>
+                    <a
+                      href={l.href}
+                      hreflang={ui[l.locale].lang}
+                      aria-current={l.current ? 'true' : undefined}
+                      class:list={[
+                        'block px-3 py-1.5 transition-colors hover:bg-surface',
+                        l.current ? 'font-semibold text-primary' : 'text-muted hover:text-fg',
+                      ]}
+                    >
+                      {l.name}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </details>
           <PaletteSelector id="palette-desktop" />
           <ThemeToggle />
           <button
@@ -357,6 +384,15 @@ const projectLinks = [
             }
           });
         }
+        // Close the language dropdown on outside click / Escape.
+        document.querySelectorAll('details.lang-switch').forEach(function (d) {
+          document.addEventListener('click', function (e) {
+            if (d.open && !d.contains(e.target)) d.open = false;
+          });
+          d.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') d.open = false;
+          });
+        });
         // Translucent backdrop-blur once the page has scrolled.
         var header = document.getElementById('site-header');
         if (header) {
@@ -372,5 +408,10 @@ const projectLinks = [
         }
       })();
     </script>
+
+    <style is:global>
+      details.lang-switch > summary::-webkit-details-marker { display: none; }
+      details.lang-switch > summary::marker { content: ''; }
+    </style>
   </body>
 </html>
