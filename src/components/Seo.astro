@@ -12,6 +12,8 @@ interface Props {
   jsonLd?: Record<string, unknown>;
   publishedTime?: string;
   modifiedTime?: string;
+  /** Exclude the page from search indexes (e.g. the 404 page). */
+  noindex?: boolean;
 }
 
 const {
@@ -22,6 +24,7 @@ const {
   jsonLd,
   publishedTime,
   modifiedTime,
+  noindex = false,
 } = Astro.props;
 
 const pageTitle = title ? `${title} — ${site.name}` : site.title;
@@ -54,7 +57,7 @@ const organizationLd = {
 
 <title>{pageTitle}</title>
 <meta name="description" content={description} />
-<link rel="canonical" href={canonical} />
+{noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
 
 <meta property="og:type" content={type} />
 <meta property="og:site_name" content={site.name} />
