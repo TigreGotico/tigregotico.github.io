@@ -24,16 +24,19 @@ data; it is the wall in front of it. And the wall asks two separate questions:
   entirely; they count how many requests come from one address.
 
 The two questions are orthogonal, so we answer them with two small libraries
-that each subclass `requests.Session` and stack cleanly: **unblock_requests**
-answers *what are you*, **anon_requests** answers *who are you*. Both are genuine
-drop-in replacements. This post is about that transport layer specifically — the
+that stack cleanly: **unblock_requests** answers *what are you*,
+**anon_requests** answers *who are you*. Both are drop-in replacements for a
+`requests` session in everyday code. This post is about that transport layer specifically — the
 bytes-on-the-wire part — not the parsing or the pipeline that sits above it.
 
-## The design constraint: stay a `requests.Session`
+## The design constraint: keep the `requests` shape
 
-Both libraries only override `request()`. Everything else — `.get()`, `.post()`,
-cookies, headers, context-manager semantics — is inherited from `requests`.
-Anything typed against `requests.Session` accepts them unchanged:
+`unblock_requests` sessions subclass `requests.Session` and only override
+`request()` — everything else (`.get()`, `.post()`, cookies, headers,
+context-manager semantics) is inherited, so anything typed against
+`requests.Session` accepts them unchanged. The `anon_requests` sessions wrap
+rather than subclass — they expose the same verb methods and context-manager
+interface, but rebuild their inner session on every rotation:
 
 ```python
 from unblock_requests import CloudflareSession   # alias: Session
@@ -49,11 +52,11 @@ automating a browser-as-a-user, we are making a *resilient HTTP client* for
 data that is already public. No headed browser pops up on anyone's screen, and
 nothing in the hot path needs a display.
 
-## Layer one: `unblock_requests` and its four transports
+## Layer one: `unblock_requests` and its transports
 
 `unblock_requests` defends against **bot detection**. You pick a transport with
 the `mode=` kwarg (or the `UNBLOCK_REQUESTS_TRANSPORT` env var — explicit kwargs
-always win). There are four:
+always win). The main four:
 
 | Mode | What it does |
 |---|---|
@@ -108,7 +111,8 @@ The orthogonal problem is **IP reputation**. Even a perfect fingerprint gets
 rate-limited or banned if every request comes from one address.
 `anon_requests` handles that with `RotatingProxySession` (scraped public
 proxies, optional validation, SOCKS5/HTTP) and `RotatingTorSession` (rotating
-Tor circuits). Each request rotates the exit and retries until it gets a `200`.
+Tor circuits). Each request goes out through a fresh exit, and dead proxies are
+rotated away on connection failure.
 
 ```python
 from anon_requests import RotatingProxySession, ProxyType
@@ -150,11 +154,10 @@ stays *out of process* in FlareSolverr and is summoned only when a JS challenge
 genuinely demands it; the common case is a cheap impersonated handshake. And
 when the live web refuses, the archive answers.
 
-The `session_factory` seam is the only place the two libraries touch, and that
-keeps them independently extensible: add a transport mode to `unblock_requests`
-and `anon_requests` composes it for free; add a rotation strategy to
-`anon_requests` and `unblock_requests` never has to know. Resilient access to
-public data, done cleanly.
+The `session_factory` seam is where the composition happens, and it keeps the
+libraries independently extensible: add a transport mode to `unblock_requests`
+and `anon_requests` composes it for free. Resilient access to public data,
+done cleanly.
 
 Both are FOSS and self-hostable:
 [`unblock_requests`](https://github.com/TigreGotico/unblock_requests) and

@@ -52,4 +52,4 @@ The real payoff is what happens when you stop thinking of these as nine separate
 
 Every one of these clients is free software, self-hostable, and runs on your own hardware with no API keys to beg for. Pick the source you care about, `pip install`, and start building.
 
-All scrapers ride our **[anti-bot transport layers](/blog/2026-03-15-beating-bot-walls-with-drop-in-requests-sessions)** and emit the **[mediavocab](https://github.com/TigreGotico/mediavocab)** schema so music metadata integrates seamlessly with **[media-archivist](https://github.com/TigreGotico/media-archivist)**, our cross-source indexer and deduplicating metadata server.
+All scrapers ride our **[anti-bot transport layers](/blog/2026-03-15-beating-bot-walls-with-drop-in-requests-sessions)**. The streaming and radio clients emit the **[mediavocab](https://github.com/TigreGotico/mediavocab)** schema directly, and every client exposes canonical external ids, so music metadata integrates with **[media-archivist](https://github.com/TigreGotico/media-archivist)**, our cross-source indexer and deduplicating metadata server.

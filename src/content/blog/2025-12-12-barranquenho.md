@@ -1,6 +1,6 @@
 ---
 title: "Introducing the First Phonemizer for Barranquenho"
-description: "Today marks an exciting milestone for linguistic preservation! We're thrilled to announce the development of the very first phonemizer for Barranquenho, a truly unique Ibero-Romance language spoken in the Portuguese municipality of Barrancos."
+description: "g2p_barranquenho is the first open grapheme-to-phoneme converter for Barranquenho, the Ibero-Romance contact language of Barrancos, Portugal — rules derived from the municipality's newly published orthographic convention, auditable against the committed sources."
 date: 2025-12-12
 author: "Casimiro Ferreira"
 tags:
@@ -10,8 +10,6 @@ tags:
   - "NLP"
 draft: false
 ---
-
-## Introducing the First Phonemizer for Barranquenho
 
 [g2p_barranquenho](https://github.com/TigreGotico/g2p_barranquenho) is the first open Grapheme-to-Phoneme converter for [Barranquenho](https://en.wikipedia.org/wiki/Barranquenho), an Ibero-Romance contact language spoken in Barrancos, Portugal — a municipality on the Spanish border where Portuguese and Extremaduran/Andalusian Spanish have coexisted for centuries.
 

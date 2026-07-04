@@ -78,7 +78,7 @@ phoonnx is deliberately phonemizer-agnostic and bundles a small army of them:
 [transphone](https://github.com/xinjli/transphone) (which reaches into the thousands
 of languages catalogued in Glottolog), plus specialists like
 [mantoq](https://github.com/mush42/mantoq) for Arabic,
-**[cotovia](https://github.com/TigreGotico/cotovia)** for Galician, OpenJTalk for
+**[cotovia](https://github.com/TigreGotico/pycotovia)** for Galician, OpenJTalk for
 Japanese, and KoG2P for Korean. They emit IPA, ARPA, Pinyin, Hangul, Buckwalter —
 whatever the language needs. There is even a model-based multilingual G2P built on
 ByT5, exported to ONNX like everything else.

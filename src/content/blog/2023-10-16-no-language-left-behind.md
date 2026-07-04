@@ -76,7 +76,7 @@ Translation plugins of note:
 
 The [OVOS Bidirectional Translation plugin](https://github.com/OpenVoiceOS/ovos-bidirectional-translation-plugin/tree/dev) ties detection and translation together with two pipeline stages: an **Utterance Transformer** (translates incoming text into OVOS's configured language) and a **Dialog Transformer** (translates the response back into the user's original language).
 
-Optional `verify_lang` mode cross-checks the detected text language against the session language — useful on chat platforms where a single OVOS instance serves multilingual users. Requires a [language detection module](https://openvoiceos.github.io/ovos-technical-manual/lang_plugins/) configured in `language.detection_module` and a translation plugin (`ovos-translate-plugin-nllb` for local or `ovos-translate-server-plugin` for remote).
+Optional `verify_lang` mode cross-checks the detected text language against the session language — useful on chat platforms where a single OVOS instance serves multilingual users. Requires a [language detection module](https://openvoiceos.github.io/ovos-technical-manual/lang_support/) configured in `language.detection_module` and a translation plugin (`ovos-translate-plugin-nllb` for local or `ovos-translate-server-plugin` for remote).
 
 ### Configuration
 

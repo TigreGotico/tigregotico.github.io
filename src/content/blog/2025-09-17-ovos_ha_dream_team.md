@@ -1,6 +1,6 @@
 ---
 title: "OpenVoiceOS and Home Assistant: A Voice Automation Dream Team"
-description: "In the world of open-source smart homes, some things just click. When you let Home Assistant handle the automation and let OVOS (Open Voice OS) handle the voice, you get a powerful partnership where each project shines. It's a perfect synergy"
+description: "Home Assistant handles automation; OVOS handles voice. Three integration layers make the combination work: Wyoming bridges for HA's voice pipeline, ovos-persona-server as a conversational agent, and HiveMind for surfacing OVOS devices as native HA entities."
 date: 2025-09-17
 author: "Casimiro Ferreira"
 tags:
@@ -28,16 +28,14 @@ The Wyoming protocol is HA's standard interface for external STT, TTS, and wakew
 * [Wyoming OVOS TTS](https://github.com/TigreGotico/wyoming-ovos-tts): Enable Home Assistant to speak responses using OVOS's diverse voice options.
 * [Wyoming OVOS Wakeword](https://github.com/TigreGotico/wyoming-ovos-wakeword): Integrate custom wakewords, allowing your Home Assistant setup to respond only when it hears your chosen trigger phrase.
 
-The [OVOS Wyoming Docker](https://github.com/TigreGotico/ovos-wyoming-docker) project makes getting these services up and running a breeze.
+The [OVOS Wyoming Docker](https://github.com/TigreGotico/ovos-wyoming-docker) project packages these services so they are one `docker compose up` away.
 
 ### **Plugin Highlights: Multi-language TTS powered by ILENIA**
 
-For us, accessibility is key. That includes language accessibility. We're proud that this integration allows us to bring high-quality, publicly funded voices from projects like [**ILENIA**](https://proyectoilenia.es/) to a wider audience. Now, Home Assistant users can easily access fantastic, natural-sounding voices for languages like Catalan and Galician.
+For us, accessibility is key. That includes language accessibility. We're proud that this integration allows us to bring high-quality, publicly funded voices from projects like [**ILENIA**](https://proyectoilenia.es/) to a wider audience. Home Assistant users get natural-sounding voices for languages like Catalan and Galician, straight from the projects that built them.
 
 * **Matxa TTS for Catalan:** The [`ovos-tts-plugin-matxa-multispeaker-cat`](https://github.com/OpenVoiceOS/ovos-tts-plugin-matxa-multispeaker-cat) provides multi-speaker text-to-speech capabilities for the Catalan language.
 * **NosTTS for Galician:** The [`ovos-tts-plugin-nos`](https://github.com/OpenVoiceOS/ovos-tts-plugin-nos) offers robust text-to-speech in Galician.
-
-It's a great example of how open collaboration benefits everyone.
 
 ![ILENIA logo](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/ilenia.png)
 
@@ -58,9 +56,7 @@ Want to take it a step further? You can set up OVOS as a full-fledged conversati
 ![ollama setup in Home Assistant](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/ollama_setup.png)
 
 
-In this setup, Home Assistant passes the user's text to the [ovos-persona-server](https://openvoiceos.github.io/ovos-technical-manual/150-personas/). OVOS then figures out what you want and tells Home Assistant what to answer. It’s like hiring a brilliant conversationalist to augment your smart home interactions.
-
-Here’s the cool part: because [ovos-persona-server](https://github.com/OpenVoiceOS/ovos-persona-server) uses Ollama-compatible endpoints, you can connect it to any app that supports the Ollama or OpenAI APIs. The possibilities are huge!
+In this setup, Home Assistant passes the user's text to the [ovos-persona-server](https://openvoiceos.github.io/ovos-technical-manual/150-personas/); OVOS works out the intent and returns the answer for Home Assistant to speak. And because [ovos-persona-server](https://github.com/OpenVoiceOS/ovos-persona-server) exposes Ollama-compatible endpoints, the same server plugs into any app that speaks the Ollama or OpenAI APIs — not just Home Assistant.
 
 ![chat with OVOS in Home Assistant](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/agent_chat.png)
 
@@ -77,7 +73,7 @@ The [Home Assistant Voice Preview Edition](https://www.home-assistant.io/voice-p
 
 ## Welcome Your OVOS Devices into Home Assistant with HiveMind
 
-If you have dedicated OVOS devices, the [HiveMind HomeAssistant](https://github.com/JarbasHiveMind/hivemind-homeassistant) project is where the real magic happens. This integration makes your OVOS devices show up as native entities in Home Assistant, giving you a beautiful, unified control panel.
+If you have dedicated OVOS devices, the [HiveMind HomeAssistant](https://github.com/JarbasHiveMind/hivemind-homeassistant) integration makes them show up as native entities in Home Assistant — one unified control panel for the whole fleet.
 
 
 ### **Setting up HiveMind Integration:**
@@ -108,7 +104,7 @@ HiveMind also enables your OVOS devices to function as notification targets with
 
 ### **Media Player and Music Assistant Integration:**
 
-A fantastic feature of HiveMind integration is that your OVOS devices will show up as standard media players within Home Assistant. This allows you to control media playback on your OVOS devices directly from Home Assistant's media player interface. Furthermore, this integration extends to services like Music Assistant, enabling you to stream music and other audio content from Music Assistant through your OVOS devices, making them a seamless part of your whole-home audio system.
+OVOS devices also show up as standard media players in Home Assistant, so you can control playback from the normal media-player interface. The same integration extends to Music Assistant: stream music through your OVOS devices and they become part of your whole-home audio system.
 
 
 ![HiveMind player in Home Assistant](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/ha_player.png)
@@ -131,14 +127,4 @@ Bug reports and PRs are welcome across the repos linked above.
 
 ---
 
-## Help Us Build Voice for Everyone
-
-OpenVoiceOS is more than software, it’s a mission. If you believe voice assistants should be open, inclusive, and user-controlled, here’s how you can help:
-
-- **💸 Donate**: Help us fund development, infrastructure, and legal protection.
-- **📣 Contribute Open Data**: Share voice samples and transcriptions under open licenses.
-- **🌍 Translate**: Help make OVOS accessible in every language.
-
-We're not building this for profit. We're building it for people. With your support, we can keep voice tech transparent, private, and community-owned.
-
-👉 [Support the project here](https://www.openvoiceos.org/contribution)
+OpenVoiceOS is a community project — if you believe voice assistants should be open, inclusive, and user-controlled, [support the project](https://www.openvoiceos.org/contribution) with funding, open data, or translations.

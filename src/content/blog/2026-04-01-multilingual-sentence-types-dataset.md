@@ -1,6 +1,6 @@
 ---
-title: "Multilingual Sentence Types Dataset: Questions, Commands, Statements Across Languages"
-description: "We published sentence-types-multilingual — a dataset of 100K+ sentences across 50+ languages classified by grammatical type (question, command, statement, exclamation). Train multilingual intent detectors."
+title: "A Multilingual Sentence-Types Dataset: Questions, Commands, Statements"
+description: "We published sentence-types-multilingual — nearly 70,000 sentences across seven languages, classified by grammatical type (question, command, statement, exclamation). It is the training corpus behind the little_questions routing library."
 date: 2026-04-01
 author: "Casimiro Ferreira"
 tags:
@@ -15,7 +15,7 @@ draft: false
 
 A voice assistant's routing logic depends on knowing what kind of sentence it received before it tries to answer anything. A question needs an answer. A command needs execution. A statement might need acknowledgment or storage. Getting that classification right, in any language the user speaks, is the prerequisite for everything else.
 
-**[sentence-types-multilingual](https://huggingface.co/datasets/TigreGotico/sentence-types-multilingual)** is the training corpus behind that layer — 100,000+ labeled sentences across 50+ languages.
+**[sentence-types-multilingual](https://huggingface.co/datasets/TigreGotico/sentence-types-multilingual)** is the training corpus behind that layer — 69,300 labeled sentences, 9,900 for each of seven languages: English, Spanish, French, German, Italian, Portuguese, and Dutch.
 
 ## What the labels mean in practice
 
@@ -31,7 +31,7 @@ The dataset uses four top-level types, which map directly to how `little_questio
   "text": "What time is it?",
   "language": "en",
   "type": "question",
-  "sub_type": "yes_no_question"
+  "sub_type": "wh_question"
 }
 ```
 
@@ -39,12 +39,11 @@ The dataset uses four top-level types, which map directly to how `little_questio
 
 The same communicative intent surfaces differently in different grammars:
 
-- English and Spanish mark questions with word-order inversion and punctuation.
-- Mandarin uses sentence-final particles ("你喜欢吗?").
-- Japanese uses rising intonation; the grammar doesn't change.
-- Many languages use dedicated imperative morphology for commands that English expresses with bare infinitives.
+- English marks questions with word-order inversion; Portuguese and Spanish often mark them with punctuation and intonation alone, leaving word order untouched.
+- German separates verbs to sentence-final position in ways that shift where the classifying signal lives.
+- Romance languages use dedicated imperative morphology for commands that English expresses with the bare verb.
 
-A model trained only on English gets these wrong everywhere else. The multilingual dataset provides the cross-lingual signal a single-model classifier needs to generalize.
+A model trained only on English gets these wrong everywhere else. Parallel labeled data across the seven languages provides the cross-lingual signal per-language classifiers need — and the same generation pipeline extends to further languages as they are added.
 
 ## The downstream stack
 

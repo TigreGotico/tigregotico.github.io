@@ -1,6 +1,6 @@
 ---
-title: "Miro & Dii TTS Training Data: Publishing Voice Models Across 20+ Languages"
-description: "We published 40+ synthetic training datasets for Miro and Dii voices across Portuguese, Dutch, German, French, Italian, Japanese, Spanish, and more. Voice cloning at scale: every language gets two consistent identities."
+title: "Miro & Dii TTS Training Data: 40 Open Datasets Across 20 Locales"
+description: "We published 40 synthetic training datasets for the Miro and Dii voices across Portuguese, Dutch, German, French, Italian, Japanese, Spanish, and more. Voice cloning at scale: every language gets two consistent identities."
 date: 2025-06-23
 author: "Casimiro Ferreira"
 tags:
@@ -15,9 +15,9 @@ draft: false
 
 ## What we are releasing
 
-The **synthetic training datasets** used to build Miro and Dii — the voice identities we developed in partnership with OpenVoiceOS. The collection spans European Portuguese, Brazilian Portuguese, Dutch, German, French, Italian, Japanese, Spanish, Romanian, Polish, Swedish, Hindi, Danish, Farsi, English, Basque, and more. Each dataset follows a consistent naming convention: `tts-train-synthetic-miro_pt-PT`, `tts-train-synthetic-dii_pt-BR`, `tts-train-synthetic-miro_nl-NL`, and so on for each language pair.
+All **40 synthetic training datasets** used to build Miro and Dii — the voice identities we developed in partnership with OpenVoiceOS. The collection spans European Portuguese, Brazilian Portuguese, Dutch, German, French, Italian, Japanese, Spanish, Romanian, Polish, Swedish, Hindi, Danish, Farsi, English, Basque, and more. Each dataset follows a consistent naming convention: `tts-train-synthetic-miro_pt-PT`, `tts-train-synthetic-dii_pt-BR`, `tts-train-synthetic-miro_nl-NL`, and so on for each language pair.
 
-Every dataset is fully synthetic — generated text paired with synthesised audio, no studio sessions — includes IPA phoneme labels derived from our [G2P research for 350+ languages](/blog/2026-01-15-grapheme-to-ipa-for-350-languages), and is released under an open licence so anyone can retrain or extend the voice.
+Every dataset is fully synthetic — generated text paired with synthesised audio in LJSpeech layout, no studio sessions — and is released under an open licence so anyone can retrain or extend the voice. Phonemization happens at training time in phoonnx, drawing on our [G2P research for 350+ languages](/blog/2026-01-15-grapheme-to-ipa-for-350-languages).
 
 ## How the voice identity stays consistent across languages
 

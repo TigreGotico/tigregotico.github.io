@@ -11,8 +11,6 @@ tags:
 draft: false
 ---
 
-## Making Synthetic Voices From Scratch
-
 > This blog was originally posted in the [OpenVoiceOS blog](https://blog.openvoiceos.org/posts/2025-06-26-making-synthetic-voices-from-scratch)
 
 A good offline TTS voice for European Portuguese did not exist. Studio recording is expensive, takes months, and in most of the world’s languages the recordings have simply never happened. So we built four from scratch — no recording booth, no voice actor, no cloud.

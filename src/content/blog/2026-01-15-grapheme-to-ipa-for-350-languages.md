@@ -15,7 +15,7 @@ tags:
 draft: false
 ---
 
-**[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)** is a pure-data Python package — declarative JSON, thin pluggable logic, no trained weights — that maps spelling to IPA and models how those phonemes surface in context across **356 language specs and 20+ language families**. Install it, read the data, fork the data. Nothing is hidden in a checkpoint.
+**[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)** is a pure-data Python package — declarative JSON, thin pluggable logic, no trained weights — that maps spelling to IPA and models how those phonemes surface in context across **394 language specs and 20+ language families**. Install it, read the data, fork the data. Nothing is hidden in a checkpoint.
 
 It powers everything downstream: the Portuguese-specific [silabificador](https://github.com/TigreGotico/silabificador) and [TugaPhone](https://github.com/TigreGotico/tugaphone) stacks (see **[classical NLP for Portuguese syllables and phonemes](/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**), the Barranquenho G2P, and the phoneme grounding for **[TTS that runs on a potato](/blog/2026-05-10-tts-that-runs-on-a-potato)**.
 
@@ -28,10 +28,10 @@ import orthography2ipa
 en = orthography2ipa.get("en-GB")
 
 en.graphemes["th"]   # ['θ', 'ð']   — one spelling, two possible phonemes
-en.allophones["t"]   # ['t', 'tʰ', 'ɾ', 'ʔ', 't̚']  — one phoneme, five realisations
+en.allophones["t"]   # ['t', 'tʰ', 'ʔ', 'ɾ']  — one phoneme, four realisations
 ```
 
-English ⟨th⟩ is genuinely ambiguous between /θ/ and /ð/ — that is a spelling-to-phoneme fact. English /t/ shows up as a plain stop, an aspirated stop, a flap, a glottal stop, or unreleased depending on where it lands — that is a phoneme-to-surface fact. Keeping the two separate means you can go *text → phoneme candidates* for transcription and *phoneme → surface realisation* for pronunciation modelling without one corrupting the other. For TTS that is the difference between a believable accent and a robotic one; for ASR it is the difference between a lexicon that matches what people actually say and one that matches the dictionary.
+English ⟨th⟩ is genuinely ambiguous between /θ/ and /ð/ — that is a spelling-to-phoneme fact. English /t/ shows up as a plain stop, an aspirated stop, a glottal stop, or a flap depending on where it lands — that is a phoneme-to-surface fact. Keeping the two separate means you can go *text → phoneme candidates* for transcription and *phoneme → surface realisation* for pronunciation modelling without one corrupting the other. For TTS that is the difference between a believable accent and a robotic one; for ASR it is the difference between a lexicon that matches what people actually say and one that matches the dictionary.
 
 ## What every language carries
 
@@ -92,6 +92,6 @@ orthography2ipa distance es-ES it-IT --json
 
 ## Why pure data matters
 
-The whole spec set is schema-validated — frozen pydantic-style dataclasses, **356 specs** swept by an integrity test suite, with `SCHEMA.md` documenting the shape. Algorithmic backends, where a static table genuinely cannot express the rules, plug in through an entry-point group: the bundled Arabic G2P handles consonant mapping, harakat vowels, sun-letter assimilation, hamzat al-wasl elision, and tanwin forms.
+The whole spec set is schema-validated — frozen pydantic-style dataclasses, **394 specs** swept by an integrity test suite, with `SCHEMA.md` documenting the shape. Where a static table genuinely cannot express the rules, language-specific logic plugs in around the data: syllabifiers register through an entry-point group, and heavier algorithmic G2P (like our Arabic tokenizer [arbtok](https://github.com/TigreGotico/arbtok), which handles sun-letter assimilation, hamzat al-wasl elision, and tanwin forms) builds on the same specs downstream.
 
 There is no opaque model deciding how your users' languages sound. The mappings are auditable, the sources are cited, and adding a language is writing one validated JSON file. For anyone building TTS, ASR, or phonetic NLP who refuses to outsource their phonology to a black box — and who wants it running on their own hardware — that is the point. It is Apache 2.0, and it is yours to inspect, extend, and self-host.

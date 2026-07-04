@@ -65,14 +65,13 @@ The remailer network is still running.
 
 **Type-II remailers** (Mixmaster): add random padding, strip headers, hold messages before forwarding, and chain through multiple remailers simultaneously. Much harder to trace.
 
-Both still work. There are **six to ten active remailers** in 2026. The pinger network posts daily stats to `alt.privacy.anon-server.stats`, same as it has for decades. As of May 2026:
+Both still work. There are **roughly half a dozen active remailers** in 2026. The pinger network posts daily stats to `alt.privacy.anon-server.stats`, same as it has for decades. As of May 2026:
 
 - **frannie** (mix@franxial.com) — 100% uptime
 - **frell** (godot@remailer.frell.eu.org) — 100% uptime
 - **yeahno** (mix@yeahno.net) — 100% uptime
 - **dizum** (remailer@dizum.com) — ~99% uptime
 - **paranoia** (mixmaster@remailer.paranoici.org) — ~92% uptime
-- **senshi** (senshiremailer@gmx.de) — intermittent
 
 The **remailers** library discovers the live network by parsing those daily stats posts:
 
@@ -105,7 +104,7 @@ for server in servers:
             articles = s.get_articles("alt.test", limit=5)
             print(f"Success on {server}: {len(articles)} articles")
             break
-    except:
+    except OSError:
         continue
 ```
 

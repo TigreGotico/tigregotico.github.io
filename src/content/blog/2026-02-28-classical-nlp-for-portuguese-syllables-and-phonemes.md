@@ -13,8 +13,6 @@ tags:
 draft: false
 ---
 
-## Classical NLP for Portuguese: Syllabification and Grapheme-to-Phoneme
-
 Not every language problem needs a billion parameters. A great deal of Portuguese text processing is governed by rules that linguists wrote down long before anyone trained a neural network — rules about where syllables break, where stress falls, and how a given spelling maps to a sound. When those rules are explicit, the right tool is a small, deterministic, fully offline library that you can read, audit, and run anywhere. That is the philosophy behind our classical Portuguese NLP stack: [silabificador](https://github.com/TigreGotico/silabificador) for syllabification and [TugaPhone](https://github.com/TigreGotico/tugaphone) for grapheme-to-phoneme (G2P).
 
 ### Why classical, and why now
@@ -40,11 +38,11 @@ It was tuned and tested against clean data from the [Portal da Língua Portugues
 
 ```
 Choveu muito ontem à noite.
-pt-PT → ˈʃɔ·vew mˈũj·tu õ·ˈtẽ ˈa nˈoj·tɨ
-pt-BR → ˈʃɔ·vew mwˈĩ·tʊ õ·ˈtẽ ˈa nˈoj·tʃɪ
-pt-AO → ˈʃɔ·vew mˈũjn·tʊ õ·ˈtẽ ˈa nˈoj·tɨ
-pt-MZ → ˈʃɔ·vew mˈũj·tu õ·ˈtẽ ˈa nˈɔj·tɨ
-pt-TL → ˈʃɔ·vew mˈuj·tʊ õ·ˈtẽ ˈa nˈojtʰ
+pt-PT → ʃu·ˈvew mˈũj·tu ˈõ·tẽ ˈa nˈoj·tɨ
+pt-BR → ʃo·ˈvew mwˈĩ·tʊ ˈõ·tẽ ˈa nˈoj·tʃɪ
+pt-AO → ʃo·ˈvew mˈũjn·tʊ ˈõ·tẽ ˈa nˈoj·tɨ
+pt-MZ → ʃu·ˈvew mˈũj·tu ˈõ·tẽ ˈa nˈɔj·tɨ
+pt-TL → ʃo·ˈvew mˈuj·tʊ ˈõ·tẽ ˈa nˈojtʰ
 ```
 
 Under the hood, TugaPhone is a **hybrid** of two classical techniques. First it consults a curated phonetic lexicon (the same Portuguese Phonetic Lexicon above) for known words; for anything not in the lexicon — names, neologisms, foreign borrowings — it falls back to a rule-based G2P engine. The pipeline is explicit at every stage: text normalization, optional part-of-speech tagging, lexicon lookup, rule-based fallback, then dialect-specific transformations.

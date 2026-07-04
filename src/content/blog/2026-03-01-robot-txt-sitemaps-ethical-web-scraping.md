@@ -1,6 +1,6 @@
 ---
-title: "Robot.txt, Sitemaps, and Ethical Web Scraping"
-description: "Before you build a scraper, scout the site. We built sitemapper to read robots.txt, parse sitemaps, traverse link graphs, and respect crawl-delay declarations — making every scraper faster and more polite."
+title: "Robots.txt, Sitemaps, and Ethical Web Scraping"
+description: "Before you build a scraper, scout the site. sitemapper reads robots.txt, fetches every sitemap, and optionally crawls the link graph — so your scraper starts from the site's own contract instead of brute force."
 date: 2026-03-01
 author: "Casimiro Ferreira"
 tags:
@@ -15,131 +15,123 @@ draft: false
 
 ## Start with reconnaissance, not brute force
 
-The worst scrapers are the ones that crawl blind. They hammer a site, ignore crawl-delay declarations, thrash every path looking for data, and break when the structure changes by a single class name. The best scrapers start by reading the site.
+The worst scrapers crawl blind. They hammer a site, ignore crawl-delay
+declarations, thrash every path looking for data, and break when the structure
+changes by a single class name. The best scrapers start by reading the site.
 
-Every website publishes a contract in three places: **robots.txt** (crawl policy), the **sitemap** (what's worth crawling), and the **link graph** (how the site is wired). Reading these first answers three questions before you write a single line of scraping code:
+Every website publishes a contract in three places: **robots.txt** (crawl
+policy), the **sitemaps** (what the site itself considers worth indexing), and
+the **link graph** (how pages are actually wired together). Reading these first
+answers three questions before you write a single line of scraping code:
 
-1. **Is this site scrapable?** What does robots.txt allow?
-2. **Where is the data?** What does the sitemap surface?
-3. **How is the site structured?** What's the link topology?
+1. **Is this site scrapable?** What does robots.txt allow, and at what pace?
+2. **Where is the data?** What do the sitemaps surface?
+3. **How is the site structured?** What does the link topology look like?
 
-That is what **[sitemapper](https://github.com/TigreGotico/sitemapper)** does. It is small (no dependencies), fast, and a prerequisite for building **any** scraper responsibly.
+That is what **[sitemapper](https://github.com/TigreGotico/sitemapper)** does.
 
-## How sitemapper works
+## Passive discovery: robots.txt + sitemaps
 
-The tool is simple and composable. The examples below are illustrative of the API shape — consult the [repo](https://github.com/TigreGotico/sitemapper) for current usage. Start a discovery:
+`discover()` fetches robots.txt and every sitemap it can find — including
+`Sitemap:` directives, sitemap indexes that point at sub-sitemaps, and gzipped
+files — without crawling a single HTML page:
 
 ```python
 from sitemapper import discover
 
-# Scout a site: robots.txt, sitemaps, and link graph
-results = discover("https://example.com")
+info = discover("https://www.python.org")
+print(info.summary())
+# Base URL:         https://www.python.org
+# Sitemaps found:   1
+# URLs in sitemaps: 342
+# Crawl-delay:      None
 
-# What crawl delay should you respect?
-delay = results.robots_txt.crawl_delay
-if delay:
-    print(f"Wait {delay} seconds between requests")
+# What pace does the site ask for?
+if info.robots.crawl_delay:
+    print(f"Wait {info.robots.crawl_delay}s between requests")
 
-# What paths are allowed?
-allowed = results.robots_txt.allowed_paths
-disallowed = results.robots_txt.disallowed_paths
-print(f"Allowed: {allowed}, Disallowed: {disallowed}")
+# May I fetch this path?
+info.robots.is_allowed("/api/users")            # True / False
+info.robots.is_allowed("/admin", user_agent="MyBot/1.0")
 
-# What sitemaps exist?
-for sitemap in results.sitemaps:
-    print(f"Found sitemap: {sitemap.url}")
-    
-# What links did we discover from the homepage?
-print(f"Discovered {len(results.discovered_urls)} reachable URLs")
+# Every deduplicated URL the site's own sitemaps declare
+for url in info.urls:
+    print(url.loc, url.lastmod, url.changefreq, url.priority)
 ```
 
-### robots.txt parsing in depth
+The per-agent detail is there when you need it: `info.robots.groups` holds each
+`User-agent` block with its `allows`, `disallows`, and `crawl_delay`, in
+document order. If a site has no robots.txt at all, `is_allowed()` returns
+`True` for everything — absence of a policy is itself the policy.
 
-A robots.txt file declares crawl policy to any agent that reads it. It specifies:
-- **Crawl delays** — "wait this many seconds between requests" (or use the `Crawl-delay` header)
-- **User-agent rules** — different rules for different crawlers (you can target specific ones)
-- **Disallowed paths** — "don't scrape under `/private/`" or "`/admin/*`"
-- **Request-rate** — "no more than N requests per minute"
+The payoff of sitemap-first scraping: instead of discovering URLs by crawling
+(slow, noisy, incomplete), you start from the maintainers' own list. You scrape
+what the site declares important, at the pace it declares acceptable, in a
+fraction of the requests.
 
-`sitemapper` parses all of this and exposes it cleanly:
+## Active discovery: the link graph
+
+Some sites publish no sitemap. For those, `crawl()` runs a bounded
+breadth-first crawl from the base URL and returns a `LinkGraph` of internal
+pages and outgoing links:
 
 ```python
-# Respect crawl delay
-delay = results.robots_txt.crawl_delay  # e.g., 2.0 seconds
-if delay:
-    time.sleep(delay)  # before each request
+from sitemapper import crawl
 
-# Check if a path is scrapable
-is_allowed = results.robots_txt.is_allowed("/api/users")  # True or False
-
-# Get policy for a specific user-agent (yours, or "Googlebot", etc)
-policy = results.robots_txt.for_user_agent("MyBot/1.0")
+graph = crawl("https://example.com", max_pages=50, max_depth=2)
+print(graph.summary())
+# Pages crawled (internal): 50
+# External URLs seen: 87
+# Top external domains: ...
 ```
 
-If a site has no robots.txt, `sitemapper` handles it gracefully — assume everything is allowed and move on.
+This tells you the actual topology — which pages link to what — so you can
+decide whether the site is worth a structured scraper at all. Discovery and
+crawling are deliberately separate calls: the passive step never fetches HTML,
+so you can always scout politely before deciding to crawl.
 
-### Sitemaps (XML and TXT)
+## Built on the same resilient transport
 
-Sitemaps are the gold standard. A site's maintainers explicitly list what they consider important content — exactly the signal you want. Rather than blindly crawling 100,000 URLs hoping you find everything, read the sitemap and know the scope.
+Site recon is pointless if the recon itself gets bot-walled. All of
+sitemapper's HTTP goes through
+[`unblock_requests`](https://github.com/TigreGotico/unblock_requests) — the
+TLS-impersonating transport from our
+**[anti-bot transport post](/blog/2026-03-15-beating-bot-walls-with-drop-in-requests-sessions)** —
+so robots.txt and sitemaps come back even on Cloudflare-fronted sites. A
+FlareSolverr instance or Wayback Machine fallback can be enabled with
+environment variables (`SITEMAPPER_FLARESOLVERR_URL`,
+`SITEMAPPER_WAYBACK_FALLBACK=1`) or via the `Sitemapper` class.
 
-Sitemaps come in two forms:
-- **XML sitemaps** — structured, machine-readable, the modern standard
-- **Text sitemaps** — one URL per line, simpler
+## Why this matters
 
-Both are useful. A site might have a main `sitemap.xml` that points to language-specific or category-specific sub-sitemaps.
+**Crawl delay**: a site that declares `Crawl-delay: 2` is telling you how fast
+it wants to be hit. Ignore it and you get blocked — or you degrade the site for
+everyone. Respect it and your scraper plays fair.
 
-`sitemapper` discovers all of them and exposes the URLs:
+**Sitemaps over crawling**: a sitemap lists what the site wants indexed. Blind
+link-crawling can touch five times as many URLs to find the same content.
+Start from the sitemap when one exists; it is faster for you and lighter on the
+server.
 
-```python
-for sitemap in results.sitemaps:
-    print(f"Sitemap: {sitemap.url} ({len(sitemap.urls)} URLs)")
-    
-    for url in sitemap.urls:
-        # url.loc — the actual URL
-        # url.lastmod — when it was last updated
-        # url.changefreq — how often it changes (daily, weekly, never)
-        # url.priority — how important the site thinks it is (0.0-1.0)
-        
-        print(f"  {url.loc}")
-        if url.lastmod:
-            print(f"    Last modified: {url.lastmod}")
-```
-
-The payoff: instead of discovering URLs through crawling (which is slow and misses dead-end pages), you start with the maintainers' own list. You scrape what the site thinks is important, at the pace they declared, and you're done in 1/10th the time.
-
-### Link graph discovery
-
-Some sites don't publish a sitemap. For those, `sitemapper` crawls from the homepage and builds a map of the reachable link graph:
-
-```python
-for url in results.discovered_urls:
-    print(url)
-```
-
-This tells you the actual topology of the site — which pages link to what, and which ones are isolated. You can use it to decide: do I scrape this manually, or is the site too complex?
-
-## Why this matters for scrapers
-
-**Crawl delay**: Sites declare how fast they want to be hit. A 2-second crawl-delay means "wait 2 seconds between requests." Ignore it and you'll get blocked, or worse, DoS the site. Respect it and your scraper plays fair.
-
-**Sitemaps over crawling**: A sitemap lists 10,000 URLs. Link crawling from the homepage might reach 50,000 before it stops. Start with the sitemap if it exists — it is faster for you and lighter on the server.
-
-**Scope discovery**: Before writing a parser, know if the site is even scrapable. Some sites explicitly forbid scraping in robots.txt. Some have broken/incomplete sitemaps. Sitemapper tells you what you're actually dealing with.
-
-See also: **[anti-bot transport layers](/blog/2026-03-15-beating-bot-walls-with-drop-in-requests-sessions)** — sitemapper pairs with these transports so you know the site structure before you start hitting it.
+**Scope before code**: some sites forbid scraping outright in robots.txt; some
+have sitemaps that already contain everything you need. Ten seconds of
+`discover()` tells you which situation you are in before you invest in a
+parser.
 
 ## The tool
 
-`sitemapper` is small and pure-Python:
-
 ```bash
 pip install sitemapper
+pip install sitemapper[stealth]   # adds curl_cffi TLS impersonation
 ```
 
-Use it as a library or as a CLI:
+Use it as a library, or from the command line — `--json` emits the full
+discovery for piping into other tools, `--crawl` adds the link-graph step:
 
 ```bash
 python -m sitemapper https://example.com
+python -m sitemapper https://example.com --crawl --max-pages 50 --json
 ```
 
-It is free software, self-hosted, and runs on your own hardware. Start every scraper with reconnaissance.
+It is free software and runs on your own hardware. Start every scraper with
+reconnaissance.
