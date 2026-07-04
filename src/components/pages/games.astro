@@ -1,0 +1,176 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../PageHeader.astro';
+import Section from '../Section.astro';
+import Icon from '../Icon.astro';
+import { getEntry, render } from 'astro:content';
+import { pageEntryId, localePath, type Locale } from '../../i18n';
+
+interface Props { locale?: Locale }
+const locale: Locale = Astro.props.locale ?? 'en';
+
+const S = {
+  en: {
+    eyebrow: 'Play',
+    title: 'Text & Voice Games',
+    whatWeMake: 'What we make',
+    whatWeMakeTitle: 'From classics to generative worlds',
+    howToPlayEyebrow: 'How to play',
+    howToPlayTitle: 'Command line or voice — your call',
+    more: 'More titles are in active development — follow along on the blog.',
+    engines: 'Our engines',
+    enginesTitle: 'Under the hood',
+    tnalagmes:
+      'the framework behind dozens of titles, from Oregon Trail to Lunar Lander. Handles game state, voice I/O, and NLP so authors focus on story and rules.',
+    storyforge:
+      'Our engine for story-driven interactive fiction — branching narratives where choices matter and dice-based resolution keeps outcomes honest. Built voice-first, with blind and low-vision players as the primary audience.',
+    pyfrotz:
+      'Python wrapper around the Frotz Z-machine interpreter. Runs classic Z3/Z5/Z8 story files by voice, with built-in auto-translation so Infocom and community-made games reach new languages and voice-first audiences.',
+    cta: 'Want a voice game built — or your world voice-enabled?',
+    contact: 'Get in touch',
+    blog: 'Read the blog',
+    kinds: [
+      {
+        icon: 'scroll',
+        title: 'Classic interactive fiction',
+        body: 'Parser-style text adventures in the Infocom lineage — Z-machine stories and the classics — narrated and controlled by voice or keyboard.',
+      },
+      {
+        icon: 'spark',
+        title: 'LLM-powered generative worlds',
+        body: 'Open-ended worlds where a language model improvises the story, characters, and choices around you — a fresh adventure every play-through.',
+      },
+      {
+        icon: 'waveform',
+        title: 'Audio-first & accessible',
+        body: 'Built for ears, not eyes. Screen-reader-friendly in the terminal and fully voice-driven on the Open Voice Operating System — designed with blind players.',
+      },
+    ],
+    howToPlay: [
+      { icon: 'cpu', title: 'In your command line', body: 'A keyboard-and-text client you can run anywhere a terminal runs.' },
+      { icon: 'mic', title: 'By voice', body: 'Hands-free on the Open Voice Operating System and HiveMind — just talk and listen.' },
+    ],
+  },
+  pt: {
+    eyebrow: 'Jogar',
+    title: 'Jogos de Texto e Voz',
+    whatWeMake: 'O que fazemos',
+    whatWeMakeTitle: 'Dos clássicos aos mundos generativos',
+    howToPlayEyebrow: 'Como jogar',
+    howToPlayTitle: 'Linha de comandos ou voz — a escolha é sua',
+    more: 'Há mais títulos em desenvolvimento ativo — acompanhe no blogue.',
+    engines: 'Os nossos motores',
+    enginesTitle: 'Por baixo do capô',
+    tnalagmes:
+      'a framework por detrás de dezenas de títulos, do Oregon Trail ao Lunar Lander. Trata do estado do jogo, da entrada e saída por voz e do NLP, para que os autores se concentrem na história e nas regras.',
+    storyforge:
+      'O nosso motor para ficção interativa orientada à história — narrativas ramificadas onde as escolhas contam e a resolução por dados mantém os desfechos honestos. Construído voz-primeiro, com jogadores cegos e de baixa visão como público principal.',
+    pyfrotz:
+      'Wrapper Python do interpretador Frotz de Z-machine. Corre ficheiros clássicos Z3/Z5/Z8 por voz, com tradução automática integrada para que os jogos da Infocom e da comunidade cheguem a novas línguas e a públicos voz-primeiro.',
+    cta: 'Quer um jogo de voz feito à medida — ou o seu mundo com voz?',
+    contact: 'Fale connosco',
+    blog: 'Ler o blogue',
+    kinds: [
+      {
+        icon: 'scroll',
+        title: 'Ficção interativa clássica',
+        body: 'Aventuras de texto com parser, na linhagem da Infocom — histórias Z-machine e os clássicos — narradas e controladas por voz ou teclado.',
+      },
+      {
+        icon: 'spark',
+        title: 'Mundos generativos com LLMs',
+        body: 'Mundos abertos onde um modelo de linguagem improvisa a história, as personagens e as escolhas à sua volta — uma aventura nova em cada partida.',
+      },
+      {
+        icon: 'waveform',
+        title: 'Áudio-primeiro e acessível',
+        body: 'Feito para ouvidos, não para olhos. Compatível com leitores de ecrã no terminal e totalmente controlável por voz no Open Voice Operating System — desenhado com jogadores cegos.',
+      },
+    ],
+    howToPlay: [
+      { icon: 'cpu', title: 'Na linha de comandos', body: 'Um cliente de teclado e texto que corre onde quer que um terminal corra.' },
+      { icon: 'mic', title: 'Por voz', body: 'Em mãos-livres no Open Voice Operating System e no HiveMind — basta falar e ouvir.' },
+    ],
+  },
+}[locale];
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const link = (href: string) => `${base}${localePath(locale, href)}/`;
+const page = await getEntry('pages', pageEntryId(locale, 'games'));
+const { Content } = await render(page!);
+
+const kinds = S.kinds;
+const howToPlay = S.howToPlay;
+---
+
+<Base title={page!.data.title} description={page!.data.description} locale={locale}>
+  <PageHeader eyebrow={S.eyebrow} title={S.title} lead={page!.data.description} />
+
+  <article class="prose-content max-w-3xl">
+    <Content />
+  </article>
+
+  <Section eyebrow={S.whatWeMake} title={S.whatWeMakeTitle}>
+    <div class="grid gap-5 sm:grid-cols-3">
+      {
+        kinds.map((k, i) => (
+          <div class="card-hover reveal" data-reveal data-reveal-delay={i * 70}>
+            <span class="icon-chip mb-4"><Icon name={k.icon} /></span>
+            <h3 class="display-3 text-lg">{k.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-muted">{k.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </Section>
+
+  <Section eyebrow={S.howToPlayEyebrow} title={S.howToPlayTitle}>
+    <div class="grid gap-5 sm:grid-cols-2">
+      {
+        howToPlay.map((h, i) => (
+          <div class="card reveal" data-reveal data-reveal-delay={i * 70}>
+            <span class="icon-chip mb-4"><Icon name={h.icon} /></span>
+            <h3 class="display-3 text-lg">{h.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-muted">{h.body}</p>
+          </div>
+        ))
+      }
+    </div>
+    <p class="mt-6 text-sm text-muted">{S.more}</p>
+  </Section>
+
+  <Section eyebrow={S.engines} title={S.enginesTitle}>
+    <div class="grid gap-5 sm:grid-cols-3">
+      <div class="card-hover reveal" data-reveal>
+        <h3 class="display-3 text-lg">TNaLaGmes <span class="text-xs font-normal text-muted">beta</span></h3>
+        <p class="mt-2 text-sm leading-relaxed text-muted">
+          <strong>T(oolbox) Na(tural) La(nguage) G(a)mes</strong> — {S.tnalagmes}
+        </p>
+        <a href="https://github.com/VoiceGamez/TNaLaGmes" class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary" rel="noopener">GitHub →</a>
+      </div>
+      <div class="card-hover reveal" data-reveal data-reveal-delay="70">
+        <h3 class="display-3 text-lg">StoryForge <span class="text-xs font-normal text-muted">beta</span></h3>
+        <p class="mt-2 text-sm leading-relaxed text-muted">
+          {S.storyforge}
+        </p>
+        <a href="https://github.com/VoiceGamez/story-forge" class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary" rel="noopener">GitHub →</a>
+      </div>
+      <div class="card-hover reveal" data-reveal data-reveal-delay="140">
+        <h3 class="display-3 text-lg">pyFrotz</h3>
+        <p class="mt-2 text-sm leading-relaxed text-muted">
+          {S.pyfrotz}
+        </p>
+        <a href="https://github.com/VoiceGamez/pyFrotz" class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary" rel="noopener">GitHub →</a>
+      </div>
+    </div>
+  </Section>
+
+  <div
+    class="mt-12 flex flex-wrap items-center gap-3 rounded-2xl border border-border bg-surface p-6"
+    style="box-shadow: var(--shadow-elevate);"
+  >
+    <p class="w-full display-3 text-lg">{S.cta}</p>
+    <a class="btn-primary" href={link('/contact')}>{S.contact}</a>
+    <a class="btn-ghost" href={link('/blog')}>{S.blog}</a>
+  </div>
+</Base>

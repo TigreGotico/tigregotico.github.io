@@ -1,20 +1,5 @@
 ---
-import Base from '../layouts/Base.astro';
-import PageHeader from '../components/PageHeader.astro';
-import { getEntry, render } from 'astro:content';
-
-const page = await getEntry('pages', 'privacy');
-const { Content } = await render(page!);
+import Page from '../components/pages/privacy.astro';
 ---
 
-<Base title={page!.data.title} description={page!.data.description}>
-  <PageHeader
-    eyebrow="No small print"
-    title="Privacy"
-    lead={page!.data.description}
-  />
-
-  <article class="prose-content mx-auto max-w-3xl">
-    <Content />
-  </article>
-</Base>
+<Page locale="en" />

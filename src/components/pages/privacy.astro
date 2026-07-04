@@ -1,0 +1,28 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../PageHeader.astro';
+import { getEntry, render } from 'astro:content';
+import { pageEntryId, type Locale } from '../../i18n';
+
+interface Props { locale?: Locale }
+const locale: Locale = Astro.props.locale ?? 'en';
+const S = {
+  en: { eyebrow: 'No small print' },
+  pt: { eyebrow: 'Sem letras pequenas' },
+}[locale];
+
+const page = await getEntry('pages', pageEntryId(locale, 'privacy'));
+const { Content } = await render(page!);
+---
+
+<Base title={page!.data.title} description={page!.data.description} locale={locale}>
+  <PageHeader
+    eyebrow={S.eyebrow}
+    title={page!.data.title}
+    lead={page!.data.description}
+  />
+
+  <article class="prose-content mx-auto max-w-3xl">
+    <Content />
+  </article>
+</Base>

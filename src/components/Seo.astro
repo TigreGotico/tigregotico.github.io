@@ -1,5 +1,6 @@
 ---
 import { site } from '../data/site';
+import { ui, localePath, translatedPaths, type Locale } from '../i18n';
 
 interface Props {
   title?: string;
@@ -14,6 +15,7 @@ interface Props {
   modifiedTime?: string;
   /** Exclude the page from search indexes (e.g. the 404 page). */
   noindex?: boolean;
+  locale?: Locale;
 }
 
 const {
@@ -25,12 +27,28 @@ const {
   publishedTime,
   modifiedTime,
   noindex = false,
+  locale = 'en',
 } = Astro.props;
 
 const pageTitle = title ? `${title} — ${site.name}` : site.title;
 
 // Canonical = current page resolved against the configured site origin.
 const canonical = new URL(Astro.url.pathname, Astro.site ?? site.url).href;
+
+// hreflang alternates for pages that exist in both locales.
+const baseNoSlash = import.meta.env.BASE_URL.replace(/\/$/, '');
+const herePath = Astro.url.pathname.replace(/\/$/, '');
+const sitePath =
+  (herePath.startsWith(baseNoSlash) ? herePath.slice(baseNoSlash.length) : herePath) || '/';
+const enPath = sitePath === '/pt' ? '/' : sitePath.replace(/^\/pt(?=\/|$)/, '') || '/';
+const withSlash = (p: string) => (p === '/' ? '/' : p + '/');
+const alternates = translatedPaths.includes(enPath)
+  ? ([
+      { hreflang: 'en', href: new URL(baseNoSlash + withSlash(enPath), Astro.site ?? site.url).href },
+      { hreflang: 'pt-PT', href: new URL(baseNoSlash + withSlash(localePath('pt', enPath)), Astro.site ?? site.url).href },
+      { hreflang: 'x-default', href: new URL(baseNoSlash + withSlash(enPath), Astro.site ?? site.url).href },
+    ] as const)
+  : [];
 
 // Resolve OG image to an absolute URL. Astro-processed assets (under the
 // configured base, e.g. /tigregotico-website/_astro/...) and external URLs are
@@ -58,6 +76,7 @@ const organizationLd = {
 <title>{pageTitle}</title>
 <meta name="description" content={description} />
 {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
+{!noindex && alternates.map((a) => <link rel="alternate" hreflang={a.hreflang} href={a.href} />)}
 
 <meta property="og:type" content={type} />
 <meta property="og:site_name" content={site.name} />
@@ -65,7 +84,7 @@ const organizationLd = {
 <meta property="og:description" content={description} />
 <meta property="og:url" content={canonical} />
 <meta property="og:image" content={ogImage} />
-<meta property="og:locale" content={site.locale} />
+<meta property="og:locale" content={ui[locale].locale} />
 {publishedTime && <meta property="article:published_time" content={publishedTime} />}
 {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
 

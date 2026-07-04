@@ -1,0 +1,251 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import Icon from '../../components/Icon.astro';
+import { Image } from 'astro:assets';
+import { getCollection, render } from 'astro:content';
+import { type Locale } from '../../i18n';
+
+interface Props { locale?: Locale }
+const locale: Locale = Astro.props.locale ?? 'en';
+const S = {
+  en: {
+    title: 'Blog',
+    description:
+      'Articles and insights on voice AI, OpenVoiceOS development, synthetic data, and minority-language speech technology.',
+    eyebrow: 'Writing',
+    header: 'From the workshop',
+    lead: 'Notes on voice AI, OpenVoiceOS development, synthetic data, and minority-language speech technology.',
+    filterLabel: 'Filter posts by category',
+    all: 'All',
+    minRead: 'min read',
+    readArticle: 'Read article',
+    note: '',
+    dateLocale: 'en-US',
+  },
+  pt: {
+    title: 'Blogue',
+    description:
+      'Artigos sobre IA de voz, desenvolvimento do OpenVoiceOS, dados sintéticos e tecnologia de fala para línguas minoritárias.',
+    eyebrow: 'Escrita',
+    header: 'Da oficina',
+    lead: 'Notas sobre IA de voz, desenvolvimento do OpenVoiceOS, dados sintéticos e tecnologia de fala para línguas minoritárias. Os artigos são publicados em inglês.',
+    filterLabel: 'Filtrar artigos por categoria',
+    all: 'Todos',
+    minRead: 'min de leitura',
+    readArticle: 'Ler artigo',
+    note: '',
+    dateLocale: 'pt-PT',
+  },
+}[locale];
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+// Blog category mappings
+const blogCategories: Record<string, string> = {
+  'Datasets': ['Datasets', 'Dataset', 'Benchmark', 'Training'],
+  'Voice Tech': ['TTS', 'Speech', 'Voice', 'Phonetics'],
+  'NLP & Language': ['NLP', 'Language', 'Linguistic', 'Orthography'],
+  'Infrastructure': ['Scraping', 'API', 'HTTP', 'Pipeline', 'Entity'],
+  'Privacy & Security': ['Privacy', 'USENET', 'Remailers', 'Anonymity'],
+  'Games & Accessibility': ['Games', 'Interactive Fiction', 'Accessible'],
+  'JavaScript': ['JavaScript', 'Web', 'Browser', 'Frontend'],
+  'Community': ['FOSS', 'Community', 'Industry', 'Partnership'],
+};
+
+// Determine category from tags
+const getCategory = (tags: string[]): string => {
+  for (const [category, keywords] of Object.entries(blogCategories)) {
+    for (const tag of tags) {
+      if (keywords.some(kw => tag.includes(kw))) {
+        return category;
+      }
+    }
+  }
+  return 'General';
+};
+
+// Future-dated posts stay hidden until a (re)build after their date.
+const raw = (await getCollection('blog', ({ data }) => !data.draft && data.date.valueOf() <= Date.now())).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+// Resolve a reading-time estimate per post from the rendered word count.
+const posts = await Promise.all(
+  raw.map(async (post) => {
+    const { remarkPluginFrontmatter } = await render(post);
+    const words: number = remarkPluginFrontmatter?.words ?? 0;
+    const minutes = words ? Math.max(1, Math.round(words / 200)) : 0;
+    const category = getCategory(post.data.tags);
+    return { post, minutes, category };
+  })
+);
+
+// Build category counts
+const categories = new Map<string, number>();
+for (const { category } of posts) {
+  categories.set(category, (categories.get(category) ?? 0) + 1);
+}
+---
+
+<Base title={S.title} description={S.description} locale={locale}>
+  <PageHeader eyebrow={S.eyebrow} title={S.header} lead={S.lead} />
+
+  <div class="mb-8 flex flex-wrap gap-2" role="group" aria-label={S.filterLabel}>
+    <button
+      type="button"
+      data-filter="all"
+      aria-pressed="true"
+      class="chip chip-active"
+    >
+      <span class="chip-label">{S.all}</span>
+      <span class="chip-sep" aria-hidden="true">·</span>
+      <span class="chip-count">{posts.length}</span>
+    </button>
+    {[...categories.entries()]
+      .sort((a, b) => b[1] - a[1])
+      .map(([category, count]) => (
+        <button
+          type="button"
+          data-filter={category}
+          aria-pressed="false"
+          class="chip"
+        >
+          <span class="chip-label">{category}</span>
+          <span class="chip-sep" aria-hidden="true">·</span>
+          <span class="chip-count">{count}</span>
+        </button>
+      ))}
+  </div>
+
+  <ul id="blog-grid" class="grid gap-6 sm:grid-cols-2">
+    {
+      posts.map(({ post, minutes, category }, i) => {
+        const cover = post.data.cover ?? null;
+        const coverExternal = post.data.coverExternal ?? null;
+        return (
+          <li class="blog-item reveal" data-reveal data-reveal-delay={(i % 2) * 80} data-category={category}>
+            <a
+              href={`${base}/blog/${post.id}`}
+              class="card-hover group flex h-full flex-col overflow-hidden"
+            >
+              {(cover || coverExternal) && (
+                <div class="relative -mx-6 -mt-6 mb-5 aspect-[16/9] overflow-hidden border-b border-border bg-bg">
+                  <div
+                    class="pointer-events-none absolute inset-0 z-10"
+                    style="background: linear-gradient(180deg, transparent 55%, rgb(var(--color-surface) / 0.85) 100%);"
+                    aria-hidden="true"
+                  />
+                  {cover ? (
+                    <Image
+                      src={cover}
+                      alt={post.data.title}
+                      class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      widths={[400, 800]}
+                      sizes="(max-width: 640px) 100vw, 400px"
+                    />
+                  ) : (
+                    <img
+                      src={coverExternal!}
+                      alt={post.data.title}
+                      class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  )}
+                </div>
+              )}
+              <div class="flex items-center gap-2 font-display text-xs uppercase tracking-[0.18em] text-muted">
+                <time datetime={post.data.date.toISOString()}>
+                  {post.data.date.toLocaleDateString(S.dateLocale, {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                  })}
+                </time>
+                {minutes > 0 && (
+                  <>
+                    <span aria-hidden="true">·</span>
+                    <span>{minutes} {S.minRead}</span>
+                  </>
+                )}
+              </div>
+              <h2 class="mt-2 display-3 text-lg group-hover:text-primary">
+                {post.data.title}
+              </h2>
+              <p class="mt-2 flex-1 text-sm leading-relaxed text-muted">
+                {post.data.description}
+              </p>
+              {post.data.tags.length > 0 && (
+                <ul class="mt-4 flex flex-wrap gap-1.5">
+                  {post.data.tags.slice(0, 4).map((tag) => (
+                    <li class="badge">{tag}</li>
+                  ))}
+                </ul>
+              )}
+              <span class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary transition-transform group-hover:translate-x-0.5">
+                {S.readArticle} <Icon name="arrow" class="h-4 w-4" />
+              </span>
+            </a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</Base>
+
+<style>
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-border bg-surface/60 px-3.5 py-1.5 text-sm text-muted transition-colors;
+  }
+  .chip:hover {
+    @apply border-primary/60 text-fg;
+  }
+  .chip-active {
+    @apply border-primary font-semibold text-primary;
+    background: var(--gradient-brand-soft);
+  }
+  .chip-sep {
+    @apply text-border;
+  }
+  .chip-count {
+    @apply inline-flex min-w-[1.25rem] items-center justify-center rounded-full bg-fg/10 px-1.5 py-0.5 text-xs font-semibold text-fg;
+  }
+  .chip-active .chip-sep {
+    @apply text-primary/40;
+  }
+  .chip-active .chip-count {
+    @apply bg-primary/15 text-primary;
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var filterButtons = document.querySelectorAll('[data-filter]');
+    var items = document.querySelectorAll('.blog-item');
+
+    function setFilter(filterValue) {
+      // Update button states
+      filterButtons.forEach(btn => {
+        var isActive = btn.getAttribute('data-filter') === filterValue;
+        btn.classList.toggle('chip-active', isActive);
+        btn.setAttribute('aria-pressed', String(isActive));
+      });
+
+      // Update item visibility
+      items.forEach(item => {
+        if (filterValue === 'all') {
+          item.hidden = false;
+        } else {
+          item.hidden = item.getAttribute('data-category') !== filterValue;
+        }
+      });
+    }
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', function () {
+        setFilter(this.getAttribute('data-filter'));
+      });
+    });
+  })();
+</script>

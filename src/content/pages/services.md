@@ -1,6 +1,6 @@
 ---
 title: "Services"
-description: "Engineering engagements: data extraction, clean APIs & dataset construction; voice interfaces; custom offline TTS voice training and speech-recognition (ASR) model fine-tuning; and privacy-first web development."
+description: "Engineering engagements: data extraction, clean APIs & dataset construction; voice interfaces; custom offline TTS voice training and speech-recognition (ASR) model fine-tuning; and voice-enabled, accessible websites."
 order: 2
 ---
 
@@ -73,8 +73,16 @@ It is the same toolchain behind our own client libraries and the datasets we
 release — and it feeds everything from media-metadata enrichment to training
 corpora for speech and language models.
 
-## FOSS-First Web Development
+## Voice-Enabled, Accessible Websites
 
-We design and build websites and web applications with a focus on performance,
-accessibility, and a privacy-first mindset. We develop and maintain the official
-OpenVoiceOS website — a live example of clean, open, responsive work.
+The same voice stack we ship on devices also runs in the browser. With
+[phoonnx.js](https://github.com/TigreGotico/phoonnx.js), our TTS voices
+synthesize client-side — no cloud API, no per-request cost, nothing leaving the
+visitor's machine. The [Voices Demo](/demo) on this very site is the proof: a
+static page that speaks.
+
+We build websites and web applications around that capability — sites that can
+read themselves aloud, voice-first interfaces, and accessible-by-design pages
+for users who browse by ear. Performance, accessibility, and privacy are the
+defaults, not extras. We also develop and maintain the official OpenVoiceOS
+website.

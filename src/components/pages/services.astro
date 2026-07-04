@@ -1,0 +1,51 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../PageHeader.astro';
+import { getEntry, render } from 'astro:content';
+import { site } from '../../data/site';
+import { pageEntryId, localePath, type Locale } from '../../i18n';
+
+interface Props {
+  locale?: Locale;
+}
+const locale: Locale = Astro.props.locale ?? 'en';
+const S = {
+  en: {
+    eyebrow: 'Engagements',
+    title: 'Services',
+    cta: 'Ready to scope an engagement?',
+    contact: 'Contact us',
+    sample:
+      'This site is a live sample of our static web-building: prerendered pages, no server to run, no database to keep. The palette switcher in the header is part of it — swap the color scheme and it persists, all in the browser.',
+  },
+  pt: {
+    eyebrow: 'Contratos',
+    title: 'Serviços',
+    cta: 'Pronto para definir um projeto?',
+    contact: 'Contacte-nos',
+    sample:
+      'Este sítio é uma amostra viva do nosso trabalho web estático: páginas pré-geradas, sem servidor para gerir, sem base de dados para manter. O seletor de paleta no cabeçalho faz parte da demonstração — troque o esquema de cores e a escolha persiste, tudo no navegador.',
+  },
+}[locale];
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const link = (href: string) => `${base}${localePath(locale, href)}`;
+const page = await getEntry('pages', pageEntryId(locale, 'services'));
+const { Content } = await render(page!);
+---
+
+<Base title={page!.data.title} description={page!.data.description} locale={locale}>
+  <PageHeader eyebrow={S.eyebrow} title={S.title} lead={page!.data.description} />
+
+  <article class="prose-content max-w-3xl">
+    <Content />
+  </article>
+
+  <div class="mt-12 flex flex-wrap items-center gap-3 rounded-2xl border border-border bg-surface p-6" style="box-shadow: var(--shadow-elevate);">
+    <p class="w-full display-3 text-lg">{S.cta}</p>
+    <a class="btn-primary" href={`${link('/contact')}/`}>{S.contact}</a>
+    <a class="btn-ghost" href={`mailto:${site.email}`}>{site.email}</a>
+  </div>
+
+  <p class="mt-6 max-w-3xl text-sm text-muted">{S.sample}</p>
+</Base>

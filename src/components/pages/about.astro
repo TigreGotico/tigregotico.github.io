@@ -1,0 +1,60 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../PageHeader.astro';
+import { getEntry, render } from 'astro:content';
+import { site } from '../../data/site';
+import { pageEntryId, type Locale } from '../../i18n';
+
+interface Props { locale?: Locale }
+const locale: Locale = Astro.props.locale ?? 'en';
+const S = {
+  en: {
+    eyebrow: 'Who we are',
+    title: 'About TigreGótico',
+    verify: 'Verify our work',
+    github: 'GitHub organization',
+    hf: 'Hugging Face',
+  },
+  pt: {
+    eyebrow: 'Quem somos',
+    title: 'Sobre a TigreGótico',
+    verify: 'Verifique o nosso trabalho',
+    github: 'Organização no GitHub',
+    hf: 'Hugging Face',
+  },
+}[locale];
+
+const page = await getEntry('pages', pageEntryId(locale, 'about'));
+const { Content } = await render(page!);
+---
+
+<Base title={page!.data.title} description={page!.data.description} locale={locale}>
+  <PageHeader eyebrow={S.eyebrow} title={S.title} lead={page!.data.description} />
+
+  <div class="grid gap-8 lg:grid-cols-[1fr_16rem]">
+    <article class="prose-content max-w-3xl">
+      <Content />
+    </article>
+
+    <aside class="card h-max text-sm">
+      <p class="display-3 text-base">{S.verify}</p>
+      <ul class="mt-3 space-y-2">
+        <li>
+          <a class="text-primary hover:underline" href={site.socials.github} rel="noopener"
+            >{S.github}</a
+          >
+        </li>
+        <li>
+          <a class="text-primary hover:underline" href={site.socials.huggingface} rel="noopener"
+            >Hugging Face</a
+          >
+        </li>
+        <li>
+          <a class="text-primary hover:underline" href={site.socials.openvoiceos} rel="noopener"
+            >openvoiceos.org</a
+          >
+        </li>
+      </ul>
+    </aside>
+  </div>
+</Base>

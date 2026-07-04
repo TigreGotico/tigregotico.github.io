@@ -1,0 +1,377 @@
+---
+import Base from '../../layouts/Base.astro';
+import Section from '../Section.astro';
+import Hero from '../Hero.astro';
+import Icon from '../Icon.astro';
+import { getEntry, getCollection, render } from 'astro:content';
+import { site } from '../../data/site';
+import { pageEntryId, localePath, type Locale } from '../../i18n';
+
+interface Props { locale?: Locale }
+const locale: Locale = Astro.props.locale ?? 'en';
+
+const S = {
+  en: {
+    whatWeDoEyebrow: 'What we do',
+    whatWeDoTitle: 'Voice technology — and the data engineering behind it',
+    whatWeDoLead:
+      'We build privacy-first voice across the whole open-source stack, and we turn hard-to-reach public data into clean APIs and datasets.',
+    dataServices: 'Data services',
+    creators: 'Creators of',
+    contributors: '& core contributors to',
+    stackEyebrow: 'The stack we build on',
+    ovosEyebrow: 'With OpenVoiceOS',
+    ovosTitle: 'Two voices. Every language.',
+    ovosBody1: ' and ',
+    ovosBody: 'are two voice identities that sound the same no matter which language your assistant speaks — a truly universal brand voice for OpenVoiceOS. We train a monolingual model per language with our voice-cloning pipeline, doing grapheme-to-phoneme research along the way — and we cover endangered languages that mainstream tools ignore, like Frisian, Asturian, and Aragonese. Each voice is a',
+    ovosTiny: 'tiny ~15.6M-parameter model',
+    ovosBody2: 'that runs on a Raspberry Pi, a phone, or right in your browser — no GPU, no cloud.',
+    hear: 'Hear the voices',
+    browseHf: 'Browse on Hugging Face',
+    requestVoice: 'Request a voice',
+    featuredEyebrow: 'Featured',
+    featuredTitle: 'What we build & publish',
+    featuredLead: 'Everything we build is FOSS and self-hostable — no lock-in, no mandatory cloud.',
+    featuredBody:
+      'Our work spans the whole voice stack — text-to-speech, speech recognition, and wake-word detection, plus the OpenVoiceOS plugins that tie them together and the HiveMind mesh that runs assistants across many devices. On the data side, a family of scraping, anti-bot transport, and entity-resolution libraries turns hard-to-reach public web data into clean, typed APIs and reproducible datasets. Each piece is a small, composable library you can run on your own hardware — and the datasets and models behind them, including our Miro and Dii multilingual voices and Portuguese language tooling, are published openly on Hugging Face.',
+    browseAll: 'Browse all open source',
+    datasetsModels: 'Datasets & models',
+    playEyebrow: 'Play',
+    playTitle: 'Text & voice games',
+    playLead:
+      'From classic interactive fiction to LLM-powered generative worlds — playable in your command line or entirely by voice, designed audio-first for everyone.',
+    exploreGames: 'Explore games',
+    blogEyebrow: 'From the blog',
+    blogTitle: 'Latest writing',
+    readBlog: 'Read the blog',
+    testimonialsEyebrow: 'Testimonials',
+    testimonialsTitle: 'What partners & users say',
+    testimonialsLead: 'Words from the people and projects we build with.',
+    ctaEyebrow: "Let's build",
+    ctaTitle: 'Have a voice project in mind?',
+    ctaBody:
+      'Talk to the people who build the stack. No data brokers, no lock-in — just private, open voice technology built to last.',
+    getInTouch: 'Get in touch',
+    dateLocale: 'en-US',
+    whatWeDo: [
+      {
+        icon: 'database',
+        wide: true,
+        title: 'Data extraction, clean APIs & datasets',
+        body: 'A first-tier specialty: we unlock public data that is otherwise hard to reach — behind unstructured pages, anti-bot walls, or undocumented endpoints — with resilient scrapers and reverse-engineered APIs, then re-expose it as clean, typed client libraries and build curated, ML-ready datasets from it.',
+      },
+      {
+        icon: 'shield',
+        title: 'Privacy-first voice assistants',
+        body: 'On-device OpenVoiceOS deployments that keep audio and data on your own hardware — GDPR-compliant by design.',
+      },
+      {
+        icon: 'mic',
+        title: 'Custom voice models — TTS & ASR',
+        body: 'Offline text-to-speech voices for your language or brand, and fine-tuned speech recognition (Zipformer, Parakeet, Whisper) for your domain — backed by our ASR partnership with Alpha Cephei.',
+      },
+      {
+        icon: 'globe',
+        title: 'Minority & Lusophone speech tech',
+        body: 'Phonemization, STT, and TTS for under-served languages that mainstream tools overlook.',
+      },
+      {
+        icon: 'network',
+        title: 'HiveMind device meshes',
+        body: 'Distributed voice across satellites and hubs with fine-grained permissions and no central cloud.',
+      },
+    ],
+  },
+  pt: {
+    whatWeDoEyebrow: 'O que fazemos',
+    whatWeDoTitle: 'Tecnologia de voz — e a engenharia de dados por detrás dela',
+    whatWeDoLead:
+      'Construímos voz centrada na privacidade em toda a stack de código aberto, e transformamos dados públicos de difícil acesso em APIs limpas e datasets.',
+    dataServices: 'Serviços de dados',
+    creators: 'Criadores do',
+    contributors: '& contribuidores centrais do',
+    stackEyebrow: 'A stack sobre a qual construímos',
+    ovosEyebrow: 'Com o OpenVoiceOS',
+    ovosTitle: 'Duas vozes. Todas as línguas.',
+    ovosBody1: ' e ',
+    ovosBody: 'são duas identidades de voz que soam iguais seja qual for a língua do seu assistente — uma verdadeira voz de marca universal para o OpenVoiceOS. Treinamos um modelo monolingue por língua com o nosso pipeline de clonagem de voz, fazendo investigação grafema-fonema pelo caminho — e cobrimos línguas ameaçadas que as ferramentas convencionais ignoram, como o frísio, o asturiano e o aragonês. Cada voz é um',
+    ovosTiny: 'modelo minúsculo de ~15,6M de parâmetros',
+    ovosBody2: 'que corre num Raspberry Pi, num telemóvel ou diretamente no seu navegador — sem GPU, sem nuvem.',
+    hear: 'Ouça as vozes',
+    browseHf: 'Ver no Hugging Face',
+    requestVoice: 'Pedir uma voz',
+    featuredEyebrow: 'Em destaque',
+    featuredTitle: 'O que construímos e publicamos',
+    featuredLead: 'Tudo o que construímos é código aberto e auto-hospedável — sem dependências forçadas, sem nuvem obrigatória.',
+    featuredBody:
+      'O nosso trabalho cobre toda a stack de voz — síntese de fala, reconhecimento de fala e deteção de palavra de ativação, mais os plugins OpenVoiceOS que os ligam e a malha HiveMind que corre assistentes em muitos dispositivos. Do lado dos dados, uma família de bibliotecas de scraping, transporte anti-bot e resolução de entidades transforma dados públicos de difícil acesso em APIs limpas e tipadas e em datasets reproduzíveis. Cada peça é uma biblioteca pequena e composível que pode correr no seu próprio hardware — e os datasets e modelos por detrás delas, incluindo as nossas vozes multilingues Miro e Dii e as ferramentas para a língua portuguesa, estão publicados abertamente no Hugging Face.',
+    browseAll: 'Ver todo o código aberto',
+    datasetsModels: 'Datasets e modelos',
+    playEyebrow: 'Jogar',
+    playTitle: 'Jogos de texto e voz',
+    playLead:
+      'Da ficção interativa clássica aos mundos generativos com LLMs — jogáveis na linha de comandos ou inteiramente por voz, desenhados áudio-primeiro para todos.',
+    exploreGames: 'Explorar jogos',
+    blogEyebrow: 'Do blogue',
+    blogTitle: 'Escrita recente',
+    readBlog: 'Ler o blogue',
+    testimonialsEyebrow: 'Testemunhos',
+    testimonialsTitle: 'O que dizem parceiros e utilizadores',
+    testimonialsLead: 'Palavras de quem constrói connosco.',
+    ctaEyebrow: 'Vamos construir',
+    ctaTitle: 'Tem um projeto de voz em mente?',
+    ctaBody:
+      'Fale com quem constrói a stack. Sem corretores de dados, sem dependências forçadas — apenas tecnologia de voz privada e aberta, feita para durar.',
+    getInTouch: 'Fale connosco',
+    dateLocale: 'pt-PT',
+    whatWeDo: [
+      {
+        icon: 'database',
+        wide: true,
+        title: 'Extração de dados, APIs limpas e datasets',
+        body: 'Uma especialidade de primeira linha: desbloqueamos dados públicos de difícil acesso — presos em páginas sem estrutura, atrás de muros anti-bot ou em endpoints não documentados — com scrapers resilientes e APIs obtidas por engenharia inversa, e voltamos a expô-los como bibliotecas cliente limpas e tipadas, construindo a partir deles datasets curados e prontos para ML.',
+      },
+      {
+        icon: 'shield',
+        title: 'Assistentes de voz privados',
+        body: 'Instalações OpenVoiceOS locais que mantêm o áudio e os dados no seu próprio hardware — conformes com o RGPD por desenho.',
+      },
+      {
+        icon: 'mic',
+        title: 'Modelos de voz à medida — TTS e ASR',
+        body: 'Vozes de síntese de fala offline para a sua língua ou marca, e reconhecimento de fala afinado (Zipformer, Parakeet, Whisper) para o seu domínio — com o apoio da nossa parceria em ASR com a Alpha Cephei.',
+      },
+      {
+        icon: 'globe',
+        title: 'Tecnologia de fala minoritária e lusófona',
+        body: 'Fonemização, STT e TTS para línguas mal servidas que as ferramentas convencionais ignoram.',
+      },
+      {
+        icon: 'network',
+        title: 'Malhas de dispositivos HiveMind',
+        body: 'Voz distribuída por satélites e nós centrais, com permissões finas e sem nuvem central.',
+      },
+    ],
+  },
+}[locale];
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const link = (href: string) => `${base}${localePath(locale, href)}/`.replace(/\/+$/, '/');
+
+const home = await getEntry('pages', pageEntryId(locale, 'home'));
+const { Content } = await render(home!);
+
+// Only render posts whose date has arrived — future-dated posts stay hidden
+// until a (re)build after their date (see the weekly cron in deploy.yml).
+const posts = (await getCollection('blog', ({ data }) => !data.draft && data.date.valueOf() <= Date.now()))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+
+const testimonials = (await getCollection('testimonials'))
+  .map((t) => t.data)
+  .filter((t) => !t.placeholder);
+
+const whatWeDo = S.whatWeDo;
+
+// "The stack we steward" word-marks.
+const stack = ['OpenVoiceOS', 'HiveMind'];
+---
+
+<Base title={home!.data.title} description={home!.data.description} locale={locale}>
+  <Hero link={link} locale={locale}>
+    <Content />
+  </Hero>
+
+  <!-- What we do -->
+  <Section eyebrow={S.whatWeDoEyebrow} title={S.whatWeDoTitle} lead={S.whatWeDoLead}>
+    <div class="grid gap-5 sm:grid-cols-2">
+      {
+        whatWeDo.map((item, i) => (
+          <div
+            class:list={['card-hover reveal', item.wide && 'sm:col-span-2']}
+            data-reveal
+            data-reveal-delay={i * 70}
+          >
+            <span class="icon-chip mb-4"><Icon name={item.icon} /></span>
+            <h3 class="display-3 text-lg">{item.title}</h3>
+            <p class="mt-2 max-w-3xl text-sm leading-relaxed text-muted">{item.body}</p>
+            {item.wide && (
+              <a
+                class="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+                href={link('/services')}
+              >
+                {S.dataServices} <Icon name="arrow" class="h-4 w-4" />
+              </a>
+            )}
+          </div>
+        ))
+      }
+    </div>
+    <p class="mt-8 text-muted">
+      {S.creators}
+      <a class="font-medium text-primary hover:underline" href="https://jarbashivemind.github.io/HiveMind-community-docs/" rel="noopener">HiveMind</a>
+      {S.contributors}
+      <a class="font-medium text-primary hover:underline" href={site.socials.openvoiceos} rel="noopener">OpenVoiceOS</a>.
+    </p>
+  </Section>
+
+  <hr class="rule-gradient" />
+
+  <!-- The stack we build on -->
+  <section class="py-12">
+    <p class="eyebrow mb-6 justify-center text-center reveal" data-reveal>{S.stackEyebrow}</p>
+    <div class="flex flex-wrap items-center justify-center gap-x-10 gap-y-4 reveal" data-reveal data-reveal-delay="80">
+      {
+        stack.map((name) => (
+          <span class="font-display text-2xl uppercase tracking-[0.18em] text-fg/70 transition-colors hover:text-fg sm:text-3xl">
+            {name}
+          </span>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Miro & Dii — universal voices (OpenVoiceOS partnership) -->
+  <section
+    class="my-4 overflow-hidden rounded-3xl border border-border px-6 py-12 reveal"
+    data-reveal
+    style="background: var(--gradient-brand-soft);"
+  >
+    <p class="eyebrow mb-3">{S.ovosEyebrow}</p>
+    <h2 class="display-2">{S.ovosTitle}</h2>
+    <p class="mt-4 max-w-2xl text-lg leading-relaxed text-fg/85">
+      <strong>Miro</strong>{S.ovosBody1}<strong>Dii</strong> {S.ovosBody}
+      <strong>{S.ovosTiny}</strong> {S.ovosBody2}
+    </p>
+    <div class="mt-6 flex flex-wrap gap-3">
+      <a class="btn-primary" href={`${base}/demo`}>{S.hear}</a>
+      <a
+        class="btn-ghost"
+        href="https://huggingface.co/collections/TigreGotico/phoonnx-tts-models"
+        rel="noopener">{S.browseHf}</a
+      >
+      <a class="btn-ghost" href={link('/services')}>{S.requestVoice}</a>
+    </div>
+  </section>
+
+  <!-- Featured projects + a flagship dataset -->
+  <Section
+    eyebrow={S.featuredEyebrow}
+    title={S.featuredTitle}
+    lead={S.featuredLead}
+    class="surface-alt -mx-6 rounded-3xl px-6"
+  >
+    <p class="max-w-3xl text-muted">{S.featuredBody}</p>
+    <p class="mt-8 flex flex-wrap gap-x-6 gap-y-2">
+      <a class="inline-flex items-center gap-1 font-medium text-primary hover:underline" href={link('/projects')}>
+        {S.browseAll} <Icon name="arrow" class="h-4 w-4" />
+      </a>
+      <a class="inline-flex items-center gap-1 font-medium text-primary hover:underline" href={site.socials.huggingface} rel="noopener">
+        {S.datasetsModels} <Icon name="arrow" class="h-4 w-4" />
+      </a>
+    </p>
+  </Section>
+
+  <!-- Games teaser -->
+  <Section eyebrow={S.playEyebrow} title={S.playTitle} lead={S.playLead}>
+    <div class="flex flex-wrap items-center gap-3 reveal" data-reveal>
+      <span class="icon-chip"><Icon name="scroll" /></span>
+      <span class="icon-chip"><Icon name="spark" /></span>
+      <span class="icon-chip"><Icon name="waveform" /></span>
+      <a
+        class="ml-auto inline-flex items-center gap-1 font-medium text-primary hover:underline"
+        href={link('/games')}
+      >
+        {S.exploreGames} <Icon name="arrow" class="h-4 w-4" />
+      </a>
+    </div>
+  </Section>
+
+  <!-- Latest posts -->
+  <Section eyebrow={S.blogEyebrow} title={S.blogTitle}>
+    <ul class="grid gap-5 sm:grid-cols-3">
+      {
+        posts.map((post, i) => (
+          <li class="reveal" data-reveal data-reveal-delay={i * 70}>
+            <a href={`${base}/blog/${post.id}`} class="card-hover group flex h-full flex-col">
+              <time
+                class="font-display text-xs uppercase tracking-[0.2em] text-muted"
+                datetime={post.data.date.toISOString()}
+              >
+                {post.data.date.toLocaleDateString(S.dateLocale, {
+                  year: 'numeric',
+                  month: 'short',
+                  day: 'numeric',
+                })}
+              </time>
+              <h3 class="mt-2 display-3 text-base group-hover:text-primary">
+                {post.data.title}
+              </h3>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    <p class="mt-8">
+      <a class="inline-flex items-center gap-1 font-medium text-primary hover:underline" href={link('/blog')}>
+        {S.readBlog} <Icon name="arrow" class="h-4 w-4" />
+      </a>
+    </p>
+  </Section>
+
+  <!-- Testimonials -->
+  <Section
+    eyebrow={S.testimonialsEyebrow}
+    title={S.testimonialsTitle}
+    lead={S.testimonialsLead}
+    class="surface-alt -mx-6 rounded-3xl px-6"
+  >
+    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        testimonials.map((t, i) => (
+          <figure
+            class:list={['card reveal', t.placeholder && 'border-dashed']}
+            data-reveal
+            data-reveal-delay={i * 70}
+          >
+            {t.placeholder && <span class="badge mb-3">Placeholder — quote pending</span>}
+            <blockquote class="text-sm italic leading-relaxed text-muted">
+              &ldquo;{t.quote}&rdquo;
+            </blockquote>
+            <figcaption class="mt-4">
+              <span class="block text-sm font-semibold">{t.author}</span>
+              {t.url ? (
+                <a href={t.url} class="text-xs text-primary hover:underline" rel="noopener">
+                  {t.org}
+                </a>
+              ) : (
+                <span class="text-xs text-muted">{t.org}</span>
+              )}
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </Section>
+
+  <!-- CTA -->
+  <section class="relative my-10 overflow-hidden rounded-3xl border border-border px-6 py-16 text-center">
+    <div
+      class="pointer-events-none absolute inset-0 -z-10 opacity-90"
+      style="background: var(--gradient-brand-soft);"
+      aria-hidden="true"
+    >
+    </div>
+    <p class="eyebrow mb-4 justify-center reveal" data-reveal>{S.ctaEyebrow}</p>
+    <h2 class="display-2 reveal" data-reveal data-reveal-delay="60">
+      {S.ctaTitle}
+    </h2>
+    <p class="mx-auto mt-4 max-w-xl text-muted reveal" data-reveal data-reveal-delay="120">
+      {S.ctaBody}
+    </p>
+    <div class="mt-7 flex flex-wrap justify-center gap-3 reveal" data-reveal data-reveal-delay="180">
+      <a class="btn-primary" href={link('/contact')}>{S.getInTouch}</a>
+      <a class="btn-ghost" href={`mailto:${site.email}`}>{site.email}</a>
+    </div>
+  </section>
+</Base>

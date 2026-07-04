@@ -2,10 +2,35 @@
 // Full-bleed hero: animated aurora mesh background + animated equalizer
 // soundwave motif. All motion is CSS-gated behind prefers-reduced-motion
 // (see global.css .aurora / .eq-bar); static fallback otherwise.
+import { type Locale } from '../i18n';
+
 interface Props {
   link: (href: string) => string;
+  locale?: Locale;
 }
-const { link } = Astro.props;
+const { link, locale = 'en' } = Astro.props;
+const S = {
+  en: {
+    eyebrow: 'Privacy-First Voice AI',
+    h1a: 'Voice technology that',
+    h1b: 'respects your data.',
+    waveLabel: 'Audio waveform',
+    start: 'Start a project',
+    explore: 'Explore our work',
+    creators: 'Creators of',
+    and: '& core contributors to',
+  },
+  pt: {
+    eyebrow: 'IA de Voz Centrada na Privacidade',
+    h1a: 'Tecnologia de voz que',
+    h1b: 'respeita os seus dados.',
+    waveLabel: 'Forma de onda de áudio',
+    start: 'Iniciar um projeto',
+    explore: 'Explore o nosso trabalho',
+    creators: 'Criadores do',
+    and: '& contribuidores centrais do',
+  },
+}[locale];
 
 // Equalizer bars — varied heights/delays for an organic waveform.
 const bars = [0.35, 0.6, 0.85, 1, 0.7, 0.45, 0.9, 0.55, 0.75, 1, 0.5, 0.8, 0.4, 0.65, 0.95, 0.6];
@@ -34,11 +59,11 @@ const bars = [0.35, 0.6, 0.85, 1, 0.7, 0.45, 0.9, 0.55, 0.75, 1, 0.5, 0.8, 0.4, 
   </div>
 
   <div class="mx-auto max-w-5xl">
-    <p class="eyebrow mb-5 reveal" data-reveal>Privacy-First Voice AI</p>
+    <p class="eyebrow mb-5 reveal" data-reveal>{S.eyebrow}</p>
 
     <h1 class="display-1 max-w-4xl text-balance reveal" data-reveal data-reveal-delay="60">
-      Voice technology that
-      <span class="text-gradient">respects your data.</span>
+      {S.h1a}
+      <span class="text-gradient">{S.h1b}</span>
     </h1>
 
     <!-- Animated soundwave / equalizer motif -->
@@ -47,7 +72,7 @@ const bars = [0.35, 0.6, 0.85, 1, 0.7, 0.45, 0.9, 0.55, 0.75, 1, 0.5, 0.8, 0.4, 
       data-reveal
       data-reveal-delay="120"
       role="img"
-      aria-label="Audio waveform"
+      aria-label={S.waveLabel}
     >
       {
         bars.map((h, i) => (
@@ -64,8 +89,8 @@ const bars = [0.35, 0.6, 0.85, 1, 0.7, 0.45, 0.9, 0.55, 0.75, 1, 0.5, 0.8, 0.4, 
     </p>
 
     <div class="mt-9 flex flex-wrap gap-3 reveal" data-reveal data-reveal-delay="240">
-      <a class="btn-primary" href={link('/contact')}>Start a project</a>
-      <a class="btn-ghost" href={link('/projects')}>Explore our work</a>
+      <a class="btn-primary" href={link('/contact')}>{S.start}</a>
+      <a class="btn-ghost" href={link('/projects')}>{S.explore}</a>
     </div>
 
     <!-- Trust / credential strip -->
@@ -79,9 +104,9 @@ const bars = [0.35, 0.6, 0.85, 1, 0.7, 0.45, 0.9, 0.55, 0.75, 1, 0.5, 0.8, 0.4, 
         style="background: var(--gradient-brand);"
         aria-hidden="true"
       ></span>
-      Creators of
+      {S.creators}
       <span class="font-display tracking-wide text-fg">HiveMind</span>
-      &amp; core contributors to
+      {S.and}
       <span class="font-display tracking-wide text-fg">OpenVoiceOS</span>
     </div>
   </div>

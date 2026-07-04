@@ -6,6 +6,7 @@ import PaletteSelector from '../components/PaletteSelector.astro';
 import Reveal from '../components/Reveal.astro';
 import Icon from '../components/Icon.astro';
 import { site } from '../data/site';
+import { ui, navItems, localePath, translatedPaths, type Locale } from '../i18n';
 
 interface Props {
   title?: string;
@@ -16,13 +17,19 @@ interface Props {
   publishedTime?: string;
   modifiedTime?: string;
   noindex?: boolean;
+  locale?: Locale;
 }
 
 const props = Astro.props;
+const locale: Locale = props.locale ?? 'en';
+const t = ui[locale];
 const base = import.meta.env.BASE_URL;
 // Emit trailing-slash URLs to match canonicals/sitemap and avoid Pages 301s.
 const navLink = (href: string) =>
-  (base.replace(/\/$/, '') + (href === '/' ? '/' : href + '/')).replace(/\/\/+$/, '/');
+  (base.replace(/\/$/, '') + (() => {
+    const p = localePath(locale, href);
+    return p === '/' ? '/' : p + '/';
+  })()).replace(/\/\/+$/, '/');
 
 // Mark the current section active (matches /section and /section/...).
 const here = Astro.url.pathname.replace(/\/$/, '');
@@ -31,6 +38,26 @@ const isActive = (href: string) => {
   if (href === '/') return here === target;
   return here === target || here.startsWith(target + '/');
 };
+
+// Language-switcher target: the same page in the other locale when it exists,
+// its section root otherwise.
+const baseNoSlash = base.replace(/\/$/, '');
+const sitePath = (here.startsWith(baseNoSlash) ? here.slice(baseNoSlash.length) : here) || '/';
+const enPath = sitePath === '/pt' ? '/' : sitePath.replace(/^\/pt(?=\/|$)/, '') || '/';
+const counterpartPath = translatedPaths.includes(enPath)
+  ? enPath
+  : '/' + (enPath.split('/')[1] ?? '');
+const switchTarget = locale === 'en' ? ('pt' as Locale) : ('en' as Locale);
+const switchBase =
+  translatedPaths.includes(counterpartPath) ? counterpartPath : '/';
+const switchHref = (baseNoSlash + (() => {
+  const p = localePath(switchTarget, switchBase);
+  return p === '/' ? '/' : p + '/';
+})()).replace(/\/\/+$/, '/');
+
+// Pages that exist only in English (e.g. the demo) keep unprefixed URLs.
+const enLink = (href: string) =>
+  (base.replace(/\/$/, '') + (href === '/' ? '/' : href + '/')).replace(/\/\/+$/, '/');
 
 const year = new Date().getFullYear();
 const projectLinks = [
@@ -41,7 +68,7 @@ const projectLinks = [
 ---
 
 <!doctype html>
-<html lang={site.lang} class="scroll-smooth">
+<html lang={t.lang} class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -82,7 +109,7 @@ const projectLinks = [
   </head>
   <body class="min-h-screen flex flex-col">
     <div class="grain-overlay" aria-hidden="true"></div>
-    <a href="#main" class="skip-link">Skip to content</a>
+    <a href="#main" class="skip-link">{t.a11y.skip}</a>
 
     <header
       id="site-header"
@@ -90,7 +117,7 @@ const projectLinks = [
     >
       <nav
         class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 py-4"
-        aria-label="Primary"
+        aria-label={t.a11y.primaryNav}
       >
         <a
           href={navLink('/')}
@@ -107,7 +134,7 @@ const projectLinks = [
         </a>
         <ul class="hidden gap-6 text-sm lg:flex">
           {
-            site.nav.map((item) => (
+            navItems(locale).map((item) => (
               <li>
                 <a
                   href={navLink(item.href)}
@@ -126,15 +153,26 @@ const projectLinks = [
           }
         </ul>
         <div class="flex items-center gap-2">
+          <a
+            href={switchHref}
+            class="inline-flex h-9 items-center justify-center rounded-lg border border-border px-2.5 font-display text-xs font-semibold uppercase tracking-wider text-fg transition-colors hover:border-primary hover:text-primary"
+            title={t.switcher.hint}
+            aria-label={t.switcher.hint}
+            data-lang-switch
+          >
+            {locale === 'en' ? 'PT' : 'EN'}
+          </a>
           <PaletteSelector id="palette-desktop" />
           <ThemeToggle />
           <button
             id="nav-toggle"
             type="button"
             class="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border text-fg transition-colors hover:border-primary hover:text-primary lg:hidden"
-            aria-label="Open navigation menu"
+            aria-label={t.a11y.openMenu}
             aria-expanded="false"
             aria-controls="mobile-nav"
+            data-label-open={t.a11y.openMenu}
+            data-label-close={t.a11y.closeMenu}
           >
             <svg
               class="nav-icon-open h-5 w-5"
@@ -161,13 +199,13 @@ const projectLinks = [
           </button>
         </div>
       </nav>
-      <nav aria-label="Primary (mobile)">
+      <nav aria-label={t.a11y.mobileNav}>
       <ul
         id="mobile-nav"
         class="hidden border-t border-border bg-bg/95 px-6 py-3 text-sm backdrop-blur lg:hidden"
       >
         {
-          site.nav.map((item) => (
+          navItems(locale).map((item) => (
             <li>
               <a
                 href={navLink(item.href)}
@@ -186,7 +224,7 @@ const projectLinks = [
         }
         <li class="mt-1 flex items-center justify-between gap-3 border-t border-border px-3 pb-1 pt-3">
           <span class="font-display text-xs uppercase tracking-[0.2em] text-muted">
-            Appearance
+            {t.footer.appearance}
           </span>
           <PaletteSelector id="palette-mobile" compact />
         </li>
@@ -217,17 +255,14 @@ const projectLinks = [
             </span>
             <span class="text-gradient">TigreGótico</span>
           </p>
-          <p class="text-sm text-muted">
-            Privacy-first voice technology and FOSS AI — built to run on your own
-            hardware.
-          </p>
+          <p class="text-sm text-muted">{t.footer.tagline}</p>
         </div>
 
-        <nav aria-label="Footer navigation">
-          <p class="mb-3 font-display text-xs uppercase tracking-[0.2em] text-fg">Explore</p>
+        <nav aria-label={t.footer.explore}>
+          <p class="mb-3 font-display text-xs uppercase tracking-[0.2em] text-fg">{t.footer.explore}</p>
           <ul class="space-y-2 text-sm text-muted">
             {
-              site.nav.map((item) => (
+              navItems(locale).map((item) => (
                 <li>
                   <a class="transition-colors hover:text-fg" href={navLink(item.href)}>
                     {item.label}
@@ -236,15 +271,15 @@ const projectLinks = [
               ))
             }
             <li>
-              <a class="transition-colors hover:text-fg" href={navLink('/demo')}>
-                Voices Demo
+              <a class="transition-colors hover:text-fg" href={enLink('/demo')}>
+                {t.footer.voicesDemo}
               </a>
             </li>
           </ul>
         </nav>
 
-        <nav aria-label="Footer projects">
-          <p class="mb-3 font-display text-xs uppercase tracking-[0.2em] text-fg">Projects</p>
+        <nav aria-label={t.footer.projects}>
+          <p class="mb-3 font-display text-xs uppercase tracking-[0.2em] text-fg">{t.footer.projects}</p>
           <ul class="space-y-2 text-sm text-muted">
             {
               projectLinks.map((p) => (
@@ -259,7 +294,7 @@ const projectLinks = [
         </nav>
 
         <div>
-          <p class="mb-3 font-display text-xs uppercase tracking-[0.2em] text-fg">Connect</p>
+          <p class="mb-3 font-display text-xs uppercase tracking-[0.2em] text-fg">{t.footer.connect}</p>
           <ul class="space-y-2 text-sm text-muted">
             <li><a class="inline-flex items-center gap-1.5 transition-colors hover:text-fg" href={site.socials.github} rel="noopener"><Icon name="github" class="h-4 w-4" />GitHub</a></li>
             <li><a class="transition-colors hover:text-fg" href={site.socials.huggingface} rel="noopener">Hugging Face</a></li>
@@ -271,8 +306,8 @@ const projectLinks = [
       </div>
       <div class="border-t border-border">
         <p class="mx-auto flex max-w-5xl flex-wrap items-center gap-x-4 gap-y-1 px-6 py-5 text-xs text-muted">
-          <span>© {year} {site.legalName}. Free and open-source software.</span>
-          <a class="transition-colors hover:text-fg" href={navLink('/privacy')}>Privacy</a>
+          <span>© {year} {site.legalName}. {t.footer.foss}</span>
+          <a class="transition-colors hover:text-fg" href={navLink('/privacy')}>{t.footer.privacy}</a>
         </p>
       </div>
     </footer>
@@ -289,7 +324,7 @@ const projectLinks = [
             btn.setAttribute('aria-expanded', String(open));
             btn.setAttribute(
               'aria-label',
-              open ? 'Close navigation menu' : 'Open navigation menu'
+              open ? btn.dataset.labelClose : btn.dataset.labelOpen
             );
             btn.querySelector('.nav-icon-open').classList.toggle('hidden', open);
             btn.querySelector('.nav-icon-close').classList.toggle('hidden', !open);
