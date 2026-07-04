@@ -16,7 +16,7 @@ const blog = defineCollection({
       coverExternal: z.string().url().optional(),
       draft: z.boolean().default(false),
       // 'en' at the root, 'pt' for translations under src/content/blog/pt/.
-      lang: z.enum(['en', 'pt']).default('en'),
+      lang: z.enum(['en', 'pt', 'es', 'de', 'nl', 'fr']).default('en'),
     }),
 });
 

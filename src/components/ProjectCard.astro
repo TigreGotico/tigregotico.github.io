@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import { projectImage } from '../lib/projectImages';
 import Icon from './Icon.astro';
+import { cardUI, type Locale } from '../i18n';
 
 interface Project {
   id: string;
@@ -23,9 +24,11 @@ interface Props {
   withImage?: boolean;
   /** Localized display name for the category badge. */
   categoryLabel?: string;
+  locale?: Locale;
 }
 
-const { project, withImage = false, categoryLabel } = Astro.props;
+const { project, withImage = false, categoryLabel, locale = 'en' } = Astro.props;
+const c = cardUI[locale];
 const selfHosted = project.selfHosted !== false;
 const localImg = projectImage(project.imageLocal);
 
@@ -92,9 +95,9 @@ const badgeStyle = `--h:${meta.hue}; color:hsl(${meta.hue} 70% 55%); background:
       {label}
     </span>
     {project.comingSoon ? (
-      <span class="badge-accent">Coming soon</span>
+      <span class="badge-accent">{c.comingSoon}</span>
     ) : project.featured && !withImage ? (
-      <span class="badge-accent">Featured</span>
+      <span class="badge-accent">{c.featured}</span>
     ) : null}
   </div>
 
@@ -124,10 +127,10 @@ const badgeStyle = `--h:${meta.hue}; color:hsl(${meta.hue} 70% 55%); background:
     {selfHosted && (
       <span
         class="inline-flex items-center gap-1 text-xs font-medium text-muted"
-        title="Runs on your own hardware — no mandatory cloud"
+        title={c.selfHostedTitle}
       >
         <Icon name="home" class="h-3.5 w-3.5 text-primary" />
-        Self-hosted
+        {c.selfHosted}
       </span>
     )}
     {
@@ -137,13 +140,13 @@ const badgeStyle = `--h:${meta.hue}; color:hsl(${meta.hue} 70% 55%); background:
           class="ml-auto inline-flex items-center gap-1 text-sm font-medium text-primary transition-transform group-hover:translate-x-0.5 hover:underline"
           rel="noopener"
         >
-          View repository
+          {c.viewRepo}
           <span aria-hidden="true">&rarr;</span>
         </a>
       ) : (
         <span class="ml-auto inline-flex items-center gap-1.5 text-sm font-medium text-muted">
           <span class="inline-block h-1.5 w-1.5 rounded-full bg-primary" aria-hidden="true" />
-          Coming soon — not yet public
+          {c.comingSoonLong}
         </span>
       )
     }

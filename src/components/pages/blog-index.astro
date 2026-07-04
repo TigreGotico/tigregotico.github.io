@@ -159,7 +159,7 @@ for (const { category } of posts) {
 
 <Base title={S.title} description={S.description} locale={locale}>
   <PageHeader eyebrow={S.eyebrow} title={S.header} lead={S.lead} />
-  {S.note && <p class="-mt-4 mb-8 text-sm text-muted">{S.note}</p>}
+  {postLocale !== locale && S.note && <p class="-mt-4 mb-8 text-sm text-muted">{S.note}</p>}
 
   <div class="mb-8 flex flex-wrap gap-2" role="group" aria-label={S.filterLabel}>
     <button

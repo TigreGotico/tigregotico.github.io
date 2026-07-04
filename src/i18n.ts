@@ -18,7 +18,7 @@ export const languageNames: Record<Locale, string> = {
 };
 
 /** Locales that have fully translated blog posts (others fall back to English). */
-export const blogLocales: Locale[] = ['en', 'pt'];
+export const blogLocales: Locale[] = ['en', 'pt', 'es', 'de', 'nl', 'fr'];
 
 /** Pages that exist in every locale (path without base, no trailing slash). */
 export const translatedPaths = [
@@ -141,3 +141,23 @@ export function blogSlug(id: string) {
 export function blogPath(locale: Locale, slug: string) {
   return locale === 'en' ? `/blog/${slug}` : `/${locale}/blog/${slug}`;
 }
+
+/** Blog post-page chrome, per locale. */
+export const blogUI: Record<Locale, { allPosts: string; minRead: string; newer: string; older: string; more: string }> = {
+  en: { allPosts: 'All posts', minRead: 'min read', newer: 'Newer', older: 'Older', more: 'More posts' },
+  pt: { allPosts: 'Todos os artigos', minRead: 'min de leitura', newer: 'Mais recente', older: 'Mais antigo', more: 'Mais artigos' },
+  es: { allPosts: 'Todos los artículos', minRead: 'min de lectura', newer: 'Más reciente', older: 'Más antiguo', more: 'Más artículos' },
+  de: { allPosts: 'Alle Beiträge', minRead: 'Min. Lesezeit', newer: 'Neuer', older: 'Älter', more: 'Weitere Beiträge' },
+  nl: { allPosts: 'Alle artikelen', minRead: 'min leestijd', newer: 'Nieuwer', older: 'Ouder', more: 'Meer artikelen' },
+  fr: { allPosts: 'Tous les articles', minRead: 'min de lecture', newer: 'Plus récent', older: 'Plus ancien', more: "Plus d'articles" },
+};
+
+/** Project-card chrome, per locale. */
+export const cardUI: Record<Locale, { selfHosted: string; selfHostedTitle: string; viewRepo: string; featured: string; comingSoon: string; comingSoonLong: string }> = {
+  en: { selfHosted: 'Self-hosted', selfHostedTitle: 'Runs on your own hardware — no mandatory cloud', viewRepo: 'View repository', featured: 'Featured', comingSoon: 'Coming soon', comingSoonLong: 'Coming soon — not yet public' },
+  pt: { selfHosted: 'Auto-hospedado', selfHostedTitle: 'Corre no seu próprio hardware — sem nuvem obrigatória', viewRepo: 'Ver repositório', featured: 'Destaque', comingSoon: 'Em breve', comingSoonLong: 'Em breve — ainda não público' },
+  es: { selfHosted: 'Autoalojado', selfHostedTitle: 'Se ejecuta en tu propio hardware, sin nube obligatoria', viewRepo: 'Ver repositorio', featured: 'Destacado', comingSoon: 'Próximamente', comingSoonLong: 'Próximamente — aún no público' },
+  de: { selfHosted: 'Selbst gehostet', selfHostedTitle: 'Läuft auf Ihrer eigenen Hardware — keine verpflichtende Cloud', viewRepo: 'Repository ansehen', featured: 'Empfohlen', comingSoon: 'Demnächst', comingSoonLong: 'Demnächst — noch nicht öffentlich' },
+  nl: { selfHosted: 'Zelf gehost', selfHostedTitle: 'Draait op je eigen hardware — geen verplichte cloud', viewRepo: 'Repository bekijken', featured: 'Uitgelicht', comingSoon: 'Binnenkort', comingSoonLong: 'Binnenkort — nog niet openbaar' },
+  fr: { selfHosted: 'Auto-hébergé', selfHostedTitle: 'Fonctionne sur votre propre matériel — aucun cloud obligatoire', viewRepo: 'Voir le dépôt', featured: 'En vedette', comingSoon: 'Bientôt disponible', comingSoonLong: 'Bientôt disponible — pas encore public' },
+};
