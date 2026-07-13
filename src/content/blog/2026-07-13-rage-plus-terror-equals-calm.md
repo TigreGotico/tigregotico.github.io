@@ -57,75 +57,129 @@ four axes need `abs()` to produce a sensible answer.
 
 Once you notice, you can't stop noticing.
 
-## Why you should care about a missing axis
+## Three things this is for
 
-This sounds academic. It isn't. It is the difference between a customer who
-**complains** and one who **leaves**.
+### 1. Sentiment analysis that knows what the user feels
 
-Run a sentiment model over these two messages:
+This is the difference between a customer who **complains** and one who **leaves**.
+
+Run any sentiment model over these two messages:
 
 > "This is the third time your app has lost my work. Fix it."
 >
 > "I don't know if I'm doing this right and I'm scared I've broken something."
 
-Both come back **negative, high arousal**. Most systems stop there, and treat them
-the same way — which means one of the two responses is always wrong.
+Both come back **negative, high arousal**. Most systems stop there and treat them
+the same — which guarantees one of the two responses is wrong.
 
-The first person is *angry*: high control, engaged, certain. They want action, and
-they will escalate if they don't get it. Apologise softly and you will infuriate
-them.
+The first person is *angry*: in control, engaged, certain. They want action, and
+they will escalate. Apologise softly and you will infuriate them.
 
-The second is *afraid*: low control, uncertain, on the edge of giving up. They
-want reassurance. Send them a ticket number and a remediation timeline and they
-will quietly churn.
+The second is *afraid*: not in control, uncertain, on the edge of giving up. They
+want reassurance. Send them a ticket number and a remediation SLA and they will
+quietly churn.
 
-Same valence. Same arousal. **Opposite required response.** The axis that tells
-them apart is the axis nearly nobody ships.
+Same valence. Same arousal. **Opposite required response.**
 
 ```python
-from emotion_algebra.neural import affect_from_texts
-from emotion_algebra import dominant
+from emotion_algebra import affect_from_texts
 
 angry, afraid = affect_from_texts([
     "This is the third time your app has lost my work. Fix it.",
     "I don't know if I'm doing this right and I'm scared I've broken something.",
 ])
 
-angry.valence,  angry.potency    # -0.43, +0.16   -> dominant: 'annoyance'
-afraid.valence, afraid.potency   # -0.47, -0.43   -> dominant: 'apprehension'
+angry.valence,  angry.potency    # -0.43, +0.16   -> 'annoyance'
+afraid.valence, afraid.potency   # -0.47, -0.43   -> 'apprehension'
 ```
 
-**Near-identical valence. Opposite potency.** One user is engaged and will
-escalate; the other is uncertain and will disengage. A model that only reports
-"negative, aroused" cannot tell you which — and will confidently hand you the
-wrong response half the time.
+**Near-identical valence. Opposite potency.** A star rating cannot see the
+difference. Neither can a positive/negative classifier. Neither, it turns out, can
+most of the emotion libraries built to go beyond them — because they don't carry
+the axis.
 
-(That reading comes from a DeepMoji probe, not a word list. A bag-of-words lexicon
-fires on *"broken" → anger* in the second sentence and reports an **angry**,
-approach-motivated user — precisely backwards. Word lists have no syntax and no
-word senses, and this is what that costs.)
+(That reading comes from a DeepMoji probe rather than a word list. A bag-of-words
+lexicon fires on *"broken" → anger* in the second sentence and reports an
+**angry**, approach-motivated user — exactly backwards. Word lists have no syntax
+and no word senses, and that is what it costs.)
 
-Once an emotion is a *state* rather than a score, you can ask it what the
-organism will do next — and the answer comes off the potency axis, not the
-valence one:
+### 2. Agents that modulate what they do
+
+Once you have a *state* rather than a score, you can ask it what to do next — and
+the answer comes off the potency axis:
 
 ```python
-dominant_tendency(prototype("anger"))    # 'antagonism'  -- move against it
-dominant_tendency(prototype("fear"))     # 'avoidance'   -- move away
-dominant_tendency(prototype("sadness"))  # 'withdrawal'  -- give up
-dominant_tendency(prototype("joy"))      # 'affiliation' -- draw close
+from emotion_algebra import dominant_tendency, prototype
+
+dominant_tendency(prototype("anger"))    # 'antagonism'  -- they will push back
+dominant_tendency(prototype("fear"))     # 'avoidance'   -- they will disengage
+dominant_tendency(prototype("sadness"))  # 'withdrawal'  -- they will give up
+dominant_tendency(prototype("joy"))      # 'affiliation' -- they will lean in
 ```
 
-That is what makes an NPC read as alive rather than as a mood ring: a guard who is
-*angry* charges you, a guard who is *afraid* runs, and "negative emotion" alone
-cannot decide which. It is what lets a voice assistant tell a frustrated user
-(wants the problem fixed *now*) from an anxious one (wants to be told it will be
-fine). And it is what stops a support-triage system from burying the quiet,
-frightened, about-to-cancel customer at the bottom of the queue because they
-didn't shout.
+A support agent that reads *antagonism* should escalate to a human and skip the
+pleasantries. One that reads *avoidance* should slow down and reassure. One that
+reads *withdrawal* is about to lose the user entirely and should say something
+now.
 
-Anywhere a system has to decide **what to do** about a feeling — rather than just
-score it — the missing axis is the one carrying the answer.
+This is also why "negative = back off" is bad policy. Anger is **unpleasant and
+approach-motivated** (Carver & Harmon-Jones 2009). The angry user is the *engaged*
+one. The frightened one is the flight risk, and they are the quiet one.
+
+Every emotion model that ties approach to positive valence gets this exactly
+backwards.
+
+### 3. NPCs that have an emotional life
+
+The same machinery runs in the other direction: instead of reading a user's
+emotion, give an agent one of its own.
+
+An emotion here is a **displacement**, and it decays back toward a **set point** —
+not toward zero. "No emotion" is not a state anything is ever in. Rest is mildly
+positive, calm, and mildly in control, which is why a creature at rest *explores*
+rather than freezing.
+
+```python
+from emotion_algebra import prototype, relax, dominant
+
+for dt in (0, 150, 300, 900, 3600):
+    print(dt, dominant(relax(prototype("terror"), dt=dt, half_life=300)))
+
+# 0     terror
+# 150   fear
+# 300   apprehension
+# 900   pensiveness
+# 3600  acceptance
+```
+
+A guard who saw something terrifying doesn't flip back to *neutral* on a timer.
+He comes down through fear, then wariness, then quiet brooding, and eventually
+settles. You didn't script that; it falls out of the geometry. (It is also a
+theorem: relaxation is a contraction semigroup, so by Banach the set point is the
+**unique** attractor and every state provably converges to it.)
+
+And two NPCs differ because they fall toward **different set points**:
+
+```python
+from emotion_algebra import Temperament, AffectState
+
+anxious = Temperament(
+    set_point=AffectState(positivity=0.10, negativity=0.15,
+                          potency=-0.20, arousal=0.35, unpredictability=0.40),
+    resilience=900.0,        # dwells on things
+    negativity_bias=2.0,     # and bad news lands twice as hard
+)
+```
+
+Give the anxious guard and the cheerful guard the same bad news and they respond
+differently, recover at different rates, and end up in different places. That's
+*character*, and it is four numbers rather than a behaviour tree.
+
+Then the actions come off the same axis as before: the **angry** guard charges
+you, the **afraid** guard runs, and "negative emotion" alone cannot decide which.
+
+Anywhere a system has to decide **what to do** about a feeling — rather than
+merely score it — the missing axis is the one carrying the answer.
 
 ## What the evidence actually supports
 
@@ -246,11 +300,11 @@ at any parameter setting*. It cannot produce this result at all.
 Ablate control and certainty — Lerner & Keltner's two named mediators — and the
 effect drops to **exactly zero**. Fully mediated; nothing left unexplained.
 
-## Things it can do that other libraries can't
+## Two more things it does that others don't
 
 **Bittersweet.** Happiness and sadness genuinely co-activate — the classic case is
 graduation day (Larsen, McGraw & Cacioppo 2001). A single signed valence axis
-cannot represent that, mathematically. So valence is carried as two channels:
+cannot represent that, *mathematically*. So valence is carried as two channels:
 
 ```python
 graduation = AffectState(positivity=0.8, negativity=0.6, arousal=0.7)
@@ -258,23 +312,11 @@ graduation.valence      # +0.2  -- "mildly happy", says a one-axis model
 graduation.ambivalence  #  0.6  -- what the one-axis model destroys
 ```
 
-**Anger that approaches.** Motivational direction tracks potency, not
-pleasantness — which is why "negative = avoid" sentiment systems get anger
-backwards. Anger is unpleasant *and* approach-motivated (Carver & Harmon-Jones
-2009), and that fact refutes every model that ties approach to positive valence.
+Which matters the moment you want a reluctant victory, a fond goodbye, or a user
+who is relieved *and* furious.
 
-**Resting properly.** "No emotion" is not a state anything is ever in — core
-affect is always on. What organisms fall toward is a *set point*: mildly positive,
-calm, mildly in control. That positivity offset is why a creature at rest
-**explores** instead of freezing. Decay pulls toward rest rather than toward zero,
-so recovery is a trajectory:
-
-```
-terror → fear → interest → acceptance
-```
-
-**Admitting what it doesn't know.** Every construct in the library carries a
-machine-readable **evidence grade** and its citation:
+**Admitting what it doesn't know.** Every construct carries a machine-readable
+**evidence grade** and its citation:
 
 ```python
 evidence.grade_of("circumplex")          # Grade.ESTABLISHED
