@@ -57,6 +57,76 @@ four axes need `abs()` to produce a sensible answer.
 
 Once you notice, you can't stop noticing.
 
+## Why you should care about a missing axis
+
+This sounds academic. It isn't. It is the difference between a customer who
+**complains** and one who **leaves**.
+
+Run a sentiment model over these two messages:
+
+> "This is the third time your app has lost my work. Fix it."
+>
+> "I don't know if I'm doing this right and I'm scared I've broken something."
+
+Both come back **negative, high arousal**. Most systems stop there, and treat them
+the same way — which means one of the two responses is always wrong.
+
+The first person is *angry*: high control, engaged, certain. They want action, and
+they will escalate if they don't get it. Apologise softly and you will infuriate
+them.
+
+The second is *afraid*: low control, uncertain, on the edge of giving up. They
+want reassurance. Send them a ticket number and a remediation timeline and they
+will quietly churn.
+
+Same valence. Same arousal. **Opposite required response.** The axis that tells
+them apart is the axis nearly nobody ships.
+
+```python
+from emotion_algebra.neural import affect_from_texts
+from emotion_algebra import dominant
+
+angry, afraid = affect_from_texts([
+    "This is the third time your app has lost my work. Fix it.",
+    "I don't know if I'm doing this right and I'm scared I've broken something.",
+])
+
+angry.valence,  angry.potency    # -0.43, +0.16   -> dominant: 'annoyance'
+afraid.valence, afraid.potency   # -0.47, -0.43   -> dominant: 'apprehension'
+```
+
+**Near-identical valence. Opposite potency.** One user is engaged and will
+escalate; the other is uncertain and will disengage. A model that only reports
+"negative, aroused" cannot tell you which — and will confidently hand you the
+wrong response half the time.
+
+(That reading comes from a DeepMoji probe, not a word list. A bag-of-words lexicon
+fires on *"broken" → anger* in the second sentence and reports an **angry**,
+approach-motivated user — precisely backwards. Word lists have no syntax and no
+word senses, and this is what that costs.)
+
+Once an emotion is a *state* rather than a score, you can ask it what the
+organism will do next — and the answer comes off the potency axis, not the
+valence one:
+
+```python
+dominant_tendency(prototype("anger"))    # 'antagonism'  -- move against it
+dominant_tendency(prototype("fear"))     # 'avoidance'   -- move away
+dominant_tendency(prototype("sadness"))  # 'withdrawal'  -- give up
+dominant_tendency(prototype("joy"))      # 'affiliation' -- draw close
+```
+
+That is what makes an NPC read as alive rather than as a mood ring: a guard who is
+*angry* charges you, a guard who is *afraid* runs, and "negative emotion" alone
+cannot decide which. It is what lets a voice assistant tell a frustrated user
+(wants the problem fixed *now*) from an anxious one (wants to be told it will be
+fine). And it is what stops a support-triage system from burying the quiet,
+frightened, about-to-cancel customer at the bottom of the queue because they
+didn't shout.
+
+Anywhere a system has to decide **what to do** about a feeling — rather than just
+score it — the missing axis is the one carrying the answer.
+
 ## What the evidence actually supports
 
 Before writing a line of code, we audited the field. It is not a comfortable
@@ -188,16 +258,10 @@ graduation.valence      # +0.2  -- "mildly happy", says a one-axis model
 graduation.ambivalence  #  0.6  -- what the one-axis model destroys
 ```
 
-**Knowing what someone will do.** Motivational direction tracks potency, not
+**Anger that approaches.** Motivational direction tracks potency, not
 pleasantness — which is why "negative = avoid" sentiment systems get anger
 backwards. Anger is unpleasant *and* approach-motivated (Carver & Harmon-Jones
-2009).
-
-```python
-dominant_tendency(prototype("anger"))    # 'antagonism'  -- move against it
-dominant_tendency(prototype("fear"))     # 'avoidance'   -- move away
-dominant_tendency(prototype("sadness"))  # 'withdrawal'  -- give up
-```
+2009), and that fact refutes every model that ties approach to positive valence.
 
 **Resting properly.** "No emotion" is not a state anything is ever in — core
 affect is always on. What organisms fall toward is a *set point*: mildly positive,
