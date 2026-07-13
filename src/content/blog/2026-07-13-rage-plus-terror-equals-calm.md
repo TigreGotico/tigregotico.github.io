@@ -1,11 +1,12 @@
 ---
-title: "Your emotion library thinks rage plus terror equals calm"
-description: "We audited our own emotion library against the affective science literature. The two theories it was built on don't replicate — and the proof is one line of their own arithmetic. Here's what broke, what we replaced it with, and the benchmark that told us we were still wrong."
+title: "A billion tweets know something Plutchik's wheel doesn't"
+description: "Our emotion library thought rage plus terror averaged out to calm. Fixing that meant asking which emotion theories actually replicate — and then checking the answer against a model trained on 1.2 billion tweets that has never heard of any of them. It picked the same axis we did."
 date: 2026-07-13
 author: "Casimiro Ferreira"
 tags:
   - "Affective Computing"
   - "Emotion"
+  - "Machine Learning"
   - "LILACS"
   - "Open Source"
   - "Science"
@@ -21,71 +22,206 @@ Our library — like most emotion libraries — answered: **calm**.
 (rage + terror) / 2  ==  [0, 0, 0, 0]   ->  neutrality
 ```
 
-That is not a rounding error or an off-by-one. It is a theorem of the model, and
-once we understood *why* it happens, we had to rebuild the foundation of
-[emotion-algebra](https://github.com/TigreGotico/emotion-algebra).
+That isn't a rounding error. It's a theorem of the model, and it sent us down a
+six-month-shaped rabbit hole that ended somewhere we didn't expect: a neural
+network trained on 1.2 billion tweets, agreeing with an appraisal theory from
+1985 that it has never heard of.
 
 ## The one-line proof
 
-emotion-algebra was built on two things that almost every emotion library is
-built on: **Plutchik's Wheel** (1980) and **Cambria's Hourglass of Emotions**
-(2012). The Hourglass gives you four signed axes, and one of them — *Sensitivity*
-— runs from anger at `+3` to fear at `−3`. Opposite ends of one axis.
+[emotion-algebra](https://github.com/TigreGotico/emotion-algebra) was built on
+two things that almost every emotion library is built on: **Plutchik's Wheel**
+(1980) and **Cambria's Hourglass of Emotions** (2012). The Hourglass gives you
+four signed axes, and one of them — *Sensitivity* — runs from anger at `+3` to
+fear at `−3`. Opposite ends of one axis.
 
-So `rage = [+3, 0, 0, 0]` and `terror = [−3, 0, 0, 0]`, and their average is the
-zero vector. Blend maximal rage with maximal terror and the model says you feel
-nothing at all.
+So `rage = [+3, 0, 0, 0]`, `terror = [−3, 0, 0, 0]`, and their average is the
+zero vector.
 
-The absurdity is a symptom. **Anger and fear are not opposites.** They are both
-unpleasant, both highly aroused, and they are separated by something else
-entirely: *control*. Four independent research programmes converge on this —
-Smith & Ellsworth (1985), Roseman (1996), Scherer's Component Process Model, and
-Lerner & Keltner (2001), the last of which shows control **causally mediates**
-the difference. Anger is what you feel when something is wrong *and you can do
-something about it*. Fear is what you feel when you can't.
+The absurdity is a symptom of a real mistake: **anger and fear are not
+opposites.** They're both unpleasant, both highly aroused, and what separates
+them is something else entirely — *control*. Anger is what you feel when
+something is wrong **and you can do something about it**. Fear is what you feel
+when you can't.
 
-They are neighbours, not antipodes.
-
-And here is the part that convinced us. The Hourglass has its own sentiment
+And here's the part that made it undeniable. The Hourglass has its own sentiment
 formula:
 
 ```
 polarity = (P + |At| − |S| + Ap) / 3
 ```
 
-Look at `−|S|`. The **absolute value**. Both poles of the Sensitivity axis reduce
+Look at `−|S|`. The **absolute value**. Both poles of Sensitivity *reduce*
 polarity — anger and fear alike. That is a formal admission, inside the model's
-own arithmetic, that the axis is *not* hedonically bipolar. The Hourglass's
-polarity formula contradicts the Hourglass's geometry. Two of its four axes need
-`abs()` to produce a sensible answer.
-
-Once you see it, you can't unsee it.
+own arithmetic, that the axis is not hedonically bipolar. **The Hourglass's
+polarity formula contradicts the Hourglass's geometry.** Two of its four axes
+need `abs()` to produce a sensible answer.
 
 ## We audited everything, and it got worse
 
-If the foundation was rotten, what else was? We ran the whole library against the
-literature. The results were not comfortable.
-
 | What we shipped | Verdict |
 | --- | --- |
-| **Plutchik's wheel** (the antipodal structure) | Smith & Schneider (2009) ran **over 2,000 statistical tests** and report the emotion-wheel theory *"receives no empirical support"*. The opposite-pairs structure is borrowed from the colour wheel. |
-| **Cambria's Hourglass** | Self-described as "a derivative of Plutchik's wheel", built for sentiment-analysis engineering. No factor-analytic derivation from human data exists. |
+| **Plutchik's wheel** | Smith & Schneider (2009) ran **over 2,000 statistical tests** and report the emotion-wheel theory *"receives no empirical support"*. The opposite-pairs structure is borrowed from the colour wheel. |
+| **Cambria's Hourglass** | Self-described as "a derivative of Plutchik's wheel", built for sentiment-analysis engineering. No factor-analytic derivation from human data. |
 | **Lövheim's cube** (our neurochemistry) | **Never empirically tested.** Published in *Medical Hypotheses*, which by explicit editorial policy did **not** practise external peer review — an Elsevier panel found it was publishing "baseless, speculative, non-testable" material and removed the editor in 2010. |
 
-Meanwhile the things that *do* replicate — Russell's circumplex, the appraisal
-finding above, and the two meta-analyses (Lindquist 2012; Siegel 2018) showing
-discrete emotions have **no consistent neural or autonomic signature** — were the
-things our model didn't implement.
+Meanwhile the constructs that *do* replicate — Russell's circumplex, and the
+finding that **control** separates anger from fear (four independent research
+programmes, one with causal mediation) — were the ones our model didn't
+implement.
 
-We had built our foundations out of the least-supported constructs in the field
-and our decorations out of the best ones.
+We'd built the foundations out of the field's least-supported ideas and the
+decorations out of its best ones.
 
-## What we did about it
+## So we rebuilt it — and then tried to break it
 
-We didn't pick a different theory. Theories disagree, and pretending otherwise is
-how you end up with `rage + terror = calm` in the first place. Instead:
+The rebuild is the boring part. We moved to the axes that actually come out of
+data (Fontaine, Scherer, Roesch & Ellsworth 2007: **valence, potency, arousal,
+unpredictability**), made every construct carry a machine-readable evidence grade
+and citation, and rewrote the neurochemistry to map neurotransmitters onto
+*computational roles* (dopamine as reward-prediction error, noradrenaline as
+unexpected uncertainty) rather than onto emotion **names** — which was Lövheim's
+actual mistake, and the reason his model is untestable.
 
-**Every construct now carries an evidence grade and its citation, in code.**
+The interesting part is what happened when we tried to check it.
+
+Every benchmark we reached for first was a **rating scale** — people scoring words
+on a questionnaire. And rating scales have a nasty property: they can *encode* a
+theory rather than test it. If everyone who builds emotion questionnaires learned
+the same textbook, the questionnaires will agree with the textbook.
+
+So we went looking for evidence with none of that baggage.
+
+## The test: a model that has never heard of any of this
+
+**DeepMoji** (Felbo et al. 2017) was trained on **1.2 billion tweets** to predict
+which emoji a message carried. That's it. It has never heard of Plutchik, of
+Scherer, of appraisal theory, or of coping potential. It is a representation of
+how people *actually express* emotion, learned at scale, with no theory imposed.
+
+**GoEmotions** (Demszky et al. 2020) is 43,410 Reddit comments with human emotion
+labels — real text, not word lists.
+
+Our whole redesign rests on one claim: that anger and fear are separated by
+**potency**, not by valence or arousal. That claim is falsifiable. So:
+
+> **Does a theory-free model of human expression encode the anger/fear
+> distinction at all — and if so, along which axis?**
+
+If the answer is "no", our third axis is an artefact of the appraisal literature
+and we should say so publicly.
+
+### It separates them
+
+| | |
+| --- | --- |
+| anger vs fear, held-out accuracy | **0.773** |
+| majority baseline | 0.598 |
+| permutation control (labels shuffled) | **0.600** — signal gone |
+
+A model that only knows about emoji usage can tell anger from fear. Shuffle the
+labels and the ability vanishes completely, so it isn't an artefact of the
+fitting procedure.
+
+### And it uses *our axis* to do it
+
+We took the direction DeepMoji uses to separate anger from fear, and asked which
+of our four axes it looks like:
+
+| core axis | correlation with DeepMoji's anger↔fear direction |
+| --- | --- |
+| valence | −0.105 |
+| arousal | +0.035 |
+| **potency** | **+0.306** |
+| unpredictability | −0.172 |
+
+**Three times any other axis.** Stable across seeds (0.295–0.339, always the
+largest).
+
+A neural network trained on a billion tweets — which has never been told that
+anger involves a sense of control and fear involves its absence — separates them
+along a direction that tracks **exactly that**. Not valence. Not arousal.
+
+That's the strongest evidence we have, and it's the reason we're confident enough
+to publish. It's also a test we could have failed, and would have reported if we
+had. The whole experiment uses **no coordinates from our model at all**, so it
+can't be circular.
+
+## Then we reproduced the behavioural result
+
+Lerner & Keltner (2001) found something genuinely counter-intuitive: fearful
+people judge risks **pessimistically**, angry people judge them
+**optimistically** — and *angry people pattern with happy people*, despite anger
+and happiness having opposite valence. The effect is mediated by **control and
+certainty**, not by pleasantness.
+
+We drove our appraisal layer with the same manipulation — one obstructing event,
+varying nothing but coping potential — and asked it to judge risk.
+
+| induced | valence | potency | perceived risk |
+| --- | --- | --- | --- |
+| anger | −0.75 | **+0.80** | **0.150** |
+| fear | −0.75 | **−0.80** | **0.850** |
+| happiness | +0.75 | +0.60 | 0.200 |
+
+Anger's risk judgement lands next to **happiness** (0.150 vs 0.200), nowhere near
+fear (0.850). Anger and fear are **identical in valence and arousal** — so a
+valence/arousal model predicts *no difference between them at any parameter
+setting*. It cannot produce this result at all.
+
+Ablate control and certainty — Lerner & Keltner's two named mediators — and the
+effect drops to **exactly zero**. Fully mediated, nothing unexplained.
+
+## The parts where the data said we were wrong
+
+We're including this section because a post that only contains wins isn't a
+report, it's an advertisement.
+
+**Our hand-tuned numbers were badly wrong.** Having rebuilt everything on
+appraisal theory, we benchmarked against human word norms (Warriner et al. 2013,
+13,915 words). Humans rate `rage` at **−0.21** dominance. We had it at **+0.80**.
+
+The thing we'd missed is obvious in hindsight: **being enraged is not being in
+control.** Losing your temper is *losing control*. Human raters know this; our
+tidy theory-driven numbers did not. We stopped guessing and took valence and
+arousal straight from the human data.
+
+**And we learned the two things aren't the same thing.** *Appraised coping* —
+"can I act on this?" — correlates with *felt dominance* at only **r = 0.46**.
+Anger is *caused* by a high-coping appraisal while being *experienced* as only
+moderately in control. Two constructs, routinely conflated, including by us. (We
+mark that finding `PROVISIONAL` in the code: n=25, and we'd want a bigger sample
+before anyone leans on it.)
+
+**The data even handed us a better rule than the one we designed.** We'd used
+*arousal* to separate fleeing from giving up. But human norms put grief's arousal
+squarely inside fear's range, so arousal can't do it. What actually separates
+them is **uncertainty**: fear is an *uncertain* threat you can't handle, so you
+run; grief is a *certain* loss you can't handle, so you stop. We didn't put that
+in the model. We found it.
+
+**And one thing is still broken.** Predicting *arousal* from text: our word
+lexicon manages r=0.13, and the DeepMoji probe manages 0.03. Emoji usage carries
+hedonic tone far more than activation. Neither approach is good enough to ship,
+so we shipped neither, and the benchmark script says so out loud.
+
+## Why any of this matters
+
+An emotion library that quietly asserts things the evidence contradicts is worse
+than useless — it's *confidently* useless, and it launders folk psychology into
+every system built on top of it. The Hourglass underpins a large slice of the
+sentiment-analysis literature. Plutchik's wheel is in every deck. Lövheim's cube
+turns up in ML papers as though it were established neuroscience.
+
+None of that is a conspiracy. It's what happens when convenient models get
+repeated without anyone re-reading the primary sources. **We repeated them too,
+for a year.**
+
+So now the library carries its own epistemics. Every construct states how much
+you should trust it, from `ESTABLISHED` down to `METAPHOR`. Every conversion
+between models declares what it destroys. Where the science is genuinely
+unresolved — *is valence even bipolar?* — it says `CONTESTED` and implements both
+readings instead of quietly picking a winner.
 
 ```python
 from emotion_algebra import evidence
@@ -94,149 +230,17 @@ evidence.grade_of("plutchik.antipodal")  # Grade.METAPHOR
 evidence.grade_of("lovheim.cube")        # Grade.SPECULATIVE
 ```
 
-Grades run `ESTABLISHED → SUPPORTED → CONTESTED → SPECULATIVE → METAPHOR`. Where
-the science is genuinely unresolved — is valence even bipolar? — we mark it
-`CONTESTED` and **implement both readings** rather than quietly picking a winner.
-The library tells you how much to trust each of its own parts. We don't know of
-another that does.
+We also lost our best party trick. `-anger == fear` was the library's headline
+feature and the least defensible thing in it. It survives as a *lexical fact
+about Plutchik's wheel* — graded `METAPHOR` — and not as a law of the model.
+Sadness is not "minus joy": it has its own pull, which is to withdraw and seek
+help, and that is not "negative approach".
 
-**The core is the model that actually replicates.** Fontaine, Scherer, Roesch &
-Ellsworth (2007) — *"The world of emotions is not two-dimensional"* — derived four
-dimensions from 144 componential features across cultures: **valence, potency,
-arousal, unpredictability**. Anger and fear now sit where the evidence puts them:
-
-| | valence | potency | arousal | |
-| --- | --- | --- | --- | --- |
-| anger | − | **+** | high | you can act → *move against* |
-| fear | − | **−** | high | you can't → *move away* |
-| sadness | − | − | **low** | it's over → *withdraw* |
-
-Their midpoint is no longer *neutrality*. It's **distress** — negative, aroused,
-with the sense of control cancelled out. Which is exactly what it should be.
-
-**Bittersweet became representable.** Larsen, McGraw & Cacioppo (2001) showed
-happiness and sadness genuinely *co-activate* — on graduation day, people report
-both at once. A single signed valence axis cannot express that, mathematically.
-So we split valence into two channels, and `min(positivity, negativity)` gives
-you ambivalence directly. A signed model reports graduation day as "mildly
-happy"; ours reports the thing people actually feel.
-
-**Neutrality stopped being zero.** Core affect is always on — you are never
-without valence and arousal, any more than you are without a body temperature. So
-the coordinate origin is a mathematical fiction that nothing occupies. What
-organisms actually fall toward is a *set point*: mildly positive, low arousal.
-That's Cacioppo & Berntson's **positivity offset**, and it's why a creature at
-rest explores instead of freezing. Decay now pulls toward *rest*, not toward
-zero, and you get recovery trajectories that read like recovery:
-
-```
-terror → fear → interest → acceptance
-```
-
-## The neurochemistry, done properly
-
-We couldn't just delete Lövheim's cube — the agent stack downstream consumes a
-neurochemical readout. So we asked what his actual mistake was.
-
-It wasn't "neurochemistry". It was mapping three neurotransmitters onto eight
-**emotion names** — a claim nobody knows how to test. Map them onto
-**computational roles** instead and you're standing on some of the most
-replicated work in systems neuroscience: dopamine as reward-prediction error
-(Schultz 1997), noradrenaline as arousal and *unexpected* uncertainty
-(Aston-Jones & Cohen; Yu & Dayan), acetylcholine as *expected* uncertainty,
-serotonin as patience and time-horizon (Doya 2002).
-
-And those roles land **directly on the core's axes** — because both are
-describing the same functional dimensions. A mapping to emotion *names* could
-never have shown that. Same threat, different coping chemistry:
-
-```python
-NeuroState(noradrenaline=.95, cortisol=.95, dopamine=.15)     # potency −0.77 → fear
-NeuroState(noradrenaline=.90, dopamine=.85, testosterone=.9)  # potency +0.86 → approach
-```
-
-Lövheim's three monoamines are a subset of ours, so his cube stays reachable as a
-coordinate drop. Nothing downstream broke. It just stopped being load-bearing.
-
-## Is it still an algebra?
-
-Yes — and a better-specified one. The old claim was "vector space with negation",
-and that claim was *false*; it's what produced the bug. The real structure:
-
-- **`(S, blend)` is a barycentric algebra** — a convex space. By Stone's theorem
-  its models are exactly the convex subsets of vector spaces, so we lose no
-  rigour; we just say precisely *which* subset. A bonus falls out: closure is
-  free, so blending never needs clamping.
-- **`{relax_t}` is a contraction semigroup**, and by the Banach fixed-point
-  theorem the set point is its **unique** attractor — every state converges to
-  rest, exponentially, from anywhere. That's a theorem, not a design preference.
-
-What's gone is `-anger == fear`. It was the library's headline feature and the
-least defensible thing in it. It survives as a *lexical fact about Plutchik's
-wheel* — graded `METAPHOR` — and not as a law of the core. Sadness is not "minus
-joy": it has its own action tendency (withdraw, seek help), which is not
-"negative approach".
-
-## Then the data told us we were still wrong
-
-Here's the part we're least comfortable with, and the reason we're writing this
-post rather than a press release.
-
-Having rebuilt everything on the appraisal literature, we benchmarked it against
-**Warriner, Kuperman & Brysbaert (2013)** — human valence/arousal/dominance
-ratings for 13,915 words. Our hand-calibrated potency values were **badly wrong**.
-Humans rate `rage` at −0.21 dominance. We had it at **+0.80**.
-
-The thing we'd missed is obvious in hindsight: **being enraged is not being in
-control.** Losing your temper is *losing control*. Human raters know this. Our
-tidy theory-driven numbers did not.
-
-So we stopped guessing and took valence and arousal straight from the human
-norms. And we learned something real about the third axis: **appraised coping is
-not felt dominance.** They correlate at only *r* = 0.46, and the residuals are
-systematic. Anger is *caused* by a high-coping appraisal — "I can do something
-about this" — while being *experienced* as only moderately in control. Two
-different constructs, routinely conflated. The ordering that matters (anger above
-fear) holds in both. The magnitudes do not transfer.
-
-The data even handed us a better rule than the one we'd designed. We had used
-*arousal* to separate fleeing from giving up — fear is aroused, sadness isn't.
-But human norms put grief's arousal at 0.49, squarely inside fear's range. What
-actually separates them is **uncertainty**: fear is an *uncertain* threat you
-can't handle, so you run; grief is a *certain* loss you can't handle, so you
-stop. That's Lerner & Keltner's certainty dimension, and we didn't put it there —
-we found it.
-
-Held out on a corpus we never calibrated against (EmoBank, sentence-level), the
-model scores a modest valence *r* = 0.33. That number is weak, and we're
-publishing it anyway, because the bottleneck is our word lexicon — it maps
-*miserable* to **anger** — and not the core. Fixing that is the next job.
-
-## Why we're telling you this
-
-We could have shipped the new model and said nothing. The critique makes our own
-past work look bad, and "we benchmarked ourselves and were wrong twice" is not a
-natural marketing line.
-
-But an emotion library that quietly asserts things the evidence contradicts is
-worse than useless — it's *confidently* useless, and it launders folk psychology
-into every system built on top of it. The Hourglass underpins a large slice of
-the sentiment-analysis literature. Plutchik's wheel is in every deck. Lövheim's
-cube shows up in ML papers as if it were established neuroscience.
-
-None of those are conspiracies. They're just what happens when convenient models
-get repeated without anyone re-reading the primary sources. We repeated them too,
-for a year.
-
-So now the library carries its own epistemics. Every construct says how much you
-should trust it, every conversion says what it destroys, and when we don't know,
-it says `CONTESTED` and gives you both.
-
-That's a lower-status thing to publish than a benchmark win. We think it's the
-more useful one.
+The honest version is less quotable. We think it's the more useful one.
 
 ---
 
 *[emotion-algebra](https://github.com/TigreGotico/emotion-algebra) is Apache-2.0.
-The evidence table, the laws, and the validation scripts are all in the repo — if
-you think a grade is wrong, the citation is right there to argue with.*
+The evidence table, the algebraic laws, and every validation script — including
+the ones that went against us — are in the repo. If you think a grade is wrong,
+the citation is right there to argue with.*
