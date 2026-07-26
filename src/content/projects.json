@@ -150,9 +150,9 @@
   {
     "id": "hivemind",
     "name": "HiveMind",
-    "description": "A flexible protocol enabling communication among devices and AI agents. Lightweight satellites connect to a central hub with customizable permissions.",
-    "url": "https://github.com/JarbasHiveMind/HiveMind-core",
-    "category": "HiveMind",
+    "description": "A protocol and ecosystem connecting lightweight satellite devices and AI agents to a central OpenVoiceOS server over an encrypted mesh — transport protocols, voice satellites, chat bridges, cryptography and zero-config discovery, spread across a family of focused repositories.",
+    "url": "https://github.com/JarbasHiveMind",
+    "category": "Voice Platforms",
     "tags": [
       "device mesh",
       "distributed voice",
@@ -161,48 +161,48 @@
     "image": "https://github.com/JarbasHiveMind/HiveMind-assets/raw/master/logo/hivemind-512.png",
     "featured": true,
     "descriptions": {
-      "pt": "Um protocolo flexível que permite a comunicação entre dispositivos e agentes de IA. Satélites leves ligam-se a um hub central com permissões personalizáveis.",
-      "es": "Un protocolo flexible que permite la comunicación entre dispositivos y agentes de IA. Satélites ligeros se conectan a un nodo central con permisos personalizables.",
-      "de": "Ein flexibles Protokoll, das die Kommunikation zwischen Geräten und KI-Agenten ermöglicht. Leichtgewichtige Satelliten verbinden sich mit einem zentralen Hub mit anpassbaren Berechtigungen.",
-      "nl": "Een flexibel protocol dat communicatie tussen apparaten en AI-agenten mogelijk maakt. Lichtgewicht satellieten verbinden met een centrale hub met aanpasbare rechten.",
-      "fr": "Un protocole flexible permettant la communication entre appareils et agents d'IA. Des satellites légers se connectent à un hub central avec des permissions personnalisables.",
-      "it": "Un protocollo flessibile che consente la comunicazione tra dispositivi e agenti IA. Satelliti leggeri si connettono a un hub centrale con permessi personalizzabili.",
-      "ru": "Гибкий протокол для связи между устройствами и ИИ-агентами. Лёгкие спутники подключаются к центральному узлу с настраиваемыми правами доступа.",
-      "ar": "بروتوكول مرن يتيح التواصل بين الأجهزة ووكلاء الذكاء الاصطناعي. تتصل أقمار خفيفة الوزن بمركز مركزي مع أذونات قابلة للتخصيص.",
-      "fa": "یک پروتکل انعطاف‌پذیر که ارتباط میان دستگاه‌ها و عامل‌های هوش مصنوعی را ممکن می‌سازد. ماهواره‌های سبک با مجوزهای قابل سفارشی‌سازی به یک هاب مرکزی متصل می‌شوند.",
-      "hi": "उपकरणों और AI एजेंटों के बीच संचार सक्षम करने वाला एक लचीला प्रोटोकॉल। हल्के सैटेलाइट अनुकूलन योग्य अनुमतियों के साथ एक केंद्रीय हब से जुड़ते हैं।",
-      "zh": "一种灵活的协议，可实现设备与 AI 智能体之间的通信。轻量级卫星节点连接到中央枢纽，并支持自定义权限。",
-      "ko": "장치와 AI 에이전트 간 통신을 지원하는 유연한 프로토콜. 경량 위성 노드가 사용자 지정 권한으로 중앙 허브에 연결됩니다.",
-      "ja": "デバイスとAIエージェント間の通信を可能にする柔軟なプロトコル。軽量なサテライトがカスタマイズ可能な権限で中央ハブに接続する。"
+      "pt": "Um protocolo e ecossistema que liga dispositivos satélite leves e agentes de IA a um servidor OpenVoiceOS central através de uma malha cifrada — protocolos de transporte, satélites de voz, pontes de chat, criptografia e descoberta sem configuração, distribuídos por uma família de repositórios focados.",
+      "es": "Un protocolo y ecosistema que conecta dispositivos satélite ligeros y agentes de IA con un servidor OpenVoiceOS central a través de una malla cifrada: protocolos de transporte, satélites de voz, puentes de chat, criptografía y descubrimiento sin configuración, repartidos en una familia de repositorios especializados.",
+      "de": "Ein Protokoll und Ökosystem, das leichtgewichtige Satellitengeräte und KI-Agenten über ein verschlüsseltes Mesh mit einem zentralen OpenVoiceOS-Server verbindet — Transportprotokolle, Sprachsatelliten, Chat-Brücken, Kryptografie und konfigurationsfreie Discovery, verteilt auf eine Familie fokussierter Repositories.",
+      "nl": "Een protocol en ecosysteem dat lichtgewicht satellietapparaten en AI-agenten via een versleuteld mesh verbindt met een centrale OpenVoiceOS-server — transportprotocollen, spraaksatellieten, chatbruggen, cryptografie en configuratievrije discovery, verspreid over een familie van gerichte repositories.",
+      "fr": "Un protocole et un écosystème reliant appareils satellites légers et agents IA à un serveur OpenVoiceOS central via un maillage chiffré — protocoles de transport, satellites vocaux, passerelles de chat, cryptographie et découverte sans configuration, répartis dans une famille de dépôts spécialisés.",
+      "it": "Un protocollo ed ecosistema che collega dispositivi satellite leggeri e agenti IA a un server OpenVoiceOS centrale tramite una mesh cifrata — protocolli di trasporto, satelliti vocali, bridge di chat, crittografia e discovery a zero configurazione, distribuiti in una famiglia di repository dedicati.",
+      "ru": "Протокол и экосистема, соединяющие лёгкие устройства-спутники и ИИ-агентов с центральным сервером OpenVoiceOS через зашифрованную mesh-сеть — транспортные протоколы, голосовые спутники, мосты в чаты, криптография и обнаружение без настройки, распределённые по семейству специализированных репозиториев.",
+      "ar": "بروتوكول ومنظومة يربطان أجهزة تابعة خفيفة ووكلاء ذكاء اصطناعي بخادم OpenVoiceOS مركزي عبر شبكة مشفّرة — بروتوكولات نقل وأقمار صوتية وجسور دردشة وتشفير واكتشاف دون إعداد، موزعة على عائلة من المستودعات المتخصصة.",
+      "fa": "پروتکل و اکوسیستمی که دستگاه‌های ماهواره‌ای سبک و عامل‌های هوش مصنوعی را از طریق مش رمزگذاری‌شده به سرور مرکزی OpenVoiceOS متصل می‌کند — پروتکل‌های انتقال، ماهواره‌های صوتی، پل‌های چت، رمزنگاری و کشف بدون پیکربندی، در خانواده‌ای از مخزن‌های متمرکز.",
+      "hi": "एक प्रोटोकॉल और पारिस्थितिकी तंत्र जो हल्के सैटेलाइट उपकरणों और AI एजेंटों को एन्क्रिप्टेड मेश के ज़रिए केंद्रीय OpenVoiceOS सर्वर से जोड़ता है — ट्रांसपोर्ट प्रोटोकॉल, वॉइस सैटेलाइट, चैट ब्रिज, क्रिप्टोग्राफ़ी और ज़ीरो-कॉन्फ़िग खोज, केंद्रित रिपॉज़िटरी के एक परिवार में फैले हुए।",
+      "zh": "一套将轻量卫星设备与 AI 代理通过加密网状网络连接到中央 OpenVoiceOS 服务器的协议与生态——传输协议、语音卫星、聊天桥接、加密与零配置发现，分布在一系列专注的仓库中。",
+      "ko": "경량 위성 기기와 AI 에이전트를 암호화 메시로 중앙 OpenVoiceOS 서버에 연결하는 프로토콜이자 생태계 — 전송 프로토콜, 음성 위성, 채팅 브리지, 암호화, 무설정 디스커버리가 목적별 저장소 가족에 나뉘어 있습니다.",
+      "ja": "軽量なサテライトデバイスとAIエージェントを暗号化メッシュで中央のOpenVoiceOSサーバーへつなぐプロトコルとエコシステム。トランスポートプロトコル、音声サテライト、チャットブリッジ、暗号、ゼロコンフィグ発見機能が、目的別リポジトリ群として展開されています。"
     }
   },
   {
     "id": "open-voice-os",
     "name": "Open Voice OS",
-    "description": "Community-driven, open-source, privacy-respecting voice assistant platform and operating system that puts users in control of their data.",
+    "description": "Community-driven, privacy-first open-source voice assistant platform. TigreGótico is a core contributor to the whole ecosystem — maintaining speech plugins, STT/TTS services, developer tooling and formal spec work across dozens of repositories.",
     "url": "https://github.com/OpenVoiceOS",
-    "category": "OpenVoiceOS",
+    "category": "Voice Platforms",
     "tags": [
       "FOSS",
       "privacy-first",
       "voice platform"
     ],
     "image": "https://www.openvoiceos.org/images/logo.png",
-    "featured": false,
+    "featured": true,
     "descriptions": {
-      "pt": "Plataforma e sistema operativo de assistente de voz de código aberto, orientado pela comunidade e respeitador da privacidade, que coloca os utilizadores no controlo dos seus dados.",
-      "es": "Plataforma y sistema operativo de asistente de voz de código abierto, impulsado por la comunidad y respetuoso con la privacidad, que devuelve a los usuarios el control de sus datos.",
-      "de": "Community-getriebene, quelloffene und datenschutzfreundliche Sprachassistenten-Plattform und Betriebssystem, das den Nutzern die Kontrolle über ihre Daten gibt.",
-      "nl": "Gemeenschapsgedreven, opensource en privacyvriendelijk platform en besturingssysteem voor spraakassistenten dat gebruikers de controle over hun data geeft.",
-      "fr": "Plateforme et système d'exploitation d'assistant vocal open source, communautaire et respectueux de la vie privée, qui donne aux utilisateurs le contrôle de leurs données.",
-      "it": "Piattaforma e sistema operativo di assistente vocale open source, guidato dalla comunità e rispettoso della privacy, che mette gli utenti al controllo dei propri dati.",
-      "ru": "Управляемая сообществом, открытая, уважающая приватность платформа и операционная система голосового помощника, которая оставляет пользователю контроль над своими данными.",
-      "ar": "منصة ونظام تشغيل مساعد صوتي مفتوح المصدر يقوده المجتمع ويحترم الخصوصية، يضع المستخدمين في موضع التحكم ببياناتهم.",
-      "fa": "بستر و سیستم‌عامل دستیار صوتی جامعه‌محور، متن‌باز و محترم به حریم خصوصی که کنترل داده‌ها را به کاربران می‌سپارد.",
-      "hi": "समुदाय-संचालित, ओपन-सोर्स, गोपनीयता का सम्मान करने वाला वॉइस असिस्टेंट प्लेटफ़ॉर्म और ऑपरेटिंग सिस्टम जो उपयोगकर्ताओं को उनके डेटा पर नियंत्रण देता है।",
-      "zh": "由社区驱动、开源、尊重隐私的语音助手平台与操作系统，让用户掌控自己的数据。",
-      "ko": "커뮤니티 주도의 오픈소스이자 프라이버시를 존중하는 음성 비서 플랫폼이자 운영체제로, 사용자가 자신의 데이터를 직접 통제할 수 있게 합니다.",
-      "ja": "コミュニティ主導のオープンソースかつプライバシーを尊重する音声アシスタントプラットフォーム兼オペレーティングシステムで、ユーザーが自らのデータを管理できる。"
+      "pt": "Plataforma de assistente de voz open-source, comunitária e centrada na privacidade. A TigreGótico é contribuidora central de todo o ecossistema — mantendo plugins de fala, serviços STT/TTS, ferramentas de desenvolvimento e trabalho formal de especificação em dezenas de repositórios.",
+      "es": "Plataforma de asistente de voz de código abierto, comunitaria y centrada en la privacidad. TigreGótico es contribuidor central de todo el ecosistema: mantiene plugins de voz, servicios STT/TTS, herramientas de desarrollo y trabajo formal de especificación en decenas de repositorios.",
+      "de": "Community-getriebene, datenschutzorientierte Open-Source-Sprachassistenzplattform. TigreGótico ist ein zentraler Mitwirkender am gesamten Ökosystem — mit Sprach-Plugins, STT/TTS-Diensten, Entwickler-Tooling und formaler Spezifikationsarbeit über Dutzende Repositories hinweg.",
+      "nl": "Communitygedreven, privacygerichte open-source spraakassistentplatform. TigreGótico is een kernbijdrager aan het hele ecosysteem — met spraakplugins, STT/TTS-diensten, ontwikkelaarstooling en formeel specificatiewerk over tientallen repositories.",
+      "fr": "Plateforme d'assistant vocal open source, communautaire et respectueuse de la vie privée. TigreGótico est un contributeur central de tout l'écosystème — maintenant plugins vocaux, services STT/TTS, outillage développeur et travail de spécification formelle sur des dizaines de dépôts.",
+      "it": "Piattaforma di assistente vocale open source, guidata dalla community e attenta alla privacy. TigreGótico è un contributore centrale dell'intero ecosistema — mantenendo plugin vocali, servizi STT/TTS, strumenti per sviluppatori e lavoro di specifica formale su decine di repository.",
+      "ru": "Открытая голосовая платформа, развиваемая сообществом и ориентированная на приватность. TigreGótico — один из ключевых участников всей экосистемы: поддерживает речевые плагины, сервисы STT/TTS, инструменты разработчика и формальные спецификации в десятках репозиториев.",
+      "ar": "منصة مساعد صوتي مفتوحة المصدر يقودها المجتمع وتراعي الخصوصية. TigreGótico مساهم أساسي في المنظومة كاملة — إذ تصون إضافات الكلام وخدمات STT/TTS وأدوات المطورين والعمل الرسمي على المواصفات عبر عشرات المستودعات.",
+      "fa": "سکوی دستیار صوتی متن‌باز، اجتماع‌محور و حریم‌خصوصی‌محور. TigreGótico مشارکت‌کنندهٔ اصلی کل اکوسیستم است — با نگهداری افزونه‌های گفتار، سرویس‌های STT/TTS، ابزارهای توسعه و کار رسمی مشخصات در ده‌ها مخزن.",
+      "hi": "समुदाय-संचालित, गोपनीयता-प्रथम ओपन-सोर्स वॉइस असिस्टेंट प्लेटफ़ॉर्म। TigreGótico पूरे पारिस्थितिकी तंत्र का कोर योगदानकर्ता है — दर्जनों रिपॉज़िटरी में वाक् प्लगइन, STT/TTS सेवाएँ, डेवलपर टूलिंग और औपचारिक विनिर्देश कार्य का रखरखाव करता है।",
+      "zh": "社区驱动、隐私优先的开源语音助手平台。TigreGótico 是整个生态的核心贡献者——在数十个仓库中维护语音插件、STT/TTS 服务、开发者工具与正式规范工作。",
+      "ko": "커뮤니티 주도, 프라이버시 우선의 오픈소스 음성 비서 플랫폼입니다. TigreGótico는 전체 생태계의 핵심 기여자로서 수십 개 저장소에 걸쳐 음성 플러그인, STT/TTS 서비스, 개발자 도구, 공식 명세 작업을 유지 관리합니다.",
+      "ja": "コミュニティ主導でプライバシー第一のオープンソース音声アシスタントプラットフォーム。TigreGóticoはエコシステム全体の中核コントリビューターとして、数十のリポジトリで音声プラグイン、STT/TTSサービス、開発者ツール、正式仕様の策定を担っています。"
     }
   },
   {
@@ -210,7 +210,7 @@
     "name": "ovos-localize",
     "description": "A GitHub-native localization platform for OpenVoiceOS skills and plugins — manage translations entirely through Git, with no external service to run.",
     "url": "https://github.com/OpenVoiceOS/ovos-localize",
-    "category": "OpenVoiceOS",
+    "category": "NLnet",
     "tags": [
       "GitHub-native",
       "i18n",
@@ -239,7 +239,7 @@
     "name": "ovoscope",
     "description": "End-to-end testing framework for OVOS skills with a lightweight in-process runtime.",
     "url": "https://github.com/TigreGotico/ovoscope",
-    "category": "OpenVoiceOS",
+    "category": "NLnet",
     "tags": [
       "OVOS skills",
       "end-to-end testing",
@@ -261,62 +261,6 @@
       "zh": "面向 OVOS 技能的端到端测试框架，配备轻量级进程内运行时。",
       "ko": "경량 인프로세스 런타임을 갖춘 OVOS 스킬용 종단 간 테스트 프레임워크.",
       "ja": "軽量なインプロセスランタイムを備えたOVOSスキル向けのエンドツーエンドテストフレームワーク。"
-    }
-  },
-  {
-    "id": "ovos-mos",
-    "name": "OVOS MoS",
-    "description": "Mixture of Specialists framework for OpenVoiceOS.",
-    "url": "https://github.com/TigreGotico/ovos-MoS",
-    "category": "OpenVoiceOS",
-    "tags": [
-      "framework",
-      "mixture of specialists",
-      "routing"
-    ],
-    "featured": false,
-    "descriptions": {
-      "pt": "Framework Mixture of Specialists para o OpenVoiceOS.",
-      "es": "Framework Mixture of Specialists para OpenVoiceOS.",
-      "de": "Mixture-of-Specialists-Framework für OpenVoiceOS.",
-      "nl": "Mixture of Specialists-framework voor OpenVoiceOS.",
-      "fr": "Framework Mixture of Specialists pour OpenVoiceOS.",
-      "it": "Framework Mixture of Specialists per OpenVoiceOS.",
-      "ru": "Фреймворк Mixture of Specialists для OpenVoiceOS.",
-      "ar": "إطار مزيج المتخصصين (Mixture of Specialists) لـ OpenVoiceOS.",
-      "fa": "چارچوب آمیزه‌ای از متخصصان (Mixture of Specialists) برای OpenVoiceOS.",
-      "hi": "OpenVoiceOS के लिए Mixture of Specialists फ़्रेमवर्क।",
-      "zh": "面向 OpenVoiceOS 的专家混合（Mixture of Specialists）框架。",
-      "ko": "OpenVoiceOS를 위한 Mixture of Specialists 프레임워크.",
-      "ja": "OpenVoiceOSのためのMixture of Specialists（専門家混合）フレームワーク。"
-    }
-  },
-  {
-    "id": "ovos-transcription-validator-plugin",
-    "name": "OVOS Transcription Validator Plugin",
-    "description": "Validate and filter ASR transcriptions in OpenVoiceOS.",
-    "url": "https://github.com/TigreGotico/ovos-transcription-validator-plugin",
-    "category": "OpenVoiceOS",
-    "tags": [
-      "ASR validation",
-      "filtering",
-      "quality"
-    ],
-    "featured": false,
-    "descriptions": {
-      "pt": "Valida e filtra transcrições de ASR no OpenVoiceOS.",
-      "es": "Valida y filtra las transcripciones de ASR en OpenVoiceOS.",
-      "de": "Validieren und Filtern von ASR-Transkriptionen in OpenVoiceOS.",
-      "nl": "Valideer en filter ASR-transcripties in OpenVoiceOS.",
-      "fr": "Valider et filtrer les transcriptions ASR dans OpenVoiceOS.",
-      "it": "Convalida e filtra le trascrizioni ASR in OpenVoiceOS.",
-      "ru": "Проверка и фильтрация транскрипций ASR в OpenVoiceOS.",
-      "ar": "التحقق من نسخ ASR وتصفيتها في OpenVoiceOS.",
-      "fa": "اعتبارسنجی و پالایش رونویسی‌های ASR در OpenVoiceOS.",
-      "hi": "OpenVoiceOS में ASR ट्रांसक्रिप्शन को मान्य और फ़िल्टर करें।",
-      "zh": "在 OpenVoiceOS 中验证并过滤 ASR 转写结果。",
-      "ko": "OpenVoiceOS에서 ASR 전사 결과를 검증하고 필터링합니다.",
-      "ja": "OpenVoiceOSにおけるASRの文字起こしを検証・フィルタリングする。"
     }
   },
   {
@@ -375,34 +319,6 @@
       "zh": "面向 OpenVoiceOS 意图处理的 Model2Vec 意图流水线。",
       "ko": "OpenVoiceOS 인텐트 처리를 위한 Model2Vec 인텐트 파이프라인.",
       "ja": "OpenVoiceOSのインテント処理のためのModel2Vecインテントパイプライン。"
-    }
-  },
-  {
-    "id": "ovos-simple-listener",
-    "name": "OVOS Simple Listener",
-    "description": "Minimal audio listening component for OpenVoiceOS.",
-    "url": "https://github.com/TigreGotico/ovos-simple-listener",
-    "category": "OpenVoiceOS",
-    "tags": [
-      "audio listener",
-      "lightweight",
-      "wake word"
-    ],
-    "featured": false,
-    "descriptions": {
-      "pt": "Componente mínimo de escuta de áudio para o OpenVoiceOS.",
-      "es": "Componente mínimo de escucha de audio para OpenVoiceOS.",
-      "de": "Minimale Audio-Listener-Komponente für OpenVoiceOS.",
-      "nl": "Minimale audioluistercomponent voor OpenVoiceOS.",
-      "fr": "Composant d'écoute audio minimal pour OpenVoiceOS.",
-      "it": "Componente minimale di ascolto audio per OpenVoiceOS.",
-      "ru": "Минимальный компонент прослушивания аудио для OpenVoiceOS.",
-      "ar": "مكوّن إنصات صوتي بسيط لـ OpenVoiceOS.",
-      "fa": "مؤلفه کمینه شنود صوتی برای OpenVoiceOS.",
-      "hi": "OpenVoiceOS के लिए न्यूनतम ऑडियो श्रवण घटक।",
-      "zh": "面向 OpenVoiceOS 的极简音频监听组件。",
-      "ko": "OpenVoiceOS를 위한 최소한의 오디오 청취 구성 요소.",
-      "ja": "OpenVoiceOSのための最小限の音声リスニングコンポーネント。"
     }
   },
   {
@@ -749,39 +665,11 @@
     }
   },
   {
-    "id": "ovos-bm25-solver-plugin",
-    "name": "OVOS BM25 Solver Plugin",
-    "description": "BM25 retrieval-based solver for OpenVoiceOS.",
-    "url": "https://github.com/TigreGotico/ovos-solver-BM25-plugin",
-    "category": "OpenVoiceOS",
-    "tags": [
-      "BM25 retrieval",
-      "search",
-      "solver"
-    ],
-    "featured": false,
-    "descriptions": {
-      "pt": "Solver baseado em recuperação BM25 para o OpenVoiceOS.",
-      "es": "Solver basado en recuperación BM25 para OpenVoiceOS.",
-      "de": "BM25-Retrieval-basierter Solver für OpenVoiceOS.",
-      "nl": "Op BM25-retrieval gebaseerde solver voor OpenVoiceOS.",
-      "fr": "Solveur basé sur la récupération BM25 pour OpenVoiceOS.",
-      "it": "Solver basato su recupero BM25 per OpenVoiceOS.",
-      "ru": "Решатель на основе поиска BM25 для OpenVoiceOS.",
-      "ar": "حلّال قائم على استرجاع BM25 لـ OpenVoiceOS.",
-      "fa": "حل‌گر مبتنی بر بازیابی BM25 برای OpenVoiceOS.",
-      "hi": "OpenVoiceOS के लिए BM25 पुनर्प्राप्ति-आधारित सॉल्वर।",
-      "zh": "面向 OpenVoiceOS 的基于 BM25 检索的求解器。",
-      "ko": "OpenVoiceOS를 위한 BM25 검색 기반 솔버.",
-      "ja": "OpenVoiceOSのためのBM25検索ベースのソルバー。"
-    }
-  },
-  {
     "id": "ovos-gguf-solver-plugin",
     "name": "OVOS GGUF Solver Plugin",
     "description": "Local LLM solver using GGUF models in OpenVoiceOS.",
     "url": "https://github.com/TigreGotico/ovos-solver-gguf-plugin",
-    "category": "OpenVoiceOS",
+    "category": "NLnet",
     "tags": [
       "GGUF",
       "local LLM",
@@ -867,7 +755,7 @@
     "name": "OVOS Qdrant Embeddings Plugin",
     "description": "Qdrant vector database embeddings plugin for OpenVoiceOS.",
     "url": "https://github.com/TigreGotico/ovos-qdrant-embeddings-plugin",
-    "category": "OpenVoiceOS",
+    "category": "NLnet",
     "tags": [
       "Qdrant",
       "embeddings",
@@ -891,67 +779,11 @@
     }
   },
   {
-    "id": "ovos-stt-plugin-mynorthai",
-    "name": "OVOS ASR Plugin - MyNorthAI",
-    "description": "MyNorthAI Speech-to-Text plugin for OpenVoiceOS.",
-    "url": "https://github.com/TigreGotico/ovos-stt-plugin-MyNorthAI",
-    "category": "OpenVoiceOS",
-    "tags": [
-      "MyNorthAI",
-      "ASR plugin",
-      "speech-to-text"
-    ],
-    "featured": false,
-    "descriptions": {
-      "pt": "Plugin de reconhecimento de fala (STT) MyNorthAI para o OpenVoiceOS.",
-      "es": "Plugin de reconocimiento de voz MyNorthAI para OpenVoiceOS.",
-      "de": "MyNorthAI-Speech-to-Text-Plugin für OpenVoiceOS.",
-      "nl": "MyNorthAI Speech-to-Text-plugin voor OpenVoiceOS.",
-      "fr": "Plugin de reconnaissance vocale MyNorthAI pour OpenVoiceOS.",
-      "it": "Plugin Speech-to-Text MyNorthAI per OpenVoiceOS.",
-      "ru": "Плагин распознавания речи MyNorthAI для OpenVoiceOS.",
-      "ar": "إضافة MyNorthAI لتحويل الكلام إلى نص لـ OpenVoiceOS.",
-      "fa": "افزونه تبدیل گفتار به متن MyNorthAI برای OpenVoiceOS.",
-      "hi": "OpenVoiceOS के लिए MyNorthAI Speech-to-Text प्लगइन।",
-      "zh": "面向 OpenVoiceOS 的 MyNorthAI 语音转文本插件。",
-      "ko": "OpenVoiceOS를 위한 MyNorthAI 음성 인식(STT) 플러그인.",
-      "ja": "OpenVoiceOSのためのMyNorthAI音声認識プラグイン。"
-    }
-  },
-  {
-    "id": "ovos-gguf-translate-plugin",
-    "name": "OVOS GGUF Translate Plugin",
-    "description": "Local translation using GGUF models in OpenVoiceOS.",
-    "url": "https://github.com/TigreGotico/ovos-gguf-translate-plugin",
-    "category": "OpenVoiceOS",
-    "tags": [
-      "GGUF",
-      "local LLM",
-      "translation"
-    ],
-    "featured": false,
-    "descriptions": {
-      "pt": "Tradução local usando modelos GGUF no OpenVoiceOS.",
-      "es": "Traducción local mediante modelos GGUF en OpenVoiceOS.",
-      "de": "Lokale Übersetzung mit GGUF-Modellen in OpenVoiceOS.",
-      "nl": "Lokale vertaling met GGUF-modellen in OpenVoiceOS.",
-      "fr": "Traduction locale utilisant des modèles GGUF dans OpenVoiceOS.",
-      "it": "Traduzione locale tramite modelli GGUF in OpenVoiceOS.",
-      "ru": "Локальный перевод с использованием моделей GGUF в OpenVoiceOS.",
-      "ar": "ترجمة محلية باستخدام نماذج GGUF في OpenVoiceOS.",
-      "fa": "ترجمه محلی با استفاده از مدل‌های GGUF در OpenVoiceOS.",
-      "hi": "OpenVoiceOS में GGUF मॉडल का उपयोग करके स्थानीय अनुवाद।",
-      "zh": "在 OpenVoiceOS 中使用 GGUF 模型进行本地翻译。",
-      "ko": "OpenVoiceOS에서 GGUF 모델을 사용하는 로컬 번역.",
-      "ja": "OpenVoiceOSでGGUFモデルを用いるローカル翻訳。"
-    }
-  },
-  {
     "id": "ovos-wyoming-docker",
     "name": "OVOS Wyoming Docker",
     "description": "Docker setup for OpenVoiceOS with Wyoming services.",
     "url": "https://github.com/TigreGotico/ovos-wyoming-docker",
-    "category": "OpenVoiceOS",
+    "category": "NLnet",
     "tags": [
       "Docker",
       "Home Assistant",
@@ -2077,118 +1909,6 @@
     }
   },
   {
-    "id": "ovos-markov-pipeline-plugin",
-    "name": "ovos-markov-pipeline-plugin",
-    "description": "OVOS intent pipeline using a Markov-chain perplexity ensemble.",
-    "url": "https://github.com/TigreGotico/ovos-markov-pipeline-plugin",
-    "category": "OpenVoiceOS",
-    "tags": [
-      "Markov",
-      "OpenVoiceOS",
-      "intent"
-    ],
-    "featured": false,
-    "descriptions": {
-      "pt": "Pipeline de intenções OVOS que usa um ensemble de perplexidade por cadeias de Markov.",
-      "es": "Pipeline de intenciones de OVOS que usa un conjunto de perplejidad de cadenas de Markov.",
-      "de": "OVOS-Intent-Pipeline mit einem Markov-Ketten-Perplexitäts-Ensemble.",
-      "nl": "OVOS-intentiepijplijn met een Markov-keten-perplexiteitsensemble.",
-      "fr": "Pipeline d'intentions OVOS utilisant un ensemble de perplexité par chaîne de Markov.",
-      "it": "Pipeline di intent OVOS basata su un ensemble di perplexity a catena di Markov.",
-      "ru": "Пайплайн интентов OVOS с использованием ансамбля перплексии цепей Маркова.",
-      "ar": "خط معالجة نوايا OVOS باستخدام مجموعة حيرة قائمة على سلاسل ماركوف.",
-      "fa": "خط‌لوله قصد OVOS با استفاده از یک گروه سرگشتگی زنجیره مارکوف.",
-      "hi": "Markov-शृंखला perplexity ensemble का उपयोग करने वाली OVOS इंटेंट पाइपलाइन।",
-      "zh": "使用马尔可夫链困惑度集成的 OVOS 意图流水线。",
-      "ko": "마르코프 체인 퍼플렉시티 앙상블을 사용하는 OVOS 인텐트 파이프라인.",
-      "ja": "マルコフ連鎖のパープレキシティアンサンブルを用いるOVOSインテントパイプライン。"
-    }
-  },
-  {
-    "id": "ovos-stt-plugin-whisper",
-    "name": "ovos-stt-plugin-whisper",
-    "description": "Whisper speech-to-text plugin for OpenVoiceOS.",
-    "url": "https://github.com/TigreGotico/ovos-stt-plugin-whisper",
-    "category": "OpenVoiceOS",
-    "tags": [
-      "OpenVoiceOS",
-      "ASR",
-      "Whisper"
-    ],
-    "featured": false,
-    "descriptions": {
-      "pt": "Plugin de reconhecimento de fala Whisper para o OpenVoiceOS.",
-      "es": "Plugin de reconocimiento de voz Whisper para OpenVoiceOS.",
-      "de": "Whisper-Speech-to-Text-Plugin für OpenVoiceOS.",
-      "nl": "Whisper Speech-to-Text-plugin voor OpenVoiceOS.",
-      "fr": "Plugin de reconnaissance vocale Whisper pour OpenVoiceOS.",
-      "it": "Plugin speech-to-text Whisper per OpenVoiceOS.",
-      "ru": "Плагин распознавания речи Whisper для OpenVoiceOS.",
-      "ar": "إضافة Whisper لتحويل الكلام إلى نص لـ OpenVoiceOS.",
-      "fa": "افزونه تبدیل گفتار به متن Whisper برای OpenVoiceOS.",
-      "hi": "OpenVoiceOS के लिए Whisper speech-to-text प्लगइन।",
-      "zh": "面向 OpenVoiceOS 的 Whisper 语音转文本插件。",
-      "ko": "OpenVoiceOS를 위한 Whisper 음성 인식 플러그인.",
-      "ja": "OpenVoiceOSのためのWhisper音声認識プラグイン。"
-    }
-  },
-  {
-    "id": "ovos-stt-plugin-sherpa-onnx",
-    "name": "ovos-stt-plugin-sherpa-onnx",
-    "description": "Sherpa-ONNX speech-to-text plugin for OpenVoiceOS.",
-    "url": "https://github.com/TigreGotico/ovos-stt-plugin-sherpa-onnx",
-    "category": "OpenVoiceOS",
-    "tags": [
-      "ONNX models",
-      "OpenVoiceOS",
-      "ASR"
-    ],
-    "featured": false,
-    "descriptions": {
-      "pt": "Plugin de reconhecimento de fala Sherpa-ONNX para o OpenVoiceOS.",
-      "es": "Plugin de reconocimiento de voz Sherpa-ONNX para OpenVoiceOS.",
-      "de": "Sherpa-ONNX-Speech-to-Text-Plugin für OpenVoiceOS.",
-      "nl": "Sherpa-ONNX Speech-to-Text-plugin voor OpenVoiceOS.",
-      "fr": "Plugin de reconnaissance vocale Sherpa-ONNX pour OpenVoiceOS.",
-      "it": "Plugin speech-to-text Sherpa-ONNX per OpenVoiceOS.",
-      "ru": "Плагин распознавания речи Sherpa-ONNX для OpenVoiceOS.",
-      "ar": "إضافة Sherpa-ONNX لتحويل الكلام إلى نص لـ OpenVoiceOS.",
-      "fa": "افزونه تبدیل گفتار به متن Sherpa-ONNX برای OpenVoiceOS.",
-      "hi": "OpenVoiceOS के लिए Sherpa-ONNX speech-to-text प्लगइन।",
-      "zh": "面向 OpenVoiceOS 的 Sherpa-ONNX 语音转文本插件。",
-      "ko": "OpenVoiceOS를 위한 Sherpa-ONNX 음성 인식 플러그인.",
-      "ja": "OpenVoiceOSのためのSherpa-ONNX音声認識プラグイン。"
-    }
-  },
-  {
-    "id": "ovos-coreferee-plugin",
-    "name": "ovos-coreferee-plugin",
-    "description": "Coreference-resolution plugin for OpenVoiceOS.",
-    "url": "https://github.com/TigreGotico/ovos-coreferee-plugin",
-    "category": "OpenVoiceOS",
-    "tags": [
-      "NLU",
-      "OpenVoiceOS",
-      "coreference"
-    ],
-    "featured": false,
-    "descriptions": {
-      "pt": "Plugin de resolução de correferência para o OpenVoiceOS.",
-      "es": "Plugin de resolución de correferencias para OpenVoiceOS.",
-      "de": "Koreferenzauflösungs-Plugin für OpenVoiceOS.",
-      "nl": "Coreferentieresolutie-plugin voor OpenVoiceOS.",
-      "fr": "Plugin de résolution de coréférence pour OpenVoiceOS.",
-      "it": "Plugin di risoluzione della coreferenza per OpenVoiceOS.",
-      "ru": "Плагин разрешения кореференции для OpenVoiceOS.",
-      "ar": "إضافة حلّ الإحالة المرجعية لـ OpenVoiceOS.",
-      "fa": "افزونه حل ارجاع مشترک برای OpenVoiceOS.",
-      "hi": "OpenVoiceOS के लिए संदर्भ-समाधान प्लगइन।",
-      "zh": "面向 OpenVoiceOS 的共指消解插件。",
-      "ko": "OpenVoiceOS를 위한 상호참조 해결 플러그인.",
-      "ja": "OpenVoiceOSのための共参照解決プラグイン。"
-    }
-  },
-  {
     "id": "ovos-document-chunkers",
     "name": "ovos-document-chunkers",
     "description": "Document chunking for retrieval/RAG in OpenVoiceOS.",
@@ -2280,7 +2000,7 @@
     "name": "Wyoming OVOS ASR",
     "description": "OpenVoiceOS ASR service for the Wyoming protocol — lightweight speech recognition.",
     "url": "https://github.com/TigreGotico/wyoming-ovos-stt",
-    "category": "OpenVoiceOS",
+    "category": "NLnet",
     "tags": [
       "Home Assistant",
       "ASR",
@@ -2310,7 +2030,7 @@
     "name": "Wyoming OVOS TTS",
     "description": "OpenVoiceOS TTS service for the Wyoming protocol — lightweight text-to-speech.",
     "url": "https://github.com/TigreGotico/wyoming-ovos-tts",
-    "category": "OpenVoiceOS",
+    "category": "NLnet",
     "tags": [
       "Home Assistant",
       "TTS",
@@ -2340,7 +2060,7 @@
     "name": "Wyoming OVOS Wakeword",
     "description": "OpenVoiceOS wake-word detection service for the Wyoming protocol.",
     "url": "https://github.com/TigreGotico/wyoming-ovos-wakeword",
-    "category": "OpenVoiceOS",
+    "category": "NLnet",
     "tags": [
       "Home Assistant",
       "Wyoming",
@@ -2370,7 +2090,7 @@
     "name": "OVOS Agentic Loop",
     "description": "Agent integration framework for OpenVoiceOS — enable voice-driven agentic workflows.",
     "url": "https://github.com/TigreGotico/ovos-agentic-loop",
-    "category": "OpenVoiceOS",
+    "category": "NLnet",
     "tags": [
       "OpenVoiceOS",
       "agentic",
@@ -2421,289 +2141,6 @@
       "zh": "极简的 Python HTTP 客户端库——requests 的轻量替代方案。",
       "ko": "Python을 위한 최소한의 HTTP 클라이언트 라이브러리 — requests의 경량 대안.",
       "ja": "Python向けの最小限のHTTPクライアントライブラリ。requestsの軽量な代替。"
-    }
-  },
-  {
-    "id": "hivemind-core",
-    "name": "HiveMind Core",
-    "description": "Central HiveMind hub — coordinates connected devices and agents. The core routing and permission system for the HiveMind mesh network.",
-    "url": "https://github.com/JarbasHiveMind/hivemind-core",
-    "category": "HiveMind",
-    "tags": [
-      "coordination",
-      "homelab",
-      "hub",
-      "mesh network",
-      "protocol"
-    ],
-    "featured": false,
-    "descriptions": {
-      "pt": "Hub central do HiveMind — coordena os dispositivos e agentes ligados. O sistema central de encaminhamento e permissões da rede em malha HiveMind.",
-      "es": "Nodo central de HiveMind: coordina los dispositivos y agentes conectados. El sistema básico de enrutamiento y permisos de la red en malla de HiveMind.",
-      "de": "Zentraler HiveMind-Hub — koordiniert verbundene Geräte und Agenten. Das Kern-Routing- und Berechtigungssystem für das HiveMind-Mesh-Netzwerk.",
-      "nl": "Centrale HiveMind-hub — coördineert verbonden apparaten en agenten. Het kern-routing- en rechtensysteem voor het HiveMind-meshnetwerk.",
-      "fr": "Hub central HiveMind — coordonne les appareils et agents connectés. Le système central de routage et de permissions du réseau maillé HiveMind.",
-      "it": "Hub centrale HiveMind — coordina i dispositivi e gli agenti connessi. Il sistema centrale di instradamento e permessi per la rete mesh HiveMind.",
-      "ru": "Центральный узел HiveMind — координирует подключённые устройства и агентов. Ядро маршрутизации и система прав доступа для mesh-сети HiveMind.",
-      "ar": "المركز المركزي لـ HiveMind — ينسّق الأجهزة والوكلاء المتصلين. نظام التوجيه والأذونات الأساسي لشبكة HiveMind المتشابكة.",
-      "fa": "هاب مرکزی HiveMind — دستگاه‌ها و عامل‌های متصل را هماهنگ می‌کند. سیستم مسیریابی و مجوز اصلی برای شبکه مش HiveMind.",
-      "hi": "केंद्रीय HiveMind हब — जुड़े हुए उपकरणों और एजेंटों का समन्वय करता है। HiveMind मेश नेटवर्क के लिए कोर रूटिंग और अनुमति प्रणाली।",
-      "zh": "HiveMind 中央枢纽——协调已连接的设备与智能体。是 HiveMind 网状网络的核心路由与权限系统。",
-      "ko": "중앙 HiveMind 허브 — 연결된 장치와 에이전트를 조율합니다. HiveMind 메시 네트워크의 핵심 라우팅 및 권한 시스템.",
-      "ja": "中央HiveMindハブ。接続されたデバイスとエージェントを調整する。HiveMindメッシュネットワークの中核となるルーティングおよび権限システム。"
-    }
-  },
-  {
-    "id": "hivemind-js",
-    "name": "HiveMind JS",
-    "description": "JavaScript client library for HiveMind — connect web applications to the mesh network.",
-    "url": "https://github.com/JarbasHiveMind/HiveMind-js",
-    "category": "HiveMind",
-    "tags": [
-      "JavaScript",
-      "client",
-      "web"
-    ],
-    "featured": false,
-    "descriptions": {
-      "pt": "Biblioteca cliente em JavaScript para o HiveMind — liga aplicações web à rede em malha.",
-      "es": "Biblioteca cliente en JavaScript para HiveMind: conecta aplicaciones web a la red en malla.",
-      "de": "JavaScript-Client-Bibliothek für HiveMind — verbinden Sie Webanwendungen mit dem Mesh-Netzwerk.",
-      "nl": "JavaScript-clientbibliotheek voor HiveMind — verbind webapplicaties met het meshnetwerk.",
-      "fr": "Bibliothèque cliente JavaScript pour HiveMind — connectez des applications web au réseau maillé.",
-      "it": "Libreria client JavaScript per HiveMind — connette le applicazioni web alla rete mesh.",
-      "ru": "Клиентская библиотека JavaScript для HiveMind — подключайте веб-приложения к mesh-сети.",
-      "ar": "مكتبة عميل JavaScript لـ HiveMind — اربط تطبيقات الويب بالشبكة المتشابكة.",
-      "fa": "کتابخانه کلاینت جاوااسکریپت برای HiveMind — اتصال برنامه‌های وب به شبکه مش.",
-      "hi": "HiveMind के लिए JavaScript क्लाइंट लाइब्रेरी — वेब अनुप्रयोगों को मेश नेटवर्क से जोड़ें।",
-      "zh": "面向 HiveMind 的 JavaScript 客户端库——将 Web 应用接入网状网络。",
-      "ko": "HiveMind를 위한 JavaScript 클라이언트 라이브러리 — 웹 애플리케이션을 메시 네트워크에 연결합니다.",
-      "ja": "HiveMind向けのJavaScriptクライアントライブラリ。Webアプリケーションをメッシュネットワークに接続する。"
-    }
-  },
-  {
-    "id": "hivemind-docker",
-    "name": "HiveMind Docker",
-    "description": "Docker deployment for HiveMind hub — run the mesh network in containers.",
-    "url": "https://github.com/JarbasHiveMind/hivemind-docker",
-    "category": "HiveMind",
-    "tags": [
-      "Docker",
-      "deployment",
-      "containerization"
-    ],
-    "featured": false,
-    "descriptions": {
-      "pt": "Implementação Docker do hub HiveMind — executa a rede em malha em contentores.",
-      "es": "Despliegue en Docker del nodo de HiveMind: ejecuta la red en malla en contenedores.",
-      "de": "Docker-Deployment für den HiveMind-Hub — betreiben Sie das Mesh-Netzwerk in Containern.",
-      "nl": "Docker-implementatie voor de HiveMind-hub — draai het meshnetwerk in containers.",
-      "fr": "Déploiement Docker pour le hub HiveMind — exécutez le réseau maillé dans des conteneurs.",
-      "it": "Deployment Docker per l'hub HiveMind — esegui la rete mesh in container.",
-      "ru": "Развёртывание HiveMind в Docker — запускайте mesh-сеть в контейнерах.",
-      "ar": "نشر Docker لمركز HiveMind — شغّل الشبكة المتشابكة في حاويات.",
-      "fa": "استقرار Docker برای هاب HiveMind — اجرای شبکه مش در کانتینرها.",
-      "hi": "HiveMind हब के लिए Docker परिनियोजन — मेश नेटवर्क को कंटेनरों में चलाएं।",
-      "zh": "面向 HiveMind 枢纽的 Docker 部署——在容器中运行网状网络。",
-      "ko": "HiveMind 허브를 위한 Docker 배포 — 메시 네트워크를 컨테이너에서 실행합니다.",
-      "ja": "HiveMindハブ向けのDockerデプロイ。メッシュネットワークをコンテナで実行する。"
-    }
-  },
-  {
-    "id": "hivemind-ovos-agent-plugin",
-    "name": "HiveMind OVOS Agent Plugin",
-    "description": "OpenVoiceOS plugin for HiveMind — integrate voice assistants into the mesh network.",
-    "url": "https://github.com/JarbasHiveMind/hivemind-ovos-agent-plugin",
-    "category": "HiveMind",
-    "tags": [
-      "OpenVoiceOS",
-      "plugin",
-      "voice"
-    ],
-    "featured": false,
-    "descriptions": {
-      "pt": "Plugin do OpenVoiceOS para o HiveMind — integra assistentes de voz na rede em malha.",
-      "es": "Plugin de OpenVoiceOS para HiveMind: integra asistentes de voz en la red en malla.",
-      "de": "OpenVoiceOS-Plugin für HiveMind — integrieren Sie Sprachassistenten in das Mesh-Netzwerk.",
-      "nl": "OpenVoiceOS-plugin voor HiveMind — integreer spraakassistenten in het meshnetwerk.",
-      "fr": "Plugin OpenVoiceOS pour HiveMind — intégrez des assistants vocaux au réseau maillé.",
-      "it": "Plugin OpenVoiceOS per HiveMind — integra gli assistenti vocali nella rete mesh.",
-      "ru": "Плагин OpenVoiceOS для HiveMind — интегрируйте голосовых помощников в mesh-сеть.",
-      "ar": "إضافة OpenVoiceOS لـ HiveMind — ادمج المساعدين الصوتيين في الشبكة المتشابكة.",
-      "fa": "افزونه OpenVoiceOS برای HiveMind — یکپارچه‌سازی دستیارهای صوتی در شبکه مش.",
-      "hi": "HiveMind के लिए OpenVoiceOS प्लगइन — वॉइस असिस्टेंट को मेश नेटवर्क में एकीकृत करें।",
-      "zh": "面向 HiveMind 的 OpenVoiceOS 插件——将语音助手接入网状网络。",
-      "ko": "HiveMind를 위한 OpenVoiceOS 플러그인 — 음성 비서를 메시 네트워크에 통합합니다.",
-      "ja": "HiveMind向けのOpenVoiceOSプラグイン。音声アシスタントをメッシュネットワークに統合する。"
-    }
-  },
-  {
-    "id": "hivemind-matrix-bridge",
-    "name": "HiveMind Matrix Bridge",
-    "description": "Bridge HiveMind to Matrix — communicate with devices via Matrix chat protocol.",
-    "url": "https://github.com/JarbasHiveMind/HiveMind-matrix-bridge",
-    "category": "HiveMind",
-    "tags": [
-      "Matrix",
-      "bridge",
-      "chat"
-    ],
-    "featured": false,
-    "descriptions": {
-      "pt": "Ponte do HiveMind para o Matrix — comunica com dispositivos através do protocolo de chat Matrix.",
-      "es": "Puente de HiveMind a Matrix: comunícate con los dispositivos mediante el protocolo de chat Matrix.",
-      "de": "Bridge von HiveMind zu Matrix — Kommunikation mit Geräten über das Matrix-Chat-Protokoll.",
-      "nl": "Brug HiveMind naar Matrix — communiceer met apparaten via het Matrix-chatprotocol.",
-      "fr": "Pont entre HiveMind et Matrix — communiquez avec les appareils via le protocole de messagerie Matrix.",
-      "it": "Bridge tra HiveMind e Matrix — comunica con i dispositivi tramite il protocollo di chat Matrix.",
-      "ru": "Мост HiveMind к Matrix — общайтесь с устройствами через чат-протокол Matrix.",
-      "ar": "جسر يربط HiveMind بـ Matrix — تواصل مع الأجهزة عبر بروتوكول محادثة Matrix.",
-      "fa": "پل HiveMind به Matrix — ارتباط با دستگاه‌ها از طریق پروتکل چت Matrix.",
-      "hi": "HiveMind को Matrix से जोड़ें — Matrix चैट प्रोटोकॉल के माध्यम से उपकरणों के साथ संचार करें।",
-      "zh": "将 HiveMind 桥接到 Matrix——通过 Matrix 聊天协议与设备通信。",
-      "ko": "HiveMind를 Matrix에 연결하는 브리지 — Matrix 채팅 프로토콜로 장치와 통신합니다.",
-      "ja": "HiveMindをMatrixに橋渡しする。Matrixチャットプロトコルを介してデバイスと通信する。"
-    }
-  },
-  {
-    "id": "hivemind-deltachat-bridge",
-    "name": "HiveMind DeltaChat Bridge",
-    "description": "Bridge HiveMind to DeltaChat — privacy-first email-based messaging for device control.",
-    "url": "https://github.com/JarbasHiveMind/HiveMind-deltachat-bridge",
-    "category": "HiveMind",
-    "tags": [
-      "DeltaChat",
-      "bridge",
-      "privacy"
-    ],
-    "featured": false,
-    "descriptions": {
-      "pt": "Ponte do HiveMind para o DeltaChat — mensagens baseadas em email e centradas na privacidade para controlo de dispositivos.",
-      "es": "Puente de HiveMind a DeltaChat: mensajería basada en correo y centrada en la privacidad para el control de dispositivos.",
-      "de": "Bridge von HiveMind zu DeltaChat — datenschutzorientierte E-Mail-basierte Nachrichtenübermittlung zur Gerätesteuerung.",
-      "nl": "Brug HiveMind naar DeltaChat — privacyvriendelijke, e-mailgebaseerde berichtgeving voor apparaatbesturing.",
-      "fr": "Pont entre HiveMind et DeltaChat — messagerie basée sur l'e-mail et respectueuse de la vie privée pour le contrôle des appareils.",
-      "it": "Bridge tra HiveMind e DeltaChat — messaggistica basata su email e attenta alla privacy per il controllo dei dispositivi.",
-      "ru": "Мост HiveMind к DeltaChat — приватный обмен сообщениями на базе email для управления устройствами.",
-      "ar": "جسر يربط HiveMind بـ DeltaChat — مراسلة قائمة على البريد الإلكتروني تحترم الخصوصية للتحكم بالأجهزة.",
-      "fa": "پل HiveMind به DeltaChat — پیام‌رسانی حریم‌خصوصی‌محور مبتنی بر ایمیل برای کنترل دستگاه.",
-      "hi": "HiveMind को DeltaChat से जोड़ें — उपकरण नियंत्रण के लिए गोपनीयता-प्रथम ईमेल-आधारित संदेश।",
-      "zh": "将 HiveMind 桥接到 DeltaChat——基于电子邮件、隐私优先的设备控制消息传递。",
-      "ko": "HiveMind를 DeltaChat에 연결하는 브리지 — 프라이버시 우선의 이메일 기반 메시징으로 장치를 제어합니다.",
-      "ja": "HiveMindをDeltaChatに橋渡しする。デバイス制御のためのプライバシー重視のメールベースメッセージング。"
-    }
-  },
-  {
-    "id": "hivemind-http-protocol",
-    "name": "HiveMind HTTP Protocol",
-    "description": "HTTP protocol implementation for HiveMind — REST API for mesh communication.",
-    "url": "https://github.com/JarbasHiveMind/hivemind-http-protocol",
-    "category": "HiveMind",
-    "tags": [
-      "HTTP",
-      "protocol",
-      "REST"
-    ],
-    "featured": false,
-    "descriptions": {
-      "pt": "Implementação do protocolo HTTP para o HiveMind — API REST para comunicação em malha.",
-      "es": "Implementación del protocolo HTTP para HiveMind: API REST para la comunicación en malla.",
-      "de": "HTTP-Protokoll-Implementierung für HiveMind — REST-API für Mesh-Kommunikation.",
-      "nl": "HTTP-protocolimplementatie voor HiveMind — REST API voor meshcommunicatie.",
-      "fr": "Implémentation du protocole HTTP pour HiveMind — API REST pour la communication maillée.",
-      "it": "Implementazione del protocollo HTTP per HiveMind — API REST per la comunicazione mesh.",
-      "ru": "Реализация HTTP-протокола для HiveMind — REST API для mesh-связи.",
-      "ar": "تنفيذ بروتوكول HTTP لـ HiveMind — REST API للتواصل الشبكي المتشابك.",
-      "fa": "پیاده‌سازی پروتکل HTTP برای HiveMind — REST API برای ارتباط مش.",
-      "hi": "HiveMind के लिए HTTP प्रोटोकॉल कार्यान्वयन — मेश संचार के लिए REST API।",
-      "zh": "面向 HiveMind 的 HTTP 协议实现——用于网状通信的 REST API。",
-      "ko": "HiveMind를 위한 HTTP 프로토콜 구현 — 메시 통신을 위한 REST API.",
-      "ja": "HiveMindのためのHTTPプロトコル実装。メッシュ通信のためのREST API。"
-    }
-  },
-  {
-    "id": "hivemind-audio-binary-protocol",
-    "name": "HiveMind Audio Binary Protocol",
-    "description": "Efficient binary protocol for audio over HiveMind — low-latency voice communication.",
-    "url": "https://github.com/JarbasHiveMind/hivemind-audio-binary-protocol",
-    "category": "HiveMind",
-    "tags": [
-      "audio",
-      "protocol",
-      "binary",
-      "low-latency"
-    ],
-    "featured": false,
-    "descriptions": {
-      "pt": "Protocolo binário eficiente para áudio sobre o HiveMind — comunicação de voz de baixa latência.",
-      "es": "Protocolo binario eficiente para audio a través de HiveMind: comunicación de voz de baja latencia.",
-      "de": "Effizientes Binärprotokoll für Audio über HiveMind — latenzarme Sprachkommunikation.",
-      "nl": "Efficiënt binair protocol voor audio over HiveMind — spraakcommunicatie met lage latentie.",
-      "fr": "Protocole binaire efficace pour l'audio via HiveMind — communication vocale à faible latence.",
-      "it": "Protocollo binario efficiente per l'audio su HiveMind — comunicazione vocale a bassa latenza.",
-      "ru": "Эффективный бинарный протокол для аудио через HiveMind — голосовая связь с низкой задержкой.",
-      "ar": "بروتوكول ثنائي فعّال للصوت عبر HiveMind — تواصل صوتي منخفض الكمون.",
-      "fa": "پروتکل دودویی کارآمد برای صوت روی HiveMind — ارتباط صوتی با تأخیر پایین.",
-      "hi": "HiveMind पर ऑडियो के लिए कुशल बाइनरी प्रोटोकॉल — कम-विलंब वॉइस संचार।",
-      "zh": "面向 HiveMind 音频传输的高效二进制协议——低延迟语音通信。",
-      "ko": "HiveMind를 통한 오디오 전송을 위한 효율적인 바이너리 프로토콜 — 저지연 음성 통신.",
-      "ja": "HiveMind上で音声を扱う効率的なバイナリプロトコル。低遅延の音声通信。"
-    }
-  },
-  {
-    "id": "hivemind-esp32-client",
-    "name": "HiveMind ESP32 Client",
-    "description": "ESP32 firmware for HiveMind — run mesh nodes on microcontrollers.",
-    "url": "https://github.com/JarbasHiveMind/hivemind-esp32-client",
-    "category": "HiveMind",
-    "tags": [
-      "ESP32",
-      "microcontroller",
-      "firmware"
-    ],
-    "featured": false,
-    "hidden": true
-  },
-  {
-    "id": "hivemind-micropython-client",
-    "name": "HiveMind MicroPython Client",
-    "description": "MicroPython implementation for HiveMind — lightweight client for IoT devices.",
-    "url": "https://github.com/JarbasHiveMind/hivemind-micropython-client",
-    "category": "HiveMind",
-    "tags": [
-      "MicroPython",
-      "IoT",
-      "embedded"
-    ],
-    "featured": false,
-    "hidden": true
-  },
-  {
-    "id": "hivemind-homeassistant",
-    "name": "HiveMind Home Assistant",
-    "description": "Home Assistant integration for HiveMind — control and monitor mesh devices from Home Assistant.",
-    "url": "https://github.com/JarbasHiveMind/hivemind-homeassistant",
-    "category": "HiveMind",
-    "tags": [
-      "Home Assistant",
-      "integration",
-      "smart home"
-    ],
-    "featured": false,
-    "descriptions": {
-      "pt": "Integração do Home Assistant para o HiveMind — controla e monitoriza dispositivos da malha a partir do Home Assistant.",
-      "es": "Integración de Home Assistant para HiveMind: controla y supervisa los dispositivos de la malla desde Home Assistant.",
-      "de": "Home-Assistant-Integration für HiveMind — Mesh-Geräte aus Home Assistant steuern und überwachen.",
-      "nl": "Home Assistant-integratie voor HiveMind — bestuur en bewaak meshapparaten vanuit Home Assistant.",
-      "fr": "Intégration Home Assistant pour HiveMind — contrôlez et surveillez les appareils maillés depuis Home Assistant.",
-      "it": "Integrazione di Home Assistant per HiveMind — controlla e monitora i dispositivi mesh da Home Assistant.",
-      "ru": "Интеграция Home Assistant для HiveMind — управляйте и следите за mesh-устройствами из Home Assistant.",
-      "ar": "تكامل Home Assistant مع HiveMind — تحكّم بأجهزة الشبكة المتشابكة وراقبها من Home Assistant.",
-      "fa": "یکپارچه‌سازی Home Assistant برای HiveMind — کنترل و پایش دستگاه‌های مش از Home Assistant.",
-      "hi": "HiveMind के लिए Home Assistant एकीकरण — Home Assistant से मेश उपकरणों को नियंत्रित और मॉनिटर करें।",
-      "zh": "面向 HiveMind 的 Home Assistant 集成——从 Home Assistant 控制并监控网状设备。",
-      "ko": "HiveMind를 위한 Home Assistant 통합 — Home Assistant에서 메시 장치를 제어하고 모니터링합니다.",
-      "ja": "HiveMindのためのHome Assistant連携。Home Assistantからメッシュデバイスを制御・監視する。"
     }
   },
   {
@@ -2795,36 +2232,6 @@
       "zh": "站点侦察工具，用于在构建抓取器前了解站点结构。使用 unblock_requests 传输层映射 robots.txt、站点地图和链接图，实现对受保护或复杂站点的稳健探索。",
       "ko": "스크레이퍼를 구축하기 전에 사이트 구조를 파악하기 위한 사이트 정찰 유틸리티. unblock_requests 전송 계층을 사용해 robots.txt, 사이트맵, 링크 그래프를 매핑하여 보호되거나 복잡한 사이트를 견고하게 탐색합니다.",
       "ja": "スクレイパー構築前にサイト構造を把握するためのサイト偵察ユーティリティ。unblock_requestsトランスポートを用いてrobots.txt、サイトマップ、リンクグラフをマッピングし、保護された複雑なサイトも堅牢に探索する。"
-    }
-  },
-  {
-    "id": "hivemind-webchat",
-    "name": "HiveMind WebChat",
-    "description": "HiveMind - webchat terminal with jquery + tornado",
-    "url": "https://github.com/JarbasHiveMind/HiveMind-webchat",
-    "category": "HiveMind",
-    "tags": [
-      "JavaScript",
-      "web",
-      "chat",
-      "client"
-    ],
-    "featured": false,
-    "selfHosted": true,
-    "descriptions": {
-      "pt": "HiveMind - terminal de webchat com jquery + tornado.",
-      "es": "HiveMind: terminal de webchat con jquery + tornado",
-      "de": "HiveMind — Webchat-Terminal mit jQuery + Tornado.",
-      "nl": "HiveMind - webchatterminal met jquery + tornado",
-      "fr": "HiveMind — terminal de webchat avec jquery + tornado.",
-      "it": "HiveMind - terminale di webchat con jquery + tornado",
-      "ru": "HiveMind — веб-чат терминал на jquery + tornado",
-      "ar": "HiveMind — طرفية دردشة ويب بـ jquery وtornado.",
-      "fa": "HiveMind - ترمینال وب‌چت با jquery + tornado",
-      "hi": "HiveMind - jquery + tornado के साथ webchat टर्मिनल",
-      "zh": "HiveMind——基于 jquery + tornado 的网页聊天终端。",
-      "ko": "HiveMind - jquery와 tornado 기반 웹챗 터미널",
-      "ja": "HiveMind - jqueryとtornadoによるウェブチャットターミナル。"
     }
   },
   {
@@ -4524,63 +3931,6 @@
     }
   },
   {
-    "id": "ovos-stt-plugin-coreml",
-    "name": "ovos-stt-plugin-coreml",
-    "description": "OVOS Speech-to-Text plugin that runs recognition models natively on Apple devices via CoreML, auto-detecting the model architecture from metadata.",
-    "url": "https://github.com/TigreGotico/ovos-stt-plugin-coreml",
-    "category": "OpenVoiceOS",
-    "tags": [
-      "ASR",
-      "CoreML",
-      "on-device",
-      "Apple"
-    ],
-    "featured": false,
-    "descriptions": {
-      "pt": "Plugin de reconhecimento de fala (STT) do OVOS que executa modelos de reconhecimento nativamente em dispositivos Apple via CoreML, detetando automaticamente a arquitetura do modelo a partir dos metadados.",
-      "es": "Plugin de reconocimiento de voz de OVOS que ejecuta los modelos de reconocimiento de forma nativa en dispositivos Apple mediante CoreML, detectando automáticamente la arquitectura del modelo a partir de los metadatos.",
-      "de": "OVOS-Speech-to-Text-Plugin, das Erkennungsmodelle nativ auf Apple-Geräten über CoreML ausführt und die Modellarchitektur automatisch aus den Metadaten erkennt.",
-      "nl": "OVOS Speech-to-Text-plugin die herkenningsmodellen native op Apple-apparaten draait via CoreML, met automatische detectie van de modelarchitectuur uit de metadata.",
-      "fr": "Plugin de reconnaissance vocale OVOS qui exécute les modèles de reconnaissance nativement sur les appareils Apple via CoreML, en détectant automatiquement l'architecture du modèle à partir des métadonnées.",
-      "it": "Plugin Speech-to-Text OVOS che esegue i modelli di riconoscimento nativamente sui dispositivi Apple tramite CoreML, rilevando automaticamente l'architettura del modello dai metadati.",
-      "ru": "Плагин распознавания речи OVOS, запускающий модели распознавания нативно на устройствах Apple через CoreML, автоматически определяя архитектуру модели по метаданным.",
-      "ar": "إضافة OVOS لتحويل الكلام إلى نص تُشغّل نماذج التعرّف أصليًا على أجهزة Apple عبر CoreML، مع اكتشاف تلقائي لبنية النموذج من البيانات الوصفية.",
-      "fa": "افزونه تبدیل گفتار به متن اوواس که مدل‌های تشخیص را به‌طور بومی روی دستگاه‌های اپل از طریق CoreML اجرا می‌کند و معماری مدل را به‌طور خودکار از فراداده تشخیص می‌دهد.",
-      "hi": "OVOS Speech-to-Text प्लगइन जो CoreML के माध्यम से Apple उपकरणों पर पहचान मॉडल को नेटिव रूप से चलाता है, मेटाडेटा से मॉडल आर्किटेक्चर का स्वतः पता लगाता है।",
-      "zh": "一款 OVOS 语音转文本插件，通过 CoreML 在 Apple 设备上原生运行识别模型，并从元数据中自动检测模型架构。",
-      "ko": "CoreML을 통해 Apple 장치에서 인식 모델을 네이티브로 실행하는 OVOS 음성 인식 플러그인으로, 메타데이터에서 모델 아키텍처를 자동 감지합니다.",
-      "ja": "CoreMLを介してApple端末上でネイティブに認識モデルを実行するOVOS音声認識プラグイン。メタデータからモデルアーキテクチャを自動検出する。"
-    }
-  },
-  {
-    "id": "ovos-stt-plugin-rover",
-    "name": "ovos-stt-plugin-rover",
-    "description": "Meta-ASR engine for OVOS that aggregates several ASR backends with the ROVER (Recognizer Output Voting Error Reduction) algorithm for higher transcription accuracy.",
-    "url": "https://github.com/TigreGotico/ovos-stt-plugin-rover",
-    "category": "OpenVoiceOS",
-    "tags": [
-      "ASR",
-      "ROVER",
-      "ensemble"
-    ],
-    "featured": false,
-    "descriptions": {
-      "pt": "Motor meta-ASR para o OVOS que agrega vários backends de ASR com o algoritmo ROVER (Recognizer Output Voting Error Reduction) para maior precisão de transcrição.",
-      "es": "Motor meta-ASR para OVOS que agrega varios backends de ASR con el algoritmo ROVER (Recognizer Output Voting Error Reduction) para lograr una mayor precisión de transcripción.",
-      "de": "Meta-ASR-Engine für OVOS, die mehrere ASR-Backends mit dem ROVER-Algorithmus (Recognizer Output Voting Error Reduction) für höhere Transkriptionsgenauigkeit zusammenführt.",
-      "nl": "Meta-ASR-engine voor OVOS die meerdere ASR-backends samenvoegt met het ROVER-algoritme (Recognizer Output Voting Error Reduction) voor hogere transcriptienauwkeurigheid.",
-      "fr": "Moteur méta-ASR pour OVOS qui agrège plusieurs backends ASR avec l'algorithme ROVER (Recognizer Output Voting Error Reduction) pour une meilleure précision de transcription.",
-      "it": "Motore meta-ASR per OVOS che aggrega diversi backend ASR con l'algoritmo ROVER (Recognizer Output Voting Error Reduction) per una maggiore accuratezza di trascrizione.",
-      "ru": "Мета-ASR движок для OVOS, объединяющий несколько ASR-бэкендов с помощью алгоритма ROVER (Recognizer Output Voting Error Reduction) для повышения точности транскрипции.",
-      "ar": "محرّك ASR فوقي لـ OVOS يجمّع عدة خلفيات ASR بخوارزمية ROVER (تقليل خطأ التصويت في مخرجات المُتعرِّف) لدقة نسخ أعلى.",
-      "fa": "موتور فرا-ASR برای OVOS که چند بک‌اند ASR را با الگوریتم ROVER (کاهش خطای رأی‌گیری خروجی تشخیص‌دهنده) برای دقت رونویسی بالاتر گرد هم می‌آورد.",
-      "hi": "OVOS के लिए मेटा-ASR इंजन जो उच्च ट्रांसक्रिप्शन सटीकता के लिए ROVER (Recognizer Output Voting Error Reduction) एल्गोरिदम के साथ कई ASR बैकएंड को समुच्चयित करता है।",
-      "zh": "面向 OVOS 的元 ASR 引擎，使用 ROVER（识别器输出投票纠错）算法聚合多个 ASR 后端，以获得更高的转写准确率。",
-      "ko": "ROVER(Recognizer Output Voting Error Reduction) 알고리즘으로 여러 ASR 백엔드를 집계하여 전사 정확도를 높이는 OVOS용 메타 ASR 엔진.",
-      "ja": "複数のASRバックエンドをROVER（Recognizer Output Voting Error Reduction）アルゴリズムで統合し、文字起こし精度を高めるOVOS向けメタASRエンジン。"
-    }
-  },
-  {
     "id": "stressonnx",
     "name": "stressonnx",
     "description": "Multi-language word-stress and accentuation placement for TTS front-ends, running on onnxruntime and numpy only.",
@@ -4755,179 +4105,11 @@
     }
   },
   {
-    "id": "ovos-diagnostics",
-    "name": "ovos-diagnostics",
-    "description": "CLI utility to list, recommend and manage plugins across the OpenVoiceOS ecosystem — audio, skills, GUI, language, listener and platform.",
-    "url": "https://github.com/TigreGotico/ovos-diagnostics",
-    "category": "OpenVoiceOS",
-    "tags": [
-      "CLI",
-      "diagnostics",
-      "plugins"
-    ],
-    "featured": false,
-    "descriptions": {
-      "pt": "Utilitário de linha de comandos para listar, recomendar e gerir plugins do ecossistema OpenVoiceOS — áudio, skills, GUI, língua, listener e plataforma.",
-      "es": "Utilidad de línea de comandos para listar, recomendar y gestionar plugins del ecosistema OpenVoiceOS: audio, skills, GUI, idioma, listener y plataforma.",
-      "de": "CLI-Werkzeug zum Auflisten, Empfehlen und Verwalten von Plugins im OpenVoiceOS-Ökosystem — Audio, Skills, GUI, Sprache, Listener und Plattform.",
-      "nl": "CLI-hulpmiddel om plugins in het OpenVoiceOS-ecosysteem te tonen, aan te bevelen en te beheren — audio, skills, GUI, taal, listener en platform.",
-      "fr": "Utilitaire en ligne de commande pour lister, recommander et gérer les plugins de l'écosystème OpenVoiceOS — audio, skills, GUI, langue, listener et plateforme.",
-      "it": "Utility da riga di comando per elencare, raccomandare e gestire i plugin dell'ecosistema OpenVoiceOS — audio, skill, GUI, lingua, listener e piattaforma.",
-      "ru": "CLI-утилита для просмотра, подбора и управления плагинами экосистемы OpenVoiceOS — аудио, навыки, GUI, язык, listener и платформа.",
-      "ar": "أداة سطر أوامر لسرد إضافات منظومة OpenVoiceOS والتوصية بها وإدارتها — الصوت والمهارات وواجهة العرض واللغة والمستمع والمنصة.",
-      "fa": "ابزار خط فرمان برای فهرست کردن، پیشنهاد و مدیریت افزونه‌های اکوسیستم OpenVoiceOS — صدا، مهارت‌ها، GUI، زبان، شنونده و سکو.",
-      "hi": "OpenVoiceOS पारिस्थितिकी तंत्र के प्लगइन्स को सूचीबद्ध, अनुशंसित और प्रबंधित करने की CLI उपयोगिता — ऑडियो, स्किल्स, GUI, भाषा, लिसनर और प्लेटफ़ॉर्म।",
-      "zh": "用于列出、推荐和管理 OpenVoiceOS 生态插件的命令行工具——涵盖音频、技能、GUI、语言、监听器与平台。",
-      "ko": "OpenVoiceOS 생태계의 플러그인을 나열·추천·관리하는 CLI 도구 — 오디오, 스킬, GUI, 언어, 리스너, 플랫폼을 아우릅니다.",
-      "ja": "OpenVoiceOSエコシステムのプラグインを一覧・推薦・管理するCLIユーティリティ。オーディオ、スキル、GUI、言語、リスナー、プラットフォームに対応。"
-    }
-  },
-  {
-    "id": "ovos-persona-marketplace",
-    "name": "ovos-persona-marketplace",
-    "description": "Community-driven gallery of ready-to-use persona configurations for OpenVoiceOS assistants.",
-    "url": "https://github.com/TigreGotico/ovos-persona-marketplace",
-    "category": "OpenVoiceOS",
-    "tags": [
-      "personas",
-      "marketplace",
-      "LLM"
-    ],
-    "featured": false,
-    "descriptions": {
-      "pt": "Galeria comunitária de configurações de personas prontas a usar para assistentes OpenVoiceOS.",
-      "es": "Galería comunitaria de configuraciones de personas listas para usar en asistentes OpenVoiceOS.",
-      "de": "Community-getriebene Galerie einsatzbereiter Persona-Konfigurationen für OpenVoiceOS-Assistenten.",
-      "nl": "Door de community gedreven galerij van kant-en-klare persona-configuraties voor OpenVoiceOS-assistenten.",
-      "fr": "Galerie communautaire de configurations de personas prêtes à l'emploi pour les assistants OpenVoiceOS.",
-      "it": "Galleria guidata dalla community di configurazioni di persona pronte all'uso per gli assistenti OpenVoiceOS.",
-      "ru": "Поддерживаемая сообществом галерея готовых конфигураций персон для ассистентов OpenVoiceOS.",
-      "ar": "معرض مجتمعي لتكوينات شخصيات جاهزة للاستخدام لمساعدي OpenVoiceOS.",
-      "fa": "گالری اجتماع‌محور از پیکربندی‌های آمادهٔ شخصیت برای دستیارهای OpenVoiceOS.",
-      "hi": "OpenVoiceOS सहायकों के लिए उपयोग-हेतु-तैयार पर्सोना कॉन्फ़िगरेशन की समुदाय-संचालित गैलरी।",
-      "zh": "由社区驱动的 OpenVoiceOS 助手人格配置库，即取即用。",
-      "ko": "OpenVoiceOS 어시스턴트용 바로 쓸 수 있는 페르소나 구성의 커뮤니티 주도 갤러리입니다.",
-      "ja": "OpenVoiceOSアシスタント向けのすぐ使えるペルソナ設定を集めたコミュニティ主導のギャラリー。"
-    }
-  },
-  {
-    "id": "hivemind-plugin-manager",
-    "name": "hivemind-plugin-manager",
-    "description": "Plugin manager and abstract interfaces for hivemind-core — database, network-protocol and agent-protocol backends, discovered and loaded dynamically.",
-    "url": "https://github.com/JarbasHiveMind/hivemind-plugin-manager",
-    "category": "HiveMind",
-    "tags": [
-      "plugins",
-      "protocols"
-    ],
-    "featured": false,
-    "descriptions": {
-      "pt": "Gestor de plugins e interfaces abstratas para o hivemind-core — backends de base de dados, protocolo de rede e protocolo de agente, descobertos e carregados dinamicamente.",
-      "es": "Gestor de plugins e interfaces abstractas para hivemind-core: backends de base de datos, protocolo de red y protocolo de agente, descubiertos y cargados dinámicamente.",
-      "de": "Plugin-Manager und abstrakte Schnittstellen für hivemind-core — Datenbank-, Netzwerkprotokoll- und Agentenprotokoll-Backends, dynamisch erkannt und geladen.",
-      "nl": "Pluginbeheerder en abstracte interfaces voor hivemind-core — database-, netwerkprotocol- en agentprotocol-backends, dynamisch ontdekt en geladen.",
-      "fr": "Gestionnaire de plugins et interfaces abstraites pour hivemind-core — backends de base de données, de protocole réseau et de protocole d'agent, découverts et chargés dynamiquement.",
-      "it": "Gestore di plugin e interfacce astratte per hivemind-core — backend di database, protocollo di rete e protocollo agente, scoperti e caricati dinamicamente.",
-      "ru": "Менеджер плагинов и абстрактные интерфейсы для hivemind-core — бэкенды баз данных, сетевых протоколов и протоколов агентов с динамическим обнаружением и загрузкой.",
-      "ar": "مدير إضافات وواجهات مجردة لـ hivemind-core — خلفيات قواعد بيانات وبروتوكولات شبكة وبروتوكولات وكلاء، تُكتشف وتُحمَّل ديناميكيًا.",
-      "fa": "مدیر افزونه و رابط‌های انتزاعی برای hivemind-core — پشتوانه‌های پایگاه‌داده، پروتکل شبکه و پروتکل عامل، با کشف و بارگذاری پویا.",
-      "hi": "hivemind-core के लिए प्लगइन प्रबंधक और एब्सट्रैक्ट इंटरफ़ेस — डेटाबेस, नेटवर्क-प्रोटोकॉल और एजेंट-प्रोटोकॉल बैकएंड, गतिशील रूप से खोजे और लोड किए जाते हैं।",
-      "zh": "hivemind-core 的插件管理器与抽象接口——数据库、网络协议和代理协议后端，动态发现与加载。",
-      "ko": "hivemind-core용 플러그인 관리자 및 추상 인터페이스 — 데이터베이스, 네트워크 프로토콜, 에이전트 프로토콜 백엔드를 동적으로 발견하고 로드합니다.",
-      "ja": "hivemind-core向けのプラグインマネージャーと抽象インターフェース。データベース・ネットワークプロトコル・エージェントプロトコルの各バックエンドを動的に検出・ロードします。"
-    }
-  },
-  {
-    "id": "hivescope",
-    "name": "hivescope",
-    "description": "Reusable pytest E2E library for HiveMind protocol implementations — simulates whole network topologies in-process, no real sockets or servers.",
-    "url": "https://github.com/JarbasHiveMind/hivescope",
-    "category": "HiveMind",
-    "tags": [
-      "testing",
-      "pytest",
-      "E2E"
-    ],
-    "featured": false,
-    "descriptions": {
-      "pt": "Biblioteca pytest E2E reutilizável para implementações do protocolo HiveMind — simula topologias de rede completas em processo, sem sockets nem servidores reais.",
-      "es": "Biblioteca pytest E2E reutilizable para implementaciones del protocolo HiveMind: simula topologías de red completas en proceso, sin sockets ni servidores reales.",
-      "de": "Wiederverwendbare pytest-E2E-Bibliothek für HiveMind-Protokollimplementierungen — simuliert komplette Netzwerktopologien im Prozess, ohne echte Sockets oder Server.",
-      "nl": "Herbruikbare pytest-E2E-bibliotheek voor HiveMind-protocolimplementaties — simuleert volledige netwerktopologieën in-process, zonder echte sockets of servers.",
-      "fr": "Bibliothèque pytest E2E réutilisable pour les implémentations du protocole HiveMind — simule des topologies réseau complètes en mémoire, sans sockets ni serveurs réels.",
-      "it": "Libreria pytest E2E riutilizzabile per le implementazioni del protocollo HiveMind — simula intere topologie di rete in-process, senza socket o server reali.",
-      "ru": "Переиспользуемая pytest-библиотека E2E для реализаций протокола HiveMind — моделирует целые сетевые топологии внутри процесса, без реальных сокетов и серверов.",
-      "ar": "مكتبة pytest قابلة لإعادة الاستخدام لاختبارات E2E لتطبيقات بروتوكول HiveMind — تحاكي طوبولوجيات شبكية كاملة داخل العملية، دون مقابس أو خوادم حقيقية.",
-      "fa": "کتابخانهٔ pytest قابل استفادهٔ مجدد برای آزمون E2E پیاده‌سازی‌های پروتکل HiveMind — توپولوژی‌های کامل شبکه را درون‌پردازشی شبیه‌سازی می‌کند، بدون سوکت یا سرور واقعی.",
-      "hi": "HiveMind प्रोटोकॉल कार्यान्वयनों के लिए पुन: प्रयोज्य pytest E2E लाइब्रेरी — पूरी नेटवर्क टोपोलॉजी को इन-प्रोसेस सिम्युलेट करती है, बिना वास्तविक सॉकेट या सर्वर के।",
-      "zh": "面向 HiveMind 协议实现的可复用 pytest 端到端测试库——在进程内模拟完整网络拓扑，无需真实套接字或服务器。",
-      "ko": "HiveMind 프로토콜 구현을 위한 재사용 가능한 pytest E2E 라이브러리 — 실제 소켓이나 서버 없이 전체 네트워크 토폴로지를 프로세스 내에서 시뮬레이션합니다.",
-      "ja": "HiveMindプロトコル実装向けの再利用可能なpytest E2Eライブラリ。実ソケットやサーバーなしで、ネットワークトポロジー全体をプロセス内シミュレートします。"
-    }
-  },
-  {
-    "id": "hivemind-test-harness",
-    "name": "hivemind-test-harness",
-    "description": "Central integration test suite for HiveMind — multi-repo topology, stress and real OVOS skill-execution scenarios built on hivescope.",
-    "url": "https://github.com/JarbasHiveMind/hivemind-test-harness",
-    "category": "HiveMind",
-    "tags": [
-      "testing",
-      "integration"
-    ],
-    "featured": false,
-    "descriptions": {
-      "pt": "Suite central de testes de integração do HiveMind — topologias multi-repositório, testes de carga e cenários reais de execução de skills OVOS, sobre o hivescope.",
-      "es": "Suite central de pruebas de integración de HiveMind: topologías multi-repositorio, pruebas de carga y escenarios reales de ejecución de skills OVOS, sobre hivescope.",
-      "de": "Zentrale Integrationstest-Suite für HiveMind — Multi-Repo-Topologien, Lasttests und reale OVOS-Skill-Ausführungsszenarien auf Basis von hivescope.",
-      "nl": "Centrale integratietestsuite voor HiveMind — multi-repo-topologieën, stresstests en echte OVOS-skill-uitvoeringsscenario's, gebouwd op hivescope.",
-      "fr": "Suite centrale de tests d'intégration pour HiveMind — topologies multi-dépôts, tests de charge et scénarios réels d'exécution de skills OVOS, bâtie sur hivescope.",
-      "it": "Suite centrale di test di integrazione per HiveMind — topologie multi-repo, stress test e scenari reali di esecuzione di skill OVOS, costruita su hivescope.",
-      "ru": "Центральный набор интеграционных тестов HiveMind — многорепозиторные топологии, нагрузочные сценарии и реальное выполнение навыков OVOS на базе hivescope.",
-      "ar": "حزمة اختبارات تكامل مركزية لـ HiveMind — طوبولوجيات متعددة المستودعات واختبارات إجهاد وسيناريوهات تنفيذ فعلي لمهارات OVOS، مبنية على hivescope.",
-      "fa": "مجموعهٔ آزمون یکپارچه‌سازی مرکزی HiveMind — توپولوژی‌های چندمخزنی، آزمون فشار و سناریوهای اجرای واقعی مهارت‌های OVOS، بر پایهٔ hivescope.",
-      "hi": "HiveMind के लिए केंद्रीय एकीकरण परीक्षण सूट — hivescope पर बना मल्टी-रेपो टोपोलॉजी, स्ट्रेस और वास्तविक OVOS स्किल-निष्पादन परिदृश्य।",
-      "zh": "HiveMind 的中心集成测试套件——基于 hivescope 的多仓库拓扑、压力测试和真实 OVOS 技能执行场景。",
-      "ko": "HiveMind의 중앙 통합 테스트 스위트 — hivescope 기반의 다중 저장소 토폴로지, 스트레스, 실제 OVOS 스킬 실행 시나리오를 다룹니다.",
-      "ja": "HiveMindの中央統合テストスイート。hivescope上に構築され、複数リポジトリのトポロジー、負荷試験、実OVOSスキル実行シナリオを網羅します。"
-    }
-  },
-  {
-    "id": "hivemind-websocket-protocol",
-    "name": "hivemind-websocket-protocol",
-    "description": "WebSocket transport plugin for hivemind-core — the reference network protocol, exchanging encrypted HiveMessage frames over ws:// or wss://.",
-    "url": "https://github.com/JarbasHiveMind/hivemind-websocket-protocol",
-    "category": "HiveMind",
-    "tags": [
-      "WebSocket",
-      "protocol"
-    ],
-    "featured": false,
-    "descriptions": {
-      "pt": "Plugin de transporte WebSocket para o hivemind-core — o protocolo de rede de referência, trocando tramas HiveMessage cifradas por ws:// ou wss://.",
-      "es": "Plugin de transporte WebSocket para hivemind-core: el protocolo de red de referencia, que intercambia tramas HiveMessage cifradas por ws:// o wss://.",
-      "de": "WebSocket-Transport-Plugin für hivemind-core — das Referenz-Netzwerkprotokoll, das verschlüsselte HiveMessage-Frames über ws:// oder wss:// austauscht.",
-      "nl": "WebSocket-transportplugin voor hivemind-core — het referentienetwerkprotocol, dat versleutelde HiveMessage-frames uitwisselt via ws:// of wss://.",
-      "fr": "Plugin de transport WebSocket pour hivemind-core — le protocole réseau de référence, échangeant des trames HiveMessage chiffrées via ws:// ou wss://.",
-      "it": "Plugin di trasporto WebSocket per hivemind-core — il protocollo di rete di riferimento, che scambia frame HiveMessage cifrati su ws:// o wss://.",
-      "ru": "Транспортный WebSocket-плагин для hivemind-core — эталонный сетевой протокол, обменивающийся зашифрованными кадрами HiveMessage по ws:// или wss://.",
-      "ar": "إضافة نقل WebSocket لـ hivemind-core — بروتوكول الشبكة المرجعي، يتبادل أُطر HiveMessage المشفّرة عبر ws:// أو wss://.",
-      "fa": "افزونهٔ انتقال WebSocket برای hivemind-core — پروتکل شبکهٔ مرجع، با تبادل فریم‌های رمزگذاری‌شدهٔ HiveMessage روی ws:// یا wss://.",
-      "hi": "hivemind-core के लिए WebSocket ट्रांसपोर्ट प्लगइन — संदर्भ नेटवर्क प्रोटोकॉल, जो ws:// या wss:// पर एन्क्रिप्टेड HiveMessage फ़्रेम का आदान-प्रदान करता है।",
-      "zh": "hivemind-core 的 WebSocket 传输插件——参考网络协议，通过 ws:// 或 wss:// 交换加密的 HiveMessage 帧。",
-      "ko": "hivemind-core용 WebSocket 전송 플러그인 — 참조 네트워크 프로토콜로, ws:// 또는 wss://를 통해 암호화된 HiveMessage 프레임을 교환합니다.",
-      "ja": "hivemind-core向けWebSocketトランスポートプラグイン。リファレンスのネットワークプロトコルで、ws://またはwss://上で暗号化されたHiveMessageフレームを交換します。"
-    }
-  },
-  {
     "id": "hivemind-mqtt-protocol",
     "name": "hivemind-mqtt-protocol",
     "description": "MQTT broker-mediated network protocol plugin for hivemind-core — encrypted HiveMessage frames over a broker, ideal for IoT and sensor deployments.",
     "url": "https://github.com/JarbasHiveMind/hivemind-mqtt-protocol",
-    "category": [
-      "HiveMind",
-      "Smart Home"
-    ],
+    "category": "Smart Home",
     "tags": [
       "MQTT",
       "protocol",
@@ -4951,39 +4133,11 @@
     }
   },
   {
-    "id": "hivemind-persona-agent-plugin",
-    "name": "hivemind-persona-agent-plugin",
-    "description": "ovos-persona agent protocol plugin for hivemind-core — answer natural-language queries with an LLM/solver persona, streamed sentence by sentence, no full OVOS stack required.",
-    "url": "https://github.com/JarbasHiveMind/hivemind-persona-agent-plugin",
-    "category": "HiveMind",
-    "tags": [
-      "LLM",
-      "persona",
-      "agent"
-    ],
-    "featured": false,
-    "descriptions": {
-      "pt": "Plugin de protocolo de agente ovos-persona para o hivemind-core — responde a perguntas em linguagem natural com uma persona LLM/solver, transmitida frase a frase, sem precisar da stack OVOS completa.",
-      "es": "Plugin de protocolo de agente ovos-persona para hivemind-core: responde consultas en lenguaje natural con una persona LLM/solver, transmitida frase a frase, sin necesitar la pila OVOS completa.",
-      "de": "ovos-persona-Agentenprotokoll-Plugin für hivemind-core — beantwortet natürlichsprachliche Anfragen mit einer LLM/Solver-Persona, satzweise gestreamt, ohne den vollen OVOS-Stack.",
-      "nl": "ovos-persona-agentprotocolplugin voor hivemind-core — beantwoordt natuurlijke-taalvragen met een LLM/solver-persona, zin voor zin gestreamd, zonder volledige OVOS-stack.",
-      "fr": "Plugin de protocole d'agent ovos-persona pour hivemind-core — répond aux requêtes en langage naturel avec une persona LLM/solveur, diffusée phrase par phrase, sans pile OVOS complète.",
-      "it": "Plugin di protocollo agente ovos-persona per hivemind-core — risponde a query in linguaggio naturale con una persona LLM/solver, trasmessa frase per frase, senza l'intero stack OVOS.",
-      "ru": "Плагин агентского протокола ovos-persona для hivemind-core — отвечает на запросы на естественном языке персоной LLM/solver с потоковой передачей по предложениям, без полного стека OVOS.",
-      "ar": "إضافة بروتوكول وكيل ovos-persona لـ hivemind-core — تجيب عن الاستفسارات باللغة الطبيعية عبر شخصية LLM/حلّال، تُبث جملة بجملة، دون الحاجة إلى منظومة OVOS الكاملة.",
-      "fa": "افزونهٔ پروتکل عامل ovos-persona برای hivemind-core — پاسخ به پرسش‌های زبان طبیعی با شخصیت LLM/حل‌کننده، پخش جمله‌به‌جمله، بدون نیاز به پشتهٔ کامل OVOS.",
-      "hi": "hivemind-core के लिए ovos-persona एजेंट प्रोटोकॉल प्लगइन — LLM/सॉल्वर पर्सोना से प्राकृतिक-भाषा प्रश्नों के उत्तर, वाक्य-दर-वाक्य स्ट्रीम, पूर्ण OVOS स्टैक की आवश्यकता नहीं।",
-      "zh": "hivemind-core 的 ovos-persona 代理协议插件——用 LLM/求解器人格回答自然语言查询，逐句流式输出，无需完整 OVOS 栈。",
-      "ko": "hivemind-core용 ovos-persona 에이전트 프로토콜 플러그인 — 전체 OVOS 스택 없이 LLM/솔버 페르소나로 자연어 질의에 문장 단위 스트리밍으로 응답합니다.",
-      "ja": "hivemind-core向けovos-personaエージェントプロトコルプラグイン。完全なOVOSスタックなしで、LLM/ソルバーのペルソナが自然言語クエリに文単位のストリーミングで応答します。"
-    }
-  },
-  {
     "id": "hivemind-a2a-agent-plugin",
     "name": "hivemind-a2a-agent-plugin",
     "description": "A2A agent protocol plugin for hivemind-core — bridges the hive to external Agent-to-Agent (A2A) servers over JSON-RPC 2.0, streaming responses back to satellites.",
     "url": "https://github.com/JarbasHiveMind/hivemind-a2a-agent-plugin",
-    "category": "HiveMind",
+    "category": "NLnet",
     "tags": [
       "A2A",
       "agent",
@@ -5007,238 +4161,11 @@
     }
   },
   {
-    "id": "hivemind-mic-satellite",
-    "name": "hivemind-mic-satellite",
-    "description": "The thinnest HiveMind satellite — microphone and VAD only, streaming audio to the hive for server-side wake word, STT and TTS; ideal for low-power devices like the Pi Zero.",
-    "url": "https://github.com/JarbasHiveMind/hivemind-mic-satellite",
-    "category": "HiveMind",
-    "tags": [
-      "satellite",
-      "VAD",
-      "Raspberry Pi"
-    ],
-    "featured": false,
-    "descriptions": {
-      "pt": "O satélite HiveMind mais leve — apenas microfone e VAD, transmitindo áudio para a hive, que trata da palavra de ativação, STT e TTS; ideal para dispositivos de baixo consumo como o Pi Zero.",
-      "es": "El satélite HiveMind más ligero: solo micrófono y VAD, transmitiendo audio a la hive, que se encarga de la palabra de activación, STT y TTS; ideal para dispositivos de bajo consumo como el Pi Zero.",
-      "de": "Der schlankeste HiveMind-Satellit — nur Mikrofon und VAD, streamt Audio an den Hive für serverseitiges Wake-Word, STT und TTS; ideal für stromsparende Geräte wie den Pi Zero.",
-      "nl": "De dunste HiveMind-satelliet — alleen microfoon en VAD, streamt audio naar de hive voor server-side wake word, STT en TTS; ideaal voor zuinige apparaten zoals de Pi Zero.",
-      "fr": "Le satellite HiveMind le plus léger — microphone et VAD uniquement, diffusant l'audio vers la hive pour le mot d'éveil, la STT et la TTS côté serveur ; idéal pour les appareils basse consommation comme le Pi Zero.",
-      "it": "Il satellite HiveMind più leggero — solo microfono e VAD, con streaming audio verso la hive per wake word, STT e TTS lato server; ideale per dispositivi a basso consumo come il Pi Zero.",
-      "ru": "Самый лёгкий спутник HiveMind — только микрофон и VAD; аудио передаётся в hive, где выполняются wake word, STT и TTS; идеален для маломощных устройств вроде Pi Zero.",
-      "ar": "أخف قمر تابع لـ HiveMind — ميكروفون وVAD فقط، يبث الصوت إلى الخلية حيث تُعالج كلمة التنبيه وSTT وTTS على الخادم؛ مثالي للأجهزة منخفضة الطاقة مثل Pi Zero.",
-      "fa": "سبک‌ترین ماهوارهٔ HiveMind — فقط میکروفون و VAD؛ صدا به کندو پخش می‌شود و واژهٔ بیداری، STT و TTS سمت سرور انجام می‌شوند؛ مناسب دستگاه‌های کم‌مصرف مانند Pi Zero.",
-      "hi": "सबसे हल्का HiveMind सैटेलाइट — केवल माइक्रोफ़ोन और VAD; ऑडियो hive को स्ट्रीम होता है, जहाँ सर्वर-साइड वेक वर्ड, STT और TTS होते हैं; Pi Zero जैसे कम-शक्ति उपकरणों के लिए आदर्श।",
-      "zh": "最轻量的 HiveMind 卫星端——仅含麦克风和 VAD，将音频流式发送到 hive，由服务器端完成唤醒词、STT 与 TTS；非常适合 Pi Zero 等低功耗设备。",
-      "ko": "가장 가벼운 HiveMind 위성 — 마이크와 VAD만 갖추고 오디오를 하이브로 스트리밍하여 서버 측에서 웨이크 워드·STT·TTS를 처리합니다. Pi Zero 같은 저전력 기기에 적합합니다.",
-      "ja": "最軽量のHiveMindサテライト。マイクとVADのみを備え、音声をハイブへストリーミングし、ウェイクワード・STT・TTSはサーバー側で処理。Pi Zeroなどの低消費電力デバイスに最適です。"
-    }
-  },
-  {
-    "id": "hivemind-voice-sat",
-    "name": "HiveMind-voice-sat",
-    "description": "Full-stack OVOS voice satellite — microphone, VAD, wake word, STT and TTS all run on-device, sending only text to the hive.",
-    "url": "https://github.com/JarbasHiveMind/HiveMind-voice-sat",
-    "category": "HiveMind",
-    "tags": [
-      "satellite",
-      "voice assistant",
-      "on-device"
-    ],
-    "featured": false,
-    "descriptions": {
-      "pt": "Satélite de voz OVOS completo — microfone, VAD, palavra de ativação, STT e TTS correm todos no dispositivo, enviando apenas texto para a hive.",
-      "es": "Satélite de voz OVOS completo: micrófono, VAD, palabra de activación, STT y TTS se ejecutan en el dispositivo, enviando solo texto a la hive.",
-      "de": "Vollständiger OVOS-Sprachsatellit — Mikrofon, VAD, Wake-Word, STT und TTS laufen komplett auf dem Gerät; nur Text wird an den Hive gesendet.",
-      "nl": "Volwaardige OVOS-spraaksatelliet — microfoon, VAD, wake word, STT en TTS draaien allemaal op het apparaat; alleen tekst gaat naar de hive.",
-      "fr": "Satellite vocal OVOS complet — microphone, VAD, mot d'éveil, STT et TTS s'exécutent tous sur l'appareil, seul le texte est envoyé à la hive.",
-      "it": "Satellite vocale OVOS completo — microfono, VAD, wake word, STT e TTS girano tutti sul dispositivo, inviando solo testo alla hive.",
-      "ru": "Полнофункциональный голосовой спутник OVOS — микрофон, VAD, wake word, STT и TTS работают на устройстве; в hive отправляется только текст.",
-      "ar": "قمر صوتي كامل لـ OVOS — الميكروفون وVAD وكلمة التنبيه وSTT وTTS تعمل جميعها على الجهاز، ولا يُرسل إلى الخلية سوى النص.",
-      "fa": "ماهوارهٔ صوتی کامل OVOS — میکروفون، VAD، واژهٔ بیداری، STT و TTS همگی روی دستگاه اجرا می‌شوند و تنها متن به کندو ارسال می‌شود.",
-      "hi": "फुल-स्टैक OVOS वॉइस सैटेलाइट — माइक्रोफ़ोन, VAD, वेक वर्ड, STT और TTS सब डिवाइस पर चलते हैं; hive को केवल टेक्स्ट भेजा जाता है।",
-      "zh": "全栈 OVOS 语音卫星端——麦克风、VAD、唤醒词、STT 和 TTS 全部在设备端运行，仅向 hive 发送文本。",
-      "ko": "풀스택 OVOS 음성 위성 — 마이크, VAD, 웨이크 워드, STT, TTS가 모두 기기에서 실행되며 하이브에는 텍스트만 전송합니다.",
-      "ja": "フルスタックのOVOS音声サテライト。マイク・VAD・ウェイクワード・STT・TTSをすべてデバイス上で実行し、ハイブへはテキストのみを送信します。"
-    }
-  },
-  {
-    "id": "hivemind-voice-relay",
-    "name": "HiveMind-voice-relay",
-    "description": "HiveMind voice relay — wake word detected locally for privacy and low latency, with STT and TTS handled remotely via the audio binary protocol.",
-    "url": "https://github.com/JarbasHiveMind/HiveMind-voice-relay",
-    "category": "HiveMind",
-    "tags": [
-      "satellite",
-      "wake word",
-      "voice assistant"
-    ],
-    "featured": false,
-    "descriptions": {
-      "pt": "Relay de voz HiveMind — palavra de ativação detetada localmente para privacidade e baixa latência, com STT e TTS processados remotamente via protocolo binário de áudio.",
-      "es": "Relay de voz HiveMind: palabra de activación detectada localmente para privacidad y baja latencia, con STT y TTS procesados de forma remota mediante el protocolo binario de audio.",
-      "de": "HiveMind-Sprachrelay — Wake-Word wird lokal erkannt (Privatsphäre, geringe Latenz), STT und TTS laufen remote über das Audio-Binärprotokoll.",
-      "nl": "HiveMind-spraakrelay — wake word lokaal gedetecteerd voor privacy en lage latentie, met STT en TTS op afstand via het binaire audioprotocol.",
-      "fr": "Relais vocal HiveMind — mot d'éveil détecté localement pour la confidentialité et la faible latence, STT et TTS traités à distance via le protocole binaire audio.",
-      "it": "Relay vocale HiveMind — wake word rilevata localmente per privacy e bassa latenza, con STT e TTS gestiti da remoto tramite il protocollo binario audio.",
-      "ru": "Голосовой ретранслятор HiveMind — wake word распознаётся локально (приватность и низкая задержка), а STT и TTS выполняются удалённо по бинарному аудиопротоколу.",
-      "ar": "مرحّل صوتي لـ HiveMind — تُكتشف كلمة التنبيه محليًا للخصوصية وزمن الاستجابة المنخفض، بينما تُعالج STT وTTS عن بُعد عبر بروتوكول الصوت الثنائي.",
-      "fa": "رلهٔ صوتی HiveMind — واژهٔ بیداری برای حریم خصوصی و تأخیر کم به‌صورت محلی تشخیص داده می‌شود و STT و TTS از راه دور با پروتکل دودویی صدا انجام می‌شوند.",
-      "hi": "HiveMind वॉइस रिले — गोपनीयता और कम विलंबता के लिए वेक वर्ड स्थानीय रूप से पहचाना जाता है; STT और TTS ऑडियो बाइनरी प्रोटोकॉल से दूरस्थ रूप से होते हैं।",
-      "zh": "HiveMind 语音中继——唤醒词本地检测，保证隐私与低延迟；STT 和 TTS 通过音频二进制协议远程处理。",
-      "ko": "HiveMind 음성 릴레이 — 개인정보 보호와 낮은 지연을 위해 웨이크 워드는 로컬에서 감지하고, STT·TTS는 오디오 바이너리 프로토콜로 원격 처리합니다.",
-      "ja": "HiveMind音声リレー。プライバシーと低遅延のためウェイクワードはローカル検出し、STTとTTSはオーディオバイナリプロトコル経由でリモート処理します。"
-    }
-  },
-  {
-    "id": "hivemind-cli",
-    "name": "HiveMind-cli",
-    "description": "Terminal client for HiveMind — type utterances and inspect bus responses from the command line, no audio hardware needed.",
-    "url": "https://github.com/JarbasHiveMind/HiveMind-cli",
-    "category": "HiveMind",
-    "tags": [
-      "CLI",
-      "terminal",
-      "accessibility"
-    ],
-    "featured": false,
-    "descriptions": {
-      "pt": "Cliente de terminal para o HiveMind — escreva enunciados e inspecione respostas do bus a partir da linha de comandos, sem hardware de áudio.",
-      "es": "Cliente de terminal para HiveMind: escribe enunciados e inspecciona las respuestas del bus desde la línea de comandos, sin hardware de audio.",
-      "de": "Terminal-Client für HiveMind — Äußerungen eintippen und Bus-Antworten von der Kommandozeile aus inspizieren, ganz ohne Audio-Hardware.",
-      "nl": "Terminalclient voor HiveMind — typ uitingen en inspecteer busreacties vanaf de opdrachtregel, zonder audiohardware.",
-      "fr": "Client terminal pour HiveMind — saisissez des énoncés et inspectez les réponses du bus depuis la ligne de commande, sans matériel audio.",
-      "it": "Client da terminale per HiveMind — digita enunciati e ispeziona le risposte del bus dalla riga di comando, senza hardware audio.",
-      "ru": "Терминальный клиент HiveMind — вводите фразы и просматривайте ответы шины из командной строки, аудиооборудование не требуется.",
-      "ar": "عميل طرفية لـ HiveMind — اكتب العبارات وافحص ردود الناقل من سطر الأوامر، دون الحاجة إلى عتاد صوتي.",
-      "fa": "کلاینت ترمینال برای HiveMind — گفته‌ها را تایپ کنید و پاسخ‌های گذرگاه را از خط فرمان بررسی کنید، بدون نیاز به سخت‌افزار صوتی.",
-      "hi": "HiveMind के लिए टर्मिनल क्लाइंट — कमांड लाइन से उक्तियाँ टाइप करें और बस प्रतिक्रियाएँ देखें, ऑडियो हार्डवेयर की आवश्यकता नहीं।",
-      "zh": "HiveMind 的终端客户端——在命令行输入语句并查看总线响应，无需任何音频硬件。",
-      "ko": "HiveMind용 터미널 클라이언트 — 오디오 하드웨어 없이 명령줄에서 발화를 입력하고 버스 응답을 확인할 수 있습니다.",
-      "ja": "HiveMind向けターミナルクライアント。オーディオ機器なしで、コマンドラインから発話を入力しバスの応答を確認できます。"
-    }
-  },
-  {
-    "id": "poorman-handshake",
-    "name": "poorman_handshake",
-    "description": "HiveMind key-exchange library — securely establish symmetric keys over insecure channels with Noise handshakes, plus legacy password/RSA modes.",
-    "url": "https://github.com/JarbasHiveMind/poorman_handshake",
-    "category": "HiveMind",
-    "tags": [
-      "cryptography",
-      "security",
-      "handshake"
-    ],
-    "featured": false,
-    "descriptions": {
-      "pt": "Biblioteca de troca de chaves do HiveMind — estabelece chaves simétricas com segurança em canais inseguros via handshakes Noise, com modos legados de palavra-passe/RSA.",
-      "es": "Biblioteca de intercambio de claves de HiveMind: establece claves simétricas de forma segura en canales inseguros mediante handshakes Noise, con modos heredados de contraseña/RSA.",
-      "de": "HiveMind-Schlüsselaustausch-Bibliothek — etabliert symmetrische Schlüssel sicher über unsichere Kanäle mit Noise-Handshakes, plus Legacy-Passwort-/RSA-Modi.",
-      "nl": "HiveMind-sleuteluitwisselingsbibliotheek — stelt veilig symmetrische sleutels vast over onveilige kanalen met Noise-handshakes, plus legacy wachtwoord-/RSA-modi.",
-      "fr": "Bibliothèque d'échange de clés HiveMind — établit des clés symétriques en toute sécurité sur des canaux non sûrs via des handshakes Noise, avec modes hérités mot de passe/RSA.",
-      "it": "Libreria di scambio chiavi di HiveMind — stabilisce chiavi simmetriche in modo sicuro su canali insicuri con handshake Noise, più modalità legacy password/RSA.",
-      "ru": "Библиотека обмена ключами HiveMind — безопасно устанавливает симметричные ключи по незащищённым каналам через Noise-рукопожатия, с устаревшими режимами пароль/RSA.",
-      "ar": "مكتبة تبادل مفاتيح HiveMind — تُنشئ مفاتيح متماثلة بأمان عبر قنوات غير آمنة باستخدام مصافحات Noise، مع أوضاع قديمة لكلمة المرور/RSA.",
-      "fa": "کتابخانهٔ تبادل کلید HiveMind — برقراری امن کلیدهای متقارن روی کانال‌های ناامن با دست‌دادن Noise، به‌همراه حالت‌های قدیمی گذرواژه/RSA.",
-      "hi": "HiveMind की-एक्सचेंज लाइब्रेरी — Noise हैंडशेक से असुरक्षित चैनलों पर सुरक्षित रूप से सममित कुंजियाँ स्थापित करती है; पुराने पासवर्ड/RSA मोड भी उपलब्ध।",
-      "zh": "HiveMind 密钥交换库——通过 Noise 握手在不安全信道上安全建立对称密钥，并保留旧式密码/RSA 模式。",
-      "ko": "HiveMind 키 교환 라이브러리 — Noise 핸드셰이크로 안전하지 않은 채널에서 대칭 키를 안전하게 수립하며, 레거시 비밀번호/RSA 모드도 지원합니다.",
-      "ja": "HiveMindの鍵交換ライブラリ。Noiseハンドシェイクにより安全でないチャネル上で対称鍵を安全に確立。レガシーのパスワード/RSAモードにも対応。"
-    }
-  },
-  {
-    "id": "hivemind-presence",
-    "name": "HiveMind-presence",
-    "description": "Local-network presence and discovery for HiveMind nodes — the server announces itself via mDNS and UDP broadcast so satellites find it without knowing its IP.",
-    "url": "https://github.com/JarbasHiveMind/HiveMind-presence",
-    "category": "HiveMind",
-    "tags": [
-      "discovery",
-      "mDNS",
-      "networking"
-    ],
-    "featured": false,
-    "descriptions": {
-      "pt": "Presença e descoberta em rede local para nós HiveMind — o servidor anuncia-se via mDNS e broadcast UDP para que os satélites o encontrem sem conhecer o IP.",
-      "es": "Presencia y descubrimiento en red local para nodos HiveMind: el servidor se anuncia mediante mDNS y broadcast UDP para que los satélites lo encuentren sin conocer su IP.",
-      "de": "Präsenz und Discovery im lokalen Netz für HiveMind-Knoten — der Server kündigt sich per mDNS und UDP-Broadcast an, damit Satelliten ihn ohne IP-Kenntnis finden.",
-      "nl": "Aanwezigheid en ontdekking op het lokale netwerk voor HiveMind-nodes — de server kondigt zichzelf aan via mDNS en UDP-broadcast zodat satellieten hem vinden zonder het IP te kennen.",
-      "fr": "Présence et découverte sur le réseau local pour les nœuds HiveMind — le serveur s'annonce via mDNS et broadcast UDP pour que les satellites le trouvent sans connaître son IP.",
-      "it": "Presenza e discovery in rete locale per i nodi HiveMind — il server si annuncia via mDNS e broadcast UDP così i satelliti lo trovano senza conoscerne l'IP.",
-      "ru": "Обнаружение узлов HiveMind в локальной сети — сервер объявляет о себе через mDNS и UDP-широковещание, чтобы спутники находили его, не зная IP.",
-      "ar": "التواجد والاكتشاف في الشبكة المحلية لعُقد HiveMind — يعلن الخادم عن نفسه عبر mDNS وبث UDP لكي تجده الأقمار التابعة دون معرفة عنوان IP.",
-      "fa": "حضور و کشف در شبکهٔ محلی برای گره‌های HiveMind — سرور خود را از طریق mDNS و پخش UDP اعلام می‌کند تا ماهواره‌ها بدون دانستن IP آن را بیابند.",
-      "hi": "HiveMind नोड्स के लिए स्थानीय-नेटवर्क उपस्थिति और खोज — सर्वर mDNS और UDP ब्रॉडकास्ट से स्वयं की घोषणा करता है ताकि सैटेलाइट बिना IP जाने उसे खोज लें।",
-      "zh": "HiveMind 节点的本地网络存在感知与发现——服务器通过 mDNS 和 UDP 广播宣告自己，卫星端无需知道 IP 即可找到它。",
-      "ko": "HiveMind 노드용 로컬 네트워크 프레즌스·디스커버리 — 서버가 mDNS와 UDP 브로드캐스트로 자신을 알리므로 위성이 IP를 몰라도 서버를 찾을 수 있습니다.",
-      "ja": "HiveMindノードのローカルネットワーク・プレゼンスと発見機能。サーバーがmDNSとUDPブロードキャストで自身を通知するため、サテライトはIPを知らなくても接続先を見つけられます。"
-    }
-  },
-  {
-    "id": "hivemind-ggwave",
-    "name": "hivemind-ggwave",
-    "description": "Zero-configuration HiveMind satellite enrollment via data-over-sound — devices pair by playing and listening to audio tones using the GGWave protocol.",
-    "url": "https://github.com/JarbasHiveMind/hivemind-ggwave",
-    "category": "HiveMind",
-    "tags": [
-      "pairing",
-      "data-over-sound",
-      "GGWave"
-    ],
-    "featured": false,
-    "descriptions": {
-      "pt": "Registo de satélites HiveMind sem configuração via dados-por-som — os dispositivos emparelham reproduzindo e escutando tons de áudio com o protocolo GGWave.",
-      "es": "Alta de satélites HiveMind sin configuración mediante datos por sonido: los dispositivos se emparejan reproduciendo y escuchando tonos de audio con el protocolo GGWave.",
-      "de": "Konfigurationsfreie Anmeldung von HiveMind-Satelliten per Data-over-Sound — Geräte koppeln sich, indem sie Audiotöne per GGWave-Protokoll abspielen und empfangen.",
-      "nl": "Configuratievrije aanmelding van HiveMind-satellieten via data-over-geluid — apparaten koppelen door audiotonen af te spelen en te beluisteren met het GGWave-protocol.",
-      "fr": "Enrôlement sans configuration des satellites HiveMind par données-sur-son — les appareils s'appairent en émettant et écoutant des tonalités audio via le protocole GGWave.",
-      "it": "Registrazione a zero configurazione dei satelliti HiveMind via dati-su-suono — i dispositivi si accoppiano riproducendo e ascoltando toni audio con il protocollo GGWave.",
-      "ru": "Регистрация спутников HiveMind без настройки через передачу данных звуком — устройства сопрягаются, воспроизводя и слушая аудиотоны по протоколу GGWave.",
-      "ar": "تسجيل أقمار HiveMind دون أي إعداد عبر نقل البيانات بالصوت — تقترن الأجهزة بتشغيل نغمات صوتية والاستماع إليها باستخدام بروتوكول GGWave.",
-      "fa": "ثبت ماهواره‌های HiveMind بدون پیکربندی از طریق دادهٔ صوتی — دستگاه‌ها با پخش و شنیدن تن‌های صوتی با پروتکل GGWave جفت می‌شوند.",
-      "hi": "डेटा-ओवर-साउंड से शून्य-कॉन्फ़िगरेशन HiveMind सैटेलाइट नामांकन — GGWave प्रोटोकॉल से ऑडियो टोन बजाकर और सुनकर उपकरण युग्मित होते हैं।",
-      "zh": "通过声波传输数据实现 HiveMind 卫星端零配置注册——设备使用 GGWave 协议播放并聆听音频音调完成配对。",
-      "ko": "소리로 데이터를 전송해 HiveMind 위성을 무설정 등록 — 기기들이 GGWave 프로토콜로 오디오 톤을 재생·수신하며 페어링합니다.",
-      "ja": "音によるデータ伝送でHiveMindサテライトをゼロコンフィグ登録。GGWaveプロトコルの音声トーンを再生・聴取してデバイス同士がペアリングします。"
-    }
-  },
-  {
-    "id": "hivemind-rendezvous",
-    "name": "hivemind-rendezvous",
-    "description": "Async store-and-forward dead-drop HTTP rendezvous for HiveMind nodes that are never online at the same time — encrypted messages deposited to a public key and collected later.",
-    "url": "https://github.com/JarbasHiveMind/hivemind-rendezvous",
-    "category": "HiveMind",
-    "tags": [
-      "store-and-forward",
-      "security",
-      "messaging"
-    ],
-    "featured": false,
-    "descriptions": {
-      "pt": "Ponto de encontro HTTP assíncrono de tipo dead-drop para nós HiveMind que nunca estão online em simultâneo — mensagens cifradas depositadas para uma chave pública e recolhidas depois.",
-      "es": "Punto de encuentro HTTP asíncrono de tipo dead-drop para nodos HiveMind que nunca están en línea a la vez: mensajes cifrados depositados para una clave pública y recogidos más tarde.",
-      "de": "Asynchroner Store-and-Forward-Dead-Drop-HTTP-Rendezvous für HiveMind-Knoten, die nie gleichzeitig online sind — verschlüsselte Nachrichten werden für einen öffentlichen Schlüssel hinterlegt und später abgeholt.",
-      "nl": "Asynchrone store-and-forward dead-drop HTTP-rendez-vous voor HiveMind-nodes die nooit tegelijk online zijn — versleutelde berichten worden bij een publieke sleutel gedeponeerd en later opgehaald.",
-      "fr": "Rendez-vous HTTP asynchrone de type boîte morte pour les nœuds HiveMind jamais en ligne simultanément — messages chiffrés déposés pour une clé publique et récupérés plus tard.",
-      "it": "Rendezvous HTTP asincrono store-and-forward a cassetta morta per nodi HiveMind mai online contemporaneamente — messaggi cifrati depositati per una chiave pubblica e ritirati in seguito.",
-      "ru": "Асинхронный HTTP-рандеву-сервис типа «тайник» для узлов HiveMind, которые никогда не в сети одновременно — зашифрованные сообщения оставляются для открытого ключа и забираются позже.",
-      "ar": "خدمة لقاء HTTP غير متزامنة بأسلوب صندوق الإيداع الميت لعُقد HiveMind التي لا تكون متصلة في الوقت نفسه — تُودَع رسائل مشفّرة لمفتاح عام وتُجمَع لاحقًا.",
-      "fa": "ملاقات‌گاه HTTP ناهم‌زمان از نوع صندوق مرده برای گره‌های HiveMind که هرگز هم‌زمان آنلاین نیستند — پیام‌های رمزگذاری‌شده برای یک کلید عمومی سپرده و بعداً برداشت می‌شوند.",
-      "hi": "कभी एक साथ ऑनलाइन न रहने वाले HiveMind नोड्स के लिए असिंक्रोनस स्टोर-एंड-फ़ॉरवर्ड डेड-ड्रॉप HTTP रेंडेज़वू — एन्क्रिप्टेड संदेश सार्वजनिक कुंजी के लिए जमा होते हैं और बाद में एकत्र किए जाते हैं।",
-      "zh": "为从不同时在线的 HiveMind 节点提供的异步存储转发式「死信箱」HTTP 交会服务——加密消息存放给某个公钥，稍后取回。",
-      "ko": "동시에 온라인 상태가 되지 않는 HiveMind 노드를 위한 비동기 저장-전달 데드드롭 HTTP 랑데부 — 암호화된 메시지를 공개 키 앞으로 맡겨 두고 나중에 수거합니다.",
-      "ja": "同時にオンラインにならないHiveMindノード向けの非同期ストア&フォワード型デッドドロップHTTPランデブー。暗号化メッセージを公開鍵宛てに預け、後から回収します。"
-    }
-  },
-  {
     "id": "z85base91",
     "name": "z85base91",
     "description": "Compact binary-to-text encoding library (Base91, Z85B, Z85P) — fast C implementations with pure-Python fallbacks, all more compact than base64.",
     "url": "https://github.com/JarbasHiveMind/z85base91",
-    "category": [
-      "HiveMind",
-      "Developer Tools"
-    ],
+    "category": "Developer Tools",
     "tags": [
       "encoding",
       "serialization"
@@ -5265,7 +4192,7 @@
     "name": "ovos-stt-plugin-onnx-asr",
     "description": "OVOS speech-to-text plugin wrapping onnx-asr — lightweight ASR from ONNX models, no torch required.",
     "url": "https://github.com/OpenVoiceOS/ovos-stt-plugin-onnx-asr",
-    "category": "OpenVoiceOS",
+    "category": "NLnet",
     "tags": [
       "ONNX",
       "STT",
@@ -5293,7 +4220,7 @@
     "name": "ovos_tts_transformer_FlashSR",
     "description": "Audio super-resolution for OVOS TTS — FlashSR upsamples synthesized speech from 16 kHz to 48 kHz via ONNX before playback, brightening any existing voice without retraining.",
     "url": "https://github.com/OpenVoiceOS/ovos_tts_transformer_FlashSR",
-    "category": "OpenVoiceOS",
+    "category": "NLnet",
     "tags": [
       "TTS",
       "super-resolution",
@@ -5321,7 +4248,7 @@
     "name": "ovos_tts_transformer_NovaSR",
     "description": "Audio super-resolution for OVOS TTS — NovaSR upsamples synthesized speech from 16 kHz to 48 kHz with the fast FastSR upsampler, skipping audio already at 48 kHz.",
     "url": "https://github.com/OpenVoiceOS/ovos_tts_transformer_NovaSR",
-    "category": "OpenVoiceOS",
+    "category": "NLnet",
     "tags": [
       "TTS",
       "super-resolution",
@@ -5345,67 +4272,11 @@
     }
   },
   {
-    "id": "ovos-tts-transformer-audiosr",
-    "name": "ovos-tts-transformer-audiosr",
-    "description": "OVOS TTS transformer wrapping audiosronnx — pure-ONNX speech restoration and bandwidth extension applied to TTS output before playback.",
-    "url": "https://github.com/OpenVoiceOS/ovos-tts-transformer-audiosr",
-    "category": "OpenVoiceOS",
-    "tags": [
-      "TTS",
-      "super-resolution",
-      "ONNX"
-    ],
-    "featured": false,
-    "descriptions": {
-      "pt": "Transformador de TTS do OVOS baseado no audiosronnx — restauro de fala e extensão de largura de banda em ONNX puro aplicados à saída de TTS antes da reprodução.",
-      "es": "Transformador de TTS de OVOS basado en audiosronnx: restauración de voz y extensión de ancho de banda en ONNX puro aplicadas a la salida de TTS antes de la reproducción.",
-      "de": "OVOS-TTS-Transformer auf Basis von audiosronnx — Sprachrestaurierung und Bandbreitenerweiterung in reinem ONNX, angewendet auf die TTS-Ausgabe vor der Wiedergabe.",
-      "nl": "OVOS-TTS-transformer rond audiosronnx — spraakrestauratie en bandbreedte-uitbreiding in puur ONNX, toegepast op de TTS-uitvoer vóór afspelen.",
-      "fr": "Transformateur TTS d'OVOS s'appuyant sur audiosronnx — restauration de la parole et extension de bande passante en pur ONNX, appliquées à la sortie TTS avant lecture.",
-      "it": "Transformer TTS di OVOS basato su audiosronnx — restauro vocale ed estensione di banda in puro ONNX applicati all'output TTS prima della riproduzione.",
-      "ru": "TTS-трансформер OVOS на основе audiosronnx — восстановление речи и расширение полосы в чистом ONNX, применяемые к выходу TTS перед воспроизведением.",
-      "ar": "محوِّل TTS لـ OVOS يعتمد على audiosronnx — استعادة كلام وتوسيع نطاق ترددي بتقنية ONNX الخالصة يُطبَّقان على مخرجات TTS قبل التشغيل.",
-      "fa": "ترنسفورمر TTS در OVOS بر پایهٔ audiosronnx — بازسازی گفتار و گسترش پهنای باند با ONNX خالص که پیش از پخش روی خروجی TTS اعمال می‌شود.",
-      "hi": "audiosronnx पर आधारित OVOS TTS ट्रांसफ़ॉर्मर — प्लेबैक से पहले TTS आउटपुट पर शुद्ध-ONNX वाक् पुनर्स्थापन और बैंडविड्थ विस्तार।",
-      "zh": "封装 audiosronnx 的 OVOS TTS 变换器——在播放前对 TTS 输出应用纯 ONNX 语音修复与带宽扩展。",
-      "ko": "audiosronnx를 감싼 OVOS TTS 트랜스포머 — 재생 전에 TTS 출력에 순수 ONNX 음성 복원과 대역폭 확장을 적용합니다.",
-      "ja": "audiosronnxをラップしたOVOS TTSトランスフォーマー。再生前のTTS出力に純ONNXの音声修復と帯域拡張を適用します。"
-    }
-  },
-  {
-    "id": "ovos-media-plugin-ffplay",
-    "name": "ovos-media-plugin-ffplay",
-    "description": "ffplay playback backend plugin for ovos-audio and ovos-media — media playback anywhere ffmpeg runs.",
-    "url": "https://github.com/OpenVoiceOS/ovos-media-plugin-ffplay",
-    "category": "OpenVoiceOS",
-    "tags": [
-      "media",
-      "playback",
-      "plugin"
-    ],
-    "featured": false,
-    "descriptions": {
-      "pt": "Plugin de reprodução ffplay para o ovos-audio e o ovos-media — reprodução multimédia em qualquer sítio onde o ffmpeg corra.",
-      "es": "Plugin de reproducción ffplay para ovos-audio y ovos-media: reproducción multimedia en cualquier lugar donde funcione ffmpeg.",
-      "de": "ffplay-Wiedergabe-Backend-Plugin für ovos-audio und ovos-media — Medienwiedergabe überall dort, wo ffmpeg läuft.",
-      "nl": "ffplay-afspeelbackendplugin voor ovos-audio en ovos-media — mediaweergave overal waar ffmpeg draait.",
-      "fr": "Plugin de lecture ffplay pour ovos-audio et ovos-media — lecture multimédia partout où ffmpeg fonctionne.",
-      "it": "Plugin di riproduzione ffplay per ovos-audio e ovos-media — riproduzione multimediale ovunque giri ffmpeg.",
-      "ru": "Плагин воспроизведения ffplay для ovos-audio и ovos-media — проигрывание медиа везде, где работает ffmpeg.",
-      "ar": "إضافة تشغيل ffplay لـ ovos-audio وovos-media — تشغيل الوسائط أينما يعمل ffmpeg.",
-      "fa": "افزونهٔ پخش ffplay برای ovos-audio و ovos-media — پخش رسانه در هر جایی که ffmpeg اجرا شود.",
-      "hi": "ovos-audio और ovos-media के लिए ffplay प्लेबैक बैकएंड प्लगइन — जहाँ भी ffmpeg चले, वहाँ मीडिया प्लेबैक।",
-      "zh": "面向 ovos-audio 与 ovos-media 的 ffplay 播放后端插件——凡是能运行 ffmpeg 的地方都能播放媒体。",
-      "ko": "ovos-audio와 ovos-media용 ffplay 재생 백엔드 플러그인 — ffmpeg이 실행되는 곳이라면 어디서든 미디어를 재생합니다.",
-      "ja": "ovos-audioおよびovos-media向けのffplay再生バックエンドプラグイン。ffmpegが動く環境ならどこでもメディア再生が可能です。"
-    }
-  },
-  {
     "id": "ovos-plugin-arena",
     "name": "ovos-plugin-arena",
     "description": "Benchmarking arena for OVOS plugins — head-to-head fights with ELO rankings to compare STT, TTS and other plugin implementations on real workloads.",
     "url": "https://github.com/OpenVoiceOS/ovos-plugin-arena",
-    "category": "OpenVoiceOS",
+    "category": "NLnet",
     "tags": [
       "benchmark",
       "ELO",
@@ -5433,7 +4304,7 @@
     "name": "ovos-busmon",
     "description": "Messagebus monitor for OpenVoiceOS — watch bus traffic live to debug skills, intents and services.",
     "url": "https://github.com/OpenVoiceOS/ovos-busmon",
-    "category": "OpenVoiceOS",
+    "category": "NLnet",
     "tags": [
       "messagebus",
       "debugging",
@@ -5461,7 +4332,7 @@
     "name": "ovos-messagebus-chat-plugin",
     "description": "OVOS ChatEngine plugin that proxies conversation turns through the OVOS messagebus — connect chat interfaces straight to a running assistant.",
     "url": "https://github.com/OpenVoiceOS/ovos-messagebus-chat-plugin",
-    "category": "OpenVoiceOS",
+    "category": "NLnet",
     "tags": [
       "chat",
       "messagebus",
@@ -5489,10 +4360,7 @@
     "name": "ovos-opendata-server",
     "description": "Open-data metrics server for OpenVoiceOS — collects anonymous usage metrics and publishes them as open datasets; developed under the ILENIA project.",
     "url": "https://github.com/OpenVoiceOS/ovos-opendata-server",
-    "category": [
-      "OpenVoiceOS",
-      "ILENIA"
-    ],
+    "category": "ILENIA",
     "tags": [
       "metrics",
       "open data",
@@ -5520,7 +4388,7 @@
     "name": "ovos-stt-server",
     "description": "Host any OpenVoiceOS STT plugin as a network service — a small server exposing speech-to-text over HTTP for satellites and third-party clients.",
     "url": "https://github.com/OpenVoiceOS/ovos-stt-server",
-    "category": "OpenVoiceOS",
+    "category": "NLnet",
     "tags": [
       "STT",
       "server",
@@ -5548,7 +4416,7 @@
     "name": "ovos-tts-server",
     "description": "Host any OpenVoiceOS TTS plugin as a service — a simple flask server that turns any TTS plugin into a self-hosted speech-synthesis API.",
     "url": "https://github.com/OpenVoiceOS/ovos-tts-server",
-    "category": "OpenVoiceOS",
+    "category": "NLnet",
     "tags": [
       "TTS",
       "server",
@@ -5576,10 +4444,7 @@
     "name": "raspovos-audio-setup",
     "description": "Audio auto-configuration library for raspOVOS — detects sound cards, HATs and USB devices on Raspberry Pi and wires them up for voice assistant use; developed under the ILENIA project.",
     "url": "https://github.com/OpenVoiceOS/raspovos-audio-setup",
-    "category": [
-      "OpenVoiceOS",
-      "ILENIA"
-    ],
+    "category": "ILENIA",
     "tags": [
       "Raspberry Pi",
       "audio",
@@ -5608,7 +4473,7 @@
     "description": "Dead-simple keyword-based intent parser — a drop-in Adapt replacement matching utterances against required/optional keyword slots; born at TigreGótico and donated to OpenVoiceOS.",
     "url": "https://github.com/OpenVoiceOS/palavreado",
     "category": [
-      "OpenVoiceOS",
+      "NLnet",
       "NLP & Language"
     ],
     "tags": [
