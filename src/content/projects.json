@@ -150,30 +150,30 @@
   {
     "id": "hivemind",
     "name": "HiveMind",
-    "description": "A protocol and ecosystem connecting lightweight satellite devices and AI agents to a central OpenVoiceOS server over an encrypted mesh — transport protocols, voice satellites, chat bridges, cryptography and zero-config discovery, spread across a family of focused repositories.",
+    "description": "A protocol for building hierarchical networks of agents — lightweight satellite devices connect over an encrypted mesh to any conversational agent, from OpenVoiceOS to LLM personas to arbitrary A2A agents. The ecosystem spans transport protocols, voice satellites, chat bridges, cryptography and zero-config discovery.",
     "url": "https://github.com/JarbasHiveMind",
     "category": "Voice Platforms",
     "tags": [
-      "device mesh",
+      "agent networks",
       "distributed voice",
       "protocol"
     ],
     "image": "https://github.com/JarbasHiveMind/HiveMind-assets/raw/master/logo/hivemind-512.png",
     "featured": true,
     "descriptions": {
-      "pt": "Um protocolo e ecossistema que liga dispositivos satélite leves e agentes de IA a um servidor OpenVoiceOS central através de uma malha cifrada — protocolos de transporte, satélites de voz, pontes de chat, criptografia e descoberta sem configuração, distribuídos por uma família de repositórios focados.",
-      "es": "Un protocolo y ecosistema que conecta dispositivos satélite ligeros y agentes de IA con un servidor OpenVoiceOS central a través de una malla cifrada: protocolos de transporte, satélites de voz, puentes de chat, criptografía y descubrimiento sin configuración, repartidos en una familia de repositorios especializados.",
-      "de": "Ein Protokoll und Ökosystem, das leichtgewichtige Satellitengeräte und KI-Agenten über ein verschlüsseltes Mesh mit einem zentralen OpenVoiceOS-Server verbindet — Transportprotokolle, Sprachsatelliten, Chat-Brücken, Kryptografie und konfigurationsfreie Discovery, verteilt auf eine Familie fokussierter Repositories.",
-      "nl": "Een protocol en ecosysteem dat lichtgewicht satellietapparaten en AI-agenten via een versleuteld mesh verbindt met een centrale OpenVoiceOS-server — transportprotocollen, spraaksatellieten, chatbruggen, cryptografie en configuratievrije discovery, verspreid over een familie van gerichte repositories.",
-      "fr": "Un protocole et un écosystème reliant appareils satellites légers et agents IA à un serveur OpenVoiceOS central via un maillage chiffré — protocoles de transport, satellites vocaux, passerelles de chat, cryptographie et découverte sans configuration, répartis dans une famille de dépôts spécialisés.",
-      "it": "Un protocollo ed ecosistema che collega dispositivi satellite leggeri e agenti IA a un server OpenVoiceOS centrale tramite una mesh cifrata — protocolli di trasporto, satelliti vocali, bridge di chat, crittografia e discovery a zero configurazione, distribuiti in una famiglia di repository dedicati.",
-      "ru": "Протокол и экосистема, соединяющие лёгкие устройства-спутники и ИИ-агентов с центральным сервером OpenVoiceOS через зашифрованную mesh-сеть — транспортные протоколы, голосовые спутники, мосты в чаты, криптография и обнаружение без настройки, распределённые по семейству специализированных репозиториев.",
-      "ar": "بروتوكول ومنظومة يربطان أجهزة تابعة خفيفة ووكلاء ذكاء اصطناعي بخادم OpenVoiceOS مركزي عبر شبكة مشفّرة — بروتوكولات نقل وأقمار صوتية وجسور دردشة وتشفير واكتشاف دون إعداد، موزعة على عائلة من المستودعات المتخصصة.",
-      "fa": "پروتکل و اکوسیستمی که دستگاه‌های ماهواره‌ای سبک و عامل‌های هوش مصنوعی را از طریق مش رمزگذاری‌شده به سرور مرکزی OpenVoiceOS متصل می‌کند — پروتکل‌های انتقال، ماهواره‌های صوتی، پل‌های چت، رمزنگاری و کشف بدون پیکربندی، در خانواده‌ای از مخزن‌های متمرکز.",
-      "hi": "एक प्रोटोकॉल और पारिस्थितिकी तंत्र जो हल्के सैटेलाइट उपकरणों और AI एजेंटों को एन्क्रिप्टेड मेश के ज़रिए केंद्रीय OpenVoiceOS सर्वर से जोड़ता है — ट्रांसपोर्ट प्रोटोकॉल, वॉइस सैटेलाइट, चैट ब्रिज, क्रिप्टोग्राफ़ी और ज़ीरो-कॉन्फ़िग खोज, केंद्रित रिपॉज़िटरी के एक परिवार में फैले हुए।",
-      "zh": "一套将轻量卫星设备与 AI 代理通过加密网状网络连接到中央 OpenVoiceOS 服务器的协议与生态——传输协议、语音卫星、聊天桥接、加密与零配置发现，分布在一系列专注的仓库中。",
-      "ko": "경량 위성 기기와 AI 에이전트를 암호화 메시로 중앙 OpenVoiceOS 서버에 연결하는 프로토콜이자 생태계 — 전송 프로토콜, 음성 위성, 채팅 브리지, 암호화, 무설정 디스커버리가 목적별 저장소 가족에 나뉘어 있습니다.",
-      "ja": "軽量なサテライトデバイスとAIエージェントを暗号化メッシュで中央のOpenVoiceOSサーバーへつなぐプロトコルとエコシステム。トランスポートプロトコル、音声サテライト、チャットブリッジ、暗号、ゼロコンフィグ発見機能が、目的別リポジトリ群として展開されています。"
+      "pt": "Um protocolo para construir redes hierárquicas de agentes — dispositivos satélite leves ligam-se por uma malha cifrada a qualquer agente conversacional, do OpenVoiceOS a personas LLM e agentes A2A arbitrários. O ecossistema abrange protocolos de transporte, satélites de voz, pontes de chat, criptografia e descoberta sem configuração.",
+      "es": "Un protocolo para construir redes jerárquicas de agentes: dispositivos satélite ligeros se conectan por una malla cifrada a cualquier agente conversacional, desde OpenVoiceOS hasta personas LLM y agentes A2A arbitrarios. El ecosistema abarca protocolos de transporte, satélites de voz, puentes de chat, criptografía y descubrimiento sin configuración.",
+      "de": "Ein Protokoll zum Aufbau hierarchischer Agentennetzwerke — leichtgewichtige Satellitengeräte verbinden sich über ein verschlüsseltes Mesh mit einem beliebigen Konversationsagenten, von OpenVoiceOS über LLM-Personas bis zu beliebigen A2A-Agenten. Das Ökosystem umfasst Transportprotokolle, Sprachsatelliten, Chat-Brücken, Kryptografie und konfigurationsfreie Discovery.",
+      "nl": "Een protocol voor het bouwen van hiërarchische agentnetwerken — lichtgewicht satellietapparaten verbinden zich via een versleuteld mesh met elke conversatie-agent, van OpenVoiceOS tot LLM-persona's tot willekeurige A2A-agenten. Het ecosysteem omvat transportprotocollen, spraaksatellieten, chatbruggen, cryptografie en configuratievrije discovery.",
+      "fr": "Un protocole pour bâtir des réseaux hiérarchiques d'agents — des appareils satellites légers se connectent via un maillage chiffré à n'importe quel agent conversationnel, d'OpenVoiceOS aux personas LLM et aux agents A2A arbitraires. L'écosystème couvre protocoles de transport, satellites vocaux, passerelles de chat, cryptographie et découverte sans configuration.",
+      "it": "Un protocollo per costruire reti gerarchiche di agenti — dispositivi satellite leggeri si collegano tramite una mesh cifrata a qualsiasi agente conversazionale, da OpenVoiceOS alle persona LLM fino ad agenti A2A arbitrari. L'ecosistema comprende protocolli di trasporto, satelliti vocali, bridge di chat, crittografia e discovery a zero configurazione.",
+      "ru": "Протокол для построения иерархических сетей агентов — лёгкие устройства-спутники подключаются через зашифрованную mesh-сеть к любому диалоговому агенту: от OpenVoiceOS до LLM-персон и произвольных A2A-агентов. Экосистема охватывает транспортные протоколы, голосовые спутники, мосты в чаты, криптографию и обнаружение без настройки.",
+      "ar": "بروتوكول لبناء شبكات هرمية من الوكلاء — أجهزة تابعة خفيفة تتصل عبر شبكة مشفّرة بأي وكيل محادثة، من OpenVoiceOS إلى شخصيات LLM ووكلاء A2A عشوائيين. تشمل المنظومة بروتوكولات النقل والأقمار الصوتية وجسور الدردشة والتشفير والاكتشاف دون إعداد.",
+      "fa": "پروتکلی برای ساخت شبکه‌های سلسله‌مراتبی از عامل‌ها — دستگاه‌های ماهواره‌ای سبک از طریق مش رمزگذاری‌شده به هر عامل گفت‌وگویی متصل می‌شوند؛ از OpenVoiceOS تا شخصیت‌های LLM و عامل‌های دلخواه A2A. اکوسیستم شامل پروتکل‌های انتقال، ماهواره‌های صوتی، پل‌های چت، رمزنگاری و کشف بدون پیکربندی است.",
+      "hi": "एजेंटों के पदानुक्रमित नेटवर्क बनाने का प्रोटोकॉल — हल्के सैटेलाइट उपकरण एन्क्रिप्टेड मेश से किसी भी संवादी एजेंट से जुड़ते हैं: OpenVoiceOS से लेकर LLM पर्सोना और मनमाने A2A एजेंटों तक। पारिस्थितिकी तंत्र में ट्रांसपोर्ट प्रोटोकॉल, वॉइस सैटेलाइट, चैट ब्रिज, क्रिप्टोग्राफ़ी और ज़ीरो-कॉन्फ़िग खोज शामिल हैं।",
+      "zh": "一套用于构建分层代理网络的协议——轻量卫星设备通过加密网状网络连接到任意对话代理：从 OpenVoiceOS 到 LLM 人格再到任意 A2A 代理。生态涵盖传输协议、语音卫星、聊天桥接、加密与零配置发现。",
+      "ko": "계층적 에이전트 네트워크를 구축하기 위한 프로토콜 — 경량 위성 기기가 암호화 메시를 통해 OpenVoiceOS부터 LLM 페르소나, 임의의 A2A 에이전트까지 어떤 대화형 에이전트에도 연결됩니다. 생태계는 전송 프로토콜, 음성 위성, 채팅 브리지, 암호화, 무설정 디스커버리를 아우릅니다.",
+      "ja": "階層的なエージェントネットワークを構築するためのプロトコル。軽量なサテライトデバイスが暗号化メッシュを介して、OpenVoiceOSからLLMペルソナ、任意のA2Aエージェントまで、あらゆる対話エージェントに接続します。エコシステムはトランスポートプロトコル、音声サテライト、チャットブリッジ、暗号、ゼロコンフィグ発見を網羅します。"
     }
   },
   {
@@ -4102,34 +4102,6 @@
       "zh": "类 scikit-learn 的机器学习与神经网络库，仅依赖 numpy 和 scipy——为可读性而写。",
       "ko": "numpy와 scipy만을 의존성으로 갖는 scikit-learn 스타일의 머신러닝·신경망 라이브러리 — 읽히기 위해 쓰였습니다.",
       "ja": "numpyとscipyのみに依存するscikit-learn風の機械学習・ニューラルネットワークライブラリ。読まれるために書かれたコード。"
-    }
-  },
-  {
-    "id": "hivemind-mqtt-protocol",
-    "name": "hivemind-mqtt-protocol",
-    "description": "MQTT broker-mediated network protocol plugin for hivemind-core — encrypted HiveMessage frames over a broker, ideal for IoT and sensor deployments.",
-    "url": "https://github.com/JarbasHiveMind/hivemind-mqtt-protocol",
-    "category": "Smart Home",
-    "tags": [
-      "MQTT",
-      "protocol",
-      "IoT"
-    ],
-    "featured": false,
-    "descriptions": {
-      "pt": "Plugin de protocolo de rede mediado por broker MQTT para o hivemind-core — tramas HiveMessage cifradas através de um broker, ideal para IoT e sensores.",
-      "es": "Plugin de protocolo de red mediado por broker MQTT para hivemind-core: tramas HiveMessage cifradas a través de un broker, ideal para IoT y sensores.",
-      "de": "MQTT-Broker-vermitteltes Netzwerkprotokoll-Plugin für hivemind-core — verschlüsselte HiveMessage-Frames über einen Broker, ideal für IoT- und Sensor-Setups.",
-      "nl": "MQTT-broker-gemedieerde netwerkprotocolplugin voor hivemind-core — versleutelde HiveMessage-frames via een broker, ideaal voor IoT- en sensoromgevingen.",
-      "fr": "Plugin de protocole réseau via broker MQTT pour hivemind-core — trames HiveMessage chiffrées passant par un broker, idéal pour l'IoT et les capteurs.",
-      "it": "Plugin di protocollo di rete mediato da broker MQTT per hivemind-core — frame HiveMessage cifrati tramite broker, ideale per IoT e sensori.",
-      "ru": "Сетевой протокол через MQTT-брокер для hivemind-core — зашифрованные кадры HiveMessage через брокер, идеален для IoT и сенсорных развёртываний.",
-      "ar": "إضافة بروتوكول شبكة عبر وسيط MQTT لـ hivemind-core — أُطر HiveMessage مشفّرة عبر وسيط، مثالية لإنترنت الأشياء والمستشعرات.",
-      "fa": "افزونهٔ پروتکل شبکه با واسطهٔ کارگزار MQTT برای hivemind-core — فریم‌های رمزگذاری‌شدهٔ HiveMessage از طریق کارگزار، مناسب اینترنت اشیا و حسگرها.",
-      "hi": "hivemind-core के लिए MQTT ब्रोकर-मध्यस्थ नेटवर्क प्रोटोकॉल प्लगइन — ब्रोकर के माध्यम से एन्क्रिप्टेड HiveMessage फ़्रेम, IoT और सेंसर परिनियोजन के लिए आदर्श।",
-      "zh": "hivemind-core 的 MQTT 代理中介网络协议插件——通过代理交换加密 HiveMessage 帧，非常适合物联网与传感器部署。",
-      "ko": "hivemind-core용 MQTT 브로커 매개 네트워크 프로토콜 플러그인 — 브로커를 통해 암호화된 HiveMessage 프레임을 교환하며 IoT·센서 환경에 적합합니다.",
-      "ja": "hivemind-core向けのMQTTブローカー仲介ネットワークプロトコルプラグイン。ブローカー経由で暗号化HiveMessageフレームを交換し、IoTやセンサー環境に最適です。"
     }
   },
   {
