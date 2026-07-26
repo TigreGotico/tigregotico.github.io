@@ -5259,5 +5259,377 @@
       "ko": "컴팩트한 바이너리-텍스트 인코딩 라이브러리(Base91, Z85B, Z85P) — 빠른 C 구현과 순수 Python 폴백을 제공하며 모두 base64보다 컴팩트합니다.",
       "ja": "コンパクトなバイナリ→テキストエンコーディングライブラリ（Base91・Z85B・Z85P）。高速なC実装と純Pythonフォールバックを備え、いずれもbase64より高効率です。"
     }
+  },
+  {
+    "id": "ovos-stt-plugin-onnx-asr",
+    "name": "ovos-stt-plugin-onnx-asr",
+    "description": "OVOS speech-to-text plugin wrapping onnx-asr — lightweight ASR from ONNX models, no torch required.",
+    "url": "https://github.com/OpenVoiceOS/ovos-stt-plugin-onnx-asr",
+    "category": "OpenVoiceOS",
+    "tags": [
+      "ONNX",
+      "STT",
+      "plugin"
+    ],
+    "featured": false,
+    "descriptions": {
+      "pt": "Plugin de reconhecimento de fala para OVOS baseado no onnx-asr — ASR leve a partir de modelos ONNX, sem necessidade de torch.",
+      "es": "Plugin de reconocimiento de voz para OVOS basado en onnx-asr: ASR ligero a partir de modelos ONNX, sin necesidad de torch.",
+      "de": "OVOS-Spracherkennungs-Plugin auf Basis von onnx-asr — leichtgewichtiges ASR aus ONNX-Modellen, ganz ohne torch.",
+      "nl": "OVOS-spraakherkenningsplugin rond onnx-asr — lichtgewicht ASR met ONNX-modellen, zonder torch.",
+      "fr": "Plugin de reconnaissance vocale OVOS s'appuyant sur onnx-asr — ASR léger à partir de modèles ONNX, sans torch.",
+      "it": "Plugin di riconoscimento vocale per OVOS basato su onnx-asr — ASR leggero da modelli ONNX, senza torch.",
+      "ru": "Плагин распознавания речи для OVOS на основе onnx-asr — лёгкий ASR из ONNX-моделей, без torch.",
+      "ar": "إضافة تحويل الكلام إلى نص لـ OVOS تعتمد على onnx-asr — تعرّف كلام خفيف من نماذج ONNX دون الحاجة إلى torch.",
+      "fa": "افزونهٔ گفتار به متن OVOS بر پایهٔ onnx-asr — بازشناسی گفتار سبک با مدل‌های ONNX، بدون نیاز به torch.",
+      "hi": "onnx-asr पर आधारित OVOS वाक्-से-पाठ प्लगइन — ONNX मॉडलों से हल्का ASR, torch की आवश्यकता नहीं।",
+      "zh": "基于 onnx-asr 的 OVOS 语音转文本插件——用 ONNX 模型实现轻量 ASR，无需 torch。",
+      "ko": "onnx-asr을 감싼 OVOS 음성 인식 플러그인 — torch 없이 ONNX 모델로 가벼운 ASR을 제공합니다.",
+      "ja": "onnx-asrをラップしたOVOS音声認識プラグイン。torch不要でONNXモデルによる軽量ASRを実現します。"
+    }
+  },
+  {
+    "id": "ovos-tts-transformer-flashsr",
+    "name": "ovos_tts_transformer_FlashSR",
+    "description": "Audio super-resolution for OVOS TTS — FlashSR upsamples synthesized speech from 16 kHz to 48 kHz via ONNX before playback, brightening any existing voice without retraining.",
+    "url": "https://github.com/OpenVoiceOS/ovos_tts_transformer_FlashSR",
+    "category": "OpenVoiceOS",
+    "tags": [
+      "TTS",
+      "super-resolution",
+      "ONNX"
+    ],
+    "featured": false,
+    "descriptions": {
+      "pt": "Super-resolução de áudio para TTS no OVOS — o FlashSR eleva a fala sintetizada de 16 kHz para 48 kHz via ONNX antes da reprodução, tornando qualquer voz existente mais nítida sem retreino.",
+      "es": "Superresolución de audio para TTS en OVOS: FlashSR eleva la voz sintetizada de 16 kHz a 48 kHz vía ONNX antes de la reproducción, aclarando cualquier voz existente sin reentrenar.",
+      "de": "Audio-Superresolution für OVOS-TTS — FlashSR skaliert synthetisierte Sprache vor der Wiedergabe per ONNX von 16 kHz auf 48 kHz und macht jede vorhandene Stimme klarer, ohne Neutraining.",
+      "nl": "Audio-superresolutie voor OVOS-TTS — FlashSR schaalt gesynthetiseerde spraak vóór afspelen via ONNX op van 16 kHz naar 48 kHz en maakt elke bestaande stem helderder zonder hertraining.",
+      "fr": "Super-résolution audio pour la TTS d'OVOS — FlashSR élève la parole synthétisée de 16 kHz à 48 kHz via ONNX avant lecture, éclaircissant toute voix existante sans réentraînement.",
+      "it": "Super-risoluzione audio per il TTS di OVOS — FlashSR porta il parlato sintetizzato da 16 kHz a 48 kHz via ONNX prima della riproduzione, rendendo più brillante qualsiasi voce esistente senza riaddestramento.",
+      "ru": "Аудио-суперразрешение для TTS в OVOS — FlashSR повышает синтезированную речь с 16 до 48 кГц через ONNX перед воспроизведением, делая любой голос ярче без переобучения.",
+      "ar": "استبانة صوتية فائقة لـ TTS في OVOS — يرفع FlashSR الكلام المُصطنع من 16 إلى 48 كيلوهرتز عبر ONNX قبل التشغيل، فيمنح أي صوت قائم وضوحًا أكبر دون إعادة تدريب.",
+      "fa": "فراتفکیک صوتی برای TTS در OVOS — FlashSR گفتار ساخته‌شده را پیش از پخش از طریق ONNX از ۱۶ به ۴۸ کیلوهرتز ارتقا می‌دهد و هر صدای موجود را بدون بازآموزی شفاف‌تر می‌کند.",
+      "hi": "OVOS TTS के लिए ऑडियो सुपर-रेज़ोल्यूशन — FlashSR प्लेबैक से पहले ONNX से संश्लेषित वाक् को 16 kHz से 48 kHz तक बढ़ाता है, बिना पुनःप्रशिक्षण किसी भी आवाज़ को उज्जवल बनाता है।",
+      "zh": "OVOS TTS 的音频超分辨率——FlashSR 在播放前通过 ONNX 将合成语音从 16 kHz 提升到 48 kHz，无需重训即可让现有语音更明亮。",
+      "ko": "OVOS TTS용 오디오 초해상도 — FlashSR이 재생 전에 ONNX로 합성 음성을 16 kHz에서 48 kHz로 업샘플링하여 재학습 없이 기존 목소리를 더 선명하게 만듭니다.",
+      "ja": "OVOS TTS向けオーディオ超解像。FlashSRが再生前にONNXで合成音声を16 kHzから48 kHzへアップサンプリングし、再学習なしで既存の声をより明瞭にします。"
+    }
+  },
+  {
+    "id": "ovos-tts-transformer-novasr",
+    "name": "ovos_tts_transformer_NovaSR",
+    "description": "Audio super-resolution for OVOS TTS — NovaSR upsamples synthesized speech from 16 kHz to 48 kHz with the fast FastSR upsampler, skipping audio already at 48 kHz.",
+    "url": "https://github.com/OpenVoiceOS/ovos_tts_transformer_NovaSR",
+    "category": "OpenVoiceOS",
+    "tags": [
+      "TTS",
+      "super-resolution",
+      "ONNX"
+    ],
+    "featured": false,
+    "descriptions": {
+      "pt": "Super-resolução de áudio para TTS no OVOS — o NovaSR eleva a fala sintetizada de 16 kHz para 48 kHz com o rápido upsampler FastSR, ignorando áudio que já esteja a 48 kHz.",
+      "es": "Superresolución de audio para TTS en OVOS: NovaSR eleva la voz sintetizada de 16 kHz a 48 kHz con el veloz upsampler FastSR, omitiendo el audio que ya esté a 48 kHz.",
+      "de": "Audio-Superresolution für OVOS-TTS — NovaSR skaliert synthetisierte Sprache mit dem schnellen FastSR-Upsampler von 16 kHz auf 48 kHz und überspringt Audio, das bereits 48 kHz hat.",
+      "nl": "Audio-superresolutie voor OVOS-TTS — NovaSR schaalt gesynthetiseerde spraak op van 16 kHz naar 48 kHz met de snelle FastSR-upsampler en slaat audio over die al 48 kHz is.",
+      "fr": "Super-résolution audio pour la TTS d'OVOS — NovaSR élève la parole synthétisée de 16 kHz à 48 kHz avec le rapide upsampler FastSR, en ignorant l'audio déjà à 48 kHz.",
+      "it": "Super-risoluzione audio per il TTS di OVOS — NovaSR porta il parlato sintetizzato da 16 kHz a 48 kHz con il veloce upsampler FastSR, saltando l'audio già a 48 kHz.",
+      "ru": "Аудио-суперразрешение для TTS в OVOS — NovaSR повышает синтезированную речь с 16 до 48 кГц быстрым апсемплером FastSR, пропуская звук, уже записанный в 48 кГц.",
+      "ar": "استبانة صوتية فائقة لـ TTS في OVOS — يرفع NovaSR الكلام المُصطنع من 16 إلى 48 كيلوهرتز عبر مُحسِّن FastSR السريع، متجاوزًا الصوت الذي هو أصلًا بجودة 48 كيلوهرتز.",
+      "fa": "فراتفکیک صوتی برای TTS در OVOS — NovaSR گفتار ساخته‌شده را با ارتقادهندهٔ سریع FastSR از ۱۶ به ۴۸ کیلوهرتز می‌رساند و صدای ۴۸ کیلوهرتزی را دست‌نخورده می‌گذارد.",
+      "hi": "OVOS TTS के लिए ऑडियो सुपर-रेज़ोल्यूशन — NovaSR तेज़ FastSR अपसैम्पलर से संश्लेषित वाक् को 16 kHz से 48 kHz तक बढ़ाता है; पहले से 48 kHz ऑडियो को छोड़ देता है।",
+      "zh": "OVOS TTS 的音频超分辨率——NovaSR 用快速 FastSR 上采样器将合成语音从 16 kHz 提升到 48 kHz，已是 48 kHz 的音频则跳过。",
+      "ko": "OVOS TTS용 오디오 초해상도 — NovaSR이 빠른 FastSR 업샘플러로 합성 음성을 16 kHz에서 48 kHz로 올리며, 이미 48 kHz인 오디오는 건너뜁니다.",
+      "ja": "OVOS TTS向けオーディオ超解像。NovaSRが高速なFastSRアップサンプラーで合成音声を16 kHzから48 kHzへ引き上げ、既に48 kHzの音声はスキップします。"
+    }
+  },
+  {
+    "id": "ovos-tts-transformer-audiosr",
+    "name": "ovos-tts-transformer-audiosr",
+    "description": "OVOS TTS transformer wrapping audiosronnx — pure-ONNX speech restoration and bandwidth extension applied to TTS output before playback.",
+    "url": "https://github.com/OpenVoiceOS/ovos-tts-transformer-audiosr",
+    "category": "OpenVoiceOS",
+    "tags": [
+      "TTS",
+      "super-resolution",
+      "ONNX"
+    ],
+    "featured": false,
+    "descriptions": {
+      "pt": "Transformador de TTS do OVOS baseado no audiosronnx — restauro de fala e extensão de largura de banda em ONNX puro aplicados à saída de TTS antes da reprodução.",
+      "es": "Transformador de TTS de OVOS basado en audiosronnx: restauración de voz y extensión de ancho de banda en ONNX puro aplicadas a la salida de TTS antes de la reproducción.",
+      "de": "OVOS-TTS-Transformer auf Basis von audiosronnx — Sprachrestaurierung und Bandbreitenerweiterung in reinem ONNX, angewendet auf die TTS-Ausgabe vor der Wiedergabe.",
+      "nl": "OVOS-TTS-transformer rond audiosronnx — spraakrestauratie en bandbreedte-uitbreiding in puur ONNX, toegepast op de TTS-uitvoer vóór afspelen.",
+      "fr": "Transformateur TTS d'OVOS s'appuyant sur audiosronnx — restauration de la parole et extension de bande passante en pur ONNX, appliquées à la sortie TTS avant lecture.",
+      "it": "Transformer TTS di OVOS basato su audiosronnx — restauro vocale ed estensione di banda in puro ONNX applicati all'output TTS prima della riproduzione.",
+      "ru": "TTS-трансформер OVOS на основе audiosronnx — восстановление речи и расширение полосы в чистом ONNX, применяемые к выходу TTS перед воспроизведением.",
+      "ar": "محوِّل TTS لـ OVOS يعتمد على audiosronnx — استعادة كلام وتوسيع نطاق ترددي بتقنية ONNX الخالصة يُطبَّقان على مخرجات TTS قبل التشغيل.",
+      "fa": "ترنسفورمر TTS در OVOS بر پایهٔ audiosronnx — بازسازی گفتار و گسترش پهنای باند با ONNX خالص که پیش از پخش روی خروجی TTS اعمال می‌شود.",
+      "hi": "audiosronnx पर आधारित OVOS TTS ट्रांसफ़ॉर्मर — प्लेबैक से पहले TTS आउटपुट पर शुद्ध-ONNX वाक् पुनर्स्थापन और बैंडविड्थ विस्तार।",
+      "zh": "封装 audiosronnx 的 OVOS TTS 变换器——在播放前对 TTS 输出应用纯 ONNX 语音修复与带宽扩展。",
+      "ko": "audiosronnx를 감싼 OVOS TTS 트랜스포머 — 재생 전에 TTS 출력에 순수 ONNX 음성 복원과 대역폭 확장을 적용합니다.",
+      "ja": "audiosronnxをラップしたOVOS TTSトランスフォーマー。再生前のTTS出力に純ONNXの音声修復と帯域拡張を適用します。"
+    }
+  },
+  {
+    "id": "ovos-media-plugin-ffplay",
+    "name": "ovos-media-plugin-ffplay",
+    "description": "ffplay playback backend plugin for ovos-audio and ovos-media — media playback anywhere ffmpeg runs.",
+    "url": "https://github.com/OpenVoiceOS/ovos-media-plugin-ffplay",
+    "category": "OpenVoiceOS",
+    "tags": [
+      "media",
+      "playback",
+      "plugin"
+    ],
+    "featured": false,
+    "descriptions": {
+      "pt": "Plugin de reprodução ffplay para o ovos-audio e o ovos-media — reprodução multimédia em qualquer sítio onde o ffmpeg corra.",
+      "es": "Plugin de reproducción ffplay para ovos-audio y ovos-media: reproducción multimedia en cualquier lugar donde funcione ffmpeg.",
+      "de": "ffplay-Wiedergabe-Backend-Plugin für ovos-audio und ovos-media — Medienwiedergabe überall dort, wo ffmpeg läuft.",
+      "nl": "ffplay-afspeelbackendplugin voor ovos-audio en ovos-media — mediaweergave overal waar ffmpeg draait.",
+      "fr": "Plugin de lecture ffplay pour ovos-audio et ovos-media — lecture multimédia partout où ffmpeg fonctionne.",
+      "it": "Plugin di riproduzione ffplay per ovos-audio e ovos-media — riproduzione multimediale ovunque giri ffmpeg.",
+      "ru": "Плагин воспроизведения ffplay для ovos-audio и ovos-media — проигрывание медиа везде, где работает ffmpeg.",
+      "ar": "إضافة تشغيل ffplay لـ ovos-audio وovos-media — تشغيل الوسائط أينما يعمل ffmpeg.",
+      "fa": "افزونهٔ پخش ffplay برای ovos-audio و ovos-media — پخش رسانه در هر جایی که ffmpeg اجرا شود.",
+      "hi": "ovos-audio और ovos-media के लिए ffplay प्लेबैक बैकएंड प्लगइन — जहाँ भी ffmpeg चले, वहाँ मीडिया प्लेबैक।",
+      "zh": "面向 ovos-audio 与 ovos-media 的 ffplay 播放后端插件——凡是能运行 ffmpeg 的地方都能播放媒体。",
+      "ko": "ovos-audio와 ovos-media용 ffplay 재생 백엔드 플러그인 — ffmpeg이 실행되는 곳이라면 어디서든 미디어를 재생합니다.",
+      "ja": "ovos-audioおよびovos-media向けのffplay再生バックエンドプラグイン。ffmpegが動く環境ならどこでもメディア再生が可能です。"
+    }
+  },
+  {
+    "id": "ovos-plugin-arena",
+    "name": "ovos-plugin-arena",
+    "description": "Benchmarking arena for OVOS plugins — head-to-head fights with ELO rankings to compare STT, TTS and other plugin implementations on real workloads.",
+    "url": "https://github.com/OpenVoiceOS/ovos-plugin-arena",
+    "category": "OpenVoiceOS",
+    "tags": [
+      "benchmark",
+      "ELO",
+      "plugins"
+    ],
+    "featured": false,
+    "descriptions": {
+      "pt": "Arena de benchmarking para plugins OVOS — confrontos diretos com rankings ELO para comparar implementações de STT, TTS e outros plugins em cargas reais.",
+      "es": "Arena de benchmarking para plugins de OVOS: enfrentamientos directos con rankings ELO para comparar implementaciones de STT, TTS y otros plugins con cargas reales.",
+      "de": "Benchmarking-Arena für OVOS-Plugins — direkte Duelle mit ELO-Wertungen, um STT-, TTS- und andere Plugin-Implementierungen unter realen Lasten zu vergleichen.",
+      "nl": "Benchmarkarena voor OVOS-plugins — onderlinge duels met ELO-ranglijsten om STT-, TTS- en andere plugin-implementaties op echte workloads te vergelijken.",
+      "fr": "Arène de benchmarking pour les plugins OVOS — duels directs avec classements ELO pour comparer les implémentations STT, TTS et autres sur des charges réelles.",
+      "it": "Arena di benchmarking per i plugin OVOS — sfide dirette con classifiche ELO per confrontare implementazioni STT, TTS e altri plugin su carichi reali.",
+      "ru": "Арена бенчмаркинга плагинов OVOS — очные поединки с ELO-рейтингом для сравнения реализаций STT, TTS и других плагинов на реальных нагрузках.",
+      "ar": "حلبة قياس أداء لإضافات OVOS — مواجهات مباشرة بتصنيفات ELO لمقارنة تطبيقات STT وTTS وغيرها من الإضافات على أحمال حقيقية.",
+      "fa": "میدان محک‌زنی افزونه‌های OVOS — رقابت‌های رودررو با رتبه‌بندی ELO برای مقایسهٔ پیاده‌سازی‌های STT، TTS و دیگر افزونه‌ها روی بارهای واقعی.",
+      "hi": "OVOS प्लगइन्स के लिए बेंचमार्किंग एरिना — वास्तविक कार्यभार पर STT, TTS और अन्य प्लगइन कार्यान्वयनों की तुलना हेतु ELO रैंकिंग वाले आमने-सामने मुक़ाबले।",
+      "zh": "OVOS 插件的基准竞技场——通过一对一对决与 ELO 排名，在真实负载上比较 STT、TTS 及其他插件实现。",
+      "ko": "OVOS 플러그인 벤치마킹 아레나 — 실제 워크로드에서 STT, TTS 등 플러그인 구현을 ELO 랭킹 기반 맞대결로 비교합니다.",
+      "ja": "OVOSプラグインのベンチマーク・アリーナ。実ワークロード上でSTT・TTSなどのプラグイン実装を一対一で対戦させ、ELOレーティングで比較します。"
+    }
+  },
+  {
+    "id": "ovos-busmon",
+    "name": "ovos-busmon",
+    "description": "Messagebus monitor for OpenVoiceOS — watch bus traffic live to debug skills, intents and services.",
+    "url": "https://github.com/OpenVoiceOS/ovos-busmon",
+    "category": "OpenVoiceOS",
+    "tags": [
+      "messagebus",
+      "debugging",
+      "monitoring"
+    ],
+    "featured": false,
+    "descriptions": {
+      "pt": "Monitor do messagebus para o OpenVoiceOS — observe o tráfego do bus em tempo real para depurar skills, intents e serviços.",
+      "es": "Monitor del messagebus para OpenVoiceOS: observa el tráfico del bus en vivo para depurar skills, intents y servicios.",
+      "de": "Messagebus-Monitor für OpenVoiceOS — Bus-Verkehr live beobachten, um Skills, Intents und Dienste zu debuggen.",
+      "nl": "Messagebus-monitor voor OpenVoiceOS — bekijk busverkeer live om skills, intents en services te debuggen.",
+      "fr": "Moniteur de messagebus pour OpenVoiceOS — observez le trafic du bus en direct pour déboguer skills, intents et services.",
+      "it": "Monitor del messagebus per OpenVoiceOS — osserva il traffico del bus dal vivo per fare debug di skill, intent e servizi.",
+      "ru": "Монитор шины сообщений OpenVoiceOS — наблюдайте трафик шины в реальном времени для отладки навыков, интентов и сервисов.",
+      "ar": "مراقب ناقل الرسائل لـ OpenVoiceOS — راقب حركة الناقل مباشرةً لتصحيح المهارات والنوايا والخدمات.",
+      "fa": "مانیتور گذرگاه پیام برای OpenVoiceOS — ترافیک گذرگاه را زنده تماشا کنید تا مهارت‌ها، نیت‌ها و سرویس‌ها را اشکال‌زدایی کنید.",
+      "hi": "OpenVoiceOS के लिए मैसेजबस मॉनिटर — स्किल्स, इंटेंट्स और सेवाओं की डिबगिंग हेतु बस ट्रैफ़िक लाइव देखें।",
+      "zh": "OpenVoiceOS 的消息总线监视器——实时查看总线流量，调试技能、意图与服务。",
+      "ko": "OpenVoiceOS용 메시지버스 모니터 — 버스 트래픽을 실시간으로 관찰하며 스킬, 인텐트, 서비스를 디버깅합니다.",
+      "ja": "OpenVoiceOS向けメッセージバスモニター。バスのトラフィックをライブで観察し、スキル・インテント・サービスをデバッグできます。"
+    }
+  },
+  {
+    "id": "ovos-messagebus-chat-plugin",
+    "name": "ovos-messagebus-chat-plugin",
+    "description": "OVOS ChatEngine plugin that proxies conversation turns through the OVOS messagebus — connect chat interfaces straight to a running assistant.",
+    "url": "https://github.com/OpenVoiceOS/ovos-messagebus-chat-plugin",
+    "category": "OpenVoiceOS",
+    "tags": [
+      "chat",
+      "messagebus",
+      "plugin"
+    ],
+    "featured": false,
+    "descriptions": {
+      "pt": "Plugin ChatEngine do OVOS que encaminha turnos de conversa através do messagebus do OVOS — ligue interfaces de chat diretamente a um assistente em execução.",
+      "es": "Plugin ChatEngine de OVOS que canaliza los turnos de conversación a través del messagebus de OVOS: conecta interfaces de chat directamente con un asistente en ejecución.",
+      "de": "OVOS-ChatEngine-Plugin, das Gesprächszüge über den OVOS-Messagebus weiterleitet — Chat-Oberflächen direkt mit einem laufenden Assistenten verbinden.",
+      "nl": "OVOS-ChatEngine-plugin die gespreksbeurten via de OVOS-messagebus doorstuurt — koppel chatinterfaces rechtstreeks aan een draaiende assistent.",
+      "fr": "Plugin ChatEngine d'OVOS qui relaie les tours de conversation via le messagebus d'OVOS — connectez des interfaces de chat directement à un assistant en cours d'exécution.",
+      "it": "Plugin ChatEngine di OVOS che inoltra i turni di conversazione attraverso il messagebus di OVOS — collega interfacce di chat direttamente a un assistente in esecuzione.",
+      "ru": "Плагин ChatEngine для OVOS, проксирующий реплики диалога через шину сообщений OVOS — подключайте чат-интерфейсы напрямую к работающему ассистенту.",
+      "ar": "إضافة ChatEngine لـ OVOS تمرر أدوار المحادثة عبر ناقل رسائل OVOS — صِل واجهات الدردشة مباشرة بمساعد قيد التشغيل.",
+      "fa": "افزونهٔ ChatEngine در OVOS که نوبت‌های گفت‌وگو را از طریق گذرگاه پیام OVOS عبور می‌دهد — رابط‌های چت را مستقیم به دستیارِ در حال اجرا وصل کنید.",
+      "hi": "OVOS ChatEngine प्लगइन जो OVOS मैसेजबस से संवाद के दौर आगे बढ़ाता है — चैट इंटरफ़ेस को सीधे चल रहे सहायक से जोड़ें।",
+      "zh": "通过 OVOS 消息总线转发对话回合的 OVOS ChatEngine 插件——将聊天界面直接接入正在运行的助手。",
+      "ko": "대화 턴을 OVOS 메시지버스로 프록시하는 OVOS ChatEngine 플러그인 — 채팅 인터페이스를 실행 중인 어시스턴트에 바로 연결합니다.",
+      "ja": "会話ターンをOVOSメッセージバス経由で中継するOVOS ChatEngineプラグイン。チャットインターフェースを稼働中のアシスタントへ直結できます。"
+    }
+  },
+  {
+    "id": "ovos-opendata-server",
+    "name": "ovos-opendata-server",
+    "description": "Open-data metrics server for OpenVoiceOS — collects anonymous usage metrics and publishes them as open datasets; developed under the ILENIA project.",
+    "url": "https://github.com/OpenVoiceOS/ovos-opendata-server",
+    "category": [
+      "OpenVoiceOS",
+      "ILENIA"
+    ],
+    "tags": [
+      "metrics",
+      "open data",
+      "server"
+    ],
+    "featured": false,
+    "descriptions": {
+      "pt": "Servidor de métricas em dados abertos para o OpenVoiceOS — recolhe métricas de utilização anónimas e publica-as como datasets abertos; desenvolvido no âmbito do projeto ILENIA.",
+      "es": "Servidor de métricas en datos abiertos para OpenVoiceOS: recopila métricas de uso anónimas y las publica como datasets abiertos; desarrollado en el marco del proyecto ILENIA.",
+      "de": "Open-Data-Metrikserver für OpenVoiceOS — sammelt anonyme Nutzungsmetriken und veröffentlicht sie als offene Datensätze; entwickelt im Rahmen des ILENIA-Projekts.",
+      "nl": "Open-data-metriekenserver voor OpenVoiceOS — verzamelt anonieme gebruiksmetrieken en publiceert ze als open datasets; ontwikkeld binnen het ILENIA-project.",
+      "fr": "Serveur de métriques en données ouvertes pour OpenVoiceOS — collecte des métriques d'usage anonymes et les publie en jeux de données ouverts ; développé dans le cadre du projet ILENIA.",
+      "it": "Server di metriche open-data per OpenVoiceOS — raccoglie metriche d'uso anonime e le pubblica come dataset aperti; sviluppato nell'ambito del progetto ILENIA.",
+      "ru": "Сервер открытых метрик для OpenVoiceOS — собирает анонимные метрики использования и публикует их как открытые датасеты; разработан в рамках проекта ILENIA.",
+      "ar": "خادم مقاييس بيانات مفتوحة لـ OpenVoiceOS — يجمع مقاييس استخدام مجهولة الهوية وينشرها كمجموعات بيانات مفتوحة؛ طُوِّر ضمن مشروع ILENIA.",
+      "fa": "سرور سنجه‌های دادهٔ باز برای OpenVoiceOS — سنجه‌های استفادهٔ ناشناس را گردآوری و به‌صورت مجموعه‌داده‌های باز منتشر می‌کند؛ در چارچوب پروژهٔ ILENIA توسعه یافته است.",
+      "hi": "OpenVoiceOS के लिए ओपन-डेटा मेट्रिक्स सर्वर — अनाम उपयोग मेट्रिक्स एकत्र कर उन्हें ओपन डेटासेट के रूप में प्रकाशित करता है; ILENIA परियोजना के अंतर्गत विकसित।",
+      "zh": "OpenVoiceOS 的开放数据指标服务器——收集匿名使用指标并作为开放数据集发布；在 ILENIA 项目下开发。",
+      "ko": "OpenVoiceOS용 오픈 데이터 지표 서버 — 익명 사용 지표를 수집해 오픈 데이터셋으로 공개합니다. ILENIA 프로젝트로 개발되었습니다.",
+      "ja": "OpenVoiceOS向けオープンデータ・メトリクスサーバー。匿名の利用メトリクスを収集しオープンデータセットとして公開します。ILENIAプロジェクトの下で開発。"
+    }
+  },
+  {
+    "id": "ovos-stt-server",
+    "name": "ovos-stt-server",
+    "description": "Host any OpenVoiceOS STT plugin as a network service — a small server exposing speech-to-text over HTTP for satellites and third-party clients.",
+    "url": "https://github.com/OpenVoiceOS/ovos-stt-server",
+    "category": "OpenVoiceOS",
+    "tags": [
+      "STT",
+      "server",
+      "self-hosted"
+    ],
+    "featured": false,
+    "descriptions": {
+      "pt": "Sirva qualquer plugin STT do OpenVoiceOS como serviço de rede — um pequeno servidor que expõe reconhecimento de fala por HTTP para satélites e clientes de terceiros.",
+      "es": "Sirve cualquier plugin STT de OpenVoiceOS como servicio de red: un pequeño servidor que expone el reconocimiento de voz por HTTP para satélites y clientes de terceros.",
+      "de": "Beliebige OpenVoiceOS-STT-Plugins als Netzwerkdienst betreiben — ein kleiner Server, der Spracherkennung über HTTP für Satelliten und Drittanbieter-Clients bereitstellt.",
+      "nl": "Host elk OpenVoiceOS-STT-plugin als netwerkdienst — een kleine server die spraakherkenning via HTTP aanbiedt aan satellieten en externe clients.",
+      "fr": "Hébergez n'importe quel plugin STT d'OpenVoiceOS comme service réseau — un petit serveur exposant la reconnaissance vocale en HTTP pour satellites et clients tiers.",
+      "it": "Ospita qualsiasi plugin STT di OpenVoiceOS come servizio di rete — un piccolo server che espone il riconoscimento vocale via HTTP per satelliti e client di terze parti.",
+      "ru": "Разворачивайте любой STT-плагин OpenVoiceOS как сетевой сервис — небольшой сервер, отдающий распознавание речи по HTTP спутникам и сторонним клиентам.",
+      "ar": "استضف أي إضافة STT من OpenVoiceOS كخدمة شبكية — خادم صغير يوفر تحويل الكلام إلى نص عبر HTTP للأقمار التابعة وعملاء الأطراف الخارجية.",
+      "fa": "هر افزونهٔ STT در OpenVoiceOS را به‌صورت سرویس شبکه میزبانی کنید — سروری کوچک که گفتار به متن را از طریق HTTP در اختیار ماهواره‌ها و کلاینت‌های ثالث می‌گذارد.",
+      "hi": "किसी भी OpenVoiceOS STT प्लगइन को नेटवर्क सेवा के रूप में होस्ट करें — एक छोटा सर्वर जो सैटेलाइट्स और थर्ड-पार्टी क्लाइंट्स के लिए HTTP पर वाक्-से-पाठ उपलब्ध कराता है।",
+      "zh": "将任意 OpenVoiceOS STT 插件托管为网络服务——一个小型服务器，通过 HTTP 向卫星端和第三方客户端提供语音转文本。",
+      "ko": "어떤 OpenVoiceOS STT 플러그인이든 네트워크 서비스로 호스팅 — 위성과 서드파티 클라이언트를 위해 HTTP로 음성 인식을 제공하는 작은 서버입니다.",
+      "ja": "任意のOpenVoiceOS STTプラグインをネットワークサービスとしてホスト。サテライトやサードパーティクライアント向けにHTTPで音声認識を提供する小さなサーバーです。"
+    }
+  },
+  {
+    "id": "ovos-tts-server",
+    "name": "ovos-tts-server",
+    "description": "Host any OpenVoiceOS TTS plugin as a service — a simple flask server that turns any TTS plugin into a self-hosted speech-synthesis API.",
+    "url": "https://github.com/OpenVoiceOS/ovos-tts-server",
+    "category": "OpenVoiceOS",
+    "tags": [
+      "TTS",
+      "server",
+      "self-hosted"
+    ],
+    "featured": false,
+    "descriptions": {
+      "pt": "Sirva qualquer plugin TTS do OpenVoiceOS como serviço — um servidor flask simples que transforma qualquer plugin TTS numa API de síntese de fala auto-alojada.",
+      "es": "Sirve cualquier plugin TTS de OpenVoiceOS como servicio: un servidor flask sencillo que convierte cualquier plugin TTS en una API de síntesis de voz autoalojada.",
+      "de": "Beliebige OpenVoiceOS-TTS-Plugins als Dienst betreiben — ein einfacher Flask-Server, der jedes TTS-Plugin in eine selbst gehostete Sprachsynthese-API verwandelt.",
+      "nl": "Host elk OpenVoiceOS-TTS-plugin als dienst — een eenvoudige flask-server die elk TTS-plugin verandert in een zelfgehoste spraaksynthese-API.",
+      "fr": "Hébergez n'importe quel plugin TTS d'OpenVoiceOS comme service — un simple serveur flask qui transforme tout plugin TTS en API de synthèse vocale auto-hébergée.",
+      "it": "Ospita qualsiasi plugin TTS di OpenVoiceOS come servizio — un semplice server flask che trasforma qualunque plugin TTS in un'API di sintesi vocale self-hosted.",
+      "ru": "Разворачивайте любой TTS-плагин OpenVoiceOS как сервис — простой flask-сервер, превращающий любой TTS-плагин в самостоятельно размещаемый API синтеза речи.",
+      "ar": "استضف أي إضافة TTS من OpenVoiceOS كخدمة — خادم flask بسيط يحول أي إضافة TTS إلى واجهة برمجية لتوليد الكلام مُستضافة ذاتيًا.",
+      "fa": "هر افزونهٔ TTS در OpenVoiceOS را به‌صورت سرویس میزبانی کنید — سرور سادهٔ flask که هر افزونهٔ TTS را به یک API خودمیزبان تولید گفتار تبدیل می‌کند.",
+      "hi": "किसी भी OpenVoiceOS TTS प्लगइन को सेवा के रूप में होस्ट करें — एक सरल flask सर्वर जो किसी भी TTS प्लगइन को सेल्फ़-होस्टेड वाक्-संश्लेषण API बना देता है।",
+      "zh": "将任意 OpenVoiceOS TTS 插件托管为服务——一个简单的 flask 服务器，把任何 TTS 插件变成自托管语音合成 API。",
+      "ko": "어떤 OpenVoiceOS TTS 플러그인이든 서비스로 호스팅 — 간단한 flask 서버로 TTS 플러그인을 셀프호스팅 음성 합성 API로 만듭니다.",
+      "ja": "任意のOpenVoiceOS TTSプラグインをサービスとしてホスト。シンプルなflaskサーバーで、あらゆるTTSプラグインをセルフホスト型音声合成APIに変えます。"
+    }
+  },
+  {
+    "id": "raspovos-audio-setup",
+    "name": "raspovos-audio-setup",
+    "description": "Audio auto-configuration library for raspOVOS — detects sound cards, HATs and USB devices on Raspberry Pi and wires them up for voice assistant use; developed under the ILENIA project.",
+    "url": "https://github.com/OpenVoiceOS/raspovos-audio-setup",
+    "category": [
+      "OpenVoiceOS",
+      "ILENIA"
+    ],
+    "tags": [
+      "Raspberry Pi",
+      "audio",
+      "raspOVOS"
+    ],
+    "featured": false,
+    "descriptions": {
+      "pt": "Biblioteca de auto-configuração de áudio para o raspOVOS — deteta placas de som, HATs e dispositivos USB no Raspberry Pi e configura-os para uso com assistentes de voz; desenvolvida no âmbito do projeto ILENIA.",
+      "es": "Biblioteca de autoconfiguración de audio para raspOVOS: detecta tarjetas de sonido, HATs y dispositivos USB en la Raspberry Pi y los configura para asistentes de voz; desarrollada en el marco del proyecto ILENIA.",
+      "de": "Audio-Autokonfigurationsbibliothek für raspOVOS — erkennt Soundkarten, HATs und USB-Geräte am Raspberry Pi und richtet sie für den Sprachassistenten-Einsatz ein; entwickelt im Rahmen des ILENIA-Projekts.",
+      "nl": "Audio-autoconfiguratiebibliotheek voor raspOVOS — detecteert geluidskaarten, HATs en USB-apparaten op de Raspberry Pi en stelt ze in voor spraakassistentgebruik; ontwikkeld binnen het ILENIA-project.",
+      "fr": "Bibliothèque d'auto-configuration audio pour raspOVOS — détecte cartes son, HATs et périphériques USB sur Raspberry Pi et les configure pour l'assistant vocal ; développée dans le cadre du projet ILENIA.",
+      "it": "Libreria di auto-configurazione audio per raspOVOS — rileva schede audio, HAT e dispositivi USB su Raspberry Pi e li configura per l'assistente vocale; sviluppata nell'ambito del progetto ILENIA.",
+      "ru": "Библиотека автонастройки звука для raspOVOS — находит звуковые карты, HAT и USB-устройства на Raspberry Pi и настраивает их для голосового ассистента; разработана в рамках проекта ILENIA.",
+      "ar": "مكتبة إعداد صوتي تلقائي لـ raspOVOS — تكتشف بطاقات الصوت ولوحات HAT وأجهزة USB على Raspberry Pi وتهيئها لاستخدام المساعد الصوتي؛ طُوِّرت ضمن مشروع ILENIA.",
+      "fa": "کتابخانهٔ پیکربندی خودکار صدا برای raspOVOS — کارت‌های صدا، HATها و دستگاه‌های USB را روی Raspberry Pi شناسایی و برای دستیار صوتی آماده می‌کند؛ در چارچوب پروژهٔ ILENIA توسعه یافته است.",
+      "hi": "raspOVOS के लिए ऑडियो स्व-कॉन्फ़िगरेशन लाइब्रेरी — Raspberry Pi पर साउंड कार्ड, HAT और USB उपकरण पहचानकर उन्हें वॉइस असिस्टेंट के लिए सेट करती है; ILENIA परियोजना के अंतर्गत विकसित।",
+      "zh": "raspOVOS 的音频自动配置库——检测 Raspberry Pi 上的声卡、HAT 与 USB 设备并为语音助手自动接好；在 ILENIA 项目下开发。",
+      "ko": "raspOVOS용 오디오 자동 구성 라이브러리 — Raspberry Pi의 사운드 카드, HAT, USB 장치를 감지해 음성 비서용으로 설정합니다. ILENIA 프로젝트로 개발되었습니다.",
+      "ja": "raspOVOS向けオーディオ自動設定ライブラリ。Raspberry Pi上のサウンドカード・HAT・USBデバイスを検出し、音声アシスタント用に自動設定します。ILENIAプロジェクトの下で開発。"
+    }
+  },
+  {
+    "id": "palavreado",
+    "name": "palavreado",
+    "description": "Dead-simple keyword-based intent parser — a drop-in Adapt replacement matching utterances against required/optional keyword slots; born at TigreGótico and donated to OpenVoiceOS.",
+    "url": "https://github.com/OpenVoiceOS/palavreado",
+    "category": [
+      "OpenVoiceOS",
+      "NLP & Language"
+    ],
+    "tags": [
+      "intent parsing",
+      "NLP"
+    ],
+    "featured": false,
+    "descriptions": {
+      "pt": "Parser de intents por palavras-chave, simples e direto — substituto imediato do Adapt que compara enunciados com slots de palavras-chave obrigatórias/opcionais; nascido na TigreGótico e doado ao OpenVoiceOS.",
+      "es": "Parser de intents por palabras clave, simple y directo: sustituto inmediato de Adapt que compara enunciados con slots de palabras clave obligatorias/opcionales; nacido en TigreGótico y donado a OpenVoiceOS.",
+      "de": "Denkbar einfacher schlüsselwortbasierter Intent-Parser — ein Drop-in-Ersatz für Adapt, der Äußerungen gegen Pflicht-/Optional-Keyword-Slots abgleicht; bei TigreGótico entstanden und an OpenVoiceOS gestiftet.",
+      "nl": "Doodsimpele op trefwoorden gebaseerde intentparser — een drop-in vervanger voor Adapt die uitingen matcht met verplichte/optionele trefwoordslots; ontstaan bij TigreGótico en gedoneerd aan OpenVoiceOS.",
+      "fr": "Parseur d'intentions par mots-clés on ne peut plus simple — remplaçant direct d'Adapt qui compare les énoncés à des slots de mots-clés requis/optionnels ; né chez TigreGótico et offert à OpenVoiceOS.",
+      "it": "Parser di intent basato su parole chiave, semplicissimo — sostituto diretto di Adapt che confronta gli enunciati con slot di parole chiave obbligatorie/opzionali; nato in TigreGótico e donato a OpenVoiceOS.",
+      "ru": "Предельно простой парсер интентов по ключевым словам — прямая замена Adapt, сопоставляющая фразы с обязательными/опциональными слотами ключевых слов; создан в TigreGótico и передан OpenVoiceOS.",
+      "ar": "محلّل نوايا بسيط جدًا قائم على الكلمات المفتاحية — بديل مباشر لـ Adapt يطابق العبارات مع خانات كلمات مفتاحية إلزامية/اختيارية؛ وُلد في TigreGótico وأُهدي إلى OpenVoiceOS.",
+      "fa": "تجزیه‌گر نیت مبتنی بر کلیدواژه، بسیار ساده — جایگزین مستقیم Adapt که گفته‌ها را با خانه‌های کلیدواژهٔ الزامی/اختیاری تطبیق می‌دهد؛ در TigreGótico زاده شد و به OpenVoiceOS اهدا گردید.",
+      "hi": "अत्यंत सरल कीवर्ड-आधारित इंटेंट पार्सर — Adapt का ड्रॉप-इन विकल्प जो उक्तियों को अनिवार्य/वैकल्पिक कीवर्ड स्लॉट्स से मिलाता है; TigreGótico में जन्मा और OpenVoiceOS को दान किया गया।",
+      "zh": "极简的关键词意图解析器——Adapt 的直接替代品，将语句与必需/可选关键词槽位匹配；诞生于 TigreGótico，捐赠给 OpenVoiceOS。",
+      "ko": "아주 단순한 키워드 기반 인텐트 파서 — 필수/선택 키워드 슬롯으로 발화를 매칭하는 Adapt 대체재입니다. TigreGótico에서 태어나 OpenVoiceOS에 기증되었습니다.",
+      "ja": "きわめてシンプルなキーワードベースのインテントパーサー。必須／任意キーワードスロットで発話をマッチングするAdaptの代替品。TigreGóticoで生まれ、OpenVoiceOSに寄贈されました。"
+    }
   }
 ]
