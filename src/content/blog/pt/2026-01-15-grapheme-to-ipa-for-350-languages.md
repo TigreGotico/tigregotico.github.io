@@ -1,7 +1,8 @@
 ---
-title: "Grafema-para-IPA para 676 Línguas"
-description: "O orthography2ipa é um recurso de dados puros, linguisticamente fundamentado, que mapeia a grafia para IPA e modela como os fonemas se realizam enquanto alofones ao longo de ~750 especificações de língua, 676 línguas e mais de 20 famílias linguísticas. Uma lattice de candidatos, linhagem dialetal e um conjunto de especificações validado por esquema e citado à literatura dialetológica — sem pesos treinados, totalmente auto-hospedável."
+title: "Grafema-para-IPA para 807 Línguas"
+description: "O orthography2ipa é um recurso de dados puros, linguisticamente fundamentado, que mapeia a grafia para IPA e modela alofones ao longo de 896 especificações, 807 línguas e mais de 20 famílias linguísticas. Lattice de candidatos, tokenizador maximal-munch, métricas de distância e linhagem dialetal — sem pesos treinados, totalmente auto-hospedável."
 date: 2026-01-15
+updated: 2026-08-01
 lang: pt
 author: "Casimiro Ferreira"
 tags:
@@ -16,7 +17,7 @@ tags:
 draft: false
 ---
 
-O **[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)** é um pacote Python de dados puros — JSON declarativo, lógica fina e plugável, sem pesos treinados — que mapeia a grafia para IPA e modela como esses fonemas se realizam em contexto. Traz **~750 especificações de língua que cobrem 676 línguas** (mais 73 nós de clado apenas para classificação) ao longo de **mais de 20 famílias linguísticas**. Instale-o, leia os dados, faça fork dos dados. Nada está escondido num checkpoint.
+O **[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)** é um pacote Python de dados puros — JSON declarativo, lógica fina e plugável, sem pesos treinados — que mapeia a grafia para IPA e modela como esses fonemas se realizam em contexto. Traz **896 especificações de língua que cobrem 807 línguas** (mais 89 nós de clado apenas para classificação) ao longo de **mais de 20 famílias linguísticas**. Instale-o, leia os dados, faça fork dos dados. Nada está escondido num checkpoint.
 
 É a camada de fonologia por baixo de tudo o que vem a jusante: a lattice de candidatos que produz é consumida pelo frontend de TTS árabe [arbtok](https://github.com/TigreGotico/arbtok), pelas stacks portuguesas [TugaPhone](https://github.com/TigreGotico/tugaphone) e [silabificador](https://github.com/TigreGotico/silabificador) (ver **[NLP clássico para sílabas e fonemas do português](/pt/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**), pelo [phonemizer do barranquenho](/pt/blog/2025-12-12-barranquenho), pelo phonemizer do mirandês, e pela fundamentação fonémica do **[TTS que corre numa batata](/pt/blog/2026-05-10-tts-that-runs-on-a-potato)**.
 
@@ -51,11 +52,11 @@ As árvores de dialetos mantêm-se sustentáveis porque os ficheiros JSON suport
 
 ## Profundo no terreno, não apenas amplo
 
-O número 676 é a amplitude; a profundidade é onde está o trabalho. As especificações vão lecto a lecto onde a literatura dialetológica o faz, e cada uma é citada a essa literatura com fixação de página, em vez de ser inferida por correspondência de padrões a partir de uma tabela de fonemas.
+O número 807 é a amplitude; a profundidade é onde está o trabalho. As especificações vão lecto a lecto onde a literatura dialetológica o faz, e cada uma é citada a essa literatura com fixação de página, em vez de ser inferida por correspondência de padrões a partir de uma tabela de fonemas.
 
 A cobertura **ibérica** é o exemplo mais claro: **mais de 100 especificações** para as línguas da península. Todas as línguas românicas de Espanha — castelhano, catalão/valenciano, galego (tanto a norma da RAG como a reintegracionista), asturiano, aragonês e as suas variedades de vale (ansotano, chistabín, benasqués…), estremenho — a par do basco, dos crioulos ibero-românicos e das camadas históricas que a maioria dos recursos ignora por completo: o **árabe andalusi** e o **moçárabe**. O lado árabe transporta **34 lectos dialetais** (do najdi e do hijazi ao levantino, ao magrebino e às variedades peninsulares), e o lado lusófono **46 lectos do português e das línguas de Portugal**, até ao rionorês, ao guadramilês e aos subdialetos do mirandês.
 
-Tanto quanto sabemos, vários destes são a **primeira fonologia legível por máquina** alguma vez publicada para a variedade — o rionorês, o guadramilês, o benasqués, o angolar e o árabe andalusi entre eles — e o trabalho a jusante entrega os **primeiros dicionários de IPA** para o **barranquenho** e o **mirandês**.
+Tanto quanto sabemos, vários destes são a **primeira fonologia legível por máquina** alguma vez publicada para a variedade — ou seja, uma especificação estruturada de grafemas/alofones, validada por esquema, que um programa consegue consultar, em contraste com um inventário de fonemas descrito apenas em prosa na literatura dialetológica — o rionorês e o guadramilês entre eles. O trabalho a jusante entrega os **primeiros dicionários de IPA** para o **barranquenho** e o **mirandês**.
 
 ## Uma lattice de candidatos, não um único palpite
 
@@ -83,13 +84,13 @@ Como os dados são estruturados em vez de cozidos em pesos, pode-se comparar lí
 from orthography2ipa.distance import phonological_distance
 d = phonological_distance(orthography2ipa.get("pt-BR"), orthography2ipa.get("pt-PT"))
 
-d.combined                    # 0.04 — near-identical
+d.combined                    # 0.0515 — near-identical
 d.inventory.feature_mean      # phoneme-inventory distance
 d.grapheme.mean_ipa_distance  # grapheme-mapping divergence
 d.allophone_sim               # allophone-overlap similarity
 ```
 
-Os vetores de características também são expostos, pelo que um par quase idêntico como os dois padrões portugueses fica em 0,04, enquanto pares genuinamente distantes se separam de forma nítida. Isto é útil tanto para decisões de transfer learning, como para bootstrapping de línguas de poucos recursos e para dialetometria.
+Os vetores de características também são expostos, pelo que um par quase idêntico como os dois padrões portugueses fica em 0,0515, enquanto pares genuinamente distantes se separam de forma nítida. Isto é útil tanto para decisões de transfer learning, como para bootstrapping de línguas de poucos recursos e para dialetometria.
 
 ## Como sabemos que os dados prestam
 

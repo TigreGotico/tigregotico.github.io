@@ -109,20 +109,6 @@ A COALA publicou um dataset de fala multilingue gravado em fábricas e oficinas:
 
 ---
 
-## Porque a Indústria Escolhe OVOS + HiveMind
-
-O apelo é direto:
-
-* **Transparência total** (crucial para setores regulados)
-* **Implementação local/edge** (sem dependência da nuvem)
-* **Fácil de integrar em equipamento existente**
-* **Modular o suficiente para skills proprietárias personalizadas**
-* **Redes de voz distribuídas** (satélites HiveMind por toda a fábrica)
-
-Em resumo: a combinação é flexível, neutra em relação a fornecedores e respeita as restrições de dados industriais.
-
----
-
 ## Porque Funciona para a Indústria
 
 Os objetivos de design que importam no chão de fábrica — transparência total para setores regulados, implementação local/edge sem dependência da nuvem, skills modulares para lógica proprietária e a capacidade do HiveMind de distribuir nós de voz por uma instalação — foram incorporados desde o início, não acrescentados a posteriori.

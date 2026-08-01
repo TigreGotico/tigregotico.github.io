@@ -2,6 +2,7 @@
 title: "NLP Clássico para Português: Silabação e Grafema-para-Fonema"
 description: "Um olhar sobre a nossa stack de NLP para português, baseada em regras e totalmente offline — o silabificador para silabação e o TugaPhone para grafema-para-fonema sensível ao dialeto — e como se ligam ao trabalho mais alargado do orthography2ipa para as variedades lusófonas. Sem caixas negras de deep learning: determinístico, rápido e com poucas dependências."
 date: 2026-02-28
+updated: 2026-08-01
 lang: pt
 author: "Casimiro Ferreira"
 tags:
@@ -14,7 +15,7 @@ tags:
 draft: false
 ---
 
-Nem todos os problemas de linguagem precisam de mil milhões de parâmetros. Grande parte do processamento de texto em português é governada por regras que os linguistas escreveram muito antes de alguém treinar uma rede neuronal — regras sobre onde as sílabas se dividem, onde recai o acento e como uma dada grafia se mapeia num som. Quando essas regras são explícitas, a ferramenta certa é uma biblioteca pequena, determinística e totalmente offline que se pode ler, auditar e executar em qualquer lado. É essa a filosofia por detrás da nossa stack clássica de NLP para português: [silabificador](https://github.com/TigreGotico/silabificador) para silabação e [TugaPhone](https://github.com/TigreGotico/tugaphone) para grafema-para-fonema (G2P).
+As fronteiras silábicas, a posição do acento e o mapeamento entre grafia e som em português seguem regras que os linguistas documentaram muito antes de alguém treinar uma rede neuronal. Quando essas regras são explícitas, a ferramenta certa é uma biblioteca pequena, determinística e totalmente offline que se pode ler, auditar e executar em qualquer lado. É essa a filosofia por detrás da nossa stack clássica de NLP para português: [silabificador](https://github.com/TigreGotico/silabificador) para silabação e [TugaPhone](https://github.com/TigreGotico/tugaphone) para grafema-para-fonema (G2P).
 
 ### Porquê clássico, e porquê agora
 
@@ -39,14 +40,14 @@ O `TugaPhone` transforma texto português arbitrário em IPA, e fá-lo através 
 
 ```
 Choveu muito ontem à noite.
-pt-PT → ʃu·ˈvew mˈũj·tu ˈõ·tẽ ˈa nˈoj·tɨ
-pt-BR → ʃo·ˈvew mwˈĩ·tʊ ˈõ·tẽ ˈa nˈoj·tʃɪ
-pt-AO → ʃo·ˈvew mˈũjn·tʊ ˈõ·tẽ ˈa nˈoj·tɨ
-pt-MZ → ʃu·ˈvew mˈũj·tu ˈõ·tẽ ˈa nˈɔj·tɨ
-pt-TL → ʃo·ˈvew mˈuj·tʊ ˈõ·tẽ ˈa nˈojtʰ
+pt-PT → ʃuˈvew ˈmũjtu ˈõtɐ̃j a ˈnojt
+pt-BR → ʃoˈvew ˈmwĩtʊ ˈõtẽj a ˈnojtʃɪ
+pt-AO → ʃoˈvew ˈmũjntʊ ˈõntẽj a ˈnojtɨ
+pt-MZ → ʃoˈvew ˈmũjtu ˈõtẽj a ˈnɔjtɨ
+pt-TL → ʃoˈvew ˈmujtʊ ˈõntɐ̃j a ˈnojtʰ
 ```
 
-Nos bastidores, o TugaPhone é um **híbrido** de duas técnicas clássicas. Primeiro consulta um léxico fonético curado (o mesmo Portuguese Phonetic Lexicon acima) para palavras conhecidas; para tudo o que não esteja no léxico — nomes, neologismos, empréstimos estrangeiros — recorre a um motor de G2P baseado em regras. A pipeline é explícita em cada etapa: normalização de texto, etiquetagem morfossintática opcional, consulta ao léxico, recurso a regras e, por fim, transformações específicas do dialeto.
+Nos bastidores, o TugaPhone conduz o motor partilhado de lattice de candidatos do `orthography2ipa` e sobrepõe-lhe as questões específicas do português através dos próprios pontos de extensão desse motor. Consulta um léxico fonético curado (o mesmo Portuguese Phonetic Lexicon acima) para palavras conhecidas; para tudo o que não esteja no léxico — nomes, neologismos, empréstimos estrangeiros — a lattice gera candidatos a partir das regras de grafemas e alofones do dialeto.
 
 Há dois detalhes que vale a pena destacar. A **normalização de números** transforma dígitos nas suas formas faladas em português, com concordância correta de género e número:
 
@@ -55,18 +56,17 @@ from tugaphone.number_utils import normalize_numbers
 
 normalize_numbers("vou comprar 1 casa")    # uma casa
 normalize_numbers("vou adotar 2 cães")     # dois cães
-normalize_numbers("1ª vez")                # primeira vez
 ```
 
-Respeita até as convenções de escala — escala longa `biliões` para `pt-PT`, escala curta `trilhões` para `pt-BR`. A **desambiguação de homógrafos** usa o contexto morfossintático, pelo que `para` como preposição é tratado de forma diferente de `para` como verbo. O TugaPhone pode usar um tagger spaCy ou Brill quando disponível, mas também traz um recurso baseado em regras sem dependências, mantendo-se fiel ao princípio offline-first.
+Respeita até as convenções de escala — escala longa `biliões` para `pt-PT`, escala curta `trilhões` para `pt-BR`. A **desambiguação de homógrafos** é delegada à biblioteca [bifonia](https://github.com/TigreGotico/bifonia), que detém o conhecimento baseado em sentido sobre que homógrafos heterofónicos existem e que leitura carregam — pelo que `para` como preposição é tratado de forma diferente de `para` como verbo — e marca a leitura escolhida com diacríticos extra antes de a lattice sequer ver a frase.
 
-A arquitetura é uma hierarquia limpa — frase → palavra → grafema → carácter — com regras sensíveis ao contexto aplicadas a cada nível: qualidade vocálica e alofones consonânticos ao nível do carácter, dígrafos como ⟨ch⟩ e ⟨nh⟩ e ditongos como ⟨ai⟩ e ⟨ou⟩ ao nível do grafema, acento e silabação ao nível da palavra. O TugaPhone reutiliza o `silabificador` para a camada silábica, juntamente com as bibliotecas companheiras **[Tugalex](https://github.com/TigreGotico/tugalex)** (léxico e exceções) e **[TugaTagger](https://github.com/TigreGotico/tugatagger)** (etiquetagem morfossintática). Peças pequenas e componíveis — cada uma útil por si só.
+O TugaPhone fonemiza conduzindo a lattice de candidatos partilhada do `orthography2ipa`: a seleção de dialeto *é* a escolha da spec de lecto do `orthography2ipa`, pelo que os fenómenos dialetais — betacismo, os ditongos ascendentes do Porto, a palatalização do /l/ madeirense, o avanço do /u/ açoriano, o sandhi de sibilantes em coda, entre outros — vêm da própria lattice, e não de edições de string a posteriori. O TugaPhone acrescenta apenas o que o `orthography2ipa` deliberadamente deixa ao cargo do chamador, ligado através dos seus próprios pontos de extensão: a expansão de números/ordinais sensível ao género e a marcação de heterófonos do bifonia correm como a etapa de normalização do motor antes de a lattice ver o texto; o léxico de pronúncia curado do **[Tugalex](https://github.com/TigreGotico/tugalex)** é registado por lecto através de `orthography2ipa.register_lexicon`, pelo que uma palavra coberta entra no mesmo caminho de substituição que as próprias exceções de uma spec, e a lattice só gera candidatos para palavras que o léxico não cobre; a silabação vem do plugin do próprio `orthography2ipa` apoiado no `silabificador`, pelo que o acento recai na mesma sílaba que o TugaPhone escolheria de outra forma. Peças pequenas e componíveis a alimentar um motor partilhado — cada uma útil por si só.
 
-O TugaPhone é honesto quanto aos seus limites: a cobertura do léxico é mais escassa para os dialetos africanos e timorense, os sotaques sub-regionais (Porto, Minho, Braga, entre outros) são aproximações experimentais de características documentadas e a prosódia ao nível da frase é simplificada. Estas são limitações documentadas abertamente, não modos de falha ocultos — exatamente o tipo de transparência que um sistema baseado em regras torna possível.
+O TugaPhone é honesto quanto aos seus limites: a cobertura do léxico é mais escassa para os dialetos africanos e timorense, os sotaques sub-regionais (Porto, Minho, Braga, entre outros) são aproximações experimentais de características documentadas e a prosódia ao nível da frase é simplificada. Estas são limitações documentadas abertamente, não modos de falha ocultos.
 
 ### O quadro mais alargado: orthography2ipa
 
-O português é uma variedade entre muitas, e o mesmo padrão de engenharia generaliza-se. O [orthography2ipa](https://github.com/TigreGotico/orthography2ipa) é um pacote Python de dados puros com mapeamentos grafema→IPA e de alofones linguisticamente motivados, abrangendo mais de 350 códigos de língua em mais de 20 famílias linguísticas. Traça uma distinção nítida de que qualquer sistema de G2P sério precisa: um **mapa de grafemas** diz que fonemas uma grafia *pode* representar, ao passo que um **mapa de alofones** diz como um fonema efetivamente *se realiza* num dado contexto. As variedades regionais são modeladas como as suas próprias especificações, ligadas através de uma linhagem ponderada com múltiplos antepassados, pelo que as árvores dialetais herdam dos seus progenitores em vez de duplicar dados.
+O português é uma variedade entre muitas, e o mesmo padrão de engenharia generaliza-se. O [orthography2ipa](https://github.com/TigreGotico/orthography2ipa) é um pacote Python de dados puros com mapeamentos grafema→IPA e de alofones linguisticamente motivados, abrangendo 807 línguas em mais de 20 famílias linguísticas. Traça uma distinção nítida de que qualquer sistema de G2P sério precisa: um **mapa de grafemas** diz que fonemas uma grafia *pode* representar, ao passo que um **mapa de alofones** diz como um fonema efetivamente *se realiza* num dado contexto. As variedades regionais são modeladas como as suas próprias especificações, ligadas através de uma linhagem ponderada com múltiplos antepassados, pelo que as árvores dialetais herdam dos seus progenitores em vez de duplicar dados.
 
 É esse o mesmo instinto por detrás de `pt-PT`, `pt-BR`, `pt-AO`, `pt-MZ` e `pt-TL` no TugaPhone: tratar cada variedade lusófona como um cidadão de pleno direito com as suas próprias regras, e não como um desvio de um único sotaque canónico. Os dados são declarativos e a lógica é fina e plugável — pode ler as regras, citar as suas fontes e confiar no resultado.
 
@@ -81,4 +81,4 @@ pip install git+https://github.com/TigreGotico/silabificador
 
 Para os mapeamentos multilingues mais alargados, veja o [orthography2ipa](https://github.com/TigreGotico/orthography2ipa). Determinístico, rápido, offline e construído para toda a amplitude do mundo lusófono.
 
-Esta stack de fonética portuguesa assenta no nosso **[trabalho de grafema-para-IPA para mais de 350 línguas](/pt/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**, formando a espinha dorsal fonética do **[TTS que corre numa batata](/pt/blog/2026-05-10-tts-that-runs-on-a-potato)** e das **[vozes multilingues Miro & Dii](/pt/blog/2026-06-15-two-voices-every-language-miro-and-dii)**.
+Esta stack de fonética portuguesa assenta no nosso **[trabalho de grafema-para-IPA para 807 línguas](/pt/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**, formando a espinha dorsal fonética do **[TTS que corre numa batata](/pt/blog/2026-05-10-tts-that-runs-on-a-potato)** e das **[vozes multilingues Miro & Dii](/pt/blog/2026-06-15-two-voices-every-language-miro-and-dii)**.
