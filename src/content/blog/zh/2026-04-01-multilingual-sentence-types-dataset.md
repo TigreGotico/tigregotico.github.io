@@ -3,6 +3,7 @@ title: "多语言句型数据集：疑问句、命令句、陈述句"
 description: "我们发布了 sentence-types-multilingual —— 涵盖七种语言、近 70,000 个句子，按语法类型（疑问句、命令句、陈述句、感叹句）分类。它是 little_questions 路由库背后的训练语料库。"
 date: 2026-04-01
 lang: zh
+updated: 2026-08-01
 author: "Casimiro Ferreira"
 tags:
   - "Datasets"
@@ -20,19 +21,20 @@ draft: false
 
 ## 这些标签在实践中意味着什么
 
-该数据集使用四种顶层类型，它们直接对应 `little_questions`（消费这些数据的推理库）对话语进行路由的方式：
+该数据集使用一组扁平的六个标签——每行一个 `label` 列，没有类型/子类型的划分——它们直接对应 `little_questions`（消费这些数据的推理库）对话语进行路由的方式：
 
-- **question** —— 进一步按子类型细分：`yes_no_question`、`wh_question`、`tag_question`。`little_questions` 内部的 EAT 分类法增加了 53 个细粒度的答案类型标签（人物、地点、数量、定义等等），但句型分类是第一道关卡。
-- **command** —— 祈使形式和请求形式。命令句不期待一个答案；它们期待一个动作。
+- **wh_question** —— 围绕一个 wh 疑问词构建的问句（what、where、who 等等）。
+- **polar_question** —— 是/否问句。`little_questions` 内部的 EAT 分类法在问句标签之上又增加了 53 个细粒度的答案类型标签（人物、地点、数量、定义等等），但句型分类是第一道关卡。
+- **command** —— 祈使形式。命令句不期待一个答案；它们期待一个动作。
+- **request** —— 礼貌或间接的行动请求，有别于直接的祈使句。
 - **statement** —— 陈述形式。对话语境中的陈述句往往带有对下游有影响的极性：一个是/否/也许分类器会在陈述句上运行，以解读对先前问题的回答。
 - **exclamation** —— 带有情感标记的话语，需要与中性陈述句不同的处理方式。
 
 ```json
 {
-  "text": "What time is it?",
   "language": "en",
-  "type": "question",
-  "sub_type": "wh_question"
+  "label": "wh_question",
+  "text": "What time is it?"
 }
 ```
 
@@ -48,7 +50,7 @@ draft: false
 
 ## 下游技术栈
 
-在这些数据上训练出的模型，随 **[little_questions](https://github.com/TigreGotico/little_questions)** 一同发布 —— 这是一个零依赖的离线库（numpy + onnxruntime），配有按语言划分的、用于句型分类的 ONNX 分类器，以及一个支持 43 种语言的是/否极性模型。英语的模型直接打包进 wheel，其他语言的模型则按需惰性下载。HuggingFace 上的来源是 `TigreGotico/sentence-types` 和 `TigreGotico/eat-classifiers`。
+在这些数据上训练出的模型，随 **[little_questions](https://github.com/TigreGotico/little_questions)** 一同发布 —— 这是一个零依赖的离线库（numpy + onnxruntime），配有按语言划分的、用于句型分类的 ONNX 分类器，以及一个支持 43 种语言的是/否极性模型。英语的模型直接打包进 wheel，其他语言的模型则按需惰性下载。句型分类器以 `TigreGotico/sentence-types` 的名义发布在 HuggingFace 上；EAT 答案类型分类器则是内部训练的，并未公开发布。
 
 ```python
 from little_questions import Sentence

@@ -1,6 +1,6 @@
 ---
-title: "用可组合、即插即用的 requests 会话突破反爬机器人墙"
-description: "我们如何在不于关键路径上启动无头浏览器的前提下，保持对公开数据的稳健访问：TLS 指纹伪装、用于 JS 挑战的 FlareSolverr 代理、Wayback Machine 回退，以及 IP 轮换——全部封装在两个可组合的 requests.Session 子类 unblock_requests 和 anon_requests 之后。"
+title: "面向稳健公开数据访问的可组合、即插即用 requests 会话"
+description: "两个可组合的 requests.Session 子类，用于在不于关键路径上启动无头浏览器的前提下可靠地读取公开网页：兼容 TLS 的传输、用于 JS 挑战的 FlareSolverr 代理、Wayback Machine 回退，以及分散化的请求——unblock_requests 与 anon_requests。"
 date: 2026-03-15
 lang: zh
 author: "Casimiro Ferreira"
@@ -15,19 +15,30 @@ draft: false
 ---
 
 我们的许多工作——媒体元数据客户端、目录增强、归档——都依赖于可靠地读取
-**公开的**网页。问题很少出在数据本身，而是出在它前面的那堵墙。而这堵墙会问
-两个相互独立的问题：
+**公开的**网页。问题很少出在数据本身，而是在于大量反爬虫检测基础设施是针对
+脚本化攻击调优的，结果把任何行为得体的非浏览器客户端都误判为脚本化攻击。这
+体现在两个相互独立的维度上：
 
-- **"你是什么？"**——Cloudflare 及同类服务拦截请求，并不是因为你*请求了什么*，
+- **"你是什么？"**——Cloudflare 及同类服务标记请求，并不是因为你*请求了什么*，
   而是因为你在网络层面上*看起来怎么样*：你的 TLS 握手、你的 JA3 指纹、你是否
-  能够运行一个 JavaScript 挑战。
+  能够运行一个 JavaScript 挑战。一次普通的 `requests` 握手看起来和浏览器毫无
+  相似之处，因此即便流量本身是良性的，也会被那些针对脚本化滥用行为设计的检查
+  拦下。
 - **"你是谁？"**——IP 信誉和速率限制完全无视你的指纹；它们统计的是有多少请求
-  来自同一个地址。
+  来自同一个地址，这可能让一个行为得体的客户端和一个滥用者一样受到惩罚。
 
-这两个问题彼此正交，所以我们用两个能干净叠加的小型库来分别回应它们：
+这两个维度彼此正交，所以我们用两个能干净叠加的小型库来分别回应它们：
 **unblock_requests** 回答*你是什么*，**anon_requests** 回答*你是谁*。两者在
 日常代码中都是 `requests` 会话的即插即用替代品。本文专门讨论这一传输层——
 网络字节这一部分——而不涉及位于其上的解析或流水线。
+
+**明确说明适用范围：** 这些传输方式仅用于公开、无需身份验证的页面。它们遵守
+`robots.txt` 以及任何声明的爬取延迟——参见我们
+**[关于 robots.txt 与 sitemap 的文章](/zh/blog/2026-03-01-robot-txt-sitemaps-ethical-web-scraping)**
+了解我们如何在编写抓取器之前检查这一点——建立在其之上的每一个客户端都被约束
+在很低的请求量之内，因此目标站点永远不会因我们而承受明显的负载。这并非事后
+补上的免责声明，而是对这些会话如何被使用的一项真实工程约束，因为一个既稳健
+又不体贴的客户端，恰恰违背了它自身的目的。
 
 ## 设计约束：保持 `requests` 的形态
 
@@ -52,13 +63,14 @@ assert isinstance(s, requests.Session)            # True
 
 ## 第一层：`unblock_requests` 及其传输方式
 
-`unblock_requests` 防御的是**机器人检测**。你通过 `mode=` 关键字参数（或
+`unblock_requests` 让一个普通的 Python 客户端能与**针对浏览器调优的机器人检测
+检查**互通。你通过 `mode=` 关键字参数（或
 `UNBLOCK_REQUESTS_TRANSPORT` 环境变量——显式关键字参数总是优先）来选择传输
 方式。主要有四种：
 
 | 模式 | 作用 |
 |---|---|
-| `curl_cffi` *（默认）* | 通过 `curl_cffi` 进行 Chrome 的 TLS/JA3 伪装。在大多数网络上无需额外基础设施即可通过机器人检测。 |
+| `curl_cffi` *（默认）* | 通过 `curl_cffi` 进行 Chrome 的 TLS/JA3 伪装。在大多数网络上无需额外基础设施即可呈现出浏览器形态的握手。 |
 | `requests` | 纯 `requests`，无伪装。 |
 | `flaresolverr` | 通过一个解决 JS 挑战的 FlareSolverr 无头浏览器进行代理转发——**实时**数据。 |
 | `wayback` | 读取 Internet Archive 最新的快照——过时，但什么都不需要。 |
@@ -101,11 +113,12 @@ Cloudflare 拦截，所以纯 `requests` 就能到达它。
 
 ## 第二层：`anon_requests` 与 IP 轮换
 
-正交的那个问题是 **IP 信誉**。即便指纹完美无缺，只要所有请求都来自同一个地址，
-照样会遭到速率限制或封禁。`anon_requests` 用 `RotatingProxySession`（抓取来的
-公共代理，可选校验，SOCKS5/HTTP）和 `RotatingTorSession`（轮换的 Tor 电路）
-来处理这一点。每个请求都从一个新的出口发出，连接失败时死掉的代理会被轮换
-淘汰。
+正交的那个问题是 **IP 信誉**。即便握手完美地呈现出浏览器形态，只要所有请求
+都来自同一个地址，照样可能遭到速率限制——基于流量的启发式规则关注的是地址，
+而不是指纹。`anon_requests` 用 `RotatingProxySession`（抓取来的公共代理，
+可选校验，SOCKS5/HTTP）和 `RotatingTorSession`（轮换的 Tor 电路）将负载分散
+到多个地址上，因此一个低请求量的客户端不会被误认为是从单一 IP 猛攻站点的
+行为。每个请求都从一个新的出口发出，连接失败时死掉的代理会被轮换淘汰。
 
 ```python
 from anon_requests import RotatingProxySession, ProxyType
@@ -114,7 +127,7 @@ with RotatingProxySession(proxy_type=ProxyType.SOCKS5, validate=True) as s:
     print(s.get("https://ipecho.net/plain", timeout=5).text)  # a new IP each time
 ```
 
-## 组合：轮换**与**绕过一步到位
+## 组合：分散负载**与**兼容握手一步到位
 
 这两个库的设计初衷是叠加而非重叠。`anon_requests` 的会话接受一个
 `session_factory`——任何返回 `requests.Session` 的可调用对象，默认为
@@ -128,12 +141,13 @@ from unblock_requests import CloudflareSession
 session = RotatingProxySession(
     session_factory=lambda: CloudflareSession(flaresolverr_url="http://host:8191"),
 )
-session.get(url)   # rotates the IP *and* solves Cloudflare
+session.get(url)   # spreads load across IPs *and* uses a browser-compatible handshake
 ```
 
 轮换的代理会贯穿*每一种*传输方式——包括进入 FlareSolverr 内部，它通过求解请求
-的 `proxy` 字段来驱动其无头浏览器。这样一来，解决挑战的 IP 就与请求其余部分
-所用的轮换 IP 完全相同：不会出现指纹与出口节点分离、让防御方察觉的情况。
+的 `proxy` 字段来驱动其无头浏览器。这样一来，整个请求——握手、挑战求解和出口
+IP——从头到尾保持一致，这对一个并不试图伪装成多个访客的客户端来说，本就是
+正确的行为。
 
 ## 为何是这种形态
 

@@ -3,6 +3,7 @@ title: "Robots.txt、Sitemap 与合乎道德的网页抓取"
 description: "在构建抓取器之前，先侦察目标站点。sitemapper 会读取 robots.txt、获取每一个 sitemap，并可选地遍历链接图谱——让你的抓取器从站点自身的契约出发，而非蛮力硬闯。"
 date: 2026-03-01
 lang: zh
+updated: 2026-08-01
 author: "Casimiro Ferreira"
 tags:
   - "Web Scraping"
@@ -41,10 +42,12 @@ from sitemapper import discover
 
 info = discover("https://www.python.org")
 print(info.summary())
-# Base URL:         https://www.python.org
-# Sitemaps found:   1
+# Base URL:       https://www.python.org
+# Blocked:        False
+# Sitemaps found: 1
 # URLs in sitemaps: 342
-# Crawl-delay:      None
+# Crawl-delay:    None
+# Sitemap directives in robots.txt: 1
 
 # What pace does the site ask for?
 if info.robots.crawl_delay:
@@ -118,12 +121,12 @@ pip install sitemapper
 pip install sitemapper[stealth]   # adds curl_cffi TLS impersonation
 ```
 
-将它作为库使用，或从命令行使用——`--json` 会输出完整的发现结果以便管道传递给其他
-工具，`--crawl` 则加上链接图谱这一步：
+将它作为库使用，或从命令行使用——`--json FILE` 会把完整的发现结果写入文件以供其他
+工具使用，`--crawl` 则加上链接图谱这一步：
 
 ```bash
 python -m sitemapper https://example.com
-python -m sitemapper https://example.com --crawl --max-pages 50 --json
+python -m sitemapper https://example.com --crawl --max-pages 50 --json out.json
 ```
 
 它是自由软件，运行在你自己的硬件上。让每一个抓取器都从侦察开始。

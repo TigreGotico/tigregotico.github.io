@@ -3,6 +3,7 @@ title: "你的情绪模型分不清投诉和告别"
 description: "两条看起来都很愤怒的客服消息。一个客户准备升级投诉，另一个准备一声不吭地离开。几乎没有情绪模型能区分它们——因为它们都缺少同一个维度。emotion-algebra 问世了。"
 date: 2026-07-13
 lang: zh
+updated: 2026-08-01
 author: "Casimiro Ferreira"
 tags:
   - "Affective Computing"
@@ -107,7 +108,7 @@ angry, afraid = affect_from_texts([
     "I don't know if I'm doing this right and I'm scared I've broken something.",
 ])
 
-angry.valence,  angry.potency    # -0.43, +0.16   -> 'annoyance'
+angry.valence,  angry.potency    # -0.43, +0.16   -> 'disgust'
 afraid.valence, afraid.potency   # -0.47, -0.43   -> 'apprehension'
 ```
 

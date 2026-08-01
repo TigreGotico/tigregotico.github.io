@@ -20,7 +20,7 @@ Home Assistant 负责自动化，OVOS 负责语音。两者都不试图成为对
 
 -----
 
-## 为 Home Assistant 赋予由 OVOS 驱动的语音
+## Wyoming 桥接：Home Assistant 中的 OVOS 语音插件
 
 Wyoming 协议是 HA 用于对接外部 ASR、TTS 和唤醒词服务的标准接口。我们构建了 Wyoming 桥接，将任意 OVOS 插件通过该协议暴露出来——这意味着 HA 能够访问 OVOS 生态中的每一个插件，而不仅仅是经过挑选的一小部分。
 
@@ -31,26 +31,18 @@ Wyoming 协议是 HA 用于对接外部 ASR、TTS 和唤醒词服务的标准接
 
 [OVOS Wyoming Docker](https://github.com/TigreGotico/ovos-wyoming-docker) 项目将这些服务打包，因此只需一条 `docker compose up` 即可运行。
 
-### **插件亮点：由 ILENIA 驱动的多语言 TTS**
+### 来自公共资助语言项目的多语言 TTS
 
-对我们而言，无障碍是关键。这也包括语言无障碍。我们很自豪，这一集成让我们能够将来自 [**ILENIA**](https://proyectoilenia.es/) 等项目的高质量、由公共资金资助的语音带给更广泛的受众。Home Assistant 用户可以获得诸如加泰罗尼亚语和加利西亚语等语言的自然音色语音，直接来自构建它们的项目。
+无障碍也包括语言无障碍。这一集成让来自 **[ILENIA](https://proyectoilenia.es/demostradores-2025/prototipo-ovos/)** 等项目的高质量、由公共资金资助的语音得以触达更广泛的受众。Home Assistant 用户可以获得诸如加泰罗尼亚语和加利西亚语等语言的自然音色语音，直接来自构建它们的项目。
 
 * **面向加泰罗尼亚语的 Matxa TTS：** [`ovos-tts-plugin-matxa-multispeaker-cat`](https://github.com/OpenVoiceOS/ovos-tts-plugin-matxa-multispeaker-cat) 为加泰罗尼亚语提供多说话人文本转语音能力。
 * **面向加利西亚语的 NosTTS：** [`ovos-tts-plugin-nos`](https://github.com/OpenVoiceOS/ovos-tts-plugin-nos) 提供强健的加利西亚语文本转语音。
 
 ![ILENIA logo](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/ilenia.png)
 
-### **在 Home Assistant 中设置 Wyoming 服务：**
-
-在 Home Assistant 中配置 Wyoming 服务时，你通常会参考 [Home Assistant 官方文档](https://www.home-assistant.io/integrations/wyoming/)。这个过程通常只需在 Home Assistant 网页界面中输入你的 Docker 容器（或运行 OVOS Wyoming 服务的主机）的 IP 地址即可。
-
-![wyoming setup in Home Assistant](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/wyoming_setup.png)
-
-![wyoming entities in Home Assistant](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/wyoming_menu.png)
-
 -----
 
-## 让 OVOS 成为对话的大脑
+## 将 OVOS 用作 Home Assistant 的对话代理
 
 想要更进一步？你可以使用 **Ollama 集成**将 OVOS 设置为 Home Assistant 的一个功能完备的对话代理。
 
@@ -72,7 +64,7 @@ Wyoming 协议是 HA 用于对接外部 ASR、TTS 和唤醒词服务的标准接
 
 -----
 
-## 用 HiveMind 将你的 OVOS 设备接入 Home Assistant
+## 用 HiveMind 将 OVOS 设备呈现为 Home Assistant 实体
 
 如果你有专用的 OVOS 设备，[HiveMind HomeAssistant](https://github.com/JarbasHiveMind/hivemind-homeassistant) 集成能让它们在 Home Assistant 中显示为原生实体——为整个设备群提供一个统一的控制面板。
 
@@ -114,17 +106,15 @@ OVOS 设备在 Home Assistant 中也会显示为标准媒体播放器，因此�
 
 -----
 
-## 把王国的钥匙交给 OVOS
+## 从 OVOS 控制 Home Assistant 实体
 
 由社区维护的 [skill-homeassistant](https://github.com/OscillateLabsLLC/skill-homeassistant) 让 OVOS 能够通过 HA REST API 直接控制 Home Assistant 实体。将它安装到你的 OVOS 设备上，你就可以说"打开客厅的灯"或"把恒温器设为 21 度"——完全本地，无需云。
 
 -----
 
-## 为每项工作选对工具
+## 尚不成熟的部分
 
-OVOS 负责语音；Home Assistant 负责自动化。两者都不为了做对方的工作而妥协，而且集成点足够干净，使得每个项目都能保持自己的发布周期。
-
-欢迎在上文链接的各个仓库中提交 bug 报告和 PR。
+Wyoming 桥接和 HiveMind 集成是这里最成熟的部分；将 persona-server 用作对话代理的路径较新，如果你想看看 OVOS + HA 组合能达到的上限，值得优先尝试。欢迎在上文链接的各个仓库中提交 bug 报告和 PR。
 
 ---
 
