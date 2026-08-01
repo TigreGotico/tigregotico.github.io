@@ -108,23 +108,9 @@ COALA published a multilingual speech dataset recorded in factories and workshop
 
 ---
 
-## Why Industry Chooses OVOS + HiveMind
-
-The appeal is straightforward:
-
-* **Full transparency** (crucial for regulated sectors)
-* **Local/edge deployment** (no cloud dependency)
-* **Easy to integrate into existing equipment**
-* **Modular enough for custom proprietary skills**
-* **Distributed voice networks** (HiveMind satellites across a factory)
-
-In short: the combination is flexible, vendor-neutral, and respects industrial data constraints.
-
----
-
 ## Why It Works for Industry
 
-The design goals that matter on the factory floor — full transparency for regulated sectors, local/edge deployment with no cloud dependency, modular skills for proprietary logic, and HiveMind’s ability to distribute voice nodes across a facility — were baked in from the start, not retrofitted.
+The design goals that matter on the factory floor — full transparency for regulated sectors, local/edge deployment with no cloud dependency, modular skills for proprietary logic, and HiveMind's ability to distribute voice nodes across a facility — were baked in from the start, not retrofitted.
 
 OVOS and HiveMind source code: [github.com/OpenVoiceOS](https://github.com/OpenVoiceOS) · [github.com/JarbasHiveMind](https://github.com/JarbasHiveMind)
 

@@ -54,7 +54,7 @@ The 676 figure is breadth; the depth is where the work is. The specs go lect by 
 
 The **Iberian** coverage is the clearest example: **100+ specs** for the languages of the peninsula. Every Romance language of Spain — Castilian, Catalan/Valencian, Galician (both the RAG and reintegrationist norms), Asturian, Aragonese and its valley varieties (Ansotano, Chistabín, Benasqués…), Extremaduran — alongside Basque, the Ibero-Romance creoles, and the historical layers most resources skip entirely: **Andalusi Arabic** and **Mozarabic**. The Arabic side carries **34 dialect lects** (from Najdi and Hejazi through Levantine, Maghrebi and the peninsular varieties), and the Lusophone side **46 Portuguese-and-Portugal-language lects**, down to Rionorese, Guadramilese, and the Mirandese sub-dialects.
 
-To our knowledge, several of these are the **first machine-readable phonology** ever published for the variety — Rionorese, Guadramilese, Benasqués, Angolar, Andalusi Arabic among them — and the downstream work ships the **first IPA dictionaries** for **Barranquenho** and **Mirandese**.
+To our knowledge, several of these are the **first machine-readable phonology** ever published for the variety — meaning a structured, schema-validated grapheme/allophone spec a program can query, as opposed to a phoneme inventory described only in prose in the dialectological literature — Rionorese and Guadramilese among them. The downstream work ships the **first IPA dictionaries** for **Barranquenho** and **Mirandese**.
 
 ## A candidate lattice, not a single guess
 
