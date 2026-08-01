@@ -14,7 +14,7 @@ tags:
 draft: false
 ---
 
-Er bestaat een hardnekkige mythe dat goede tekst-naar-spraak een stevige GPU nodig heeft, een dikke cloudrekening, en een API-sleutel met je creditcard eraan geniet. Dat is niet zo. Een natuurlijke, meertalige stem past in iets waarvoor je je zou schamen om het een server te noemen — het soort bordje dat je "voor het geval dat" in een la bewaart. Een aardappel.
+Goede tekst-naar-spraak heeft geen GPU of cloudabonnement nodig. Een natuurlijke, meertalige stem past in iets waarvoor je je zou schamen om het een server te noemen — het soort bordje dat je "voor het geval dat" in een la bewaart. Een aardappel.
 
 [**phoonnx**](https://github.com/TigreGotico/phoonnx) is ons onderzoeksframework voor precies dat doel: kleine VITS-gebaseerde stemmen die **volledig offline, op CPU, op goedkope hardware** draaien, en die we ook *zelf* vanaf nul kunnen *trainen*.
 
@@ -31,13 +31,13 @@ print(sum(int(np.prod(i.dims)) for i in m.graph.initializer))
 
 **~15,65 miljoen parameters.** Dat is de hele stem — encoder, decoder, alles — in een bestand van 63 MB. De vrouwelijke "Dii"-stem uit dezelfde uitgave komt uit op *precies hetzelfde* getal, omdat ze de standaard phoonnx VITS-architectuur delen; de persoonlijkheid zit in de gewichten, niet in extra capaciteit.
 
-Ter vergelijking: een enkele laag van een "klein" modern taalmodel kan meer parameters dragen dan deze hele spraaksynthesizer. Vijftieneneenhalf miljoen is ongeveer het gewicht van een telefoonkiekje, en het spreekt vloeiend.
+Ter vergelijking: een enkele laag van een "klein" modern taalmodel kan meer parameters dragen dan deze hele spraaksynthesizer, en toch spreekt hij vloeiend.
 
 ## Waarom VITS, en waarom ONNX
 
 [VITS](https://arxiv.org/abs/2106.06103) is de ruggengraat van elke phoonnx-stem. Het is een end-to-end-architectuur — tekst (nou ja, fonemen) erin, golfvorm eruit — zonder aparte vocoder om op te passen en zonder autoregressieve lus die één sample tegelijk voortkruipt. Dat end-to-end-ontwerp is precies wat het op een aardappel behapbaar maakt: één voorwaartse doorloop, parallelle synthese, klaar.
 
-We sturen geen PyTorch naar de edge. Getrainde stemmen worden geëxporteerd naar **ONNX** en draaien via [`onnxruntime`](https://onnxruntime.ai/) op de **CPU** — geen CUDA, geen GPU, geen driver-roulette. `onnxruntime` is een strakke, portabele C++-engine, en een graaf van 15 miljoen parameters valt ruimschoots binnen wat een Raspberry-Pi-achtige kern sneller dan realtime doorkauwt. Het resultaat is een spraakassistent die blijft praten wanneer je internet uitvalt, wanneer de cloudprovider een storing heeft, of wanneer je gewoon nooit wilde dat je thuisaudio het huis verliet. **Datasoevereiniteit is hier geen instelbare functie; het is de architectuur.**
+We sturen geen PyTorch naar de edge. Getrainde stemmen worden geëxporteerd naar **ONNX** en draaien via [`onnxruntime`](https://onnxruntime.ai/) op de **CPU** — geen CUDA, geen GPU, geen driver-roulette. `onnxruntime` is een strakke, portabele C++-engine, en een graaf van 15 miljoen parameters valt ruimschoots binnen wat een Raspberry-Pi-achtige kern sneller dan realtime doorkauwt. Het resultaat is een spraakassistent die blijft praten wanneer je internet uitvalt, wanneer de cloudprovider een storing heeft, of wanneer je gewoon nooit wilde dat je thuisaudio het huis verliet.
 
 ## Fonemen zijn waar de slimheid zich verbergt
 
@@ -51,12 +51,12 @@ Het uitbesteden van de orthografie aan de fonemizer is de truc waarmee een model
 
 ## Een framework om stemmen te *bouwen*, niet alleen om ze te draaien
 
-Dit is het deel dat het belangrijkst is, en het deel dat over het hoofd wordt gezien: phoonnx is niet alleen een inferentietoolkit. Het bijbehorende framework [**`phoonnx_train`**](https://github.com/TigreGotico/phoonnx) is hoe we de stemmen in de eerste plaats *maken*.
+phoonnx is niet alleen een inferentietoolkit. Het bijbehorende framework [**`phoonnx_train`**](https://github.com/TigreGotico/phoonnx) is hoe we de stemmen in de eerste plaats *maken*.
 
 `phoonnx_train` dekt de volledige pijplijn:
 
 - **Voorbewerking** van een LJSpeech-achtige dataset tot gefonemiseerde trainingsgegevens.
-- **Training** van de VITS-generator (die ~15,65M parameters) op bescheiden GPU-tijd — dit zijn kleine modellen, dus trainen is goedkoop en snel vergeleken met grote spraaksystemen.
+- **Training** van de VITS-generator (die ~15,65M parameters) op een enkele consumenten- of middenklasse-GPU — een model van deze omvang heeft geen trainingscluster nodig.
 - **Export** van het voltooide checkpoint naar ONNX met één script, klaar om rechtstreeks in `onnxruntime` op een apparaat te droppen.
 
 Omdat het recept open is en de modellen klein zijn, is het bouwen van een gloednieuwe stem voor een taal die *geen* open offline optie heeft een project op weekendschaal, niet op de schaal van een onderzoeksbeurs. Zo hebben we gaten opgevuld voor achtergestelde talen — Baskisch, Mirandees, Europees Portugees en meer — in plaats van te wachten tot een leverancier besluit dat een taal commercieel interessant is.
@@ -87,4 +87,4 @@ En omdat phoonnx gewoon VITS-over-ONNX spreekt, draait zijn inferentie-engine oo
 
 Spraaktechnologie die jou respecteert moet draaien *waar jij bent* — op jouw hardware, onder jouw controle, met de netwerkkabel eruit als je dat wilt. phoonnx is onze inzet dat de weg daarheen niet grotere modellen zijn, maar de juiste architectuur klein gemaakt: VITS voor de ruggengraat, slimme fonemizers om de linguïstische last te dragen, ONNX voor portabiliteit, en een open trainingsframework zodat iedereen de catalogus kan laten groeien.
 
-Vijftieneneenhalf miljoen parameters. Geen GPU. Geen cloud. Geen excuses. Als het op een aardappel draait, draait het overal.
+Vijftieneneenhalf miljoen parameters, draaiend op CPU, getraind op hardware die iedereen kan bezitten: dat is de trainingspijplijn achter elke phoonnx-stem.

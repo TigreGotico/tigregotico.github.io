@@ -3,6 +3,7 @@ title: "Je sentimentmodel kan een klacht niet onderscheiden van een afscheid"
 description: "Twee boos ogende supportberichten. De ene klant staat op escaleren; de andere is weg zonder een woord. Bijna geen enkel emotiemodel kan ze uit elkaar houden — omdat ze allemaal dezelfde as missen. Maak kennis met emotion-algebra."
 date: 2026-07-13
 lang: nl
+updated: 2026-08-01
 author: "Casimiro Ferreira"
 tags:
   - "Affective Computing"
@@ -169,7 +170,7 @@ angry, afraid = affect_from_texts([
     "I don't know if I'm doing this right and I'm scared I've broken something.",
 ])
 
-angry.valence,  angry.potency    # -0.43, +0.16   -> 'annoyance'
+angry.valence,  angry.potency    # -0.43, +0.16   -> 'disgust'
 afraid.valence, afraid.potency   # -0.47, -0.43   -> 'apprehension'
 ```
 

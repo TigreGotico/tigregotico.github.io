@@ -109,20 +109,6 @@ COALA publiceerde een meertalige spraakdataset die in fabrieken en werkplaatsen 
 
 ---
 
-## Waarom de industrie OVOS + HiveMind kiest
-
-De aantrekkingskracht is eenvoudig:
-
-* **Volledige transparantie** (cruciaal voor gereguleerde sectoren)
-* **Lokale/edge-implementatie** (geen cloudafhankelijkheid)
-* **Eenvoudig te integreren in bestaande apparatuur**
-* **Modulair genoeg voor aangepaste, propriëtaire skills**
-* **Gedistribueerde spraaknetwerken** (HiveMind-satellieten door de hele fabriek)
-
-Kortom: de combinatie is flexibel, leveranciersneutraal en respecteert industriële datarestricties.
-
----
-
 ## Waarom het werkt voor de industrie
 
 De ontwerpdoelen die er op de werkvloer toe doen — volledige transparantie voor gereguleerde sectoren, lokale/edge-implementatie zonder cloudafhankelijkheid, modulaire skills voor propriëtaire logica en het vermogen van HiveMind om spraaknodes over een faciliteit te verdelen — waren vanaf het begin ingebouwd, niet achteraf toegevoegd.

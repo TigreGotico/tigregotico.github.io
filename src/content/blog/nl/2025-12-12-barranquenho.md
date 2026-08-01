@@ -3,6 +3,7 @@ title: "Wij presenteren de eerste phonemizer voor het Barranquenho"
 description: "g2p_barranquenho is de eerste open grafeem-naar-foneem-omzetter voor het Barranquenho, de Ibero-Romaanse contacttaal van Barrancos, Portugal — regels afgeleid van de onlangs door de gemeente gepubliceerde spellingsconventie, controleerbaar aan de hand van de in de repository opgenomen bronnen."
 date: 2025-12-12
 lang: nl
+updated: 2026-08-01
 author: "Casimiro Ferreira"
 tags:
   - "Phonemization"
@@ -18,18 +19,15 @@ draft: false
 
 Het Barranquenho is geen dialect van het Portugees of het Spaans; het is een werkelijk apart systeem. De gemeenteraad van Barrancos heeft onlangs drie fundamentele documenten gepubliceerd — een woordenboek, een spellingsconventie en een basisgrammatica — die de regels leverden die wij nodig hadden. De aankondiging: ["Un Enormi Passu para u Barranquenhu i para a Cultura Barranquenha!"](https://cm-barrancos.pt/21976/un-enormi-passu-para-u-barranquenhu-i-para-a-cultura-barranquenha).
 
-Uit die spellingsconventie hebben wij de regelset afgeleid. De phonemizer voert twee doorlopen uit over de invoer in kleine letters:
+Uit die spellingsconventie hebben wij de regelset afgeleid — maar in plaats van zelf een op maat gemaakte doorloop over de tekst te bouwen, leeft die als een taalspecificatie, `ext-PT-x-barrancos`, in de gedeelde **[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)**-engine. De grafeemtabel, allofoonregels, klemtoonmodel en woordoverschrijdende sandhi van die spec beschrijven elke Barranquenho-realisatie: grafemen van meerdere letters vloeien samen zoals de conventie het documenteert (`tch` → /tʃ/, `ch` → /ʃ/, `nh` → /ɲ/, `lh` → /ʎ/), nasale tweeklanken verschijnen vóór `m`/`n`, `v` mapt altijd naar /b/, en `h` verschijnt als een uitgesproken /h/ — anders dan in beide oudertalen.
 
-1. **Digraafdoorloop** — voegt grafemen van meerdere letters samen: `tch` → /tʃ/, `ch` → /ʃ/, `nh` → /ɲ/, `lh` → /ʎ/, en `qu`/`gu` vóór voorklinkers → /k//g/.
-2. **Grafeemdoorloop** — brengt de overige tekens in kaart naar IPA met contextgevoelige regels: nasale tweeklanken vóór `m`/`n` (bijvoorbeeld `an` → /ɐ͂/), `e` aan het woordeinde → /ɨ/, `v` altijd → /b/, `s` stemhebbend naar /z/ behalve aan het woordbegin, `r` versus `rr` (enkelvoudige versus rollende tril), en `h` als een uitgesproken /h/ — anders dan in beide oudertalen.
-
-Het grafeem `x` kent de meest complexe logica en valt terug op de contextuele heuristieken van het Portugees waar de Barranquenho-conventie zwijgt.
+`g2p_barranquenho` zelf is een dunne aanroeper-zijdige wrapper rond `orthography2ipa.G2P`, aangestuurd door die spec: het beheert tekstnormalisatie (hoofdlettervouwing, tokenisatie in de vormen die de spec verwacht), getalexpansie en een stabiel `phonemize`/`transcribe`-oppervlak, maar niet de fonologische regels — een regel verbeteren betekent de spec stroomopwaarts bewerken, zodat elke afnemer stroomafwaarts de fix deelt.
 
 In de praktijk:
 
-> "Un Enormi Passu para u Barranquenhu i para a Cultura Barranquenha" → `ũ ẽjoɾmj pasu paɾɐ u bɐrɐ͂keɲu j paɾɐ ɐ kultuɾɐ bɐrɐ͂keɲɐ`
+> "Un Enormi Passu para u Barranquenhu i para a Cultura Barranquenha" → `ˈũ eˈnɔɾmi ˈpas̺u ˈpaɾɐ ˈu bɐrɐ̃ˈkɛɲu ˈi ˈpaɾɐ ɐ kuˈltuɾɐ bɐrɐ̃ˈkɛɲɐ`
 
-De bibliotheek is één enkele functie, `phonemize(word: str) -> list[str]`, zonder runtime-afhankelijkheden — puur Python. De bron-PDF's (conventie, woordenboek, grammatica) zijn opgenomen in de hoofdmap van de repository, zodat de regels controleerbaar zijn aan de hand van hun bron.
+De bron-PDF's (conventie, woordenboek, grammatica) zijn opgenomen in de hoofdmap van de repository, zodat de regels controleerbaar zijn aan de hand van hun bron.
 
 ### Wat er hierna komt
 

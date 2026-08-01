@@ -1,25 +1,21 @@
 ---
-title: "Usenet & remailers in 2026: een schone tijdcapsule en een privacynetwerk dat weigert te sterven"
-description: "Usenet is een ongerept archief van menselijke discussie van vóór de AI — LLM-vrije trainingsdata uit decennia internetgeschiedenis. Maar het is niet alleen archeologie: het cypherpunk-remailernetwerk werkt in 2026 nog steeds en biedt echt anoniem berichtenverkeer. We bouwden twee kleine tools om je beide te laten zien."
+title: "Usenet in 2026: een schoon, pre-AI-tekstcorpus voor training en evaluatie"
+description: "Usenet is een ongerept archief van menselijke discussie van vóór de AI — decennia aan nieuwsgroepposts, allemaal door mensen geschreven, niets ervan aangeraakt door taalmodellen. Dat maakt het waardevolle trainings- en evaluatiedata voor taal- en spraakmodellen. We bouwden een kleine Python-tool om het te oogsten."
 date: 2026-07-01
 lang: nl
 author: "Casimiro Ferreira"
 tags:
   - "Usenet"
-  - "Privacy"
-  - "Remailers"
   - "Datasets"
-  - "Cypherpunk"
+  - "NLP"
 draft: false
 ---
 
-De meeste open-web-corpora zijn besmet — LLM-gegenereerde tekst is doorgelekt naar Reddit, Stack Overflow, GitHub, blogs. Usenet is anders: decennia aan flame wars, technische vraag-en-antwoord, en nieuwsgroepdiscussies, allemaal door mensen geschreven, niets ervan aangeraakt door taalmodellen. En terwijl ik erin groef, vond ik nog iets dat nog draait: **het cypherpunk-remailernetwerk werkt in 2026 nog steeds**, onderhouden door een kleine groep cryptografie-enthousiastelingen die nooit gestopt zijn.
-
-We bouwden twee kleine Python-tools voor beide.
+De meeste open-web-tekstcorpora zijn besmet: LLM-gegenereerde tekst is doorgelekt naar Reddit, Stack Overflow, GitHub en blogs, dus een model dat erop wordt getraind, leert deels van andere modellen. Usenet is anders. Het zijn decennia aan flame wars, technische vraag-en-antwoord en nieuwsgroepdiscussies, allemaal door mensen geschreven, van vóór de huidige taalmodellen. Voor iedereen die taal- en spraakmodellen traint of evalueert, is een groot archief van door mensen geschreven tekst met een schone herkomst precies het soort data dat steeds moeilijker te vinden is.
 
 -----
 
-## De tijdcapsule: Usenet als een corpus van vóór de AI
+## Usenet als een corpus van vóór de AI
 
 Usenet ontvangt duizenden posts per dag verspreid over honderden actieve groepen. Archiveer terug tot in de jaren 80 en je hebt **miljoenen artikelen** — elk een signaal van wat mensen werkelijk belangrijk vonden, waarover ze ruzieden, wat ze wilden weten — met een herkomst schoon genoeg om te citeren.
 
@@ -58,37 +54,9 @@ Repo: [**github.com/TigreGotico/usenet**](https://github.com/TigreGotico/usenet)
 
 -----
 
-## De cypherpunks zijn nooit weggegaan
+## Usenet lezen zonder account
 
-Het remailernetwerk draait nog steeds.
-
-**Type-I-remailers** (Cypherpunk-remailers): verstuur een bericht verpakt in geneste PGP-versleuteling — elke hop ontsleutelt één laag en stuurt door naar de volgende. Van buitenaf lijkt het bericht van de remailer te komen, niet van jou. Bij de laatste hop is de oorspronkelijke afzender verloren.
-
-**Type-II-remailers** (Mixmaster): voegen willekeurige opvulling toe, strippen headers, houden berichten vast voor doorsturen, en ketenen tegelijk door meerdere remailers heen. Veel moeilijker te traceren.
-
-Beide werken nog steeds. Er zijn **ruwweg een half dozijn actieve remailers** in 2026. Het pinger-netwerk plaatst dagelijks statistieken op `alt.privacy.anon-server.stats`, net zoals het al decennia doet. Per mei 2026:
-
-- **frannie** (mix@franxial.com) — 100% uptime
-- **frell** (godot@remailer.frell.eu.org) — 100% uptime
-- **yeahno** (mix@yeahno.net) — 100% uptime
-- **dizum** (remailer@dizum.com) — ~99% uptime
-- **paranoia** (mixmaster@remailer.paranoici.org) — ~92% uptime
-
-De bibliotheek **remailers** ontdekt het live netwerk door die dagelijkse statistiekenposts te parseren:
-
-```python
-from remailers.network import fetch_live_remailers
-
-for r in fetch_live_remailers():
-    print(f"{r.name} — {r.uptime} uptime, {r.address}")
-    print("  capabilities:", sorted(r.capabilities))
-```
-
------
-
-## Ze vandaag gebruiken
-
-### Usenet lezen zonder account
+De meeste publieke nieuwsservers laten je lezen zonder registratie:
 
 ```python
 from usenet import UsenetServer
@@ -109,64 +77,10 @@ for server in servers:
         continue
 ```
 
-### Anoniem posten
-
-De meeste servers vereisen een gratis account om te posten. **paganini.bofh.team** en **news.tcpreset.net** accepteren anonieme posts, ook naar `alt.anonymous.messages` — de traditionele dropplek voor anonieme ontvangers.
-
-### Een anoniem bericht versturen via de remailerketen
-
-De remailers gebruiken nog steeds **DSA + ElGamal PGP-sleutels** uit de jaren 90 — oude crypto waarvoor moderne Python PGP-bibliotheken niet kunnen versleutelen. We schakelen uit naar **GnuPG** (de oude code is dragend):
-
-```python
-from remailers.network import fetch_live_remailers, fetch_keyring_blob
-from remailers.gpg import GPGKeyring
-from remailers.cypherpunk import build_chain
-
-remailers = fetch_live_remailers()
-
-# the published keyring is full of DSA/ElGamal keys -> use the GnuPG backend
-with GPGKeyring(fetch_keyring_blob()) as gpg:
-    have = set(gpg.recipients())
-    chain = [r for r in remailers
-             if r.is_cpunk and r.accepts_pgp and r.address in have][:3]
-
-    # nest a PGP layer per hop; the exit posts to a newsgroup
-    message, entry = build_chain(
-        hops=[(r.address, r.address) for r in chain],
-        anon_post_to="alt.anonymous.messages",
-        body="Hello from the shadows",
-        encrypt=gpg.encrypt,
-    )
-
-# `message` goes to `entry` over SMTP (remailers.cypherpunk.send_chain) —
-# the one piece you bring yourself: an email sender.
-```
-
-### Antwoorden vinden: gehashte onderwerpen
-
-Als je op een antwoord wacht op `alt.anonymous.messages`, wil je niet dat het onderwerp de inhoud verraadt. Het remailerprotocol ondersteunt **hSub**: de ontvanger hasht het oorspronkelijke onderwerp met SHA-256 en plaatst het antwoord met de hash als onderwerp. Alleen iemand die het oorspronkelijke onderwerp kent, kan het in de firehose identificeren.
-
-```python
-from remailers import create_hsub, match_hsub
-
-hsub = create_hsub("Secret plan for next week")   # SHA-256(IV + subject)
-
-# post using hsub as Subject; later scan the group:
-if match_hsub(hsub, "Secret plan for next week"):
-    print("This message is for me!")
-```
-
-Voor meer privacy gebruiken sommige berichten **eSub** — versleutelde onderwerpen die alleen de ontvanger kan ontsleutelen.
-
 -----
 
-## Waarom dit nog steeds telt
+## Waarom dit belangrijk is
 
-Het remailernetwerk is traag en ontworpen voor een ander tijdperk. Maar het is **gedecentraliseerd, eigenaarloos en niet af te sluiten** — geen bedrijf om te dagvaarden, geen dienst om stop te zetten. Hetzelfde cypherpunk-ontwerp dat in 1995 werkte, werkt nog steeds.
+Usenet is een archief met schone herkomst van door mensen geschreven tekst op schaal, van vóór het tijdperk van machinaal gegenereerde content. Of je nu modellen traint, datasets bouwt, of internetdiscours bestudeert van vóór het verwaterd raakte door AI-gegenereerde tekst, dat archief is er nog steeds en groeit nog steeds.
 
-Usenet is de zeldzamere prijs: een archief met schone herkomst van door mensen geschreven tekst op schaal. Of je nu modellen traint, datasets bouwt, of daadwerkelijk internetdiscours bestudeert, Usenet is er — schoon, onbesmet, gratis.
-
-**Repositories:**
-
-- [**github.com/TigreGotico/usenet**](https://github.com/TigreGotico/usenet) — Oogst Usenet naar trainingsdatasets; lees publiek zonder account.
-- [**github.com/TigreGotico/remailers**](https://github.com/TigreGotico/remailers) — Vind live remailers, bouw anonieme ketens, verstuur via Cypherpunk Type-I.
+**Repository:** [**github.com/TigreGotico/usenet**](https://github.com/TigreGotico/usenet) — oogst Usenet naar trainingsdatasets; lees publiek zonder account.

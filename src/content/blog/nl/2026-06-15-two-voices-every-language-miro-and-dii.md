@@ -17,7 +17,7 @@ draft: false
 > **Beluister ze nu:** de [Voices Demo](../../demo) draait Miro & Dii live in je
 > browser — kies een taal, typ een zin, en luister. Geen installatie, geen server.
 
-Mensen onthouden de stem van een assistent beter dan zijn naam. Het is wat software laat aanvoelen als een aanwezigheid in plaats van een proces. Dus de kernvraag van onze samenwerking met [OpenVoiceOS](https://www.openvoiceos.org/) is een praktische: op wie moet de assistent lijken, in elke taal?
+Mensen onthouden de stem van een assistent beter dan zijn naam. Dus de kernvraag van onze samenwerking met [OpenVoiceOS](https://www.openvoiceos.org/) is een praktische: op wie moet de assistent lijken, in elke taal?
 
 Het antwoord is **Miro** (mannelijk) en **Dii** (vrouwelijk) — twee stemidentiteiten die dragen over elke taal die OpenVoiceOS ondersteunt. Een gebruiker die de assistent in Lissabon configureert en later overschakelt naar Duits, zou dezelfde vertrouwde spreker moeten horen. Eén merkstem, elke taal, in eigendom van de gemeenschap.
 
@@ -40,14 +40,12 @@ phoonnx is hier bewust flexibel. Het kan een hele reeks fonemizers aandrijven �
 
 Hier is het concrete aanbod, en het is het hart van de samenwerking: **voor elke taal die iemand aanvraagt, bouwen we twee TTS-modellen — Miro en Dii.** Geen roadmap vol misschientjes; een staande toezegging. Vraag om een taal, en het universele paar komt ernaartoe.
 
-En we bedoelen *elke* taal, niet alleen de comfortabele, commercieel voor de hand liggende. De stemmen die in de wereld ontbreken, zijn zelden die met honderd miljoen sprekers — het zijn de **bedreigde en minderheidstalen** die reguliere TTS stilletjes negeert omdat de markt te klein is om er moeite voor te doen. Dat zijn precies de talen die we willen bereiken. **Fries. Asturisch. Aragonees.** Talen gedragen door gemeenschappen die nog nooit een hoogwaardige synthetische stem van zichzelf hebben gehad, en die geen enkele reden hebben om te verwachten dat een Silicon Valley-leverancier die ooit zal leveren.
+En we bedoelen *elke* taal, niet alleen de comfortabele, commercieel voor de hand liggende. De stemmen die in de wereld ontbreken, zijn zelden die met honderd miljoen sprekers — het zijn de **bedreigde en minderheidstalen** die reguliere TTS stilletjes negeert omdat de markt te klein is om er moeite voor te doen. Dat zijn precies de talen die we willen bereiken: gemeenschappen die nog nooit een hoogwaardige synthetische stem van zichzelf hebben gehad, en die geen enkele reden hebben om te verwachten dat een Silicon Valley-leverancier die ooit zal leveren.
 
-Een consistente stemidentiteit doet hier nog meer terzake. Wanneer een minderheidstaalgemeenschap Miro en Dii krijgt, krijgen ze dezelfde waardige, professionele stem die een gebruiker van een grote taal krijgt — geen blikkerige bijzaak, maar een eersteklaslid van dezelfde familie. Inclusie is in dit werk geen voetnoot. Het is het doel.
+Dit is geen belofte voor later. Op het moment van schrijven telt de [**phoonnx TTS models collection**](https://huggingface.co/collections/TigreGotico/phoonnx-tts-models) op Hugging Face 13 talen met minstens één uitgebrachte stem, en 8 daarvan — Baskisch, Arabisch, Europees Portugees, **Asturisch**, **Aragonees**, **Fries**, Occitaans en Colombiaans Spaans — hebben al zowel Miro als Dii beschikbaar.
 
-## Open, privé, en van jou om te houden
+## Open en zelf-gehost
 
-Alles hier volgt de principes die OpenVoiceOS en TigreGótico delen. De stemmen zijn **vrij en opensource**. Ze draaien **offline en zelf-gehost**, zodat wat je tegen je assistent zegt op je hardware blijft. De modellen zijn **klein en efficiënt**, zodat privacy je geen datacenter kost. En omdat de hele stack — de engine, de fonemizers, het G2P-onderzoek, de getrainde stemmen — open is, kan een gemeenschap haar taal oppakken en ermee doorgaan lang nadat welk afzonderlijk bedrijf dan ook verder is gegaan.
+De stemmen zijn **vrij en opensource**, draaien **offline en zelf-gehost** zodat niets van wat je zegt je hardware verlaat, en de hele stack — de engine, de fonemizers, het G2P-onderzoek, de getrainde stemmen — is open, zodat een gemeenschap haar taal kan oppakken en behouden.
 
-Je kunt de groeiende verzameling stemmen doorbladeren in de [**phoonnx TTS models collection**](https://huggingface.co/collections/TigreGotico/phoonnx-tts-models) op Hugging Face. Als je taal er nog niet bij staat, is dat geen gesloten deur — het is een aanvraag die wacht om gedaan te worden.
-
-Twee stemmen. Elke taal. Die welke de rest van de industrie vergat, inbegrepen.
+Als je taal er nog niet bij staat, is dat geen gesloten deur — het is een aanvraag die wacht om gedaan te worden.

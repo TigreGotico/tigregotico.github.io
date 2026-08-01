@@ -3,6 +3,7 @@ title: "Robots.txt, sitemaps en ethisch webscrapen"
 description: "Voordat u een scraper bouwt, verken eerst de site. sitemapper leest robots.txt, haalt elke sitemap op en doorloopt optioneel de linkgraaf — zodat uw scraper vertrekt vanuit het eigen contract van de site in plaats van bruut geweld."
 date: 2026-03-01
 lang: nl
+updated: 2026-08-01
 author: "Casimiro Ferreira"
 tags:
   - "Web Scraping"
@@ -44,10 +45,12 @@ from sitemapper import discover
 
 info = discover("https://www.python.org")
 print(info.summary())
-# Base URL:         https://www.python.org
-# Sitemaps found:   1
+# Base URL:       https://www.python.org
+# Blocked:        False
+# Sitemaps found: 1
 # URLs in sitemaps: 342
-# Crawl-delay:      None
+# Crawl-delay:    None
+# Sitemap directives in robots.txt: 1
 
 # What pace does the site ask for?
 if info.robots.crawl_delay:
@@ -130,13 +133,13 @@ pip install sitemapper
 pip install sitemapper[stealth]   # adds curl_cffi TLS impersonation
 ```
 
-Gebruik het als bibliotheek, of vanaf de commandoregel — `--json` geeft de
-volledige ontdekking uit om door te sluizen naar andere tools, `--crawl` voegt
+Gebruik het als bibliotheek, of vanaf de commandoregel — `--json FILE` schrijft de
+volledige ontdekking naar een bestand voor andere tools om te gebruiken, `--crawl` voegt
 de linkgraaf-stap toe:
 
 ```bash
 python -m sitemapper https://example.com
-python -m sitemapper https://example.com --crawl --max-pages 50 --json
+python -m sitemapper https://example.com --crawl --max-pages 50 --json out.json
 ```
 
 Het is vrije software en draait op uw eigen hardware. Begin elke scraper met
