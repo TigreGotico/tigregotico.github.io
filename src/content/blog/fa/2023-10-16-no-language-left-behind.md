@@ -2,6 +2,7 @@
 title: "هیچ زبانی جا نمی‌ماند"
 description: "از میان برداشتن موانع زبانی در OpenVoiceOS از طریق تشخیص زبان، افزونه‌های ترجمه و قابلیت‌های ترجمهٔ دوسویه."
 date: 2023-10-16
+updated: 2026-08-01
 lang: fa
 author: "Casimiro Ferreira"
 tags:
@@ -86,7 +87,7 @@ draft: false
     "ovos-utterance-translation-plugin": {
         "bidirectional": true,
         "verify_lang": false,
-        "ignore_invalid": true,
+        "ignore_invalid_langs": true,
         "translate_secondary_langs": true
     }
 },
