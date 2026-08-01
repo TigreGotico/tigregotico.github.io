@@ -2,6 +2,7 @@
 title: "Aucune langue laissée pour compte"
 description: "Éliminer les barrières linguistiques dans OpenVoiceOS grâce à la détection de langue, aux plugins de traduction et aux capacités de traduction bidirectionnelle."
 date: 2023-10-16
+updated: 2026-08-01
 lang: fr
 author: "Casimiro Ferreira"
 tags:
@@ -86,7 +87,7 @@ Le mode optionnel `verify_lang` recoupe la langue détectée du texte avec la la
     "ovos-utterance-translation-plugin": {
         "bidirectional": true,
         "verify_lang": false,
-        "ignore_invalid": true,
+        "ignore_invalid_langs": true,
         "translate_secondary_langs": true
     }
 },

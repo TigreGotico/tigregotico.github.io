@@ -2,6 +2,7 @@
 title: "Un jeu de données multilingue de types de phrases : questions, ordres, affirmations"
 description: "Nous avons publié sentence-types-multilingual — près de 70 000 phrases dans sept langues, classées par type grammatical (question, ordre, affirmation, exclamation). C'est le corpus d'entraînement derrière la bibliothèque de routage little_questions."
 date: 2026-04-01
+updated: 2026-08-01
 lang: fr
 author: "Casimiro Ferreira"
 tags:
@@ -20,19 +21,20 @@ La logique de routage d'un assistant vocal dépend de sa capacité à savoir que
 
 ## Ce que signifient les étiquettes en pratique
 
-Le jeu de données utilise quatre types de premier niveau, qui correspondent directement à la manière dont `little_questions` (la bibliothèque d'inférence qui consomme ces données) route les énoncés :
+Le jeu de données utilise un ensemble plat de six étiquettes — une seule colonne `label` par ligne, sans distinction type/sous-type — qui correspondent directement à la manière dont `little_questions` (la bibliothèque d'inférence qui consomme ces données) route les énoncés :
 
-- **question** — subdivisée encore par sous-type : `yes_no_question`, `wh_question`, `tag_question`. La taxonomie EAT au sein de `little_questions` ajoute 53 étiquettes fines de type de réponse (personne, localisation, quantité, définition, etc.), mais la classification du type de phrase est le premier filtre.
-- **command** — formes impératives et de requête. Les ordres n'attendent pas de réponse ; ils attendent une action.
+- **wh_question** — questions construites autour d'un mot interrogatif (quoi, où, qui, etc.).
+- **polar_question** — questions oui/non. La taxonomie EAT au sein de `little_questions` ajoute 53 étiquettes fines de type de réponse (personne, localisation, quantité, définition, etc.) par-dessus les étiquettes de question, mais la classification du type de phrase est le premier filtre.
+- **command** — formes impératives. Les ordres n'attendent pas de réponse ; ils attendent une action.
+- **request** — demandes d'action polies ou indirectes, distinctes d'un impératif brut.
 - **statement** — déclarative. Dans un contexte de dialogue, les affirmations portent souvent une polarité qui compte en aval : un classificateur oui/non/peut-être est exécuté sur les affirmations pour interpréter les réponses à des questions antérieures.
 - **exclamation** — énoncés marqués émotionnellement qui nécessitent un traitement différent de celui des déclaratives neutres.
 
 ```json
 {
-  "text": "What time is it?",
   "language": "en",
-  "type": "question",
-  "sub_type": "wh_question"
+  "label": "wh_question",
+  "text": "What time is it?"
 }
 ```
 
@@ -48,7 +50,7 @@ Un modèle entraîné uniquement sur l'anglais se trompe sur ces cas partout ail
 
 ## La pile en aval
 
-Les modèles entraînés sur ces données sont distribués au sein de **[little_questions](https://github.com/TigreGotico/little_questions)** — une bibliothèque hors ligne sans dépendances (numpy + onnxruntime) dotée de classificateurs ONNX par langue pour le type de phrase et d'un modèle de polarité oui/non pour 43 langues. Les modèles sont inclus dans la wheel elle-même pour l'anglais et téléchargés de façon paresseuse pour les autres langues. Les sources sur HuggingFace sont `TigreGotico/sentence-types` et `TigreGotico/eat-classifiers`.
+Les modèles entraînés sur ces données sont distribués au sein de **[little_questions](https://github.com/TigreGotico/little_questions)** — une bibliothèque hors ligne sans dépendances (numpy + onnxruntime) dotée de classificateurs ONNX par langue pour le type de phrase et d'un modèle de polarité oui/non pour 43 langues. Les modèles sont inclus dans la wheel elle-même pour l'anglais et téléchargés de façon paresseuse pour les autres langues. Les classificateurs de type de phrase sont publiés sous `TigreGotico/sentence-types` sur HuggingFace ; les classificateurs de type de réponse EAT sont entraînés en interne et ne sont pas publiés publiquement.
 
 ```python
 from little_questions import Sentence

@@ -2,6 +2,7 @@
 title: "Votre modèle de sentiment ne sait pas distinguer une plainte d'un au revoir"
 description: "Deux messages de support qui ont l'air en colère. L'un est sur le point d'escalader ; l'autre est sur le point de partir sans un mot. Presque aucun modèle d'émotion ne peut les distinguer — parce qu'ils leur manquent tous le même axe. Présentation de emotion-algebra."
 date: 2026-07-13
+updated: 2026-08-01
 lang: fr
 author: "Casimiro Ferreira"
 tags:
@@ -176,7 +177,7 @@ angry, afraid = affect_from_texts([
     "I don't know if I'm doing this right and I'm scared I've broken something.",
 ])
 
-angry.valence,  angry.potency    # -0.43, +0.16   -> 'annoyance'
+angry.valence,  angry.potency    # -0.43, +0.16   -> 'disgust'
 afraid.valence, afraid.potency   # -0.47, -0.43   -> 'apprehension'
 ```
 
