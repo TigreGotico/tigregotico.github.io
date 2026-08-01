@@ -1,6 +1,6 @@
 ---
 title: "OpenVoiceOS و Home Assistant: تیم رؤیایی خودکارسازی صوتی"
-description: "‏Home Assistant خودکارسازی را به عهده می‌گیرد؛ OVOS صدا را. سه لایهٔ یکپارچه‌سازی این ترکیب را کارآمد می‌کنند: پل‌های Wyoming برای خط‌لولهٔ صوتی HA ، ovos-persona-server به‌عنوان یک عامل گفت‌وگویی، و HiveMind برای نمایش دستگاه‌های OVOS به‌عنوان موجودیت‌های بومی HA."
+description: "‏Home Assistant خودکارسازی را به عهده می‌گیرد؛ OVOS صدا را. سه لایهٔ یکپارچه‌سازی این ترکیب را کارآمد می‌کنند: پل‌های Wyoming برای خط‌لولهٔ صوتی HA، ovos-persona-server به‌عنوان یک عامل گفت‌وگویی، و HiveMind برای نمایش دستگاه‌های OVOS به‌عنوان موجودیت‌های بومی HA."
 date: 2025-09-17
 lang: fa
 author: "Casimiro Ferreira"
@@ -16,13 +16,13 @@ draft: false
 
 ‏Home Assistant خودکارسازی را به عهده می‌گیرد؛ OVOS صدا را. هیچ‌کدام نمی‌کوشند دیگری باشد. همین تقسیم مسئولیت است که این ترکیب را کارآمد می‌کند: یکپارچه‌سازی دستگاه‌ها و موتور خودکارسازی HA در کنار پشتهٔ صوتی انعطاف‌پذیر و کاملاً محلی OVOS.
 
-این نوشته به سه لایهٔ یکپارچه‌سازی می‌پردازد: پل‌های Wyoming برای خط‌لولهٔ صوتی HA ، ovos-persona-server به‌عنوان یک عامل گفت‌وگویی، و HiveMind برای نمایش دستگاه‌های OVOS به‌عنوان موجودیت‌های بومی HA.
+این نوشته به سه لایهٔ یکپارچه‌سازی می‌پردازد: پل‌های Wyoming برای خط‌لولهٔ صوتی HA، ovos-persona-server به‌عنوان یک عامل گفت‌وگویی، و HiveMind برای نمایش دستگاه‌های OVOS به‌عنوان موجودیت‌های بومی HA.
 
 -----
 
 ## به Home Assistant صدایی مبتنی بر OVOS بدهید
 
-پروتکل Wyoming رابط استاندارد HA برای سرویس‌های خارجی ASR ، TTS و wakeword است. ما پل‌های Wyoming ساختیم که هر افزونهٔ OVOS را روی آن پروتکل در دسترس می‌گذارند — یعنی HA به هر افزونه در بوم‌سازگان OVOS دسترسی پیدا می‌کند، نه فقط یک فهرست کوتاه گزیده.
+پروتکل Wyoming رابط استاندارد HA برای سرویس‌های خارجی ASR، TTS و wakeword است. ما پل‌های Wyoming ساختیم که هر افزونهٔ OVOS را روی آن پروتکل در دسترس می‌گذارند — یعنی HA به هر افزونه در بوم‌سازگان OVOS دسترسی پیدا می‌کند، نه فقط یک فهرست کوتاه گزیده.
 
 
 * [Wyoming OVOS ASR](https://github.com/TigreGotico/wyoming-ovos-stt): فرمان‌های گفتاری را به متن تبدیل می‌کند تا Home Assistant آن‌ها را بفهمد.
@@ -42,7 +42,7 @@ draft: false
 
 ### **راه‌اندازی سرویس‌های Wyoming در Home Assistant:**
 
-هنگام پیکربندی سرویس‌های Wyoming در Home Assistant ، معمولاً به [مستندات رسمی Home Assistant](https://www.home-assistant.io/integrations/wyoming/) مراجعه می‌کنید. این فرایند معمولاً تنها شامل وارد کردن نشانی IP کانتینر Docker شما (یا میزبانی که سرویس‌های OVOS Wyoming شما را اجرا می‌کند) در واسط وب Home Assistant است.
+هنگام پیکربندی سرویس‌های Wyoming در Home Assistant، معمولاً به [مستندات رسمی Home Assistant](https://www.home-assistant.io/integrations/wyoming/) مراجعه می‌کنید. این فرایند معمولاً تنها شامل وارد کردن نشانی IP کانتینر Docker شما (یا میزبانی که سرویس‌های OVOS Wyoming شما را اجرا می‌کند) در واسط وب Home Assistant است.
 
 ![راه‌اندازی wyoming در Home Assistant](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/wyoming_setup.png)
 
@@ -66,7 +66,7 @@ draft: false
 
 ## OVOS همراه با Voice PE
 
-‏[Home Assistant Voice Preview Edition](https://www.home-assistant.io/voice-pe) یک ماهوارهٔ سخت‌افزاری اختصاصی برای خط‌لولهٔ صوتی HA است. این دستگاه با تمام سرویس‌های Wyoming که در بالا توضیح داده شد کار می‌کند — آن را به هر نمونهٔ در حال اجرای wyoming-ovos-stt ، wyoming-ovos-tts یا wyoming-ovos-wakeword متصل کنید.
+‏[Home Assistant Voice Preview Edition](https://www.home-assistant.io/voice-pe) یک ماهوارهٔ سخت‌افزاری اختصاصی برای خط‌لولهٔ صوتی HA است. این دستگاه با تمام سرویس‌های Wyoming که در بالا توضیح داده شد کار می‌کند — آن را به هر نمونهٔ در حال اجرای wyoming-ovos-stt، wyoming-ovos-tts یا wyoming-ovos-wakeword متصل کنید.
 
 ![پیکربندی Home Assistant Voice Preview Edition](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/voice_pe_config.png)
 
@@ -79,7 +79,7 @@ draft: false
 
 ### **راه‌اندازی یکپارچه‌سازی HiveMind:**
 
-برای یکپارچه‌سازی دستگاه‌های OVOS از طریق HiveMind ، معمولاً یکپارچه‌سازی HiveMind را در Home Assistant اضافه می‌کنید. این کار شامل ارائهٔ جزئیات اتصال مانند یک `name` برای یکپارچه‌سازی، یک `access_key`، `password`، `site_id`، `host` (نشانی IP یا نام میزبانِ سرور HiveMind شما) و `port` (که به‌طور پیش‌فرض 5678 است) می‌شود. بسته به راه‌اندازی‌تان ممکن است گزینه‌هایی نیز برای `allow_self_signed` گواهی‌ها یا فعال‌سازی `legacy_audio` داشته باشید.
+برای یکپارچه‌سازی دستگاه‌های OVOS از طریق HiveMind، معمولاً یکپارچه‌سازی HiveMind را در Home Assistant اضافه می‌کنید. این کار شامل ارائهٔ جزئیات اتصال مانند یک `name` برای یکپارچه‌سازی، یک `access_key`، `password`، `site_id`، `host` (نشانی IP یا نام میزبانِ سرور HiveMind شما) و `port` (که به‌طور پیش‌فرض 5678 است) می‌شود. بسته به راه‌اندازی‌تان ممکن است گزینه‌هایی نیز برای `allow_self_signed` گواهی‌ها یا فعال‌سازی `legacy_audio` داشته باشید.
 
 ![راه‌اندازی HiveMind در Home Assistant](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/hivemind_setup.png)
 
@@ -87,7 +87,7 @@ draft: false
 
 پس از یکپارچه‌سازی، HiveMind مجموعه‌ای جامع از کنترل‌ها را برای دستگاه‌های OVOS شما مستقیماً درون Home Assistant در دسترس می‌گذارد. این به شما امکان می‌دهد جنبه‌های گوناگون دستگاه OVOS خود را از واسط Home Assistant مدیریت کنید، از جمله:
 
-  * تغییر `Listening Mode` (مثلاً wakeword ، شنیدنِ همیشگی)
+  * تغییر `Listening Mode` (مثلاً wakeword، شنیدنِ همیشگی)
   * ضامن `Microphone Mute`
   * وضعیت و کنترل‌های `OCP Player`
   * اقدام‌هایی مانند `Reboot Device`، `Restart OVOS` و `Shutdown Device`

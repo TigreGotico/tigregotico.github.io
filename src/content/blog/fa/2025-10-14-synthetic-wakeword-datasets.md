@@ -1,6 +1,6 @@
 ---
 title: "مجموعه‌داده‌های مصنوعی Wakeword: هفت نام دستیار، یک آشکارساز"
-description: "ما هفت مجموعه‌دادهٔ مصنوعی wakeword برای نام‌های رایج دستیارهای صوتی منتشر کردیم — hey_computer ، hey_mycroft ، hey_siri ، alexa ، home_assistant ، voice_assistant ، wake_up. یک آشکارساز آموزش دهید که همه‌جا کار کند."
+description: "ما هفت مجموعه‌دادهٔ مصنوعی wakeword برای نام‌های رایج دستیارهای صوتی منتشر کردیم — hey_computer، hey_mycroft، hey_siri، alexa، home_assistant، voice_assistant، wake_up. یک آشکارساز آموزش دهید که همه‌جا کار کند."
 date: 2025-10-14
 lang: fa
 author: "Casimiro Ferreira"
@@ -34,10 +34,10 @@ draft: false
 - **قابل‌بازبینی**: خط‌لولهٔ تولید همان مستندات است.
 - **مقیاس‌پذیر**: تغییر آهنگ گفتار و ویژگی‌های گوینده یک تغییر پارامتر است، نه یک جلسهٔ استودیویی.
 
-برای آشکارسازی wakeword ، ویژگی مرتبط تمایز آکوستیکی است، نه طبیعی بودن. دادهٔ مصنوعی به‌خوبی با این نیاز همخوان است.
+برای آشکارسازی wakeword، ویژگی مرتبط تمایز آکوستیکی است، نه طبیعی بودن. دادهٔ مصنوعی به‌خوبی با این نیاز همخوان است.
 
 ## از این‌ها استفاده کنید
 
-آشکارساز wakeword خودتان را برای OpenVoiceOS ، Mycroft یا هر سامانهٔ صوتی باز آموزش دهید. برای افزون‌سازی نمونه‌های منفی، مجموعه‌داده‌های کلیپ پس‌زمینهٔ خانگی و در مالکیت عمومی نیز وجود دارند: [building_106_kitchen_3secs](https://huggingface.co/datasets/TigreGotico/building_106_kitchen_3secs)، [public_domain_sounds_3secs](https://huggingface.co/datasets/TigreGotico/public_domain_sounds_3secs) و [FMA_3secs](https://huggingface.co/datasets/TigreGotico/FMA_3secs).
+آشکارساز wakeword خودتان را برای OpenVoiceOS، Mycroft یا هر سامانهٔ صوتی باز آموزش دهید. برای افزون‌سازی نمونه‌های منفی، مجموعه‌داده‌های کلیپ پس‌زمینهٔ خانگی و در مالکیت عمومی نیز وجود دارند: [building_106_kitchen_3secs](https://huggingface.co/datasets/TigreGotico/building_106_kitchen_3secs)، [public_domain_sounds_3secs](https://huggingface.co/datasets/TigreGotico/public_domain_sounds_3secs) و [FMA_3secs](https://huggingface.co/datasets/TigreGotico/FMA_3secs).
 
 [**تمام مجموعه‌داده‌های wakeword در HuggingFace ← TigreGotico**](https://huggingface.co/datasets?author=TigreGotico&tags=wakeword)

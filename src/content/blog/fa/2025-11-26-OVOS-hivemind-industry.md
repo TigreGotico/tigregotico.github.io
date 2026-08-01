@@ -12,7 +12,7 @@ tags:
 draft: false
 ---
 
-پروژه‌های اروپایی **[COALA](https://coala-ai.de)** و **[WASABI](https://wasabiproject.eu)** یک چارچوب کامل دستیار صوتی صنعتی را بر بستر **[OpenVoiceOS](https://openvoiceos.org)** (یک بستر صوتی متن‌باز غیرانتفاعی) و **[HiveMind](https://jarbashivemind.github.io/HiveMind-community-docs/)** ساختند و آن‌ها را با واسط کاربری Android ، موتور NLP و پشتهٔ Docker خود یکپارچه کردند.
+پروژه‌های اروپایی **[COALA](https://coala-ai.de)** و **[WASABI](https://wasabiproject.eu)** یک چارچوب کامل دستیار صوتی صنعتی را بر بستر **[OpenVoiceOS](https://openvoiceos.org)** (یک بستر صوتی متن‌باز غیرانتفاعی) و **[HiveMind](https://jarbashivemind.github.io/HiveMind-community-docs/)** ساختند و آن‌ها را با واسط کاربری Android، موتور NLP و پشتهٔ Docker خود یکپارچه کردند.
 
 من در این استقرارها دخیل نبودم. نکته دقیقاً همین است: این پشته بر پایهٔ شایستگی‌های خودش، توسط تیم‌هایی با نیازهای صنعتی واقعی، پذیرفته می‌شود.
 
@@ -74,7 +74,7 @@ draft: false
 ### **۱. یک دستیار حوزه‌ای (DA) مبتنی بر RASA**
 
 پژوهش پیشین COALA یک **خط‌لولهٔ NLP RASA** را توسعه داد که روی گفت‌وگوهای تولیدی (دربارهٔ بررسی‌های کیفیت، عیب‌یابی، کار با ماشین) آموزش دیده بود.
-در WASABI ، این موتور RASA به‌عنوان یک **skill** به OVOS وصل می‌شود و گفت‌وگوی حوزه‌محور را مدیریت می‌کند.
+در WASABI، این موتور RASA به‌عنوان یک **skill** به OVOS وصل می‌شود و گفت‌وگوی حوزه‌محور را مدیریت می‌کند.
 
 ### **۲. برنامهٔ Android کوآلا**
 
