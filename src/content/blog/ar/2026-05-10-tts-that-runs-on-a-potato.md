@@ -65,7 +65,7 @@ print(sum(int(np.prod(i.dims)) for i in m.graph.initializer))
 تسلسل الوحدات الصوتية التي ينطقها النموذج فعلًا — بحيث لا تحتاج شبكة VITS أبدًا إلى
 تعلّم الإملاء، بل الصوت فقط.
 
-يستند عملنا في الفونيمات إلى **[تحويل الحرف إلى IPA لـ 807 لغة](/blog/2026-01-15-grapheme-to-ipa-for-350-languages)** و**[الصوتيات البرتغالية الكلاسيكية](/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**، اللذين يجعلان من الممكن تدريب أصوات للغات شحيحة الموارد دون أسابيع من التوصيف الخبير.
+يستند عملنا في الفونيمات إلى **[تحويل الحرف إلى IPA لـ 820 لغة](/blog/2026-01-15-grapheme-to-ipa-for-350-languages)** و**[الصوتيات البرتغالية الكلاسيكية](/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**، اللذين يجعلان من الممكن تدريب أصوات للغات شحيحة الموارد دون أسابيع من التوصيف الخبير.
 
 صُمِّم phoonnx عمدًا ليكون محايدًا تجاه المُفوْنِم، ويحزم جيشًا صغيرًا منها:
 `espeak-ng`، و[gruut](https://github.com/rhasspy/gruut)،
