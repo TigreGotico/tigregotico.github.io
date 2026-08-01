@@ -41,7 +41,7 @@ const herePath = Astro.url.pathname.replace(/\/$/, '');
 const sitePath =
   (herePath.startsWith(baseNoSlash) ? herePath.slice(baseNoSlash.length) : herePath) || '/';
 const enPath = sitePath.replace(/^\/(pt|es|de|nl|fr|it|ru|ar|fa|hi|zh|ko|ja)(?=\/|$)/, '') || '/';
-const withSlash = (p: string) => (p === '/' ? '/' : p + '/');
+const withSlash = (p: string) => (p.endsWith('/') ? p : p + '/');
 const abs = (path: string) => new URL(baseNoSlash + withSlash(path), Astro.site ?? site.url).href;
 // Blog posts exist only in en + pt; other pages exist in every locale.
 const isBlogPost = /^\/blog\/.+/.test(enPath);
@@ -66,6 +66,14 @@ const ogImage = ogImagePath.startsWith('http')
   ? ogImagePath
   : new URL(ogImagePath, Astro.site ?? site.url).href;
 
+// Same absolute-URL treatment as the OG image above.
+const logoPath = site.logo.startsWith('http')
+  ? site.logo
+  : baseUrl.replace(/\/$/, '') + site.logo;
+const logoUrl = logoPath.startsWith('http')
+  ? logoPath
+  : new URL(logoPath, Astro.site ?? site.url).href;
+
 const organizationLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
@@ -74,6 +82,7 @@ const organizationLd = {
   url: site.url,
   email: site.email,
   vatID: site.nif,
+  logo: logoUrl,
   address: {
     '@type': 'PostalAddress',
     streetAddress: site.address.lines[0],
@@ -81,8 +90,56 @@ const organizationLd = {
     addressLocality: site.address.locality,
     addressCountry: site.address.country,
   },
-  sameAs: [site.socials.github, site.socials.huggingface, site.socials.openvoiceos],
+  sameAs: [
+    site.socials.github,
+    site.socials.huggingface,
+    site.socials.openvoiceos,
+    site.socials.linkedin,
+  ],
 };
+
+// BreadcrumbList for nested pages (blog posts, section pages). The site
+// root gets no breadcrumb trail — there's nothing to trail from.
+const navLabelKeyByPath: Record<string, keyof (typeof ui)['en']['nav']> = {
+  '/about': 'about',
+  '/blog': 'blog',
+  '/projects': 'projects',
+  '/services': 'services',
+  '/games': 'games',
+  '/contact': 'contact',
+};
+const breadcrumbSegments = sitePath === '/' ? [] : enPath.split('/').filter(Boolean);
+const breadcrumbLd =
+  breadcrumbSegments.length > 0
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: (() => {
+          const items: { name: string; url: string }[] = [
+            { name: ui[locale].nav.home, url: abs(localePath(locale, '/')) },
+          ];
+          let acc = '';
+          breadcrumbSegments.forEach((seg, i) => {
+            acc += `/${seg}`;
+            const isLast = i === breadcrumbSegments.length - 1;
+            const navKey = navLabelKeyByPath[acc];
+            const name =
+              isLast && isBlogPost && title
+                ? title
+                : navKey
+                  ? ui[locale].nav[navKey]
+                  : seg;
+            items.push({ name, url: abs(localePath(locale, acc)) });
+          });
+          return items.map((it, idx) => ({
+            '@type': 'ListItem',
+            position: idx + 1,
+            name: it.name,
+            item: it.url,
+          }));
+        })(),
+      }
+    : null;
 ---
 
 <title>{pageTitle}</title>
@@ -116,6 +173,15 @@ const organizationLd = {
       is:inline
       type="application/ld+json"
       set:html={JSON.stringify(jsonLd)}
+    />
+  )
+}
+{
+  breadcrumbLd && (
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify(breadcrumbLd)}
     />
   )
 }

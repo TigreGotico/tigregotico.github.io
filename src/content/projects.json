@@ -3414,35 +3414,6 @@
     }
   },
   {
-    "id": "calendar-event-extractor",
-    "name": "calendar-event-extractor",
-    "description": "Rule-based natural-language to calendar-event extractor — turns phrases like 'every monday at 9 am' or 'from X until Y' into structured iCalendar events with recurrence rules.",
-    "url": "https://github.com/TigreGotico/calendar-event-extractor",
-    "category": "NLP & Language",
-    "tags": [
-      "calendar",
-      "iCalendar",
-      "datetime",
-      "rule-based"
-    ],
-    "featured": false,
-    "descriptions": {
-      "pt": "Extrator de eventos de calendário a partir de linguagem natural e baseado em regras — transforma frases como 'todas as segundas às 9h' ou 'de X até Y' em eventos iCalendar estruturados com regras de recorrência.",
-      "es": "Extractor basado en reglas de lenguaje natural a eventos de calendario: convierte frases como 'todos los lunes a las 9' o 'de X hasta Y' en eventos iCalendar estructurados con reglas de recurrencia.",
-      "de": "Regelbasierter Extraktor von natürlicher Sprache zu Kalenderereignissen — verwandelt Formulierungen wie „jeden Montag um 9 Uhr“ oder „von X bis Y“ in strukturierte iCalendar-Ereignisse mit Wiederholungsregeln.",
-      "nl": "Op regels gebaseerde extractor van natuurlijke taal naar agenda-afspraken — zet zinnen als 'elke maandag om 9 uur' of 'van X tot Y' om in gestructureerde iCalendar-afspraken met herhalingsregels.",
-      "fr": "Extracteur d'événements de calendrier à partir du langage naturel, basé sur des règles — transforme des expressions comme « tous les lundis à 9 h » ou « de X jusqu'à Y » en événements iCalendar structurés avec règles de récurrence.",
-      "it": "Estrattore basato su regole dal linguaggio naturale a eventi di calendario — trasforma frasi come 'ogni lunedì alle 9' o 'da X fino a Y' in eventi iCalendar strutturati con regole di ricorrenza.",
-      "ru": "Экстрактор событий календаря из естественного языка на правилах — превращает фразы вроде «каждый понедельник в 9 утра» или «с X до Y» в структурированные события iCalendar с правилами повторения.",
-      "ar": "مُستخرِج أحداث تقويم من اللغة الطبيعية قائم على القواعد — يحوّل عبارات مثل 'كل يوم اثنين في التاسعة صباحًا' أو 'من X حتى Y' إلى أحداث iCalendar مُنظّمة مع قواعد تكرار.",
-      "fa": "استخراج‌گر مبتنی بر قاعدهٔ زبان طبیعی به رویداد تقویم — عباراتی مانند «هر دوشنبه ساعت ۹ صبح» یا «از X تا Y» را به رویدادهای ساختارمند iCalendar با قواعد تکرار تبدیل می‌کند.",
-      "hi": "नियम-आधारित प्राकृतिक-भाषा से कैलेंडर-इवेंट निष्कर्षक — 'हर सोमवार सुबह 9 बजे' या 'X से Y तक' जैसे वाक्यांशों को पुनरावृत्ति नियमों के साथ संरचित iCalendar इवेंट में बदलता है।",
-      "zh": "基于规则的自然语言转日历事件抽取器——将「每周一上午 9 点」或「从 X 到 Y」之类短语转换为带重复规则的结构化 iCalendar 事件。",
-      "ko": "규칙 기반 자연어-캘린더 이벤트 추출기 — '매주 월요일 오전 9시'나 'X부터 Y까지' 같은 구문을 반복 규칙이 포함된 구조화된 iCalendar 이벤트로 변환합니다.",
-      "ja": "ルールベースの自然言語からカレンダーイベントへの抽出器。「every monday at 9 am」や「from X until Y」といった表現を、繰り返しルール付きの構造化されたiCalendarイベントに変換する。"
-    }
-  },
-  {
     "id": "agentpipe",
     "name": "agentpipe",
     "description": "Async Python wrapper for coding-agent CLIs (Claude Code, Gemini, opencode, Antigravity) behind one Provider API — one-shot, multi-turn sessions, typed streaming events, and fan-out/delegate/retry pipeline patterns.",
