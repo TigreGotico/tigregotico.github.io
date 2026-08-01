@@ -3,6 +3,7 @@ title: "Een meertalige dataset van zinstypen: vragen, commando's, uitspraken"
 description: "We hebben sentence-types-multilingual gepubliceerd — bijna 70.000 zinnen in zeven talen, geclassificeerd naar grammaticaal type (vraag, commando, uitspraak, uitroep). Het is het trainingscorpus achter de routeringsbibliotheek little_questions."
 date: 2026-04-01
 lang: nl
+updated: 2026-08-01
 author: "Casimiro Ferreira"
 tags:
   - "Datasets"
@@ -20,19 +21,20 @@ De routeringslogica van een spraakassistent hangt ervan af of hij weet wat voor 
 
 ## Wat de labels in de praktijk betekenen
 
-De dataset gebruikt vier hoofdtypen, die rechtstreeks overeenkomen met de manier waarop `little_questions` (de inferentiebibliotheek die deze data verbruikt) uitingen routeert:
+De dataset gebruikt een platte set van zes labels — één `label`-kolom per rij, geen splitsing in type/subtype — die rechtstreeks overeenkomen met de manier waarop `little_questions` (de inferentiebibliotheek die deze data verbruikt) uitingen routeert:
 
-- **question** — verder onderverdeeld naar subtype: `yes_no_question`, `wh_question`, `tag_question`. De EAT-taxonomie binnen `little_questions` voegt 53 fijnmazige labels voor antwoordtype toe (persoon, locatie, hoeveelheid, definitie, enzovoort), maar de classificatie van het zinstype is de eerste poort.
-- **command** — imperatieve en verzoekende vormen. Commando's verwachten geen antwoord; ze verwachten een actie.
+- **wh_question** — vragen opgebouwd rond een vraagwoord (wat, waar, wie, enzovoort).
+- **polar_question** — ja/nee-vragen. De EAT-taxonomie binnen `little_questions` voegt 53 fijnmazige labels voor antwoordtype toe (persoon, locatie, hoeveelheid, definitie, enzovoort) bovenop de vraaglabels, maar de classificatie van het zinstype is de eerste poort.
+- **command** — imperatieve vormen. Commando's verwachten geen antwoord; ze verwachten een actie.
+- **request** — beleefde of indirecte verzoeken om actie, te onderscheiden van een kaal imperatief.
 - **statement** — declaratief. Uitspraken in een dialoogcontext dragen vaak een polariteit die verderop in het proces van belang is: een ja/nee/misschien-classificator draait op uitspraken om antwoorden op eerdere vragen te interpreteren.
 - **exclamation** — emotioneel gemarkeerde uitingen die een andere behandeling vereisen dan neutrale declaratieven.
 
 ```json
 {
-  "text": "What time is it?",
   "language": "en",
-  "type": "question",
-  "sub_type": "wh_question"
+  "label": "wh_question",
+  "text": "What time is it?"
 }
 ```
 
@@ -48,7 +50,7 @@ Een model dat alleen op Engels is getraind, maakt deze gevallen overal elders fo
 
 ## De downstream-stack
 
-De modellen die op deze data zijn getraind, worden geleverd binnen **[little_questions](https://github.com/TigreGotico/little_questions)** — een offline bibliotheek zonder afhankelijkheden (numpy + onnxruntime) met ONNX-classificatoren per taal voor het zinstype en een ja/nee-polariteitsmodel voor 43 talen. De modellen zijn voor het Engels in de wheel zelf meegeleverd en worden voor andere talen lazy gedownload. De bronnen op HuggingFace zijn `TigreGotico/sentence-types` en `TigreGotico/eat-classifiers`.
+De modellen die op deze data zijn getraind, worden geleverd binnen **[little_questions](https://github.com/TigreGotico/little_questions)** — een offline bibliotheek zonder afhankelijkheden (numpy + onnxruntime) met ONNX-classificatoren per taal voor het zinstype en een ja/nee-polariteitsmodel voor 43 talen. De modellen zijn voor het Engels in de wheel zelf meegeleverd en worden voor andere talen lazy gedownload. De zinstype-classificatoren worden op HuggingFace gepubliceerd als `TigreGotico/sentence-types`; de EAT-antwoordtype-classificatoren worden intern getraind en niet publiek uitgebracht.
 
 ```python
 from little_questions import Sentence

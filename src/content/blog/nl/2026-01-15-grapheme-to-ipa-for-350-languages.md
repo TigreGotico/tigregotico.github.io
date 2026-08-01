@@ -1,8 +1,9 @@
 ---
-title: "Grafeem-naar-IPA voor 676 talen"
-description: "orthography2ipa is een taalkundig gefundeerde bron van pure data die spelling op IPA afbeeldt en modelleert hoe fonemen als allofonen tot uiting komen over ~750 taalspecificaties, 676 talen en meer dan 20 taalfamilies. Een kandidaat-lattice, een maximal-munch-tokenizer, fonologische en schriftafstandsmetrieken, dialectlijn en een schema-gevalideerde specificatieset, geciteerd naar de dialectologische literatuur — zonder getrainde gewichten, volledig zelf te hosten."
+title: "Grafeem-naar-IPA voor 807 talen"
+description: "orthography2ipa is een taalkundig gefundeerde bron van pure data die spelling op IPA afbeeldt en modelleert hoe fonemen als allofonen tot uiting komen over 896 taalspecificaties, 807 talen en meer dan 20 taalfamilies. Een kandidaat-lattice, een maximal-munch-tokenizer, fonologische en schriftafstandsmetrieken, dialectlijn en een schema-gevalideerde specificatieset, geciteerd naar de dialectologische literatuur — zonder getrainde gewichten, volledig zelf te hosten."
 date: 2026-01-15
 lang: nl
+updated: 2026-08-01
 author: "Casimiro Ferreira"
 tags:
   - "G2P"
@@ -16,7 +17,7 @@ tags:
 draft: false
 ---
 
-**[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)** is een Python-pakket van pure data — declaratieve JSON, dunne en pluggbare logica, zonder getrainde gewichten — dat spelling op IPA afbeeldt en modelleert hoe die fonemen in context tot uiting komen. Het levert **~750 taalspecificaties die 676 talen dekken** (plus 73 nodes die alleen voor classificatie dienen) over **meer dan 20 taalfamilies**. Installeer het, lees de data, fork de data. Niets zit verborgen in een checkpoint.
+**[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)** is een Python-pakket van pure data — declaratieve JSON, dunne en pluggbare logica, zonder getrainde gewichten — dat spelling op IPA afbeeldt en modelleert hoe die fonemen in context tot uiting komen. Het levert **896 taalspecificaties die 807 talen dekken** (plus 89 nodes die alleen voor classificatie dienen) over **meer dan 20 taalfamilies**. Installeer het, lees de data, fork de data. Niets zit verborgen in een checkpoint.
 
 Het is de fonologielaag onder alles wat stroomafwaarts gebeurt: de kandidaat-lattice die het produceert wordt gebruikt door de Arabische TTS-frontend [arbtok](https://github.com/TigreGotico/arbtok), de Portugese stacks [TugaPhone](https://github.com/TigreGotico/tugaphone) en [silabificador](https://github.com/TigreGotico/silabificador) (zie **[klassieke NLP voor Portugese lettergrepen en fonemen](/nl/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**), de [Barranquenho-fonemizer](/nl/blog/2025-12-12-barranquenho), de Mirandese-fonemizer en de fonemische basis voor **[TTS die op een aardappel draait](/nl/blog/2026-05-10-tts-that-runs-on-a-potato)**.
 
@@ -51,11 +52,11 @@ Dialectbomen blijven onderhoudbaar omdat JSON-bestanden `graphemes_base` / `allo
 
 ## Diep op de grond, niet alleen breed
 
-Het getal 676 is breedte; de diepte is waar het werk zit. De specificaties gaan lect voor lect zo ver als de dialectologische literatuur gaat, en elke specificatie is naar die literatuur geciteerd met paginaverwijzingen in plaats van afgeleid via patroonherkenning uit een foneemtabel.
+Het getal 807 is breedte; de diepte is waar het werk zit. De specificaties gaan lect voor lect zo ver als de dialectologische literatuur gaat, en elke specificatie is naar die literatuur geciteerd met paginaverwijzingen in plaats van afgeleid via patroonherkenning uit een foneemtabel.
 
 De **Iberische** dekking is het duidelijkste voorbeeld: **meer dan 100 specificaties** voor de talen van het schiereiland. Elke Romaanse taal van Spanje — Castiliaans, Catalaans/Valenciaans, Galicisch (zowel de RAG- als de reïntegrationistische norm), Asturisch, Aragonees en zijn valleivarianten (Ansotano, Chistabín, Benasqués…), Extremadurees — naast Baskisch, de Ibero-Romaanse creolen en de historische lagen die de meeste bronnen volledig overslaan: **Andalusisch Arabisch** en **Mozarabisch**. Aan de Arabische kant zitten **34 dialectlects** (van Najdi en Hijazi tot Levantijns, Maghrebijns en de schiereilandvarianten), en aan de Lusofone kant **46 lects van het Portugees en de talen van Portugal**, tot en met Rionorees, Guadramilees en de Mirandese subdialecten.
 
-Voor zover wij weten zijn verschillende hiervan de **eerste machineleesbare fonologie** die ooit voor de variëteit is gepubliceerd — Rionorees, Guadramilees, Benasqués, Angolar en Andalusisch Arabisch onder andere — en het stroomafwaartse werk levert de **eerste IPA-woordenboeken** voor **Barranquenho** en **Mirandees**.
+Voor zover wij weten zijn verschillende hiervan de **eerste machineleesbare fonologie** die ooit voor de variëteit is gepubliceerd — hiermee bedoelen we een gestructureerde, schema-gevalideerde grafeem/allofoon-specificatie die een programma kan bevragen, in tegenstelling tot een foneeminventaris die alleen in proza wordt beschreven in de dialectologische literatuur — Rionorees en Guadramilees onder andere. Het stroomafwaartse werk levert de **eerste IPA-woordenboeken** voor **Barranquenho** en **Mirandees**.
 
 ## Een kandidaat-lattice, geen enkele gok
 
@@ -83,13 +84,13 @@ Omdat de data gestructureerd is in plaats van vastgebakken in gewichten, kun je 
 from orthography2ipa.distance import phonological_distance
 d = phonological_distance(orthography2ipa.get("pt-BR"), orthography2ipa.get("pt-PT"))
 
-d.combined                    # 0.04 — near-identical
+d.combined                    # 0.0515 — near-identical
 d.inventory.feature_mean      # phoneme-inventory distance
 d.grapheme.mean_ipa_distance  # grapheme-mapping divergence
 d.allophone_sim               # allophone-overlap similarity
 ```
 
-Ook de kenmerkvectoren worden blootgesteld, zodat een vrijwel identiek paar zoals de twee Portugese standaarden op 0,04 uitkomt, terwijl werkelijk ver uiteenliggende paren zich helder scheiden. Dit is nuttig voor beslissingen rond transfer learning, voor het bootstrappen van talen met weinig middelen en voor dialectometrie.
+Ook de kenmerkvectoren worden blootgesteld, zodat een vrijwel identiek paar zoals de twee Portugese standaarden op 0,0515 uitkomt, terwijl werkelijk ver uiteenliggende paren zich helder scheiden. Dit is nuttig voor beslissingen rond transfer learning, voor het bootstrappen van talen met weinig middelen en voor dialectometrie.
 
 ## Hoe we weten dat de data iets waard is
 

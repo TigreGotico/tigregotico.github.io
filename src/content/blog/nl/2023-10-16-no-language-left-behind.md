@@ -3,6 +3,7 @@ title: "Geen Taal Achtergelaten"
 description: "Taalbarrières in OpenVoiceOS wegnemen via taaldetectie, vertaalplugins en bidirectionele vertaalmogelijkheden."
 date: 2023-10-16
 lang: nl
+updated: 2026-08-01
 author: "Casimiro Ferreira"
 tags:
   - "OVOS"
@@ -86,7 +87,7 @@ De optionele modus `verify_lang` controleert de gedetecteerde taal van de tekst 
     "ovos-utterance-translation-plugin": {
         "bidirectional": true,
         "verify_lang": false,
-        "ignore_invalid": true,
+        "ignore_invalid_langs": true,
         "translate_secondary_langs": true
     }
 },
