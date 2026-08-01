@@ -14,9 +14,8 @@ tags:
 draft: false
 ---
 
-Il existe un mythe tenace selon lequel une bonne synthèse vocale nécessite un GPU
-costaud, une facture cloud salée, et une clé d'API avec votre carte de crédit agrafée
-dessus. C'est faux. Une voix naturelle et multilingue peut tenir dans quelque chose
+Une bonne synthèse vocale n'exige ni GPU ni abonnement cloud. Une voix naturelle et
+multilingue peut tenir dans quelque chose
 que vous auriez honte d'appeler un serveur — le genre de carte que vous gardez dans un
 tiroir « au cas où ». Une patate.
 
@@ -46,8 +45,8 @@ standard de phoonnx ; la personnalité réside dans les poids, pas dans une capa
 supplémentaire.
 
 Pour situer : une seule couche d'un « petit » modèle de langue moderne peut porter
-plus de paramètres que ce synthétiseur vocal tout entier. Quinze millions et demi,
-c'est à peu près le poids d'une photo de téléphone, et ça parle couramment.
+plus de paramètres que ce synthétiseur vocal tout entier, et il parle tout de même
+couramment.
 
 ## Pourquoi VITS, et pourquoi ONNX
 
@@ -66,8 +65,6 @@ portée de ce qu'un cœur de la classe Raspberry Pi mâche plus vite que le temp
 Le résultat est un assistant vocal qui continue de parler quand votre internet est en
 panne, quand le fournisseur cloud a une interruption, ou quand vous n'avez tout
 simplement jamais voulu que l'audio de votre maison quitte la maison en premier lieu.
-**La souveraineté des données n'est pas ici une option à cocher ; c'est
-l'architecture.**
 
 ## Les phonèmes, là où se cache l'intelligence
 
@@ -98,7 +95,7 @@ jamais vue écrite.
 
 ## Un cadriciel pour *construire* des voix, pas seulement les exécuter
 
-C'est la partie qui compte le plus, et celle qu'on néglige : phoonnx n'est pas
+phoonnx n'est pas
 seulement une boîte à outils d'inférence. Le cadriciel compagnon
 [**`phoonnx_train`**](https://github.com/TigreGotico/phoonnx) est la façon dont nous
 *fabriquons* les voix en premier lieu.
@@ -107,9 +104,9 @@ seulement une boîte à outils d'inférence. Le cadriciel compagnon
 
 - **Le prétraitement** d'un jeu de données de style LJSpeech en données d'entraînement
   phonémisées.
-- **L'entraînement** du générateur VITS (ces ~15,65 M de paramètres) sur un temps GPU
-  modeste — ce sont de petits modèles, donc l'entraînement est peu coûteux et rapide
-  comparé aux grands systèmes de parole.
+- **L'entraînement** du générateur VITS (ces ~15,65 M de paramètres) sur un seul GPU
+  grand public ou milieu de gamme — un modèle de cette taille ne nécessite pas de
+  cluster d'entraînement.
 - **L'exportation** du point de contrôle terminé en ONNX avec un seul script, prêt à
   être déposé directement dans `onnxruntime` sur un appareil.
 
@@ -158,5 +155,6 @@ phonémiseurs astucieux pour porter la charge linguistique, ONNX pour la portabi
 et un cadriciel d'entraînement ouvert pour que quiconque puisse faire grandir le
 catalogue.
 
-Quinze millions et demi de paramètres. Pas de GPU. Pas de cloud. Pas d'excuses. Si ça
-tourne sur une patate, ça tourne partout.
+Quinze millions et demi de paramètres, tournant sur CPU, entraînés sur du matériel que
+tout le monde peut posséder : voilà la pipeline d'entraînement derrière chaque voix
+phoonnx.

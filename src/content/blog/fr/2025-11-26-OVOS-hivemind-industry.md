@@ -109,20 +109,6 @@ COALA a publié un jeu de données de parole multilingue enregistré dans des us
 
 ---
 
-## Pourquoi l'industrie choisit OVOS + HiveMind
-
-L'attrait est simple :
-
-* **Transparence totale** (cruciale pour les secteurs réglementés)
-* **Déploiement local/edge** (sans dépendance au cloud)
-* **Facile à intégrer dans les équipements existants**
-* **Suffisamment modulaire pour des skills propriétaires personnalisées**
-* **Réseaux vocaux distribués** (satellites HiveMind à travers toute l'usine)
-
-En bref : la combinaison est flexible, neutre vis-à-vis des fournisseurs et respecte les contraintes de données industrielles.
-
----
-
 ## Pourquoi cela fonctionne pour l'industrie
 
 Les objectifs de conception qui comptent sur le terrain — la transparence totale pour les secteurs réglementés, le déploiement local/edge sans dépendance au cloud, des skills modulaires pour la logique propriétaire et la capacité de HiveMind à répartir des nœuds vocaux dans une installation — ont été intégrés dès le départ, et non ajoutés après coup.
