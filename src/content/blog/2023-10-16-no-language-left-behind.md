@@ -2,6 +2,7 @@
 title: "No Language Left Behind"
 description: "Eliminating language barriers in OpenVoiceOS through language detection, translation plugins, and bidirectional translation capabilities."
 date: 2023-10-16
+updated: 2026-08-01
 author: "Casimiro Ferreira"
 tags:
   - "OVOS"
@@ -85,7 +86,7 @@ Optional `verify_lang` mode cross-checks the detected text language against the 
     "ovos-utterance-translation-plugin": {
         "bidirectional": true,
         "verify_lang": false,
-        "ignore_invalid": true,
+        "ignore_invalid_langs": true,
         "translate_secondary_langs": true
     }
 },

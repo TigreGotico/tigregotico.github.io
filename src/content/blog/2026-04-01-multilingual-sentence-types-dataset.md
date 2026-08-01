@@ -2,6 +2,7 @@
 title: "A Multilingual Sentence-Types Dataset: Questions, Commands, Statements"
 description: "We published sentence-types-multilingual — nearly 70,000 sentences across seven languages, classified by grammatical type (question, command, statement, exclamation). It is the training corpus behind the little_questions routing library."
 date: 2026-04-01
+updated: 2026-08-01
 author: "Casimiro Ferreira"
 tags:
   - "Datasets"
@@ -19,19 +20,20 @@ A voice assistant's routing logic depends on knowing what kind of sentence it re
 
 ## What the labels mean in practice
 
-The dataset uses four top-level types, which map directly to how `little_questions` (the inference library that consumes this data) routes utterances:
+The dataset uses a flat set of six labels — one `label` column per row, no type/sub-type split — which map directly to how `little_questions` (the inference library that consumes this data) routes utterances:
 
-- **question** — further split by sub-type: `yes_no_question`, `wh_question`, `tag_question`. The EAT taxonomy inside `little_questions` adds 53 fine-grained answer-type labels (person, location, quantity, definition, and so on), but sentence-type classification is the first gate.
-- **command** — imperative and request forms. Commands don't expect an answer; they expect an action.
+- **wh_question** — questions built around a wh-word (what, where, who, and so on).
+- **polar_question** — yes/no questions. The EAT taxonomy inside `little_questions` adds 53 fine-grained answer-type labels (person, location, quantity, definition, and so on) on top of the question labels, but sentence-type classification is the first gate.
+- **command** — imperative forms. Commands don't expect an answer; they expect an action.
+- **request** — polite or indirect asks for action, distinct from a bare imperative.
 - **statement** — declarative. Statements in a dialogue context often carry polarity that matters downstream: a yes/no/maybe classifier runs on statements to interpret answers to prior questions.
 - **exclamation** — emotionally marked utterances that need different handling than neutral declaratives.
 
 ```json
 {
-  "text": "What time is it?",
   "language": "en",
-  "type": "question",
-  "sub_type": "wh_question"
+  "label": "wh_question",
+  "text": "What time is it?"
 }
 ```
 
