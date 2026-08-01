@@ -28,7 +28,7 @@ jobs:
         id: nvm
         run: echo "version=$(cat .nvmrc)" >> "$GITHUB_OUTPUT"
       - name: Build Astro site
-        uses: withastro/action@v3
+        uses: withastro/action@v6
         with:
           node-version: ${{ steps.nvm.outputs.version }}
 
