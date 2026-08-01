@@ -1,7 +1,7 @@
 ---
 title: "Como a Stack de Fonologia se Encaixa"
 description: "Uma visita à arquitetura da nossa stack de texto-para-pronúncia: o scriptconv para notação, o orthography2ipa como motor interlinguístico de grafema-para-IPA, frontends específicos de língua construídos sobre ele para português, basco, mirandês, barranquenho e árabe, e o phonematcher para pesquisa baseada em som. Mostra porque existem as camadas, o que é uma lattice de candidatos, e resultados reais por dialeto."
-date: 2026-08-10
+date: 2026-08-01
 lang: pt
 author: "Casimiro Ferreira"
 tags:

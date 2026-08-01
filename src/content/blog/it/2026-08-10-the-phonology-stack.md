@@ -1,7 +1,7 @@
 ---
 title: "Come si Incastra lo Stack di Fonologia"
 description: "Un tour architetturale del nostro stack testo-in-pronuncia: scriptconv per la notazione, orthography2ipa come motore grafema-in-IPA multilingue, frontend specifici per lingua costruiti sopra di esso per portoghese, basco, mirandese, barranquenho e arabo, e phonematcher per la ricerca basata sul suono. Mostra perché esistono i livelli, cos'è una lattice di candidati e output dialettali reali."
-date: 2026-08-10
+date: 2026-08-01
 lang: it
 author: "Casimiro Ferreira"
 tags:

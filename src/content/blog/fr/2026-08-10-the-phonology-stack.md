@@ -1,7 +1,7 @@
 ---
 title: "Comment s'articule notre pile de phonologie"
 description: "Une visite architecturale de notre pile texte-vers-prononciation : scriptconv pour la notation, orthography2ipa comme moteur graphème-vers-IPA multilingue, des frontends spécifiques à chaque langue construits par-dessus pour le portugais, le basque, le mirandais, le barranquenho et l'arabe, et phonematcher pour la recherche fondée sur le son. Explique pourquoi ces couches existent, ce qu'est un treillis de candidats, et donne des sorties dialectales réelles."
-date: 2026-08-10
+date: 2026-08-01
 lang: fr
 author: "Casimiro Ferreira"
 tags:

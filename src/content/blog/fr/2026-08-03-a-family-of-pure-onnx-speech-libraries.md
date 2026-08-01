@@ -1,7 +1,7 @@
 ---
 title: "Une famille de bibliothèques de parole en ONNX pur"
 description: "TigreGótico maintient un ensemble de bibliothèques de parole — extension de bande passante, clonage vocal, empreintes de locuteur, VAD, accentuation lexicale, phonémisation, TTS, et une bibliothèque de métriques pour toutes les évaluer — qui partagent une seule règle d'exécution : uniquement onnxruntime et numpy, pas de PyTorch, aucun GPU requis."
-date: 2026-08-03
+date: 2026-08-01
 lang: fr
 author: "Casimiro Ferreira"
 tags:

@@ -1,7 +1,7 @@
 ---
 title: "How the Phonology Stack Fits Together"
 description: "An architecture tour of our text-to-pronunciation stack: scriptconv for notation, orthography2ipa as the cross-language grapheme-to-IPA engine, language-specific frontends built on top of it for Portuguese, Basque, Mirandese, Barranquenho and Arabic, and phonematcher for sound-based search. Shows why the layers exist, what a candidate lattice is, and real dialect output."
-date: 2026-08-10
+date: 2026-08-01
 author: "Casimiro Ferreira"
 tags:
   - "G2P"

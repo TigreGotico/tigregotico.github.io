@@ -1,7 +1,7 @@
 ---
 title: "Hoe de fonologiestack in elkaar zit"
 description: "Een architectuurrondleiding langs onze tekst-naar-uitspraak-stack: scriptconv voor notatie, orthography2ipa als de taaloverschrijdende grafeem-naar-IPA-engine, taalspecifieke frontends daarbovenop voor Portugees, Baskisch, Mirandees, Barranquenho en Arabisch, en phonematcher voor klankgebaseerd zoeken. Laat zien waarom de lagen bestaan, wat een kandidaat-lattice is, en echte dialectuitvoer."
-date: 2026-08-10
+date: 2026-08-01
 lang: nl
 author: "Casimiro Ferreira"
 tags:
