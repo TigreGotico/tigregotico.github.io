@@ -47,7 +47,7 @@ A model trained only on English gets these wrong everywhere else. Parallel label
 
 ## The downstream stack
 
-The models trained on this data ship inside **[little_questions](https://github.com/TigreGotico/little_questions)** — a zero-dependency offline library (numpy + onnxruntime) with per-language ONNX classifiers for sentence type and a 43-language yes/no polarity model. Models are bundled in-wheel for English and lazy-downloaded for other languages. The HuggingFace sources are `TigreGotico/sentence-types` and `TigreGotico/eat-classifiers`.
+The models trained on this data ship inside **[little_questions](https://github.com/TigreGotico/little_questions)** — a zero-dependency offline library (numpy + onnxruntime) with per-language ONNX classifiers for sentence type and a 43-language yes/no polarity model. Models are bundled in-wheel for English and lazy-downloaded for other languages. The sentence-type classifiers are published as `TigreGotico/sentence-types` on HuggingFace; the EAT answer-type classifiers are trained internally and not publicly released.
 
 ```python
 from little_questions import Sentence

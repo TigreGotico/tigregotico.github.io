@@ -1,6 +1,6 @@
 ---
-title: "Beating Bot Walls With Composable, Drop-In requests Sessions"
-description: "How we keep resilient access to public data without firing up a headless browser in the hot path: TLS fingerprint impersonation, a FlareSolverr proxy for JS challenges, a Wayback Machine fallback, and IP rotation — all behind two composable requests.Session subclasses, unblock_requests and anon_requests."
+title: "Composable, Drop-In requests Sessions for Resilient Public-Data Access"
+description: "Two composable requests.Session subclasses for reading public web pages reliably without a headless browser in the hot path: TLS-compatible transport, a FlareSolverr proxy for JS challenges, a Wayback Machine fallback, and IP-diversified requests — unblock_requests and anon_requests."
 date: 2026-03-15
 author: "Casimiro Ferreira"
 tags:
@@ -15,19 +15,33 @@ draft: false
 
 A lot of our work — media-metadata clients, catalog enrichment, archival —
 depends on reading **public** web pages reliably. The problem is rarely the
-data; it is the wall in front of it. And the wall asks two separate questions:
+data; it is that a lot of bot-detection infrastructure was tuned against
+scripted attacks and ends up misclassifying any well-behaved non-browser
+client as one. That happens on two separate axes:
 
-- **"What are you?"** — Cloudflare and friends block requests not for *what* you
+- **"What are you?"** — Cloudflare and friends flag requests not for *what* you
   ask but for *how* you look on the wire: your TLS handshake, your JA3
-  fingerprint, whether you can run a JavaScript challenge.
+  fingerprint, whether you can run a JavaScript challenge. A plain `requests`
+  handshake looks nothing like a browser's, so it gets caught by checks aimed
+  at scripted abuse even when the traffic itself is benign.
 - **"Who are you?"** — IP reputation and rate limits ignore your fingerprint
-  entirely; they count how many requests come from one address.
+  entirely; they count how many requests come from one address, which can
+  penalize a single well-behaved client as readily as an abusive one.
 
-The two questions are orthogonal, so we answer them with two small libraries
+The two axes are orthogonal, so we answer them with two small libraries
 that stack cleanly: **unblock_requests** answers *what are you*,
 **anon_requests** answers *who are you*. Both are drop-in replacements for a
 `requests` session in everyday code. This post is about that transport layer specifically — the
 bytes-on-the-wire part — not the parsing or the pipeline that sits above it.
+
+**Scope, plainly stated:** these transports are for public, non-authenticated
+pages only. They honor `robots.txt` and any declared crawl-delay — see our
+**[robots.txt &amp; sitemaps post](/blog/2026-03-01-robot-txt-sitemaps-ethical-web-scraping)**
+for how we check that before writing a scraper — and every client built on
+top of them is kept to low request volumes, so a target origin never sees
+meaningful load from us. That is not a disclaimer bolted on afterward; it is
+a real engineering constraint on how these sessions get used, because a
+resilient client that is also inconsiderate defeats its own purpose.
 
 ## The design constraint: keep the `requests` shape
 
@@ -54,13 +68,14 @@ nothing in the hot path needs a display.
 
 ## Layer one: `unblock_requests` and its transports
 
-`unblock_requests` defends against **bot detection**. You pick a transport with
+`unblock_requests` makes a plain Python client interoperable with **bot-detection
+checks that are tuned for browsers**. You pick a transport with
 the `mode=` kwarg (or the `UNBLOCK_REQUESTS_TRANSPORT` env var — explicit kwargs
 always win). The main four:
 
 | Mode | What it does |
 |---|---|
-| `curl_cffi` *(default)* | Chrome TLS/JA3 impersonation via `curl_cffi`. Clears the bot check on most networks with no extra infra. |
+| `curl_cffi` *(default)* | Chrome TLS/JA3 impersonation via `curl_cffi`. Passes as a browser-shaped handshake on most networks with no extra infra. |
 | `requests` | Plain `requests`, no impersonation. |
 | `flaresolverr` | Proxies through a FlareSolverr headless browser that solves the JS challenge — **live** data. |
 | `wayback` | Reads the latest Internet Archive snapshot — stale, but needs nothing. |
@@ -107,12 +122,15 @@ archive.
 
 ## Layer two: `anon_requests` and IP rotation
 
-The orthogonal problem is **IP reputation**. Even a perfect fingerprint gets
-rate-limited or banned if every request comes from one address.
-`anon_requests` handles that with `RotatingProxySession` (scraped public
-proxies, optional validation, SOCKS5/HTTP) and `RotatingTorSession` (rotating
-Tor circuits). Each request goes out through a fresh exit, and dead proxies are
-rotated away on connection failure.
+The orthogonal problem is **IP reputation**. Even a perfectly browser-shaped
+handshake can get rate-limited if every request comes from one address —
+volume-based heuristics look at the address, not the fingerprint.
+`anon_requests` spreads load across addresses with `RotatingProxySession`
+(scraped public proxies, optional validation, SOCKS5/HTTP) and
+`RotatingTorSession` (rotating Tor circuits), so a low-volume client is never
+mistaken for one hammering a site from a single IP. Each request goes out
+through a fresh exit, and dead proxies are rotated away on connection
+failure.
 
 ```python
 from anon_requests import RotatingProxySession, ProxyType
@@ -121,7 +139,7 @@ with RotatingProxySession(proxy_type=ProxyType.SOCKS5, validate=True) as s:
     print(s.get("https://ipecho.net/plain", timeout=5).text)  # a new IP each time
 ```
 
-## The composition: rotation **and** bypass at once
+## The composition: distributed load **and** a compatible handshake at once
 
 These two libraries are designed to stack rather than overlap. `anon_requests`
 sessions accept a `session_factory` — any callable returning a
@@ -136,13 +154,14 @@ from unblock_requests import CloudflareSession
 session = RotatingProxySession(
     session_factory=lambda: CloudflareSession(flaresolverr_url="http://host:8191"),
 )
-session.get(url)   # rotates the IP *and* solves Cloudflare
+session.get(url)   # spreads load across IPs *and* uses a browser-compatible handshake
 ```
 
 The rotated proxy flows through *every* transport — including into FlareSolverr,
 which drives its headless browser through the `proxy` field of the solve
-request. So the IP that solves the challenge is the same rotated IP the rest of
-the request uses: no fingerprint/exit-node split for a defender to notice.
+request. So the whole request — handshake, challenge solve, and exit IP —
+stays consistent end to end, which is simply correct behavior for a client
+that is not trying to look like more than one visitor.
 
 ## Why this shape
 

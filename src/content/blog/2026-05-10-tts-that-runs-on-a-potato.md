@@ -13,8 +13,7 @@ tags:
 draft: false
 ---
 
-There is a persistent myth that good text-to-speech needs a beefy GPU, a fat cloud
-bill, and an API key with your credit card stapled to it. It does not. A natural,
+Good text-to-speech does not require a GPU or a cloud subscription. A natural,
 multilingual voice can fit in something you would be embarrassed to call a server —
 the kind of board you keep in a drawer "just in case". A potato.
 
@@ -42,8 +41,7 @@ to the *exact same* number, because they share the standard phoonnx VITS
 architecture; the personality lives in the weights, not in extra capacity.
 
 For perspective: a single layer of a "small" modern language model can carry more
-parameters than this entire speech synthesizer. Fifteen and a half million is
-roughly the weight of a phone snapshot, and it speaks fluently.
+parameters than this entire speech synthesizer, and it still speaks fluently.
 
 ## Why VITS, and why ONNX
 
@@ -59,8 +57,7 @@ driver roulette. `onnxruntime` is a tight, portable C++ engine, and a 15-million
 parameter graph is well within what a Raspberry-Pi-class core chews through faster
 than real time. The result is a voice assistant that keeps talking when your internet
 is down, when the cloud provider has an outage, or when you simply never wanted your
-home audio leaving the house in the first place. **Data sovereignty is not a feature
-toggle here; it is the architecture.**
+home audio leaving the house in the first place.
 
 ## Phonemes are where the smarts hide
 
@@ -88,7 +85,7 @@ parameter model sound good in a low-resource language it has never seen written 
 
 ## A framework for *building* voices, not just running them
 
-This is the part that matters most, and the part that gets overlooked: phoonnx is not
+phoonnx is not
 only an inference toolkit. The companion framework
 [**`phoonnx_train`**](https://github.com/TigreGotico/phoonnx) is how we *make* the
 voices in the first place.
@@ -96,9 +93,8 @@ voices in the first place.
 `phoonnx_train` covers the full pipeline:
 
 - **Preprocessing** an LJSpeech-style dataset into phonemized training data.
-- **Training** the VITS generator (those ~15.65M parameters) on modest GPU time —
-  these are small models, so training is cheap and fast compared to large speech
-  systems.
+- **Training** the VITS generator (those ~15.65M parameters) on a single consumer
+  or mid-range GPU — a model this small does not require a training cluster.
 - **Exporting** the finished checkpoint to ONNX with a single script, ready to drop
   straight into `onnxruntime` on a device.
 
@@ -143,6 +139,6 @@ way to get there is not bigger models, but the right architecture made small: VI
 the backbone, clever phonemizers to carry the linguistic load, ONNX for portability,
 and an open training framework so anyone can grow the catalogue.
 
-Fifteen and a half million parameters. No GPU. No cloud. No excuses. If it runs on a
-potato, it runs everywhere.
+Fifteen and a half million parameters, running on CPU, trained on hardware anyone
+can own: that is the training pipeline behind every phoonnx voice.
 
