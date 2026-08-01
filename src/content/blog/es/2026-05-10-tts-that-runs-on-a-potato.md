@@ -14,10 +14,8 @@ tags:
 draft: false
 ---
 
-Existe un mito persistente de que una buena síntesis de voz necesita una GPU
-potente, una factura abultada de la nube y una clave de API con tu tarjeta de
-crédito grapada. No es así. Una voz natural y multilingüe cabe en algo que te
-daría vergüenza llamar servidor — el tipo de placa que guardas en un cajón "por si
+Una buena síntesis de voz no requiere una GPU ni una suscripción en la nube. Una
+voz natural y multilingüe cabe en algo que te daría vergüenza llamar servidor — el tipo de placa que guardas en un cajón "por si
 acaso". Una patata.
 
 [**phoonnx**](https://github.com/TigreGotico/phoonnx) es nuestro framework de
@@ -46,9 +44,8 @@ VITS estándar de phoonnx; la personalidad reside en los pesos, no en capacidad
 adicional.
 
 Para poner las cosas en perspectiva: una sola capa de un modelo de lenguaje
-"pequeño" moderno puede contener más parámetros que todo este sintetizador de voz.
-Quince millones y medio equivale aproximadamente al peso de una instantánea de
-móvil, y habla con fluidez.
+"pequeño" moderno puede contener más parámetros que todo este sintetizador de voz,
+y aun así habla con fluidez.
 
 ## Por qué VITS, y por qué ONNX
 
@@ -66,8 +63,7 @@ compacto y portátil, y un grafo de 15 millones de parámetros está muy dentro 
 que un núcleo de clase Raspberry Pi procesa más rápido que en tiempo real. El
 resultado es un asistente de voz que sigue hablando cuando tu internet se cae,
 cuando el proveedor de la nube tiene una interrupción, o cuando simplemente nunca
-quisiste que el audio de tu hogar saliera de casa. **La soberanía de los datos aquí
-no es un interruptor de función; es la arquitectura.**
+quisiste que el audio de tu hogar saliera de casa.
 
 ## Los fonemas son donde se esconde la inteligencia
 
@@ -97,7 +93,7 @@ visto escrita.
 
 ## Un framework para *construir* voces, no solo ejecutarlas
 
-Esta es la parte que más importa, y la que se suele pasar por alto: phoonnx no es
+phoonnx no es
 solo un conjunto de herramientas de inferencia. El framework complementario
 [**`phoonnx_train`**](https://github.com/TigreGotico/phoonnx) es como *creamos* las
 voces en primer lugar.
@@ -106,9 +102,9 @@ voces en primer lugar.
 
 - **Preprocesamiento** de un conjunto de datos al estilo LJSpeech en datos de
   entrenamiento fonemizados.
-- **Entrenamiento** del generador VITS (esos ~15,65 millones de parámetros) con un
-  tiempo de GPU modesto — son modelos pequeños, así que el entrenamiento es barato y
-  rápido comparado con los grandes sistemas de voz.
+- **Entrenamiento** del generador VITS (esos ~15,65 millones de parámetros) en una
+  única GPU de gama de consumo o media — un modelo tan pequeño no requiere un
+  clúster de entrenamiento.
 - **Exportación** del punto de control terminado a ONNX con un solo script, listo
   para colocarse directamente en `onnxruntime` en un dispositivo.
 
@@ -156,5 +152,6 @@ ingeniosos para llevar la carga lingüística, ONNX para la portabilidad, y un
 framework de entrenamiento abierto para que cualquiera pueda hacer crecer el
 catálogo.
 
-Quince millones y medio de parámetros. Sin GPU. Sin nube. Sin excusas. Si funciona
-en una patata, funciona en todas partes.
+Quince millones y medio de parámetros, ejecutándose en CPU, entrenados en hardware
+que cualquiera puede tener: eso es la pipeline de entrenamiento tras cada voz
+phoonnx.

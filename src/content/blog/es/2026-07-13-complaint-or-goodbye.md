@@ -3,6 +3,7 @@ title: "Tu modelo de sentimientos no distingue una queja de una despedida"
 description: "Dos mensajes de soporte que parecen furiosos. Un cliente está a punto de escalar; el otro está a punto de irse sin decir palabra. Casi ningún modelo de emociones puede distinguirlos — porque a todos les falta el mismo eje. Presentamos emotion-algebra."
 date: 2026-07-13
 lang: es
+updated: 2026-08-01
 author: "Casimiro Ferreira"
 tags:
   - "Affective Computing"
@@ -170,7 +171,7 @@ angry, afraid = affect_from_texts([
     "I don't know if I'm doing this right and I'm scared I've broken something.",
 ])
 
-angry.valence,  angry.potency    # -0.43, +0.16   -> 'annoyance'
+angry.valence,  angry.potency    # -0.43, +0.16   -> 'disgust'
 afraid.valence, afraid.potency   # -0.47, -0.43   -> 'apprehension'
 ```
 
