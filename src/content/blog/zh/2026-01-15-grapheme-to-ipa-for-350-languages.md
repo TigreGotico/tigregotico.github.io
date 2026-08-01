@@ -1,6 +1,6 @@
 ---
-title: "面向 807 种语言的字素到 IPA 转换"
-description: "orthography2ipa 是一个纯数据、以语言学为根基的资源，它将拼写映射到 IPA，并在 896 个语言规范、807 种语言和 20+ 个语系上建模音素如何以音位变体的形式在语境中显现。它包含一个候选词格（lattice）、一个最大匹配（maximal-munch）分词器、音系与文字距离度量、方言谱系，以及一套经模式校验、引用至方言学文献的规范集——没有训练权重，完全可自托管。"
+title: "面向 820 种语言的字素到 IPA 转换"
+description: "orthography2ipa 是一个纯数据、以语言学为根基的资源，它将拼写映射到 IPA，并在 909 个语言规范、820 种语言和 20+ 个语系上建模音素如何以音位变体的形式在语境中显现。它包含一个候选词格（lattice）、一个最大匹配（maximal-munch）分词器、音系与文字距离度量、方言谱系，以及一套经模式校验、引用至方言学文献的规范集——没有训练权重，完全可自托管。"
 date: 2026-01-15
 lang: zh
 updated: 2026-08-01
@@ -17,7 +17,7 @@ tags:
 draft: false
 ---
 
-**[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)** 是一个纯数据的 Python 包——声明式 JSON、轻薄可插拔的逻辑、没有训练权重——它将拼写映射到 IPA，并建模这些音素如何在语境中显现。它包含 **覆盖 807 种语言的 896 个语言规范**（外加 89 个仅用于分类的支系节点），横跨 **20+ 个语系**。安装它、读取数据、fork 数据。没有任何东西藏在检查点里。
+**[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)** 是一个纯数据的 Python 包——声明式 JSON、轻薄可插拔的逻辑、没有训练权重——它将拼写映射到 IPA，并建模这些音素如何在语境中显现。它包含 **覆盖 820 种语言的 909 个语言规范**（外加 89 个仅用于分类的支系节点），横跨 **20+ 个语系**。安装它、读取数据、fork 数据。没有任何东西藏在检查点里。
 
 它是下游一切之下的音系层：它产出的候选词格被阿拉伯语 TTS 前端 [arbtok](https://github.com/TigreGotico/arbtok)、葡萄牙语的 [TugaPhone](https://github.com/TigreGotico/tugaphone) 和 [silabificador](https://github.com/TigreGotico/silabificador) 技术栈（见 **[面向葡萄牙语音节与音素的经典 NLP](/zh/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**）、[Barranquenho 音素转换器](/zh/blog/2025-12-12-barranquenho)、米兰达语音素转换器，以及 **[能在土豆上运行的 TTS](/zh/blog/2026-05-10-tts-that-runs-on-a-potato)** 的音素基础所消费。
 
@@ -52,7 +52,7 @@ pt_br.graphemes["t"]   # ['t', 't͡ʃ']  — palatalisation before /i/
 
 ## 不只是广，还要深入实地
 
-807 这个数字代表广度；深度才是工作的所在。规范会在方言学文献深入之处逐个方言（lect）地深入，而每一个都引用至那份文献并带有页码定位，而非从一张音素表中模式匹配得来。
+820 这个数字代表广度；深度才是工作的所在。规范会在方言学文献深入之处逐个方言（lect）地深入，而每一个都引用至那份文献并带有页码定位，而非从一张音素表中模式匹配得来。
 
 **伊比利亚** 的覆盖是最清晰的例子：为半岛上的语言提供了 **100+ 个规范**。西班牙的每一种罗曼语——卡斯蒂利亚语、加泰罗尼亚语/瓦伦西亚语、加利西亚语（RAG 规范与再融合派规范两者）、阿斯图里亚斯语、阿拉贡语及其河谷变体（Ansotano、Chistabín、Benasqués……）、埃斯特雷马杜拉语——外加巴斯克语、伊比利亚-罗曼克里奥尔语，以及大多数资源完全跳过的历史层次：**安达卢西阿拉伯语（Andalusi Arabic）** 和 **莫扎拉布语（Mozarabic）**。阿拉伯语一侧携带 **34 个方言变体**（从内志语和希贾兹语，到黎凡特语、马格里布语以及半岛各变体），卢西塔诺（葡萄牙语系）一侧则有 **46 个葡萄牙语及葡萄牙境内语言的方言**，细至 Rionorese、Guadramilese，以及米兰达语的各子方言。
 

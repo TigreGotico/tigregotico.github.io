@@ -69,12 +69,12 @@ Elke laag hierboven kan ervan uitgaan dat notatieconversie al is opgelost.
 
 ### De engine: orthography2ipa
 
-[orthography2ipa](https://github.com/TigreGotico/orthography2ipa) is de taaloverschrijdende engine. Het neemt een taalspecificatie — een declaratieve beschrijving van de grafeem-naar-foneem-regels van die taal — en een stuk tekst, en produceert IPA. Op het moment van schrijven levert het specificaties die **807 talen** dekken (`available_codes()` op het geïnstalleerde pakket geeft een lijst van die lengte terug; behandel het exacte cijfer als een bewegend doel, aangezien er in de loop van de tijd specificaties worden toegevoegd).
+[orthography2ipa](https://github.com/TigreGotico/orthography2ipa) is de taaloverschrijdende engine. Het neemt een taalspecificatie — een declaratieve beschrijving van de grafeem-naar-foneem-regels van die taal — en een stuk tekst, en produceert IPA. Op het moment van schrijven levert het specificaties die **820 talen** dekken (`available_codes()` op het geïnstalleerde pakket geeft een lijst van die lengte terug; behandel het exacte cijfer als een bewegend doel, aangezien er in de loop van de tijd specificaties worden toegevoegd).
 
 ```python
 >>> import orthography2ipa as o
 >>> len(o.available_codes())
-807
+820
 ```
 
 De engine zelf bevat geen ingebakken taalspecifieke code. Een nieuwe taal is een nieuw specificatiebestand, getoetst aan hetzelfde schema als elke andere specificatie.
@@ -154,7 +154,7 @@ Het Portugees heeft de diepste stack, omdat Portugese uitspraak van meer afhangt
 - **[tugamorph](https://github.com/TigreGotico/tugamorph)** is een op regels gebaseerde morfologische analysator: het segmenteert een woord in voorvoegsel, stam, achtervoegsel, verbuiging en clitisch, met alleen de Python-standaardbibliotheek, optioneel aangescherpt door silabificador en tugatagger.
 - **[bifonia](https://github.com/TigreGotico/bifonia)** lost Europees-Portugese heterofone homografen op — woorden zoals "sede" (dorst, `ˈsedɨ`, versus hoofdkwartier, `ˈsɛdɨ`) waarbij de juiste uitspraak van betekenis afhangt, niet van grammatica. Zie **[Goed uitspreken: Portugese heterofonen ontrafelen voor TTS](/nl/blog/2026-06-12-disambiguating-portuguese-heterographs-for-tts)** voor hoe het is gebouwd en geëvalueerd. Dit is het concrete geval achter het lattice-idee hierboven: orthography2ipa kan beide kandidaatlezingen van "sede" leveren, maar alleen een betekenisbewuste laag zoals bifonia kan daartussen kiezen.
 
-Voor meer over hoe silabificador en tugaphone dagelijks samenwerken, zie **[Klassieke NLP voor het Portugees: lettergreepverdeling en grafeem-naar-foneem](/nl/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**, en voor de bredere engine die aan dit alles ten grondslag ligt, **[Grafeem-naar-IPA voor 807 talen](/nl/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**.
+Voor meer over hoe silabificador en tugaphone dagelijks samenwerken, zie **[Klassieke NLP voor het Portugees: lettergreepverdeling en grafeem-naar-foneem](/nl/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**, en voor de bredere engine die aan dit alles ten grondslag ligt, **[Grafeem-naar-IPA voor 820 talen](/nl/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**.
 
 ## Klankgebaseerd zoeken: phonematcher
 
@@ -174,7 +174,7 @@ Die afstandsmetriek is nuttig in twee concrete situaties: een catalogus van woor
 
 ## Eerlijke grenzen
 
-De dekking over 807 taalspecificaties is per constructie ongelijk: talen met een gevestigde fonologische literatuur en een lexicon leveren betere uitvoer dan talen met een dunne specificatie die vooral is afgeleid uit algemene orthografische conventies. De kwaliteit is consequent het best waar een gecureerd lexicon bestaat — het Portugees, ondersteund door tugalex, is het sterkste geval in de stack; talen die puur op specificatieregels leunen zonder lexicon, verwerken onregelmatige en geleende woordenschat verkeerd.
+De dekking over 820 taalspecificaties is per constructie ongelijk: talen met een gevestigde fonologische literatuur en een lexicon leveren betere uitvoer dan talen met een dunne specificatie die vooral is afgeleid uit algemene orthografische conventies. De kwaliteit is consequent het best waar een gecureerd lexicon bestaat — het Portugees, ondersteund door tugalex, is het sterkste geval in de stack; talen die puur op specificatieregels leunen zonder lexicon, verwerken onregelmatige en geleende woordenschat verkeerd.
 
 Een paar componenten zijn expliciet geen afgewerkte, door moedertaalsprekers gecontroleerde referenties: arbtok wordt onderhouden door iemand die geen moedertaalspreker Arabisch is en moet tegen het oordeel van een moedertaalspreker worden gecontroleerd voordat het in iets gebruikersgerichts wordt gebruikt. Frontends gebouwd op dunne specificaties erven die dunheid — een frontend is maar zo goed als de specificatie en het lexicon eronder.
 

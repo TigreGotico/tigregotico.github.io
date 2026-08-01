@@ -69,12 +69,12 @@ draft: false
 
 ### 引擎：orthography2ipa
 
-[orthography2ipa](https://github.com/TigreGotico/orthography2ipa) 是跨语言引擎。它接收一份语言规格——对该语言字素转音素规则的声明式描述——和一段文本，产出 IPA。截至撰写本文时，它包含覆盖 **807 种语言** 的规格（已安装包上的 `available_codes()` 会返回这个长度的列表；由于规格会持续新增，请把这个确切数字当作一个会变动的值）。
+[orthography2ipa](https://github.com/TigreGotico/orthography2ipa) 是跨语言引擎。它接收一份语言规格——对该语言字素转音素规则的声明式描述——和一段文本，产出 IPA。截至撰写本文时，它包含覆盖 **820 种语言** 的规格（已安装包上的 `available_codes()` 会返回这个长度的列表；由于规格会持续新增，请把这个确切数字当作一个会变动的值）。
 
 ```python
 >>> import orthography2ipa as o
 >>> len(o.available_codes())
-807
+820
 ```
 
 引擎本身没有内置任何语言专属的代码。一门新语言就是一个新的规格文件，按照与其他所有规格相同的模式进行校验。
@@ -154,7 +154,7 @@ draft: false
 - **[tugamorph](https://github.com/TigreGotico/tugamorph)** 是一个基于规则的形态分析器：它只用 Python 标准库，把一个词切分为前缀、词根、后缀、屈折变化和附着词，并可选地借助 silabificador 和 tugatagger 提升精度。
 - **[bifonia](https://github.com/TigreGotico/bifonia)** 消解欧洲葡萄牙语的异音同形词——像 "sede" 这样的词（口渴，`ˈsedɨ`，对比总部，`ˈsɛdɨ`），其正确读音取决于含义，而非语法。参见 **[说对读音：为 TTS 消歧葡萄牙语异音同形词](/blog/2026-06-12-disambiguating-portuguese-heterographs-for-tts)** 了解它是如何构建和评估的。这正是上文词格理念背后的具体案例：orthography2ipa 可以同时提供 "sede" 的两个候选读音，但只有像 bifonia 这样理解含义的层，才能在两者之间做出选择。
 
-关于 silabificador 和 tugaphone 在日常中如何协同工作的更多内容，参见 **[面向葡萄牙语的经典 NLP：音节切分与字素到音素转换](/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**；关于这一切之下更广泛的引擎，参见 **[面向 807 种语言的字素到 IPA 转换](/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**。
+关于 silabificador 和 tugaphone 在日常中如何协同工作的更多内容，参见 **[面向葡萄牙语的经典 NLP：音节切分与字素到音素转换](/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**；关于这一切之下更广泛的引擎，参见 **[面向 820 种语言的字素到 IPA 转换](/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**。
 
 ## 基于声音的检索：phonematcher
 
@@ -174,7 +174,7 @@ draft: false
 
 ## 诚实地说明局限
 
-在 807 个语言规格之间，覆盖质量天然是不均衡的：拥有成熟音系学文献和词典的语言，产出的效果要好于那些主要靠通用正字法惯例推断出来的单薄规格的语言。质量最稳定的地方，是存在一份经过整理的词典之处——由 tugalex 支撑的葡萄牙语，是这个技术栈中最强的案例；那些纯靠规格规则、没有词典支撑的语言，会在不规则词汇和外来词上出错。
+在 820 个语言规格之间，覆盖质量天然是不均衡的：拥有成熟音系学文献和词典的语言，产出的效果要好于那些主要靠通用正字法惯例推断出来的单薄规格的语言。质量最稳定的地方，是存在一份经过整理的词典之处——由 tugalex 支撑的葡萄牙语，是这个技术栈中最强的案例；那些纯靠规格规则、没有词典支撑的语言，会在不规则词汇和外来词上出错。
 
 有几个组件明确尚未成为完成品、经母语者审阅的参考：arbtok 由一位非阿拉伯语母语者维护，在用于任何面向用户的场景之前，应当对照母语者的判断加以核实。构建在单薄规格之上的前端，也继承了那份单薄——一个前端的好坏，取决于其底层的规格和词典。
 

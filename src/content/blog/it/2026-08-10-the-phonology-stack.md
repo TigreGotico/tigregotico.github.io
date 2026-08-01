@@ -69,12 +69,12 @@ Ogni livello sopra questo può presupporre che la conversione di notazione sia g
 
 ### Il motore: orthography2ipa
 
-[orthography2ipa](https://github.com/TigreGotico/orthography2ipa) è il motore multilingue. Prende una specifica di lingua — una descrizione dichiarativa delle regole grafema-in-fonema di quella lingua — e un pezzo di testo, e produce IPA. Al momento in cui scriviamo include specifiche che coprono **807 lingue** (`available_codes()` sul pacchetto installato restituisce un elenco di quella lunghezza; considerate la cifra esatta come un bersaglio mobile, poiché le specifiche vengono aggiunte nel tempo).
+[orthography2ipa](https://github.com/TigreGotico/orthography2ipa) è il motore multilingue. Prende una specifica di lingua — una descrizione dichiarativa delle regole grafema-in-fonema di quella lingua — e un pezzo di testo, e produce IPA. Al momento in cui scriviamo include specifiche che coprono **820 lingue** (`available_codes()` sul pacchetto installato restituisce un elenco di quella lunghezza; considerate la cifra esatta come un bersaglio mobile, poiché le specifiche vengono aggiunte nel tempo).
 
 ```python
 >>> import orthography2ipa as o
 >>> len(o.available_codes())
-807
+820
 ```
 
 Il motore stesso non ha alcun codice specifico per lingua incorporato. Una nuova lingua è un nuovo file di specifica, verificato rispetto allo stesso schema di ogni altra specifica.
@@ -154,7 +154,7 @@ Il portoghese ha lo stack più profondo, perché la pronuncia portoghese dipende
 - **[tugamorph](https://github.com/TigreGotico/tugamorph)** è un analizzatore morfologico basato su regole: segmenta una parola in prefisso, radice, suffisso, flessione e clitico, usando solo la libreria standard di Python, opzionalmente affinato da silabificador e tugatagger.
 - **[bifonia](https://github.com/TigreGotico/bifonia)** risolve gli omografi eterofonici del portoghese europeo — parole come "sede" (sete, `ˈsedɨ`, contro sede aziendale, `ˈsɛdɨ`) dove la pronuncia corretta dipende dal significato, non dalla grammatica. Vedi **[Dirlo Bene: Disambiguare gli Eterofoni Portoghesi per il TTS](/it/blog/2026-06-12-disambiguating-portuguese-heterographs-for-tts)** per come è stato costruito e valutato. Questo è il caso concreto dietro l'idea di lattice sopra: orthography2ipa può fornire entrambe le letture candidate di "sede", ma solo un livello consapevole del significato come bifonia può scegliere tra esse.
 
-Per saperne di più su come silabificador e tugaphone lavorano insieme quotidianamente, vedi **[NLP Classico per il Portoghese: Sillabazione e Grafema-in-Fonema](/it/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**, e per il motore più ampio sotto tutto questo, **[Grafema-in-IPA per 807 Lingue](/it/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**.
+Per saperne di più su come silabificador e tugaphone lavorano insieme quotidianamente, vedi **[NLP Classico per il Portoghese: Sillabazione e Grafema-in-Fonema](/it/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**, e per il motore più ampio sotto tutto questo, **[Grafema-in-IPA per 820 Lingue](/it/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**.
 
 ## Ricerca basata sul suono: phonematcher
 
@@ -174,7 +174,7 @@ Quella metrica di distanza è utile in due situazioni concrete: cercare un catal
 
 ## Limiti onesti
 
-La copertura tra 807 specifiche di lingua è disomogenea per costruzione: le lingue con una letteratura fonologica consolidata e un lessico producono un output migliore delle lingue con una specifica sottile dedotta perlopiù da convenzioni ortografiche generali. La qualità è costantemente migliore dove esiste un lessico curato — il portoghese, sostenuto da tugalex, è il caso più solido dello stack; le lingue che si affidano solo alle regole della specifica senza un lessico gestiranno male il vocabolario irregolare e i prestiti.
+La copertura tra 820 specifiche di lingua è disomogenea per costruzione: le lingue con una letteratura fonologica consolidata e un lessico producono un output migliore delle lingue con una specifica sottile dedotta perlopiù da convenzioni ortografiche generali. La qualità è costantemente migliore dove esiste un lessico curato — il portoghese, sostenuto da tugalex, è il caso più solido dello stack; le lingue che si affidano solo alle regole della specifica senza un lessico gestiranno male il vocabolario irregolare e i prestiti.
 
 Alcuni componenti non sono esplicitamente riferimenti finiti e revisionati da madrelingua: arbtok è mantenuto da un parlante non nativo dell'arabo e dovrebbe essere verificato rispetto al giudizio di un madrelingua prima dell'uso in qualcosa rivolto agli utenti. I frontend costruiti su specifiche sottili ereditano quella sottigliezza — un frontend vale quanto la specifica e il lessico che ha sotto.
 

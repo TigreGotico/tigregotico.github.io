@@ -69,12 +69,12 @@ Every layer above this one can assume notation conversion is already solved.
 
 ### The engine: orthography2ipa
 
-[orthography2ipa](https://github.com/TigreGotico/orthography2ipa) is the cross-language engine. It takes a language spec — a declarative description of that language's grapheme-to-phoneme rules — and a piece of text, and produces IPA. As of this writing it ships specs covering **807 languages** (`available_codes()` on the installed package returns a list of that length; treat the exact figure as a moving target, since specs are added over time).
+[orthography2ipa](https://github.com/TigreGotico/orthography2ipa) is the cross-language engine. It takes a language spec — a declarative description of that language's grapheme-to-phoneme rules — and a piece of text, and produces IPA. As of this writing it ships specs covering **820 languages** (`available_codes()` on the installed package returns a list of that length; treat the exact figure as a moving target, since specs are added over time).
 
 ```python
 >>> import orthography2ipa as o
 >>> len(o.available_codes())
-807
+820
 ```
 
 The engine itself has no language-specific code baked in. A new language is a new spec file, checked against the same schema as every other spec.
@@ -174,7 +174,7 @@ That distance metric is useful in two concrete situations: searching a catalogue
 
 ## Honest limits
 
-Coverage across 807 language specs is uneven by construction: languages with an established phonological literature and a lexicon get better output than languages with a thin spec inferred mostly from general orthographic conventions. Quality is consistently best where a curated lexicon exists — Portuguese, backed by tugalex, is the strongest case in the stack; languages relying purely on spec rules without a lexicon will mishandle irregular and loan vocabulary.
+Coverage across 820 language specs is uneven by construction: languages with an established phonological literature and a lexicon get better output than languages with a thin spec inferred mostly from general orthographic conventions. Quality is consistently best where a curated lexicon exists — Portuguese, backed by tugalex, is the strongest case in the stack; languages relying purely on spec rules without a lexicon will mishandle irregular and loan vocabulary.
 
 A few components are explicitly not finished, native-reviewed references: arbtok is maintained by a non-native Arabic speaker and should be checked against native judgment before use in anything user-facing. Frontends built on thin specs inherit that thinness — a frontend is only as good as the spec and lexicon underneath it.
 

@@ -1,6 +1,6 @@
 ---
-title: "Grafeem-naar-IPA voor 807 talen"
-description: "orthography2ipa is een taalkundig gefundeerde bron van pure data die spelling op IPA afbeeldt en modelleert hoe fonemen als allofonen tot uiting komen over 896 taalspecificaties, 807 talen en meer dan 20 taalfamilies. Een kandidaat-lattice, een maximal-munch-tokenizer, fonologische en schriftafstandsmetrieken, dialectlijn en een schema-gevalideerde specificatieset, geciteerd naar de dialectologische literatuur — zonder getrainde gewichten, volledig zelf te hosten."
+title: "Grafeem-naar-IPA voor 820 talen"
+description: "orthography2ipa is een taalkundig gefundeerde bron van pure data die spelling op IPA afbeeldt en modelleert hoe fonemen als allofonen tot uiting komen over 909 taalspecificaties, 820 talen en meer dan 20 taalfamilies. Een kandidaat-lattice, een maximal-munch-tokenizer, fonologische en schriftafstandsmetrieken, dialectlijn en een schema-gevalideerde specificatieset, geciteerd naar de dialectologische literatuur — zonder getrainde gewichten, volledig zelf te hosten."
 date: 2026-01-15
 lang: nl
 updated: 2026-08-01
@@ -17,7 +17,7 @@ tags:
 draft: false
 ---
 
-**[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)** is een Python-pakket van pure data — declaratieve JSON, dunne en pluggbare logica, zonder getrainde gewichten — dat spelling op IPA afbeeldt en modelleert hoe die fonemen in context tot uiting komen. Het levert **896 taalspecificaties die 807 talen dekken** (plus 89 nodes die alleen voor classificatie dienen) over **meer dan 20 taalfamilies**. Installeer het, lees de data, fork de data. Niets zit verborgen in een checkpoint.
+**[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)** is een Python-pakket van pure data — declaratieve JSON, dunne en pluggbare logica, zonder getrainde gewichten — dat spelling op IPA afbeeldt en modelleert hoe die fonemen in context tot uiting komen. Het levert **909 taalspecificaties die 820 talen dekken** (plus 89 nodes die alleen voor classificatie dienen) over **meer dan 20 taalfamilies**. Installeer het, lees de data, fork de data. Niets zit verborgen in een checkpoint.
 
 Het is de fonologielaag onder alles wat stroomafwaarts gebeurt: de kandidaat-lattice die het produceert wordt gebruikt door de Arabische TTS-frontend [arbtok](https://github.com/TigreGotico/arbtok), de Portugese stacks [TugaPhone](https://github.com/TigreGotico/tugaphone) en [silabificador](https://github.com/TigreGotico/silabificador) (zie **[klassieke NLP voor Portugese lettergrepen en fonemen](/nl/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**), de [Barranquenho-fonemizer](/nl/blog/2025-12-12-barranquenho), de Mirandese-fonemizer en de fonemische basis voor **[TTS die op een aardappel draait](/nl/blog/2026-05-10-tts-that-runs-on-a-potato)**.
 
@@ -52,7 +52,7 @@ Dialectbomen blijven onderhoudbaar omdat JSON-bestanden `graphemes_base` / `allo
 
 ## Diep op de grond, niet alleen breed
 
-Het getal 807 is breedte; de diepte is waar het werk zit. De specificaties gaan lect voor lect zo ver als de dialectologische literatuur gaat, en elke specificatie is naar die literatuur geciteerd met paginaverwijzingen in plaats van afgeleid via patroonherkenning uit een foneemtabel.
+Het getal 820 is breedte; de diepte is waar het werk zit. De specificaties gaan lect voor lect zo ver als de dialectologische literatuur gaat, en elke specificatie is naar die literatuur geciteerd met paginaverwijzingen in plaats van afgeleid via patroonherkenning uit een foneemtabel.
 
 De **Iberische** dekking is het duidelijkste voorbeeld: **meer dan 100 specificaties** voor de talen van het schiereiland. Elke Romaanse taal van Spanje — Castiliaans, Catalaans/Valenciaans, Galicisch (zowel de RAG- als de reïntegrationistische norm), Asturisch, Aragonees en zijn valleivarianten (Ansotano, Chistabín, Benasqués…), Extremadurees — naast Baskisch, de Ibero-Romaanse creolen en de historische lagen die de meeste bronnen volledig overslaan: **Andalusisch Arabisch** en **Mozarabisch**. Aan de Arabische kant zitten **34 dialectlects** (van Najdi en Hijazi tot Levantijns, Maghrebijns en de schiereilandvarianten), en aan de Lusofone kant **46 lects van het Portugees en de talen van Portugal**, tot en met Rionorees, Guadramilees en de Mirandese subdialecten.
 

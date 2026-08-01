@@ -1,6 +1,6 @@
 ---
-title: "Graphème-vers-IPA pour 807 langues"
-description: "orthography2ipa est une ressource en données pures, ancrée linguistiquement, qui associe l'orthographe à l'IPA et modélise la façon dont les phonèmes se réalisent en tant qu'allophones à travers 896 spécifications de langue, 807 langues et plus de 20 familles linguistiques. Un treillis de candidats, une lignée dialectale et un ensemble de spécifications validé par schéma et cité à la littérature dialectologique — sans poids entraînés, entièrement auto-hébergeable."
+title: "Graphème-vers-IPA pour 820 langues"
+description: "orthography2ipa est une ressource en données pures, ancrée linguistiquement, qui associe l'orthographe à l'IPA et modélise la façon dont les phonèmes se réalisent en tant qu'allophones à travers 909 spécifications de langue, 820 langues et plus de 20 familles linguistiques. Un treillis de candidats, une lignée dialectale et un ensemble de spécifications validé par schéma et cité à la littérature dialectologique — sans poids entraînés, entièrement auto-hébergeable."
 date: 2026-01-15
 updated: 2026-08-01
 lang: fr
@@ -17,7 +17,7 @@ tags:
 draft: false
 ---
 
-**[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)** est un paquet Python en données pures — JSON déclaratif, logique fine et enfichable, sans poids entraînés — qui associe l'orthographe à l'IPA et modélise la façon dont ces phonèmes se réalisent en contexte. Il fournit **896 spécifications de langue couvrant 807 langues** (plus 89 nœuds de clade purement classificatoires) à travers **plus de 20 familles linguistiques**. Installez-le, lisez les données, forkez les données. Rien n'est caché dans un checkpoint.
+**[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)** est un paquet Python en données pures — JSON déclaratif, logique fine et enfichable, sans poids entraînés — qui associe l'orthographe à l'IPA et modélise la façon dont ces phonèmes se réalisent en contexte. Il fournit **909 spécifications de langue couvrant 820 langues** (plus 89 nœuds de clade purement classificatoires) à travers **plus de 20 familles linguistiques**. Installez-le, lisez les données, forkez les données. Rien n'est caché dans un checkpoint.
 
 C'est la couche phonologique qui sous-tend tout ce qui vient en aval : le treillis de candidats qu'il produit est consommé par le frontend TTS arabe [arbtok](https://github.com/TigreGotico/arbtok), les stacks portugais [TugaPhone](https://github.com/TigreGotico/tugaphone) et [silabificador](https://github.com/TigreGotico/silabificador) (voir **[NLP classique pour les syllabes et les phonèmes du portugais](/fr/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**), le [phonémiseur du barranquenho](/fr/blog/2025-12-12-barranquenho), le phonémiseur du mirandais, et l'ancrage phonémique du **[TTS qui tourne sur une patate](/fr/blog/2026-05-10-tts-that-runs-on-a-potato)**.
 
@@ -52,7 +52,7 @@ Les arbres de dialectes restent maintenables parce que les fichiers JSON prennen
 
 ## Profond sur le terrain, pas seulement large
 
-Le chiffre de 807 est l'ampleur ; la profondeur est là où réside le travail. Les spécifications descendent lecte par lecte là où le fait la littérature dialectologique, et chacune est citée à cette littérature avec des renvois aux pages plutôt qu'extraite par correspondance de motifs à partir d'une charte phonémique.
+Le chiffre de 820 est l'ampleur ; la profondeur est là où réside le travail. Les spécifications descendent lecte par lecte là où le fait la littérature dialectologique, et chacune est citée à cette littérature avec des renvois aux pages plutôt qu'extraite par correspondance de motifs à partir d'une charte phonémique.
 
 La couverture **ibérique** en est l'exemple le plus clair : **plus de 100 spécifications** pour les langues de la péninsule. Toutes les langues romanes d'Espagne — castillan, catalan/valencien, galicien (à la fois les normes de la RAG et réintégrationnistes), asturien, aragonais et ses variétés de vallée (ansotano, chistabín, benasqués…), estrémègne — aux côtés du basque, des créoles ibéro-romans, et des couches historiques que la plupart des ressources ignorent entièrement : l'**arabe andalou** et le **mozarabe**. Le versant arabe porte **34 lectes dialectaux** (du najdi et du hijazi jusqu'au levantin, au maghrébin et aux variétés péninsulaires), et le versant lusophone **46 lectes du portugais et des langues du Portugal**, jusqu'au rionorais, au guadramilais et aux sous-dialectes du mirandais.
 
