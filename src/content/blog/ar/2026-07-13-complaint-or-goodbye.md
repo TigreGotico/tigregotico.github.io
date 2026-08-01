@@ -2,6 +2,7 @@
 title: "نموذج المشاعر لا يستطيع التمييز بين شكوى ووداع"
 description: "رسالتا دعم غاضبتان. واحدة على وشك التصعيد، والأخرى على وشك المغادرة بلا كلمة. لا يكاد أيّ نموذج مشاعر يستطيع التفريق بينهما — لأنها جميعًا تفتقر إلى نفس المحور. نقدّم emotion-algebra."
 date: 2026-07-13
+updated: 2026-08-01
 lang: ar
 author: "Casimiro Ferreira"
 tags:
@@ -162,7 +163,7 @@ angry, afraid = affect_from_texts([
     "I don't know if I'm doing this right and I'm scared I've broken something.",
 ])
 
-angry.valence,  angry.potency    # -0.43, +0.16   -> 'annoyance'
+angry.valence,  angry.potency    # -0.43, +0.16   -> 'disgust'
 afraid.valence, afraid.potency   # -0.47, -0.43   -> 'apprehension'
 ```
 
