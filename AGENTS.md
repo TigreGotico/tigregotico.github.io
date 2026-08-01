@@ -1,4 +1,4 @@
-# tigregotico-website — Agent Onboarding
+# tigregotico.github.io — Agent Onboarding
 
 Company website for TigreGótico Lda. Astro 5 SSG with Tailwind CSS, deployed to GitHub Pages. Content-driven: markdown + JSON validated against Zod schemas at build time.
 
@@ -51,7 +51,7 @@ npm run preview   # preview the built site
 
 ## Gotchas
 
-- `base: '/tigregotico-website/'` in `astro.config.mjs` — the site is served under a sub-path. When the repo is renamed to the org root site, change to `base: '/'`.
+- `base: '/'` in `astro.config.mjs` — the site is served at the org root (`tigregotico.github.io`).
 - `featured` is a boolean flag on projects, not a separate collection. Homepage queries `featured === true`.
 - Draft posts: set `draft: true` in frontmatter to exclude from production.
 - `astro check` requires valid content; a deliberate schema violation fails the build with a located error.
