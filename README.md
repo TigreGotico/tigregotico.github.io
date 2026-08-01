@@ -1,6 +1,6 @@
 # tigregotico.github.io
 
-The [TigreGótico](https://tigregotico.github.io/) company
+The [TigreGótico](https://tigregotico.pt/) company
 website. It is a static Astro 5 site with zero client-side JavaScript on
 regular pages, self-hosted fonts, and no third-party requests.
 
@@ -36,7 +36,7 @@ deployment base path prefixed at build time.
 GitHub Actions (`.github/workflows/deploy.yml`) builds the site and deploys
 it to GitHub Pages on push to `dev` or `master`. A weekly rebuild also runs
 so date-scheduled blog posts publish on time. The site is served at the
-domain root (`https://tigregotico.github.io/`). The `BASE` constant in
+domain root (`https://tigregotico.pt/`). The `BASE` constant in
 `astro.config.mjs` is `'/'` accordingly.
 
 ## License
