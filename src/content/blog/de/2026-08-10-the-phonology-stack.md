@@ -126,14 +126,14 @@ gelöst ist.
 sprachübergreifende Engine. Sie nimmt eine Sprachspezifikation — eine
 deklarative Beschreibung der Graphem-zu-Phonem-Regeln dieser Sprache — und ein
 Stück Text und erzeugt IPA. Zum Zeitpunkt dieses Beitrags liefert sie
-Spezifikationen für **807 Sprachen** aus (`available_codes()` am
+Spezifikationen für **820 Sprachen** aus (`available_codes()` am
 installierten Paket gibt eine Liste dieser Länge zurück; betrachten Sie die
 genaue Zahl als beweglich, da laufend Spezifikationen hinzugefügt werden).
 
 ```python
 >>> import orthography2ipa as o
 >>> len(o.available_codes())
-807
+820
 ```
 
 Die Engine selbst enthält keinen fest eingebauten sprachspezifischen Code.
@@ -298,7 +298,7 @@ Mehr dazu, wie silabificador und tugaphone im Alltag zusammenarbeiten, finden
 Sie unter
 **[Klassisches NLP für Portugiesisch: Silbentrennung und Graphem-zu-Phonem](/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**,
 und für die breitere Engine, die all dem zugrunde liegt,
-**[Graphem-zu-IPA für 807 Sprachen](/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**.
+**[Graphem-zu-IPA für 820 Sprachen](/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**.
 
 ## Klangbasierte Suche: phonematcher
 
@@ -330,7 +330,7 @@ phonematcher ist nicht auf PyPI; es installiert sich aus dem Quellcode
 
 ## Ehrliche Grenzen
 
-Die Abdeckung über 807 Sprachspezifikationen ist konstruktionsbedingt
+Die Abdeckung über 820 Sprachspezifikationen ist konstruktionsbedingt
 ungleichmäßig: Sprachen mit einer etablierten phonologischen Literatur und
 einem Lexikon liefern bessere Ausgaben als Sprachen mit einer dünnen
 Spezifikation, die größtenteils aus allgemeinen orthografischen Konventionen

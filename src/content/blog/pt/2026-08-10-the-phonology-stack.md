@@ -69,12 +69,12 @@ Todas as camadas acima desta podem assumir que a conversão de notação já est
 
 ### O motor: orthography2ipa
 
-O [orthography2ipa](https://github.com/TigreGotico/orthography2ipa) é o motor interlinguístico. Recebe uma spec de língua — uma descrição declarativa das regras de grafema-para-fonema dessa língua — e um trecho de texto, e produz IPA. À data desta publicação, traz specs que cobrem **807 línguas** (`available_codes()` no pacote instalado devolve uma lista com esse comprimento; trate o número exato como um alvo móvel, já que as specs vão sendo adicionadas ao longo do tempo).
+O [orthography2ipa](https://github.com/TigreGotico/orthography2ipa) é o motor interlinguístico. Recebe uma spec de língua — uma descrição declarativa das regras de grafema-para-fonema dessa língua — e um trecho de texto, e produz IPA. À data desta publicação, traz specs que cobrem **820 línguas** (`available_codes()` no pacote instalado devolve uma lista com esse comprimento; trate o número exato como um alvo móvel, já que as specs vão sendo adicionadas ao longo do tempo).
 
 ```python
 >>> import orthography2ipa as o
 >>> len(o.available_codes())
-807
+820
 ```
 
 O próprio motor não tem código específico de nenhuma língua embutido. Uma nova língua é um novo ficheiro de spec, verificado face ao mesmo esquema que todas as outras specs.
@@ -174,7 +174,7 @@ Essa métrica de distância é útil em duas situações concretas: pesquisar um
 
 ## Limites, com honestidade
 
-A cobertura ao longo de 807 specs de língua é desigual por construção: línguas com uma literatura fonológica estabelecida e um léxico obtêm um resultado melhor do que línguas com uma spec ligeira inferida sobretudo a partir de convenções ortográficas gerais. A qualidade é consistentemente melhor onde existe um léxico curado — o português, apoiado pelo tugalex, é o caso mais forte da stack; línguas que dependem apenas de regras de spec sem léxico vão lidar mal com vocabulário irregular e de empréstimo.
+A cobertura ao longo de 820 specs de língua é desigual por construção: línguas com uma literatura fonológica estabelecida e um léxico obtêm um resultado melhor do que línguas com uma spec ligeira inferida sobretudo a partir de convenções ortográficas gerais. A qualidade é consistentemente melhor onde existe um léxico curado — o português, apoiado pelo tugalex, é o caso mais forte da stack; línguas que dependem apenas de regras de spec sem léxico vão lidar mal com vocabulário irregular e de empréstimo.
 
 Alguns componentes são explicitamente referências ainda não acabadas nem revistas por um nativo: o arbtok é mantido por um falante não nativo de árabe e deve ser verificado face ao julgamento de um nativo antes de ser usado em qualquer coisa voltada para o utilizador. Os frontends construídos sobre specs ligeiras herdam essa fragilidade — um frontend só é tão bom quanto a spec e o léxico por baixo dele.
 

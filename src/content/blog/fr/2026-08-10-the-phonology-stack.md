@@ -69,12 +69,12 @@ Chaque couche au-dessus de celle-ci peut supposer que la conversion de notation 
 
 ### Le moteur : orthography2ipa
 
-[orthography2ipa](https://github.com/TigreGotico/orthography2ipa) est le moteur multilingue. Il prend une spécification de langue — une description déclarative des règles graphème-vers-phonème de cette langue — et un morceau de texte, et produit de l'IPA. Au moment d'écrire ces lignes, il fournit des spécifications couvrant **807 langues** (`available_codes()` sur le paquet installé renvoie une liste de cette longueur ; considérez ce chiffre exact comme une cible mouvante, puisque des spécifications sont ajoutées au fil du temps).
+[orthography2ipa](https://github.com/TigreGotico/orthography2ipa) est le moteur multilingue. Il prend une spécification de langue — une description déclarative des règles graphème-vers-phonème de cette langue — et un morceau de texte, et produit de l'IPA. Au moment d'écrire ces lignes, il fournit des spécifications couvrant **820 langues** (`available_codes()` sur le paquet installé renvoie une liste de cette longueur ; considérez ce chiffre exact comme une cible mouvante, puisque des spécifications sont ajoutées au fil du temps).
 
 ```python
 >>> import orthography2ipa as o
 >>> len(o.available_codes())
-807
+820
 ```
 
 Le moteur lui-même n'embarque aucun code spécifique à une langue. Une nouvelle langue est un nouveau fichier de spécification, validé contre le même schéma que toutes les autres spécifications.
@@ -174,7 +174,7 @@ Cette métrique de distance est utile dans deux situations concrètes : recherch
 
 ## Limites honnêtes
 
-La couverture à travers 807 spécifications de langue est inégale par construction : les langues disposant d'une littérature phonologique établie et d'un lexique produisent une meilleure sortie que les langues dotées d'une spécification mince, principalement déduite de conventions orthographiques générales. La qualité est systématiquement meilleure là où un lexique curé existe — le portugais, adossé à tugalex, est le cas le plus solide de la pile ; les langues reposant uniquement sur les règles de la spécification sans lexique géreront mal le vocabulaire irrégulier et les emprunts.
+La couverture à travers 820 spécifications de langue est inégale par construction : les langues disposant d'une littérature phonologique établie et d'un lexique produisent une meilleure sortie que les langues dotées d'une spécification mince, principalement déduite de conventions orthographiques générales. La qualité est systématiquement meilleure là où un lexique curé existe — le portugais, adossé à tugalex, est le cas le plus solide de la pile ; les langues reposant uniquement sur les règles de la spécification sans lexique géreront mal le vocabulaire irrégulier et les emprunts.
 
 Quelques composants ne sont explicitement pas des références finies et relues par des locuteurs natifs : arbtok est maintenu par un locuteur non natif de l'arabe et devrait être vérifié auprès d'un jugement natif avant utilisation dans quoi que ce soit destiné aux utilisateurs. Les frontends construits sur des spécifications minces héritent de cette minceur — un frontend ne vaut que ce que valent la spécification et le lexique qui le sous-tendent.
 
