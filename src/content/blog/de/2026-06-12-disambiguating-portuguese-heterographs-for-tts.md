@@ -12,7 +12,7 @@ tags:
   - "NLP"
   - "Accessibility"
   - "FOSS"
-draft: true
+draft: false
 ---
 
 ## Richtig ausgesprochen: Portugiesische Heterophone für TTS disambiguieren

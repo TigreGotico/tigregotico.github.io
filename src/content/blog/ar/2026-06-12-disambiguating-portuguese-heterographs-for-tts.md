@@ -12,7 +12,7 @@ tags:
   - "NLP"
   - "Accessibility"
   - "FOSS"
-draft: true
+draft: false
 ---
 
 ## قولها بشكل صحيح: إزالة اللبس في متجانسات النطق البرتغالية لتحويل النص إلى كلام

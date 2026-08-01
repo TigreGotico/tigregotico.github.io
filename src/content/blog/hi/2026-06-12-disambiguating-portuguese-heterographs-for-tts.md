@@ -12,7 +12,7 @@ tags:
   - "NLP"
   - "Accessibility"
   - "FOSS"
-draft: true
+draft: false
 ---
 
 ## सही बोलना: TTS के लिए पुर्तगाली heterophones को स्पष्ट करना

@@ -12,7 +12,7 @@ tags:
   - "NLP"
   - "Accessibility"
   - "FOSS"
-draft: true
+draft: false
 ---
 
 ## 제대로 말하기: TTS를 위한 포르투갈어 이음동철어 중의성 해소

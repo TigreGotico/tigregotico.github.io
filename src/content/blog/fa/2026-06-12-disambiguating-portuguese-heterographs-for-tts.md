@@ -12,7 +12,7 @@ tags:
   - "NLP"
   - "Accessibility"
   - "FOSS"
-draft: true
+draft: false
 ---
 
 ## درست ادا کردن: ابهام‌زدایی از هم‌نویسه‌های ناهم‌آوای پرتغالی برای TTS
