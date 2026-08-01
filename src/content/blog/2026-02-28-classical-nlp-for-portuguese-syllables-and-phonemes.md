@@ -13,7 +13,7 @@ tags:
 draft: false
 ---
 
-Not every language problem needs a billion parameters. A great deal of Portuguese text processing is governed by rules that linguists wrote down long before anyone trained a neural network — rules about where syllables break, where stress falls, and how a given spelling maps to a sound. When those rules are explicit, the right tool is a small, deterministic, fully offline library that you can read, audit, and run anywhere. That is the philosophy behind our classical Portuguese NLP stack: [silabificador](https://github.com/TigreGotico/silabificador) for syllabification and [TugaPhone](https://github.com/TigreGotico/tugaphone) for grapheme-to-phoneme (G2P).
+Syllable breaks, stress placement, and spelling-to-sound mappings in Portuguese follow rules that linguists documented long before anyone trained a neural network. When those rules are explicit, the right tool is a small, deterministic, fully offline library that you can read, audit, and run anywhere. That is the philosophy behind our classical Portuguese NLP stack: [silabificador](https://github.com/TigreGotico/silabificador) for syllabification and [TugaPhone](https://github.com/TigreGotico/tugaphone) for grapheme-to-phoneme (G2P).
 
 ### Why classical, and why now
 
@@ -61,11 +61,11 @@ It even respects scale conventions — long-scale `biliões` for `pt-PT`, short-
 
 The architecture is a clean hierarchy — sentence → word → grapheme → character — with context-sensitive rules applied at each level: vowel quality and consonant allophones at the character level, digraphs like ⟨ch⟩ and ⟨nh⟩ and diphthongs like ⟨ai⟩ and ⟨ou⟩ at the grapheme level, stress and syllabification at the word level. TugaPhone reuses `silabificador` for the syllable layer, alongside companion libraries **[Tugalex](https://github.com/TigreGotico/tugalex)** (lexicon and exceptions) and **[TugaTagger](https://github.com/TigreGotico/tugatagger)** (POS tagging). Small, composable pieces — each useful on its own.
 
-TugaPhone is honest about its edges: lexicon coverage is sparser for the African and Timorese dialects, the sub-regional accents (Porto, Minho, Braga, and others) are experimental approximations of documented features, and sentence-level prosody is simplified. These are openly documented limitations, not hidden failure modes — exactly the kind of transparency a rule-based system makes possible.
+TugaPhone is honest about its edges: lexicon coverage is sparser for the African and Timorese dialects, the sub-regional accents (Porto, Minho, Braga, and others) are experimental approximations of documented features, and sentence-level prosody is simplified. These are openly documented limitations, not hidden failure modes.
 
 ### The broader picture: orthography2ipa
 
-Portuguese is one variety among many, and the same engineering pattern generalizes. [orthography2ipa](https://github.com/TigreGotico/orthography2ipa) is a pure-data Python package of linguistically motivated grapheme→IPA and allophone mappings spanning 350+ language codes across 20+ language families. It draws a sharp distinction that any serious G2P system needs: a **grapheme map** says which phonemes a spelling *can* represent, while an **allophone map** says how a phoneme actually *surfaces* in a given context. Regional varieties are modeled as their own specifications linked through weighted multi-ancestor lineage, so dialect trees inherit from their parents instead of duplicating data.
+Portuguese is one variety among many, and the same engineering pattern generalizes. [orthography2ipa](https://github.com/TigreGotico/orthography2ipa) is a pure-data Python package of linguistically motivated grapheme→IPA and allophone mappings spanning 676 languages across 20+ language families. It draws a sharp distinction that any serious G2P system needs: a **grapheme map** says which phonemes a spelling *can* represent, while an **allophone map** says how a phoneme actually *surfaces* in a given context. Regional varieties are modeled as their own specifications linked through weighted multi-ancestor lineage, so dialect trees inherit from their parents instead of duplicating data.
 
 That is the same instinct behind `pt-PT`, `pt-BR`, `pt-AO`, `pt-MZ`, and `pt-TL` in TugaPhone: treat each Lusophone variety as a first-class citizen with its own rules, not a deviation from a single canonical accent. The data is declarative and the logic is thin and pluggable — you can read the rules, cite their sources, and trust the output.
 
@@ -80,4 +80,4 @@ pip install git+https://github.com/TigreGotico/silabificador
 
 For the broader multilingual mappings, see [orthography2ipa](https://github.com/TigreGotico/orthography2ipa). Deterministic, fast, offline, and built for the full breadth of the Portuguese-speaking world.
 
-This Portuguese phonetics stack builds on our **[grapheme-to-IPA work for 350+ languages](/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**, forming the phonetic backbone for **[TTS that runs on a potato](/blog/2026-05-10-tts-that-runs-on-a-potato)** and **[Miro & Dii multilingual voices](/blog/2026-06-15-two-voices-every-language-miro-and-dii)**.
+This Portuguese phonetics stack builds on our **[grapheme-to-IPA work for 676 languages](/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**, forming the phonetic backbone for **[TTS that runs on a potato](/blog/2026-05-10-tts-that-runs-on-a-potato)** and **[Miro & Dii multilingual voices](/blog/2026-06-15-two-voices-every-language-miro-and-dii)**.
