@@ -1,7 +1,8 @@
 ---
-title: "Grapheme-to-IPA for 676 Languages"
-description: "orthography2ipa is a pure-data, linguistically grounded resource that maps spelling to IPA and models how phonemes surface as allophones across ~750 language specs, 676 languages, and 20+ language families. A candidate lattice, a maximal-munch tokenizer, phonological and script distance metrics, dialect lineage, and a schema-validated spec set cited to the dialectological literature — no trained weights, fully self-hostable."
+title: "Grapheme-to-IPA for 807 Languages"
+description: "orthography2ipa is a pure-data, linguistically grounded resource that maps spelling to IPA and models how phonemes surface as allophones across 896 language specs, 807 languages, and 20+ language families. A candidate lattice, a maximal-munch tokenizer, phonological and script distance metrics, dialect lineage, and a schema-validated spec set cited to the dialectological literature — no trained weights, fully self-hostable."
 date: 2026-01-15
+updated: 2026-08-01
 author: "Casimiro Ferreira"
 tags:
   - "G2P"
@@ -15,7 +16,7 @@ tags:
 draft: false
 ---
 
-**[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)** is a pure-data Python package — declarative JSON, thin pluggable logic, no trained weights — that maps spelling to IPA and models how those phonemes surface in context. It ships **~750 language specs covering 676 languages** (plus 73 classification-only clade nodes) across **20+ language families**. Install it, read the data, fork the data. Nothing is hidden in a checkpoint.
+**[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)** is a pure-data Python package — declarative JSON, thin pluggable logic, no trained weights — that maps spelling to IPA and models how those phonemes surface in context. It ships **896 language specs covering 807 languages** (plus 89 classification-only clade nodes) across **20+ language families**. Install it, read the data, fork the data. Nothing is hidden in a checkpoint.
 
 It is the phonology layer beneath everything downstream: the candidate lattice it produces is consumed by the Arabic TTS frontend [arbtok](https://github.com/TigreGotico/arbtok), the Portuguese [TugaPhone](https://github.com/TigreGotico/tugaphone) and [silabificador](https://github.com/TigreGotico/silabificador) stacks (see **[classical NLP for Portuguese syllables and phonemes](/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**), the [Barranquenho phonemizer](/blog/2025-12-12-barranquenho), the Mirandese phonemizer, and the phoneme grounding for **[TTS that runs on a potato](/blog/2026-05-10-tts-that-runs-on-a-potato)**.
 
@@ -50,7 +51,7 @@ Dialect trees stay maintainable because JSON files support `graphemes_base` / `a
 
 ## Deep on the ground, not just wide
 
-The 676 figure is breadth; the depth is where the work is. The specs go lect by lect where the dialectological literature does, and each one is cited to that literature with page pins rather than pattern-matched from a phoneme chart.
+The 807 figure is breadth; the depth is where the work is. The specs go lect by lect where the dialectological literature does, and each one is cited to that literature with page pins rather than pattern-matched from a phoneme chart.
 
 The **Iberian** coverage is the clearest example: **100+ specs** for the languages of the peninsula. Every Romance language of Spain — Castilian, Catalan/Valencian, Galician (both the RAG and reintegrationist norms), Asturian, Aragonese and its valley varieties (Ansotano, Chistabín, Benasqués…), Extremaduran — alongside Basque, the Ibero-Romance creoles, and the historical layers most resources skip entirely: **Andalusi Arabic** and **Mozarabic**. The Arabic side carries **34 dialect lects** (from Najdi and Hejazi through Levantine, Maghrebi and the peninsular varieties), and the Lusophone side **46 Portuguese-and-Portugal-language lects**, down to Rionorese, Guadramilese, and the Mirandese sub-dialects.
 
@@ -82,13 +83,13 @@ Because the data is structured rather than baked into weights, you can compare l
 from orthography2ipa.distance import phonological_distance
 d = phonological_distance(orthography2ipa.get("pt-BR"), orthography2ipa.get("pt-PT"))
 
-d.combined                    # 0.04 — near-identical
+d.combined                    # 0.0515 — near-identical
 d.inventory.feature_mean      # phoneme-inventory distance
 d.grapheme.mean_ipa_distance  # grapheme-mapping divergence
 d.allophone_sim               # allophone-overlap similarity
 ```
 
-Feature vectors are exposed too, so a near-identical pair like the two Portuguese standards lands at 0.04 while genuinely distant pairs separate cleanly. This is useful for transfer-learning decisions, low-resource bootstrapping, and dialectometry alike.
+Feature vectors are exposed too, so a near-identical pair like the two Portuguese standards lands at 0.0515 while genuinely distant pairs separate cleanly. This is useful for transfer-learning decisions, low-resource bootstrapping, and dialectometry alike.
 
 ## How we know the data is any good
 
