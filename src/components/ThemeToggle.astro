@@ -1,13 +1,26 @@
 ---
 // Theme toggle. The no-flash inline script in Base.astro sets the initial
 // `dark` class before paint; this button flips it and persists the choice.
+//
+// Base.astro doesn't pass a `locale` prop down to this component, so the
+// locale is derived from the URL the same way Base.astro's own language
+// switcher does (matching a leading locale-segment prefix).
+import { ui, type Locale } from '../i18n';
+
+interface Props {
+  locale?: Locale;
+}
+const localePrefix = /^\/(pt|es|de|nl|fr|it|ru|ar|fa|hi|zh|ko|ja)(?=\/|$)/;
+const detected = Astro.url.pathname.match(localePrefix)?.[1] as Locale | undefined;
+const { locale = detected ?? 'en' } = Astro.props;
+const t = ui[locale].a11y;
 ---
 
 <button
   id="theme-toggle"
   type="button"
   class="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border text-fg transition-colors hover:border-primary hover:text-primary"
-  aria-label="Toggle color theme"
+  aria-label={t.themeToggle}
   aria-pressed="false"
 >
   <svg
