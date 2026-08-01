@@ -102,13 +102,13 @@ Two speakers of the same language can pronounce the same sentence differently, a
 
 | Dialect | Output |
 |---|---|
-| pt-PT (Portugal) | `bˈõ ˈdi·ɐ· kˈo·mu ɨs·ˈta ˈvɔ·ke↗·` |
-| pt-BR (Brazil) | `bˈõ ˈdi·ɐ· kˈɔ̃·mʊ es·ˈta ˈvɔ·ke↗·` |
-| pt-AO (Angola) | `bˈõ ˈdi·ɐ· kˈo·mʊ es·ˈta ˈvɔ·ke↗·` |
-| pt-MZ (Mozambique) | `bˈõ ˈdi·ɐ· kˈo·mu es·ˈta ˈvɔ·ke↗·` |
-| pt-TL (Timor-Leste) | `bˈõ ˈdi·ɐ· kˈoɔ·mʊ es·ˈta ˈvɔ·ke↗·` |
+| pt-PT (Portugal) | `ˈbõ ˈdiɐ ˈkomu eˈʃta vɔˈse` |
+| pt-BR (Brazil) | `ˈbõ ˈdʒiɐ ˈkɔ̃mʊ eˈsta voˈse` |
+| pt-AO (Angola) | `ˈbõ ˈdiɐ ˈkomʊ eˈsta vɔˈse` |
+| pt-MZ (Mozambique) | `ˈbõ ˈdiɐ ˈkomu eˈsta vɔˈse` |
+| pt-TL (Timor-Leste) | `ˈbõ ˈdiə ˈkoɔmʊ eˈsta vɔˈse` |
 
-("Bom dia, como está você?" — "Good morning, how are you?") The consonant skeleton stays recognizable across all five, but the vowels shift in each — most visibly on "como", where Portugal keeps a rounded back vowel and the others nasalize or diphthongize it differently. A TTS voice or a pronunciation dictionary built from a single dialect's rules would mispronounce the word for every other dialect's listener.
+("Bom dia, como está você?" — "Good morning, how are you?") The consonant skeleton stays recognizable across all five, but two well-known markers separate them immediately. In "dia", Brazilian Portuguese turns the `d` before an `i` into `dʒ`, the sound at the start of English "jam" — the others keep a plain `d`. In "está", European Portuguese pronounces the `s` at the end of a syllable as `ʃ`, the "sh" of "shoe", while every other variety keeps `s`. A pronunciation dictionary built from one dialect's rules gets both of these wrong for every other dialect's listener.
 
 [euskaphone](https://github.com/TigreGotico/euskaphone) does the same for Basque dialects, built directly on the orthography2ipa lattice rather than a separate engine:
 
