@@ -3,6 +3,7 @@ title: "Keine Sprache zurücklassen"
 description: "Beseitigung von Sprachbarrieren in OpenVoiceOS durch Spracherkennung, Übersetzungs-Plugins und bidirektionale Übersetzungsfunktionen."
 date: 2023-10-16
 lang: de
+updated: 2026-08-01
 author: "Casimiro Ferreira"
 tags:
   - "OVOS"
@@ -86,7 +87,7 @@ Der optionale Modus `verify_lang` gleicht die erkannte Textsprache mit der Sitzu
     "ovos-utterance-translation-plugin": {
         "bidirectional": true,
         "verify_lang": false,
-        "ignore_invalid": true,
+        "ignore_invalid_langs": true,
         "translate_secondary_langs": true
     }
 },

@@ -1,6 +1,6 @@
 ---
-title: "Bot-Wände überwinden mit kombinierbaren, direkt einsetzbaren requests-Sessions"
-description: "Wie wir zuverlässigen Zugriff auf öffentliche Daten aufrechterhalten, ohne im heißen Pfad einen Headless-Browser zu starten: TLS-Fingerprint-Imitation, ein FlareSolverr-Proxy für JS-Challenges, ein Wayback-Machine-Fallback und IP-Rotation — alles hinter zwei kombinierbaren requests.Session-Subklassen, unblock_requests und anon_requests."
+title: "Kombinierbare, direkt einsetzbare requests-Sessions für widerstandsfähigen Zugriff auf öffentliche Daten"
+description: "Zwei kombinierbare requests.Session-Subklassen, um öffentliche Webseiten zuverlässig zu lesen, ohne im heißen Pfad einen Headless-Browser zu starten: TLS-kompatibler Transport, ein FlareSolverr-Proxy für JS-Challenges, ein Wayback-Machine-Fallback und IP-diversifizierte Anfragen — unblock_requests und anon_requests."
 date: 2026-03-15
 lang: de
 author: "Casimiro Ferreira"
@@ -16,22 +16,39 @@ draft: false
 
 Ein Großteil unserer Arbeit — Medien-Metadaten-Clients, Katalog-Anreicherung,
 Archivierung — hängt davon ab, **öffentliche** Webseiten zuverlässig zu lesen. Das
-Problem sind selten die Daten; es ist die Wand davor. Und die Wand stellt zwei
-getrennte Fragen:
+Problem sind selten die Daten; es ist, dass ein Großteil der
+Bot-Erkennungsinfrastruktur auf skriptgesteuerte Angriffe abgestimmt ist und am
+Ende jeden wohlverhaltenen Nicht-Browser-Client als einen solchen fehlklassifiziert.
+Das geschieht auf zwei getrennten Achsen:
 
-- **„Was sind Sie?"** — Cloudflare und Konsorten blockieren Anfragen nicht dafür,
+- **„Was sind Sie?"** — Cloudflare und Konsorten markieren Anfragen nicht dafür,
   *was* Sie anfragen, sondern dafür, *wie* Sie auf der Leitung aussehen: Ihr
   TLS-Handshake, Ihr JA3-Fingerabdruck, ob Sie eine JavaScript-Challenge ausführen
-  können.
+  können. Ein einfacher `requests`-Handshake sieht einem Browser-Handshake
+  überhaupt nicht ähnlich, sodass er von Prüfungen erfasst wird, die auf
+  skriptgesteuerten Missbrauch abzielen, selbst wenn der Traffic selbst harmlos ist.
 - **„Wer sind Sie?"** — IP-Reputation und Ratenbegrenzungen ignorieren Ihren
-  Fingerabdruck völlig; sie zählen, wie viele Anfragen von einer Adresse kommen.
+  Fingerabdruck völlig; sie zählen, wie viele Anfragen von einer Adresse kommen,
+  was einen einzelnen wohlverhaltenen Client ebenso treffen kann wie einen
+  missbräuchlichen.
 
-Die beiden Fragen sind orthogonal, daher beantworten wir sie mit zwei kleinen
+Die beiden Achsen sind orthogonal, daher beantworten wir sie mit zwei kleinen
 Bibliotheken, die sich sauber stapeln lassen: **unblock_requests** beantwortet *was
 sind Sie*, **anon_requests** beantwortet *wer sind Sie*. Beide sind direkte
 Ersatzlösungen für eine `requests`-Session im alltäglichen Code. In diesem Beitrag
 geht es speziell um diese Transportschicht — den Bytes-auf-der-Leitung-Teil — nicht
 um das Parsing oder die Pipeline darüber.
+
+**Der Geltungsbereich, unverblümt gesagt:** Diese Transporte sind ausschließlich
+für öffentliche, nicht authentifizierte Seiten gedacht. Sie respektieren
+`robots.txt` und jede deklarierte Crawl-Verzögerung — siehe unseren
+**[Beitrag zu robots.txt &amp; Sitemaps](/blog/2026-03-01-robot-txt-sitemaps-ethical-web-scraping)**
+dazu, wie wir das prüfen, bevor wir einen Scraper schreiben — und jeder darauf
+aufbauende Client wird auf ein niedriges Anfragevolumen beschränkt, sodass eine
+Zielseite nie eine nennenswerte Last von uns sieht. Das ist kein nachträglich
+angeklebter Disclaimer; es ist eine echte technische Randbedingung dafür, wie
+diese Sessions eingesetzt werden, denn ein widerstandsfähiger Client, der zugleich
+rücksichtslos ist, konterkariert seinen eigenen Zweck.
 
 ## Die Design-Randbedingung: die `requests`-Form beibehalten
 
@@ -59,14 +76,15 @@ jemandes Bildschirm, und nichts im heißen Pfad braucht ein Display.
 
 ## Schicht eins: `unblock_requests` und seine Transporte
 
-`unblock_requests` verteidigt gegen **Bot-Erkennung**. Sie wählen einen Transport mit
+`unblock_requests` macht einen einfachen Python-Client interoperabel mit
+**Bot-Erkennungsprüfungen, die auf Browser abgestimmt sind**. Sie wählen einen Transport mit
 dem Schlüsselwortargument `mode=` (oder der Umgebungsvariablen
 `UNBLOCK_REQUESTS_TRANSPORT` — explizite Schlüsselwortargumente gewinnen immer). Die
 wichtigsten vier:
 
 | Modus | Was er tut |
 |---|---|
-| `curl_cffi` *(Standard)* | Chrome-TLS/JA3-Imitation über `curl_cffi`. Besteht die Bot-Prüfung in den meisten Netzwerken ohne zusätzliche Infrastruktur. |
+| `curl_cffi` *(Standard)* | Chrome-TLS/JA3-Imitation über `curl_cffi`. Erzeugt in den meisten Netzwerken einen browserförmigen Handshake, ohne zusätzliche Infrastruktur. |
 | `requests` | Einfaches `requests`, keine Imitation. |
 | `flaresolverr` | Leitet über einen FlareSolverr-Headless-Browser, der die JS-Challenge löst — **Live**-Daten. |
 | `wayback` | Liest den neuesten Snapshot des Internet Archive — veraltet, braucht aber nichts. |
@@ -116,11 +134,14 @@ wir wiederholen niemals stillschweigend eine verändernde Anfrage aus einem Arch
 
 ## Schicht zwei: `anon_requests` und IP-Rotation
 
-Das orthogonale Problem ist die **IP-Reputation**. Selbst ein perfekter
-Fingerabdruck wird ratenbegrenzt oder gesperrt, wenn jede Anfrage von einer Adresse
-kommt. `anon_requests` bewältigt das mit `RotatingProxySession` (gescrapte
-öffentliche Proxys, optionale Validierung, SOCKS5/HTTP) und `RotatingTorSession`
-(rotierende Tor-Circuits). Jede Anfrage geht über einen frischen Exit hinaus, und
+Das orthogonale Problem ist die **IP-Reputation**. Selbst ein perfekt
+browserförmiger Handshake kann ratenbegrenzt werden, wenn jede Anfrage von einer
+Adresse kommt — volumenbasierte Heuristiken schauen auf die Adresse, nicht auf den
+Fingerabdruck. `anon_requests` verteilt die Last über Adressen hinweg mit
+`RotatingProxySession` (gescrapte öffentliche Proxys, optionale Validierung,
+SOCKS5/HTTP) und `RotatingTorSession` (rotierende Tor-Circuits), sodass ein Client
+mit niedrigem Volumen nie mit einem verwechselt wird, der eine Website von einer
+einzigen IP aus bombardiert. Jede Anfrage geht über einen frischen Exit hinaus, und
 tote Proxys werden bei Verbindungsfehlern wegrotiert.
 
 ```python
@@ -130,7 +151,7 @@ with RotatingProxySession(proxy_type=ProxyType.SOCKS5, validate=True) as s:
     print(s.get("https://ipecho.net/plain", timeout=5).text)  # a new IP each time
 ```
 
-## Die Komposition: Rotation **und** Umgehung zugleich
+## Die Komposition: verteilte Last **und** ein kompatibler Handshake zugleich
 
 Diese beiden Bibliotheken sind darauf ausgelegt, sich zu stapeln statt sich zu
 überlappen. `anon_requests`-Sessions akzeptieren ein `session_factory` — ein
@@ -146,14 +167,14 @@ from unblock_requests import CloudflareSession
 session = RotatingProxySession(
     session_factory=lambda: CloudflareSession(flaresolverr_url="http://host:8191"),
 )
-session.get(url)   # rotates the IP *and* solves Cloudflare
+session.get(url)   # spreads load across IPs *and* uses a browser-compatible handshake
 ```
 
 Der rotierte Proxy fließt durch *jeden* Transport — auch in FlareSolverr hinein, das
-seinen Headless-Browser über das Feld `proxy` der Solve-Anfrage steuert. So ist die
-IP, die die Challenge löst, dieselbe rotierte IP, die der Rest der Anfrage verwendet:
-keine Aufspaltung von Fingerabdruck und Exit-Node, die ein Verteidiger bemerken
-könnte.
+seinen Headless-Browser über das Feld `proxy` der Solve-Anfrage steuert. So bleibt
+die gesamte Anfrage — Handshake, Challenge-Lösung und Exit-IP — durchgängig
+konsistent, was für einen Client, der nicht versucht, wie mehr als ein Besucher
+auszusehen, schlicht korrektes Verhalten ist.
 
 ## Warum diese Form
 

@@ -3,6 +3,7 @@ title: "Robots.txt, Sitemaps und ethisches Web-Scraping"
 description: "Bevor Sie einen Scraper bauen, erkunden Sie die Website. sitemapper liest robots.txt, ruft jede Sitemap ab und crawlt optional den Linkgraphen — sodass Ihr Scraper vom eigenen Vertrag der Website ausgeht statt von roher Gewalt."
 date: 2026-03-01
 lang: de
+updated: 2026-08-01
 author: "Casimiro Ferreira"
 tags:
   - "Web Scraping"
@@ -44,10 +45,12 @@ from sitemapper import discover
 
 info = discover("https://www.python.org")
 print(info.summary())
-# Base URL:         https://www.python.org
-# Sitemaps found:   1
+# Base URL:       https://www.python.org
+# Blocked:        False
+# Sitemaps found: 1
 # URLs in sitemaps: 342
-# Crawl-delay:      None
+# Crawl-delay:    None
+# Sitemap directives in robots.txt: 1
 
 # What pace does the site ask for?
 if info.robots.crawl_delay:
@@ -131,13 +134,13 @@ pip install sitemapper
 pip install sitemapper[stealth]   # adds curl_cffi TLS impersonation
 ```
 
-Nutzen Sie es als Bibliothek oder über die Kommandozeile — `--json` gibt die
-vollständige Erkennung zum Weiterleiten an andere Werkzeuge aus, `--crawl` fügt den
+Nutzen Sie es als Bibliothek oder über die Kommandozeile — `--json DATEI` schreibt die
+vollständige Erkennung in eine Datei zur Weiterverarbeitung durch andere Werkzeuge, `--crawl` fügt den
 Linkgraph-Schritt hinzu:
 
 ```bash
 python -m sitemapper https://example.com
-python -m sitemapper https://example.com --crawl --max-pages 50 --json
+python -m sitemapper https://example.com --crawl --max-pages 50 --json out.json
 ```
 
 Es ist freie Software und läuft auf Ihrer eigenen Hardware. Beginnen Sie jeden
