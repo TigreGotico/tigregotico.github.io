@@ -34,6 +34,6 @@ draft: false
 
 ## کجا همه چیز را پیدا کنید
 
-تمام مجموعه‌داده‌ها و مدل‌های آموزش‌دیده زیر [**TigreGotico در HuggingFace**](https://huggingface.co/TigreGotico) قرار دارند و checkpointهای صوتی سازگار با Piper نیز زیر [OpenVoiceOS](https://huggingface.co/OpenVoiceOS) بازتاب داده شده‌اند.
+تمام مجموعه‌داده‌ها و مدل‌های آموزش‌دیده زیر [**TigreGotico در HuggingFace**](https://huggingface.co/TigreGotico) قرار دارند و checkpoint های صوتی سازگار با Piper نیز زیر [OpenVoiceOS](https://huggingface.co/OpenVoiceOS) بازتاب داده شده‌اند.
 
 برای چارچوب استنتاج و آموزشی که این مجموعه‌داده‌ها را مصرف می‌کند، به [**phoonnx**](https://github.com/TigreGotico/phoonnx) مراجعه کنید.

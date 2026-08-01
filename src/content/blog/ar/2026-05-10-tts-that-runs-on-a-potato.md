@@ -77,8 +77,8 @@ print(sum(int(np.prod(i.dims)) for i in m.graph.initializer))
 و[transphone](https://github.com/xinjli/transphone) (الذي يمتد إلى الآلاف من
 اللغات المفهرسة في Glottolog)، إضافةً إلى متخصصين مثل
 [mantoq](https://github.com/mush42/mantoq) للعربية،
-و**[cotovia](https://github.com/TigreGotico/pycotovia)** للغاليسية، وOpenJTalk
-لليابانية، وKoG2P للكورية. وهي تُخرج IPA وARPA وPinyin وHangul وBuckwalter —
+و**[cotovia](https://github.com/TigreGotico/pycotovia)** للغاليسية، و OpenJTalk
+لليابانية، و KoG2P للكورية. وهي تُخرج IPA و ARPA و Pinyin و Hangul و Buckwalter —
 أيًا كان ما تحتاجه اللغة. بل هناك أيضًا G2P متعدد اللغات قائم على نموذج ومبني على
 ByT5، ومُصدَّر إلى ONNX مثل كل شيء آخر.
 
@@ -129,14 +129,14 @@ phoonnx-voices download OpenVoiceOS/phoonnx_pt-PT_miro_tugaphone
 ```
 
 ولأن phoonnx يتحدث VITS-عبر-ONNX الخالص، فإن محرك الاستدلال الخاص به يشغّل أيضًا
-أصواتًا مُدرَّبة بواسطة Piper وMimic3 وCoqui وMMS — **أكثر من ألف لغة وصوت** في
+أصواتًا مُدرَّبة بواسطة Piper و Mimic3 و Coqui و MMS — **أكثر من ألف لغة وصوت** في
 المجموع. زمن تشغيل صغير واحد، وفهرس هائل، ولا شيء منها يتصل بالخارج.
 
 ## المغزى
 
 على تقنية الصوت التي تحترمك أن تعمل *حيث أنت* — على عتادك، تحت سيطرتك، وبكابل الشبكة
 مفصولًا إن شئت. phoonnx هو رهاننا على أن الطريق إلى ذلك ليس نماذج أكبر، بل البنية
-الصحيحة مصنوعة صغيرة: VITS للعمود الفقري، ومُفوْنِمات ذكية لحمل العبء اللغوي، وONNX
+الصحيحة مصنوعة صغيرة: VITS للعمود الفقري، ومُفوْنِمات ذكية لحمل العبء اللغوي، و ONNX
 لقابلية النقل، وإطار تدريب مفتوح ليتمكن أي شخص من توسيع الفهرس.
 
 خمسة عشر مليونًا ونصف معامل. لا وحدة معالجة رسومات. لا سحابة. لا أعذار. إن كان يعمل

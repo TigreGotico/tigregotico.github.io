@@ -1,6 +1,6 @@
 ---
 title: "تجاوز جدران مكافحة الروبوتات بجلسات requests قابلة للتركيب وجاهزة للاستخدام"
-description: "كيف نحافظ على وصول مرن إلى البيانات العامة دون تشغيل متصفح بلا واجهة في المسار الحرج: انتحال بصمة TLS، ووكيل FlareSolverr لتحديات JavaScript، والرجوع إلى Wayback Machine، وتدوير عناوين IP — كل ذلك خلف فئتين فرعيتين قابلتين للتركيب من requests.Session، هما unblock_requests وanon_requests."
+description: "كيف نحافظ على وصول مرن إلى البيانات العامة دون تشغيل متصفح بلا واجهة في المسار الحرج: انتحال بصمة TLS، ووكيل FlareSolverr لتحديات JavaScript، والرجوع إلى Wayback Machine، وتدوير عناوين IP — كل ذلك خلف فئتين فرعيتين قابلتين للتركيب من requests.Session، هما unblock_requests و anon_requests."
 date: 2026-03-15
 lang: ar
 author: "Casimiro Ferreira"

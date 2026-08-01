@@ -58,6 +58,6 @@ print(s.sentence_type)     # "question"
 print(s.classification)    # e.g. "NUM:date"
 ```
 
-`little_questions` هي طبقة توجيه اللغة الطبيعية لـ OVOS وLILACS: إن تصنيف ما إذا كان المنطوق سؤالاً أو أمراً أو تصريحاً هو أول قرار إرسال يتخذه خط المعالجة الصوتي.
+`little_questions` هي طبقة توجيه اللغة الطبيعية لـ OVOS و LILACS: إن تصنيف ما إذا كان المنطوق سؤالاً أو أمراً أو تصريحاً هو أول قرار إرسال يتخذه خط المعالجة الصوتي.
 
 [**sentence-types-multilingual على HuggingFace**](https://huggingface.co/datasets/TigreGotico/sentence-types-multilingual) · [**little_questions على GitHub**](https://github.com/TigreGotico/little_questions)

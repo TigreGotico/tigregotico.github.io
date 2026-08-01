@@ -27,7 +27,7 @@ draft: false
 
 * [Wyoming OVOS ASR](https://github.com/TigreGotico/wyoming-ovos-stt): فرمان‌های گفتاری را به متن تبدیل می‌کند تا Home Assistant آن‌ها را بفهمد.
 * [Wyoming OVOS TTS](https://github.com/TigreGotico/wyoming-ovos-tts): به Home Assistant امکان می‌دهد پاسخ‌ها را با گزینه‌های صوتی متنوع OVOS بیان کند.
-* [Wyoming OVOS Wakeword](https://github.com/TigreGotico/wyoming-ovos-wakeword): wakewordهای سفارشی را یکپارچه می‌کند و به راه‌اندازی Home Assistant شما اجازه می‌دهد فقط زمانی پاسخ دهد که عبارت راه‌اندازِ انتخابی شما را بشنود.
+* [Wyoming OVOS Wakeword](https://github.com/TigreGotico/wyoming-ovos-wakeword): wakeword های سفارشی را یکپارچه می‌کند و به راه‌اندازی Home Assistant شما اجازه می‌دهد فقط زمانی پاسخ دهد که عبارت راه‌اندازِ انتخابی شما را بشنود.
 
 پروژهٔ [OVOS Wyoming Docker](https://github.com/TigreGotico/ovos-wyoming-docker) این سرویس‌ها را بسته‌بندی می‌کند تا با یک `docker compose up` در دسترس باشند.
 
@@ -124,7 +124,7 @@ draft: false
 
 ‏OVOS صدا را به عهده می‌گیرد؛ Home Assistant خودکارسازی را. هیچ‌کدام برای انجام کارِ دیگری مصالحه نمی‌کند و نقاط یکپارچه‌سازی به‌قدر کافی تمیز هستند که هر پروژه چرخهٔ انتشار خودش را حفظ کند.
 
-گزارش اشکال‌ها و PRها در تمام مخزن‌های پیوندشده در بالا خوش‌آمد است.
+گزارش اشکال‌ها و PR ها در تمام مخزن‌های پیوندشده در بالا خوش‌آمد است.
 
 ---
 

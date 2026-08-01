@@ -58,7 +58,7 @@ with UsenetServer("news.neodome.net") as server:
 
 -----
 
-## Cypherpunkها هرگز نرفتند
+## Cypherpunk ها هرگز نرفتند
 
 شبکه ری‌میلرها همچنان در حال کار است.
 
