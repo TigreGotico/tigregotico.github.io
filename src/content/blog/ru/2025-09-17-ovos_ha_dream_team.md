@@ -20,7 +20,7 @@ Home Assistant отвечает за автоматизацию; OVOS отвеч
 
 -----
 
-## Дайте Home Assistant голос на базе OVOS
+## Мосты Wyoming: голосовые плагины OVOS в Home Assistant
 
 Протокол Wyoming — это стандартный интерфейс HA для внешних сервисов ASR, TTS и распознавания слова активации. Мы построили мосты Wyoming, которые предоставляют любой плагин OVOS по этому протоколу, — а значит, HA получает доступ к каждому плагину в экосистеме OVOS, а не только к отобранному короткому списку.
 
@@ -31,26 +31,18 @@ Home Assistant отвечает за автоматизацию; OVOS отвеч
 
 Проект [OVOS Wyoming Docker](https://github.com/TigreGotico/ovos-wyoming-docker) упаковывает эти сервисы так, что до них — один `docker compose up`.
 
-### **Из плагинов: многоязычный TTS на базе ILENIA**
+### Многоязычный TTS из публично финансируемых языковых проектов
 
-Для нас доступность имеет ключевое значение. В том числе языковая доступность. Мы гордимся тем, что эта интеграция позволяет нам донести высококачественные, публично финансируемые голоса из таких проектов, как [**ILENIA**](https://proyectoilenia.es/), до более широкой аудитории. Пользователи Home Assistant получают естественно звучащие голоса для таких языков, как каталанский и галисийский, прямо от проектов, которые их создали.
+Доступность включает языковую доступность. Эта интеграция доносит высококачественные, публично финансируемые голоса из таких проектов, как **[ILENIA](https://proyectoilenia.es/demostradores-2025/prototipo-ovos/)**, до более широкой аудитории. Пользователи Home Assistant получают естественно звучащие голоса для таких языков, как каталанский и галисийский, прямо от проектов, которые их создали.
 
 * **Matxa TTS для каталанского:** [`ovos-tts-plugin-matxa-multispeaker-cat`](https://github.com/OpenVoiceOS/ovos-tts-plugin-matxa-multispeaker-cat) предоставляет возможности многодикторного синтеза речи для каталанского языка.
 * **NosTTS для галисийского:** [`ovos-tts-plugin-nos`](https://github.com/OpenVoiceOS/ovos-tts-plugin-nos) предлагает надёжный синтез речи на галисийском.
 
 ![Логотип ILENIA](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/ilenia.png)
 
-### **Настройка сервисов Wyoming в Home Assistant:**
-
-При настройке сервисов Wyoming в Home Assistant вы обычно обращаетесь к [официальной документации Home Assistant](https://www.home-assistant.io/integrations/wyoming/). Этот процесс обычно сводится к простому вводу IP-адреса вашего Docker-контейнера (или хоста, на котором работают ваши сервисы OVOS Wyoming) в веб-интерфейс Home Assistant.
-
-![настройка wyoming в Home Assistant](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/wyoming_setup.png)
-
-![сущности wyoming в Home Assistant](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/wyoming_menu.png)
-
 -----
 
-## Пусть OVOS станет мозгом разговора
+## Использование OVOS как разговорного агента для Home Assistant
 
 Хотите пойти ещё дальше? Вы можете настроить OVOS как полноценного разговорного агента для Home Assistant с помощью **интеграции Ollama**.
 
@@ -72,7 +64,7 @@ Home Assistant отвечает за автоматизацию; OVOS отвеч
 
 -----
 
-## Пригласите ваши устройства OVOS в Home Assistant с помощью HiveMind
+## Отображение устройств OVOS как сущностей Home Assistant с помощью HiveMind
 
 Если у вас есть выделенные устройства OVOS, интеграция [HiveMind HomeAssistant](https://github.com/JarbasHiveMind/hivemind-homeassistant) заставляет их отображаться как нативные сущности в Home Assistant — единая панель управления для всего парка устройств.
 
@@ -114,17 +106,15 @@ HiveMind также позволяет вашим устройствам OVOS в
 
 -----
 
-## Дайте OVOS ключи от королевства
+## Управление сущностями Home Assistant из OVOS
 
 Поддерживаемый сообществом [skill-homeassistant](https://github.com/OscillateLabsLLC/skill-homeassistant) даёт OVOS прямое управление сущностями Home Assistant через REST API HA. Установите его на ваше устройство OVOS, и вы сможете сказать «включи свет в гостиной» или «установи термостат на 21 градус» — полностью локально, без облака.
 
 -----
 
-## Правильный инструмент для каждой задачи
+## Что пока сыровато
 
-OVOS отвечает за голос; Home Assistant отвечает за автоматизацию. Ни один из них не идёт на компромиссы, чтобы делать работу другого, а точки интеграции достаточно чистые, чтобы каждый проект сохранял собственный цикл выпусков.
-
-Сообщения об ошибках и PR приветствуются во всех репозиториях, указанных выше.
+Мосты Wyoming и интеграция HiveMind — самые зрелые части этой связки; путь с persona-server в роли разговорного агента новее, и его стоит опробовать в первую очередь, если хотите увидеть потолок возможностей связки OVOS + HA. Сообщения об ошибках и PR приветствуются во всех репозиториях, указанных выше.
 
 ---
 

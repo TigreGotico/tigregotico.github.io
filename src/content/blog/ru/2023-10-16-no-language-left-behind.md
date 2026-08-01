@@ -2,6 +2,7 @@
 title: "Ни одного языка без внимания"
 description: "Устранение языковых барьеров в OpenVoiceOS с помощью определения языка, плагинов перевода и возможностей двунаправленного перевода."
 date: 2023-10-16
+updated: 2026-08-01
 lang: ru
 author: "Casimiro Ferreira"
 tags:
@@ -86,7 +87,7 @@ OVOS определяет язык, на котором говорят в ауд
     "ovos-utterance-translation-plugin": {
         "bidirectional": true,
         "verify_lang": false,
-        "ignore_invalid": true,
+        "ignore_invalid_langs": true,
         "translate_secondary_langs": true
     }
 },

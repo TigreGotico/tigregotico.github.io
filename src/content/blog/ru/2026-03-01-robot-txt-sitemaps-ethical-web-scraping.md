@@ -2,6 +2,7 @@
 title: "Robots.txt, карты сайта и этичный веб-скрапинг"
 description: "Прежде чем строить скрапер, проведите разведку сайта. sitemapper читает robots.txt, получает все карты сайта и опционально обходит граф ссылок — чтобы ваш скрапер отталкивался от собственного контракта сайта, а не от грубой силы."
 date: 2026-03-01
+updated: 2026-08-01
 lang: ru
 author: "Casimiro Ferreira"
 tags:
@@ -35,10 +36,12 @@ from sitemapper import discover
 
 info = discover("https://www.python.org")
 print(info.summary())
-# Base URL:         https://www.python.org
-# Sitemaps found:   1
+# Base URL:       https://www.python.org
+# Blocked:        False
+# Sitemaps found: 1
 # URLs in sitemaps: 342
-# Crawl-delay:      None
+# Crawl-delay:    None
+# Sitemap directives in robots.txt: 1
 
 # What pace does the site ask for?
 if info.robots.crawl_delay:
@@ -92,11 +95,11 @@ pip install sitemapper
 pip install sitemapper[stealth]   # adds curl_cffi TLS impersonation
 ```
 
-Используйте его как библиотеку или из командной строки — `--json` выдаёт полное обнаружение для передачи в другие инструменты, `--crawl` добавляет шаг с графом ссылок:
+Используйте его как библиотеку или из командной строки — `--json FILE` записывает полное обнаружение в файл для потребления другими инструментами, `--crawl` добавляет шаг с графом ссылок:
 
 ```bash
 python -m sitemapper https://example.com
-python -m sitemapper https://example.com --crawl --max-pages 50 --json
+python -m sitemapper https://example.com --crawl --max-pages 50 --json out.json
 ```
 
 Это свободное программное обеспечение, и оно работает на вашем собственном оборудовании. Начинайте каждый скрапер с разведки.
