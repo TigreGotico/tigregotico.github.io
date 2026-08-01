@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tigregotico.github.io/tigregotico-website/sitemap-index.xml
+Sitemap: https://tigregotico.github.io/sitemap-index.xml

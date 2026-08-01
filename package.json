@@ -1,5 +1,5 @@
 {
-  "name": "tigregotico-website",
+  "name": "tigregotico.github.io",
   "version": "1.0.0",
   "type": "module",
   "private": true,
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TigreGotico/tigregotico-website.git"
+    "url": "git+https://github.com/TigreGotico/tigregotico.github.io.git"
   },
   "license": "Apache-2.0",
   "dependencies": {
@@ -32,7 +32,7 @@
     "typescript": "^5.9.3"
   },
   "bugs": {
-    "url": "https://github.com/TigreGotico/tigregotico-website/issues"
+    "url": "https://github.com/TigreGotico/tigregotico.github.io/issues"
   },
-  "homepage": "https://github.com/TigreGotico/tigregotico-website#readme"
+  "homepage": "https://github.com/TigreGotico/tigregotico.github.io#readme"
 }

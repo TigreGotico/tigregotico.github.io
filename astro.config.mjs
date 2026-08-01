@@ -4,10 +4,9 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
 
-// `BASE` is set for the project-repo deployment (served under
-// /tigregotico-website/). When the repo is renamed to
-// `tigregotico.github.io` at launch, change it to '/'.
-const BASE = '/tigregotico-website/';
+// `BASE` is '/' because this repo is the org root site
+// (tigregotico.github.io), served from the domain root.
+const BASE = '/';
 
 // Compute a word count per markdown doc, exposed via remarkPluginFrontmatter.
 function remarkReadingTime() {
