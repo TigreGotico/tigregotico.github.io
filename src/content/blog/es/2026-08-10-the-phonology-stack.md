@@ -1,7 +1,7 @@
 ---
 title: "Cómo Encaja la Pila de Fonología"
 description: "Un recorrido arquitectónico por nuestra pila de texto a pronunciación: scriptconv para la notación, orthography2ipa como motor translingüe de grafema a IPA, frontends específicos por lengua construidos sobre él para portugués, euskera, mirandés, barranqueño y árabe, y phonematcher para la búsqueda basada en sonido. Explica por qué existen las capas, qué es un enrejado de candidatos, y salida real por dialecto."
-date: 2026-08-10
+date: 2026-08-01
 lang: es
 author: "Casimiro Ferreira"
 tags:

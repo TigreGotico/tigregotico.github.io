@@ -1,7 +1,7 @@
 ---
 title: "Scripts and Phonetic Notations: What scriptconv Actually Converts"
 description: "A deep dive on scriptconv, the zero-dependency library that detects writing systems and converts between phonetic notations. Covers IPA, ARPABET, and X-SAMPA; ISO-15924 script detection; Buckwalter transliteration for Arabic; Hangul decomposition into jamo; and kana conversion, with real, executed examples and honest limits."
-date: 2026-09-07
+date: 2026-08-01
 author: "Casimiro Ferreira"
 tags:
   - "IPA"

@@ -1,7 +1,7 @@
 ---
 title: "Una Famiglia di Librerie Vocali Pure-ONNX"
 description: "TigreGótico mantiene un insieme di librerie vocali — estensione di banda, clonazione vocale, embedding del parlante, VAD, accento di parola, fonemizzazione, TTS e una libreria di metriche per valutarle tutte — che condividono un'unica regola di runtime: solo onnxruntime e numpy, niente PyTorch, nessuna GPU richiesta."
-date: 2026-08-03
+date: 2026-08-01
 lang: it
 author: "Casimiro Ferreira"
 tags:

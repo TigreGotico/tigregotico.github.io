@@ -1,7 +1,7 @@
 ---
 title: "Eine Familie reiner ONNX-Sprachbibliotheken"
 description: "TigreGótico pflegt eine Reihe von Sprachbibliotheken — Bandbreitenerweiterung, Voice Cloning, Sprecher-Embeddings, VAD, Wortbetonung, Phonemisierung, TTS und eine Metrik-Bibliothek, um sie alle zu bewerten — die sich an eine gemeinsame Laufzeitregel halten: nur onnxruntime und numpy, kein PyTorch, keine GPU erforderlich."
-date: 2026-08-03
+date: 2026-08-01
 lang: de
 author: "Casimiro Ferreira"
 tags:

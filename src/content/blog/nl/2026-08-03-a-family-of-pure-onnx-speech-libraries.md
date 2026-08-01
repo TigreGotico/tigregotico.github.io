@@ -1,7 +1,7 @@
 ---
 title: "Een familie van pure-ONNX-spraakbibliotheken"
 description: "TigreGótico onderhoudt een reeks spraakbibliotheken — bandbreedte-extensie, voice cloning, sprekersembeddings, VAD, woordklemtoon, fonemisatie, TTS, en een metrics-bibliotheek om ze allemaal te scoren — die één runtime-regel delen: alleen onnxruntime en numpy, geen PyTorch, geen GPU vereist."
-date: 2026-08-03
+date: 2026-08-01
 lang: nl
 author: "Casimiro Ferreira"
 tags:

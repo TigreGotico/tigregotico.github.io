@@ -1,7 +1,7 @@
 ---
 title: "Wie der Phonologie-Stack zusammenpasst"
 description: "Eine Architektur-Führung durch unseren Text-zu-Aussprache-Stack: scriptconv für Notation, orthography2ipa als sprachübergreifende Graphem-zu-IPA-Engine, sprachspezifische Frontends darauf aufbauend für Portugiesisch, Baskisch, Mirandesisch, Barranquenho und Arabisch, sowie phonematcher für klangbasierte Suche. Zeigt, warum die Ebenen existieren, was ein Kandidatengitter ist, und echte Dialekt-Ausgaben."
-date: 2026-08-10
+date: 2026-08-01
 lang: de
 author: "Casimiro Ferreira"
 tags:

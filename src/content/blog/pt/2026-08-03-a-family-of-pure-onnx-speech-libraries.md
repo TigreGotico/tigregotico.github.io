@@ -1,7 +1,7 @@
 ---
 title: "Uma Família de Bibliotecas de Fala em ONNX Puro"
 description: "A TigreGótico mantém um conjunto de bibliotecas de fala — extensão de largura de banda, clonagem de voz, embeddings de locutor, VAD, acento tónico, fonemização, TTS, e uma biblioteca de métricas para as avaliar a todas — que partilham uma regra de runtime: apenas onnxruntime e numpy, sem PyTorch, sem necessidade de GPU."
-date: 2026-08-03
+date: 2026-08-01
 lang: pt
 author: "Casimiro Ferreira"
 tags:
