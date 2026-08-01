@@ -48,6 +48,7 @@ npm run preview   # preview the built site
 - **Images:** use `image()` from `astro:assets` for local images (optimized); `coverExternal` string URL as fallback.
 - **No README.md exists** — CONTENT.md serves as the content authoring contract.
 - **Node 20** (`.nvmrc`). Commit identity: `JarbasAi <jarbasai@mailfence.com>`.
+- **Blog posts are living documents:** when the code, model, or dataset a post describes changes, update the post to match and set the `updated:` frontmatter field to the date of the fix. Post filenames and slugs are permanent identifiers — never rename a post file or change its slug, even when correcting its content. A change to an English post's facts requires syncing the same correction into its 13 translations.
 
 ## Gotchas
 
