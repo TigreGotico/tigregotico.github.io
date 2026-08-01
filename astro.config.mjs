@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
 
 // `BASE` is '/' because this repo is the org root site
-// (tigregotico.github.io), served from the domain root.
+// (tigregotico.pt), served from the domain root.
 const BASE = '/';
 
 // Compute a word count per markdown doc, exposed via remarkPluginFrontmatter.
@@ -48,7 +48,7 @@ function remarkBaseLinks() {
 }
 
 export default defineConfig({
-  site: 'https://tigregotico.github.io',
+  site: 'https://tigregotico.pt',
   base: BASE,
   trailingSlash: 'ignore',
   markdown: {

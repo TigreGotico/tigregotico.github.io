@@ -1,7 +1,7 @@
 export const site = {
   name: 'TigreGótico',
   legalName: 'TigreGótico Lda',
-  url: 'https://tigregotico.github.io',
+  url: 'https://tigregotico.pt',
   lang: 'en',
   locale: 'en_US',
   title: 'TigreGótico — Privacy-First Voice Technology',
