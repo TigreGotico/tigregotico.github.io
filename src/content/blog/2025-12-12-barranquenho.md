@@ -2,6 +2,7 @@
 title: "Introducing the First Phonemizer for Barranquenho"
 description: "g2p_barranquenho is the first open grapheme-to-phoneme converter for Barranquenho, the Ibero-Romance contact language of Barrancos, Portugal — rules derived from the municipality's newly published orthographic convention, auditable against the committed sources."
 date: 2025-12-12
+updated: 2026-08-01
 author: "Casimiro Ferreira"
 tags:
   - "Phonemization"
@@ -17,18 +18,15 @@ draft: false
 
 Barranquenho isn't a dialect of either Portuguese or Spanish; it's a genuinely distinct system. The Barrancos Municipal Council recently published three foundational documents — a dictionary, an orthographic convention, and a basic grammar — which provided the rules we needed. The announcement: ["Un Enormi Passu para u Barranquenhu i para a Cultura Barranquenha!"](https://cm-barrancos.pt/21976/un-enormi-passu-para-u-barranquenhu-i-para-a-cultura-barranquenha).
 
-From that orthographic convention we derived the rule set. The phonemizer runs two passes over lowercased input:
+From that orthographic convention we derived the rule set — but rather than hand-rolling a bespoke pass over the text, it lives as a language spec, `ext-PT-x-barrancos`, in the shared **[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)** engine. That spec's grapheme table, allophone rules, stress model and cross-word sandhi describe every Barranquenho realisation: multi-letter graphemes collapse the way the convention documents (`tch` → /tʃ/, `ch` → /ʃ/, `nh` → /ɲ/, `lh` → /ʎ/), nasal diphthongs appear before `m`/`n`, `v` always maps to /b/, and `h` surfaces as a pronounced /h/ — unlike either parent language.
 
-1. **Digraph pass** — collapses multi-letter graphemes: `tch` → /tʃ/, `ch` → /ʃ/, `nh` → /ɲ/, `lh` → /ʎ/, and `qu`/`gu` before front vowels → /k//g/.
-2. **Grapheme pass** — maps remaining characters to IPA with context-sensitive rules: nasal diphthongs before `m`/`n` (e.g. `an` → /ɐ͂/), word-final `e` → /ɨ/, `v` always → /b/, `s` voiced to /z/ except word-initial, `r` vs `rr` (tap vs trill), and `h` as a pronounced /h/ — unlike either parent language.
-
-The `x` grapheme has the most complex logic, falling back to Portuguese contextual heuristics where Barranquenho convention is silent.
+`g2p_barranquenho` itself is a thin caller-side wrapper around `orthography2ipa.G2P` driven by that spec: it owns text normalisation (case-folding, tokenisation into the shapes the spec expects), number expansion, and a stable `phonemize`/`transcribe` surface, but not the phonological rules — improving a rule means editing the spec upstream, so every downstream consumer shares the fix.
 
 In practice:
 
-> "Un Enormi Passu para u Barranquenhu i para a Cultura Barranquenha" → `ũ ẽjoɾmj pasu paɾɐ u bɐrɐ͂keɲu j paɾɐ ɐ kultuɾɐ bɐrɐ͂keɲɐ`
+> "Un Enormi Passu para u Barranquenhu i para a Cultura Barranquenha" → `ˈũ eˈnɔɾmi ˈpas̺u ˈpaɾɐ ˈu bɐrɐ̃ˈkɛɲu ˈi ˈpaɾɐ ɐ kuˈltuɾɐ bɐrɐ̃ˈkɛɲɐ`
 
-The library is a single function, `phonemize(word: str) -> list[str]`, with no runtime dependencies — pure Python. The source PDFs (convention, dictionary, grammar) are committed to the repo root so the rules are auditable against their source.
+The source PDFs (convention, dictionary, grammar) are committed to the repo root so the rules are auditable against their source.
 
 ### What comes next
 
