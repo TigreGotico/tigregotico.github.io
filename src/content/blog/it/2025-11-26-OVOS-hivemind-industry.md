@@ -109,20 +109,6 @@ COALA ha pubblicato un dataset di parlato multilingue registrato in fabbriche e 
 
 ---
 
-## Perché l'Industria Sceglie OVOS + HiveMind
-
-L'attrattiva è semplice:
-
-* **Trasparenza totale** (cruciale per i settori regolamentati)
-* **Implementazione locale/edge** (nessuna dipendenza dal cloud)
-* **Facile da integrare in apparecchiature esistenti**
-* **Sufficientemente modulare per skill proprietarie personalizzate**
-* **Reti vocali distribuite** (satelliti HiveMind in tutta la fabbrica)
-
-In sintesi: la combinazione è flessibile, neutrale rispetto ai fornitori e rispetta i vincoli sui dati industriali.
-
----
-
 ## Perché Funziona per l'Industria
 
 Gli obiettivi di progettazione che contano nel reparto produttivo — trasparenza totale per i settori regolamentati, implementazione locale/edge senza dipendenza dal cloud, skill modulari per la logica proprietaria e la capacità di HiveMind di distribuire nodi vocali in un impianto — sono stati incorporati fin dall'inizio, non aggiunti a posteriori.

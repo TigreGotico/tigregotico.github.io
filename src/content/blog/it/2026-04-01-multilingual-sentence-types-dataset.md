@@ -3,6 +3,7 @@ title: "Un Dataset Multilingue di Tipi di Frase: Domande, Comandi, Affermazioni"
 description: "Abbiamo pubblicato sentence-types-multilingual — quasi 70.000 frasi in sette lingue, classificate per tipo grammaticale (domanda, comando, affermazione, esclamazione). È il corpus di addestramento dietro la libreria di instradamento little_questions."
 date: 2026-04-01
 lang: it
+updated: 2026-08-01
 author: "Casimiro Ferreira"
 tags:
   - "Datasets"
@@ -20,19 +21,20 @@ La logica di instradamento di un assistente vocale dipende dal sapere che tipo d
 
 ## Cosa significano le etichette nella pratica
 
-Il dataset usa quattro tipi di primo livello, che mappano direttamente sul modo in cui `little_questions` (la libreria di inferenza che consuma questi dati) instrada gli enunciati:
+Il dataset usa un insieme piatto di sei etichette — una colonna `label` per riga, senza suddivisione tipo/sotto-tipo — che mappano direttamente sul modo in cui `little_questions` (la libreria di inferenza che consuma questi dati) instrada gli enunciati:
 
-- **question** — ulteriormente suddivisa per sotto-tipo: `yes_no_question`, `wh_question`, `tag_question`. La tassonomia EAT all'interno di `little_questions` aggiunge 53 etichette granulari di tipo di risposta (persona, luogo, quantità, definizione, e così via), ma la classificazione del tipo di frase è il primo cancello.
-- **command** — forme imperative e di richiesta. I comandi non si aspettano una risposta; si aspettano un'azione.
+- **wh_question** — domande costruite attorno a una parola interrogativa (cosa, dove, chi, e così via).
+- **polar_question** — domande sì/no. La tassonomia EAT all'interno di `little_questions` aggiunge 53 etichette granulari di tipo di risposta (persona, luogo, quantità, definizione, e così via) sopra le etichette di domanda, ma la classificazione del tipo di frase è il primo cancello.
+- **command** — forme imperative. I comandi non si aspettano una risposta; si aspettano un'azione.
+- **request** — richieste di azione cortesi o indirette, distinte da un imperativo nudo.
 - **statement** — dichiarativa. Le affermazioni in un contesto di dialogo portano spesso una polarità che conta a valle: un classificatore sì/no/forse viene eseguito sulle affermazioni per interpretare le risposte a domande precedenti.
 - **exclamation** — enunciati marcati emotivamente che necessitano di un trattamento diverso da quello delle dichiarative neutre.
 
 ```json
 {
-  "text": "What time is it?",
   "language": "en",
-  "type": "question",
-  "sub_type": "wh_question"
+  "label": "wh_question",
+  "text": "What time is it?"
 }
 ```
 
@@ -48,7 +50,7 @@ Un modello addestrato solo sull'inglese sbaglia questi casi ovunque altrove. Dat
 
 ## Lo stack a valle
 
-I modelli addestrati su questi dati sono distribuiti all'interno di **[little_questions](https://github.com/TigreGotico/little_questions)** — una libreria offline senza dipendenze (numpy + onnxruntime) con classificatori ONNX per lingua per il tipo di frase e un modello di polarità sì/no per 43 lingue. I modelli sono inclusi nella wheel stessa per l'inglese e scaricati in modo lazy per le altre lingue. Le fonti su HuggingFace sono `TigreGotico/sentence-types` e `TigreGotico/eat-classifiers`.
+I modelli addestrati su questi dati sono distribuiti all'interno di **[little_questions](https://github.com/TigreGotico/little_questions)** — una libreria offline senza dipendenze (numpy + onnxruntime) con classificatori ONNX per lingua per il tipo di frase e un modello di polarità sì/no per 43 lingue. I modelli sono inclusi nella wheel stessa per l'inglese e scaricati in modo lazy per le altre lingue. I classificatori del tipo di frase sono pubblicati come `TigreGotico/sentence-types` su HuggingFace; i classificatori del tipo di risposta EAT sono addestrati internamente e non rilasciati pubblicamente.
 
 ```python
 from little_questions import Sentence

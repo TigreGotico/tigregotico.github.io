@@ -1,8 +1,9 @@
 ---
 title: "Presentiamo i Nostri Scraper di Database Musicali"
-description: "Una panoramica della famiglia di client Python tipizzati che manteniamo per le fonti musicali — Bandcamp, SoundCloud, SomaFM, TuneIn, iHeartRadio e le grandi enciclopedie musicali — che emettono tutti metadati multimediali coerenti e tipizzati dietro un'unica interfaccia pulita e viaggiano sullo stesso trasporto anti-bot resiliente."
+description: "Una panoramica della famiglia di client Python tipizzati che manteniamo per le fonti musicali — Bandcamp, SoundCloud, SomaFM, TuneIn, iHeartRadio e le grandi enciclopedie musicali — che emettono tutti metadati multimediali coerenti e tipizzati dietro un'unica interfaccia pulita e viaggiano sullo stesso trasporto HTTP conforme e a basso volume."
 date: 2026-04-20
 lang: it
+updated: 2026-08-01
 author: "Casimiro Ferreira"
 tags:
   - "Scrapers"
@@ -15,9 +16,9 @@ draft: false
 
 ## Un'unica interfaccia per tutto il web musicale
 
-Il web musicale è splendidamente frammentato. Bandcamp vi vende un FLAC e una licenza Creative Commons; SoundCloud trasmette in streaming un remix che nessun altro ospita; SomaFM gestisce una serie amata di canali radio sostenuti dagli ascoltatori; e un angolo tranquillo di internet conserva enciclopedie curate con dedizione di progressive rock, jazz, musica classica e metal. Ogni sito ha il proprio markup, le proprie stranezze, la propria idea di cosa sia persino una "traccia".
+Il web musicale è frammentato su molti siti indipendenti. Bandcamp vi vende un FLAC e una licenza Creative Commons; SoundCloud trasmette in streaming un remix che nessun altro ospita; SomaFM gestisce una serie di canali radio sostenuti dagli ascoltatori; e diversi siti gestiti dalla comunità conservano enciclopedie curate di progressive rock, jazz, musica classica e metal. Ogni sito ha il proprio markup, le proprie stranezze, la propria idea di cosa sia persino una "traccia".
 
-Manteniamo una famiglia di piccoli client Python open source e mirati che domano quel caos. Ognuno di essi fa, nello spirito, la stessa cosa: raggiunge una fonte musicale e vi restituisce **modelli di metadati multimediali tipizzati** — oggetti validati anziché fragili dizionari — così che il resto del vostro codice non debba mai preoccuparsi di quale sito provengano i dati. Ne installate uno, ne installate nove; parlano tutti lo stesso vocabolario.
+Manteniamo una famiglia di piccoli client Python open source e mirati che domano quel caos. Ognuno di essi fa, nello spirito, la stessa cosa: raggiunge una fonte musicale e vi restituisce **modelli di metadati multimediali tipizzati** — oggetti validati anziché fragili dizionari — così che il resto del vostro codice non debba mai preoccuparsi di quale sito provengano i dati. Sette dei nove sono pubblicati su PyPI; gli altri due si installano direttamente da GitHub. Parlano tutti lo stesso vocabolario.
 
 Ecco la panoramica.
 
@@ -35,22 +36,24 @@ Ecco la panoramica.
 
 ## Enciclopedie e archivi musicali
 
-La seconda metà della famiglia punta ai grandi cataloghi della comunità — i siti in cui gli esseri umani hanno passato anni a valutare discografie e a discutere di sottogeneri.
+La seconda metà della famiglia punta ai grandi cataloghi della comunità.
 
-**[pyprogarchives](https://github.com/TigreGotico/pyprogarchives)** (Prog Archives), **[pyjazzmusicarchives](https://github.com/TigreGotico/pyjazzmusicarchives)** (Jazz Music Archives) e **[pyclassicalarchives](https://github.com/TigreGotico/pyclassicalarchives)** (Classical Archives) condividono una forma quasi identica: navigano l'indice A–Z, cercano per nome e recuperano una pagina completa di artista o compositore con biografia, paese e una discografia valutata dai membri. Prog e Jazz Archives fanno scraping di HTML; Classical Archives avvolge un'API JSON pubblica ed espone gli album di un compositore *e* un albero di opere appiattito ricorsivamente. Ogni modello porta l'id canonico stabile del sito tramite `to_external_ids_dict()`, che è esattamente ciò che serve per incrociare un catalogo con un altro.
+**[pyprogarchives](https://github.com/TigreGotico/pyprogarchives)** (Prog Archives), **[pyjazzmusicarchives](https://github.com/TigreGotico/pyjazzmusicarchives)** (Jazz Music Archives) — entrambi installabili direttamente dai rispettivi repository GitHub anziché da PyPI — e **[pyclassicalarchives](https://github.com/TigreGotico/pyclassicalarchives)** (Classical Archives) condividono una forma quasi identica: navigano l'indice A–Z, cercano per nome e recuperano una pagina completa di artista o compositore con biografia, paese e una discografia valutata dai membri. Prog e Jazz Archives fanno scraping di HTML; Classical Archives avvolge un'API JSON pubblica ed espone gli album di un compositore *e* un albero di opere appiattito ricorsivamente. Ogni modello porta l'id canonico stabile del sito tramite `to_external_ids_dict()`, che è esattamente ciò che serve per incrociare un catalogo con un altro.
 
 **[pymetal](https://github.com/TigreGotico/pymetal)** è il nostro client per l'Encyclopaedia Metallum, il Metal Archives — e il più ambizioso del gruppo. La maggior parte degli scraper appiattisce una traccia a `(id, title, band, album)`. pymetal si rifiuta di perdere ciò che Metal Archives tiene separato: una traccia può accreditare **più band** (split, collaborazioni), la **formazione di una band è suddivisa nel tempo**, e una traccia può **apparire su molte release** (compilation, ristampe, singoli). Modella ciascuno come entità di prima classe indicizzata dall'id d'archivio, così che i re-scraping siano idempotenti. La superficie di endpoint è ampia — ricerca avanzata di band/album/canzoni, pagine complete di release con attribuzione per band negli split, formazioni partizionate per status con intervalli di date dei ruoli, recensioni, raccomandazioni, link esterni e testi — il tutto come modelli Pydantic v2 che fanno il round-trip attraverso JSON.
 
 Oltre alla musica, **[tutubo](https://github.com/TigreGotico/tutubo)** fa scraping di YouTube e YouTube Music, e **[pymal](https://github.com/TigreGotico/pymal)** copre MyAnimeList — estendendo gli stessi pattern di metadati tipizzati a categorie multimediali più ampie. Tutti emettono lo stesso vocabolario, così un unico consumatore a valle gestisce tutto in modo uniforme.
 
-## Costruiti per sopravvivere al web moderno
+## Costruiti per un accesso conforme e a basso volume
 
-Uno scraper che si rompe la prima volta che un sito alza un muro anti-bot non vale nulla. In tutta la famiglia il livello HTTP è **collegabile a moduli**, e dove i siti sono attivamente difesi dai bot i client ricorrono per impostazione predefinita a un trasporto che impersona un browser — `curl_cffi` che imita le impronte TLS/JA3 di un vero Chrome — per superare le sfide che respingono `requests` classico. Le enciclopedie protette da Cloudflare possono inoltre passare attraverso un'istanza FlareSolverr per i dati in tempo reale, o leggere dalla Wayback Machine dell'Internet Archive quando vi serve semplicemente *qualcosa*. Il livello di parsing è deliberatamente indipendente da come arriva l'HTML, così lo stesso codice funziona qualunque trasporto scegliate.
+Questi client recuperano solo pagine di catalogo pubbliche, a bassi volumi di richiesta, e controllano il `robots.txt` di ciascun sito prima di fare scraping — vedi il
+**[articolo su robots.txt e sitemap](/it/blog/2026-03-01-robot-txt-sitemaps-ethical-web-scraping)**
+per come funziona quel passo di ricognizione. In tutta la famiglia il livello HTTP è **collegabile a moduli**: per impostazione predefinita i client usano un trasporto il cui handshake TLS corrisponde a quello di un vero browser (`curl_cffi` che imita TLS/JA3 di Chrome), così che un client ben educato non venga classificato erroneamente come automazione malevola da sistemi di rilevazione calibrati per l'abuso automatizzato. Le enciclopedie protette da Cloudflare possono inoltre passare attraverso un'istanza FlareSolverr per i dati in tempo reale, o leggere dalla Wayback Machine dell'Internet Archive come ripiego. Il livello di parsing è deliberatamente indipendente da come arriva l'HTML, così lo stesso codice funziona qualunque trasporto scegliate.
 
 ## Un catalogo musicale multi-fonte
 
 Il vero premio è ciò che accade quando smettete di pensare a questi come nove strumenti separati. Poiché emettono tutti lo stesso vocabolario di metadati tipizzati ed espongono tutti id esterni canonici, potete distribuire un singolo artista su Bandcamp, SoundCloud, le directory radio e le enciclopedie, poi fondere i risultati in un unico catalogo coerente — deduplicato per identità, consapevole delle licenze e pronto ad alimentare un motore di raccomandazione, un media server o un dataset di ricerca.
 
-Ognuno di questi client è software libero, auto-ospitabile e gira sul vostro hardware senza chiavi API da implorare. Scegliete la fonte che vi interessa, `pip install`, e cominciate a costruire.
+Ognuno di questi client è software libero, auto-ospitabile e gira sul vostro hardware, senza bisogno di alcuna chiave API. Scegliete la fonte che vi interessa: `pip install` se è su PyPI, oppure `pip install git+https://github.com/TigreGotico/<repo>` per pyprogarchives e pyjazzmusicarchives, che sono solo su GitHub — e cominciate a costruire.
 
-Tutti gli scraper viaggiano sui nostri **[livelli di trasporto anti-bot](/it/blog/2026-03-15-beating-bot-walls-with-drop-in-requests-sessions)**. I client di streaming e radio emettono direttamente lo schema **[mediavocab](https://github.com/TigreGotico/mediavocab)**, e ogni client espone id esterni canonici, così che i metadati musicali si integrino con **[media-archivist](https://github.com/TigreGotico/media-archivist)**, il nostro indicizzatore multi-fonte e server di metadati deduplicante.
+Tutti gli scraper viaggiano sulle nostre **[sessioni requests componibili e pronte all'uso](/it/blog/2026-03-15-beating-bot-walls-with-drop-in-requests-sessions)**. I client di streaming e radio emettono direttamente lo schema **[mediavocab](https://github.com/TigreGotico/mediavocab)**, e ogni client espone id esterni canonici, così che i metadati musicali si integrino con **[media-archivist](https://github.com/TigreGotico/media-archivist)**, il nostro indicizzatore multi-fonte e server di metadati deduplicante.

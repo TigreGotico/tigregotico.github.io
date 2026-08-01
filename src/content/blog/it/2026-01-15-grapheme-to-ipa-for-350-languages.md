@@ -1,8 +1,9 @@
 ---
-title: "Grafema-in-IPA per 676 Lingue"
-description: "orthography2ipa è una risorsa a dati puri, linguisticamente fondata, che mappa l'ortografia in IPA e modella come i fonemi si realizzano come allofoni attraverso ~750 specifiche di lingua, 676 lingue e più di 20 famiglie linguistiche. Una lattice di candidati, lignaggio dialettale e un insieme di specifiche validato tramite schema e citato alla letteratura dialettologica — senza pesi addestrati, completamente auto-ospitabile."
+title: "Grafema-in-IPA per 807 Lingue"
+description: "orthography2ipa è una risorsa a dati puri, linguisticamente fondata, che mappa l'ortografia in IPA e modella come i fonemi si realizzano come allofoni attraverso 896 specifiche di lingua, 807 lingue e più di 20 famiglie linguistiche. Una lattice di candidati, lignaggio dialettale e un insieme di specifiche validato tramite schema e citato alla letteratura dialettologica — senza pesi addestrati, completamente auto-ospitabile."
 date: 2026-01-15
 lang: it
+updated: 2026-08-01
 author: "Casimiro Ferreira"
 tags:
   - "G2P"
@@ -16,7 +17,7 @@ tags:
 draft: false
 ---
 
-**[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)** è un pacchetto Python a dati puri — JSON dichiarativo, logica sottile e pluggabile, senza pesi addestrati — che mappa l'ortografia in IPA e modella come quei fonemi si realizzano nel contesto. Include **~750 specifiche di lingua che coprono 676 lingue** (più 73 nodi di clade solo per la classificazione) attraverso **più di 20 famiglie linguistiche**. Installalo, leggi i dati, fai un fork dei dati. Nulla è nascosto in un checkpoint.
+**[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)** è un pacchetto Python a dati puri — JSON dichiarativo, logica sottile e pluggabile, senza pesi addestrati — che mappa l'ortografia in IPA e modella come quei fonemi si realizzano nel contesto. Include **896 specifiche di lingua che coprono 807 lingue** (più 89 nodi di clade solo per la classificazione) attraverso **più di 20 famiglie linguistiche**. Installalo, leggi i dati, fai un fork dei dati. Nulla è nascosto in un checkpoint.
 
 È il livello di fonologia sotto tutto ciò che sta a valle: la lattice di candidati che produce è consumata dal frontend TTS arabo [arbtok](https://github.com/TigreGotico/arbtok), dagli stack portoghesi [TugaPhone](https://github.com/TigreGotico/tugaphone) e [silabificador](https://github.com/TigreGotico/silabificador) (vedi **[NLP classico per sillabe e fonemi del portoghese](/it/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**), dal [fonemizzatore del barranquenho](/it/blog/2025-12-12-barranquenho), dal fonemizzatore del mirandese e dalla fondazione fonemica del **[TTS che gira su una patata](/it/blog/2026-05-10-tts-that-runs-on-a-potato)**.
 
@@ -51,11 +52,11 @@ Gli alberi dialettali rimangono manutenibili perché i file JSON supportano l'er
 
 ## Profondo sul campo, non solo ampio
 
-La cifra di 676 è l'ampiezza; la profondità è dove sta il lavoro. Le specifiche procedono letto per letto dove lo fa la letteratura dialettologica, e ciascuna è citata a quella letteratura con riferimenti di pagina puntuali anziché ricavata per pattern-matching da una tabella di fonemi.
+La cifra di 807 è l'ampiezza; la profondità è dove sta il lavoro. Le specifiche procedono letto per letto dove lo fa la letteratura dialettologica, e ciascuna è citata a quella letteratura con riferimenti di pagina puntuali anziché ricavata per pattern-matching da una tabella di fonemi.
 
 La copertura **iberica** è l'esempio più chiaro: **oltre 100 specifiche** per le lingue della penisola. Ogni lingua romanza di Spagna — castigliano, catalano/valenciano, galiziano (sia nella norma della RAG sia in quella reintegrazionista), asturiano, aragonese e le sue varietà di valle (ansotano, chistabín, benasqués…), estremegno — accanto al basco, ai creoli ibero-romanzi e agli strati storici che la maggior parte delle risorse salta del tutto: **arabo andalusi** e **mozarabico**. Il versante arabo porta con sé **34 letti dialettali** (dal najdi e l'hijazi passando per il levantino, il maghrebino e le varietà peninsulari), e il versante lusofono **46 letti del portoghese e delle lingue del Portogallo**, fino al rionorese, al guadramilese e ai sotto-dialetti mirandesi.
 
-Per quanto ci risulta, molte di queste sono la **prima fonologia leggibile da una macchina** mai pubblicata per la varietà — rionorese, guadramilese, benasqués, angolar, arabo andalusi tra queste — e il lavoro a valle rilascia i **primi dizionari IPA** per **barranquenho** e **mirandese**.
+Per quanto ci risulta, molte di queste sono la **prima fonologia leggibile da una macchina** mai pubblicata per la varietà — intendendo una specifica strutturata di grafemi/allofoni validata tramite schema, interrogabile da un programma, contrapposta a un inventario fonemico descritto solo in prosa nella letteratura dialettologica — rionorese e guadramilese tra queste. Il lavoro a valle rilascia i **primi dizionari IPA** per **barranquenho** e **mirandese**.
 
 ## Una lattice di candidati, non un'unica ipotesi
 
@@ -83,13 +84,13 @@ Poiché i dati sono strutturati anziché cotti nei pesi, puoi confrontare le lin
 from orthography2ipa.distance import phonological_distance
 d = phonological_distance(orthography2ipa.get("pt-BR"), orthography2ipa.get("pt-PT"))
 
-d.combined                    # 0.04 — near-identical
+d.combined                    # 0.0515 — near-identical
 d.inventory.feature_mean      # phoneme-inventory distance
 d.grapheme.mean_ipa_distance  # grapheme-mapping divergence
 d.allophone_sim               # allophone-overlap similarity
 ```
 
-Anche i vettori di caratteristiche sono esposti, perciò una coppia quasi identica come i due standard portoghesi si colloca a 0,04, mentre coppie genuinamente distanti si separano nettamente. Questo è utile sia per le decisioni di transfer learning, sia per il bootstrapping di lingue a poche risorse, sia per la dialettometria.
+Anche i vettori di caratteristiche sono esposti, perciò una coppia quasi identica come i due standard portoghesi si colloca a 0,0515, mentre coppie genuinamente distanti si separano nettamente. Questo è utile sia per le decisioni di transfer learning, sia per il bootstrapping di lingue a poche risorse, sia per la dialettometria.
 
 ## Come sappiamo che i dati sono buoni
 
