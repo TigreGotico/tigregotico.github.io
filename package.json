@@ -18,17 +18,17 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@astrojs/mdx": "^4.3.6",
-    "@astrojs/rss": "^4.0.12",
+    "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.6.0",
     "@astrojs/tailwind": "^6.0.2",
     "astro": "^5.16.2",
     "espeak-ng": "^1.0.2",
-    "onnxruntime-web": "^1.20.1",
+    "onnxruntime-web": "^1.27.0",
     "phoonnx": "github:TigreGotico/phoonnx.js#0c01562b114590aadabd8ebf954deb7c3b5fd61d",
     "tailwindcss": "^3.4.18"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.5",
+    "@astrojs/check": "^0.9.10",
     "typescript": "^5.9.3"
   },
   "bugs": {
