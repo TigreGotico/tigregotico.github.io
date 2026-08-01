@@ -1,8 +1,9 @@
 ---
-title: "Graphem-zu-IPA für 676 Sprachen"
-description: "orthography2ipa ist eine rein datenbasierte, linguistisch fundierte Ressource, die Schreibweise auf IPA abbildet und modelliert, wie Phoneme über ~750 Sprachspezifikationen, 676 Sprachen und mehr als 20 Sprachfamilien hinweg als Allophone auftreten. Ein Kandidatengitter, dialektale Abstammung und ein schemavalidierter, mit der dialektologischen Literatur belegter Spezifikationssatz — keine trainierten Gewichte, vollständig selbst hostbar."
+title: "Graphem-zu-IPA für 807 Sprachen"
+description: "orthography2ipa ist eine rein datenbasierte, linguistisch fundierte Ressource, die Schreibweise auf IPA abbildet und modelliert, wie Phoneme über 896 Sprachspezifikationen, 807 Sprachen und mehr als 20 Sprachfamilien hinweg als Allophone auftreten. Ein Kandidatengitter, dialektale Abstammung und ein schemavalidierter, mit der dialektologischen Literatur belegter Spezifikationssatz — keine trainierten Gewichte, vollständig selbst hostbar."
 date: 2026-01-15
 lang: de
+updated: 2026-08-01
 author: "Casimiro Ferreira"
 tags:
   - "G2P"
@@ -16,7 +17,7 @@ tags:
 draft: false
 ---
 
-**[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)** ist ein rein datenbasiertes Python-Paket — deklaratives JSON, dünne einsteckbare Logik, keine trainierten Gewichte —, das Schreibweise auf IPA abbildet und modelliert, wie diese Phoneme im Kontext auftreten. Es liefert **~750 Sprachspezifikationen, die 676 Sprachen abdecken** (plus 73 rein klassifikatorische Klade-Knoten) über **mehr als 20 Sprachfamilien** hinweg. Installieren Sie es, lesen Sie die Daten, forken Sie die Daten. Nichts ist in einem Checkpoint verborgen.
+**[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)** ist ein rein datenbasiertes Python-Paket — deklaratives JSON, dünne einsteckbare Logik, keine trainierten Gewichte —, das Schreibweise auf IPA abbildet und modelliert, wie diese Phoneme im Kontext auftreten. Es liefert **896 Sprachspezifikationen, die 807 Sprachen abdecken** (plus 89 rein klassifikatorische Klade-Knoten) über **mehr als 20 Sprachfamilien** hinweg. Installieren Sie es, lesen Sie die Daten, forken Sie die Daten. Nichts ist in einem Checkpoint verborgen.
 
 Es ist die Phonologie-Schicht unter allem Nachgelagerten: Das Kandidatengitter, das es erzeugt, wird vom arabischen TTS-Frontend [arbtok](https://github.com/TigreGotico/arbtok), den portugiesischen Stacks [TugaPhone](https://github.com/TigreGotico/tugaphone) und [silabificador](https://github.com/TigreGotico/silabificador) (siehe **[klassisches NLP für portugiesische Silben und Phoneme](/de/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**), dem [Barranquenho-Phonemizer](/de/blog/2025-12-12-barranquenho), dem Mirandesischen Phonemizer und der Phonem-Grundlage für **[TTS, das auf einer Kartoffel läuft](/de/blog/2026-05-10-tts-that-runs-on-a-potato)** konsumiert.
 
@@ -51,11 +52,11 @@ Dialektbäume bleiben pflegbar, weil JSON-Dateien die Vererbung `graphemes_base`
 
 ## Tief am Boden, nicht nur breit
 
-Die Zahl 676 steht für Breite; die Tiefe ist dort, wo die Arbeit liegt. Die Spezifikationen gehen Lekt für Lekt so weit, wie es die dialektologische Literatur tut, und jede einzelne ist mit dieser Literatur samt Seitenverankerungen belegt, statt aus einer Phonemtabelle abgeleitet zu werden.
+Die Zahl 807 steht für Breite; die Tiefe ist dort, wo die Arbeit liegt. Die Spezifikationen gehen Lekt für Lekt so weit, wie es die dialektologische Literatur tut, und jede einzelne ist mit dieser Literatur samt Seitenverankerungen belegt, statt aus einer Phonemtabelle abgeleitet zu werden.
 
 Die **iberische** Abdeckung ist das deutlichste Beispiel: **mehr als 100 Spezifikationen** für die Sprachen der Halbinsel. Jede romanische Sprache Spaniens — Kastilisch, Katalanisch/Valencianisch, Galicisch (sowohl die RAG- als auch die reintegrationistische Norm), Asturisch, Aragonesisch und seine Talvarianten (Ansotano, Chistabín, Benasqués…), Extremadurisch — neben Baskisch, den iberoromanischen Kreolsprachen und den historischen Schichten, die die meisten Ressourcen völlig überspringen: **Andalusisches Arabisch** und **Mozarabisch**. Die arabische Seite umfasst **34 Dialektlekte** (von Nadschdi und Hidschasi über Levantinisch, Maghrebinisch bis zu den Halbinselvarianten), und die lusophone Seite **46 Lekte des Portugiesischen und der Sprachen Portugals**, bis hinunter zu Rionoresisch, Guadramilesisch und den mirandesischen Subdialekten.
 
-Nach unserem Kenntnisstand sind mehrere davon die **erste maschinenlesbare Phonologie**, die jemals für die betreffende Varietät veröffentlicht wurde — Rionoresisch, Guadramilesisch, Benasqués, Angolar und Andalusisches Arabisch darunter —, und die nachgelagerte Arbeit liefert die **ersten IPA-Wörterbücher** für **Barranquenho** und **Mirandesisch**.
+Nach unserem Kenntnisstand sind mehrere davon die **erste maschinenlesbare Phonologie**, die jemals für die betreffende Varietät veröffentlicht wurde — das heißt eine strukturierte, schemavalidierte Graphem-/Allophon-Spezifikation, die ein Programm abfragen kann, im Gegensatz zu einem Phoneminventar, das in der dialektologischen Literatur nur in Prosa beschrieben wird —, Rionoresisch und Guadramilesisch darunter. Die nachgelagerte Arbeit liefert die **ersten IPA-Wörterbücher** für **Barranquenho** und **Mirandesisch**.
 
 ## Ein Kandidatengitter, keine einzelne Vermutung
 
@@ -83,13 +84,13 @@ Da die Daten strukturiert sind statt in Gewichte eingebacken, können Sie Sprach
 from orthography2ipa.distance import phonological_distance
 d = phonological_distance(orthography2ipa.get("pt-BR"), orthography2ipa.get("pt-PT"))
 
-d.combined                    # 0.04 — near-identical
+d.combined                    # 0.0515 — near-identical
 d.inventory.feature_mean      # phoneme-inventory distance
 d.grapheme.mean_ipa_distance  # grapheme-mapping divergence
 d.allophone_sim               # allophone-overlap similarity
 ```
 
-Auch Merkmalsvektoren werden bereitgestellt, sodass ein nahezu identisches Paar wie die beiden portugiesischen Standards bei 0,04 landet, während wirklich weit entfernte Paare sich sauber trennen. Das ist gleichermaßen nützlich für Transfer-Learning-Entscheidungen, das Bootstrapping ressourcenarmer Sprachen und die Dialektometrie.
+Auch Merkmalsvektoren werden bereitgestellt, sodass ein nahezu identisches Paar wie die beiden portugiesischen Standards bei 0,0515 landet, während wirklich weit entfernte Paare sich sauber trennen. Das ist gleichermaßen nützlich für Transfer-Learning-Entscheidungen, das Bootstrapping ressourcenarmer Sprachen und die Dialektometrie.
 
 ## Woher wir wissen, dass die Daten gut sind
 

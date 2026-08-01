@@ -3,6 +3,7 @@ title: "Dein Sentiment-Modell kann eine Beschwerde nicht von einem Abschied unte
 description: "Zwei wütend wirkende Support-Nachrichten. Ein Kunde will eskalieren; der andere geht einfach, ohne ein Wort. Kaum ein Emotionsmodell kann die beiden unterscheiden – weil allen dieselbe Achse fehlt. Einführung in emotion-algebra."
 date: 2026-07-13
 lang: de
+updated: 2026-08-01
 author: "Casimiro Ferreira"
 tags:
   - "Affective Computing"
@@ -174,7 +175,7 @@ angry, afraid = affect_from_texts([
     "I don't know if I'm doing this right and I'm scared I've broken something.",
 ])
 
-angry.valence,  angry.potency    # -0.43, +0.16   -> 'annoyance'
+angry.valence,  angry.potency    # -0.43, +0.16   -> 'disgust'
 afraid.valence, afraid.potency   # -0.47, -0.43   -> 'apprehension'
 ```
 

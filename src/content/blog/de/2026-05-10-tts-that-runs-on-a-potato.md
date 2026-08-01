@@ -14,9 +14,7 @@ tags:
 draft: false
 ---
 
-Es gibt einen hartnäckigen Mythos, dass gute Sprachsynthese eine kräftige GPU, eine
-fette Cloud-Rechnung und einen API-Schlüssel mit angehefteter Kreditkarte braucht. Das
-tut sie nicht. Eine natürliche, mehrsprachige Stimme passt in etwas, das Sie sich
+Gute Sprachsynthese braucht weder eine GPU noch ein Cloud-Abonnement. Eine natürliche, mehrsprachige Stimme passt in etwas, das Sie sich
 schämen würden, einen Server zu nennen — die Art von Platine, die Sie "nur für alle
 Fälle" in einer Schublade aufbewahren. Eine Kartoffel.
 
@@ -46,8 +44,7 @@ phoonnx teilen; die Persönlichkeit steckt in den Gewichten, nicht in zusätzlic
 Kapazität.
 
 Zur Einordnung: Eine einzelne Schicht eines "kleinen" modernen Sprachmodells kann mehr
-Parameter tragen als dieser gesamte Sprachsynthesizer. Fünfzehneinhalb Millionen sind
-in etwa das Gewicht eines Handy-Schnappschusses, und es spricht fließend.
+Parameter tragen als dieser gesamte Sprachsynthesizer, und trotzdem spricht er fließend.
 
 ## Warum VITS und warum ONNX
 
@@ -64,8 +61,7 @@ C++-Engine, und ein Graph mit 15 Millionen Parametern liegt gut im Bereich desse
 ein Kern der Raspberry-Pi-Klasse schneller als in Echtzeit verarbeitet. Das Ergebnis ist
 ein Sprachassistent, der weiterspricht, wenn Ihr Internet ausfällt, wenn der
 Cloud-Anbieter eine Störung hat oder wenn Sie einfach nie wollten, dass das Audio Ihres
-Zuhauses das Haus verlässt. **Datensouveränität ist hier kein Funktionsschalter; sie ist
-die Architektur.**
+Zuhauses das Haus verlässt.
 
 ## Die Phoneme sind, wo die Intelligenz steckt
 
@@ -95,7 +91,7 @@ nie geschrieben gesehen hat.
 
 ## Ein Framework zum *Bauen* von Stimmen, nicht nur zum Ausführen
 
-Das ist der Teil, der am meisten zählt, und der Teil, der übersehen wird: phoonnx ist
+phoonnx ist
 nicht nur ein Inferenz-Toolkit. Das begleitende Framework
 [**`phoonnx_train`**](https://github.com/TigreGotico/phoonnx) ist die Art und Weise, wie
 wir die Stimmen überhaupt erst *herstellen*.
@@ -104,9 +100,9 @@ wir die Stimmen überhaupt erst *herstellen*.
 
 - **Vorverarbeitung** eines Datensatzes im LJSpeech-Stil zu phonemisierten
   Trainingsdaten.
-- **Training** des VITS-Generators (jene ~15,65M Parameter) mit bescheidener GPU-Zeit —
-  das sind kleine Modelle, sodass das Training im Vergleich zu großen Sprachsystemen
-  günstig und schnell ist.
+- **Training** des VITS-Generators (jene ~15,65M Parameter) auf einer einzelnen
+  Consumer- oder Mid-Range-GPU — ein derart kleines Modell braucht keinen
+  Trainingscluster.
 - **Export** des fertigen Checkpoints nach ONNX mit einem einzigen Skript, bereit, um
   direkt in `onnxruntime` auf einem Gerät eingesetzt zu werden.
 
@@ -155,5 +151,5 @@ richtige Architektur, klein gemacht: VITS als Rückgrat, clevere Phonemizer, um 
 linguistische Last zu tragen, ONNX für Portabilität und ein offenes Trainings-Framework,
 damit jeder den Katalog wachsen lassen kann.
 
-Fünfzehneinhalb Millionen Parameter. Keine GPU. Keine Cloud. Keine Ausreden. Wenn es auf
-einer Kartoffel läuft, läuft es überall.
+Fünfzehneinhalb Millionen Parameter, die auf der CPU laufen, trainiert auf Hardware,
+die sich jeder leisten kann: Das ist die Trainings-Pipeline hinter jeder phoonnx-Stimme.

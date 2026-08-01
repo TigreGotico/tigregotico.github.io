@@ -3,6 +3,7 @@ title: "Der erste Phonemizer für Barranquenho"
 description: "g2p_barranquenho ist der erste offene Graphem-zu-Phonem-Konverter für Barranquenho, die iberoromanische Kontaktsprache von Barrancos, Portugal — die Regeln stammen aus der neu veröffentlichten orthografischen Konvention der Gemeinde und sind anhand der beigefügten Quellen überprüfbar."
 date: 2025-12-12
 lang: de
+updated: 2026-08-01
 author: "Casimiro Ferreira"
 tags:
   - "Phonemization"
@@ -18,18 +19,15 @@ draft: false
 
 Barranquenho ist kein Dialekt des Portugiesischen oder Spanischen; es ist ein wirklich eigenständiges System. Der Gemeinderat von Barrancos hat kürzlich drei grundlegende Dokumente veröffentlicht — ein Wörterbuch, eine orthografische Konvention und eine Grundgrammatik —, die uns die benötigten Regeln lieferten. Die Ankündigung: ["Un Enormi Passu para u Barranquenhu i para a Cultura Barranquenha!"](https://cm-barrancos.pt/21976/un-enormi-passu-para-u-barranquenhu-i-para-a-cultura-barranquenha).
 
-Aus dieser orthografischen Konvention haben wir das Regelwerk abgeleitet. Der Phonemizer durchläuft die kleingeschriebene Eingabe in zwei Durchgängen:
+Aus dieser orthografischen Konvention haben wir das Regelwerk abgeleitet — doch statt eines handgestrickten eigenen Durchgangs über den Text lebt es als Sprachspezifikation, `ext-PT-x-barrancos`, in der gemeinsam genutzten **[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)**-Engine. Die Graphemtabelle, Allophon-Regeln, das Betonungsmodell und die wortübergreifende Sandhi dieser Spezifikation beschreiben jede Realisierung des Barranquenho: mehrbuchstabige Grapheme fassen sich so zusammen, wie es die Konvention dokumentiert (`tch` → /tʃ/, `ch` → /ʃ/, `nh` → /ɲ/, `lh` → /ʎ/), nasale Diphthonge treten vor `m`/`n` auf, `v` wird immer auf /b/ abgebildet, und `h` erscheint als ausgesprochenes /h/ — anders als in beiden Ausgangssprachen.
 
-1. **Digraph-Durchgang** — fasst mehrbuchstabige Grapheme zusammen: `tch` → /tʃ/, `ch` → /ʃ/, `nh` → /ɲ/, `lh` → /ʎ/, und `qu`/`gu` vor vorderen Vokalen → /k//g/.
-2. **Graphem-Durchgang** — bildet die verbleibenden Zeichen mit kontextsensitiven Regeln auf IPA ab: nasale Diphthonge vor `m`/`n` (z. B. `an` → /ɐ͂/), wortfinales `e` → /ɨ/, `v` immer → /b/, `s` stimmhaft zu /z/ außer am Wortanfang, `r` gegenüber `rr` (Tap gegenüber Trill) und `h` als ausgesprochenes /h/ — anders als in beiden Ausgangssprachen.
-
-Das Graphem `x` hat die komplexeste Logik und greift auf portugiesische kontextuelle Heuristiken zurück, wo die Barranquenho-Konvention schweigt.
+`g2p_barranquenho` selbst ist ein schlanker aufruferseitiger Wrapper um `orthography2ipa.G2P`, gesteuert durch diese Spezifikation: Es übernimmt die Textnormalisierung (Groß-/Kleinschreibung, Tokenisierung in die von der Spezifikation erwarteten Formen), die Zahlenexpansion und eine stabile `phonemize`/`transcribe`-Schnittstelle, nicht aber die phonologischen Regeln — eine Regel zu verbessern bedeutet, die Spezifikation stromaufwärts zu bearbeiten, sodass jeder nachgelagerte Verbraucher von der Korrektur profitiert.
 
 In der Praxis:
 
-> "Un Enormi Passu para u Barranquenhu i para a Cultura Barranquenha" → `ũ ẽjoɾmj pasu paɾɐ u bɐrɐ͂keɲu j paɾɐ ɐ kultuɾɐ bɐrɐ͂keɲɐ`
+> "Un Enormi Passu para u Barranquenhu i para a Cultura Barranquenha" → `ˈũ eˈnɔɾmi ˈpas̺u ˈpaɾɐ ˈu bɐrɐ̃ˈkɛɲu ˈi ˈpaɾɐ ɐ kuˈltuɾɐ bɐrɐ̃ˈkɛɲɐ`
 
-Die Bibliothek besteht aus einer einzigen Funktion, `phonemize(word: str) -> list[str]`, ohne Laufzeitabhängigkeiten — reines Python. Die Quell-PDFs (Konvention, Wörterbuch, Grammatik) sind im Wurzelverzeichnis des Repositorys hinterlegt, sodass die Regeln anhand ihrer Quelle überprüfbar sind.
+Die Quell-PDFs (Konvention, Wörterbuch, Grammatik) sind im Wurzelverzeichnis des Repositorys hinterlegt, sodass die Regeln anhand ihrer Quelle überprüfbar sind.
 
 ### Was als Nächstes kommt
 

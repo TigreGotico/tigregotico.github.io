@@ -109,20 +109,6 @@ COALA veröffentlichte einen mehrsprachigen Sprachdatensatz, der in Fabriken und
 
 ---
 
-## Warum die Industrie OVOS + HiveMind wählt
-
-Der Reiz ist unkompliziert:
-
-* **Vollständige Transparenz** (entscheidend für regulierte Branchen)
-* **Lokale/Edge-Bereitstellung** (keine Cloud-Abhängigkeit)
-* **Leicht in bestehende Ausrüstung zu integrieren**
-* **Modular genug für benutzerdefinierte proprietäre Skills**
-* **Verteilte Sprachnetzwerke** (HiveMind-Satelliten über eine ganze Fabrik hinweg)
-
-Kurz gesagt: Die Kombination ist flexibel, herstellerneutral und respektiert industrielle Datenbeschränkungen.
-
----
-
 ## Warum es für die Industrie funktioniert
 
 Die Designziele, die in der Fertigung zählen — vollständige Transparenz für regulierte Branchen, lokale/Edge-Bereitstellung ohne Cloud-Abhängigkeit, modulare Skills für proprietäre Logik und die Fähigkeit von HiveMind, Sprachknoten über eine Anlage zu verteilen — waren von Anfang an eingebaut, nicht nachträglich hinzugefügt.
