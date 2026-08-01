@@ -16,6 +16,7 @@ export const site = {
     country: 'PT',
   },
   defaultOgImage: '/og-default.png',
+  repo: 'https://github.com/TigreGotico/tigregotico.github.io',
   socials: {
     github: 'https://github.com/TigreGotico',
     huggingface: 'https://huggingface.co/TigreGotico',
