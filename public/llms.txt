@@ -14,7 +14,7 @@
 - [Games](https://tigregotico.pt/games): Accessible text and voice games — classic interactive fiction to LLM-generated worlds, in the terminal or by voice.
 - [Open Source](https://tigregotico.pt/projects): Open-source libraries and tools, community collaborations, and work donated to OpenVoiceOS.
 - [Blog](https://tigregotico.pt/blog): Articles on voice AI, OpenVoiceOS development, and synthetic data.
-- [Resources](https://tigregotico.pt/resources): Datasets, models, notebooks, and research.
+- [Demo](https://tigregotico.pt/demo): Browser-based text-to-speech demo, no install required.
 
 ## External Links
 - [GitHub](https://github.com/TigreGotico): Open-source repositories.

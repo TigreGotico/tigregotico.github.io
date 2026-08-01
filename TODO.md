@@ -4,7 +4,6 @@
 
 - Blog posts: only seeded, many more repos not yet covered
 - Projects/datasets/models JSON files need gap analysis against actual GitHub repos
-- PT i18n is planned but not implemented (CONTENT.md milestone M8)
 
 ## Infrastructure
 
