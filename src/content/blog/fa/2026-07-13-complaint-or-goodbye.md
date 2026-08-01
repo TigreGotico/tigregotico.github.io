@@ -2,6 +2,7 @@
 title: "مدل تشخیص احساسات شما نمی‌تواند شکایت را از خداحافظی تشخیص دهد"
 description: "دو پیام حمایتی که عصبانی به نظر می‌رسند. یکی دارد اوضاع را بدتر می‌کند، دیگری دارد بدون حرفی می‌رود. تقریباً هیچ مدل احساسی نمی‌تواند این دو را از هم تشخیص دهد — چون همه‌شان یک محور را کم دارند. معرفی emotion-algebra."
 date: 2026-07-13
+updated: 2026-08-01
 lang: fa
 author: "Casimiro Ferreira"
 tags:
@@ -107,7 +108,7 @@ angry, afraid = affect_from_texts([
     "I don't know if I'm doing this right and I'm scared I've broken something.",
 ])
 
-angry.valence,  angry.potency    # -0.43, +0.16   -> 'annoyance'
+angry.valence,  angry.potency    # -0.43, +0.16   -> 'disgust'
 afraid.valence, afraid.potency   # -0.47, -0.43   -> 'apprehension'
 ```
 

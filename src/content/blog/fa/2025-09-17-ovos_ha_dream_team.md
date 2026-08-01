@@ -20,7 +20,7 @@ draft: false
 
 -----
 
-## به Home Assistant صدایی مبتنی بر OVOS بدهید
+## پل‌های Wyoming: افزونه‌های صوتی OVOS در Home Assistant
 
 پروتکل Wyoming رابط استاندارد HA برای سرویس‌های خارجی ASR، TTS و wakeword است. ما پل‌های Wyoming ساختیم که هر افزونهٔ OVOS را روی آن پروتکل در دسترس می‌گذارند — یعنی HA به هر افزونه در بوم‌سازگان OVOS دسترسی پیدا می‌کند، نه فقط یک فهرست کوتاه گزیده.
 
@@ -31,26 +31,18 @@ draft: false
 
 پروژهٔ [OVOS Wyoming Docker](https://github.com/TigreGotico/ovos-wyoming-docker) این سرویس‌ها را بسته‌بندی می‌کند تا با یک `docker compose up` در دسترس باشند.
 
-### **نکات برجستهٔ افزونه‌ها: TTS چندزبانه با پشتیبانی ILENIA**
+### TTS چندزبانه از پروژه‌های زبانیِ با بودجهٔ عمومی
 
-برای ما، دسترس‌پذیری کلیدی است. این شامل دسترس‌پذیری زبانی هم می‌شود. ما مفتخریم که این یکپارچه‌سازی به ما امکان می‌دهد صداهای باکیفیت و بودجهٔ عمومی از پروژه‌هایی مانند [**ILENIA**](https://proyectoilenia.es/) را به مخاطبان گسترده‌تری برسانیم. کاربران Home Assistant صداهایی طبیعی برای زبان‌هایی مانند کاتالان و گالیسیایی، مستقیماً از پروژه‌هایی که آن‌ها را ساخته‌اند، به دست می‌آورند.
+دسترس‌پذیری زبانی هم بخشی از دسترس‌پذیری است. این یکپارچه‌سازی صداهای باکیفیت و بودجهٔ عمومی از پروژه‌هایی مانند **[ILENIA](https://proyectoilenia.es/demostradores-2025/prototipo-ovos/)** را به مخاطبان گسترده‌تری می‌رساند. کاربران Home Assistant صداهایی طبیعی برای زبان‌هایی مانند کاتالان و گالیسیایی، مستقیماً از پروژه‌هایی که آن‌ها را ساخته‌اند، به دست می‌آورند.
 
 * **Matxa TTS برای کاتالان:** افزونهٔ [`ovos-tts-plugin-matxa-multispeaker-cat`](https://github.com/OpenVoiceOS/ovos-tts-plugin-matxa-multispeaker-cat) قابلیت تبدیل متن به گفتار چندگوینده را برای زبان کاتالان فراهم می‌کند.
 * **NosTTS برای گالیسیایی:** افزونهٔ [`ovos-tts-plugin-nos`](https://github.com/OpenVoiceOS/ovos-tts-plugin-nos) تبدیل متن به گفتار استوار را در زبان گالیسیایی ارائه می‌دهد.
 
 ![لوگوی ILENIA](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/ilenia.png)
 
-### **راه‌اندازی سرویس‌های Wyoming در Home Assistant:**
-
-هنگام پیکربندی سرویس‌های Wyoming در Home Assistant، معمولاً به [مستندات رسمی Home Assistant](https://www.home-assistant.io/integrations/wyoming/) مراجعه می‌کنید. این فرایند معمولاً تنها شامل وارد کردن نشانی IP کانتینر Docker شما (یا میزبانی که سرویس‌های OVOS Wyoming شما را اجرا می‌کند) در واسط وب Home Assistant است.
-
-![راه‌اندازی wyoming در Home Assistant](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/wyoming_setup.png)
-
-![موجودیت‌های wyoming در Home Assistant](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/wyoming_menu.png)
-
 -----
 
-## بگذارید OVOS مغز گفت‌وگو باشد
+## استفاده از OVOS به‌عنوان یک عامل گفت‌وگویی برای Home Assistant
 
 می‌خواهید یک گام فراتر بروید؟ می‌توانید OVOS را با استفاده از **یکپارچه‌سازی Ollama** به‌عنوان یک عامل گفت‌وگویی تمام‌عیار برای Home Assistant راه‌اندازی کنید.
 
@@ -72,7 +64,7 @@ draft: false
 
 -----
 
-## دستگاه‌های OVOS خود را با HiveMind به Home Assistant خوش‌آمد بگویید
+## نمایش دستگاه‌های OVOS به‌عنوان موجودیت‌های Home Assistant با HiveMind
 
 اگر دستگاه‌های اختصاصی OVOS دارید، یکپارچه‌سازی [HiveMind HomeAssistant](https://github.com/JarbasHiveMind/hivemind-homeassistant) آن‌ها را به‌صورت موجودیت‌های بومی در Home Assistant نمایان می‌کند — یک پنل کنترل یکپارچه برای کل مجموعه.
 
@@ -114,17 +106,15 @@ draft: false
 
 -----
 
-## کلیدهای پادشاهی را به OVOS بسپارید
+## کنترل موجودیت‌های Home Assistant از OVOS
 
 ‏[skill-homeassistant](https://github.com/OscillateLabsLLC/skill-homeassistant) که توسط جامعه نگهداری می‌شود، به OVOS کنترل مستقیم بر موجودیت‌های Home Assistant از طریق HA REST API می‌دهد. آن را روی دستگاه OVOS خود نصب کنید و می‌توانید بگویید «چراغ‌های اتاق نشیمن را روشن کن» یا «ترموستات را روی ۲۱ درجه تنظیم کن» — کاملاً محلی، بدون ابر.
 
 -----
 
-## ابزار درست برای هر کار
+## نقاط ضعف کنونی
 
-‏OVOS صدا را به عهده می‌گیرد؛ Home Assistant خودکارسازی را. هیچ‌کدام برای انجام کارِ دیگری مصالحه نمی‌کند و نقاط یکپارچه‌سازی به‌قدر کافی تمیز هستند که هر پروژه چرخهٔ انتشار خودش را حفظ کند.
-
-گزارش اشکال‌ها و PR ها در تمام مخزن‌های پیوندشده در بالا خوش‌آمد است.
+پل‌های Wyoming و یکپارچه‌سازی HiveMind پخته‌ترین بخش‌های این مجموعه‌اند؛ مسیر استفاده از سرور پرسونا به‌عنوان عامل گفت‌وگویی تازه‌تر است و اگر می‌خواهید سقف توانایی ترکیب OVOS و HA را ببینید، ارزش امتحان کردن اول را دارد. گزارش اشکال‌ها و PR ها در تمام مخزن‌های پیوندشده در بالا خوش‌آمد است.
 
 ---
 
