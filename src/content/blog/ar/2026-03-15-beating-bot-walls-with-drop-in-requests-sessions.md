@@ -1,6 +1,6 @@
 ---
 title: "تجاوز جدران مكافحة الروبوتات بجلسات requests قابلة للتركيب وجاهزة للاستخدام"
-description: "كيف نحافظ على وصول مرن إلى البيانات العامة دون تشغيل متصفح بلا واجهة في المسار الحرج: انتحال بصمة TLS، ووكيل FlareSolverr لتحديات JavaScript، والرجوع إلى Wayback Machine، وتدوير عناوين IP — كل ذلك خلف فئتين فرعيتين قابلتين للتركيب من requests.Session، هما unblock_requests وanon_requests."
+description: "كيف نحافظ على وصول مرن إلى البيانات العامة دون تشغيل متصفح بلا واجهة في المسار الحرج: انتحال بصمة TLS ، ووكيل FlareSolverr لتحديات JavaScript ، والرجوع إلى Wayback Machine ، وتدوير عناوين IP — كل ذلك خلف فئتين فرعيتين قابلتين للتركيب من requests.Session ، هما unblock_requests و anon_requests."
 date: 2026-03-15
 lang: ar
 author: "Casimiro Ferreira"
@@ -67,9 +67,9 @@ assert isinstance(s, requests.Session)            # True
 الافتراضي، `curl_cffi`، هو المكسب الرخيص. معظم أحكام "أنت روبوت" هي عدم تطابق في
 بصمة TLS: فـ `requests` القياسي (عبر OpenSSL) يجري مصافحة لا تشبه Chrome في شيء.
 ينتحل `curl_cffi` نسخة Chrome حقيقية (`impersonate="chrome"` افتراضيًا)، فتتوافق
-المصافحة وبصمة JA3 ويمر الفحص ببساطة. لا يُنفَّذ أي JavaScript، ولا يُطلَق أي متصفح.
+المصافحة وبصمة JA3 ويمر الفحص ببساطة. لا يُنفَّذ أي JavaScript ، ولا يُطلَق أي متصفح.
 
-عندما يتصعّد موقع إلى تحدٍّ تفاعلي حقيقي من JavaScript، لا يكفي `curl_cffi` —
+عندما يتصعّد موقع إلى تحدٍّ تفاعلي حقيقي من JavaScript ، لا يكفي `curl_cffi` —
 فلا بد لشيء ما أن يشغّل التحدي. هنا يأتي وضع `flaresolverr`: نسخة من
 [FlareSolverr](https://github.com/FlareSolverr/FlareSolverr) تستضيفها بنفسك تتولى
 الحل في متصفح بلا واجهة **خارج عمليتك**، ويكتفي `unblock_requests` بإجراء POST
@@ -92,13 +92,13 @@ CloudflareSession(flaresolverr_url="http://host:8191",
 ("just a moment"، و`challenge-platform`، و`cf_chl_opt`، و`cf-mitigated`). عند
 حدوث GET محظور، إذا كان `wayback_fallback` مفعّلًا، تحل الجلسة أحدث لقطة عبر واجهة
 برمجة توفّر `archive.org` وتُرجع بايتاتها الخام (الصيغة الخام `…id_/`، دون شريط
-أدوات أو إعادة كتابة للروابط). موقع archive.org ليس محميًا بـ Cloudflare، لذا
+أدوات أو إعادة كتابة للروابط). موقع archive.org ليس محميًا بـ Cloudflare ، لذا
 يصل إليه `requests` البسيط.
 
 ملاحظتان تنفيذيتان جديرتان بالمعرفة: في وضعي `wayback` و`flaresolverr` تكون
 النتيجة `requests.Response` *مُصطنَعة* لكنها حقيقية مبنية من الـ HTML المُجلَب —
 لذا لا تنطبق هناك `stream=` أو المحوّلات المخصصة أو تجميع الاتصالات، بينما وضعا
-`requests`/`curl_cffi` أصيلان تمامًا. كما أن الرجوع لا ينطلق إلا مع طلبات GET؛
+`requests`/`curl_cffi` أصيلان تمامًا. كما أن الرجوع لا ينطلق إلا مع طلبات GET ؛
 فنحن لا نعيد أبدًا وبصمت تشغيل طلب مُعدِّل من أرشيف.
 
 ## الطبقة الثانية: `anon_requests` وتدوير عناوين IP
@@ -134,7 +134,7 @@ session = RotatingProxySession(
 session.get(url)   # rotates the IP *and* solves Cloudflare
 ```
 
-يتدفق الوكيل المُدوَّر عبر *كل* وسائل النقل — بما في ذلك إلى داخل FlareSolverr،
+يتدفق الوكيل المُدوَّر عبر *كل* وسائل النقل — بما في ذلك إلى داخل FlareSolverr ،
 الذي يقود متصفحه بلا واجهة عبر حقل `proxy` في طلب الحل. وهكذا فإن عنوان IP الذي
 يحل التحدي هو نفسه عنوان IP المُدوَّر الذي يستخدمه بقية الطلب: دون انفصال بين
 البصمة وعقدة المخرج يمكن لمدافعٍ أن يلاحظه.

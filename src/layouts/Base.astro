@@ -7,6 +7,10 @@ import Reveal from '../components/Reveal.astro';
 import Icon from '../components/Icon.astro';
 import { site } from '../data/site';
 import { ui, dir, navItems, localePath, translatedPaths, locales, languageNames, langNote, type Locale } from '../i18n';
+// All self-hosted Inter latin weight files (400/500/600/700) are byte-identical
+// in this repo's font assets, so a single preload covers every weight used
+// above the fold (body text and header/nav semibold).
+import interLatin400 from '../assets/fonts/inter-400-latin.woff2';
 
 interface Props {
   title?: string;
@@ -47,13 +51,15 @@ const baseNoSlash = base.replace(/\/$/, '');
 const sitePath = (here.startsWith(baseNoSlash) ? here.slice(baseNoSlash.length) : here) || '/';
 const localePrefix = /^\/(pt|es|de|nl|fr|it|ru|ar|fa|hi|zh|ko|ja)(?=\/|$)/;
 const enPath = sitePath.replace(localePrefix, '') || '/';
-// Blog posts exist only in en + pt; other locales point at their /blog index.
+// Blog posts exist in every locale under src/content/blog/<locale>/, at the
+// same slug as the English post, so they fall through to the enPath branch
+// below like any other translated path.
 const isBlogPost = /^\/blog\/.+/.test(enPath);
 const withSlash = (p: string) => (p === '/' ? '/' : p + '/');
 const targetPath = (target: Locale) => {
   let path: string;
   if (isBlogPost) {
-    path = target === 'en' || target === 'pt' ? enPath : '/blog';
+    path = enPath;
   } else if (translatedPaths.includes(enPath)) {
     path = enPath;
   } else {
@@ -92,6 +98,10 @@ const projectLinks = [
     <Seo {...props} />
 
     <!-- Brand fonts are self-hosted (src/styles/fonts.css) — no third-party requests. -->
+    <!-- Preload the primary body-text weights (Inter, latin subset) so the
+         browser fetches them immediately instead of waiting for global.css
+         to parse and discover the @font-face rules. -->
+    <link rel="preload" as="font" type="font/woff2" href={interLatin400} crossorigin />
 
     <!-- Apply persisted/preferred theme before paint to avoid a flash. -->
     <script is:inline>

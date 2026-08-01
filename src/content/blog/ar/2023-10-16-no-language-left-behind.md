@@ -20,7 +20,7 @@ draft: false
 
 ## كشف اللغة من الصوت
 
-يتعرف OVOS على اللغة المنطوقة في الصوت قبل أن تصل إلى خطوة النسخ عبر ASR، مما يتيح لإضافة ASR أن تنسخ بدقة بدلًا من التخمين. لقد بنيت عدة إضافات لهذا الغرض:
+يتعرف OVOS على اللغة المنطوقة في الصوت قبل أن تصل إلى خطوة النسخ عبر ASR ، مما يتيح لإضافة ASR أن تنسخ بدقة بدلًا من التخمين. لقد بنيت عدة إضافات لهذا الغرض:
 
 - [ovos-audio-transformer-plugin-speechbrain-langdetect](https://github.com/OpenVoiceOS/ovos-audio-transformer-plugin-speechbrain-langdetect)
 - [ovos-audio-transformer-plugin-speechflow-langdetect](https://github.com/OpenVoiceOS/ovos-audio-transformer-plugin-speechflow-langdetect)

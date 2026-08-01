@@ -1,6 +1,6 @@
 ---
 title: "OpenVoiceOS و Home Assistant: فريق الأحلام لأتمتة الصوت"
-description: "يتولى Home Assistant الأتمتة، ويتولى OVOS الصوت. ثلاث طبقات للتكامل تجعل هذا الاقتران ناجحًا: جسور Wyoming لخط أنابيب الصوت في HA، و ovos-persona-server كوكيل محادثة، و HiveMind لإظهار أجهزة OVOS ككيانات أصلية في HA."
+description: "يتولى Home Assistant الأتمتة، ويتولى OVOS الصوت. ثلاث طبقات للتكامل تجعل هذا الاقتران ناجحًا: جسور Wyoming لخط أنابيب الصوت في HA ، و ovos-persona-server كوكيل محادثة، و HiveMind لإظهار أجهزة OVOS ككيانات أصلية في HA."
 date: 2025-09-17
 lang: ar
 author: "Casimiro Ferreira"
@@ -16,13 +16,13 @@ draft: false
 
 يتولى Home Assistant الأتمتة، ويتولى OVOS الصوت. ولا يحاول أيٌّ منهما أن يكون الآخر. هذا التقسيم في المسؤوليات هو سبب نجاح هذا الاقتران: تكاملات الأجهزة ومحرك الأتمتة في HA مقترنَين بحزمة OVOS الصوتية المرنة والمحلية بالكامل.
 
-تتناول هذه التدوينة طبقات التكامل الثلاث: جسور Wyoming لخط أنابيب الصوت في HA، و ovos-persona-server كوكيل محادثة، و HiveMind لإظهار أجهزة OVOS ككيانات أصلية في HA.
+تتناول هذه التدوينة طبقات التكامل الثلاث: جسور Wyoming لخط أنابيب الصوت في HA ، و ovos-persona-server كوكيل محادثة، و HiveMind لإظهار أجهزة OVOS ككيانات أصلية في HA.
 
 -----
 
 ## امنح Home Assistant صوتًا مدعومًا من OVOS
 
-بروتوكول Wyoming هو الواجهة القياسية في HA لخدمات ASR و TTS وكلمة التنبيه الخارجية. لقد بنينا جسور Wyoming التي تكشف أي إضافة OVOS عبر هذا البروتوكول — ما يعني أن HA يكتسب الوصول إلى كل إضافة في منظومة OVOS، وليس مجرد قائمة مختارة محدودة.
+بروتوكول Wyoming هو الواجهة القياسية في HA لخدمات ASR و TTS وكلمة التنبيه الخارجية. لقد بنينا جسور Wyoming التي تكشف أي إضافة OVOS عبر هذا البروتوكول — ما يعني أن HA يكتسب الوصول إلى كل إضافة في منظومة OVOS ، وليس مجرد قائمة مختارة محدودة.
 
 
 * [Wyoming OVOS ASR](https://github.com/TigreGotico/wyoming-ovos-stt): تحويل الأوامر المنطوقة إلى نص ليفهمه Home Assistant.
@@ -42,7 +42,7 @@ draft: false
 
 ### **إعداد خدمات Wyoming في Home Assistant:**
 
-عند تكوين خدمات Wyoming في Home Assistant، ستراجع عادةً [الوثائق الرسمية لـ Home Assistant](https://www.home-assistant.io/integrations/wyoming/). تتضمن هذه العملية عادةً مجرد إدخال عنوان IP الخاص بحاوية Docker (أو المضيف الذي يشغّل خدمات OVOS Wyoming) في واجهة الويب الخاصة بـ Home Assistant.
+عند تكوين خدمات Wyoming في Home Assistant ، ستراجع عادةً [الوثائق الرسمية لـ Home Assistant](https://www.home-assistant.io/integrations/wyoming/). تتضمن هذه العملية عادةً مجرد إدخال عنوان IP الخاص بحاوية Docker (أو المضيف الذي يشغّل خدمات OVOS Wyoming) في واجهة الويب الخاصة بـ Home Assistant.
 
 ![إعداد wyoming في Home Assistant](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/wyoming_setup.png)
 
@@ -57,7 +57,7 @@ draft: false
 ![إعداد ollama في Home Assistant](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/ollama_setup.png)
 
 
-في هذا الإعداد، يمرر Home Assistant نص المستخدم إلى [ovos-persona-server](https://openvoiceos.github.io/ovos-technical-manual/150-personas/)؛ يستنتج OVOS النية ويعيد الإجابة لينطقها Home Assistant. ولأن [ovos-persona-server](https://github.com/OpenVoiceOS/ovos-persona-server) يكشف نقاط نهاية متوافقة مع Ollama، يمكن توصيل الخادم نفسه بأي تطبيق يتحدث واجهات Ollama أو OpenAI البرمجية — وليس فقط Home Assistant.
+في هذا الإعداد، يمرر Home Assistant نص المستخدم إلى [ovos-persona-server](https://openvoiceos.github.io/ovos-technical-manual/150-personas/)؛ يستنتج OVOS النية ويعيد الإجابة لينطقها Home Assistant. ولأن [ovos-persona-server](https://github.com/OpenVoiceOS/ovos-persona-server) يكشف نقاط نهاية متوافقة مع Ollama ، يمكن توصيل الخادم نفسه بأي تطبيق يتحدث واجهات Ollama أو OpenAI البرمجية — وليس فقط Home Assistant.
 
 ![الدردشة مع OVOS في Home Assistant](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/agent_chat.png)
 
@@ -79,13 +79,13 @@ draft: false
 
 ### **إعداد تكامل HiveMind:**
 
-لدمج أجهزة OVOS الخاصة بك عبر HiveMind، ستضيف عادةً تكامل HiveMind في Home Assistant. يتضمن ذلك تقديم تفاصيل الاتصال مثل `name` للتكامل، و `access_key`، و `password`، و `site_id`، و `host` (عنوان IP أو اسم مضيف خادم HiveMind الخاص بك)، و `port` (القيمة الافتراضية 5678). قد تكون لديك أيضًا خيارات لـ `allow_self_signed` للشهادات أو تمكين `legacy_audio` بحسب إعدادك.
+لدمج أجهزة OVOS الخاصة بك عبر HiveMind ، ستضيف عادةً تكامل HiveMind في Home Assistant. يتضمن ذلك تقديم تفاصيل الاتصال مثل `name` للتكامل، و `access_key`، و `password`، و `site_id`، و `host` (عنوان IP أو اسم مضيف خادم HiveMind الخاص بك)، و `port` (القيمة الافتراضية 5678). قد تكون لديك أيضًا خيارات لـ `allow_self_signed` للشهادات أو تمكين `legacy_audio` بحسب إعدادك.
 
 ![إعداد HiveMind في Home Assistant](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/hivemind_setup.png)
 
 ### **عناصر التحكم المكشوفة لأجهزة OVOS:**
 
-بمجرد التكامل، يكشف HiveMind مجموعة شاملة من عناصر التحكم في أجهزة OVOS الخاصة بك مباشرةً داخل Home Assistant. يتيح لك ذلك إدارة جوانب مختلفة من جهاز OVOS الخاص بك من واجهة Home Assistant، بما في ذلك:
+بمجرد التكامل، يكشف HiveMind مجموعة شاملة من عناصر التحكم في أجهزة OVOS الخاصة بك مباشرةً داخل Home Assistant. يتيح لك ذلك إدارة جوانب مختلفة من جهاز OVOS الخاص بك من واجهة Home Assistant ، بما في ذلك:
 
   * تغيير `Listening Mode` (مثل كلمة التنبيه، أو الاستماع الدائم)
   * مفتاح `Microphone Mute`
@@ -105,7 +105,7 @@ draft: false
 
 ### **تكامل مشغّل الوسائط و Music Assistant:**
 
-تظهر أجهزة OVOS أيضًا كمشغّلات وسائط قياسية في Home Assistant، فيمكنك التحكم في التشغيل من واجهة مشغّل الوسائط المعتادة. ويمتد التكامل نفسه إلى Music Assistant: يمكنك بث الموسيقى عبر أجهزة OVOS الخاصة بك فتصبح جزءًا من نظام الصوت المنزلي بأكمله.
+تظهر أجهزة OVOS أيضًا كمشغّلات وسائط قياسية في Home Assistant ، فيمكنك التحكم في التشغيل من واجهة مشغّل الوسائط المعتادة. ويمتد التكامل نفسه إلى Music Assistant: يمكنك بث الموسيقى عبر أجهزة OVOS الخاصة بك فتصبح جزءًا من نظام الصوت المنزلي بأكمله.
 
 
 ![مشغّل HiveMind في Home Assistant](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/ha_player.png)

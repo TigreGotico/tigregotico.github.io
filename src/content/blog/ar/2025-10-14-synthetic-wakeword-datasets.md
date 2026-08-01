@@ -1,6 +1,6 @@
 ---
 title: "مجموعات بيانات كلمات الإيقاظ الاصطناعية: سبعة أسماء لمساعدين، كاشف واحد"
-description: "نشرنا سبع مجموعات بيانات اصطناعية لكلمات الإيقاظ لأسماء شائعة للمساعدين الصوتيين — hey_computer وhey_mycroft وhey_siri وalexa وhome_assistant وvoice_assistant وwake_up. درِّب كاشفًا يعمل في كل مكان."
+description: "نشرنا سبع مجموعات بيانات اصطناعية لكلمات الإيقاظ لأسماء شائعة للمساعدين الصوتيين — hey_computer و hey_mycroft و hey_siri و alexa و home_assistant و voice_assistant و wake_up. درِّب كاشفًا يعمل في كل مكان."
 date: 2025-10-14
 lang: ar
 author: "Casimiro Ferreira"
@@ -14,7 +14,7 @@ tags:
 draft: false
 ---
 
-سبعة أسماء لمساعدين. سبع مجموعات بيانات. كل الصوت مُولَّد بالكامل من إطار عمل التحويل من النص إلى الكلام **[phoonnx](https://github.com/TigreGotico/phoonnx)** باستخدام صوتَي Miro وDii — دون تسجيلات بشرية، ودون استمارات موافقة، ودون تعريض للخصوصية.
+سبعة أسماء لمساعدين. سبع مجموعات بيانات. كل الصوت مُولَّد بالكامل من إطار عمل التحويل من النص إلى الكلام **[phoonnx](https://github.com/TigreGotico/phoonnx)** باستخدام صوتَي Miro و Dii — دون تسجيلات بشرية، ودون استمارات موافقة، ودون تعريض للخصوصية.
 
 - **[hey_computer](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-hey_computer)**
 - **[hey_mycroft](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-hey_mycroft)**

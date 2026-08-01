@@ -1,6 +1,6 @@
 ---
-title: "OVOS وHiveMind في الصناعة التحويلية"
-description: "بنى المشروعان الأوروبيان COALA وWASABI إطار عمل كاملًا لمساعد صوتي صناعي حول OVOS + HiveMind، مُدمِجَين إياهما مع أدواتهما وواجهتهما ومحركات المحادثة الخاصة بهما."
+title: "OVOS و HiveMind في الصناعة التحويلية"
+description: "بنى المشروعان الأوروبيان COALA و WASABI إطار عمل كاملًا لمساعد صوتي صناعي حول OVOS + HiveMind ، مُدمِجَين إياهما مع أدواتهما وواجهتهما ومحركات المحادثة الخاصة بهما."
 date: 2025-11-26
 lang: ar
 author: "Casimiro Ferreira"
@@ -33,7 +33,7 @@ draft: false
 - [Deliverable D2.1](https://wasabiproject.eu/wp-content/uploads/2024/01/WASABI_D2.1_template_v0.7_FINAL.pdf)
 - [Deliverable D2.4](https://files.wasabiproject.eu/wp-content/uploads/2023/Docs/wp2/Deliverables/D2.4/WASABI_D2.4_Joint%20WASABI%20Demonstrator_v0.5_final.pdf)
 
-![OVOS وHiveMind في التجربة الصناعية الرائدة WASABI](../2025-11-26-OVOS-hivemind-industry.png)
+![OVOS و HiveMind في التجربة الصناعية الرائدة WASABI](../2025-11-26-OVOS-hivemind-industry.png)
 
 ---
 
@@ -74,7 +74,7 @@ draft: false
 ### **1. مساعد نطاقي (DA) قائم على RASA**
 
 طوّرت أبحاث COALA المبكرة **خط أنابيب NLP قائم على RASA** مُدرَّبًا على محادثات الصناعة التحويلية (حول فحوصات الجودة، واستكشاف الأخطاء وإصلاحها، وتشغيل الآلات).
-في WASABI، يُوصَل محرك RASA هذا بـ OVOS باعتباره **skill**، متوليًا الحوار الخاص بالنطاق.
+في WASABI ، يُوصَل محرك RASA هذا بـ OVOS باعتباره **skill**، متوليًا الحوار الخاص بالنطاق.
 
 ### **2. تطبيق Android الخاص بـ COALA**
 
@@ -127,4 +127,4 @@ draft: false
 
 أهداف التصميم المهمة في أرضية المصنع — الشفافية الكاملة للقطاعات المنظَّمة، والنشر المحلي/على الحافة دون الاعتماد على السحابة، والمهارات المعيارية للمنطق المملوك، وقدرة HiveMind على توزيع العُقَد الصوتية عبر المنشأة — رُسِّخت منذ البداية، ولم تُضَف لاحقًا.
 
-الكود المصدري لـ OVOS وHiveMind: [github.com/OpenVoiceOS](https://github.com/OpenVoiceOS) · [github.com/JarbasHiveMind](https://github.com/JarbasHiveMind)
+الكود المصدري لـ OVOS و HiveMind: [github.com/OpenVoiceOS](https://github.com/OpenVoiceOS) · [github.com/JarbasHiveMind](https://github.com/JarbasHiveMind)
