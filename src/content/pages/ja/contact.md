@@ -9,7 +9,7 @@ order: 6
 カスタムプロジェクトのお見積もりが必要な場合、製品についてのご質問がある場合、あるいは
 単に FOSS のコラボレーションについて話し合いたい場合でも、私たちはお話を伺う用意があります。
 
-**メール:** [jarbasai@mailfence.com](mailto:jarbasai@mailfence.com)
+**メール:** [contact@tigregotico.pt](mailto:contact@tigregotico.pt)
 
 **返信時間:** 通常 24 時間以内に返信いたします。
 

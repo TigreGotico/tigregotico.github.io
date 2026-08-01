@@ -8,7 +8,7 @@ order: 6
 
 无论您需要为定制项目获取报价、对我们的产品有疑问，还是只是想探讨一次 FOSS 合作，我们都乐意倾听。
 
-**电子邮件：** [jarbasai@mailfence.com](mailto:jarbasai@mailfence.com)
+**电子邮件：** [contact@tigregotico.pt](mailto:contact@tigregotico.pt)
 
 **响应时间：** 我们通常会在 24 小时内回复。
 

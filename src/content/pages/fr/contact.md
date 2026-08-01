@@ -10,7 +10,7 @@ Que vous ayez besoin d'un devis pour un projet sur mesure, une question sur nos
 produits, ou que vous souhaitiez simplement discuter d'une collaboration en
 logiciel libre, nous sommes prêts à vous écouter.
 
-**Email :** [jarbasai@mailfence.com](mailto:jarbasai@mailfence.com)
+**Email :** [contact@tigregotico.pt](mailto:contact@tigregotico.pt)
 
 **Délai de réponse :** nous répondons généralement dans les 24 heures.
 

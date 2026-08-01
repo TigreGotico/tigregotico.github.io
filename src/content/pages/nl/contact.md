@@ -8,7 +8,7 @@ order: 6
 
 Of u nu een offerte nodig hebt voor een op maat gemaakt project, een vraag hebt over onze producten, of gewoon een FOSS-samenwerking wilt bespreken — wij zijn er om te luisteren.
 
-**E-mail:** [jarbasai@mailfence.com](mailto:jarbasai@mailfence.com)
+**E-mail:** [contact@tigregotico.pt](mailto:contact@tigregotico.pt)
 
 **Reactietijd:** wij reageren doorgaans binnen 24 uur.
 

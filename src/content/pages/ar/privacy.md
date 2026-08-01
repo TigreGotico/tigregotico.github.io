@@ -54,4 +54,4 @@ NIF: PT517914190
 ## أسئلة
 
 اسألنا أي شيء عن هذه السياسة على
-[jarbasai@mailfence.com](mailto:jarbasai@mailfence.com).
+[contact@tigregotico.pt](mailto:contact@tigregotico.pt).

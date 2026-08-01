@@ -58,4 +58,4 @@ P. IVA (NIF): PT517914190
 ## Domande
 
 Chiedici qualsiasi cosa su questa informativa all'indirizzo
-[jarbasai@mailfence.com](mailto:jarbasai@mailfence.com).
+[contact@tigregotico.pt](mailto:contact@tigregotico.pt).
