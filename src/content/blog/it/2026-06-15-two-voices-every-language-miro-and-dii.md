@@ -17,7 +17,7 @@ draft: false
 > **Ascoltatele ora:** la [Demo delle Voci](../../demo) esegue Miro e Dii dal vivo nel
 > vostro browser — scegliete una lingua, digitate una frase e ascoltate. Nessuna installazione, nessun server.
 
-Le persone ricordano la voce di un assistente più del suo nome. È ciò che fa sembrare il software una presenza anziché un processo. Perciò la domanda centrale della nostra collaborazione con [OpenVoiceOS](https://www.openvoiceos.org/) è pratica: a chi dovrebbe assomigliare l'assistente, in ogni lingua?
+Le persone ricordano la voce di un assistente più del suo nome. Perciò la domanda centrale della nostra collaborazione con [OpenVoiceOS](https://www.openvoiceos.org/) è pratica: a chi dovrebbe assomigliare l'assistente, in ogni lingua?
 
 La risposta è **Miro** (maschile) e **Dii** (femminile) — due identità vocali che si mantengono in ogni lingua supportata da OpenVoiceOS. Un utente che configura l'assistente a Lisbona e in seguito passa al tedesco dovrebbe sentire lo stesso parlante familiare. Una voce di marca, tutte le lingue, di proprietà della comunità.
 
@@ -40,14 +40,12 @@ phoonnx è deliberatamente flessibile qui. Può pilotare un'intera gamma di phon
 
 Ecco l'offerta concreta, ed è il cuore della collaborazione: **per ogni lingua che qualcuno richiede, costruiremo due modelli TTS — Miro e Dii.** Non una tabella di marcia di forse-un-giorno; un impegno permanente. Chiedete una lingua, e la coppia universale arriva fino a lei.
 
-E intendiamo *ogni* lingua, non solo quelle comode e commercialmente ovvie. Le voci che mancano al mondo raramente sono quelle con cento milioni di parlanti — sono le **lingue in via di estinzione e minoritarie** che il TTS mainstream ignora silenziosamente perché il mercato è troppo piccolo per valerne la pena. Sono esattamente quelle le lingue che vogliamo raggiungere. **Frisone. Asturiano. Aragonese.** Lingue portate avanti da comunità che non hanno mai avuto una voce sintetica di alta qualità da poter chiamare propria, e che non hanno alcun motivo di aspettarsi che un fornitore della Silicon Valley la fornisca mai.
+E intendiamo *ogni* lingua, non solo quelle comode e commercialmente ovvie. Le voci che mancano al mondo raramente sono quelle con cento milioni di parlanti — sono le **lingue in via di estinzione e minoritarie** che il TTS mainstream ignora silenziosamente perché il mercato è troppo piccolo per valerne la pena. Sono esattamente quelle le lingue che vogliamo raggiungere: comunità che non hanno mai avuto una voce sintetica di alta qualità da poter chiamare propria, e che non hanno alcun motivo di aspettarsi che un fornitore della Silicon Valley la fornisca mai.
 
-Un'identità vocale coerente conta ancora di più qui. Quando una comunità di lingua minoritaria riceve Miro e Dii, riceve la stessa voce dignitosa e professionale che riceve un utente di una lingua maggioritaria — non un ripensamento metallico, ma un membro di prima classe della stessa famiglia. L'inclusione non è una nota a piè di pagina in questo lavoro. È lo scopo.
+Questa non è una promessa per dopo. Al momento in cui scriviamo, la [**collezione di modelli TTS phoonnx**](https://huggingface.co/collections/TigreGotico/phoonnx-tts-models) su Hugging Face elenca 13 lingue con almeno una voce pubblicata, e 8 di queste — basco, arabo, portoghese europeo, **asturiano**, **aragonese**, **frisone**, occitano e spagnolo colombiano — hanno già sia Miro sia Dii disponibili.
 
-## Aperto, privato e vostro da tenere
+## Aperto e auto-ospitato
 
-Tutto qui segue i principi che OpenVoiceOS e TigreGótico condividono. Le voci sono **gratuite e open source**. Girano **offline e auto-ospitate**, così che ciò che dite al vostro assistente rimanga sul vostro hardware. I modelli sono **piccoli ed efficienti**, così che la privacy non vi costi un data center. E poiché l'intero stack — il motore, i phonemizer, la ricerca su G2P, le voci addestrate — è aperto, una comunità può prendere la propria lingua e portarla avanti molto dopo che qualsiasi singola azienda sia andata oltre.
+Le voci sono **gratuite e open source**, girano **offline e auto-ospitate** così che nulla di ciò che dite lasci il vostro hardware, e l'intero stack — motore, phonemizer, ricerca su G2P, voci addestrate — è aperto perché una comunità possa prenderlo e mantenerlo.
 
-Potete sfogliare l'insieme crescente di voci nella [**collezione di modelli TTS phoonnx**](https://huggingface.co/collections/TigreGotico/phoonnx-tts-models) su Hugging Face. Se la vostra lingua non c'è ancora, non è una porta chiusa — è una richiesta in attesa di essere fatta.
-
-Due voci. Tutte le lingue. Quelle che il resto dell'industria ha dimenticato, incluse.
+Se la vostra lingua non è ancora nell'elenco, non è una porta chiusa — è una richiesta in attesa di essere fatta.

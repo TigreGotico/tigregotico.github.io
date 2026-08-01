@@ -14,9 +14,7 @@ tags:
 draft: false
 ---
 
-Esiste un mito persistente secondo cui una buona sintesi vocale richiederebbe una
-GPU potente, una salata bolletta cloud e una chiave API con la vostra carta di
-credito allegata. Non è così. Una voce naturale e multilingue può stare in qualcosa
+Una buona sintesi vocale non richiede una GPU né un abbonamento cloud. Una voce naturale e multilingue può stare in qualcosa
 che vi vergognereste di chiamare server — quel genere di scheda che tenete in un
 cassetto "non si sa mai". Una patata.
 
@@ -45,9 +43,8 @@ conta *esattamente lo stesso* numero, perché condividono l'architettura VITS
 standard di phoonnx; la personalità vive nei pesi, non in capacità aggiuntiva.
 
 Per dare una prospettiva: un singolo strato di un "piccolo" modello linguistico
-moderno può portare più parametri di questo intero sintetizzatore vocale. Quindici
-milioni e mezzo sono all'incirca il peso di un'istantanea da telefono, e parla
-fluentemente.
+moderno può portare più parametri di questo intero sintetizzatore vocale, eppure
+parla fluentemente.
 
 ## Perché VITS, e perché ONNX
 
@@ -65,8 +62,7 @@ e portatile, e un grafo da 15 milioni di parametri rientra ampiamente in ciò ch
 core di classe Raspberry Pi mastica più veloce del tempo reale. Il risultato è un
 assistente vocale che continua a parlare quando la vostra connessione internet è
 giù, quando il provider cloud ha un'interruzione, o quando semplicemente non avete
-mai voluto che l'audio di casa uscisse di casa in primo luogo. **La sovranità dei
-dati qui non è un interruttore di funzionalità; è l'architettura.**
+mai voluto che l'audio di casa uscisse di casa in primo luogo.
 
 ## I fonemi sono dove si nasconde l'intelligenza
 
@@ -76,7 +72,7 @@ il duro lavoro linguistico *a monte*, nel phonemizer. Un phonemizer
 il modello effettivamente pronuncia — così che la rete VITS non debba mai imparare
 l'ortografia, ma solo il suono.
 
-Il nostro lavoro sui fonemi si fonda su **[grafema-a-IPA per oltre 350 lingue](/it/blog/2026-01-15-grapheme-to-ipa-for-350-languages)** e sulla **[fonetica classica del portoghese](/it/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**, che rendono possibile addestrare voci per lingue a basse risorse senza settimane di annotazione esperta.
+Il nostro lavoro sui fonemi si fonda su **[grafema-a-IPA per 807 lingue](/it/blog/2026-01-15-grapheme-to-ipa-for-350-languages)** e sulla **[fonetica classica del portoghese](/it/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**, che rendono possibile addestrare voci per lingue a basse risorse senza settimane di annotazione esperta.
 
 phoonnx è deliberatamente agnostico rispetto al phonemizer e ne raccoglie un
 piccolo esercito: `espeak-ng`, [gruut](https://github.com/rhasspy/gruut),
@@ -96,7 +92,7 @@ visto scritta.
 
 ## Un framework per *costruire* voci, non solo per eseguirle
 
-Questa è la parte che conta di più, e la parte che viene trascurata: phoonnx non è
+phoonnx non è
 solo un toolkit di inferenza. Il framework compagno
 [**`phoonnx_train`**](https://github.com/TigreGotico/phoonnx) è il modo in cui
 *creiamo* le voci in primo luogo.
@@ -105,9 +101,9 @@ solo un toolkit di inferenza. Il framework compagno
 
 - **Preelaborazione** di un dataset in stile LJSpeech in dati di addestramento
   fonemizzati.
-- **Addestramento** del generatore VITS (quei ~15,65M di parametri) con modeste ore
-  di GPU — questi sono modelli piccoli, quindi l'addestramento è economico e veloce
-  rispetto ai grandi sistemi vocali.
+- **Addestramento** del generatore VITS (quei ~15,65M di parametri) su una singola
+  GPU consumer o di fascia media — un modello così piccolo non richiede un cluster
+  di addestramento.
 - **Esportazione** del checkpoint finito in ONNX con un singolo script, pronto per
   essere calato direttamente in `onnxruntime` su un dispositivo.
 
@@ -155,5 +151,6 @@ giusta architettura resa piccola: VITS per la spina dorsale, phonemizer ingegnos
 per portare il carico linguistico, ONNX per la portabilità e un framework di
 addestramento aperto così che chiunque possa far crescere il catalogo.
 
-Quindici milioni e mezzo di parametri. Nessuna GPU. Nessun cloud. Nessuna scusa. Se
-gira su una patata, gira ovunque.
+Quindici milioni e mezzo di parametri, in esecuzione su CPU, addestrati su hardware
+che chiunque può possedere: questa è la pipeline di addestramento dietro ogni voce
+phoonnx.

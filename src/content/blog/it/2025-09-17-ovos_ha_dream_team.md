@@ -20,7 +20,7 @@ Questo articolo illustra i tre livelli di integrazione: i ponti Wyoming per la p
 
 -----
 
-## Dai a Home Assistant una voce alimentata da OVOS
+## Ponti Wyoming: i plugin vocali OVOS in Home Assistant
 
 Il protocollo Wyoming è l'interfaccia standard di HA per i servizi esterni di ASR, TTS e parola di attivazione. Abbiamo costruito ponti Wyoming che espongono qualsiasi plugin OVOS tramite questo protocollo, il che significa che HA ottiene l'accesso a ogni plugin dell'ecosistema OVOS, non solo a una ristretta lista selezionata.
 
@@ -31,26 +31,18 @@ Il protocollo Wyoming è l'interfaccia standard di HA per i servizi esterni di A
 
 Il progetto [OVOS Wyoming Docker](https://github.com/TigreGotico/ovos-wyoming-docker) impacchetta questi servizi in modo che siano a un solo `docker compose up` di distanza.
 
-### **In evidenza tra i plugin: TTS multilingue alimentato da ILENIA**
+### TTS multilingue da progetti linguistici a finanziamento pubblico
 
-Per noi, l'accessibilità è fondamentale. Ciò include l'accessibilità linguistica. Siamo orgogliosi che questa integrazione ci consenta di portare voci di alta qualità e finanziate con fondi pubblici, da progetti come [**ILENIA**](https://proyectoilenia.es/), a un pubblico più ampio. Gli utenti di Home Assistant ottengono voci dal suono naturale per lingue come il catalano e il galiziano, direttamente dai progetti che le hanno costruite.
+L'accessibilità include l'accessibilità linguistica. Questa integrazione porta voci di alta qualità e finanziate con fondi pubblici, da progetti come **[ILENIA](https://proyectoilenia.es/demostradores-2025/prototipo-ovos/)**, a un pubblico più ampio. Gli utenti di Home Assistant ottengono voci dal suono naturale per lingue come il catalano e il galiziano, direttamente dai progetti che le hanno costruite.
 
 * **Matxa TTS per il catalano:** Il plugin [`ovos-tts-plugin-matxa-multispeaker-cat`](https://github.com/OpenVoiceOS/ovos-tts-plugin-matxa-multispeaker-cat) fornisce capacità di sintesi vocale multi-speaker per la lingua catalana.
 * **NosTTS per il galiziano:** Il plugin [`ovos-tts-plugin-nos`](https://github.com/OpenVoiceOS/ovos-tts-plugin-nos) offre una sintesi vocale robusta in galiziano.
 
 ![logo ILENIA](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/ilenia.png)
 
-### **Configurare i servizi Wyoming in Home Assistant:**
-
-Quando configuri i servizi Wyoming in Home Assistant, di norma farai riferimento alla [documentazione ufficiale di Home Assistant](https://www.home-assistant.io/integrations/wyoming/). Questo processo di solito richiede semplicemente di inserire l'indirizzo IP del tuo container Docker (o dell'host che esegue i tuoi servizi OVOS Wyoming) nell'interfaccia web di Home Assistant.
-
-![configurazione di wyoming in Home Assistant](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/wyoming_setup.png)
-
-![entità wyoming in Home Assistant](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/wyoming_menu.png)
-
 -----
 
-## Lascia che OVOS sia il cervello della conversazione
+## Usare OVOS come agente conversazionale per Home Assistant
 
 Vuoi fare un passo in più? Puoi configurare OVOS come agente conversazionale a tutti gli effetti per Home Assistant utilizzando l'**integrazione Ollama**.
 
@@ -72,7 +64,7 @@ La [Home Assistant Voice Preview Edition](https://www.home-assistant.io/voice-pe
 
 -----
 
-## Dai il benvenuto ai tuoi dispositivi OVOS in Home Assistant con HiveMind
+## Portare i dispositivi OVOS in Home Assistant come entità con HiveMind
 
 Se hai dispositivi OVOS dedicati, l'integrazione [HiveMind HomeAssistant](https://github.com/JarbasHiveMind/hivemind-homeassistant) fa sì che compaiano come entità native in Home Assistant: un pannello di controllo unificato per l'intero parco dispositivi.
 
@@ -114,17 +106,15 @@ I dispositivi OVOS compaiono anche come normali lettori multimediali in Home Ass
 
 -----
 
-## Dai a OVOS le chiavi del regno
+## Controllare le entità di Home Assistant da OVOS
 
 La skill [skill-homeassistant](https://github.com/OscillateLabsLLC/skill-homeassistant), mantenuta dalla comunità, dà a OVOS il controllo diretto sulle entità di Home Assistant tramite l'API REST di HA. Installala sul tuo dispositivo OVOS e potrai dire "accendi le luci del soggiorno" o "imposta il termostato a 21 gradi", tutto in locale, senza cloud.
 
 -----
 
-## Lo strumento giusto per ogni compito
+## Cosa è ancora acerbo
 
-OVOS si occupa della voce; Home Assistant si occupa dell'automazione. Nessuno dei due scende a compromessi per svolgere il lavoro dell'altro, e i punti di integrazione sono abbastanza puliti da consentire a ciascun progetto di mantenere il proprio ciclo di rilascio.
-
-Segnalazioni di bug e PR sono benvenute in tutti i repository collegati sopra.
+I ponti Wyoming e l'integrazione HiveMind sono i pezzi più maturi qui; il percorso persona-server-come-agente-conversazionale è più recente e vale la pena provarlo per primo se vuoi vedere il limite di ciò che OVOS + HA possono fare insieme. Segnalazioni di bug e PR sono benvenute in tutti i repository collegati sopra.
 
 ---
 

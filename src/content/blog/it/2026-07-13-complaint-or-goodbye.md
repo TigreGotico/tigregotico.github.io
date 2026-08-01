@@ -3,6 +3,7 @@ title: "Il tuo modello di sentiment non sa distinguere un reclamo da un addio"
 description: "Due messaggi di supporto che sembrano arrabbiati. Uno sta per scalare l'escalation; l'altro sta per andarsene senza una parola. Quasi nessun modello di emozioni riesce a distinguerli — perché a tutti manca lo stesso asse. Presentiamo emotion-algebra."
 date: 2026-07-13
 lang: it
+updated: 2026-08-01
 author: "Casimiro Ferreira"
 tags:
   - "Affective Computing"
@@ -173,7 +174,7 @@ angry, afraid = affect_from_texts([
     "I don't know if I'm doing this right and I'm scared I've broken something.",
 ])
 
-angry.valence,  angry.potency    # -0.43, +0.16   -> 'annoyance'
+angry.valence,  angry.potency    # -0.43, +0.16   -> 'disgust'
 afraid.valence, afraid.potency   # -0.47, -0.43   -> 'apprehension'
 ```
 
