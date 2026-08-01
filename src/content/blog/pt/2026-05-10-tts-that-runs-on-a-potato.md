@@ -14,9 +14,7 @@ tags:
 draft: false
 ---
 
-Há um mito persistente de que uma boa síntese de fala precisa de uma GPU
-possante, de uma fatura gorda de nuvem e de uma chave de API com o teu cartão de
-crédito agrafado. Não precisa. Uma voz natural e multilingue cabe em algo que terias
+Uma boa síntese de fala não requer uma GPU nem uma subscrição de nuvem. Uma voz natural e multilingue cabe em algo que terias
 vergonha de chamar servidor — o tipo de placa que guardas numa gaveta "só por
 precaução". Uma batata.
 
@@ -44,9 +42,8 @@ número, porque partilham a arquitetura VITS padrão do phoonnx; a personalidade
 nos pesos, não em capacidade extra.
 
 Para pôr em perspetiva: uma única camada de um modelo de linguagem moderno
-"pequeno" pode carregar mais parâmetros do que este sintetizador de fala inteiro.
-Quinze milhões e meio é sensivelmente o peso de uma fotografia de telemóvel, e fala
-com fluência.
+"pequeno" pode carregar mais parâmetros do que este sintetizador de fala inteiro,
+e ainda assim fala com fluência.
 
 ## Porquê VITS, e porquê ONNX
 
@@ -63,8 +60,7 @@ um grafo de 15 milhões de parâmetros está bem dentro do que um núcleo à alt
 Raspberry Pi mastiga mais depressa do que em tempo real. O resultado é um assistente
 de voz que continua a falar quando a tua internet vai abaixo, quando o fornecedor de
 nuvem tem uma falha, ou quando simplesmente nunca quiseste que o áudio da tua casa
-saísse de casa. **A soberania dos dados não é aqui um interruptor de funcionalidade;
-é a arquitetura.**
+saísse de casa.
 
 ## Os fonemas são onde se esconde a inteligência
 
@@ -93,7 +89,7 @@ milhões de parâmetros soar bem numa língua de poucos recursos que nunca viu e
 
 ## Um framework para *construir* vozes, não só para as correr
 
-Esta é a parte que mais importa, e a parte que passa despercebida: o phoonnx não é
+O phoonnx não é
 apenas um toolkit de inferência. O framework companheiro
 [**`phoonnx_train`**](https://github.com/TigreGotico/phoonnx) é a forma como
 *fazemos* as vozes em primeiro lugar.
@@ -102,9 +98,9 @@ O `phoonnx_train` cobre o pipeline completo:
 
 - **Pré-processamento** de um dataset ao estilo LJSpeech em dados de treino
   fonemizados.
-- **Treino** do gerador VITS (aqueles ~15,65M de parâmetros) com tempo de GPU
-  modesto — estes são modelos pequenos, pelo que o treino é barato e rápido em
-  comparação com grandes sistemas de fala.
+- **Treino** do gerador VITS (aqueles ~15,65M de parâmetros) numa única GPU de
+  consumo ou de gama média — um modelo desta dimensão não precisa de um
+  cluster de treino.
 - **Exportação** do checkpoint acabado para ONNX com um único script, pronto a
   colocar diretamente no `onnxruntime` num dispositivo.
 
@@ -152,5 +148,6 @@ certa feita pequena: VITS para a espinha dorsal, phonemizers inteligentes para
 carregar a carga linguística, ONNX para portabilidade, e um framework de treino
 aberto para que qualquer pessoa possa fazer crescer o catálogo.
 
-Quinze milhões e meio de parâmetros. Sem GPU. Sem nuvem. Sem desculpas. Se corre numa
-batata, corre em todo o lado.
+Quinze milhões e meio de parâmetros, a correr em CPU, treinados em hardware que
+qualquer pessoa pode ter: é essa a pipeline de treino por trás de todas as vozes
+phoonnx.

@@ -1,7 +1,8 @@
 ---
 title: "Apresentamos os Nossos Scrapers de Bases de Dados de Música"
-description: "Uma visita guiada à família de clientes Python tipados que mantemos para fontes de música — Bandcamp, SoundCloud, SomaFM, TuneIn, iHeartRadio, e as grandes enciclopédias musicais — todos a emitir metadados de media consistentes e tipados por trás de uma interface limpa e a andar sobre o mesmo transporte anti-bot resiliente."
+description: "Uma visita guiada à família de clientes Python tipados que mantemos para fontes de música — Bandcamp, SoundCloud, SomaFM, TuneIn, iHeartRadio, e as grandes enciclopédias musicais — todos a emitir metadados de media consistentes e tipados por trás de uma interface limpa e a andar sobre o mesmo transporte HTTP conforme e de baixo volume."
 date: 2026-04-20
+updated: 2026-08-01
 lang: pt
 author: "Casimiro Ferreira"
 tags:
@@ -15,10 +16,10 @@ draft: false
 
 ## Uma interface para toda a web musical
 
-A web da música é gloriosamente fragmentada. O Bandcamp vende-te um FLAC e uma
+A web da música está fragmentada por muitos sites independentes. O Bandcamp vende-te um FLAC e uma
 licença Creative Commons; o SoundCloud transmite um remix que mais ninguém aloja;
-a SomaFM mantém um conjunto adorado de canais de rádio suportados pelos ouvintes;
-e um canto silencioso da internet mantém enciclopédias meticulosamente curadas de
+a SomaFM mantém um conjunto de canais de rádio suportados pelos ouvintes;
+e vários sites geridos pela comunidade mantêm enciclopédias curadas de
 rock progressivo, jazz, clássica e metal. Cada site tem a sua própria marcação, as
 suas próprias manias, a sua própria ideia do que sequer é uma "faixa".
 
@@ -26,7 +27,7 @@ Mantemos uma família de clientes Python pequenos, focados e de código aberto q
 domam essa confusão. Todos eles fazem, em espírito, a mesma coisa: alcançam uma
 fonte de música e devolvem-te **modelos de metadados de media tipados** — objetos
 validados em vez de dicionários frágeis — para que o resto do teu código nunca
-tenha de se importar de que site vieram os dados. Instala um, instala os nove;
+tenha de se importar de que site vieram os dados. Sete dos nove estão publicados no PyPI; os outros dois instalam-se diretamente a partir do GitHub. Todos
 falam o mesmo vocabulário.
 
 Eis a visita guiada.
@@ -80,12 +81,11 @@ metadados tipada.
 
 ## Enciclopédias e arquivos de música
 
-A segunda metade da família visa os grandes catálogos comunitários — os sites
-onde os humanos passaram anos a avaliar discografias e a discutir subgéneros.
+A segunda metade da família visa os grandes catálogos comunitários.
 
 **[pyprogarchives](https://github.com/TigreGotico/pyprogarchives)** (Prog
 Archives), **[pyjazzmusicarchives](https://github.com/TigreGotico/pyjazzmusicarchives)**
-(Jazz Music Archives), e
+(Jazz Music Archives) — ambos instalam-se diretamente a partir dos respetivos repositórios GitHub em vez do PyPI — e
 **[pyclassicalarchives](https://github.com/TigreGotico/pyclassicalarchives)**
 (Classical Archives) partilham uma forma quase idêntica: navegar o índice A–Z,
 procurar por nome, e obter uma página completa de artista ou compositor com
@@ -117,18 +117,21 @@ estendendo os mesmos padrões de metadados tipados a categorias de media mais
 amplas. Todos emitem o mesmo vocabulário para que um único consumidor a jusante
 lide com tudo de forma uniforme.
 
-## Construídos para sobreviver à web moderna
+## Construídos para acesso conforme e de baixo volume
 
-Um scraper que se parte na primeira vez que um site levanta uma parede de bots não
-vale nada. Por toda a família a camada HTTP é **plugável**, e onde os sites são
-ativamente defendidos contra bots os clientes recorrem por defeito a um transporte
-que se faz passar por um navegador — o `curl_cffi` a coincidir com as impressões
-digitais TLS/JA3 reais do Chrome — para superar desafios que rejeitam o `requests`
-comum. As enciclopédias por trás da Cloudflare podem adicionalmente encaminhar
-através de uma instância FlareSolverr para dados em direto, ou ler a partir do
-Wayback Machine do Internet Archive quando só precisas de *alguma coisa*. A camada
-de parsing é deliberadamente independente da forma como o HTML chega, por isso o
-mesmo código funciona seja qual for o transporte que escolheres.
+Estes clientes obtêm apenas páginas de catálogo públicas, a volumes de pedidos
+baixos, e verificam o `robots.txt` de cada site antes de fazer scraping — vê o
+**[artigo sobre robots.txt e sitemaps](/blog/2026-03-01-robot-txt-sitemaps-ethical-web-scraping)**
+para saber como funciona esse passo de reconhecimento. Por toda a família a
+camada HTTP é **plugável**: por defeito os clientes usam um transporte cujo
+handshake TLS coincide com o de um navegador real (`curl_cffi` a coincidir com
+o TLS/JA3 do Chrome), para que um cliente bem-comportado não seja classificado
+incorretamente como automação maliciosa por sistemas de deteção afinados para
+abuso automatizado. As enciclopédias por trás da Cloudflare podem
+adicionalmente encaminhar através de uma instância FlareSolverr para dados em
+direto, ou ler a partir do Wayback Machine do Internet Archive como reserva. A
+camada de parsing é deliberadamente independente da forma como o HTML chega,
+por isso o mesmo código funciona seja qual for o transporte que escolheres.
 
 ## Um catálogo de música multi-fonte
 
@@ -141,11 +144,11 @@ licenças, e pronto a alimentar um motor de recomendação, um servidor de media
 um dataset de investigação.
 
 Cada um destes clientes é software livre, auto-alojável, e corre no teu próprio
-hardware sem chaves de API para implorar. Escolhe a fonte que te interessa, faz
-`pip install`, e começa a construir.
+hardware, sem necessidade de chave de API. Escolhe a fonte que te interessa: faz
+`pip install` se estiver no PyPI, ou `pip install git+https://github.com/TigreGotico/<repo>` para o pyprogarchives e o pyjazzmusicarchives, que são apenas GitHub — e começa a construir.
 
 Todos os scrapers andam sobre as nossas
-**[camadas de transporte anti-bot](/pt/blog/2026-03-15-beating-bot-walls-with-drop-in-requests-sessions)**.
+**[sessões requests componíveis e prontas a usar](/blog/2026-03-15-beating-bot-walls-with-drop-in-requests-sessions)**.
 Os clientes de streaming e rádio emitem o esquema
 **[mediavocab](https://github.com/TigreGotico/mediavocab)** diretamente, e cada
 cliente expõe ids externos canónicos, para que os metadados de música se integrem

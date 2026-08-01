@@ -2,6 +2,7 @@
 title: "O teu modelo de sentimento não distingue uma queixa de uma despedida"
 description: "Duas mensagens de apoio ao cliente com ar zangado. Um cliente está prestes a escalar; o outro está prestes a ir-se embora sem dizer nada. Quase nenhum modelo de emoções os consegue distinguir — porque falta-lhes a todos o mesmo eixo. Apresentamos a emotion-algebra."
 date: 2026-07-13
+updated: 2026-08-01
 lang: pt
 author: "Casimiro Ferreira"
 tags:
@@ -167,7 +168,7 @@ angry, afraid = affect_from_texts([
     "I don't know if I'm doing this right and I'm scared I've broken something.",
 ])
 
-angry.valence,  angry.potency    # -0.43, +0.16   -> 'annoyance'
+angry.valence,  angry.potency    # -0.43, +0.16   -> 'disgust'
 afraid.valence, afraid.potency   # -0.47, -0.43   -> 'apprehension'
 ```
 
