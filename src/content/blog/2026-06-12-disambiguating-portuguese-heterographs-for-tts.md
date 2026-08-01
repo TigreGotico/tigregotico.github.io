@@ -11,7 +11,7 @@ tags:
   - "NLP"
   - "Accessibility"
   - "FOSS"
-draft: true
+draft: false
 ---
 
 ## Saying It Right: Disambiguating Portuguese Heterophones for TTS

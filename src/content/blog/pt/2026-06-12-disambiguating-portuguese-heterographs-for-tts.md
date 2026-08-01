@@ -12,7 +12,7 @@ tags:
   - "NLP"
   - "Accessibility"
   - "FOSS"
-draft: true
+draft: false
 ---
 
 ## Dizê-lo Corretamente: Desambiguar Heterófonos do Português para TTS

@@ -12,7 +12,7 @@ tags:
   - "NLP"
   - "Accessibility"
   - "FOSS"
-draft: true
+draft: false
 ---
 
 ## Decirlo Bien: Desambiguar Heterófonos del Portugués para TTS

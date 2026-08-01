@@ -12,7 +12,7 @@ tags:
   - "NLP"
   - "Accessibility"
   - "FOSS"
-draft: true
+draft: false
 ---
 
 ## 正しく発音する:TTS のためのポルトガル語異音同綴語の曖昧性解消

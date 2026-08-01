@@ -12,7 +12,7 @@ tags:
   - "NLP"
   - "Accessibility"
   - "FOSS"
-draft: true
+draft: false
 ---
 
 ## Pronunciarlo Bene: Disambiguare gli Eterofoni Portoghesi per il TTS
