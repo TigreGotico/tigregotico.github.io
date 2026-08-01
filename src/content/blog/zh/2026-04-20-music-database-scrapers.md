@@ -1,8 +1,9 @@
 ---
 title: "隆重推出我们的音乐数据库抓取器"
-description: "带你了解我们维护的一系列类型化 Python 客户端，覆盖各类音乐来源——Bandcamp、SoundCloud、SomaFM、TuneIn、iHeartRadio，以及各大音乐百科全书——它们全部通过一个简洁的接口输出一致的、类型化的媒体元数据，并共用同一套具有韧性的反爬传输层。"
+description: "带你了解我们维护的一系列类型化 Python 客户端，覆盖各类音乐来源——Bandcamp、SoundCloud、SomaFM、TuneIn、iHeartRadio，以及各大音乐百科全书——它们全部通过一个简洁的接口输出一致的、类型化的媒体元数据，并共用同一套合规、低请求量的 HTTP 传输层。"
 date: 2026-04-20
 lang: zh
+updated: 2026-08-01
 author: "Casimiro Ferreira"
 tags:
   - "Scrapers"
@@ -15,9 +16,9 @@ draft: false
 
 ## 一个接口，涵盖整个音乐网络
 
-音乐网络是极度碎片化的，且这种碎片化本身颇为壮观。Bandcamp 卖给你一个 FLAC 文件和一份知识共享许可证；SoundCloud 播放着别处找不到的混音；SomaFM 运营着一组深受喜爱、由听众赞助的电台频道；而互联网的某个安静角落里，则维护着关于前卫摇滚、爵士、古典和金属乐的精心整理的百科全书。每个网站都有自己的标记结构、自己的怪癖，甚至对"曲目"到底是什么都有自己的一套理解。
+音乐网络分散在许多各自独立的网站上。Bandcamp 卖给你一个 FLAC 文件和一份知识共享许可证；SoundCloud 播放着别处找不到的混音；SomaFM 运营着一组由听众赞助的电台频道；而不少社区运营的网站则维护着关于前卫摇滚、爵士、古典和金属乐的精心整理的百科全书。每个网站都有自己的标记结构、自己的怪癖，甚至对"曲目"到底是什么都有自己的一套理解。
 
-我们维护着一系列小巧、专注的开源 Python 客户端，用来驯服这团混乱。它们每一个在本质上都做着同样的事：伸手探入某个音乐来源，然后把 **类型化的媒体元数据模型** 交还给你——是经过校验的对象，而非脆弱的字典——这样你其余的代码就永远不必关心数据究竟来自哪个网站。装一个，或者九个全装上；它们说着同一套词汇。
+我们维护着一系列小巧、专注的开源 Python 客户端，用来驯服这团混乱。它们每一个在本质上都做着同样的事：伸手探入某个音乐来源，然后把 **类型化的媒体元数据模型** 交还给你——是经过校验的对象，而非脆弱的字典——这样你其余的代码就永远不必关心数据究竟来自哪个网站。九个客户端中有七个发布在 PyPI 上；另外两个则直接从 GitHub 安装。它们说着同一套词汇。
 
 下面就来逐一介绍。
 
@@ -35,22 +36,24 @@ draft: false
 
 ## 音乐百科全书与档案库
 
-这一系列的后半部分瞄准那些伟大的社区目录——那些网站里，人们花了多年时间给唱片目录评分、争论子流派。
+这一系列的后半部分瞄准那些伟大的社区目录。
 
-**[pyprogarchives](https://github.com/TigreGotico/pyprogarchives)**（Prog Archives）、**[pyjazzmusicarchives](https://github.com/TigreGotico/pyjazzmusicarchives)**（Jazz Music Archives）和 **[pyclassicalarchives](https://github.com/TigreGotico/pyclassicalarchives)**（Classical Archives）有着几乎一致的形态：浏览 A–Z 索引、按名称搜索、抓取一个完整的艺人或作曲家页面，附带传记、国家以及会员评分的唱片目录。Prog 和 Jazz Archives 抓取 HTML；Classical Archives 封装一个公开的 JSON API，并暴露某作曲家的专辑 *以及* 一棵递归展开的作品树。每个模型都通过 `to_external_ids_dict()` 携带该网站稳定的规范 id，这正是你交叉引用两个目录时所需要的。
+**[pyprogarchives](https://github.com/TigreGotico/pyprogarchives)**（Prog Archives）、**[pyjazzmusicarchives](https://github.com/TigreGotico/pyjazzmusicarchives)**（Jazz Music Archives，两者都直接从各自的 GitHub 仓库安装而非通过 PyPI）和 **[pyclassicalarchives](https://github.com/TigreGotico/pyclassicalarchives)**（Classical Archives）有着几乎一致的形态：浏览 A–Z 索引、按名称搜索、抓取一个完整的艺人或作曲家页面，附带传记、国家以及会员评分的唱片目录。Prog 和 Jazz Archives 抓取 HTML；Classical Archives 封装一个公开的 JSON API，并暴露某作曲家的专辑 *以及* 一棵递归展开的作品树。每个模型都通过 `to_external_ids_dict()` 携带该网站稳定的规范 id，这正是你交叉引用两个目录时所需要的。
 
 **[pymetal](https://github.com/TigreGotico/pymetal)** 是我们面向 Encyclopaedia Metallum（金属档案库）的客户端——也是这一系列中最雄心勃勃的一个。大多数抓取器会把一首曲目压平成 `(id, title, band, album)`。pymetal 拒绝丢失金属档案库单独保留的信息：一首曲目可以归属于 **多个乐队**（拼盘、合作），一支乐队的 **阵容会随时间切分**，而一首曲目可以 **出现在多个发行版上**（合辑、再版、单曲）。它把每一者都建模为以档案 id 为键的一等实体，因此重新抓取是幂等的。其端点覆盖面很广——高级的乐队/专辑/歌曲搜索、带有拼盘上各乐队归属的完整发行页、按状态分区并带角色时间范围的阵容、评论、推荐、外部链接和歌词——全部作为可通过 JSON 往返的 Pydantic v2 模型。
 
 除了音乐之外，**[tutubo](https://github.com/TigreGotico/tutubo)** 抓取 YouTube 和 YouTube Music，而 **[pymal](https://github.com/TigreGotico/pymal)** 覆盖 MyAnimeList——把同样的类型化元数据模式扩展到更广泛的媒体类别。它们全部输出同一套词汇，因此单一的下游使用方可以统一地处理一切。
 
-## 为在现代网络中存活而生
+## 为合规、低请求量的访问而生
 
-一个网站一挂起爬虫墙就崩溃的抓取器毫无价值。在整个系列中，HTTP 层是 **可插拔的**，而在那些主动做了反爬防御的网站上，客户端默认使用一个模拟浏览器的传输层——`curl_cffi`，匹配真实 Chrome 的 TLS/JA3 指纹——以通过那些会拒绝原生 `requests` 的挑战。由 Cloudflare 挡在前面的百科全书还可以额外通过一个 FlareSolverr 实例来获取实时数据，或者当你只需要 *拿到点东西* 时，从互联网档案馆的 Wayback Machine 读取。解析层刻意独立于 HTML 的到达方式，因此无论你选择哪种传输，同一套代码都能工作。
+这些客户端只抓取公开的目录页面，请求量很低，并且会在抓取前检查各站点的 `robots.txt`——参见
+**[关于 robots.txt 与 sitemap 的文章](/zh/blog/2026-03-01-robot-txt-sitemaps-ethical-web-scraping)**
+了解这一侦察步骤是如何工作的。在整个系列中，HTTP 层是 **可插拔的**：客户端默认使用一个 TLS 握手与真实浏览器相符的传输层（`curl_cffi`，匹配 Chrome 的 TLS/JA3），这样一个行为得体的客户端就不会被那些针对脚本化滥用调优的检测系统误判为恶意自动化程序。由 Cloudflare 挡在前面的百科全书还可以额外通过一个 FlareSolverr 实例来获取实时数据，或者以互联网档案馆的 Wayback Machine 作为回退。解析层刻意独立于 HTML 的到达方式，因此无论你选择哪种传输，同一套代码都能工作。
 
 ## 一个跨来源的音乐目录
 
 真正的回报，发生在你不再把这些当作九个独立工具的时候。因为它们全部输出同一套类型化的元数据词汇，也全部暴露规范的外部 id，你可以把单个艺人在 Bandcamp、SoundCloud、电台目录和百科全书之间散布展开，然后把结果折叠进一个连贯的目录——按身份去重、感知许可证、可直接喂给推荐引擎、媒体服务器或研究数据集。
 
-这些客户端每一个都是自由软件，可自托管，在你自己的硬件上运行，无需去乞求任何 API 密钥。挑选你在意的来源，`pip install`，然后开始构建。
+这些客户端每一个都是自由软件，可自托管，在你自己的硬件上运行，无需任何 API 密钥。挑选你在意的来源：如果它在 PyPI 上就 `pip install`，否则对于只在 GitHub 上发布的 pyprogarchives 和 pyjazzmusicarchives，用 `pip install git+https://github.com/TigreGotico/<repo>`——然后开始构建。
 
-所有抓取器都搭载我们的 **[反爬传输层](/zh/blog/2026-03-15-beating-bot-walls-with-drop-in-requests-sessions)**。流媒体与电台客户端直接输出 **[mediavocab](https://github.com/TigreGotico/mediavocab)** 模式，且每个客户端都暴露规范的外部 id，因此音乐元数据可与 **[media-archivist](https://github.com/TigreGotico/media-archivist)**（我们的跨来源索引器与去重元数据服务器）集成。
+所有抓取器都搭载我们的 **[可组合、即插即用的 requests 会话](/zh/blog/2026-03-15-beating-bot-walls-with-drop-in-requests-sessions)**。流媒体与电台客户端直接输出 **[mediavocab](https://github.com/TigreGotico/mediavocab)** 模式，且每个客户端都暴露规范的外部 id，因此音乐元数据可与 **[media-archivist](https://github.com/TigreGotico/media-archivist)**（我们的跨来源索引器与去重元数据服务器）集成。

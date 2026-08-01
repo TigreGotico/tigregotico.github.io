@@ -3,6 +3,7 @@ title: "推出首个巴兰克诺语音素转换器"
 description: "g2p_barranquenho 是首个面向巴兰克诺语的开放字素转音素转换器。巴兰克诺语是葡萄牙巴兰科斯的伊比利亚-罗曼语接触语言——其规则源自该市新近发布的正字法约定，可对照仓库中所收录的源文件进行审核。"
 date: 2025-12-12
 lang: zh
+updated: 2026-08-01
 author: "Casimiro Ferreira"
 tags:
   - "Phonemization"
@@ -18,18 +19,15 @@ draft: false
 
 巴兰克诺语既不是葡萄牙语的方言，也不是西班牙语的方言；它是一个真正独立的系统。巴兰科斯市议会最近发布了三份奠基性文献——一部词典、一份正字法约定和一部基础语法——为我们提供了所需的规则。相关公告：["Un Enormi Passu para u Barranquenhu i para a Cultura Barranquenha!"](https://cm-barrancos.pt/21976/un-enormi-passu-para-u-barranquenhu-i-para-a-cultura-barranquenha)。
 
-我们从那份正字法约定中推导出了规则集。该音素转换器会对小写化的输入执行两轮处理：
+我们从那份正字法约定中推导出了规则集——但我们并未手写一套针对文本的专用处理流程，而是将其作为一个语言规格 `ext-PT-x-barrancos`，纳入共享的 **[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)** 引擎。该规格的字素表、异音规则、重音模型和跨词连读规则描述了巴兰克诺语的每一种实际发音：多字母字素按约定文档所述合并（`tch` → /tʃ/、`ch` → /ʃ/、`nh` → /ɲ/、`lh` → /ʎ/），鼻化双元音出现在 `m`/`n` 之前，`v` 一律映射为 /b/，`h` 则表现为实际发音的 /h/——这与任何一种母语都不同。
 
-1. **二合字母轮次** — 合并多字母字素：`tch` → /tʃ/、`ch` → /ʃ/、`nh` → /ɲ/、`lh` → /ʎ/，以及前元音之前的 `qu`/`gu` → /k//g/。
-2. **字素轮次** — 用上下文敏感的规则将其余字符映射到 IPA：`m`/`n` 之前的鼻化双元音（例如 `an` → /ɐ͂/）、词尾 `e` → /ɨ/、`v` 一律 → /b/、除词首外 `s` 浊化为 /z/、`r` 与 `rr`（单闪音 vs 颤音），以及作为实际发音 /h/ 的 `h`——这与任何一种母语都不同。
-
-字素 `x` 的逻辑最为复杂，在巴兰克诺语约定未作规定之处会回退到葡萄牙语的上下文启发式规则。
+`g2p_barranquenho` 本身只是围绕 `orthography2ipa.G2P`、由该规格驱动的一个薄薄的调用端封装：它负责文本规范化（大小写折叠、切分成规格所需的形状）、数字展开，以及稳定的 `phonemize`/`transcribe` 接口，但不负责音系规则本身——改进规则意味着修改上游的规格，因此每个下游使用者都能共享同一处修复。
 
 实际运行中：
 
-> "Un Enormi Passu para u Barranquenhu i para a Cultura Barranquenha" → `ũ ẽjoɾmj pasu paɾɐ u bɐrɐ͂keɲu j paɾɐ ɐ kultuɾɐ bɐrɐ͂keɲɐ`
+> "Un Enormi Passu para u Barranquenhu i para a Cultura Barranquenha" → `ˈũ eˈnɔɾmi ˈpas̺u ˈpaɾɐ ˈu bɐrɐ̃ˈkɛɲu ˈi ˈpaɾɐ ɐ kuˈltuɾɐ bɐrɐ̃ˈkɛɲɐ`
 
-这个库是单个函数 `phonemize(word: str) -> list[str]`，运行时无任何依赖——纯 Python。源 PDF 文件（约定、词典、语法）都收录在仓库根目录中，因此规则可对照其来源进行审核。
+源 PDF 文件（约定、词典、语法）都收录在仓库根目录中，因此规则可对照其来源进行审核。
 
 ### 接下来是什么
 

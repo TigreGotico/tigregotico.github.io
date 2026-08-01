@@ -3,6 +3,7 @@ title: "不让任何语言掉队"
 description: "通过语言检测、翻译插件和双向翻译能力，消除 OpenVoiceOS 中的语言障碍。"
 date: 2023-10-16
 lang: zh
+updated: 2026-08-01
 author: "Casimiro Ferreira"
 tags:
   - "OVOS"
@@ -86,7 +87,7 @@ FasterWhisper 的语言分类器模型大小是可配置的：
     "ovos-utterance-translation-plugin": {
         "bidirectional": true,
         "verify_lang": false,
-        "ignore_invalid": true,
+        "ignore_invalid_langs": true,
         "translate_secondary_langs": true
     }
 },

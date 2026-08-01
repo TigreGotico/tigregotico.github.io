@@ -3,6 +3,7 @@ title: "面向葡萄牙语的经典 NLP：音节切分与字素到音素转换"
 description: "介绍我们基于规则、完全离线的葡萄牙语 NLP 技术栈 —— 用于音节切分的 silabificador 和支持方言的字素到音素转换工具 TugaPhone —— 以及它们如何与面向葡语各变体的更广泛的 orthography2ipa 工作相衔接。没有深度学习黑箱：确定性、快速、依赖极少。"
 date: 2026-02-28
 lang: zh
+updated: 2026-08-01
 author: "Casimiro Ferreira"
 tags:
   - "NLP"
@@ -14,7 +15,7 @@ tags:
 draft: false
 ---
 
-并非每一个语言问题都需要十亿参数。葡萄牙语文本处理有相当大一部分是由语言学家的规则所支配的，而这些规则早在有人训练神经网络之前就已被写下 —— 关于音节在何处断开、重音落在何处，以及某种拼写如何对应到某个读音的规则。当这些规则是明确的时候，正确的工具就是一个小巧、确定性、完全离线的库，你可以阅读它、审计它，并在任何地方运行它。这正是我们经典葡萄牙语 NLP 技术栈背后的理念：用于音节切分的 [silabificador](https://github.com/TigreGotico/silabificador) 和用于字素到音素转换（G2P）的 [TugaPhone](https://github.com/TigreGotico/tugaphone)。
+葡萄牙语中音节在何处断开、重音落在何处，以及某种拼写如何对应到某个读音，都遵循语言学家早在有人训练神经网络之前就已写下的规则。当这些规则是明确的时候，正确的工具就是一个小巧、确定性、完全离线的库，你可以阅读它、审计它，并在任何地方运行它。这正是我们经典葡萄牙语 NLP 技术栈背后的理念：用于音节切分的 [silabificador](https://github.com/TigreGotico/silabificador) 和用于字素到音素转换（G2P）的 [TugaPhone](https://github.com/TigreGotico/tugaphone)。
 
 ### 为何选择经典方法，又为何是现在
 
@@ -39,14 +40,14 @@ syllabify("computador")
 
 ```
 Choveu muito ontem à noite.
-pt-PT → ʃu·ˈvew mˈũj·tu ˈõ·tẽ ˈa nˈoj·tɨ
-pt-BR → ʃo·ˈvew mwˈĩ·tʊ ˈõ·tẽ ˈa nˈoj·tʃɪ
-pt-AO → ʃo·ˈvew mˈũjn·tʊ ˈõ·tẽ ˈa nˈoj·tɨ
-pt-MZ → ʃu·ˈvew mˈũj·tu ˈõ·tẽ ˈa nˈɔj·tɨ
-pt-TL → ʃo·ˈvew mˈuj·tʊ ˈõ·tẽ ˈa nˈojtʰ
+pt-PT → ʃuˈvew ˈmũjtu ˈõtɐ̃j a ˈnojt
+pt-BR → ʃoˈvew ˈmwĩtʊ ˈõtẽj a ˈnojtʃɪ
+pt-AO → ʃoˈvew ˈmũjntʊ ˈõntẽj a ˈnojtɨ
+pt-MZ → ʃoˈvew ˈmũjtu ˈõtẽj a ˈnɔjtɨ
+pt-TL → ʃoˈvew ˈmujtʊ ˈõntɐ̃j a ˈnojtʰ
 ```
 
-在底层，TugaPhone 是两种经典技术的**混合体**。它首先查询一部经过整理的语音词典（即上文提到的同一部 Portuguese Phonetic Lexicon）来处理已知词；对于任何不在词典中的词 —— 人名、新词、外来借词 —— 它会回退到基于规则的 G2P 引擎。整条流水线在每个阶段都是明确的：文本规范化、可选的词性标注、词典查询、基于规则的回退，最后是特定于方言的转换。
+在底层，TugaPhone 驱动共享的 `orthography2ipa` 候选词格引擎，并通过该引擎自身的扩展点在其上叠加葡萄牙语特有的处理。它查询一部经过整理的语音词典（即上文提到的同一部 Portuguese Phonetic Lexicon）来处理已知词；对于任何不在词典中的词 —— 人名、新词、外来借词 —— 词格会依据该方言的字素和音位变体规则生成候选。
 
 有两处细节值得特别说明。**数字规范化**会将数字转换成其葡萄牙语口语形式，并保持正确的性和数的一致：
 
@@ -55,18 +56,17 @@ from tugaphone.number_utils import normalize_numbers
 
 normalize_numbers("vou comprar 1 casa")    # uma casa
 normalize_numbers("vou adotar 2 cães")     # dois cães
-normalize_numbers("1ª vez")                # primeira vez
 ```
 
-它甚至遵循计数进制的惯例 —— `pt-PT` 采用长制的 `biliões`，`pt-BR` 采用短制的 `trilhões`。**同形词消歧**利用词性上下文，因此作为介词的 `para` 与作为动词的 `para` 会被区别对待。TugaPhone 在可用时可以使用 spaCy 或 Brill 标注器，但同时也自带一个无依赖、基于规则的回退方案，忠实于离线优先的原则。
+它甚至遵循计数进制的惯例 —— `pt-PT` 采用长制的 `biliões`，`pt-BR` 采用短制的 `trilhões`。**同形词消歧**被委托给 **[bifonia](https://github.com/TigreGotico/bifonia)** 库，该库掌握哪些异音同形词存在、各自对应哪种读音的知识——因此作为介词的 `para` 与作为动词的 `para` 会被区别对待——并在词格处理句子之前，用额外的变音符号标记出所选定的读音。
 
-其架构是一个清晰的层次结构 —— 句子 → 词 → 字素 → 字符 —— 在每个层级上应用上下文敏感的规则：字符层级的元音音质和辅音音位变体，字素层级的二合字母（如 ⟨ch⟩ 和 ⟨nh⟩）和双元音（如 ⟨ai⟩ 和 ⟨ou⟩），以及词层级的重音和音节切分。TugaPhone 在音节层复用了 `silabificador`，同时还搭配了配套库 **[Tugalex](https://github.com/TigreGotico/tugalex)**（词典与例外）和 **[TugaTagger](https://github.com/TigreGotico/tugatagger)**（词性标注）。这些都是小巧、可组合的部件 —— 每一个本身都能独立发挥作用。
+TugaPhone 通过驱动共享的 `orthography2ipa` 候选词格来完成音素转换：方言的选择*即是*对某个 `orthography2ipa` 方言规格的选择，因此各种方言现象——软颚化（betacism）、波尔图上升双元音、马德拉群岛 /l/ 腭化、亚速尔群岛 /u/ 前化、尾辅音连读等——都来自词格本身，而非事后的字符串修补。TugaPhone 只添加 `orthography2ipa` 刻意留给调用方的部分，并通过其自身的扩展点接入：性别感知的数字/序数词展开和 bifonia 的异音标记，作为引擎的规范化阶段在词格处理文本之前运行；来自 **[Tugalex](https://github.com/TigreGotico/tugalex)** 的经过整理的发音词典，按方言通过 `orthography2ipa.register_lexicon` 注册，因此一个被词典覆盖的词会走与规格自身例外相同的覆盖路径，词格只为词典未覆盖的词生成候选；音节切分来自 `orthography2ipa` 自身、由 `silabificador` 驱动的插件，因此重音会落在与 TugaPhone 本应选择的同一个音节上。这些都是喂给一个共享引擎的小巧、可组合的部件 —— 每一个本身都能独立发挥作用。
 
-TugaPhone 对自己的短板毫不掩饰：对于非洲和东帝汶方言，词典覆盖较为稀疏；次区域口音（波尔图、米尼奥、布拉加等）是对已记载特征的实验性近似；句子层级的韵律则被简化处理。这些都是被公开记录的局限，而非隐藏的失效模式 —— 这正是基于规则的系统所能带来的那种透明度。
+TugaPhone 对自己的短板毫不掩饰：对于非洲和东帝汶方言，词典覆盖较为稀疏；次区域口音（波尔图、米尼奥、布拉加等）是对已记载特征的实验性近似；句子层级的韵律则被简化处理。这些都是被公开记录的局限，而非隐藏的失效模式。
 
 ### 更宏观的图景：orthography2ipa
 
-葡萄牙语只是众多语言变体之一，而同样的工程模式可以推广。[orthography2ipa](https://github.com/TigreGotico/orthography2ipa) 是一个纯数据的 Python 包，包含有语言学依据的字素→IPA 及音位变体映射，覆盖 20 多个语系中的 350 多个语言代码。它划出了任何严肃的 G2P 系统都需要的一个清晰界限：**字素映射**说明某种拼写*能够*代表哪些音素，而**音位变体映射**则说明某个音素在给定上下文中实际是如何*呈现*出来的。区域变体被建模为各自独立的规范，通过带权重的多祖先谱系相互关联，因此方言树是从其父级继承数据，而不是重复地复制数据。
+葡萄牙语只是众多语言变体之一，而同样的工程模式可以推广。[orthography2ipa](https://github.com/TigreGotico/orthography2ipa) 是一个纯数据的 Python 包，包含有语言学依据的字素→IPA 及音位变体映射，覆盖 20 多个语系中的 807 种语言。它划出了任何严肃的 G2P 系统都需要的一个清晰界限：**字素映射**说明某种拼写*能够*代表哪些音素，而**音位变体映射**则说明某个音素在给定上下文中实际是如何*呈现*出来的。区域变体被建模为各自独立的规范，通过带权重的多祖先谱系相互关联，因此方言树是从其父级继承数据，而不是重复地复制数据。
 
 这与 TugaPhone 中 `pt-PT`、`pt-BR`、`pt-AO`、`pt-MZ` 和 `pt-TL` 背后的直觉如出一辙：将每一种葡语变体都视为拥有自身规则的一等公民，而不是对某个唯一标准口音的偏离。数据是声明式的，逻辑则轻薄而可插拔 —— 你可以阅读这些规则、引用其来源，并信任其输出。
 
@@ -81,4 +81,4 @@ pip install git+https://github.com/TigreGotico/silabificador
 
 若想了解更广泛的多语言映射，请参阅 [orthography2ipa](https://github.com/TigreGotico/orthography2ipa)。确定性、快速、离线，并为整个葡语世界的广度而打造。
 
-这套葡萄牙语语音学技术栈建立在我们的 **[面向 350 多种语言的字素到 IPA 工作](/zh/blog/2026-01-15-grapheme-to-ipa-for-350-languages)** 之上，为 **[能在土豆上运行的 TTS](/zh/blog/2026-05-10-tts-that-runs-on-a-potato)** 和 **[Miro 与 Dii 多语言语音](/zh/blog/2026-06-15-two-voices-every-language-miro-and-dii)** 构成了语音学的骨干。
+这套葡萄牙语语音学技术栈建立在我们的 **[面向 807 种语言的字素到 IPA 工作](/zh/blog/2026-01-15-grapheme-to-ipa-for-350-languages)** 之上，为 **[能在土豆上运行的 TTS](/zh/blog/2026-05-10-tts-that-runs-on-a-potato)** 和 **[Miro 与 Dii 多语言语音](/zh/blog/2026-06-15-two-voices-every-language-miro-and-dii)** 构成了语音学的骨干。
