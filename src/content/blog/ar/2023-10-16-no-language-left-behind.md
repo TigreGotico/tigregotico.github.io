@@ -2,6 +2,7 @@
 title: "لا لغة تُترك خلف الركب"
 description: "إزالة الحواجز اللغوية في OpenVoiceOS من خلال كشف اللغة وإضافات الترجمة وقدرات الترجمة ثنائية الاتجاه."
 date: 2023-10-16
+updated: 2026-08-01
 lang: ar
 author: "Casimiro Ferreira"
 tags:
@@ -86,7 +87,7 @@ draft: false
     "ovos-utterance-translation-plugin": {
         "bidirectional": true,
         "verify_lang": false,
-        "ignore_invalid": true,
+        "ignore_invalid_langs": true,
         "translate_secondary_langs": true
     }
 },

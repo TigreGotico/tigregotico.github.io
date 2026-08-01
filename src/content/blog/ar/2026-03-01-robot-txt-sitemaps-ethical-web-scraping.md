@@ -2,6 +2,7 @@
 title: "ملف Robots.txt وخرائط المواقع وكشط الويب الأخلاقي"
 description: "قبل أن تبني أداة كشط، استكشف الموقع. تقرأ أداة sitemapper ملف robots.txt، وتجلب كل خرائط الموقع، وتزحف اختياريًا عبر رسم الروابط البياني — بحيث تنطلق أداة الكشط لديك من عقد الموقع نفسه بدلًا من القوة الغاشمة."
 date: 2026-03-01
+updated: 2026-08-01
 lang: ar
 author: "Casimiro Ferreira"
 tags:
@@ -42,10 +43,12 @@ from sitemapper import discover
 
 info = discover("https://www.python.org")
 print(info.summary())
-# Base URL:         https://www.python.org
-# Sitemaps found:   1
+# Base URL:       https://www.python.org
+# Blocked:        False
+# Sitemaps found: 1
 # URLs in sitemaps: 342
-# Crawl-delay:      None
+# Crawl-delay:    None
+# Sitemap directives in robots.txt: 1
 
 # What pace does the site ask for?
 if info.robots.crawl_delay:
@@ -123,12 +126,12 @@ pip install sitemapper
 pip install sitemapper[stealth]   # adds curl_cffi TLS impersonation
 ```
 
-استخدمها كمكتبة، أو من سطر الأوامر — تُصدر `--json` الاكتشاف الكامل لتمريره إلى
-أدوات أخرى، وتضيف `--crawl` خطوة رسم الروابط البياني:
+استخدمها كمكتبة، أو من سطر الأوامر — تكتب `--json FILE` الاكتشاف الكامل إلى
+ملف لتستهلكه أدوات أخرى، وتضيف `--crawl` خطوة رسم الروابط البياني:
 
 ```bash
 python -m sitemapper https://example.com
-python -m sitemapper https://example.com --crawl --max-pages 50 --json
+python -m sitemapper https://example.com --crawl --max-pages 50 --json out.json
 ```
 
 إنها برمجية حرة وتعمل على عتادك الخاص. ابدأ كل أداة كشط بالاستطلاع.

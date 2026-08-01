@@ -20,7 +20,7 @@ draft: false
 
 -----
 
-## امنح Home Assistant صوتًا مدعومًا من OVOS
+## جسور Wyoming: إضافات صوت OVOS في Home Assistant
 
 بروتوكول Wyoming هو الواجهة القياسية في HA لخدمات ASR و TTS وكلمة التنبيه الخارجية. لقد بنينا جسور Wyoming التي تكشف أي إضافة OVOS عبر هذا البروتوكول — ما يعني أن HA يكتسب الوصول إلى كل إضافة في منظومة OVOS، وليس مجرد قائمة مختارة محدودة.
 
@@ -31,26 +31,18 @@ draft: false
 
 يقوم مشروع [OVOS Wyoming Docker](https://github.com/TigreGotico/ovos-wyoming-docker) بتحزيم هذه الخدمات بحيث تصبح على بُعد أمر `docker compose up` واحد.
 
-### **أبرز الإضافات: TTS متعدد اللغات مدعوم من ILENIA**
+### TTS متعدد اللغات من مشاريع لغوية مموَّلة عامًا
 
-بالنسبة إلينا، إمكانية الوصول أمر أساسي. وهذا يشمل إمكانية الوصول اللغوي. نحن فخورون بأن هذا التكامل يتيح لنا تقديم أصوات عالية الجودة ومموَّلة من الجهات العامة من مشاريع مثل [**ILENIA**](https://proyectoilenia.es/) إلى جمهور أوسع. يحصل مستخدمو Home Assistant على أصوات طبيعية للغات مثل الكتالانية والغاليسية، مباشرةً من المشاريع التي أنشأتها.
+إمكانية الوصول تشمل إمكانية الوصول اللغوي. يتيح هذا التكامل تقديم أصوات عالية الجودة ومموَّلة من الجهات العامة من مشاريع مثل **[ILENIA](https://proyectoilenia.es/demostradores-2025/prototipo-ovos/)** إلى جمهور أوسع. يحصل مستخدمو Home Assistant على أصوات طبيعية للغات مثل الكتالانية والغاليسية، مباشرةً من المشاريع التي أنشأتها.
 
 * **Matxa TTS للكتالانية:** توفر [`ovos-tts-plugin-matxa-multispeaker-cat`](https://github.com/OpenVoiceOS/ovos-tts-plugin-matxa-multispeaker-cat) إمكانات تحويل النص إلى كلام متعددة المتحدثين للغة الكتالانية.
 * **NosTTS للغاليسية:** تقدم [`ovos-tts-plugin-nos`](https://github.com/OpenVoiceOS/ovos-tts-plugin-nos) تحويلًا قويًا للنص إلى كلام بالغاليسية.
 
 ![شعار ILENIA](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/ilenia.png)
 
-### **إعداد خدمات Wyoming في Home Assistant:**
-
-عند تكوين خدمات Wyoming في Home Assistant، ستراجع عادةً [الوثائق الرسمية لـ Home Assistant](https://www.home-assistant.io/integrations/wyoming/). تتضمن هذه العملية عادةً مجرد إدخال عنوان IP الخاص بحاوية Docker (أو المضيف الذي يشغّل خدمات OVOS Wyoming) في واجهة الويب الخاصة بـ Home Assistant.
-
-![إعداد wyoming في Home Assistant](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/wyoming_setup.png)
-
-![كيانات wyoming في Home Assistant](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/wyoming_menu.png)
-
 -----
 
-## دع OVOS يكون عقل المحادثة
+## استخدام OVOS كوكيل محادثة لـ Home Assistant
 
 هل تريد الذهاب أبعد من ذلك خطوة؟ يمكنك إعداد OVOS كوكيل محادثة كامل الميزات لـ Home Assistant باستخدام **تكامل Ollama**.
 
@@ -72,7 +64,7 @@ draft: false
 
 -----
 
-## رحّب بأجهزة OVOS الخاصة بك في Home Assistant عبر HiveMind
+## إظهار أجهزة OVOS ككيانات Home Assistant عبر HiveMind
 
 إذا كانت لديك أجهزة OVOS مخصصة، فإن تكامل [HiveMind HomeAssistant](https://github.com/JarbasHiveMind/hivemind-homeassistant) يجعلها تظهر ككيانات أصلية في Home Assistant — لوحة تحكم موحّدة للأسطول بأكمله.
 
@@ -114,17 +106,15 @@ draft: false
 
 -----
 
-## امنح OVOS مفاتيح المملكة
+## التحكم في كيانات Home Assistant من OVOS
 
 تمنح [skill-homeassistant](https://github.com/OscillateLabsLLC/skill-homeassistant) التي تصونها المجتمع OVOS تحكمًا مباشرًا في كيانات Home Assistant عبر واجهة HA REST البرمجية. ثبّتها على جهاز OVOS الخاص بك ويمكنك أن تقول "أشعل أضواء غرفة المعيشة" أو "اضبط منظّم الحرارة على 21 درجة" — محليًا بالكامل، دون سحابة.
 
 -----
 
-## الأداة المناسبة لكل مهمة
+## ما هو غير ناضج بعد
 
-يتولى OVOS الصوت؛ ويتولى Home Assistant الأتمتة. ولا يتنازل أيٌّ منهما ليؤدي عمل الآخر، ونقاط التكامل نظيفة بما يكفي ليحتفظ كل مشروع بدورة إصداراته الخاصة.
-
-تقارير الأخطاء وطلبات السحب مرحّب بها عبر المستودعات المرتبطة أعلاه.
+جسور Wyoming وتكامل HiveMind هما أنضج الأجزاء هنا؛ أما مسار ovos-persona-server كوكيل محادثة فهو أحدث عهدًا، ويستحق أن تجرّبه أولًا إن أردت رؤية سقف ما يمكن أن يفعله OVOS و Home Assistant معًا. تقارير الأخطاء وطلبات السحب مرحّب بها عبر المستودعات المرتبطة أعلاه.
 
 ---
 
