@@ -1,8 +1,9 @@
 ---
-title: "Grafema a IPA para 676 lenguas"
-description: "orthography2ipa es un recurso de datos puros, con fundamento lingüístico, que mapea la ortografía a IPA y modela cómo los fonemas se realizan como alófonos a lo largo de ~750 especificaciones de lengua, 676 lenguas y más de 20 familias lingüísticas. Un enrejado de candidatos, linaje dialectal y un conjunto de especificaciones validado por esquema y citado a la literatura dialectológica — sin pesos entrenados, totalmente autoalojable."
+title: "Grafema a IPA para 807 lenguas"
+description: "orthography2ipa es un recurso de datos puros, con fundamento lingüístico, que mapea la ortografía a IPA y modela cómo los fonemas se realizan como alófonos a lo largo de 896 especificaciones, 807 lenguas y más de 20 familias lingüísticas. Enrejado de candidatos, tokenizador de máxima coincidencia, métricas de distancia fonológica y de escritura, linaje dialectal, y especificaciones citadas a la literatura dialectológica — sin pesos entrenados, totalmente autoalojable."
 date: 2026-01-15
 lang: es
+updated: 2026-08-01
 author: "Casimiro Ferreira"
 tags:
   - "G2P"
@@ -16,7 +17,7 @@ tags:
 draft: false
 ---
 
-**[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)** es un paquete de Python de datos puros — JSON declarativo, lógica fina y conectable, sin pesos entrenados — que mapea la ortografía a IPA y modela cómo esos fonemas se realizan en contexto. Incluye **~750 especificaciones de lengua que cubren 676 lenguas** (más 73 nodos de clado solo para clasificación) a lo largo de **más de 20 familias lingüísticas**. Instálelo, lea los datos, bifurque los datos. Nada está oculto en un checkpoint.
+**[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)** es un paquete de Python de datos puros — JSON declarativo, lógica fina y conectable, sin pesos entrenados — que mapea la ortografía a IPA y modela cómo esos fonemas se realizan en contexto. Incluye **896 especificaciones de lengua que cubren 807 lenguas** (más 89 nodos de clado solo para clasificación) a lo largo de **más de 20 familias lingüísticas**. Instálelo, lea los datos, bifurque los datos. Nada está oculto en un checkpoint.
 
 Es la capa de fonología que hay debajo de todo lo que está aguas abajo: el enrejado de candidatos que produce lo consume el frontend de TTS árabe [arbtok](https://github.com/TigreGotico/arbtok), las pilas del portugués [TugaPhone](https://github.com/TigreGotico/tugaphone) y [silabificador](https://github.com/TigreGotico/silabificador) (véase **[NLP clásico para sílabas y fonemas del portugués](/es/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**), el [fonemizador del barranqueño](/es/blog/2025-12-12-barranquenho), el fonemizador del mirandés y la base fonémica para **[TTS que funciona en una patata](/es/blog/2026-05-10-tts-that-runs-on-a-potato)**.
 
@@ -51,11 +52,11 @@ Los árboles dialectales se mantienen manejables porque los archivos JSON admite
 
 ## Profundo sobre el terreno, no solo amplio
 
-La cifra de 676 es la amplitud; la profundidad es donde está el trabajo. Las especificaciones van lecto por lecto allí donde lo hace la literatura dialectológica, y cada una se cita a esa literatura con referencias de página en vez de deducirse por coincidencia de patrones a partir de una tabla de fonemas.
+La cifra de 807 es la amplitud; la profundidad es donde está el trabajo. Las especificaciones van lecto por lecto allí donde lo hace la literatura dialectológica, y cada una se cita a esa literatura con referencias de página en vez de deducirse por coincidencia de patrones a partir de una tabla de fonemas.
 
 La cobertura **ibérica** es el ejemplo más claro: **más de 100 especificaciones** para las lenguas de la península. Cada lengua romance de España — castellano, catalán/valenciano, gallego (tanto la norma de la RAG como la reintegracionista), asturiano, aragonés y sus variedades de valle (ansotano, chistabín, benasqués…), extremeño — junto al euskera, los criollos iberorromances y las capas históricas que la mayoría de los recursos omiten por completo: el **árabe andalusí** y el **mozárabe**. La vertiente árabe lleva **34 lectos dialectales** (del najdí y el hejazí pasando por el levantino, el magrebí y las variedades peninsulares), y la vertiente lusófona **46 lectos del portugués y de lenguas de Portugal**, hasta el rionorés, el guadramilés y los subdialectos del mirandés.
 
-Que sepamos, varias de estas son la **primera fonología legible por máquina** jamás publicada para la variedad — el rionorés, el guadramilés, el benasqués, el angolar y el árabe andalusí entre ellas — y el trabajo aguas abajo entrega los **primeros diccionarios de IPA** para el **barranqueño** y el **mirandés**.
+Que sepamos, varias de estas son la **primera fonología legible por máquina** jamás publicada para la variedad — es decir, una especificación estructurada y validada por esquema de grafemas y alófonos que un programa puede consultar, a diferencia de un inventario fonémico descrito solo en prosa en la literatura dialectológica — el rionorés y el guadramilés entre ellas. El trabajo aguas abajo entrega los **primeros diccionarios de IPA** para el **barranqueño** y el **mirandés**.
 
 ## Un enrejado de candidatos, no una única conjetura
 
@@ -83,13 +84,13 @@ Como los datos están estructurados en vez de horneados en pesos, puedes compara
 from orthography2ipa.distance import phonological_distance
 d = phonological_distance(orthography2ipa.get("pt-BR"), orthography2ipa.get("pt-PT"))
 
-d.combined                    # 0.04 — near-identical
+d.combined                    # 0.0515 — near-identical
 d.inventory.feature_mean      # phoneme-inventory distance
 d.grapheme.mean_ipa_distance  # grapheme-mapping divergence
 d.allophone_sim               # allophone-overlap similarity
 ```
 
-Los vectores de rasgos también están expuestos, de modo que un par casi idéntico como los dos estándares del portugués aterriza en 0,04 mientras que pares genuinamente distantes se separan con claridad. Esto es útil por igual para decisiones de aprendizaje por transferencia, para el arranque de lenguas de pocos recursos y para la dialectometría.
+Los vectores de rasgos también están expuestos, de modo que un par casi idéntico como los dos estándares del portugués aterriza en 0,0515 mientras que pares genuinamente distantes se separan con claridad. Esto es útil por igual para decisiones de aprendizaje por transferencia, para el arranque de lenguas de pocos recursos y para la dialectometría.
 
 ## Cómo sabemos si los datos son buenos
 

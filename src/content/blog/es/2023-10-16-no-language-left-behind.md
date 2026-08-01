@@ -3,6 +3,7 @@ title: "Ninguna Lengua Dejada Atrás"
 description: "Eliminar las barreras lingüísticas en OpenVoiceOS mediante la detección de idioma, los plugins de traducción y las capacidades de traducción bidireccional."
 date: 2023-10-16
 lang: es
+updated: 2026-08-01
 author: "Casimiro Ferreira"
 tags:
   - "OVOS"
@@ -86,7 +87,7 @@ El modo opcional `verify_lang` verifica de forma cruzada el idioma detectado del
     "ovos-utterance-translation-plugin": {
         "bidirectional": true,
         "verify_lang": false,
-        "ignore_invalid": true,
+        "ignore_invalid_langs": true,
         "translate_secondary_langs": true
     }
 },

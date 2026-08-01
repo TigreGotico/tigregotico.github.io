@@ -1,6 +1,6 @@
 ---
-title: "Vencer los muros anti-bot con sesiones requests componibles y directas"
-description: "Cómo mantenemos un acceso resiliente a datos públicos sin arrancar un navegador headless en la ruta caliente: suplantación de huella TLS, un proxy FlareSolverr para los desafíos JS, un respaldo a Wayback Machine, y rotación de IP — todo tras dos subclases componibles de requests.Session, unblock_requests y anon_requests."
+title: "Sesiones requests componibles y directas para un acceso resiliente a datos públicos"
+description: "Dos subclases componibles de requests.Session para leer páginas web públicas de forma fiable sin un navegador headless en la ruta caliente: transporte compatible con TLS, un proxy FlareSolverr para los desafíos JS, un respaldo a Wayback Machine, y peticiones con IP diversificada — unblock_requests y anon_requests."
 date: 2026-03-15
 lang: es
 author: "Casimiro Ferreira"
@@ -16,21 +16,38 @@ draft: false
 
 Buena parte de nuestro trabajo — clientes de metadatos multimedia,
 enriquecimiento de catálogos, archivado — depende de leer páginas web
-**públicas** de forma fiable. El problema rara vez son los datos; es el muro que
-hay delante de ellos. Y el muro plantea dos preguntas separadas:
+**públicas** de forma fiable. El problema rara vez son los datos; es que buena
+parte de la infraestructura de detección de bots está ajustada contra ataques
+programados y acaba clasificando erróneamente como uno de ellos a cualquier
+cliente no-navegador que se comporta bien. Eso ocurre en dos ejes separados:
 
-- **"¿Qué eres?"** — Cloudflare y compañía bloquean las peticiones no por *qué*
+- **"¿Qué eres?"** — Cloudflare y compañía marcan las peticiones no por *qué*
   pides sino por *cómo* te ves en el cable: tu handshake TLS, tu huella JA3, si
-  puedes ejecutar un desafío de JavaScript.
+  puedes ejecutar un desafío de JavaScript. Un handshake `requests` normal no se
+  parece en nada al de un navegador, así que queda atrapado por comprobaciones
+  pensadas para el abuso programado aunque el tráfico en sí sea inocuo.
 - **"¿Quién eres?"** — la reputación de IP y los límites de tasa ignoran tu
-  huella por completo; cuentan cuántas peticiones vienen de una sola dirección.
+  huella por completo; cuentan cuántas peticiones vienen de una sola dirección,
+  lo que puede penalizar a un único cliente que se comporta bien tan fácilmente
+  como a uno abusivo.
 
-Las dos preguntas son ortogonales, así que las respondemos con dos pequeñas
+Los dos ejes son ortogonales, así que los respondemos con dos pequeñas
 bibliotecas que se apilan de forma limpia: **unblock_requests** responde a *qué
 eres*, **anon_requests** responde a *quién eres*. Ambas son sustitutas directas
 de una sesión `requests` en el código de cada día. Esta entrada trata
 específicamente de esa capa de transporte — la parte de los bytes en el cable —
 no del análisis ni de la pipeline que se asienta encima.
+
+**El alcance, dicho con claridad:** estos transportes son solo para páginas
+públicas y sin autenticación. Respetan `robots.txt` y cualquier crawl-delay
+declarado — véase nuestra **[entrada sobre robots.txt y
+sitemaps](/es/blog/2026-03-01-robot-txt-sitemaps-ethical-web-scraping)** para
+cómo comprobamos eso antes de escribir un scraper — y todo cliente construido
+sobre ellos se mantiene con volúmenes de petición bajos, de modo que un origen
+objetivo nunca ve carga significativa procedente de nosotros. Eso no es un
+aviso legal añadido a posteriori; es una restricción de ingeniería real sobre
+cómo se usan estas sesiones, porque un cliente resiliente que además es
+desconsiderado frustra su propio propósito.
 
 ## La restricción de diseño: mantener la forma de `requests`
 
@@ -58,14 +75,15 @@ en la pantalla de nadie, y nada en la ruta caliente necesita una pantalla.
 
 ## Capa uno: `unblock_requests` y sus transportes
 
-`unblock_requests` defiende contra la **detección de bots**. Eliges un
+`unblock_requests` hace que un cliente Python normal sea interoperable con las
+**comprobaciones de detección de bots ajustadas para navegadores**. Eliges un
 transporte con el kwarg `mode=` (o la variable de entorno
 `UNBLOCK_REQUESTS_TRANSPORT` — los kwargs explícitos siempre ganan). Los cuatro
 principales:
 
 | Modo | Qué hace |
 |---|---|
-| `curl_cffi` *(por defecto)* | Suplantación de TLS/JA3 de Chrome mediante `curl_cffi`. Supera la verificación de bots en la mayoría de las redes sin infraestructura adicional. |
+| `curl_cffi` *(por defecto)* | Suplantación de TLS/JA3 de Chrome mediante `curl_cffi`. Pasa como un handshake con forma de navegador en la mayoría de las redes sin infraestructura adicional. |
 | `requests` | `requests` plano, sin suplantación. |
 | `flaresolverr` | Hace de proxy a través de un navegador headless FlareSolverr que resuelve el desafío JS — datos **en vivo**. |
 | `wayback` | Lee la última instantánea del Internet Archive — obsoleta, pero no necesita nada. |
@@ -115,11 +133,14 @@ desde un archivo.
 
 ## Capa dos: `anon_requests` y la rotación de IP
 
-El problema ortogonal es la **reputación de IP**. Incluso una huella perfecta
-acaba con límite de tasa o baneada si cada petición viene de una sola dirección.
-`anon_requests` lo gestiona con `RotatingProxySession` (proxies públicos
-extraídos, validación opcional, SOCKS5/HTTP) y `RotatingTorSession` (circuitos
-Tor rotatorios). Cada petición sale por un exit fresco, y los proxies muertos se
+El problema ortogonal es la **reputación de IP**. Incluso un handshake con
+forma de navegador perfecta puede acabar con límite de tasa si cada petición
+viene de una sola dirección — las heurísticas basadas en volumen miran la
+dirección, no la huella. `anon_requests` reparte la carga entre direcciones con
+`RotatingProxySession` (proxies públicos extraídos, validación opcional,
+SOCKS5/HTTP) y `RotatingTorSession` (circuitos Tor rotatorios), de modo que un
+cliente de bajo volumen nunca se confunde con uno que bombardea un sitio desde
+una única IP. Cada petición sale por un exit fresco, y los proxies muertos se
 apartan de la rotación al fallar la conexión.
 
 ```python
@@ -129,7 +150,7 @@ with RotatingProxySession(proxy_type=ProxyType.SOCKS5, validate=True) as s:
     print(s.get("https://ipecho.net/plain", timeout=5).text)  # a new IP each time
 ```
 
-## La composición: rotación **y** bypass a la vez
+## La composición: carga distribuida **y** un handshake compatible a la vez
 
 Estas dos bibliotecas están diseñadas para apilarse en vez de solaparse. Las
 sesiones de `anon_requests` aceptan un `session_factory` — cualquier callable que
@@ -145,14 +166,15 @@ from unblock_requests import CloudflareSession
 session = RotatingProxySession(
     session_factory=lambda: CloudflareSession(flaresolverr_url="http://host:8191"),
 )
-session.get(url)   # rotates the IP *and* solves Cloudflare
+session.get(url)   # spreads load across IPs *and* uses a browser-compatible handshake
 ```
 
 El proxy rotado fluye a través de *cada* transporte — incluido dentro de
 FlareSolverr, que conduce su navegador headless mediante el campo `proxy` de la
-petición de resolución. Así que la IP que resuelve el desafío es la misma IP
-rotada que usa el resto de la petición: sin una separación huella/nodo-de-salida
-que un defensor pueda notar.
+petición de resolución. Así que toda la petición — handshake, resolución del
+desafío y IP de salida — se mantiene coherente de principio a fin, que es
+simplemente el comportamiento correcto para un cliente que no intenta
+aparentar ser más de un visitante.
 
 ## Por qué esta forma
 
