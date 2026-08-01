@@ -8,7 +8,7 @@ order: 6
 
 Whether you need a quote for a custom project, have a question about our products, or just want to discuss a FOSS collaboration, we're ready to listen.
 
-**Email:** [jarbasai@mailfence.com](mailto:jarbasai@mailfence.com)
+**Email:** [contact@tigregotico.pt](mailto:contact@tigregotico.pt)
 
 **Response time:** We typically respond within 24 hours.
 

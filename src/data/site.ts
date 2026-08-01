@@ -7,7 +7,7 @@ export const site = {
   title: 'TigreGótico — Privacy-First Voice Technology',
   description:
     'FOSS AI and voice technology specialists. Creators of the HiveMind stack and core contributors to OpenVoiceOS, building privacy-first, GDPR-compliant voice solutions.',
-  email: 'jarbasai@mailfence.com',
+  email: 'contact@tigregotico.pt',
   nif: 'PT517914190',
   address: {
     lines: ['Praceta António Sérgio, nº 317, 4º Esquerdo', '4450-048 Matosinhos', 'Portugal'],

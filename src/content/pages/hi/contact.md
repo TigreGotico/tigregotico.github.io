@@ -10,7 +10,7 @@ order: 6
 कोई प्रश्न हो, या बस किसी FOSS सहयोग पर चर्चा करना चाहते हों, हम सुनने के लिए
 तैयार हैं।
 
-**ईमेल:** [jarbasai@mailfence.com](mailto:jarbasai@mailfence.com)
+**ईमेल:** [contact@tigregotico.pt](mailto:contact@tigregotico.pt)
 
 **प्रतिक्रिया समय:** हम आमतौर पर 24 घंटों के भीतर उत्तर देते हैं।
 

@@ -55,4 +55,4 @@ VAT (NIF): PT517914190
 ## 문의
 
 이 방침에 대해 궁금한 점이 있으시면
-[jarbasai@mailfence.com](mailto:jarbasai@mailfence.com)으로 문의하십시오.
+[contact@tigregotico.pt](mailto:contact@tigregotico.pt)으로 문의하십시오.

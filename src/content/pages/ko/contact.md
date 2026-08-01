@@ -9,7 +9,7 @@ order: 6
 맞춤형 프로젝트 견적이 필요하시든, 저희 제품에 대한 질문이 있으시든, 아니면 그저 FOSS
 협업을 논의하고 싶으시든, 저희는 귀를 기울일 준비가 되어 있습니다.
 
-**이메일:** [jarbasai@mailfence.com](mailto:jarbasai@mailfence.com)
+**이메일:** [contact@tigregotico.pt](mailto:contact@tigregotico.pt)
 
 **응답 시간:** 저희는 보통 24시간 이내에 응답합니다.
 

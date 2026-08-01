@@ -59,4 +59,4 @@ Btw (NIF): PT517914190
 ## Vragen
 
 Stel ons gerust alles over dit beleid via
-[jarbasai@mailfence.com](mailto:jarbasai@mailfence.com).
+[contact@tigregotico.pt](mailto:contact@tigregotico.pt).

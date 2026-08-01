@@ -10,7 +10,7 @@ Precisa de um orçamento para um projeto à medida, tem uma dúvida sobre os
 nossos produtos, ou quer simplesmente discutir uma colaboração em código
 aberto? Estamos prontos para ouvir.
 
-**Email:** [jarbasai@mailfence.com](mailto:jarbasai@mailfence.com)
+**Email:** [contact@tigregotico.pt](mailto:contact@tigregotico.pt)
 
 **Tempo de resposta:** normalmente respondemos em 24 horas.
 

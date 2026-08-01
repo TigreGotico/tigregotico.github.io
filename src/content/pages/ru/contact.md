@@ -9,7 +9,7 @@ order: 6
 Нужна ли вам смета на заказной проект, есть вопрос о наших продуктах или вы
 просто хотите обсудить сотрудничество в области FOSS — мы готовы выслушать.
 
-**Email:** [jarbasai@mailfence.com](mailto:jarbasai@mailfence.com)
+**Email:** [contact@tigregotico.pt](mailto:contact@tigregotico.pt)
 
 **Время ответа:** обычно мы отвечаем в течение 24 часов.
 

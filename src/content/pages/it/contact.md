@@ -8,7 +8,7 @@ order: 6
 
 Che tu abbia bisogno di un preventivo per un progetto personalizzato, abbia una domanda sui nostri prodotti, o voglia semplicemente discutere una collaborazione FOSS, siamo pronti ad ascoltare.
 
-**Email:** [jarbasai@mailfence.com](mailto:jarbasai@mailfence.com)
+**Email:** [contact@tigregotico.pt](mailto:contact@tigregotico.pt)
 
 **Tempo di risposta:** di norma rispondiamo entro 24 ore.
 

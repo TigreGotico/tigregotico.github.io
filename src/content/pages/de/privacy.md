@@ -61,4 +61,4 @@ USt-IdNr. (NIF): PT517914190
 ## Fragen
 
 Fragen Sie uns alles zu dieser Richtlinie unter
-[jarbasai@mailfence.com](mailto:jarbasai@mailfence.com).
+[contact@tigregotico.pt](mailto:contact@tigregotico.pt).
