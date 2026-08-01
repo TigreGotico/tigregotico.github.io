@@ -25,7 +25,7 @@
     /* Gradient + glow system — amber to ember. */
     --grad-from: 245 158 11;
     --grad-via: 217 119 6;
-    --grad-to: 180 83 9;
+    --grad-to: 207 95 10;
     --gradient-brand: linear-gradient(
       120deg,
       rgb(var(--grad-from)),
@@ -59,7 +59,7 @@
 
     --grad-from: 251 191 36;
     --grad-via: 245 158 11;
-    --grad-to: 180 83 9;
+    --grad-to: 207 95 10;
 
     --shadow-elevate: 0 1px 2px rgb(0 0 0 / 0.5),
       0 16px 40px -18px rgb(0 0 0 / 0.7);
@@ -84,7 +84,7 @@
     /* Blue → indigo with a gold sheen at the tail. */
     --grad-from: 37 99 235;
     --grad-via: 67 56 202;
-    --grad-to: 184 134 11;
+    --grad-to: 151 110 9;
 
     --shadow-elevate: 0 1px 2px rgb(15 23 42 / 0.06),
       0 12px 32px -16px rgb(15 23 42 / 0.18);
@@ -106,7 +106,7 @@
     --color-accent: 212 175 55;
 
     --grad-from: 96 165 250;
-    --grad-via: 99 102 241;
+    --grad-via: 102 105 248;
     --grad-to: 212 175 55;
 
     --shadow-elevate: 0 1px 2px rgb(0 0 0 / 0.6),
@@ -174,8 +174,8 @@
     --color-primary-fg: 255 255 255;
     --color-accent: 192 38 211;
 
-    --grad-from: 139 92 246;
-    --grad-via: 217 70 239;
+    --grad-from: 132 87 234;
+    --grad-via: 184 60 203;
     --grad-to: 124 58 237;
 
     --shadow-elevate: 0 1px 2px rgb(80 20 120 / 0.1),
@@ -198,7 +198,7 @@
 
     --grad-from: 167 139 250;
     --grad-via: 232 121 249;
-    --grad-to: 139 92 246;
+    --grad-to: 142 94 251;
 
     --shadow-elevate: 0 1px 2px rgb(0 0 0 / 0.5),
       0 16px 40px -18px rgb(0 0 0 / 0.7);

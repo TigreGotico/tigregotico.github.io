@@ -7,11 +7,20 @@
 // orthogonal to the light/dark ThemeToggle. Vanilla JS, no framework.
 //
 // `compact` renders a smaller trigger suited to the mobile menu row.
+import { ui, type Locale } from '../i18n';
+
 interface Props {
   compact?: boolean;
   id?: string;
+  locale?: Locale;
 }
-const { compact = false, id = 'palette-selector' } = Astro.props;
+// Base.astro doesn't pass a `locale` prop down to this component, so the
+// locale is derived from the URL the same way Base.astro's own language
+// switcher does (matching a leading locale-segment prefix).
+const localePrefix = /^\/(pt|es|de|nl|fr|it|ru|ar|fa|hi|zh|ko|ja)(?=\/|$)/;
+const detected = Astro.url.pathname.match(localePrefix)?.[1] as Locale | undefined;
+const { compact = false, id = 'palette-selector', locale = detected ?? 'en' } = Astro.props;
+const t = ui[locale].a11y;
 const menuId = `${id}-menu`;
 const labelId = `${id}-label`;
 
@@ -53,7 +62,8 @@ const palettes = [
       'inline-flex items-center justify-center rounded-lg border border-border text-fg transition-colors hover:border-primary hover:text-primary',
       compact ? 'h-9 gap-2 px-3 text-sm' : 'h-9 w-9',
     ]}
-    aria-label="Choose color palette"
+    aria-label={t.choosePalette}
+    data-palette-trigger-base-label={t.choosePalette}
     aria-haspopup="menu"
     aria-expanded="false"
     aria-controls={menuId}
@@ -74,7 +84,7 @@ const palettes = [
       <circle cx="6.5" cy="12.5" r="1.5" fill="currentColor" stroke="none"></circle>
       <path d="M12 2a10 10 0 1 0 0 20 2.5 2.5 0 0 0 2.5-2.5c0-.69-.28-1.31-.73-1.76A2.5 2.5 0 0 1 15.5 14H18a4 4 0 0 0 4-4 8 8 0 0 0-10-8z"></path>
     </svg>
-    {compact && <span data-palette-trigger-label>Palette</span>}
+    {compact && <span data-palette-trigger-label>{t.paletteHeading}</span>}
   </button>
 
   <div
@@ -90,7 +100,7 @@ const palettes = [
       id={labelId}
       class="px-2.5 pb-1 pt-1.5 font-display text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-muted"
     >
-      Palette
+      {t.paletteHeading}
     </p>
     {
       palettes.map((p) => (
@@ -100,6 +110,7 @@ const palettes = [
           aria-checked="false"
           data-palette-option
           data-value={p.value}
+          data-name={p.name}
           class="palette-option flex w-full items-center gap-3 rounded-lg px-2.5 py-2 text-left text-sm text-fg transition-colors hover:bg-surface focus-visible:bg-surface"
         >
           <span class="palette-swatch flex shrink-0 items-center gap-0.5" aria-hidden="true">
@@ -176,11 +187,18 @@ const palettes = [
 
     function syncMarks(root, value) {
       var opts = root.querySelectorAll('[data-palette-option]');
+      var activeName = null;
       for (var i = 0; i < opts.length; i++) {
         var on = opts[i].getAttribute('data-value') === value;
         opts[i].setAttribute('aria-checked', String(on));
         var check = opts[i].querySelector('.palette-check');
         if (check) check.style.opacity = on ? '1' : '0';
+        if (on) activeName = opts[i].getAttribute('data-name');
+      }
+      var trigger = root.querySelector('[data-palette-trigger]');
+      if (trigger) {
+        var baseLabel = trigger.getAttribute('data-palette-trigger-base-label') || trigger.getAttribute('aria-label');
+        trigger.setAttribute('aria-label', activeName ? baseLabel + ': ' + activeName : baseLabel);
       }
     }
 

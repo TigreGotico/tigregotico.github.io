@@ -57,7 +57,7 @@ export const ui = {
       privacy: 'Privacy', foss: 'Free and open-source software.', appearance: 'Appearance', vat: 'VAT',
       source: 'Site source code',
     },
-    a11y: { skip: 'Skip to content', primaryNav: 'Primary', mobileNav: 'Primary (mobile)', openMenu: 'Open navigation menu', closeMenu: 'Close navigation menu' },
+    a11y: { skip: 'Skip to content', primaryNav: 'Primary', mobileNav: 'Primary (mobile)', openMenu: 'Open navigation menu', closeMenu: 'Close navigation menu', themeToggle: 'Toggle light or dark theme', choosePalette: 'Choose color palette', paletteHeading: 'Palette' },
   },
   pt: {
     lang: 'pt-PT',
@@ -70,7 +70,7 @@ export const ui = {
       privacy: 'Privacidade', foss: 'Software livre e de código aberto.', appearance: 'Aspeto', vat: 'NIF',
       source: 'Código-fonte do site',
     },
-    a11y: { skip: 'Saltar para o conteúdo', primaryNav: 'Principal', mobileNav: 'Principal (móvel)', openMenu: 'Abrir menu de navegação', closeMenu: 'Fechar menu de navegação' },
+    a11y: { skip: 'Saltar para o conteúdo', primaryNav: 'Principal', mobileNav: 'Principal (móvel)', openMenu: 'Abrir menu de navegação', closeMenu: 'Fechar menu de navegação', themeToggle: 'Alternar tema claro ou escuro', choosePalette: 'Escolher paleta de cores', paletteHeading: 'Paleta' },
   },
   es: {
     lang: 'es',
@@ -83,7 +83,7 @@ export const ui = {
       privacy: 'Privacidad', foss: 'Software libre y de código abierto.', appearance: 'Apariencia', vat: 'NIF',
       source: 'Código fuente del sitio',
     },
-    a11y: { skip: 'Saltar al contenido', primaryNav: 'Principal', mobileNav: 'Principal (móvil)', openMenu: 'Abrir el menú de navegación', closeMenu: 'Cerrar el menú de navegación' },
+    a11y: { skip: 'Saltar al contenido', primaryNav: 'Principal', mobileNav: 'Principal (móvil)', openMenu: 'Abrir el menú de navegación', closeMenu: 'Cerrar el menú de navegación', themeToggle: 'Cambiar tema claro u oscuro', choosePalette: 'Elegir paleta de colores', paletteHeading: 'Paleta' },
   },
   de: {
     lang: 'de',
@@ -96,7 +96,7 @@ export const ui = {
       privacy: 'Datenschutz', foss: 'Freie und quelloffene Software.', appearance: 'Darstellung', vat: 'USt-IdNr.',
       source: 'Quellcode der Website',
     },
-    a11y: { skip: 'Zum Inhalt springen', primaryNav: 'Hauptnavigation', mobileNav: 'Hauptnavigation (mobil)', openMenu: 'Navigationsmenü öffnen', closeMenu: 'Navigationsmenü schließen' },
+    a11y: { skip: 'Zum Inhalt springen', primaryNav: 'Hauptnavigation', mobileNav: 'Hauptnavigation (mobil)', openMenu: 'Navigationsmenü öffnen', closeMenu: 'Navigationsmenü schließen', themeToggle: 'Helles oder dunkles Theme umschalten', choosePalette: 'Farbpalette wählen', paletteHeading: 'Palette' },
   },
   nl: {
     lang: 'nl',
@@ -109,7 +109,7 @@ export const ui = {
       privacy: 'Privacy', foss: 'Vrije en opensourcesoftware.', appearance: 'Weergave', vat: 'btw',
       source: 'Broncode van de site',
     },
-    a11y: { skip: 'Naar inhoud springen', primaryNav: 'Hoofdnavigatie', mobileNav: 'Hoofdnavigatie (mobiel)', openMenu: 'Navigatiemenu openen', closeMenu: 'Navigatiemenu sluiten' },
+    a11y: { skip: 'Naar inhoud springen', primaryNav: 'Hoofdnavigatie', mobileNav: 'Hoofdnavigatie (mobiel)', openMenu: 'Navigatiemenu openen', closeMenu: 'Navigatiemenu sluiten', themeToggle: 'Licht of donker thema wisselen', choosePalette: 'Kleurenpalet kiezen', paletteHeading: 'Palet' },
   },
   fr: {
     lang: 'fr',
@@ -122,7 +122,7 @@ export const ui = {
       privacy: 'Confidentialité', foss: 'Logiciel libre et open source.', appearance: 'Apparence', vat: 'TVA',
       source: 'Code source du site',
     },
-    a11y: { skip: 'Aller au contenu', primaryNav: 'Principale', mobileNav: 'Principale (mobile)', openMenu: 'Ouvrir le menu de navigation', closeMenu: 'Fermer le menu de navigation' },
+    a11y: { skip: 'Aller au contenu', primaryNav: 'Principale', mobileNav: 'Principale (mobile)', openMenu: 'Ouvrir le menu de navigation', closeMenu: 'Fermer le menu de navigation', themeToggle: 'Basculer le thème clair ou sombre', choosePalette: 'Choisir la palette de couleurs', paletteHeading: 'Palette' },
   },
   it: {
     lang: 'it',
@@ -135,7 +135,7 @@ export const ui = {
       privacy: 'Privacy', foss: 'Software libero e open source.', appearance: 'Aspetto', vat: 'P.IVA',
       source: 'Codice sorgente del sito',
     },
-    a11y: { skip: 'Vai al contenuto', primaryNav: 'Principale', mobileNav: 'Principale (mobile)', openMenu: 'Apri il menu di navigazione', closeMenu: 'Chiudi il menu di navigazione' },
+    a11y: { skip: 'Vai al contenuto', primaryNav: 'Principale', mobileNav: 'Principale (mobile)', openMenu: 'Apri il menu di navigazione', closeMenu: 'Chiudi il menu di navigazione', themeToggle: 'Cambia tema chiaro o scuro', choosePalette: 'Scegli la tavolozza dei colori', paletteHeading: 'Tavolozza' },
   },
   ru: {
     lang: 'ru',
@@ -148,7 +148,7 @@ export const ui = {
       privacy: 'Конфиденциальность', foss: 'Свободное ПО с открытым исходным кодом.', appearance: 'Оформление', vat: 'НДС',
       source: 'Исходный код сайта',
     },
-    a11y: { skip: 'Перейти к содержимому', primaryNav: 'Основная', mobileNav: 'Основная (мобильная)', openMenu: 'Открыть меню навигации', closeMenu: 'Закрыть меню навигации' },
+    a11y: { skip: 'Перейти к содержимому', primaryNav: 'Основная', mobileNav: 'Основная (мобильная)', openMenu: 'Открыть меню навигации', closeMenu: 'Закрыть меню навигации', themeToggle: 'Переключить светлую или тёмную тему', choosePalette: 'Выбрать цветовую палитру', paletteHeading: 'Палитра' },
   },
   ar: {
     lang: 'ar',
@@ -161,7 +161,7 @@ export const ui = {
       privacy: 'الخصوصية', foss: 'برمجيات حرّة ومفتوحة المصدر.', appearance: 'المظهر', vat: 'الرقم الضريبي',
       source: 'شفرة المصدر للموقع',
     },
-    a11y: { skip: 'انتقل إلى المحتوى', primaryNav: 'الرئيسية', mobileNav: 'الرئيسية (للجوال)', openMenu: 'افتح قائمة التنقل', closeMenu: 'أغلق قائمة التنقل' },
+    a11y: { skip: 'انتقل إلى المحتوى', primaryNav: 'الرئيسية', mobileNav: 'الرئيسية (للجوال)', openMenu: 'افتح قائمة التنقل', closeMenu: 'أغلق قائمة التنقل', themeToggle: 'تبديل السمة الفاتحة أو الداكنة', choosePalette: 'اختيار لوحة الألوان', paletteHeading: 'اللوحة' },
   },
   fa: {
     lang: 'fa',
@@ -174,7 +174,7 @@ export const ui = {
       privacy: 'حریم خصوصی', foss: 'نرم‌افزار آزاد و متن‌باز.', appearance: 'ظاهر', vat: 'شناسهٔ مالیاتی',
       source: 'کد منبع وب‌سایت',
     },
-    a11y: { skip: 'پرش به محتوا', primaryNav: 'اصلی', mobileNav: 'اصلی (موبایل)', openMenu: 'باز کردن منوی ناوبری', closeMenu: 'بستن منوی ناوبری' },
+    a11y: { skip: 'پرش به محتوا', primaryNav: 'اصلی', mobileNav: 'اصلی (موبایل)', openMenu: 'باز کردن منوی ناوبری', closeMenu: 'بستن منوی ناوبری', themeToggle: 'تغییر پوستهٔ روشن یا تیره', choosePalette: 'انتخاب پالت رنگ', paletteHeading: 'پالت' },
   },
   hi: {
     lang: 'hi',
@@ -187,7 +187,7 @@ export const ui = {
       privacy: 'गोपनीयता', foss: 'मुक्त और ओपन-सोर्स सॉफ़्टवेयर।', appearance: 'रूप', vat: 'कर संख्या',
       source: 'साइट का सोर्स कोड',
     },
-    a11y: { skip: 'सामग्री पर जाएँ', primaryNav: 'मुख्य', mobileNav: 'मुख्य (मोबाइल)', openMenu: 'नेविगेशन मेन्यू खोलें', closeMenu: 'नेविगेशन मेन्यू बंद करें' },
+    a11y: { skip: 'सामग्री पर जाएँ', primaryNav: 'मुख्य', mobileNav: 'मुख्य (मोबाइल)', openMenu: 'नेविगेशन मेन्यू खोलें', closeMenu: 'नेविगेशन मेन्यू बंद करें', themeToggle: 'हल्की या गहरी थीम बदलें', choosePalette: 'रंग पैलेट चुनें', paletteHeading: 'पैलेट' },
   },
   zh: {
     lang: 'zh',
@@ -200,7 +200,7 @@ export const ui = {
       privacy: '隐私', foss: '自由与开源软件。', appearance: '外观', vat: '税号',
       source: '网站源代码',
     },
-    a11y: { skip: '跳到内容', primaryNav: '主导航', mobileNav: '主导航（移动）', openMenu: '打开导航菜单', closeMenu: '关闭导航菜单' },
+    a11y: { skip: '跳到内容', primaryNav: '主导航', mobileNav: '主导航（移动）', openMenu: '打开导航菜单', closeMenu: '关闭导航菜单', themeToggle: '切换浅色或深色主题', choosePalette: '选择配色方案', paletteHeading: '配色' },
   },
   ko: {
     lang: 'ko',
@@ -213,7 +213,7 @@ export const ui = {
       privacy: '개인정보', foss: '자유 오픈소스 소프트웨어.', appearance: '테마', vat: '사업자번호',
       source: '사이트 소스 코드',
     },
-    a11y: { skip: '본문으로 건너뛰기', primaryNav: '주요', mobileNav: '주요 (모바일)', openMenu: '내비게이션 메뉴 열기', closeMenu: '내비게이션 메뉴 닫기' },
+    a11y: { skip: '본문으로 건너뛰기', primaryNav: '주요', mobileNav: '주요 (모바일)', openMenu: '내비게이션 메뉴 열기', closeMenu: '내비게이션 메뉴 닫기', themeToggle: '밝은 또는 어두운 테마 전환', choosePalette: '색상 팔레트 선택', paletteHeading: '팔레트' },
   },
   ja: {
     lang: 'ja',
@@ -226,7 +226,7 @@ export const ui = {
       privacy: 'プライバシー', foss: '自由でオープンソースなソフトウェア。', appearance: '外観', vat: '税番号',
       source: 'サイトのソースコード',
     },
-    a11y: { skip: 'コンテンツへスキップ', primaryNav: 'メイン', mobileNav: 'メイン（モバイル）', openMenu: 'ナビゲーションメニューを開く', closeMenu: 'ナビゲーションメニューを閉じる' },
+    a11y: { skip: 'コンテンツへスキップ', primaryNav: 'メイン', mobileNav: 'メイン（モバイル）', openMenu: 'ナビゲーションメニューを開く', closeMenu: 'ナビゲーションメニューを閉じる', themeToggle: 'ライトまたはダークテーマを切り替え', choosePalette: 'カラーパレットを選択', paletteHeading: 'パレット' },
   },
 } as const;
 
