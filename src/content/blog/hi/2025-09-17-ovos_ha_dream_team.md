@@ -20,7 +20,7 @@ Home Assistant ऑटोमेशन संभालता है; OVOS आव�
 
 -----
 
-## Home Assistant को OVOS-संचालित आवाज़ दें
+## Wyoming ब्रिज: Home Assistant में OVOS वॉइस प्लगइन
 
 Wyoming प्रोटोकॉल बाहरी ASR, TTS और वेकवर्ड सेवाओं के लिए HA का मानक इंटरफ़ेस है। हमने Wyoming ब्रिज बनाए हैं जो किसी भी OVOS प्लगइन को उस प्रोटोकॉल के माध्यम से प्रस्तुत करते हैं — यानी HA को OVOS पारिस्थितिकी तंत्र के हर प्लगइन तक पहुँच मिलती है, न कि केवल एक चुनिंदा सीमित सूची तक।
 
@@ -31,26 +31,18 @@ Wyoming प्रोटोकॉल बाहरी ASR, TTS और वेकव
 
 [OVOS Wyoming Docker](https://github.com/TigreGotico/ovos-wyoming-docker) प्रोजेक्ट इन सेवाओं को इस तरह पैकेज करता है कि वे मात्र एक `docker compose up` की दूरी पर हों।
 
-### **प्लगइन विशेषताएँ: ILENIA द्वारा संचालित बहुभाषी TTS**
+### सार्वजनिक रूप से वित्तपोषित भाषा परियोजनाओं से बहुभाषी TTS
 
-हमारे लिए, सुलभता महत्वपूर्ण है। इसमें भाषाई सुलभता शामिल है। हमें गर्व है कि यह एकीकरण हमें [**ILENIA**](https://proyectoilenia.es/) जैसी परियोजनाओं से उच्च गुणवत्ता वाली, सार्वजनिक रूप से वित्तपोषित आवाज़ें व्यापक दर्शकों तक पहुँचाने की अनुमति देता है। Home Assistant उपयोगकर्ताओं को कैटलन और गैलिशियन जैसी भाषाओं के लिए स्वाभाविक-ध्वनि वाली आवाज़ें मिलती हैं, सीधे उन परियोजनाओं से जिन्होंने उन्हें बनाया।
+सुलभता में भाषाई सुलभता भी शामिल है। यह एकीकरण [**ILENIA**](https://proyectoilenia.es/demostradores-2025/prototipo-ovos/) जैसी परियोजनाओं से उच्च गुणवत्ता वाली, सार्वजनिक रूप से वित्तपोषित आवाज़ें व्यापक दर्शकों तक पहुँचाता है। Home Assistant उपयोगकर्ताओं को कैटलन और गैलिशियन जैसी भाषाओं के लिए स्वाभाविक-ध्वनि वाली आवाज़ें मिलती हैं, सीधे उन परियोजनाओं से जिन्होंने उन्हें बनाया।
 
 * **कैटलन के लिए Matxa TTS:** [`ovos-tts-plugin-matxa-multispeaker-cat`](https://github.com/OpenVoiceOS/ovos-tts-plugin-matxa-multispeaker-cat) कैटलन भाषा के लिए मल्टी-स्पीकर टेक्स्ट-टू-स्पीच क्षमताएँ प्रदान करता है।
 * **गैलिशियन के लिए NosTTS:** [`ovos-tts-plugin-nos`](https://github.com/OpenVoiceOS/ovos-tts-plugin-nos) गैलिशियन में मज़बूत टेक्स्ट-टू-स्पीच प्रदान करता है।
 
 ![ILENIA logo](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/ilenia.png)
 
-### **Home Assistant में Wyoming सेवाएँ सेट अप करना:**
-
-Home Assistant में Wyoming सेवाओं को कॉन्फ़िगर करते समय, आप आमतौर पर [आधिकारिक Home Assistant दस्तावेज़](https://www.home-assistant.io/integrations/wyoming/) का संदर्भ लेंगे। इस प्रक्रिया में सामान्यतः बस अपने Docker कंटेनर (या OVOS Wyoming सेवाएँ चलाने वाले होस्ट) का IP पता Home Assistant वेब इंटरफ़ेस में दर्ज करना शामिल होता है।
-
-![wyoming setup in Home Assistant](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/wyoming_setup.png)
-
-![wyoming entities in Home Assistant](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/wyoming_menu.png)
-
 -----
 
-## OVOS को बातचीत का दिमाग बनने दें
+## Home Assistant के लिए एक संवादात्मक एजेंट के रूप में OVOS का उपयोग
 
 एक कदम और आगे जाना चाहते हैं? आप **Ollama एकीकरण** का उपयोग करके OVOS को Home Assistant के लिए एक पूर्ण संवादात्मक एजेंट के रूप में सेट अप कर सकते हैं।
 
@@ -72,7 +64,7 @@ Home Assistant में Wyoming सेवाओं को कॉन्फ़ि
 
 -----
 
-## HiveMind के साथ अपने OVOS उपकरणों का Home Assistant में स्वागत करें
+## HiveMind के साथ OVOS उपकरणों को Home Assistant एंटिटी के रूप में प्रस्तुत करना
 
 यदि आपके पास समर्पित OVOS उपकरण हैं, तो [HiveMind HomeAssistant](https://github.com/JarbasHiveMind/hivemind-homeassistant) एकीकरण उन्हें Home Assistant में नेटिव एंटिटी के रूप में दिखाता है — पूरे बेड़े के लिए एक एकीकृत नियंत्रण पैनल।
 
@@ -114,17 +106,15 @@ OVOS उपकरण Home Assistant में मानक मीडिया �
 
 -----
 
-## OVOS को राज्य की चाबियाँ दें
+## OVOS से Home Assistant एंटिटीज़ को नियंत्रित करना
 
 समुदाय द्वारा अनुरक्षित [skill-homeassistant](https://github.com/OscillateLabsLLC/skill-homeassistant) OVOS को HA REST API के माध्यम से Home Assistant एंटिटीज़ पर सीधा नियंत्रण देता है। इसे अपने OVOS उपकरण पर इंस्टॉल करें और आप कह सकते हैं "turn on the living room lights" या "set the thermostat to 21 degrees" — पूरी तरह लोकल, कोई क्लाउड नहीं।
 
 -----
 
-## हर काम के लिए सही उपकरण
+## जो अभी अधूरा है
 
-OVOS आवाज़ संभालता है; Home Assistant ऑटोमेशन संभालता है। न तो कोई दूसरे का काम करने के लिए समझौता करता है, और एकीकरण बिंदु इतने स्वच्छ हैं कि हर परियोजना अपना स्वयं का रिलीज़ चक्र बनाए रखती है।
-
-ऊपर लिंक किए गए रिपॉजिटरी में बग रिपोर्ट और PRs का स्वागत है।
+Wyoming ब्रिज और HiveMind एकीकरण यहाँ सबसे परिपक्व हिस्से हैं; संवादात्मक-एजेंट-के-रूप-में-persona-server वाला मार्ग नया है, और अगर आप देखना चाहते हैं कि OVOS + HA मिलकर अधिकतम क्या कर सकते हैं तो इसे पहले आज़माना उचित रहेगा। ऊपर लिंक किए गए रिपॉजिटरी में बग रिपोर्ट और PRs का स्वागत है।
 
 ---
 
