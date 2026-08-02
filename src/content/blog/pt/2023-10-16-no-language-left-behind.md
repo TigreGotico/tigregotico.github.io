@@ -21,13 +21,13 @@ O OpenVoiceOS (OVOS) é uma plataforma de assistente de voz de código aberto e 
 
 ## Deteção de Língua a partir de Áudio
 
-O OVOS identifica a língua falada no áudio antes de esta chegar à etapa de transcrição de ASR, permitindo que o plugin de ASR transcreva com exatidão em vez de adivinhar. Construí vários plugins para isto:
+O OVOS identifica a língua falada no áudio antes de esta chegar à etapa de ASR (reconhecimento automático de fala), permitindo que o plugin de ASR transcreva com exatidão em vez de adivinhar. Construí vários plugins para isto:
 
 - [ovos-audio-transformer-plugin-speechbrain-langdetect](https://github.com/OpenVoiceOS/ovos-audio-transformer-plugin-speechbrain-langdetect)
 - [ovos-audio-transformer-plugin-speechflow-langdetect](https://github.com/OpenVoiceOS/ovos-audio-transformer-plugin-speechflow-langdetect)
 - [ovos-stt-plugin-fasterwhisper](https://github.com/OpenVoiceOS/ovos-stt-plugin-fasterwhisper)
 
-A deteção de língua está limitada às línguas listadas na sua configuração do OVOS — classificações fora desse conjunto são rejeitadas, para que não mude acidentalmente para uma língua que ninguém em sua casa fala.
+A deteção de língua está limitada às línguas listadas na sua configuração do OVOS. Classificações fora desse conjunto são rejeitadas, para que não mude acidentalmente para uma língua que ninguém em sua casa fala.
 
 ```json
 {
@@ -52,11 +52,11 @@ O tamanho do modelo classificador de língua do FasterWhisper é configurável:
 
 ## Tradução de Língua de Texto
 
-O [No Language Left Behind (NLLB)](https://ai.meta.com/research/no-language-left-behind/) é o modelo de código aberto da Meta para tradução direta de alta qualidade entre 200 línguas — incluindo línguas de poucos recursos como o asturiano, o luganda e o urdu. Foi esse nome que inspirou este artigo.
+O [No Language Left Behind (NLLB)](https://ai.meta.com/research/no-language-left-behind/) é o modelo de código aberto da Meta para tradução direta de alta qualidade entre 200 línguas, incluindo línguas de poucos recursos como o asturiano, o luganda e o urdu. Foi esse nome que inspirou este artigo.
 
-O [ovos-translate-plugin-nllb](https://github.com/OpenVoiceOS/ovos-translate-plugin-nllb) executa o NLLB localmente dentro do OVOS. As skills são lentas a ganhar suporte nativo completo de língua, mas com este plugin os utilizadores já não precisam de esperar — o OVOS traduz os enunciados recebidos e as respostas enviadas em tempo real, para que qualquer skill funcione em qualquer uma dessas 200 línguas.
+O [ovos-translate-plugin-nllb](https://github.com/OpenVoiceOS/ovos-translate-plugin-nllb) executa o NLLB localmente dentro do OVOS. As skills são lentas a ganhar suporte nativo completo de língua. Com este plugin, os utilizadores não precisam de esperar: o OVOS traduz os enunciados recebidos e as respostas enviadas em tempo real, para que qualquer skill funcione em qualquer uma dessas 200 línguas.
 
-Para hardware de menor potência, o [ovos-translate-server-plugin](https://github.com/OpenVoiceOS/ovos-translate-server-plugin) delega a tradução num servidor remoto. Há servidores públicos listados de origem; o alojamento próprio é fortemente recomendado por questões de privacidade. **Usar um servidor público significa confiar todos os seus enunciados ao seu operador.**
+Para hardware de menor potência, o [ovos-translate-server-plugin](https://github.com/OpenVoiceOS/ovos-translate-server-plugin) delega a tradução num servidor remoto. Há servidores públicos listados de origem, mas o alojamento próprio é fortemente recomendado por questões de privacidade. Usar um servidor público significa confiar todos os seus enunciados ao seu operador.
 
 Plugins de tradução de destaque:
 - [ovos-translate-plugin-nllb](https://github.com/OpenVoiceOS/ovos-translate-plugin-nllb)
@@ -78,7 +78,7 @@ Plugins de tradução de destaque:
 
 O [plugin de Tradução Bidirecional do OVOS](https://github.com/OpenVoiceOS/ovos-bidirectional-translation-plugin/tree/dev) liga a deteção e a tradução com duas etapas de pipeline: um **Utterance Transformer** (traduz o texto recebido para a língua configurada do OVOS) e um **Dialog Transformer** (traduz a resposta de volta para a língua original do utilizador).
 
-O modo opcional `verify_lang` verifica de forma cruzada a língua detetada do texto face à língua da sessão — útil em plataformas de chat onde uma única instância do OVOS serve utilizadores multilingues. Requer um [módulo de deteção de língua](https://openvoiceos.github.io/ovos-technical-manual/lang_support/) configurado em `language.detection_module` e um plugin de tradução (`ovos-translate-plugin-nllb` para local ou `ovos-translate-server-plugin` para remoto).
+O modo opcional `verify_lang` verifica de forma cruzada a língua detetada do texto face à língua da sessão. Isto é útil em plataformas de chat onde uma única instância do OVOS serve utilizadores multilingues. Requer um [módulo de deteção de língua](https://openvoiceos.github.io/ovos-technical-manual/lang_support/) configurado em `language.detection_module` e um plugin de tradução (`ovos-translate-plugin-nllb` para local ou `ovos-translate-server-plugin` para remoto).
 
 ### Configuração
 
@@ -100,9 +100,9 @@ O modo opcional `verify_lang` verifica de forma cruzada a língua detetada do te
 
 Cada componente é útil de forma independente, mas compõem-se de forma limpa:
 
-1. **Deteção de língua do áudio** — indica ao plugin de ASR que língua transcrever.
-2. **Tradução do enunciado** — converte enunciados não nativos para a língua configurada do assistente antes da correspondência de skills.
-3. **Tradução do diálogo** — traduz a resposta do assistente de volta para a língua do utilizador antes do TTS.
+1. A deteção de língua do áudio indica ao plugin de ASR que língua transcrever.
+2. A tradução do enunciado converte enunciados não nativos para a língua configurada do assistente antes da correspondência de skills.
+3. A tradução do diálogo traduz a resposta do assistente de volta para a língua do utilizador antes do TTS.
 
 O resultado: o OVOS consegue processar qualquer uma das 200 línguas do NLLB de ponta a ponta, sem que as próprias skills precisem de traduções.
 

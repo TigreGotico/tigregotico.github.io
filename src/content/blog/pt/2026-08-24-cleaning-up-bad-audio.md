@@ -1,6 +1,6 @@
 ---
 title: "Limpar Áudio Mau: Redução de Ruído e Extensão de Largura de Banda no audiosronnx"
-description: "Uma análise aprofundada às duas tarefas separadas do audiosronnx — remover ruído e reconstruir frequências altas em falta — com o registo real de motores, tamanhos e licenças de modelos, a lista de modelos rejeitados, e como verificar se o resultado realmente melhorou."
+description: "O audiosronnx trata a redução de ruído e a extensão de largura de banda como duas tarefas separadas: o registo real de motores, tamanhos e licenças de modelos, a lista de modelos rejeitados, e como verificar se o resultado realmente melhorou."
 date: 2026-08-01
 lang: pt
 author: "Casimiro Ferreira"
@@ -46,24 +46,42 @@ O `load_denoise()` e o `load_sr()` recusam os motores um do outro — pedir
 ao `load_denoise` um extensor de largura de banda levanta um erro em vez
 de fazer silenciosamente a tarefa errada.
 
-## Porque é que isto vem antes do reconhecimento
+## Onde isto ajuda de facto
 
-O reconhecimento de fala e a identificação de locutor são normalmente
-treinados com áudio comparativamente limpo. Alimentar um reconhecedor com
-fala telefónica a 8 kHz, ou fala com uma ventoinha a correr por baixo, e a
-taxa de erro por palavra sobe — não porque o modelo seja mau, mas porque a
-entrada já não se parece com aquilo com que foi treinado. O mesmo se
-aplica aos embeddings de locutor usados para identificação ou diarização:
-ruído e largura de banda em falta distorcem exatamente o detalhe acústico
-de que esses embeddings dependem.
+A suposição óbvia é que limpar o áudio antes do reconhecimento de fala tem
+de melhorar a transcrição. Na prática, isso não é fiável. Os reconhecedores
+modernos são treinados com grandes quantidades de fala real, ruidosa e de
+banda estreita, pelo que um reconhecedor lida muitas vezes melhor com uma
+gravação ruidosa do que com essa mesma gravação depois de passar por um
+melhorador. A melhoria (enhancement) é *lossy*: remove aquilo que julga ser
+ruído, e nesse processo pode levar consigo detalhe acústico que o
+reconhecedor estava a usar, ou deixar artefactos que o reconhecedor nunca
+ouviu em treino. Se ajuda ou prejudica depende do modelo específico, do que
+foi usado para o treinar, e do que está errado na gravação. Tem de ser
+medido por modelo, não presumido.
 
-Isso torna a limpeza um estágio da pipeline que fica *antes* do
-reconhecimento, não uma alternativa a ele. Uma pipeline real para uma
-chamada telefónica ruidosa a 8 kHz parece-se com: reduzir o ruído, depois
-estender para 48 kHz, depois correr o reconhecimento ou a identificação de
-locutor sobre o resultado. Trocar por um reconhecedor melhor sem primeiro
-corrigir a entrada gasta esforço no lugar errado — o modelo degrada-se sobre
-o mesmo sinal danificado, por muito bom que seja.
+Os dois lugares onde estas ferramentas compensam de forma consistente
+estão ambos do lado da síntese.
+
+O primeiro é a **preparação de dados de treino**. Uma voz de
+texto-para-fala herda o carácter do áudio com que foi treinada, incluindo
+a sala onde foi gravada. Chiado, zumbido e uma taxa de amostragem baixa no
+corpus tornam-se chiado, zumbido e uma qualidade abafada em cada frase que
+a voz acabada alguma vez disser. Limpar um corpus antes do treino, e
+elevá-lo para 48 kHz de forma consistente, é trabalho feito uma vez que
+melhora todos os resultados depois. Isto importa mais para as línguas sem
+corpus de estúdio disponível, onde as únicas gravações que existem nunca
+foram feitas a pensar em síntese de fala.
+
+O segundo é o **pós-processamento de fala sintetizada**. Um vocoder pode
+deixar um travo metálico ou uma qualidade de banda limitada, em particular
+num modelo treinado com um dataset pequeno ou de taxa baixa. Correr o
+resultado através de um extensor de largura de banda eleva-o sem
+retreinar nada.
+
+Um ouvinte humano é o terceiro caso, e o mais simples: uma gravação que
+uma pessoa tem de aturar beneficia de ser mais limpa, seja o que for que
+um reconhecedor teria feito dela.
 
 ## O registo de motores
 
@@ -155,42 +173,49 @@ rejeitado, com o motivo específico, o que o torna um dos documentos mais
 úteis no repositório porque mostra as fronteiras reais do que "ONNX puro,
 só CPU" consegue fazer hoje em vez de as afirmar.
 
-**Amostradores iterativos não têm grafo estático para exportar.** Modelos
+### Amostradores iterativos não têm grafo estático para exportar
+
+Modelos
 de difusão e de flow-matching correm uma rede muitas vezes por enunciado,
 com um ciclo cujo comprimento não é fixo em tempo de exportação. O
 AudioSR (uma pipeline de difusão latente de cerca de 6 GB com um VAE, um
-LDM e um vocoder separados) e o SGMSE caem ambos aqui — o próprio
+LDM e um vocoder separados) e o SGMSE caem ambos aqui. O próprio
 seguimento em streaming de 2025 do SGMSE só atinge tempo real numa GPU de
 consumo, quanto mais em CPU.
 
-**Convoluções variáveis por localização parecem desqualificantes e
-maioritariamente não são.** O `resemble-enhance` foi rejeitado durante
+### Convoluções variáveis por localização parecem desqualificantes e maioritariamente não são
+
+O `resemble-enhance` foi rejeitado durante
 muito tempo neste documento por causa do LVCNet, a convolução variável
 por localização do vocoder, com base na teoria de que kernels previstos
 por posição através de `unfold` e `einsum` não conseguem ser dobrados
-num grafo estático. Testado diretamente, isso revelou-se errado — ambas
+num grafo estático. Testado diretamente, isso revelou-se errado: ambas
 as operações têm equivalentes em ONNX. A falha real é um erro de tracing
 separado, bem conhecido ("ONNX export of convolution for kernel of
 unknown shape"), já resolvido noutro ponto da base de código para os
 resamplers do BigVGAN. O que ainda mantém o `resemble-enhance` de fora é
 a escala: quatro redes incluindo um amostrador CFM de EDO e um
-autocodificador, a 44,1 kHz — uma decisão de âmbito, não uma
+autocodificador, a 44,1 kHz. Isso é uma decisão de âmbito, não uma
 impossibilidade.
 
-**Alguns modelos não têm nada treinado para exportar.** O RNNoise é
-distribuído como C escrito à mão, não um grafo numa framework treinável —
-portá-lo significaria retreinar uma rede equivalente do zero. O
+### Alguns modelos não têm nada treinado para exportar
+
+O RNNoise é
+distribuído como C escrito à mão, não um grafo numa framework treinável,
+pelo que portá-lo significaria retreinar uma rede equivalente do zero. O
 Fast-ULCNet publica apenas código de arquitetura, sem checkpoint nenhum.
 
-**Uma licença restritiva é uma decisão de rotulagem, não uma
-desqualificação automática** — é exatamente por isso que o
+### Uma licença restritiva é uma decisão de rotulagem, não uma desqualificação automática
+
+É exatamente por isso que o
 `callenhancer` e o `metadenoiser` são distribuídos. O que *é*
 desqualificante são pesos publicados sem licença nenhuma: o mdctGAN foi
 rejeitado exatamente por isso, além de um front-end baseado em
 `torch.fft` que não exporta de forma fiável.
 
-**Chamar `torch.stft` dentro do modelo é um bloqueio estrutural real.**
-O ciclo do amostrador do NU-Wave2 não é o problema — isso poderia correr
+### Chamar `torch.stft` dentro do modelo é um bloqueio estrutural real
+
+O ciclo do amostrador do NU-Wave2 não é o problema; isso poderia correr
 em numpy fora do grafo, tal como o STFT de todos os outros motores. O que
 o bloqueia é que o seu método `forward` chama `torch.stft` e
 `torch.istft` internamente, o que a biblioteca mantém deliberadamente
@@ -199,19 +224,20 @@ exporta de forma menos fiável em geral. Corrigi-lo significaria dividir
 o modelo na fronteira da transformação, uma reestruturação real em vez
 de uma troca de operador.
 
-**Reproduzir a arquitetura de um modelo não é o mesmo que reproduzir o
-seu resultado.** O LiSenNet tem 56 mil parâmetros, menos de 300 KB — seria
-o motor mais pequeno da biblioteca. A sua portagem para ONNX publicamente
+### Reproduzir a arquitetura de um modelo não é o mesmo que reproduzir o seu resultado
+
+O LiSenNet tem 56 mil parâmetros, menos de 300 KB, o que
+o tornaria o motor mais pequeno da biblioteca. A sua portagem para ONNX publicamente
 disponível corre e produz áudio atenuado com aspeto plausível, mas medido
 de ponta a ponta destrói o sinal: −10,8 dB de SNR a 11 dB de entrada.
 Reproduzir exatamente a implementação de referência da própria portagem
 dá o mesmo resultado negativo idêntico, o que significa que a própria
 implementação de referência não corresponde ao front-end que a sua
-própria documentação descreve — ainda não há um alvo correto contra o
+própria documentação descreve. Ainda não há um alvo correto contra o
 qual validar.
 
-O padrão em todos estes casos é que as falhas interessantes raramente são
-"o modelo é grande demais" ou "a difusão é lenta". São específicas: um
+Estas rejeições raramente são sobre tamanho ou velocidade. Cada uma tem uma
+causa específica e restrita: um
 operador não suportado com um substituto exato (`torch.complex` não tem
 operação ONNX, mas `atan2(im, re)` calcula o mesmo ângulo de fase), um
 tensor construído a partir da forma em tempo de execução de uma entrada
@@ -227,8 +253,8 @@ banda que acrescenta uma banda alta com o conteúdo harmónico errado,
 produzem ambos áudio que reproduz sem erro e pode até soar mais limpo a
 uma audição casual.
 
-A biblioteca irmã `speechonnxmetrics` existe para tornar esse julgamento
-mensurável em vez de impressionista. Pontua o áudio em **MOS** (Mean
+A biblioteca irmã `speechonnxmetrics` transforma esse julgamento
+num número em vez de numa impressão. Pontua o áudio em **MOS** (Mean
 Opinion Score, uma pontuação de 1–5 de qualidade percebida) de duas
 formas: preditores neuronais sem referência como o DNSMOS e o UTMOS, que
 pontuam uma gravação sem um original limpo para comparar, e métricas
@@ -258,11 +284,10 @@ em ONNX puro em que isto se encaixa, incluindo o próprio
 `speechonnxmetrics`, é coberta em
 [Uma Família de Bibliotecas de Fala em ONNX Puro](/pt/blog/2026-08-03-a-family-of-pure-onnx-speech-libraries).
 
-Limpar áudio antes de chegar a um reconhecedor, a um sistema de
-identificação de locutor, ou a um ouvinte humano é uma peça de engenharia
-por si só, com o seu próprio registo de compromissos e a sua própria
-lista de abordagens que foram tentadas e não sobreviveram ao contacto com
-um sinal real.
+Limpar áudio para um corpus de treino, para uma voz sintetizada, ou para
+uma pessoa que o tem de ouvir é um problema de engenharia distinto, com
+os seus próprios compromissos entre modelos e a sua própria lista de
+abordagens que não sobreviveram ao contacto com um sinal real.
 
 Questões sobre aplicar isto a uma pipeline específica: [entre em
 contacto](/pt/contact).

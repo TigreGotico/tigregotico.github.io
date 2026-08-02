@@ -123,10 +123,10 @@ dias confortáveis.
 A estrutura de pares opostos de Plutchik já foi testada. Em 2009, Smith & Schneider
 submeteram-na a mais de dois mil testes estatísticos e concluíram que a teoria da
 roda das emoções "não recebe qualquer apoio empírico." Os pares opostos são uma
-metáfora elegante emprestada da teoria da cor. Não são uma descoberta sobre pessoas.
+metáfora emprestada da teoria da cor. Não são uma descoberta sobre pessoas.
 
-Entretanto, as coisas que *de facto* se replicam — o circumplexo valência–ativação de
-Russell, e a dimensão de controlo que separa a zanga do medo — são exatamente as
+Entretanto, as coisas que *de facto* se replicam, o circumplexo valência–ativação de
+Russell e a dimensão de controlo que separa a zanga do medo, são as
 peças que raramente chegam a software a funcionar.
 
 Há aqui um problema de segunda ordem, e é o que realmente nos incomodou. Cada um
@@ -169,7 +169,7 @@ angry, afraid = affect_from_texts([
 ])
 
 angry.valence,  angry.potency    # -0.43, +0.16   -> 'disgust'
-afraid.valence, afraid.potency   # -0.47, -0.43   -> 'apprehension'
+afraid.valence, afraid.potency   # -0.47, -0.42   -> 'apprehension'
 ```
 
 Olha para aqueles números. **A valência é quase idêntica** — ambas as mensagens são
