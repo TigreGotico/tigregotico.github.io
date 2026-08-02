@@ -2,6 +2,7 @@
 title: "取り残される言語をなくす"
 description: "言語検出、翻訳プラグイン、双方向翻訳機能を通じて、OpenVoiceOS における言語の壁を取り除く。"
 date: 2023-10-16
+updated: 2026-08-01
 lang: ja
 author: "Casimiro Ferreira"
 tags:
@@ -86,7 +87,7 @@ FasterWhisper の言語分類モデルのサイズは設定可能です。
     "ovos-utterance-translation-plugin": {
         "bidirectional": true,
         "verify_lang": false,
-        "ignore_invalid": true,
+        "ignore_invalid_langs": true,
         "translate_secondary_langs": true
     }
 },
