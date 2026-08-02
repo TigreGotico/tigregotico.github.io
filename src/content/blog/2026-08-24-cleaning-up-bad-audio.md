@@ -40,20 +40,33 @@ wide, _     = load_sr("lavasr").upscale(clean, rate)              # extend to 48
 `load_denoise()` and `load_sr()` refuse each other's engines — asking `load_denoise` for a
 bandwidth extender raises an error rather than silently doing the wrong job.
 
-## Why this comes before recognition
+## Where this actually helps
 
-Speech recognition and speaker identification are usually trained on comparatively clean
-audio. Feed a recognizer 8 kHz telephone speech, or speech with a fan running under it, and
-word error rate rises — not because the model is bad, but because the input no longer looks
-like what it was trained on. The same applies to speaker embeddings used for identification
-or diarization: noise and missing bandwidth distort the exact acoustic detail those
-embeddings rely on.
+The obvious guess is that cleaning audio before speech recognition must improve the
+transcript. In practice that is not reliable. Modern recognizers are trained on large
+amounts of noisy, narrowband, real-world speech, so a recognizer often handles a noisy
+recording better than it handles the same recording after an enhancer has been through it.
+Enhancement is lossy. It removes what it judges to be noise, and it can take acoustic detail
+the recognizer was using along with it, or leave artifacts the recognizer has never heard in
+training. Whether it helps or hurts depends on the specific model, what it was trained on,
+and what is wrong with the recording. It has to be measured per model, not assumed.
 
-That makes cleanup a pipeline stage that sits *before* recognition, not an alternative to
-it. A real pipeline for a noisy 8 kHz phone call looks like: denoise, then extend to 48 kHz,
-then run recognition or speaker ID on the result. Swapping in a better recognizer without
-fixing the input first spends effort in the wrong place — the model degrades on the same
-damaged signal no matter how good it is.
+The two places where these tools pay off consistently are both on the synthesis side.
+
+The first is **training data preparation**. A text-to-speech voice inherits the character of
+its training audio, including the room it was recorded in. Hiss, hum, and a low sample rate
+in the corpus become hiss, hum, and a muffled quality in every sentence the finished voice
+ever speaks. Cleaning a corpus before training, and lifting it to a consistent 48 kHz, is
+work done once that improves every output afterward. This matters most for the languages
+with no studio corpus available, where the only recordings that exist were never made for
+speech synthesis.
+
+The second is **post-processing synthesized speech**. A vocoder can leave a metallic edge or
+a band-limited quality, particularly for a model trained on a small or low-rate dataset.
+Running the output through a bandwidth extender lifts it without retraining anything.
+
+A human listener is the third case, and the simplest one: a recording that a person has to
+sit through benefits from being cleaner, whatever a recognizer would have made of it.
 
 ## The engine registry
 
@@ -219,8 +232,8 @@ condition, not an adjective. The broader family of pure-ONNX libraries this fits
 including `speechonnxmetrics` itself, is covered in
 [A Family of Pure-ONNX Speech Libraries](/blog/2026-08-03-a-family-of-pure-onnx-speech-libraries).
 
-Cleaning up audio before it reaches a recognizer, a speaker ID system, or a human listener
-is a distinct engineering problem, with its own trade-offs between models and its own list
-of approaches that did not survive contact with a real signal.
+Cleaning up audio for a training corpus, for a synthesized voice, or for a person who has to
+listen to it is a distinct engineering problem, with its own trade-offs between models and
+its own list of approaches that did not survive contact with a real signal.
 
 Questions about applying this to a specific pipeline: [get in touch](/contact).
