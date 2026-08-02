@@ -132,7 +132,7 @@ draft: false
   'ˈfalu lɐ ˈʎɛŋɡwa miɾɐˈndez̺ɐ.'
   ```
 
-- **[g2p_barranquenho](https://github.com/TigreGotico/g2p_barranquenho)** —— 首个面向巴兰克诺语的开放 G2P，这是葡萄牙-西班牙边境巴兰科斯的伊比利亚-罗曼语接触语言。参见 **[推出首个巴兰克诺语音素转换器](/blog/2025-12-12-barranquenho)** 了解它的规则是如何从该市自身的正字法约定中推导出来的。
+- **[g2p_barranquenho](https://github.com/TigreGotico/g2p_barranquenho)** —— 首个面向巴兰克诺语的开放 G2P，这是葡萄牙-西班牙边境巴兰科斯的伊比利亚-罗曼语接触语言。参见 **[推出首个巴兰克诺语音素转换器](/zh/blog/2025-12-12-barranquenho)** 了解它的规则是如何从该市自身的正字法约定中推导出来的。
 - **[arbtok](https://github.com/TigreGotico/arbtok)** —— 阿拉伯语，构建在 orthography2ipa 的词格之上，增加了方言感知的标注元音处理，覆盖现代标准语、古典阿拉伯语和若干地区变体。阿拉伯文书写通常省略了音素转换器所需的短元音标记，因此 arbtok 的主要工作是在把结果交给共享引擎之前把它们还原出来。它由一位非阿拉伯语母语者维护，因此请把它当作正在积极开发中的项目，而非一份完成、经母语者审阅的定本参考——它很有用，但在把它用到任何面向用户的场景之前，值得先请母语者核对一下输出。
 
 以上每一个前端，都只是覆盖在同一个共享词格引擎和同一个共享记音层之上的一层薄薄的语言专属逻辑。它们都没有重新实现 IPA 转换或词格搜索。
@@ -152,9 +152,9 @@ draft: false
 - **[tugalex](https://github.com/TigreGotico/tugalex)** 是 tugaphone 背后的词典：真实词语的 IPA 转写、音节数据和正字法规则，这样常见词汇和不规则词汇就不必每次都从拼写重新推导。
 - **[tugatagger](https://github.com/TigreGotico/tugatagger)** 把若干个词性标注后端（spaCy、Stanza、一个 Brill 风格的标注器、一个无依赖的启发式回退方案）封装在同一个接口背后，这样其他工具就能问"这个词是什么词性"，而不必绑定到某一个特定后端。
 - **[tugamorph](https://github.com/TigreGotico/tugamorph)** 是一个基于规则的形态分析器：它只用 Python 标准库，把一个词切分为前缀、词根、后缀、屈折变化和附着词，并可选地借助 silabificador 和 tugatagger 提升精度。
-- **[bifonia](https://github.com/TigreGotico/bifonia)** 消解欧洲葡萄牙语的异音同形词——像 "sede" 这样的词（口渴，`ˈsedɨ`，对比总部，`ˈsɛdɨ`），其正确读音取决于含义，而非语法。参见 **[说对读音：为 TTS 消歧葡萄牙语异音同形词](/blog/2026-06-12-disambiguating-portuguese-heterographs-for-tts)** 了解它是如何构建和评估的。这正是上文词格理念背后的具体案例：orthography2ipa 可以同时提供 "sede" 的两个候选读音，但只有像 bifonia 这样理解含义的层，才能在两者之间做出选择。
+- **[bifonia](https://github.com/TigreGotico/bifonia)** 消解欧洲葡萄牙语的异音同形词——像 "sede" 这样的词（口渴，`ˈsedɨ`，对比总部，`ˈsɛdɨ`），其正确读音取决于含义，而非语法。参见 **[说对读音：为 TTS 消歧葡萄牙语异音同形词](/zh/blog/2026-06-12-disambiguating-portuguese-heterographs-for-tts)** 了解它是如何构建和评估的。这正是上文词格理念背后的具体案例：orthography2ipa 可以同时提供 "sede" 的两个候选读音，但只有像 bifonia 这样理解含义的层，才能在两者之间做出选择。
 
-关于 silabificador 和 tugaphone 在日常中如何协同工作的更多内容，参见 **[面向葡萄牙语的经典 NLP：音节切分与字素到音素转换](/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**；关于这一切之下更广泛的引擎，参见 **[面向 820 种语言的字素到 IPA 转换](/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**。
+关于 silabificador 和 tugaphone 在日常中如何协同工作的更多内容，参见 **[面向葡萄牙语的经典 NLP：音节切分与字素到音素转换](/zh/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**；关于这一切之下更广泛的引擎，参见 **[面向 820 种语言的字素到 IPA 转换](/zh/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**。
 
 ## 基于声音的检索：phonematcher
 
@@ -180,4 +180,4 @@ draft: false
 
 ## 如果你的语言还没有语音工具，这为什么重要
 
-世界上大多数语言都没有商用 TTS 语音、没有商用 STT 模型，也没有专业维护的发音词典。上述分层设计意味着，弥补这一空白并不需要从零构建一个音系引擎：它需要的是为目标语言的音系系统编写一份规格，并在可能的情况下，为其不规则词汇编写一份词典。词格引擎、记音转换和检索工具都已经就绪。如果你的语言、方言或产品需要目前还不存在的发音支持，这正是我们承接的那类工作——参见 **[我们的服务](/services)** 或 **[联系我们](/contact)**。
+世界上大多数语言都没有商用 TTS 语音、没有商用 STT 模型，也没有专业维护的发音词典。上述分层设计意味着，弥补这一空白并不需要从零构建一个音系引擎：它需要的是为目标语言的音系系统编写一份规格，并在可能的情况下，为其不规则词汇编写一份词典。词格引擎、记音转换和检索工具都已经就绪。如果你的语言、方言或产品需要目前还不存在的发音支持，这正是我们承接的那类工作——参见 **[我们的服务](/zh/services)** 或 **[联系我们](/zh/contact)**。

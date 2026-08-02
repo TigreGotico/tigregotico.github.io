@@ -265,5 +265,5 @@ consenso, da un intero set di addestramento della sua voce; richiede
 semplicemente molto meno per produrre un risultato utilizzabile, il che è un
 motivo per più cautela, non meno.
 
-Contattateci tramite [contact](/contact) o consultate [cosa offriamo](/services)
+Contattateci tramite [contact](/it/contact) o consultate [cosa offriamo](/it/services)
 se la conversione vocale fa parte di una pipeline che state costruendo.

@@ -236,7 +236,7 @@ nessun modello linguistico, nulla che possa sbagliarsi su come suona
 davvero una lingua specifica. È questo che lo rende sicuro da condividere
 tra ogni phonemizer che ne ha bisogno, invece che ogni phonemizer
 reimplementi la propria tabella ARPABET con i propri bug. Il post sullo
-[stack di fonologia](/blog/2026-08-10-the-phonology-stack) copre come i
+[stack di fonologia](/it/blog/2026-08-10-the-phonology-stack) copre come i
 veri motori di previsione della pronuncia — quelli che portano opinioni
 linguistiche — siano costruiti sopra questo strato invece di duplicarlo.
 
@@ -265,5 +265,5 @@ percorso di andata e ritorno sia sicuro.
 
 Se state assemblando dati di pronuncia da più fonti, o avete bisogno di
 rilevare le scritture e normalizzare il testo prima che raggiunga un
-phonemizer, [mettetevi in contatto](/contact) o guardate cos'altro
-costruiamo in questo ambito sulla [pagina servizi](/services).
+phonemizer, [mettetevi in contatto](/it/contact) o guardate cos'altro
+costruiamo in questo ambito sulla [pagina servizi](/it/services).

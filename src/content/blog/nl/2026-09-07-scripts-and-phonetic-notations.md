@@ -238,7 +238,7 @@ output, geen giswerk, geen taalmodel, niets dat fout zou kunnen zijn over
 hoe een specifieke taal daadwerkelijk klinkt. Dat maakt het veilig om te
 delen tussen elke fonemizer die het nodig heeft, in plaats van dat elke
 fonemizer zijn eigen ARPABET-tabel met zijn eigen bugs herimplementeert.
-De post over de [fonologie-stack](/blog/2026-08-10-the-phonology-stack)
+De post over de [fonologie-stack](/nl/blog/2026-08-10-the-phonology-stack)
 behandelt hoe de daadwerkelijke uitspraak-radende motoren — die welke
 werkelijk taalkundige meningen dragen — bovenop deze laag zijn gebouwd in
 plaats van hem te dupliceren.
@@ -269,5 +269,5 @@ heen-en-terugreis veilig is.
 
 Als u uitspraakdata uit meerdere bronnen aan elkaar naait, of schriften
 moet detecteren en tekst moet normaliseren voordat het een fonemizer
-bereikt, [neem dan contact op](/contact) of bekijk wat we nog meer bouwen
-op dit gebied op de [servicespagina](/services).
+bereikt, [neem dan contact op](/nl/contact) of bekijk wat we nog meer bouwen
+op dit gebied op de [servicespagina](/nl/services).

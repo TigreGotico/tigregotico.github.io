@@ -47,7 +47,7 @@ Die zweite Hälfte der Familie richtet sich an die großen Community-Kataloge.
 ## Gebaut für regelkonformen Zugriff mit niedrigem Volumen
 
 Diese Clients rufen ausschließlich öffentliche Katalogseiten ab, mit niedrigem Anfragevolumen, und prüfen die `robots.txt` jeder Seite vor dem Scrapen — siehe den
-**[Beitrag zu robots.txt &amp; Sitemaps](/blog/2026-03-01-robot-txt-sitemaps-ethical-web-scraping)**
+**[Beitrag zu robots.txt &amp; Sitemaps](/de/blog/2026-03-01-robot-txt-sitemaps-ethical-web-scraping)**
 für die Funktionsweise dieses Aufklärungsschritts. In der gesamten Familie ist die HTTP-Schicht **einsteckbar**: Standardmäßig verwenden die Clients einen Transport, dessen TLS-Handshake dem eines echten Browsers entspricht (`curl_cffi`, das Chromes TLS/JA3 nachbildet), sodass ein wohlverhaltener Client von Erkennungssystemen, die auf skriptgesteuerten Missbrauch abgestimmt sind, nicht als bösartige Automatisierung fehlklassifiziert wird. Die von Cloudflare abgeschirmten Enzyklopädien können zusätzlich über eine FlareSolverr-Instanz für Live-Daten geleitet werden oder als Fallback aus der Wayback Machine des Internet Archive lesen. Die Parsing-Schicht ist bewusst unabhängig davon, wie das HTML ankommt, sodass derselbe Code funktioniert, welchen Transport Sie auch wählen.
 
 ## Ein quellenübergreifender Musikkatalog

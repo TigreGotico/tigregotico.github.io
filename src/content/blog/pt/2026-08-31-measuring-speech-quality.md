@@ -239,7 +239,7 @@ vez de ruído a promediar, é a mitigação prática.
 Nada disto é útil isoladamente. Torna-se útil no momento em que vários
 motores precisam de ser comparados em pé de igualdade — que motor de TTS,
 que motor de STT, que modelo de melhoria usar por defeito. As
-[bibliotecas de fala em ONNX puro](/blog/2026-08-03-a-family-of-pure-onnx-speech-libraries)
+[bibliotecas de fala em ONNX puro](/pt/blog/2026-08-03-a-family-of-pure-onnx-speech-libraries)
 que o `speechonnxmetrics` foi construído para avaliar — TTS, ASR, redução
 de ruído, clonagem de voz — publicam comparações por motor produzidas
 exatamente com as métricas acima: MOS sem referência para sistemas sem
@@ -250,4 +250,4 @@ consegue verificar.
 
 Se o seu projeto precisa de uma língua, um motor ou uma condição de
 gravação avaliados desta forma e isso ainda não está coberto, [entre em
-contacto](/contact) ou veja [os nossos serviços](/services).
+contacto](/pt/contact) ou veja [os nossos serviços](/pt/services).

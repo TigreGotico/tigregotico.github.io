@@ -273,5 +273,5 @@ ist ein `pip install` entfernt, auf Code-Ebene MIT- oder Apache-lizenziert
 dokumentiert), und läuft gleich auf einem Laptop, einem Server oder einem
 Raspberry Pi.
 
-Nehmen Sie Kontakt auf über [/contact](/contact) oder sehen Sie, was wir sonst
-noch bauen, unter [/services](/services).
+Nehmen Sie Kontakt auf über [/contact](/de/contact) oder sehen Sie, was wir sonst
+noch bauen, unter [/services](/de/services).

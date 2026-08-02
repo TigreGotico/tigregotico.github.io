@@ -145,4 +145,4 @@ Dit verandert het kiezen van een engine van een luistertest in een tabel. `voice
 
 Als je offline spraakverwerking nodig hebt — een opname opschonen, een stem klonen, detecteren wie er spreekt, of er een synthetiseren — op hardware die nooit een GPU zal zien, is dit de vorm om naar te zoeken: een kleine runtime-afhankelijkheid, een keuze uit gepubliceerde modellen in plaats van één vaste standaard, en een manier om te meten welke daadwerkelijk werkt voor jouw geval. Elke bibliotheek hierboven is een `pip install` verwijderd, MIT- of Apache-gelicentieerd op codeniveau (individuele modelgewichten dragen hun eigen upstream-licenties, gedocumenteerd per engine), en draait hetzelfde op een laptop, een server, of een Raspberry Pi.
 
-Neem contact op via [/contact](/contact) of bekijk wat we verder bouwen op [/services](/services).
+Neem contact op via [/contact](/nl/contact) of bekijk wat we verder bouwen op [/services](/nl/services).

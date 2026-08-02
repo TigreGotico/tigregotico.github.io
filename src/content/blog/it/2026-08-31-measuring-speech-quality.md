@@ -241,7 +241,7 @@ Nulla di tutto ciò è utile in isolamento. Diventa utile nel momento in cui
 più motori devono essere confrontati sullo stesso piano — quale motore TTS,
 quale motore STT, quale modello di miglioramento usare come predefinito. Le
 [librerie vocali in puro
-ONNX](/blog/2026-08-03-a-family-of-pure-onnx-speech-libraries) che
+ONNX](/it/blog/2026-08-03-a-family-of-pure-onnx-speech-libraries) che
 `speechonnxmetrics` è stata costruita per valutare — TTS, ASR, denoising,
 clonazione vocale — pubblicano confronti per motore prodotti esattamente
 con le metriche sopra: MOS senza riferimento per sistemi senza verità di
@@ -252,4 +252,4 @@ può verificare.
 
 Se il vostro progetto necessita di una lingua, un motore o una condizione di
 registrazione valutati in questo modo e non è ancora coperto,
-[mettetevi in contatto](/contact) o guardate [i nostri servizi](/services).
+[mettetevi in contatto](/it/contact) o guardate [i nostri servizi](/it/services).

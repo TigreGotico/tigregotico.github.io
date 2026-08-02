@@ -262,6 +262,6 @@ vue du consentement, d'un jeu d'entraînement complet de sa voix ; il en
 faut simplement beaucoup moins pour produire un résultat utilisable, ce qui
 est une raison d'être plus prudent, pas moins.
 
-Contactez-nous via [contact](/contact) ou consultez
-[ce que nous proposons](/services) si la conversion vocale fait partie
+Contactez-nous via [contact](/fr/contact) ou consultez
+[ce que nous proposons](/fr/services) si la conversion vocale fait partie
 d'un pipeline que vous construisez.

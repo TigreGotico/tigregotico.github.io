@@ -216,5 +216,5 @@ caso. Ognuna delle librerie sopra è a un `pip install` di distanza, con licenza
 di codice (i pesi dei singoli modelli portano le proprie licenze a monte, documentate per
 motore), e gira allo stesso modo su un portatile, un server o un Raspberry Pi.
 
-Contattateci tramite [/contact](/contact) o guardate cos'altro costruiamo su
-[/services](/services).
+Contattateci tramite [/contact](/it/contact) o guardate cos'altro costruiamo su
+[/services](/it/services).

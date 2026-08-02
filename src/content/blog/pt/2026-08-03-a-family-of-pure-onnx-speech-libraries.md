@@ -145,4 +145,4 @@ Isto transforma a escolha de motor de um teste de audição numa tabela. O `voic
 
 Se precisar de processamento de fala offline — limpar uma gravação, clonar uma voz, detetar quem está a falar, ou sintetizar uma — em hardware que nunca verá uma GPU, esta é a forma a procurar: uma pequena dependência de runtime, uma escolha de modelos publicados em vez de um único valor por defeito fixo, e uma forma de medir qual funciona realmente para o seu caso. Cada biblioteca acima está a um `pip install` de distância, licenciada como MIT ou Apache ao nível do código (os pesos de cada modelo individual carregam as suas próprias licenças a montante, documentadas por motor), e corre da mesma forma num portátil, num servidor ou num Raspberry Pi.
 
-Entre em contacto através de [/contact](/contact) ou veja o que mais construímos em [/services](/services).
+Entre em contacto através de [/contact](/pt/contact) ou veja o que mais construímos em [/services](/pt/services).

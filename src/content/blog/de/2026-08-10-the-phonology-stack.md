@@ -234,7 +234,7 @@ Lexikon, Sandhi (Lautveränderungen an Wortgrenzen) und dialektspezifische
 - **[g2p_barranquenho](https://github.com/TigreGotico/g2p_barranquenho)** —
   das erste offene G2P für Barranquenho, die iberoromanische Kontaktsprache
   von Barrancos, an der Grenze zwischen Portugal und Spanien. Siehe
-  **[Der erste Phonemizer für Barranquenho](/blog/2025-12-12-barranquenho)**
+  **[Der erste Phonemizer für Barranquenho](/de/blog/2025-12-12-barranquenho)**
   dazu, wie seine Regeln aus der eigenen orthografischen Konvention der
   Gemeinde abgeleitet wurden.
 - **[arbtok](https://github.com/TigreGotico/arbtok)** — Arabisch, aufgebaut
@@ -288,7 +288,7 @@ manchmal schlicht Bedeutung.
   portugiesische heterophone Homographe auf — Wörter wie "sede" (Durst,
   `ˈsedɨ`, gegenüber Hauptsitz, `ˈsɛdɨ`), bei denen die richtige Aussprache
   von der Bedeutung abhängt, nicht von der Grammatik. Siehe
-  **[Richtig ausgesprochen: Portugiesische Heterophone für TTS disambiguieren](/blog/2026-06-12-disambiguating-portuguese-heterographs-for-tts)**
+  **[Richtig ausgesprochen: Portugiesische Heterophone für TTS disambiguieren](/de/blog/2026-06-12-disambiguating-portuguese-heterographs-for-tts)**
   dazu, wie es gebaut und evaluiert wurde. Das ist der konkrete Fall hinter
   der Gitter-Idee oben: orthography2ipa kann beide Lesarten von "sede"
   liefern, aber nur eine bedeutungsbewusste Schicht wie bifonia kann
@@ -296,9 +296,9 @@ manchmal schlicht Bedeutung.
 
 Mehr dazu, wie silabificador und tugaphone im Alltag zusammenarbeiten, finden
 Sie unter
-**[Klassisches NLP für Portugiesisch: Silbentrennung und Graphem-zu-Phonem](/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**,
+**[Klassisches NLP für Portugiesisch: Silbentrennung und Graphem-zu-Phonem](/de/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**,
 und für die breitere Engine, die all dem zugrunde liegt,
-**[Graphem-zu-IPA für 820 Sprachen](/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**.
+**[Graphem-zu-IPA für 820 Sprachen](/de/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**.
 
 ## Klangbasierte Suche: phonematcher
 
@@ -358,5 +358,5 @@ erstellen. Die Gitter-Engine, die Notationsumwandlungen und die
 Suchwerkzeuge sind bereits vorhanden. Wenn Ihre Sprache, Ihr Dialekt oder Ihr
 Produkt Ausspracheunterstützung braucht, die es noch nicht gibt, ist das die
 Art von Arbeit, die wir übernehmen — siehe
-**[unsere Leistungen](/services)** oder
-**[nehmen Sie Kontakt auf](/contact)**.
+**[unsere Leistungen](/de/services)** oder
+**[nehmen Sie Kontakt auf](/de/contact)**.

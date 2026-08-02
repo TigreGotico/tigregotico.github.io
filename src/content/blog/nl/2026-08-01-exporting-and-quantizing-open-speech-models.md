@@ -60,4 +60,4 @@ De omvang van dat conversiewerk, rechtstreeks geteld uit wat is gepubliceerd: me
 
 De meeste talen krijgen nooit een commerciële offline spraakoptie, omdat de markt voor die ene taal een leverancier er niet toe brengt er een te bouwen. Het patroon hierboven — een bestaand open checkpoint nemen, converteren naar een formaat dat draait op de hardware die je daadwerkelijk hebt, kwantiseren zodat het past, verifiëren tegen het origineel, en inbouwen in een plugin — hangt niet af van marktgrootte. Het hangt af van de aanwezigheid van een open checkpoint om mee te beginnen, en dat is steeds vaker het normale geval.
 
-Heb je een spraakmodel dat alleen op een trainings-GPU draait, of een apparaat dat momenteel geen offline spraakondersteuning heeft in zijn taal, [neem dan contact op](/contact) of bekijk hoe dit werk er van begin tot eind uitziet op [onze diensten-pagina](/services).
+Heb je een spraakmodel dat alleen op een trainings-GPU draait, of een apparaat dat momenteel geen offline spraakondersteuning heeft in zijn taal, [neem dan contact op](/nl/contact) of bekijk hoe dit werk er van begin tot eind uitziet op [onze diensten-pagina](/nl/services).

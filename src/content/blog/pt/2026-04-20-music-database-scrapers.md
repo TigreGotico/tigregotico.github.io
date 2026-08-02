@@ -121,7 +121,7 @@ lide com tudo de forma uniforme.
 
 Estes clientes obtêm apenas páginas de catálogo públicas, a volumes de pedidos
 baixos, e verificam o `robots.txt` de cada site antes de fazer scraping — vê o
-**[artigo sobre robots.txt e sitemaps](/blog/2026-03-01-robot-txt-sitemaps-ethical-web-scraping)**
+**[artigo sobre robots.txt e sitemaps](/pt/blog/2026-03-01-robot-txt-sitemaps-ethical-web-scraping)**
 para saber como funciona esse passo de reconhecimento. Por toda a família a
 camada HTTP é **plugável**: por defeito os clientes usam um transporte cujo
 handshake TLS coincide com o de um navegador real (`curl_cffi` a coincidir com
@@ -148,7 +148,7 @@ hardware, sem necessidade de chave de API. Escolhe a fonte que te interessa: faz
 `pip install` se estiver no PyPI, ou `pip install git+https://github.com/TigreGotico/<repo>` para o pyprogarchives e o pyjazzmusicarchives, que são apenas GitHub — e começa a construir.
 
 Todos os scrapers andam sobre as nossas
-**[sessões requests componíveis e prontas a usar](/blog/2026-03-15-beating-bot-walls-with-drop-in-requests-sessions)**.
+**[sessões requests componíveis e prontas a usar](/pt/blog/2026-03-15-beating-bot-walls-with-drop-in-requests-sessions)**.
 Os clientes de streaming e rádio emitem o esquema
 **[mediavocab](https://github.com/TigreGotico/mediavocab)** diretamente, e cada
 cliente expõe ids externos canónicos, para que os metadados de música se integrem

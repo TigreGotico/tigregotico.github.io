@@ -235,7 +235,7 @@ linguagem, nada que pudesse estar errado sobre como uma língua específica
 realmente soa. É isso que o torna seguro para partilhar entre todos os
 phonemizers que precisam dele, em vez de cada phonemizer reimplementar a
 sua própria tabela ARPABET com os seus próprios bugs. O artigo
-[a stack de fonologia](/blog/2026-08-10-the-phonology-stack) cobre como
+[a stack de fonologia](/pt/blog/2026-08-10-the-phonology-stack) cobre como
 os motores reais de adivinhação de pronúncia — os que carregam opiniões
 linguísticas — são construídos por cima desta camada em vez de a
 duplicarem.
@@ -266,5 +266,5 @@ volta é segura.
 
 Se está a juntar dados de pronúncia de várias fontes, ou precisa de
 detetar escritas e normalizar texto antes de este chegar a um
-phonemizer, [entre em contacto](/contact) ou veja o que mais construímos
-nesta área na [página de serviços](/services).
+phonemizer, [entre em contacto](/pt/contact) ou veja o que mais construímos
+nesta área na [página de serviços](/pt/services).

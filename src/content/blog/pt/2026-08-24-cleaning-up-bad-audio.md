@@ -256,7 +256,7 @@ redutores de ruído acima: um número ligado a uma condição de ruído
 específica, não um adjetivo. A família mais ampla de bibliotecas de fala
 em ONNX puro em que isto se encaixa, incluindo o próprio
 `speechonnxmetrics`, é coberta em
-[Uma Família de Bibliotecas de Fala em ONNX Puro](/blog/2026-08-03-a-family-of-pure-onnx-speech-libraries).
+[Uma Família de Bibliotecas de Fala em ONNX Puro](/pt/blog/2026-08-03-a-family-of-pure-onnx-speech-libraries).
 
 Limpar áudio antes de chegar a um reconhecedor, a um sistema de
 identificação de locutor, ou a um ouvinte humano é uma peça de engenharia
@@ -265,4 +265,4 @@ lista de abordagens que foram tentadas e não sobreviveram ao contacto com
 um sinal real.
 
 Questões sobre aplicar isto a uma pipeline específica: [entre em
-contacto](/contact).
+contacto](/pt/contact).

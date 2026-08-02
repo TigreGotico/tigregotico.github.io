@@ -262,6 +262,6 @@ diferente, do ponto de vista do consentimento, de um conjunto de treino
 completo da sua voz; apenas exige muito menos disso para produzir um
 resultado utilizável, o que é motivo para mais cautela, não menos.
 
-Entre em contacto através de [contact](/contact) ou veja
-[o que oferecemos](/services) se a conversão de voz fizer parte de uma
+Entre em contacto através de [contact](/pt/contact) ou veja
+[o que oferecemos](/pt/services) se a conversão de voz fizer parte de uma
 pipeline que esteja a construir.

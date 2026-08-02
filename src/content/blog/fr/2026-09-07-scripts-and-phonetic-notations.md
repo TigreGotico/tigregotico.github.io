@@ -241,7 +241,7 @@ aucun modèle de langage, rien qui pourrait se tromper sur la manière dont
 une langue spécifique sonne réellement. C'est ce qui la rend sûre à
 partager entre chaque phonémiseur qui en a besoin, plutôt que chaque
 phonémiseur réimplémentant sa propre table ARPABET avec ses propres bugs.
-L'article sur la [stack de phonologie](/blog/2026-08-10-the-phonology-stack)
+L'article sur la [stack de phonologie](/fr/blog/2026-08-10-the-phonology-stack)
 couvre comment les vrais moteurs de devinette de prononciation — ceux qui
 portent effectivement des opinions linguistiques — sont construits par-dessus
 cette couche plutôt que de la dupliquer.
@@ -272,6 +272,6 @@ appelant puisse vérifier avant de supposer qu'un aller-retour est sûr.
 
 Si vous assemblez des données de prononciation provenant de plusieurs
 sources, ou avez besoin de détecter des scripts et normaliser du texte
-avant qu'il n'atteigne un phonémiseur, [contactez-nous](/contact) ou voyez
+avant qu'il n'atteigne un phonémiseur, [contactez-nous](/fr/contact) ou voyez
 ce que nous construisons d'autre dans ce domaine sur la
-[page services](/services).
+[page services](/fr/services).

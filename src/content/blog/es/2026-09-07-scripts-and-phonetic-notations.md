@@ -150,4 +150,4 @@ ARPABET falla en ambas direcciones: tiene un inventario de fonemas restringido, 
 
 ---
 
-Si estás uniendo datos de pronunciación de múltiples fuentes, o necesitas detectar escrituras y normalizar texto antes de que llegue a un fonemizador, [ponte en contacto](/contact) o mira qué más construimos en este ámbito en la [página de servicios](/services).
+Si estás uniendo datos de pronunciación de múltiples fuentes, o necesitas detectar escrituras y normalizar texto antes de que llegue a un fonemizador, [ponte en contacto](/es/contact) o mira qué más construimos en este ámbito en la [página de servicios](/es/services).

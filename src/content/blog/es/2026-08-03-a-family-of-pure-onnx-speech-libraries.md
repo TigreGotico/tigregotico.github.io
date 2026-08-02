@@ -145,5 +145,5 @@ Esto convierte la elección de motor de una prueba de escucha en una tabla. `voi
 
 Si necesitas procesamiento de voz sin conexión — limpiar una grabación, clonar una voz, detectar quién habla o sintetizar una — en hardware que nunca verá una GPU, esta es la forma que hay que buscar: una dependencia de runtime pequeña, una elección entre modelos publicados en lugar de un único valor por defecto fijo, y una forma de medir cuál funciona realmente para tu caso. Cada biblioteca anterior está a un `pip install` de distancia, con licencia MIT o Apache a nivel de código (los pesos de cada modelo individual llevan sus propias licencias de origen, documentadas por motor), y funciona igual en un portátil, un servidor o una Raspberry Pi.
 
-Ponte en contacto a través de [/contact](/contact) o mira qué más construimos en
-[/services](/services).
+Ponte en contacto a través de [/contact](/es/contact) o mira qué más construimos en
+[/services](/es/services).

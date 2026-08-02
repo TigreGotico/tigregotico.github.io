@@ -259,7 +259,7 @@ SNR dans le tableau des débruiteurs ci-dessus : un nombre attaché à une
 condition de bruit spécifique, pas un adjectif. La famille plus large de
 bibliothèques de parole en ONNX pur dans laquelle cela s'inscrit, y compris
 `speechonnxmetrics` elle-même, est couverte dans
-[A Family of Pure-ONNX Speech Libraries](/blog/2026-08-03-a-family-of-pure-onnx-speech-libraries).
+[A Family of Pure-ONNX Speech Libraries](/fr/blog/2026-08-03-a-family-of-pure-onnx-speech-libraries).
 
 Nettoyer l'audio avant qu'il n'atteigne un reconnaisseur, un système
 d'identification de locuteur, ou un auditeur humain est un travail
@@ -268,4 +268,4 @@ propre liste d'approches essayées qui n'ont pas survécu au contact d'un
 signal réel.
 
 Questions sur l'application de tout cela à un pipeline spécifique :
-[contactez-nous](/contact).
+[contactez-nous](/fr/contact).
