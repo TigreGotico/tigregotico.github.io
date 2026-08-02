@@ -1,6 +1,6 @@
 ---
 title: "Robots.txt, Sitemaps, and Ethical Web Scraping"
-description: "Before you build a scraper, scout the site. sitemapper reads robots.txt, fetches every sitemap, and optionally crawls the link graph — so your scraper starts from the site's own contract instead of brute force."
+description: "Before you build a scraper, scout the site. sitemapper reads robots.txt, fetches every sitemap, and optionally crawls the link graph, so your scraper starts from the site's own contract instead of brute force."
 date: 2026-03-01
 updated: 2026-08-01
 author: "Casimiro Ferreira"
@@ -33,9 +33,9 @@ That is what **[sitemapper](https://github.com/TigreGotico/sitemapper)** does.
 
 ## Passive discovery: robots.txt + sitemaps
 
-`discover()` fetches robots.txt and every sitemap it can find — including
+`discover()` fetches robots.txt and every sitemap it can find, including
 `Sitemap:` directives, sitemap indexes that point at sub-sitemaps, and gzipped
-files — without crawling a single HTML page:
+files, without crawling a single HTML page:
 
 ```python
 from sitemapper import discover
@@ -65,10 +65,10 @@ for url in info.urls:
 The per-agent detail is there when you need it: `info.robots.groups` holds each
 `User-agent` block with its `allows`, `disallows`, and `crawl_delay`, in
 document order. If a site has no robots.txt at all, `is_allowed()` returns
-`True` for everything — absence of a policy is itself the policy.
+`True` for everything. Absence of a policy is itself the policy.
 
-The payoff of sitemap-first scraping: instead of discovering URLs by crawling
-(slow, noisy, incomplete), you start from the maintainers' own list. You scrape
+Sitemap-first scraping pays off because you skip discovering URLs by crawling
+(slow, noisy, incomplete) and start from the maintainers' own list. You scrape
 what the site declares important, at the pace it declares acceptable, in a
 fraction of the requests.
 
@@ -88,7 +88,7 @@ print(graph.summary())
 # Top external domains: ...
 ```
 
-This tells you the actual topology — which pages link to what — so you can
+This tells you the actual topology, which pages link to what, so you can
 decide whether the site is worth a structured scraper at all. Discovery and
 crawling are deliberately separate calls: the passive step never fetches HTML,
 so you can always scout politely before deciding to crawl.
@@ -97,9 +97,9 @@ so you can always scout politely before deciding to crawl.
 
 Site recon is pointless if the recon itself gets bot-walled. All of
 sitemapper's HTTP goes through
-[`unblock_requests`](https://github.com/TigreGotico/unblock_requests) — the
-TLS-impersonating transport from our
-**[anti-bot transport post](/blog/2026-03-15-beating-bot-walls-with-drop-in-requests-sessions)** —
+[`unblock_requests`](https://github.com/TigreGotico/unblock_requests), the
+TLS-impersonating transport (it mimics a real browser's TLS fingerprint) from our
+**[anti-bot transport post](/blog/2026-03-15-beating-bot-walls-with-drop-in-requests-sessions)**,
 so robots.txt and sitemaps come back even on Cloudflare-fronted sites. A
 FlareSolverr instance or Wayback Machine fallback can be enabled with
 environment variables (`SITEMAPPER_FLARESOLVERR_URL`,
@@ -107,19 +107,18 @@ environment variables (`SITEMAPPER_FLARESOLVERR_URL`,
 
 ## Why this matters
 
-**Crawl delay**: a site that declares `Crawl-delay: 2` is telling you how fast
-it wants to be hit. Ignore it and you get blocked — or you degrade the site for
+A site that declares `Crawl-delay: 2` is telling you how fast it wants to be
+hit. Ignore it and you risk getting blocked, or you degrade the site for
 everyone. Respect it and your scraper plays fair.
 
-**Sitemaps over crawling**: a sitemap lists what the site wants indexed. Blind
-link-crawling can touch five times as many URLs to find the same content.
-Start from the sitemap when one exists; it is faster for you and lighter on the
-server.
+A sitemap lists what the site wants indexed. Blind link-crawling can touch
+five times as many URLs to find the same content, so start from the sitemap
+when one exists. It is faster for you and lighter on the server.
 
-**Scope before code**: some sites forbid scraping outright in robots.txt; some
-have sitemaps that already contain everything you need. Ten seconds of
-`discover()` tells you which situation you are in before you invest in a
-parser.
+Scope matters before you write code. Some sites forbid scraping outright in
+robots.txt. Others have sitemaps that already contain everything you need. Ten
+seconds of `discover()` tells you which situation you are in before you invest
+in a parser.
 
 ## The tool
 
@@ -128,7 +127,7 @@ pip install sitemapper
 pip install sitemapper[stealth]   # adds curl_cffi TLS impersonation
 ```
 
-Use it as a library, or from the command line — `--json FILE` writes the full
+Use it as a library, or from the command line: `--json FILE` writes the full
 discovery to a file for other tools to consume, `--crawl` adds the link-graph step:
 
 ```bash
