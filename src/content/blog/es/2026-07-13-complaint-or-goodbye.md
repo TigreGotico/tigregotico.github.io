@@ -124,12 +124,12 @@ fueron unos días cómodos.
 La estructura de pares opuestos de Plutchik ha sido puesta a prueba. En 2009, Smith
 & Schneider la sometieron a más de dos mil pruebas estadísticas y concluyeron que la
 teoría de la rueda de las emociones «no recibe apoyo empírico». Los pares opuestos
-son una metáfora elegante tomada prestada de la teoría del color. No son un hallazgo
+son una metáfora tomada prestada de la teoría del color. No son un hallazgo
 sobre las personas.
 
-Mientras tanto, las cosas que *sí* replican — el circunflejo valencia–activación de
-Russell, y la dimensión de control que separa la ira del miedo — son exactamente las
-piezas que rara vez llegan al software funcional.
+Mientras tanto, las cosas que *sí* replican, el circunflejo valencia–activación de
+Russell y la dimensión de control que separa la ira del miedo, son las piezas que
+rara vez llegan al software funcional.
 
 Hay un problema de segundo orden aquí, y es el que realmente nos molestó. Cada uno de
 estos modelos es *utilizable*. Son vívidos, se pueden enseñar, caben en una
@@ -172,7 +172,7 @@ angry, afraid = affect_from_texts([
 ])
 
 angry.valence,  angry.potency    # -0.43, +0.16   -> 'disgust'
-afraid.valence, afraid.potency   # -0.47, -0.43   -> 'apprehension'
+afraid.valence, afraid.potency   # -0.47, -0.42   -> 'apprehension'
 ```
 
 Mira esos números. **La valencia es casi idéntica** — ambos mensajes son más o menos
