@@ -20,7 +20,7 @@ Home Assistant는 자동화를 담당하고, OVOS는 음성을 담당합니다. 
 
 -----
 
-## Home Assistant에 OVOS 기반 음성 부여하기
+## Wyoming 브리지: Home Assistant 안의 OVOS 음성 플러그인
 
 Wyoming 프로토콜은 외부 ASR, TTS, 웨이크워드 서비스를 위한 HA의 표준 인터페이스입니다. 저희는 이 프로토콜을 통해 모든 OVOS 플러그인을 노출하는 Wyoming 브리지를 만들었습니다 — 즉, HA는 엄선된 짧은 목록뿐 아니라 OVOS 생태계의 모든 플러그인에 접근할 수 있게 됩니다.
 
@@ -31,26 +31,18 @@ Wyoming 프로토콜은 외부 ASR, TTS, 웨이크워드 서비스를 위한 HA�
 
 [OVOS Wyoming Docker](https://github.com/TigreGotico/ovos-wyoming-docker) 프로젝트는 이러한 서비스를 패키징하여 `docker compose up` 한 번으로 사용할 수 있게 합니다.
 
-### **플러그인 하이라이트: ILENIA로 구동되는 다국어 TTS**
+### 공적 자금 지원 언어 프로젝트의 다국어 TTS
 
-저희에게 접근성은 핵심입니다. 여기에는 언어 접근성도 포함됩니다. 이 통합을 통해 [**ILENIA**](https://proyectoilenia.es/)와 같은 프로젝트의 고품질 공적 자금 지원 음성을 더 많은 사용자에게 제공할 수 있다는 점을 자랑스럽게 생각합니다. Home Assistant 사용자는 카탈루냐어와 갈리시아어 같은 언어에 대해 자연스러운 음성을, 그것을 만든 프로젝트로부터 바로 얻을 수 있습니다.
+접근성에는 언어 접근성도 포함됩니다. 이 통합을 통해 [**ILENIA**](https://proyectoilenia.es/demostradores-2025/prototipo-ovos/)와 같은 프로젝트의 고품질 공적 자금 지원 음성을 더 많은 사용자에게 제공할 수 있습니다. Home Assistant 사용자는 카탈루냐어와 갈리시아어 같은 언어에 대해 자연스러운 음성을, 그것을 만든 프로젝트로부터 바로 얻을 수 있습니다.
 
 * **카탈루냐어용 Matxa TTS:** [`ovos-tts-plugin-matxa-multispeaker-cat`](https://github.com/OpenVoiceOS/ovos-tts-plugin-matxa-multispeaker-cat)는 카탈루냐어를 위한 다중 화자 음성 합성 기능을 제공합니다.
 * **갈리시아어용 NosTTS:** [`ovos-tts-plugin-nos`](https://github.com/OpenVoiceOS/ovos-tts-plugin-nos)는 갈리시아어로 견고한 음성 합성을 제공합니다.
 
 ![ILENIA 로고](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/ilenia.png)
 
-### **Home Assistant에서 Wyoming 서비스 설정하기:**
-
-Home Assistant에서 Wyoming 서비스를 구성할 때는 일반적으로 [공식 Home Assistant 문서](https://www.home-assistant.io/integrations/wyoming/)를 참조합니다. 이 과정은 보통 Docker 컨테이너(또는 OVOS Wyoming 서비스를 실행하는 호스트)의 IP 주소를 Home Assistant 웹 인터페이스에 입력하는 것만으로 이루어집니다.
-
-![Home Assistant의 Wyoming 설정](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/wyoming_setup.png)
-
-![Home Assistant의 Wyoming 엔티티](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/wyoming_menu.png)
-
 -----
 
-## OVOS를 대화의 두뇌로 만들기
+## Home Assistant용 대화형 에이전트로서의 OVOS
 
 한 걸음 더 나아가고 싶으신가요? **Ollama 통합**을 사용하여 OVOS를 Home Assistant의 본격적인 대화형 에이전트로 설정할 수 있습니다.
 
@@ -72,7 +64,7 @@ Home Assistant에서 Wyoming 서비스를 구성할 때는 일반적으로 [공�
 
 -----
 
-## HiveMind로 OVOS 기기를 Home Assistant에 맞이하기
+## HiveMind로 OVOS 기기를 Home Assistant 엔티티로 노출하기
 
 전용 OVOS 기기가 있다면, [HiveMind HomeAssistant](https://github.com/JarbasHiveMind/hivemind-homeassistant) 통합이 이를 Home Assistant의 네이티브 엔티티로 표시되게 합니다 — 전체 기기를 위한 하나의 통합 제어판입니다.
 
@@ -114,17 +106,15 @@ OVOS 기기는 또한 Home Assistant에서 표준 미디어 플레이어로 표�
 
 -----
 
-## OVOS에 왕국의 열쇠를 주기
+## OVOS에서 Home Assistant 엔티티 제어하기
 
 커뮤니티가 유지 관리하는 [skill-homeassistant](https://github.com/OscillateLabsLLC/skill-homeassistant)는 HA REST API를 통해 OVOS에 Home Assistant 엔티티에 대한 직접 제어 권한을 부여합니다. OVOS 기기에 설치하면 "거실 조명 켜줘" 또는 "온도 조절기를 21도로 설정해"라고 말할 수 있습니다 — 완전히 로컬이며 클라우드가 없습니다.
 
 -----
 
-## 각 작업에 맞는 도구
+## 아직 거친 부분
 
-OVOS는 음성을 담당하고, Home Assistant는 자동화를 담당합니다. 어느 쪽도 상대방의 일을 하기 위해 타협하지 않으며, 통합 지점이 충분히 깔끔하여 각 프로젝트가 자체 릴리스 주기를 유지합니다.
-
-버그 리포트와 PR은 위에 링크된 저장소 전반에서 환영합니다.
+여기서 Wyoming 브리지와 HiveMind 통합이 가장 성숙한 부분입니다. 대화형 에이전트로서의 persona-server 경로는 더 새로우며, OVOS와 HA가 함께 무엇까지 할 수 있는지 그 한계를 보고 싶다면 가장 먼저 시도해 볼 만합니다. 버그 리포트와 PR은 위에 링크된 저장소 전반에서 환영합니다.
 
 ---
 

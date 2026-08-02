@@ -1,6 +1,6 @@
 ---
-title: "조합 가능하고 즉시 교체 가능한 requests 세션으로 봇 차단 벽 넘기"
-description: "핫 패스에서 헤드리스 브라우저를 띄우지 않고도 공개 데이터에 대한 회복력 있는 접근을 유지하는 방법: TLS 지문 위장, JS 챌린지를 위한 FlareSolverr 프록시, Wayback Machine 대체 수단, 그리고 IP 로테이션 — 이 모든 것이 조합 가능한 두 개의 requests.Session 서브클래스, unblock_requests와 anon_requests 뒤에 자리합니다."
+title: "회복력 있는 공개 데이터 접근을 위한 조합 가능하고 즉시 교체 가능한 requests 세션"
+description: "핫 패스에서 헤드리스 브라우저 없이 공개 웹 페이지를 안정적으로 읽기 위한 조합 가능한 두 개의 requests.Session 서브클래스: TLS 호환 전송, JS 챌린지를 위한 FlareSolverr 프록시, Wayback Machine 대체 수단, 그리고 IP를 분산하는 요청 — unblock_requests와 anon_requests."
 date: 2026-03-15
 lang: ko
 author: "Casimiro Ferreira"
@@ -14,12 +14,14 @@ tags:
 draft: false
 ---
 
-저희 작업의 상당 부분(미디어 메타데이터 클라이언트, 카탈로그 보강, 아카이빙)은 **공개** 웹 페이지를 안정적으로 읽는 데 의존합니다. 문제는 데이터인 경우가 드뭅니다. 그 앞을 가로막는 벽이 문제입니다. 그리고 그 벽은 서로 다른 두 가지 질문을 던집니다.
+저희 작업의 상당 부분(미디어 메타데이터 클라이언트, 카탈로그 보강, 아카이빙)은 **공개** 웹 페이지를 안정적으로 읽는 데 의존합니다. 문제는 데이터인 경우가 드뭅니다. 문제는 상당수의 봇 탐지 인프라가 스크립트 공격을 겨냥해 조정된 나머지, 잘 동작하는 비브라우저 클라이언트를 그것으로 오분류하게 된다는 데 있습니다. 이는 서로 다른 두 축에서 일어납니다.
 
-- **"너는 무엇이냐?"** — Cloudflare와 같은 부류는 여러분이 *무엇을* 요청하는지가 아니라 여러분이 통신선상에서 *어떻게 보이는지*를 근거로 요청을 차단합니다. 즉 TLS 핸드셰이크, JA3 지문, JavaScript 챌린지를 실행할 수 있는지가 기준입니다.
-- **"너는 누구냐?"** — IP 평판과 속도 제한은 지문은 완전히 무시합니다. 하나의 주소에서 얼마나 많은 요청이 오는지를 셉니다.
+- **"너는 무엇이냐?"** — Cloudflare와 같은 부류는 여러분이 *무엇을* 요청하는지가 아니라 여러분이 통신선상에서 *어떻게 보이는지*를 근거로 요청에 표시를 답니다. 즉 TLS 핸드셰이크, JA3 지문, JavaScript 챌린지를 실행할 수 있는지가 기준입니다. 순수한 `requests` 핸드셰이크는 브라우저의 것과 전혀 다르게 보이므로, 트래픽 자체는 무해하더라도 스크립트 남용을 겨냥한 검사에 걸립니다.
+- **"너는 누구냐?"** — IP 평판과 속도 제한은 지문은 완전히 무시합니다. 하나의 주소에서 얼마나 많은 요청이 오는지를 세며, 이는 남용하는 클라이언트만큼이나 잘 동작하는 단일 클라이언트에도 불리하게 작용할 수 있습니다.
 
-이 두 질문은 서로 직교하므로, 저희는 깔끔하게 쌓이는 두 개의 작은 라이브러리로 답합니다. **unblock_requests**는 *너는 무엇이냐*에 답하고, **anon_requests**는 *너는 누구냐*에 답합니다. 둘 다 일상 코드에서 `requests` 세션을 즉시 대체할 수 있습니다. 이 글은 특별히 그 전송 계층, 즉 통신선상의 바이트 부분에 관한 것이며, 그 위에 놓이는 파싱이나 파이프라인에 관한 것이 아닙니다.
+이 두 축은 서로 직교하므로, 저희는 깔끔하게 쌓이는 두 개의 작은 라이브러리로 답합니다. **unblock_requests**는 *너는 무엇이냐*에 답하고, **anon_requests**는 *너는 누구냐*에 답합니다. 둘 다 일상 코드에서 `requests` 세션을 즉시 대체할 수 있습니다. 이 글은 특별히 그 전송 계층, 즉 통신선상의 바이트 부분에 관한 것이며, 그 위에 놓이는 파싱이나 파이프라인에 관한 것이 아닙니다.
+
+**범위를 분명히 밝힙니다.** 이 전송 계층들은 오직 공개된, 인증이 필요 없는 페이지만을 대상으로 합니다. `robots.txt`와 선언된 crawl-delay를 준수합니다 — 스크래퍼를 작성하기 전에 이를 어떻게 확인하는지는 저희 **[robots.txt 및 sitemap 글](/ko/blog/2026-03-01-robot-txt-sitemaps-ethical-web-scraping)**을 참고하세요 — 그리고 이 위에 구축되는 모든 클라이언트는 낮은 요청량으로 제한되므로, 대상 origin이 저희로부터 의미 있는 부하를 겪는 일은 결코 없습니다. 이는 나중에 덧붙인 면책 조항이 아니라, 이러한 세션이 사용되는 방식에 대한 실질적인 공학적 제약입니다. 회복력이 있으면서도 배려가 없는 클라이언트는 스스로의 목적을 무너뜨리기 때문입니다.
 
 ## 설계 제약: `requests`의 형태를 유지하기
 
@@ -38,11 +40,11 @@ assert isinstance(s, requests.Session)            # True
 
 ## 첫 번째 계층: `unblock_requests`와 그 전송 방식
 
-`unblock_requests`는 **봇 탐지**에 대응합니다. `mode=` 키워드 인자(또는 `UNBLOCK_REQUESTS_TRANSPORT` 환경 변수 — 명시적 키워드 인자가 항상 우선)로 전송 방식을 선택합니다. 주요 네 가지는 다음과 같습니다.
+`unblock_requests`는 순수한 Python 클라이언트를 **브라우저에 맞춰 조정된 봇 탐지 검사**와 상호 운용 가능하게 만듭니다. `mode=` 키워드 인자(또는 `UNBLOCK_REQUESTS_TRANSPORT` 환경 변수 — 명시적 키워드 인자가 항상 우선)로 전송 방식을 선택합니다. 주요 네 가지는 다음과 같습니다.
 
 | 모드 | 하는 일 |
 |---|---|
-| `curl_cffi` *(기본값)* | `curl_cffi`를 통한 Chrome TLS/JA3 위장. 추가 인프라 없이 대부분의 네트워크에서 봇 검사를 통과합니다. |
+| `curl_cffi` *(기본값)* | `curl_cffi`를 통한 Chrome TLS/JA3 위장. 추가 인프라 없이 대부분의 네트워크에서 브라우저 모양의 핸드셰이크로 통과합니다. |
 | `requests` | 위장 없는 순수 `requests`. |
 | `flaresolverr` | JS 챌린지를 해결하는 FlareSolverr 헤드리스 브라우저를 통해 프록시 — **실시간** 데이터. |
 | `wayback` | Internet Archive의 가장 최근 스냅샷을 읽음 — 오래되었지만 아무것도 필요 없음. |
@@ -66,7 +68,7 @@ CloudflareSession(flaresolverr_url="http://host:8191",
 
 ## 두 번째 계층: `anon_requests`와 IP 로테이션
 
-직교하는 문제는 **IP 평판**입니다. 완벽한 지문이라도 모든 요청이 하나의 주소에서 오면 속도 제한이나 차단을 당합니다. `anon_requests`는 `RotatingProxySession`(스크래핑한 공개 프록시, 선택적 검증, SOCKS5/HTTP)과 `RotatingTorSession`(로테이션되는 Tor 회로)으로 이를 처리합니다. 각 요청은 새로운 출구를 통해 나가며, 죽은 프록시는 연결 실패 시 로테이션으로 제거됩니다.
+직교하는 문제는 **IP 평판**입니다. 완벽하게 브라우저 모양인 핸드셰이크라도 모든 요청이 하나의 주소에서 오면 속도 제한을 당할 수 있습니다 — 물량 기반 휴리스틱은 지문이 아니라 주소를 봅니다. `anon_requests`는 `RotatingProxySession`(스크래핑한 공개 프록시, 선택적 검증, SOCKS5/HTTP)과 `RotatingTorSession`(로테이션되는 Tor 회로)으로 여러 주소에 부하를 분산시켜, 요청량이 적은 클라이언트가 단일 IP에서 사이트를 두들기는 클라이언트로 오인되는 일이 없도록 합니다. 각 요청은 새로운 출구를 통해 나가며, 죽은 프록시는 연결 실패 시 로테이션으로 제거됩니다.
 
 ```python
 from anon_requests import RotatingProxySession, ProxyType
@@ -75,7 +77,7 @@ with RotatingProxySession(proxy_type=ProxyType.SOCKS5, validate=True) as s:
     print(s.get("https://ipecho.net/plain", timeout=5).text)  # a new IP each time
 ```
 
-## 조합: 로테이션 **그리고** 우회를 한 번에
+## 조합: 분산된 부하 **그리고** 호환되는 핸드셰이크를 한 번에
 
 이 두 라이브러리는 겹치는 대신 쌓이도록 설계되었습니다. `anon_requests` 세션은 `session_factory`를 받습니다. 이는 `requests.Session`을 반환하는 임의의 callable이며, 기본값은 `requests.Session`입니다. 로테이션과 프록시 설정은 그 factory가 반환하는 무엇에든 적용됩니다. 따라서 `CloudflareSession`을 factory로 주입하면 하나의 객체에서 두 가지 동작을 모두 얻습니다.
 
@@ -86,10 +88,10 @@ from unblock_requests import CloudflareSession
 session = RotatingProxySession(
     session_factory=lambda: CloudflareSession(flaresolverr_url="http://host:8191"),
 )
-session.get(url)   # rotates the IP *and* solves Cloudflare
+session.get(url)   # spreads load across IPs *and* uses a browser-compatible handshake
 ```
 
-로테이션된 프록시는 *모든* 전송 방식을 통해 흐르며, 여기에는 FlareSolverr 내부로도 들어갑니다. FlareSolverr는 해결 요청의 `proxy` 필드를 통해 헤드리스 브라우저를 구동합니다. 따라서 챌린지를 해결하는 IP는 요청의 나머지가 사용하는 것과 동일한 로테이션된 IP입니다. 방어자가 알아챌 수 있는 지문/출구 노드 분리가 없습니다.
+로테이션된 프록시는 *모든* 전송 방식을 통해 흐르며, 여기에는 FlareSolverr 내부로도 들어갑니다. FlareSolverr는 해결 요청의 `proxy` 필드를 통해 헤드리스 브라우저를 구동합니다. 따라서 핸드셰이크, 챌린지 해결, 출구 IP를 아우르는 요청 전체가 처음부터 끝까지 일관되게 유지되며, 이는 하나 이상의 방문자처럼 보이려 하지 않는 클라이언트에게는 그저 올바른 동작일 뿐입니다.
 
 ## 왜 이런 형태인가
 
