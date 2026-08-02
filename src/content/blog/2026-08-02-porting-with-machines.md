@@ -268,6 +268,83 @@ Under an asymmetry that lopsided, you do not need to resolve the legal question
 in order to make the decision. You just take the branch where being wrong is
 survivable.
 
+## The same question, pointing the other way
+
+Everything above is about code we produce. The identical logic applies to code we
+receive. Somebody opens a pull request against one of our repositories. The patch
+was written by a model. What are they granting us?
+
+Most projects handle this with the
+[Developer Certificate of Origin](https://developercertificate.org/) — the DCO,
+the `Signed-off-by:` line at the bottom of a commit message. It is a short
+statement the contributor attests to when they sign: that they created the
+contribution themselves, or that it came from a source under a compatible
+licence and they have the right to submit it under the project's terms. It is
+deliberately lightweight. No lawyers, no paperwork, one line per commit. It is
+how the Linux kernel and QEMU, among many others, establish where their code
+came from.
+
+For a machine-written patch, neither limb is straightforwardly true. And the
+fork resolves the same way whichever branch you take.
+
+If machine-generated output carries no copyright, the contributor holds no rights
+in it. There is nothing to license to you.
+
+If instead it is treated as derived from its training data, the rights — whatever
+they are — belong to whoever wrote that data. The contributor still holds
+nothing, and still has nothing to license to you.
+
+Either way, they cannot grant what they do not hold. The signature is not
+dishonest. The contributor signed in good faith and did the work. It is simply
+empty: a transfer of something that was never theirs to transfer.
+
+The practical consequence is less alarming than that sounds, and the two branches
+differ sharply.
+
+On the first branch, you do not need a grant at all. Material nobody owns can be
+used by anyone. Accepting the patch is fine and nothing bad happens. What quietly
+changes is the other direction: copyleft is built on copyright, and it cannot
+attach to material that carries none. A GPL project accumulating machine-written
+patches accumulates parts its own licence may not reach. The licence still
+governs the work as distributed. The enforceable core inside it thins out, slowly,
+with nobody noticing.
+
+The second branch has teeth. If a model reproduces memorised training data
+verbatim — which does happen, more with common idioms and well-known
+implementations than with novel logic — then you have accepted somebody else's
+copyrighted code, on an assurance from a contributor who had no way to check. The
+DCO's whole value is that the person signing it was in a position to know. Here
+they are not.
+
+Debian is working through this now. A
+[general resolution on LLM usage](https://www.debian.org/vote/2026/vote_002) went
+into its discussion period on 23 July 2026 with five proposals on the ballot.
+They span the range: Proposal A would amend the Social Contract to forbid
+LLM-assisted contributions to packages, documentation and web resources outright;
+Proposal C asks contributors to avoid LLMs as far as practical, requires
+human-only drafting for project communications, and lets individual maintainers
+impose their own bans; Proposals B, D and E permit AI-assisted work under
+conditions, built variously on licensing verification, contributor
+accountability, disclosure, and restrictions on sending confidential material to
+cloud services. As of writing it is under discussion and nothing is decided.
+
+That is the second time round. An
+[earlier attempt in 2024](https://lwn.net/Articles/972331/) ended without a
+resolution, and the reasoning for stopping is worth keeping: the objection to
+acting was not that the concern was baseless but that a rule nobody can enforce
+is not worth adopting. You cannot look at a diff and tell.
+
+This is not a fringe worry. It lands hardest on exactly the projects with the
+most careful provenance, because a DCO-based project's entire model of where its
+code came from rests on that one attestation.
+
+We have not resolved how we will handle it, and we are in a poor position to be
+strict. We ship ports written by a model. A project that publishes machine-written
+code and refuses machine-written contributions is holding two incompatible
+positions at once, and we would rather not. The honest options are the same ones
+Debian is weighing — disclosure, contributor accountability, or a rule nobody can
+verify — and we have not picked one.
+
 ## The part we are not going to pretend is settled
 
 We may not have needed to do any of that.
@@ -286,4 +363,6 @@ being the case that settles it.
 The question does not go away by being ignored. This kind of porting is becoming
 ordinary — it is cheap now, and there is a great deal of unmaintained C worth
 moving to somewhere it can be maintained. Every one of those ports will face the
-same two questions, and most of them will answer by not asking.
+same two questions, and most of them will answer by not asking. So will every
+project that merges a patch it did not write, which is to say all of them. The
+questions arrive whether you are writing the code or only accepting it.
