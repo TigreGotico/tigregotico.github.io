@@ -2,6 +2,7 @@
 title: "多言語の文タイプ・データセット：疑問文、命令文、平叙文"
 description: "sentence-types-multilingual を公開しました。7言語にわたる約70,000文を、文法的なタイプ（疑問文、命令文、平叙文、感嘆文）で分類したものです。これは little_questions 経路制御ライブラリの背後にある訓練用コーパスです。"
 date: 2026-04-01
+updated: 2026-08-01
 lang: ja
 author: "Casimiro Ferreira"
 tags:
@@ -20,19 +21,20 @@ draft: false
 
 ## ラベルが実際に意味するもの
 
-このデータセットは4つの最上位タイプを使用しており、それらは（このデータを利用する推論ライブラリである）`little_questions` が発話をどのように経路制御するかに直接対応します。
+このデータセットは、1行につき1つの `label` 列のみを持つ、タイプ/サブタイプの区別のないフラットな6つのラベル集合を使用しており、それらは（このデータを利用する推論ライブラリである）`little_questions` が発話をどのように経路制御するかに直接対応します。
 
-- **question** — さらにサブタイプで細分されます：`yes_no_question`、`wh_question`、`tag_question`。`little_questions` 内部の EAT 分類体系は、53個の細粒度な回答タイプのラベル（人物、場所、数量、定義など）を追加しますが、文タイプの分類が最初の関門です。
-- **command** — 命令形および依頼の形式です。命令文は答えを期待しません。行動を期待します。
+- **wh_question** — what、where、who などの wh 語を中心に構成される疑問文です。
+- **polar_question** — yes/no 疑問文です。`little_questions` 内部の EAT 分類体系は、これらの疑問文ラベルの上に、53個の細粒度な回答タイプのラベル(人物、場所、数量、定義など)を追加しますが、文タイプの分類が最初の関門です。
+- **command** — 命令形です。命令文は答えを期待しません。行動を期待します。
+- **request** — 丁寧または間接的な行動の依頼で、単純な命令形とは区別されます。
 - **statement** — 平叙文です。対話の文脈における平叙文は、下流で重要となる極性を帯びていることが多くあります。すなわち、先行する質問への回答を解釈するために、平叙文に対して yes/no/maybe の分類器が実行されます。
 - **exclamation** — 感情的に標示された発話で、中立的な平叙文とは異なる扱いを必要とします。
 
 ```json
 {
-  "text": "What time is it?",
   "language": "en",
-  "type": "question",
-  "sub_type": "wh_question"
+  "label": "wh_question",
+  "text": "What time is it?"
 }
 ```
 
@@ -48,7 +50,7 @@ draft: false
 
 ## 下流のスタック
 
-このデータで訓練されたモデルは、**[little_questions](https://github.com/TigreGotico/little_questions)** の内部で配布されます。これは依存関係のないオフラインのライブラリ（numpy + onnxruntime）で、文タイプ用の言語別 ONNX 分類器と、43言語対応の yes/no 極性モデルを備えています。モデルは英語についてはwheel内に同梱され、その他の言語については遅延ダウンロードされます。HuggingFace 上のソースは `TigreGotico/sentence-types` と `TigreGotico/eat-classifiers` です。
+このデータで訓練されたモデルは、**[little_questions](https://github.com/TigreGotico/little_questions)** の内部で配布されます。これは依存関係のないオフラインのライブラリ（numpy + onnxruntime）で、文タイプ用の言語別 ONNX 分類器と、43言語対応の yes/no 極性モデルを備えています。モデルは英語についてはwheel内に同梱され、その他の言語については遅延ダウンロードされます。文タイプ分類器は HuggingFace 上で `TigreGotico/sentence-types` として公開されており、EAT 回答タイプ分類器は内部で訓練されたもので、一般には公開されていません。
 
 ```python
 from little_questions import Sentence

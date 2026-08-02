@@ -2,6 +2,7 @@
 title: "Robots.txt、サイトマップ、そして倫理的なウェブスクレイピング"
 description: "スクレイパーを構築する前に、まずサイトを偵察しましょう。sitemapper は robots.txt を読み込み、すべてのサイトマップを取得し、必要に応じてリンクグラフを巡回します。これにより、スクレイパーは力任せではなく、サイト自身の契約から出発できます。"
 date: 2026-03-01
+updated: 2026-08-01
 lang: ja
 author: "Casimiro Ferreira"
 tags:
@@ -44,10 +45,12 @@ from sitemapper import discover
 
 info = discover("https://www.python.org")
 print(info.summary())
-# Base URL:         https://www.python.org
-# Sitemaps found:   1
+# Base URL:       https://www.python.org
+# Blocked:        False
+# Sitemaps found: 1
 # URLs in sitemaps: 342
-# Crawl-delay:      None
+# Crawl-delay:    None
+# Sitemap directives in robots.txt: 1
 
 # What pace does the site ask for?
 if info.robots.crawl_delay:
@@ -130,13 +133,13 @@ pip install sitemapper
 pip install sitemapper[stealth]   # adds curl_cffi TLS impersonation
 ```
 
-ライブラリとして、あるいはコマンドラインから使えます。`--json` は発見結果の全体を
-出力して他のツールへパイプできるようにし、`--crawl` はリンクグラフのステップを
-追加します。
+ライブラリとして、あるいはコマンドラインから使えます。`--json FILE` は発見結果の
+全体を他のツールが利用できるようファイルに書き出し、`--crawl` はリンクグラフの
+ステップを追加します。
 
 ```bash
 python -m sitemapper https://example.com
-python -m sitemapper https://example.com --crawl --max-pages 50 --json
+python -m sitemapper https://example.com --crawl --max-pages 50 --json out.json
 ```
 
 これはフリーソフトウェアであり、あなた自身のハードウェア上で動作します。すべての
