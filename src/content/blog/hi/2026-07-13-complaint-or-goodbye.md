@@ -2,6 +2,7 @@
 title: "आपका सेंटिमेंट मॉडल शिकायत और विदाई में फ़र्क नहीं कर सकता"
 description: "दो गुस्से भरे सपोर्ट मैसेज। एक ग्राहक शिकायत बढ़ाने वाला है; दूसरा बिना एक शब्द कहे चुपचाप जाने वाला है। लगभग कोई इमोशन मॉडल इनमें फ़र्क नहीं कर सकता — क्योंकि सबमें एक ही अक्ष गायब है। परिचय emotion-algebra से।"
 date: 2026-07-13
+updated: 2026-08-01
 lang: hi
 author: "Casimiro Ferreira"
 tags:
@@ -158,7 +159,7 @@ angry, afraid = affect_from_texts([
     "I don't know if I'm doing this right and I'm scared I've broken something.",
 ])
 
-angry.valence,  angry.potency    # -0.43, +0.16   -> 'annoyance'
+angry.valence,  angry.potency    # -0.43, +0.16   -> 'disgust'
 afraid.valence, afraid.potency   # -0.47, -0.43   -> 'apprehension'
 ```
 

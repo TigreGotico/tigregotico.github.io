@@ -2,6 +2,7 @@
 title: "कोई भाषा पीछे न छूटे"
 description: "भाषा पहचान, अनुवाद प्लगइन और द्विदिशात्मक अनुवाद क्षमताओं के माध्यम से OpenVoiceOS में भाषा की बाधाओं को समाप्त करना।"
 date: 2023-10-16
+updated: 2026-08-01
 lang: hi
 author: "Casimiro Ferreira"
 tags:
@@ -86,7 +87,7 @@ FasterWhisper के भाषा वर्गीकरणकर्ता मॉ
     "ovos-utterance-translation-plugin": {
         "bidirectional": true,
         "verify_lang": false,
-        "ignore_invalid": true,
+        "ignore_invalid_langs": true,
         "translate_secondary_langs": true
     }
 },

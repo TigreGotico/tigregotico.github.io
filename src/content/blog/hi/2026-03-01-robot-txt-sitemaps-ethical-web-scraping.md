@@ -2,6 +2,7 @@
 title: "Robots.txt, साइटमैप्स, और नैतिक वेब स्क्रैपिंग"
 description: "स्क्रैपर बनाने से पहले, साइट की टोह लें। sitemapper robots.txt पढ़ता है, हर साइटमैप लाता है, और वैकल्पिक रूप से लिंक ग्राफ़ को क्रॉल करता है — ताकि आपका स्क्रैपर क्रूर बल के बजाय साइट के अपने अनुबंध से शुरू हो।"
 date: 2026-03-01
+updated: 2026-08-01
 lang: hi
 author: "Casimiro Ferreira"
 tags:
@@ -42,10 +43,12 @@ from sitemapper import discover
 
 info = discover("https://www.python.org")
 print(info.summary())
-# Base URL:         https://www.python.org
-# Sitemaps found:   1
+# Base URL:       https://www.python.org
+# Blocked:        False
+# Sitemaps found: 1
 # URLs in sitemaps: 342
-# Crawl-delay:      None
+# Crawl-delay:    None
+# Sitemap directives in robots.txt: 1
 
 # What pace does the site ask for?
 if info.robots.crawl_delay:
@@ -122,12 +125,12 @@ pip install sitemapper
 pip install sitemapper[stealth]   # adds curl_cffi TLS impersonation
 ```
 
-इसे एक लाइब्रेरी के रूप में उपयोग करें, या कमांड लाइन से — `--json` अन्य टूल्स में पाइपिंग के लिए
-पूरी खोज उत्सर्जित करता है, `--crawl` लिंक-ग्राफ़ चरण जोड़ता है:
+इसे एक लाइब्रेरी के रूप में उपयोग करें, या कमांड लाइन से — `--json FILE` अन्य टूल्स के उपभोग के लिए
+पूरी खोज को एक फ़ाइल में लिखता है, `--crawl` लिंक-ग्राफ़ चरण जोड़ता है:
 
 ```bash
 python -m sitemapper https://example.com
-python -m sitemapper https://example.com --crawl --max-pages 50 --json
+python -m sitemapper https://example.com --crawl --max-pages 50 --json out.json
 ```
 
 यह मुक्त सॉफ़्टवेयर है और आपके अपने हार्डवेयर पर चलता है। हर स्क्रैपर की शुरुआत
