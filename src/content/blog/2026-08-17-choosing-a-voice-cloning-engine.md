@@ -63,12 +63,14 @@ through correctly.
 
 **Speaker similarity** measures identity: whether the output actually sounds
 like the target speaker, not the original one. It is computed by extracting a
-speaker embedding — a compact numeric fingerprint of a voice's timbre, the
+speaker embedding (a compact numeric fingerprint of a voice's timbre, the
 tonal color that makes one voice sound different from another at the same pitch
-and loudness — from the output and from the reference clip, then comparing them
-with cosine similarity. A score of 1.0 means identical timbre; `voiceclonnx`'s
-own baseline — an unconverted copy of the source scored against the target — sits
-at 0.09, so anything meaningfully above that is doing real conversion work.
+and loudness) from the output and from the reference clip, then comparing them
+with cosine similarity.
+
+A score of 1.0 means identical timbre. `voiceclonnx`'s own baseline, an
+unconverted copy of the source scored against the target, sits at 0.09, so
+anything meaningfully above that is doing real conversion work.
 
 `voiceclonnx` publishes both numbers for every engine, measured against the same
 sentence converted to two reference voices. The WER comes from `faster-whisper`;
@@ -103,62 +105,74 @@ which is a property of its architecture, covered next.
 The engines split into distinct approaches, and the approach predicts where an
 engine lands on the table above.
 
-**kNN feature-swap** (`knnvc`, `focalcodec`). The source audio is broken into
-short frames, each turned into a feature vector by a pretrained self-supervised
-encoder. For every source frame, the algorithm finds the *k* nearest frames in a
-pool of the target speaker's features and averages them in, replacing the
-source's timbre frame by frame while leaving the underlying phonetic content
-where it was extracted from the encoder's own representation. There is no
-learned decoder mapping one voice to another — the swap is a nearest-neighbour
-lookup — which is why timbre transfer can be aggressive (`focalcodec` reaches
-0.61 similarity) at the cost of occasionally garbling frames that had a poor
-match in the target pool, which shows up as WER.
+### kNN feature-swap (`knnvc`, `focalcodec`)
 
-**Factorized codec** (`facodec`). A neural audio codec — a model that compresses
-speech into a compact token sequence and reconstructs it — trained to split
-those tokens explicitly into separate content and timbre streams. Because
-content is a dedicated stream, the decoder reconstructs the words with high
-fidelity; only the timbre stream gets swapped for the target speaker. That
-explicit separation is why `facodec` reaches 0% WER: content preservation is not
-competing with anything.
+The source audio is broken into short frames, each turned into a feature
+vector by a pretrained self-supervised encoder. For every source frame, the
+algorithm finds the *k* nearest frames in a pool of the target speaker's
+features and averages them in, replacing the source's timbre frame by frame
+while leaving the underlying phonetic content where it was extracted from the
+encoder's own representation. There is no learned decoder mapping one voice to
+another; the swap is a nearest-neighbour lookup, which is why timbre transfer
+can be aggressive (`focalcodec` reaches 0.61 similarity) at the cost of
+occasionally garbling frames that had a poor match in the target pool, which
+shows up as WER.
 
-**Tone-color transfer** (`openvoice`). A conversion module changes tone color
-— pitch contour and timbre — after a separate encoder has fixed the linguistic
-content, similar in spirit to the factorized codec approach but implemented as a
-color-transfer step over a mel-spectrogram rather than discrete tokens. It also
-reaches 0% WER, with somewhat lower similarity than `facodec`.
+### Factorized codec (`facodec`)
 
-**AR codec-LM** (`chatterbox`). An autoregressive language model that predicts
-codec tokens one at a time, conditioned on the target speaker's embedding,
-much like a text-to-speech language model but conditioned on the source
-recording's content tokens instead of text. Because it generates prosody
-(rhythm, stress, intonation) as part of the same autoregressive process rather
-than copying it directly from the source, it can carry speaking style along
-with timbre — which is why the docs note it gives the "strongest source-to-target
-shift" — and it is the only engine that scores well on both intelligibility and
-similarity at once.
+A neural audio codec (a model that compresses speech into a compact token
+sequence and reconstructs it) trained to split those tokens explicitly into
+separate content and timbre streams. Because content is a dedicated stream,
+the decoder reconstructs the words with high fidelity; only the timbre stream
+gets swapped for the target speaker. That explicit separation is why
+`facodec` reaches 0% WER: content preservation is not competing with anything.
 
-**Flow-matching** (`cosyvoice`). A continuous generative process that
-iteratively refines noise into the target mel-spectrogram, using an ODE
-(ordinary differential equation) solver stepped a configurable number of times
-(`ode_steps`, default 10). Its content encoder is designed for cross-lingual
-transfer, and that generality is likely why its target-similarity score is the
-lowest in the set: the representation optimizes for language-independence, not
-for the tightest speaker match.
+### Tone-color transfer (`openvoice`)
 
-**Speaker-decoupled codec** (`lscodec`). Like `facodec`, a codec trained to
-separate content from speaker identity, but tuned to push similarity further at
-the direct cost of the content stream's precision, landing at ~35% WER with the
-second-highest similarity in the set.
+A conversion module changes tone color (pitch contour and timbre) after a
+separate encoder has fixed the linguistic content, similar in spirit to the
+factorized codec approach but implemented as a color-transfer step over a
+mel-spectrogram rather than discrete tokens. It also reaches 0% WER, with
+somewhat lower similarity than `facodec`.
 
-**Triple-AAN and semantic-plus-global-token codecs** (`triaan`, `bicodec`) sit
-in the middle on both axes: moderate WER, moderate similarity, no strong bias
-either way.
+### AR codec-LM (`chatterbox`)
 
-**Any-to-ONE codec + vocoder** (`rvc`). Built on ContentVec (a content encoder)
-feeding a VITS vocoder, trained per target voice rather than accepting an
-arbitrary reference clip. `reference_voice` for this engine is a path to an
-`.onnx` RVC model file or a Hugging Face repo ID, not an audio file:
+An autoregressive language model that predicts codec tokens one at a time,
+conditioned on the target speaker's embedding, much like a text-to-speech
+language model but conditioned on the source recording's content tokens
+instead of text. Because it generates prosody (rhythm, stress, intonation) as
+part of the same autoregressive process rather than copying it directly from
+the source, it can carry speaking style along with timbre. That is why the
+docs note it gives the "strongest source-to-target shift," and it is the only
+engine that scores well on both intelligibility and similarity at once.
+
+### Flow-matching (`cosyvoice`)
+
+A continuous generative process that iteratively refines noise into the
+target mel-spectrogram, using an ODE (ordinary differential equation) solver
+stepped a configurable number of times (`ode_steps`, default 10). Its content
+encoder is designed for cross-lingual transfer, and that generality is likely
+why its target-similarity score is the lowest in the set: the representation
+optimizes for language-independence, not for the tightest speaker match.
+
+### Speaker-decoupled codec (`lscodec`)
+
+Like `facodec`, a codec trained to separate content from speaker identity,
+but tuned to push similarity further at the direct cost of the content
+stream's precision, landing at ~35% WER with the second-highest similarity in
+the set.
+
+### Triple-AAN and semantic-plus-global-token codecs (`triaan`, `bicodec`)
+
+These sit in the middle on both axes: moderate WER, moderate similarity, no
+strong bias either way.
+
+### Any-to-ONE codec + vocoder (`rvc`)
+
+Built on ContentVec (a content encoder) feeding a VITS vocoder, trained per
+target voice rather than accepting an arbitrary reference clip.
+`reference_voice` for this engine is a path to an `.onnx` RVC model file or a
+Hugging Face repo ID, not an audio file:
 
 ```python
 cloner = VoiceCloner(engine="rvc")
@@ -174,38 +188,38 @@ Hugging Face and load directly by repo ID.
 
 ## Deciding which one to run
 
-**Fast, general-purpose pipeline.** Start with `facodec` or `openvoice`. Both
-hit 0% measured WER with moderate similarity (0.44 and 0.37), and both ship an
-INT8 quantized variant with no listed quality regression — pass
+For a fast, general-purpose pipeline, start with `facodec` or `openvoice`.
+Both hit 0% measured WER with moderate similarity (0.44 and 0.37), and both
+ship an INT8 quantized variant with no listed quality regression. Pass
 `quantized=True` for a smaller, faster model.
 
-**Maximum speaker similarity.** Use `focalcodec` (0.61 similarity, the highest
+For maximum speaker similarity, use `focalcodec` (0.61 similarity, the highest
 measured) if the 15-19% WER is acceptable for the use case, or `chatterbox`
 (0.54 similarity, 4-8% WER) if it is not. `chatterbox` also runs at 24 kHz, the
-highest output rate for any-to-any conversion in the set — `rvc` runs up to
+highest output rate for any-to-any conversion in the set. `rvc` runs up to
 48 kHz but only in the any-to-ONE mode above.
 
-**Low-resource hardware.** `knnvc` at INT8 is about 123 MB on disk, the
-smallest footprint in the set, with 0.49 similarity and 12-15% WER — a
-reasonable trade for constrained memory. Not every engine quantizes cleanly:
+For low-resource hardware, `knnvc` at INT8 is about 123 MB on disk, the
+smallest footprint in the set, with 0.49 similarity and 12-15% WER: a
+reasonable trade for constrained memory. Not every engine quantizes cleanly.
 `focalcodec` and `cosyvoice` are documented to degrade in INT8, so keep those
 two in fp32.
 
-**A language the engine was not trained on.** `cosyvoice`'s content encoder is
+For a language the engine was not trained on, `cosyvoice`'s content encoder is
 built for cross-lingual transfer, which is the documented reason to reach for
 it over an engine tuned for same-language conversion, even though its measured
 similarity (0.21) is the lowest of the nine directly comparable engines.
 
-**Voice identity over exact wording.** `lscodec` gives the strongest timbre
-transfer among the codec-family engines (0.54, tied with `chatterbox`) at the
-cost of the highest WER in the comparable set (~35%). Pick it when the goal is
-"does this sound like the target speaker" and occasional word errors in the
-output are tolerable.
+When voice identity matters more than exact wording, `lscodec` gives the
+strongest timbre transfer among the codec-family engines (0.54, tied with
+`chatterbox`) at the cost of the highest WER in the comparable set (~35%).
+Pick it when the goal is "does this sound like the target speaker" and
+occasional word errors in the output are tolerable.
 
-**A single fixed community voice rather than an arbitrary clip.** `rvc`, using
-a pretrained `.onnx` voice model instead of a reference recording.
+For a single fixed community voice rather than an arbitrary clip, use `rvc`
+with a pretrained `.onnx` voice model instead of a reference recording.
 
-**Non-commercial constraint to check first.** `bicodec` weights are licensed CC
+One licensing constraint to check first: `bicodec` weights are licensed CC
 BY-NC-SA 4.0. Every other engine's weights are MIT, Apache-2.0, or CC BY 4.0.
 Verify the license of the specific weight you deploy before shipping it
 commercially.
