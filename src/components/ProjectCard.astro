@@ -9,7 +9,7 @@ interface Project {
   name: string;
   description: string;
   url?: string;
-  category: string;
+  category: string | string[];
   tags: string[];
   image?: string;
   imageLocal?: string;
@@ -51,8 +51,9 @@ const categoryMeta: Record<string, { hue: number; icon: string }> = {
   ILENIA: { hue: 95, icon: 'globe' },
   Visio: { hue: 320, icon: 'network' },
 };
-const label = categoryLabel ?? project.category;
-const meta = categoryMeta[project.category] ?? { hue: 280, icon: 'spark' };
+const primaryCategory = Array.isArray(project.category) ? project.category[0] : project.category;
+const label = categoryLabel ?? primaryCategory;
+const meta = categoryMeta[primaryCategory] ?? { hue: 280, icon: 'spark' };
 const badgeStyle = `--h:${meta.hue}; background:hsl(${meta.hue} 70% 55% / 0.12); border-color:hsl(${meta.hue} 70% 55% / 0.3);`;
 ---
 
