@@ -64,13 +64,14 @@ woord correct doorkwam.
 
 **Sprekergelijkenis** meet identiteit: of de output daadwerkelijk klinkt
 als de doelspreker, niet de originele. Het wordt berekend door een
-sprekerembedding te extraheren — een compacte numerieke vingerafdruk van het
+sprekerembedding te extraheren (een compacte numerieke vingerafdruk van het
 timbre van een stem, de tonale kleur die de ene stem anders laat klinken
-dan de andere bij dezelfde toonhoogte en luidheid — uit de output en uit
-het referentiefragment, en ze dan te vergelijken met cosinusgelijkenis. Een
-score van 1,0 betekent identiek timbre; de eigen baseline van
-`voiceclonnx` — een ongeconverteerde kopie van de bron gescoord tegen het
-doel — ligt op 0,09, dus alles wat betekenisvol daarboven zit doet echt
+dan de andere bij dezelfde toonhoogte en luidheid) uit de output en uit
+het referentiefragment, en ze dan te vergelijken met cosinusgelijkenis.
+
+Een score van 1,0 betekent identiek timbre. De eigen baseline van
+`voiceclonnx`, een ongeconverteerde kopie van de bron gescoord tegen het
+doel, ligt op 0,09, dus alles wat betekenisvol daarboven zit doet echt
 conversiewerk.
 
 `voiceclonnx` publiceert beide getallen voor elke engine, gemeten aan de
@@ -109,46 +110,56 @@ architectuur, hierna behandeld.
 De engines splitsen zich in verschillende benaderingen, en de benadering
 voorspelt waar een engine landt op de tabel hierboven.
 
-**kNN feature-swap** (`knnvc`, `focalcodec`). De bronaudio wordt opgedeeld
+### kNN feature-swap (`knnvc`, `focalcodec`)
+
+De bronaudio wordt opgedeeld
 in korte frames, elk omgezet in een featurevector door een vooraf getrainde
 zelfgesuperviseerde encoder. Voor elk bronframe vindt het algoritme de *k*
 dichtstbijzijnde frames in een pool van features van de doelspreker en
 middelt ze in, waarbij het timbre van de bron frame voor frame wordt
 vervangen terwijl de onderliggende fonetische inhoud blijft waar hij werd
 geëxtraheerd uit de eigen representatie van de encoder. Er is geen geleerde
-decoder die de ene stem op de andere afbeeldt — de swap is een
-dichtstbijzijnde-buren-opzoeking — wat verklaart waarom timbre-overdracht
+decoder die de ene stem op de andere afbeeldt; de swap is een
+dichtstbijzijnde-buren-opzoeking, wat verklaart waarom timbre-overdracht
 agressief kan zijn (`focalcodec` bereikt 0,61 gelijkenis) ten koste van af
 en toe verhaspelde frames die een slechte match hadden in de doelpool, wat
 zich uit als WER.
 
-**Gefactoriseerde codec** (`facodec`). Een neurale audiocodec — een model
-dat spraak comprimeert tot een compacte tokenreeks en reconstrueert — die
+### Gefactoriseerde codec (`facodec`)
+
+Een neurale audiocodec (een model
+dat spraak comprimeert tot een compacte tokenreeks en reconstrueert) die
 getraind is om die tokens expliciet te splitsen in aparte inhouds- en
 timbre-stromen. Omdat inhoud een toegewijde stroom is, reconstrueert de
 decoder de woorden met hoge getrouwheid; alleen de timbre-stroom wordt
 verwisseld voor de doelspreker. Die expliciete scheiding verklaart waarom
 `facodec` 0% WER bereikt: het behoud van inhoud concurreert met niets.
 
-**Toonkleur-overdracht** (`openvoice`). Een conversiemodule verandert
-toonkleur — toonhoogtecontour en timbre — nadat een aparte encoder de
+### Toonkleur-overdracht (`openvoice`)
+
+Een conversiemodule verandert
+toonkleur (toonhoogtecontour en timbre) nadat een aparte encoder de
 linguïstische inhoud heeft vastgelegd, in een geest vergelijkbaar met de
 gefactoriseerde-codecbenadering maar geïmplementeerd als een
 kleuroverdrachtsstap over een mel-spectrogram in plaats van discrete
 tokens. Het bereikt ook 0% WER, met iets lagere gelijkenis dan `facodec`.
 
-**AR codec-LM** (`chatterbox`). Een autoregressief taalmodel dat
+### AR codec-LM (`chatterbox`)
+
+Een autoregressief taalmodel dat
 codectokens één voor één voorspelt, geconditioneerd op de embedding van de
 doelspreker, veel als een tekst-naar-spraaktaalmodel maar geconditioneerd op
 de inhoudstokens van de bronopname in plaats van tekst. Omdat het prosodie
 (ritme, klemtoon, intonatie) genereert als onderdeel van hetzelfde
 autoregressieve proces in plaats van het rechtstreeks van de bron te
-kopiëren, kan het spreekstijl meedragen met timbre — wat verklaart waarom
+kopiëren, kan het spreekstijl meedragen met timbre. Dat verklaart waarom
 de documentatie noteert dat het de "sterkste bron-naar-doel-verschuiving"
-geeft — en het is de enige engine die goed scoort op zowel
+geeft, en het is de enige engine die goed scoort op zowel
 verstaanbaarheid als gelijkenis tegelijk.
 
-**Flow-matching** (`cosyvoice`). Een continu generatief proces dat
+### Flow-matching (`cosyvoice`)
+
+Een continu generatief proces dat
 iteratief ruis verfijnt tot het doel-mel-spectrogram, met een ODE
 (gewone differentiaalvergelijking)-solver die een instelbaar aantal keer
 stapt (`ode_steps`, standaard 10). De inhoudsencoder is ontworpen voor
@@ -156,16 +167,21 @@ crosslinguale overdracht, en die algemeenheid is waarschijnlijk waarom zijn
 doelgelijkenisscore de laagste in de set is: de representatie optimaliseert
 voor taalonafhankelijkheid, niet voor de nauwste sprekermatch.
 
-**Spreker-ontkoppelde codec** (`lscodec`). Net als `facodec`, een codec
+### Spreker-ontkoppelde codec (`lscodec`)
+
+Net als `facodec`, een codec
 getraind om inhoud van sprekeridentiteit te scheiden, maar afgesteld om
 gelijkenis verder te duwen ten koste van de precisie van de inhoudsstroom,
 landend op ~35% WER met de op één na hoogste gelijkenis in de set.
 
-**Triple-AAN- en semantisch-plus-globale-token-codecs** (`triaan`,
-`bicodec`) zitten in het midden op beide assen: matige WER, matige
+### Triple-AAN- en semantisch-plus-globale-token-codecs (`triaan`, `bicodec`)
+
+Deze zitten in het midden op beide assen: matige WER, matige
 gelijkenis, geen sterke bias in beide richtingen.
 
-**Any-to-ONE codec + vocoder** (`rvc`). Gebouwd op ContentVec (een
+### Any-to-ONE codec + vocoder (`rvc`)
+
+Gebouwd op ContentVec (een
 inhoudsencoder) die een VITS-vocoder voedt, getraind per doelstem in plaats
 van een willekeurig referentiefragment te accepteren. `reference_voice`
 voor deze engine is een pad naar een `.onnx` RVC-modelbestand of een
@@ -186,41 +202,41 @@ Face en laden direct via repo-ID.
 
 ## Bepalen welke te draaien
 
-**Snelle, algemene pijplijn.** Begin met `facodec` of `openvoice`. Beide
+Voor een snelle, algemene pijplijn begint u met `facodec` of `openvoice`. Beide
 halen 0% gemeten WER met matige gelijkenis (0,44 en 0,37), en beide leveren
-een INT8-gekwantiseerde variant zonder vermelde kwaliteitsregressie — geef
+een INT8-gekwantiseerde variant zonder vermelde kwaliteitsregressie. Geef
 `quantized=True` mee voor een kleiner, sneller model.
 
-**Maximale sprekergelijkenis.** Gebruik `focalcodec` (0,61 gelijkenis, de
+Voor maximale sprekergelijkenis gebruikt u `focalcodec` (0,61 gelijkenis, de
 hoogste gemeten) als de 15-19% WER acceptabel is voor het gebruiksscenario,
 of `chatterbox` (0,54 gelijkenis, 4-8% WER) als dat niet zo is.
 `chatterbox` draait ook op 24 kHz, de hoogste outputsnelheid voor
-any-to-any-conversie in de set — `rvc` gaat tot 48 kHz maar alleen in de
+any-to-any-conversie in de set. `rvc` gaat tot 48 kHz maar alleen in de
 any-to-ONE-modus hierboven.
 
-**Hardware met beperkte middelen.** `knnvc` in INT8 is ongeveer 123 MB op
-schijf, de kleinste footprint in de set, met 0,49 gelijkenis en 12-15% WER
-— een redelijke afweging voor beperkt geheugen. Niet elke engine
-kwantiseert netjes: `focalcodec` en `cosyvoice` zijn gedocumenteerd als
+Voor hardware met beperkte middelen is `knnvc` in INT8 ongeveer 123 MB op
+schijf, de kleinste footprint in de set, met 0,49 gelijkenis en 12-15% WER:
+een redelijke afweging voor beperkt geheugen. Niet elke engine
+kwantiseert netjes. `focalcodec` en `cosyvoice` zijn gedocumenteerd als
 degraderend in INT8, dus houd die twee in fp32.
 
-**Een taal waarop de engine niet getraind was.** De inhoudsencoder van
+Voor een taal waarop de engine niet getraind was, is de inhoudsencoder van
 `cosyvoice` is gebouwd voor crosslinguale overdracht, wat de gedocumenteerde
 reden is om ernaar te grijpen boven een engine afgesteld voor
 conversie binnen dezelfde taal, ook al is zijn gemeten gelijkenis (0,21) de
 laagste van de negen direct vergelijkbare engines.
 
-**Stemidentiteit boven exacte formulering.** `lscodec` geeft de sterkste
+Wanneer stemidentiteit meer telt dan exacte formulering, geeft `lscodec` de sterkste
 timbre-overdracht onder de codec-familie-engines (0,54, gelijk met
 `chatterbox`) ten koste van de hoogste WER in de vergelijkbare set (~35%).
 Kies deze wanneer het doel is "klinkt dit als de doelspreker" en
 incidentele woordfouten in de output aanvaardbaar zijn.
 
-**Eén vaste community-stem in plaats van een willekeurig fragment.** `rvc`,
+Voor één vaste community-stem in plaats van een willekeurig fragment gebruikt u `rvc`
 met een vooraf getraind `.onnx`-stemmodel in plaats van een
 referentieopname.
 
-**Niet-commerciële beperking eerst te controleren.** De gewichten van
+Eén licentiebeperking om eerst te controleren: de gewichten van
 `bicodec` zijn gelicentieerd onder CC BY-NC-SA 4.0. Elke andere engine's
 gewichten zijn MIT, Apache-2.0, of CC BY 4.0. Controleer de licentie van
 het specifieke gewicht dat u inzet voordat u het commercieel verzendt.
