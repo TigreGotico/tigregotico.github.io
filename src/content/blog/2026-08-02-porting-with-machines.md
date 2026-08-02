@@ -260,9 +260,12 @@ That asymmetry is also why the mismatch is worth watching for in general. A
 structural port of an LGPL original cannot simply become Apache-2.0 by being
 rewritten in another language — and that is exactly the kind of mismatch that is
 easy to create and hard to notice, because nothing complains. The build passes.
-The tests pass. The licence header is just a file. HermiT is LGPL, so the
-licensing of our Python port of it is one of the cases we are reviewing —
-which is the mundane, correct outcome: you check, and you fix what needs fixing.
+The tests pass. The licence header is just a file. HermiT is LGPL, and our
+Python port of it carries LGPL-3.0 to match. Going back over the whole set
+turned up two more of these, both undramatic: a wrapper declaring Apache-2.0
+whose upstream is MIT, and a couple of repositories whose README named a licence
+that had no corresponding file. That is the mundane, correct outcome — you
+check, you fix what needs fixing, and the interesting question stays open.
 
 Under an asymmetry that lopsided, you do not need to resolve the legal question
 in order to make the decision. You just take the branch where being wrong is
