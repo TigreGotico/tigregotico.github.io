@@ -129,11 +129,11 @@ n'a pas été des jours très confortables.
 La structure de paires opposées de Plutchik a été testée. En 2009, Smith & Schneider
 l'ont soumise à plus de deux mille tests statistiques et ont conclu que la théorie
 de la roue des émotions « ne reçoit aucun soutien empirique ». Les paires opposées
-sont une métaphore élégante empruntée à la théorie des couleurs. Ce ne sont pas des
+sont une métaphore empruntée à la théorie des couleurs. Ce ne sont pas des
 résultats sur les gens.
 
-Pendant ce temps, ce qui *fonctionne* — le circumplexe valence–activation de Russell,
-et la dimension de contrôle qui sépare la colère de la peur — ce sont exactement les
+Pendant ce temps, ce qui *fonctionne*, le circumplexe valence–activation de Russell
+et la dimension de contrôle qui sépare la colère de la peur, ce sont les
 éléments qui arrivent rarement dans des logiciels en production.
 
 Il y a un problème de second ordre ici, et c'est celui qui nous a réellement dérangés.
@@ -178,7 +178,7 @@ angry, afraid = affect_from_texts([
 ])
 
 angry.valence,  angry.potency    # -0.43, +0.16   -> 'disgust'
-afraid.valence, afraid.potency   # -0.47, -0.43   -> 'apprehension'
+afraid.valence, afraid.potency   # -0.47, -0.42   -> 'apprehension'
 ```
 
 Regardez ces chiffres. **La valence est quasi identique** — les deux messages sont

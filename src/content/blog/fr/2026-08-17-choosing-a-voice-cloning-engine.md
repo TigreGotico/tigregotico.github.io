@@ -67,13 +67,15 @@ correctement.
 
 **La similarité de locuteur** mesure l'identité : si la sortie sonne
 réellement comme le locuteur cible, et non l'original. Elle est calculée en
-extrayant un *embedding* de locuteur — une empreinte numérique compacte du
+extrayant un *embedding* de locuteur (une empreinte numérique compacte du
 timbre d'une voix, la couleur tonale qui fait sonner une voix différemment
-d'une autre à hauteur et volume égaux — de la sortie et du clip de
-référence, puis en les comparant par similarité cosinus. Un score de 1,0
-signifie un timbre identique ; la propre référence de base de
-`voiceclonnx` — une copie non convertie de la source notée contre la cible
-— se situe à 0,09, donc tout ce qui est significativement au-dessus fait un
+d'une autre à hauteur et volume égaux) de la sortie et du clip de
+référence, puis en les comparant par similarité cosinus.
+
+Un score de 1,0
+signifie un timbre identique. La propre référence de base de
+`voiceclonnx`, une copie non convertie de la source notée contre la cible,
+se situe à 0,09, donc tout ce qui est significativement au-dessus fait un
 vrai travail de conversion.
 
 `voiceclonnx` publie les deux nombres pour chaque moteur, mesurés sur la
@@ -111,48 +113,58 @@ ce qui est une propriété de son architecture, couverte ensuite.
 Les moteurs se répartissent en approches distinctes, et l'approche prédit
 où un moteur se situe dans le tableau ci-dessus.
 
-**Feature-swap kNN** (`knnvc`, `focalcodec`). L'audio source est découpé en
+### Feature-swap kNN (`knnvc`, `focalcodec`)
+
+L'audio source est découpé en
 courtes trames, chacune transformée en vecteur de caractéristiques par un
 encodeur auto-supervisé préentraîné. Pour chaque trame source, l'algorithme
 trouve les *k* trames les plus proches dans un réservoir de caractéristiques
 du locuteur cible et les moyenne, remplaçant le timbre de la source trame
 par trame tout en laissant le contenu phonétique sous-jacent là où il a été
 extrait de la propre représentation de l'encodeur. Il n'y a pas de décodeur
-appris faisant correspondre une voix à une autre — l'échange est une
-recherche du plus proche voisin — ce qui explique pourquoi le transfert de
+appris faisant correspondre une voix à une autre ; l'échange est une
+recherche du plus proche voisin, ce qui explique pourquoi le transfert de
 timbre peut être agressif (`focalcodec` atteint 0,61 de similarité) au prix
 de trames occasionnellement corrompues quand la correspondance était
 mauvaise dans le réservoir cible, ce qui se traduit en WER.
 
-**Codec factorisé** (`facodec`). Un codec audio neuronal — un modèle qui
-compresse la parole en une séquence de tokens compacte et la reconstruit —
+### Codec factorisé (`facodec`)
+
+Un codec audio neuronal (un modèle qui
+compresse la parole en une séquence de tokens compacte et la reconstruit)
 entraîné à séparer explicitement ces tokens en flux de contenu et de timbre
 distincts. Comme le contenu est un flux dédié, le décodeur reconstruit les
 mots avec une haute fidélité ; seul le flux de timbre est échangé pour le
 locuteur cible. Cette séparation explicite explique pourquoi `facodec`
 atteint 0 % de WER : la préservation du contenu ne rivalise avec rien.
 
-**Transfert de couleur tonale** (`openvoice`). Un module de conversion
-change la couleur tonale — contour de hauteur et timbre — après qu'un
+### Transfert de couleur tonale (`openvoice`)
+
+Un module de conversion
+change la couleur tonale (contour de hauteur et timbre) après qu'un
 encodeur séparé a fixé le contenu linguistique, dans un esprit similaire à
 l'approche du codec factorisé mais implémenté comme une étape de transfert
 de couleur sur un mel-spectrogramme plutôt que sur des tokens discrets. Il
 atteint lui aussi 0 % de WER, avec une similarité un peu plus faible que
 `facodec`.
 
-**Codec-LM autorégressif** (`chatterbox`). Un modèle de langage
+### Codec-LM autorégressif (`chatterbox`)
+
+Un modèle de langage
 autorégressif qui prédit les tokens de codec un à la fois, conditionné sur
 l'embedding du locuteur cible, un peu comme un modèle de langage
 texte-vers-parole mais conditionné sur les tokens de contenu de
 l'enregistrement source plutôt que sur du texte. Parce qu'il génère la
 prosodie (rythme, accent, intonation) dans le cadre du même processus
 autorégressif plutôt qu'en la copiant directement depuis la source, il peut
-transporter le style de parole avec le timbre — ce qui explique pourquoi la
+transporter le style de parole avec le timbre. C'est pourquoi la
 documentation note qu'il donne le « changement source-vers-cible le plus
-fort » — et c'est le seul moteur qui réussisse bien à la fois en
+fort », et c'est le seul moteur qui réussisse bien à la fois en
 intelligibilité et en similarité.
 
-**Flow-matching** (`cosyvoice`). Un processus génératif continu qui
+### Flow-matching (`cosyvoice`)
+
+Un processus génératif continu qui
 raffine itérativement du bruit vers le mel-spectrogramme cible, en
 utilisant un solveur d'EDO (équation différentielle ordinaire) exécuté un
 nombre configurable de fois (`ode_steps`, 10 par défaut). Son encodeur de
@@ -161,17 +173,22 @@ explique probablement pourquoi son score de similarité cible est le plus
 bas de l'ensemble : la représentation optimise pour l'indépendance à la
 langue, pas pour la correspondance de locuteur la plus étroite.
 
-**Codec découplé du locuteur** (`lscodec`). Comme `facodec`, un codec
+### Codec découplé du locuteur (`lscodec`)
+
+Comme `facodec`, un codec
 entraîné à séparer le contenu de l'identité du locuteur, mais réglé pour
 pousser plus loin la similarité, au prix direct de la précision du flux de
 contenu, atterrissant à ~35 % de WER avec la deuxième plus haute similarité
 de l'ensemble.
 
-**Codecs Triple-AAN et sémantique-plus-tokens-globaux** (`triaan`,
-`bicodec`) se situent au milieu sur les deux axes : WER modéré, similarité
+### Codecs Triple-AAN et sémantique-plus-tokens-globaux (`triaan`, `bicodec`)
+
+Ils se situent au milieu sur les deux axes : WER modéré, similarité
 modérée, aucun biais fort dans un sens ou l'autre.
 
-**Codec any-to-ONE + vocodeur** (`rvc`). Construit sur ContentVec (un
+### Codec any-to-ONE + vocodeur (`rvc`)
+
+Construit sur ContentVec (un
 encodeur de contenu) alimentant un vocodeur VITS, entraîné par voix cible
 plutôt qu'accepter un clip de référence arbitraire. `reference_voice` pour
 ce moteur est un chemin vers un fichier de modèle RVC `.onnx` ou un
@@ -186,50 +203,50 @@ Parce que chaque modèle RVC est entraîné sur une seule voix cible, il ne
 prend pas de clip de référence à l'inférence et n'est pas noté sur le même
 banc de similarité que les moteurs any-to-any. Son WER mesuré de 38 %
 reflète un modèle échantillon entraîné par la communauté, pas
-l'architecture en général — la qualité dépend de la manière dont ce modèle
+l'architecture en général. La qualité dépend de la manière dont ce modèle
 spécifique a été entraîné. Des milliers de voix RVC communautaires existent
 sur Hugging Face et se chargent directement par identifiant de dépôt.
 
 ## Décider lequel faire tourner
 
-**Pipeline rapide et généraliste.** Commencez par `facodec` ou `openvoice`.
+Pour un pipeline rapide et généraliste, commencez par `facodec` ou `openvoice`.
 Les deux atteignent 0 % de WER mesuré avec une similarité modérée (0,44 et
 0,37), et les deux livrent une variante quantifiée INT8 sans régression de
-qualité listée — passez `quantized=True` pour un modèle plus petit et plus
+qualité listée. Passez `quantized=True` pour un modèle plus petit et plus
 rapide.
 
-**Similarité de locuteur maximale.** Utilisez `focalcodec` (0,61 de
+Pour une similarité de locuteur maximale, utilisez `focalcodec` (0,61 de
 similarité, la plus haute mesurée) si le WER de 15-19 % est acceptable pour
 le cas d'usage, ou `chatterbox` (0,54 de similarité, 4-8 % de WER) sinon.
 `chatterbox` tourne aussi à 24 kHz, le taux de sortie le plus élevé pour la
-conversion any-to-any de l'ensemble — `rvc` monte jusqu'à 48 kHz mais
+conversion any-to-any de l'ensemble. `rvc` monte jusqu'à 48 kHz mais
 seulement en mode any-to-ONE ci-dessus.
 
-**Matériel à ressources limitées.** `knnvc` en INT8 pèse environ 123 Mo sur
+Pour du matériel à ressources limitées, `knnvc` en INT8 pèse environ 123 Mo sur
 disque, la plus petite empreinte de l'ensemble, avec 0,49 de similarité et
-12-15 % de WER — un compromis raisonnable pour une mémoire contrainte. Tous
-les moteurs ne se quantifient pas proprement : `focalcodec` et `cosyvoice`
+12-15 % de WER : un compromis raisonnable pour une mémoire contrainte. Tous
+les moteurs ne se quantifient pas proprement. `focalcodec` et `cosyvoice`
 sont documentés comme se dégradant en INT8, donc gardez ces deux-là en
 fp32.
 
-**Une langue sur laquelle le moteur n'a pas été entraîné.** L'encodeur de
+Pour une langue sur laquelle le moteur n'a pas été entraîné, l'encodeur de
 contenu de `cosyvoice` est conçu pour le transfert translinguistique, ce
 qui est la raison documentée de le préférer à un moteur réglé pour la
 conversion intra-langue, même si sa similarité mesurée (0,21) est la plus
 basse des neuf moteurs directement comparables.
 
-**Identité vocale plutôt que formulation exacte.** `lscodec` offre le
+Quand l'identité vocale importe plus que la formulation exacte, `lscodec` offre le
 transfert de timbre le plus fort parmi les moteurs de la famille codec
 (0,54, à égalité avec `chatterbox`) au prix du WER le plus élevé de
 l'ensemble comparable (~35 %). Choisissez-le quand l'objectif est « est-ce
 que ça sonne comme le locuteur cible » et que des erreurs de mots
 occasionnelles dans la sortie sont tolérables.
 
-**Une seule voix communautaire fixe plutôt qu'un clip arbitraire.** `rvc`,
-utilisant un modèle vocal `.onnx` préentraîné plutôt qu'un enregistrement de
+Pour une seule voix communautaire fixe plutôt qu'un clip arbitraire, utilisez `rvc`
+avec un modèle vocal `.onnx` préentraîné plutôt qu'un enregistrement de
 référence.
 
-**Contrainte non commerciale à vérifier d'abord.** Les poids de `bicodec`
+Une contrainte de licence à vérifier d'abord : les poids de `bicodec`
 sont sous licence CC BY-NC-SA 4.0. Les poids de tous les autres moteurs sont
 MIT, Apache-2.0 ou CC BY 4.0. Vérifiez la licence du poids spécifique que
 vous déployez avant de l'expédier commercialement.

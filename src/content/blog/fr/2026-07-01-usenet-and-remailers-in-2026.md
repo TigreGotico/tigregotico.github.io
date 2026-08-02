@@ -1,6 +1,6 @@
 ---
 title: "Usenet en 2026 : un corpus de texte propre et d'avant l'IA pour l'entraînement et l'évaluation"
-description: "Usenet est une archive intacte du discours humain d'avant l'IA — des décennies de messages de newsgroups, tous écrits par des humains, aucun touché par des modèles de langage. Cela en fait des données précieuses d'entraînement et d'évaluation pour les modèles de langue et de parole. Nous avons construit un petit outil Python pour la collecter."
+description: "Usenet est une archive intacte du discours humain d'avant l'IA : des décennies de messages de newsgroups, tous écrits par des humains, aucun touché par des modèles de langage. Cela en fait des données précieuses d'entraînement et d'évaluation pour les modèles de langue et de parole. Nous avons construit un petit outil Python pour la collecter."
 date: 2026-07-01
 lang: fr
 author: "Casimiro Ferreira"
@@ -17,7 +17,7 @@ La plupart des corpus de texte du web ouvert sont contaminés : du texte génér
 
 ## Usenet comme corpus d'avant l'IA
 
-Usenet reçoit des milliers de messages par jour à travers des centaines de groupes actifs. En remontant aux années 1980, vous obtenez des **millions d'articles** — chacun un signal de ce qui intéressait réellement les humains, de ce dont ils débattaient, de ce qu'ils voulaient savoir — avec une provenance suffisamment propre pour être citée.
+Usenet reçoit des milliers de messages par jour à travers des centaines de groupes actifs. En remontant aux années 1980, vous obtenez des **millions d'articles**, chacun un signal de ce qui intéressait réellement les humains, de ce dont ils débattaient, de ce qu'ils voulaient savoir, avec une provenance suffisamment propre pour être citée.
 
 Nous avons construit un outil appelé **usenet** qui rend cette collecte simple :
 
@@ -32,7 +32,7 @@ with UsenetServer("news.neodome.net") as server:
         print(f"{article.subject} by {article.author}")
 ```
 
-La plupart des serveurs publics ne prennent plus en charge `NEWNEWS` (interrogation par date), donc **la navigation par groupe est l'approche standard.** Vous récupérez un groupe à la fois — ce n'est pas un obstacle, juste la réalité du protocole.
+La plupart des serveurs publics ne prennent plus en charge `NEWNEWS` (interrogation par date), donc **la navigation par groupe est l'approche standard.** Vous récupérez un groupe à la fois. Ce n'est pas un obstacle, juste la réalité du protocole.
 
 Pour transformer un newsgroup en jeu de données d'entraînement, `dataset.py` collecte les articles au format JSONL :
 
@@ -83,4 +83,4 @@ for server in servers:
 
 Usenet est une archive à la provenance propre de texte écrit par des humains, à grande échelle, antérieure à l'ère du contenu généré par des machines. Que vous entraîniez des modèles, construisiez des jeux de données ou étudiiez le discours Internet avant qu'il ne soit dilué par du texte généré par l'IA, cette archive est toujours là, et continue de croître.
 
-**Dépôt :** [**github.com/TigreGotico/usenet**](https://github.com/TigreGotico/usenet) — collectez Usenet en jeux de données d'entraînement ; lisez publiquement sans compte.
+**Dépôt :** [**github.com/TigreGotico/usenet**](https://github.com/TigreGotico/usenet) : collectez Usenet en jeux de données d'entraînement, lisez publiquement sans compte.

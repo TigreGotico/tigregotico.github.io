@@ -23,9 +23,11 @@ changement doit être vérifié à chaque commit plutôt qu'une fois à la main.
 La réponse rigoureuse à « est-ce que ça sonne mieux » est un **Mean
 Opinion Score (MOS)** : placer l'audio devant un panel d'auditeurs, demander
 à chacun de le noter de 1 à 5, et moyenner les scores. Le MOS est la
-métrique de qualité de parole standard précisément parce qu'elle pose la
-question qui compte — un humain trouverait-il cela acceptable — plutôt
-qu'une approximation. C'est aussi coûteux. Recruter un panel, le faire
+métrique de qualité de parole standard parce qu'elle pose la
+question qui compte, un humain trouverait-il cela acceptable, plutôt
+qu'une approximation.
+
+C'est aussi coûteux. Recruter un panel, le faire
 tourner de manière cohérente, et répéter l'opération pour chaque langue,
 chaque condition d'enregistrement et chaque version de modèle qu'une petite
 équipe publie n'est pas quelque chose qu'un panel d'écoute peut suivre.
@@ -39,8 +41,10 @@ pour la situation compte plus que n'importe quel nombre individuel.
 
 Les **estimateurs MOS sans référence** sont des réseaux de neurones
 entraînés à prédire ce que dirait un panel d'écoute, à partir de l'audio
-seul. Ils n'ont besoin d'aucun original propre — seulement de la sortie que
-vous voulez juger. Utilisez cette famille quand il n'y a pas de vérité
+seul. Ils n'ont besoin d'aucun original propre, seulement de la sortie que
+vous voulez juger.
+
+Utilisez cette famille quand il n'y a pas de vérité
 terrain à laquelle vous comparer : noter la sortie d'un système TTS, ou
 vérifier un enregistrement réel déjà dégradé après débruitage.
 
@@ -57,7 +61,7 @@ un système de reconnaissance vocale et comparent la transcription au texte
 attendu. Cela capture quelque chose que les deux autres familles ne peuvent
 pas : un audio qui sonne parfaitement naturel et propre mais qui dit les
 mauvais mots. Un prédicteur MOS sans référence note le naturel, pas
-l'exactitude — une mauvaise prononciation fluide obtient un bon score. Une
+l'exactitude, une mauvaise prononciation fluide obtient un bon score. Une
 métrique intrusive a besoin d'une forme d'onde de référence, pas d'une
 phrase de référence. Seule la comparaison de texte capture un mot erroné.
 
@@ -75,13 +79,13 @@ s.score("degraded.wav", ["stoi", "mcd", "si_sdr"], ref="clean.wav")
 
 Les métriques textuelles vivent dans un module séparé,
 `speechonnxmetrics.asr`, parce qu'elles comparent des chaînes, pas de
-l'audio — `s.score()` ne répartit que les métriques qui prennent une forme
+l'audio. `s.score()` ne répartit que les métriques qui prennent une forme
 d'onde.
 
 ## MOS sans référence : lire les nombres
 
 Quatre estimateurs MOS sont livrés, chacun retournant des valeurs sur une
-échelle de 1 à 5 où plus haut est meilleur — la même échelle qu'utilise un
+échelle de 1 à 5 où plus haut est meilleur, la même échelle qu'utilise un
 panel humain :
 
 | métrique | dimensions | entraîné sur | usage commercial |
@@ -94,13 +98,13 @@ panel humain :
 
 `nisqa` est la seule métrique de toute la bibliothèque aux poids
 non-commerciaux. Les quatre autres sont sous licence MIT.
-`speechonnxmetrics` ne filtre pas cela pour vous ; elle déclare la licence
+`speechonnxmetrics` ne filtre pas cela pour vous. Elle déclare la licence
 et laisse le choix à l'appelant.
 
 Voici ce que notent de vrais audios. En faisant tourner les propres
-fixtures embarquées de la bibliothèque — un enregistrement propre
-(`source.wav`) et une resynthèse par codec neuronal du même clip
-(`facodec_aria.wav`) — à travers UTMOS :
+fixtures embarquées de la bibliothèque (un enregistrement propre,
+`source.wav`, et une resynthèse par codec neuronal du même clip,
+`facodec_aria.wav`) à travers UTMOS :
 
 ```python
 >>> s.score("source.wav", ["utmos"])
@@ -110,7 +114,7 @@ fixtures embarquées de la bibliothèque — un enregistrement propre
 ```
 
 L'enregistrement propre se situe près du haut de l'échelle, comme il se
-doit — c'est de la vraie parole humaine, pas synthétisée. La resynthèse par
+doit. C'est de la vraie parole humaine, pas synthétisée. La resynthèse par
 codec chute de plus d'un point complet. Cet écart, plus que l'un ou l'autre
 nombre isolément, est le signal utile : il indique que le codec introduit
 une dégradation audible, et donne un nombre à suivre à mesure que le codec
@@ -123,15 +127,17 @@ DNSMOS sur le même enregistrement propre :
 {'dnsmos.sig': 3.45, 'dnsmos.bak': 3.60, 'dnsmos.ovrl': 2.93}
 ```
 
-Trois nombres, pas un, et ils divergent — `ovrl` se situe nettement en
+Trois nombres, pas un, et ils divergent : `ovrl` se situe nettement en
 dessous de `sig` et `bak`. Cette divergence est informative plutôt qu'un
-bug : `ovrl` est la note P.835 de l'expérience d'écoute globale, et elle
+bug. `ovrl` est la note P.835 de l'expérience d'écoute globale, et elle
 tend à pénaliser un enregistrement plus durement que ne le suggérerait
 n'importe lequel des scores composants seul, surtout pour un enregistrement
-du monde réel plutôt qu'un enregistrement de studio. Quand `bak` est bas,
+du monde réel plutôt qu'un enregistrement de studio.
+
+Quand `bak` est bas,
 cherchez du bruit de fond. Quand `sig` est bas, cherchez des artefacts au
-niveau de la voix — écrêtage, coupures, timbre robotique. Rapportez
-plusieurs prédicteurs pour le même clip : ils sont entraînés sur des
+niveau de la voix : écrêtage, coupures, timbre robotique. Rapportez
+plusieurs prédicteurs pour le même clip. Ils sont entraînés sur des
 données différentes et divergent de manière informative, et un large écart
 entre deux prédicteurs indépendants sur le même clip est une invite à aller
 écouter.
@@ -150,7 +156,7 @@ propre. Celles à connaître en premier :
 | `lsd` / `msd` | dB | plus bas est meilleur | distance log-spectrale / mel-spectrale |
 
 Notez que le sens s'inverse : STOI et la famille SDR montent quand la
-qualité s'améliore ; MCD, l'erreur de hauteur et la distance spectrale
+qualité s'améliore, tandis que MCD, l'erreur de hauteur et la distance spectrale
 descendent. Les confondre en lisant un tableau est une erreur facile.
 
 Noter la même resynthèse par codec par rapport à sa source propre :
@@ -161,12 +167,14 @@ Noter la même resynthèse par codec par rapport à sa source propre :
 ```
 
 Un STOI de 0.66 sur une échelle de 0 à 1 où 1.0 est une correspondance
-parfaite indique que l'intelligibilité a subi un vrai coup — c'est bien en
-dessous de ce que noterait un enregistrement légèrement traité. Un SI-SDR
-d'environ −27 dB le confirme : le SI-SDR est négatif dès que l'énergie de
+parfaite indique que l'intelligibilité a subi un vrai coup. C'est bien en
+dessous de ce que noterait un enregistrement légèrement traité.
+
+Un SI-SDR
+d'environ −27 dB le confirme. Le SI-SDR est négatif dès que l'énergie de
 distorsion dépasse le signal, et un grand nombre négatif signifie un
 changement structurel lourd, pas seulement du bruit ajouté. Un MCD de
-10.46 dB est élevé ; les systèmes TTS publiés qui sonnent clairement
+10.46 dB est élevé. Les systèmes TTS publiés qui sonnent clairement
 synthétiques mais restent cohérents en termes de locuteur se situent
 typiquement à un chiffre, donc 10+ pointe vers une dérive substantielle de
 l'enveloppe spectrale entre la resynthèse et l'original.
@@ -198,17 +206,19 @@ substitution, « jumps » → « jumped », une suppression de « the ») :
 0.116
 ```
 
-Un WER de 0.22 signifie qu'environ un mot sur cinq est faux — notable,
+Un WER de 0.22 signifie qu'environ un mot sur cinq est faux : notable,
 mérite d'être écouté. Le CER est plus bas sur la même paire parce que la
 notation au niveau du caractère traite une substitution d'un mot comme une
 poignée d'éditions de caractères à l'intérieur d'une chaîne bien plus
-longue, pas comme tout un token manquant ; CER et WER répondent à des
+longue, pas comme tout un token manquant.
+
+CER et WER répondent à des
 questions différentes et ne sont pas directement comparables l'un à
 l'autre. Un WER au-dessus d'environ 0.3–0.4 sur de la parole naturelle
 signifie généralement que le système ASR, ou l'audio qu'il transcrit, a un
 vrai problème, pas une erreur d'arrondi.
 
-`speechonnxmetrics` ne normalise jamais le texte à votre place — une
+`speechonnxmetrics` ne normalise jamais le texte à votre place. Une
 comparaison brute compte la casse et la ponctuation comme des erreurs, ce
 qui est rarement ce que vous voulez quand vous notez la prononciation
 plutôt que le formatage exact de la transcription. Passez un normaliseur
@@ -225,29 +235,33 @@ dans des langues et des conditions d'enregistrement spécifiques. Un
 prédicteur entraîné surtout sur des enregistrements de studio en anglais
 peut mal juger une langue qu'il n'a jamais vue à l'entraînement, un accent
 que son panel d'entraînement n'a jamais noté, ou une condition
-d'enregistrement — audio téléphonique, pièce bruyante, microphone bas de
-gamme — en dehors de sa distribution d'entraînement. Le modèle ne ment pas ;
-il extrapole, et l'extrapolation à partir d'entrées inconnues est là où les
+d'enregistrement (audio téléphonique, pièce bruyante, microphone bas de
+gamme) en dehors de sa distribution d'entraînement. Le modèle ne ment pas.
+Il extrapole, et l'extrapolation à partir d'entrées inconnues est là où les
 prédicteurs neuronaux sont les moins fiables.
 
 Traitez un MOS prédit comme une preuve, pas comme une vérité terrain. Il
 est digne de confiance pour ce en quoi il excelle : détecter de grandes
 régressions, classer plusieurs candidats les uns contre les autres, et
-signaler une exécution qui nécessite qu'un humain écoute réellement. Ce
+signaler une exécution qui nécessite qu'un humain écoute réellement.
+
+Ce
 n'est pas un substitut à un vrai panel d'écoute quand une décision est
 critique, et cela ne devrait pas avoir le dernier mot sur une langue ou une
-condition que le modèle sous-jacent n'a pas été entraîné à juger. Rapporter
-plusieurs prédicteurs ensemble, et traiter leur désaccord comme une invite
-à écouter plutôt que du bruit à moyenner, est le palliatif pratique.
+condition que le modèle sous-jacent n'a pas été entraîné à juger. Le palliatif
+pratique consiste à rapporter plusieurs prédicteurs ensemble et à traiter
+leur désaccord comme une invite à écouter plutôt que du bruit à moyenner.
 
-## Pourquoi c'est ce qui rend une comparaison utilisable
+## Ce que cela rend possible
 
 Rien de tout cela n'est utile isolément. Cela devient utile au moment où
-plusieurs moteurs doivent être comparés sur un pied d'égalité — quel moteur
-TTS, quel moteur STT, quel modèle d'amélioration adopter par défaut. Les
+plusieurs moteurs doivent être comparés sur un pied d'égalité : quel moteur
+TTS, quel moteur STT, quel modèle d'amélioration adopter par défaut.
+
+Les
 [bibliothèques de parole en ONNX pur](/fr/blog/2026-08-03-a-family-of-pure-onnx-speech-libraries)
-que `speechonnxmetrics` a été construite pour évaluer — TTS, ASR,
-débruitage, clonage vocal — publient des comparaisons par moteur produites
+que `speechonnxmetrics` a été construite pour évaluer (TTS, ASR,
+débruitage, clonage vocal) publient des comparaisons par moteur produites
 avec exactement les métriques ci-dessus : MOS sans référence pour les
 systèmes sans vérité terrain, métriques intrusives là où une référence
 propre existe, WER/CER partout où la justesse de la transcription est en
