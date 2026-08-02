@@ -13,12 +13,19 @@ draft: false
 lang: en
 ---
 
-We rewrote a handful of old programs in Python. The G2P front-end of
-[espeak-ng](https://github.com/espeak-ng/espeak-ng), the Galician and Spanish
-transcription rules of [Cotovia](https://gtm.uvigo.es/en/transfer/software/cotovia/),
-the Basque linguistic processing of [AhoTTS](https://github.com/aholab/AhoTTS),
-the [EYE](https://github.com/eyereasoner/eye) N3 reasoner, and the OWL 2 DL
-reasoner [HermiT](http://www.hermit-reasoner.com/). C, C++ and Java, most of them
+We rewrote a handful of old programs in Python, each one linked here beside the
+original it came from. The G2P front-end of
+[espeak-ng](https://github.com/espeak-ng/espeak-ng) became
+[espyak](https://github.com/TigreGotico/espyak). The Galician and Spanish
+transcription rules of [Cotovia](https://gtm.uvigo.es/en/transfer/software/cotovia/)
+became [pycotovia](https://github.com/TigreGotico/pycotovia). The Basque linguistic
+processing of [AhoTTS](https://github.com/aholab/AhoTTS) became
+[ahotts-g2p](https://github.com/TigreGotico/ahotts-g2p) and
+[pyAhoTTS-Iparrahotsa](https://github.com/TigreGotico/pyAhoTTS-Iparrahotsa). The
+[EYE](https://github.com/eyereasoner/eye) N3 reasoner became
+[pyeye](https://github.com/TigreGotico/pyeye), and the OWL 2 DL reasoner
+[HermiT](http://www.hermit-reasoner.com/) became
+[pyhermit](https://github.com/TigreGotico/pyhermit). C, C++ and Java, most of them
 older than a decade.
 
 The motive was ordinary. A C program that phonemizes Galician is excellent until you
@@ -191,15 +198,12 @@ We would rather have that written down than have to answer it later.
 ## What we did
 
 We kept the upstream licences: copyleft in, copyleft out; permissive in,
-permissive out. [espyak](https://github.com/TigreGotico/espyak) is
-GPL-3.0-or-later, matching espeak-ng; not even a hard case, since it bundles
-espeak-ng's own data files verbatim (`dictsource`, `phsource`, `lang`), and no
-theory of authorship touches files copied unchanged.
-[pycotovia](https://github.com/TigreGotico/pycotovia) is GPL-3.0, matching Cotovia
-(GPL-3.0+). [ahotts-g2p](https://github.com/TigreGotico/ahotts-g2p) and
-[pyAhoTTS-Iparrahotsa](https://github.com/TigreGotico/pyAhoTTS-Iparrahotsa) are
-GPL-3.0, matching AhoTTS. [pyeye](https://github.com/TigreGotico/pyeye) is MIT,
-matching EYE.
+permissive out. `espyak` is GPL-3.0-or-later, matching espeak-ng; not even a hard
+case, since it bundles espeak-ng's own data files verbatim (`dictsource`,
+`phsource`, `lang`), and no theory of authorship touches files copied unchanged.
+`pycotovia` is GPL-3.0, matching Cotovia (GPL-3.0+). `ahotts-g2p` and
+`pyAhoTTS-Iparrahotsa` are GPL-3.0, matching AhoTTS. `pyeye` is MIT, matching EYE.
+`pyhermit` is LGPL-3.0, matching HermiT.
 
 We did this not because we established it was required, but because the asymmetry
 made the decision without needing the answer: copyleft costs us almost nothing
@@ -209,8 +213,7 @@ terms you were not entitled to offer.
 
 That asymmetry is worth watching for in general: nothing complains when a
 structural port of an LGPL original quietly becomes Apache-2.0 in translation.
-HermiT is LGPL and our Python port carries LGPL-3.0 to match. The rest of the set
-turned up two more, both undramatic: a wrapper declaring Apache-2.0 whose upstream
+Going back over the whole set turned up two of these, both undramatic: a wrapper declaring Apache-2.0 whose upstream
 is MIT, and repositories whose README named a licence with no corresponding file.
 You check, you fix what needs fixing, and the interesting question stays open.
 
