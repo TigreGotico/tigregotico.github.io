@@ -118,12 +118,12 @@ not a comfortable few days.
 
 Plutchik's opposite-pairs structure has been tested. In 2009, Smith & Schneider ran
 it through more than two thousand statistical tests and concluded that the
-emotion-wheel theory "receives no empirical support." The opposite pairs are an
-elegant metaphor borrowed from colour theory. They are not a finding about people.
+emotion-wheel theory "receives no empirical support." The opposite pairs are a
+metaphor borrowed from colour theory. They are not a finding about people.
 
-Meanwhile the things that *do* replicate — Russell's valence–arousal circumplex,
-and the control dimension that separates anger from fear — are exactly the pieces
-that rarely make it into working software.
+Meanwhile the things that *do* replicate, Russell's valence–arousal circumplex and
+the control dimension that separates anger from fear, are the pieces that rarely make
+it into working software.
 
 There's a second-order problem here, and it's the one that actually bothered us.
 Every one of these models is *usable*. They're vivid, they're teachable, they fit
