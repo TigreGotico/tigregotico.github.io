@@ -517,9 +517,9 @@
   box-shadow: var(--shadow-elevate);
 }
 
-/* Blog post body reuses the prose treatment, with long-form refinements. */
+/* Blog post body carries the prose treatment alongside this class, and adds
+   the long-form refinements below. */
 .post-body {
-  @apply prose-content;
   max-width: 68ch;
 }
 /* Tasteful drop-cap on the first paragraph of a post. */
