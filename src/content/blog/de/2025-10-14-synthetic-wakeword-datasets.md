@@ -1,6 +1,6 @@
 ---
 title: "Synthetische Wakeword-Datensätze: Sieben Assistentennamen, ein Detektor"
-description: "Wir haben sieben synthetische Wakeword-Datensätze für gängige Sprachassistentennamen veröffentlicht — hey_computer, hey_mycroft, hey_siri, alexa, home_assistant, voice_assistant, wake_up. Trainieren Sie einen Detektor, der überall funktioniert."
+description: "Wir haben sieben synthetische Wakeword-Datensätze für gängige Sprachassistentennamen veröffentlicht: hey_computer, hey_mycroft, hey_siri, alexa, home_assistant, voice_assistant, wake_up. Trainieren Sie einen Detektor, der überall funktioniert."
 date: 2025-10-14
 lang: de
 author: "Casimiro Ferreira"
@@ -14,7 +14,7 @@ tags:
 draft: false
 ---
 
-Sieben Assistentennamen. Sieben Datensätze. Sämtliches Audio wurde vollständig mit dem TTS-Framework **[phoonnx](https://github.com/TigreGotico/phoonnx)** unter Verwendung der Stimmen Miro und Dii erzeugt — keine menschlichen Aufnahmen, keine Einwilligungsformulare, keine Preisgabe der Privatsphäre.
+Sieben Assistentennamen. Sieben Datensätze. Sämtliches Audio wird vollständig vom TTS-Framework **[phoonnx](https://github.com/TigreGotico/phoonnx)** mit den Stimmen Miro und Dii erzeugt. Keine menschlichen Aufnahmen. Keine Einwilligungsformulare. Keine Preisgabe der Privatsphäre.
 
 - **[hey_computer](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-hey_computer)**
 - **[hey_mycroft](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-hey_mycroft)**
@@ -24,17 +24,17 @@ Sieben Assistentennamen. Sieben Datensätze. Sämtliches Audio wurde vollständi
 - **[voice_assistant](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-voice_assistant)**
 - **[wake_up](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-wake_up)**
 
-Jeder Datensatz ist eine flache Menge von etwa tausend positiven Clips — das Wakeword gesprochen mit variierten Sprechern, Geschwindigkeiten und Prosodie. Harte Negativbeispiele und Hintergrundgeräusche werden als separate Begleitdatensätze geliefert, die Sie zur Trainingszeit einmischen: [not-wake-words-speech-en](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-en), [not-wake-words-speech-pt](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-pt) und [ambient_noises](https://huggingface.co/datasets/TigreGotico/ambient_noises).
+Jeder Datensatz ist eine flache Menge von etwa tausend positiven Clips: das Wakeword gesprochen mit variierten Sprechern, Geschwindigkeiten und Prosodie. Harte Negativbeispiele und Hintergrundgeräusche werden als separate Begleitdatensätze geliefert, die Sie zur Trainingszeit einmischen: [not-wake-words-speech-en](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-en), [not-wake-words-speech-pt](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-pt) und [ambient_noises](https://huggingface.co/datasets/TigreGotico/ambient_noises).
 
 ## Warum synthetisch
 
-Echte Aufnahmen erfordern Monate der Erfassung, Einwilligungsformulare für jeden Sprecher und hinterlassen dennoch Akzentlücken, die Sie nicht vorhergesehen haben. Die synthetische Erzeugung kehrt das um:
+Echte Aufnahmen benötigen Monate zur Erfassung. Jeder Sprecher braucht ein Einwilligungsformular, und das Ergebnis hinterlässt dennoch Akzentlücken, die Sie nicht vorhergesehen haben. Die synthetische Erzeugung vermeidet all das.
 
-- **Reproduzierbar**: dieselben Erzeugungseinstellungen, dieselben Stimmen → dasselbe Audio. Vollständiger Prüfpfad, keine Archäologie von Einwilligungsformularen.
+- **Reproduzierbar**: dieselben Erzeugungseinstellungen und Stimmen erzeugen dasselbe Audio, mit vollständigem Prüfpfad und ohne Archäologie von Einwilligungsformularen.
 - **Überprüfbar**: die Erzeugungspipeline ist die Dokumentation.
 - **Skalierbar**: Sprechgeschwindigkeit und Sprechermerkmale zu variieren ist eine Parameteränderung, keine Studiositzung.
 
-Für die Wakeword-Erkennung ist die relevante Eigenschaft die akustische Unterscheidbarkeit, nicht die Natürlichkeit. Synthetische Daten passen gut zu dieser Anforderung.
+Für die Wakeword-Erkennung zählt die akustische Unterscheidbarkeit, nicht die Natürlichkeit. Synthetische Daten erfüllen genau diese Anforderung.
 
 ## Nutzen Sie diese
 
