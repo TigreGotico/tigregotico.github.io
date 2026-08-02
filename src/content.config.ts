@@ -1,5 +1,6 @@
-import { defineCollection, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
 import { glob, file } from 'astro/loaders';
+import { z } from 'astro/zod';
 
 // Blog posts: markdown, auto-discovered via glob (no registration array).
 const blog = defineCollection({
@@ -13,7 +14,7 @@ const blog = defineCollection({
       author: z.string().default('Casimiro Ferreira'),
       tags: z.array(z.string()).default([]),
       cover: image().optional(),
-      coverExternal: z.string().url().optional(),
+      coverExternal: z.url().optional(),
       draft: z.boolean().default(false),
       // 'en' at the root, 'pt' for translations under src/content/blog/pt/.
       lang: z.enum(['en', 'pt', 'es', 'de', 'nl', 'fr', 'it', 'ru', 'ar', 'fa', 'hi', 'zh', 'ko', 'ja']).default('en'),
@@ -36,7 +37,7 @@ const resource = z.object({
   title: z.string(),
   description: z.string(),
   icon: z.string(),
-  url: z.string().url(),
+  url: z.url(),
 });
 
 const datasets = defineCollection({
@@ -84,11 +85,11 @@ const projects = defineCollection({
     name: z.string(),
     description: z.string(),
     // Optional: "coming soon" entries have no public repo yet.
-    url: z.string().url().optional(),
+    url: z.url().optional(),
     category: z.union([z.string(), z.array(z.string())]),
     tags: z.array(z.string()).default([]),
     // External logo URL (stable hosts only).
-    image: z.string().url().optional(),
+    image: z.url().optional(),
     // Repo-local asset key resolved against src/assets/projects (kills link rot).
     imageLocal: z.string().optional(),
     // "featured" is a flag, not a second collection.
@@ -111,8 +112,8 @@ const collaborations = defineCollection({
     id: z.string(),
     name: z.string(),
     description: z.string(),
-    url: z.string().url(),
-    repositories: z.array(z.string().url()).default([]),
+    url: z.url(),
+    repositories: z.array(z.url()).default([]),
     descriptions: z.record(z.string(), z.string()).optional(),
   }),
 });
@@ -122,7 +123,7 @@ const testimonials = defineCollection({
   schema: z.object({
     id: z.string(),
     org: z.string(),
-    url: z.string().url().optional(),
+    url: z.url().optional(),
     quote: z.string(),
     quotes: z.record(z.string(), z.string()).optional(),
     author: z.string(),
