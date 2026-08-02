@@ -1,6 +1,6 @@
 ---
 title: "Two Voices, Every Language: Miro & Dii"
-description: "TigreGótico is partnering with OpenVoiceOS to give the assistant two consistent voice identities — Miro and Dii — that sound the same in every language, built with our voice-cloning technology and the phoonnx engine. Two TTS models for every language someone requests, endangered tongues included."
+description: "TigreGótico is partnering with OpenVoiceOS to give the assistant two consistent voice identities, Miro and Dii, that sound the same in every language, built with our voice-cloning technology and the phoonnx engine. Two TTS models for every language someone requests, endangered tongues included."
 date: 2026-06-15
 author: "Casimiro Ferreira"
 tags:
@@ -14,37 +14,36 @@ draft: false
 ---
 
 > **Hear them now:** the [Voices Demo](../../demo) runs Miro & Dii live in your
-> browser — pick a language, type a sentence, and listen. No install, no server.
+> browser. Pick a language, type a sentence, and listen. No install, no server.
 
 People remember the voice of an assistant more than its name. So the core question of our partnership with [OpenVoiceOS](https://www.openvoiceos.org/) is a practical one: who should the assistant sound like, in every language?
 
-The answer is **Miro** (male) and **Dii** (female) — two voice identities that carry across every language OpenVoiceOS supports. A user who configures the assistant in Lisbon and later switches to German should hear the same familiar speaker. One brand voice, every language, owned by the community.
+The answer is **Miro** (male) and **Dii** (female), two voice identities that carry across every language OpenVoiceOS supports. A user who configures the assistant in Lisbon and later switches to German hears the same familiar speaker in both.
 
 ## One identity, many languages
 
-The usual way to get a multilingual voice is to train a single model on many languages at once. It works, but it tends to smear the result: accents bleed across languages, pronunciation gets approximate, and the voice loses the crispness of a native speaker.
+The usual way to get a multilingual voice is to train a single model on many languages at once. It works, but it tends to smear the result: accents bleed across languages and pronunciation gets approximate.
 
-We take the harder road. For every language we build a **monolingual** model — one model, one language, trained to do that language well. The trick that ties them together is **voice cloning**: each monolingual Miro model is cloned from the same source identity, and likewise for Dii. The result is a family of per-language models that each speak like a native, yet all share the same timbre, the same character, the same Miro-ness or Dii-ness. You get native-quality pronunciation *and* a single recognisable identity, instead of trading one for the other.
+We build one model per language instead, each trained only on that language. To keep every one of those models sounding like the same person, we clone each monolingual Miro model from the same source identity, and likewise for Dii. So a listener gets native-quality pronunciation in each language, and still recognizes the same voice moving between them.
 
-These models are trained and served with [**phoonnx**](https://github.com/TigreGotico/phoonnx), our open TTS framework — VITS-based, ONNX-exported, CPU-only. The voices run fully offline; no cloud, no API key, no data leaving your hardware. Inside OpenVoiceOS, the `ovos-tts-plugin-phoonnx` plugin handles fetching and loading them. For the full hardware and architecture story, see [TTS That Runs on a Potato](/blog/2026-05-10-tts-that-runs-on-a-potato).
+These models are trained and served with [**phoonnx**](https://github.com/TigreGotico/phoonnx), our open TTS framework: built on VITS (a neural text-to-speech architecture), exported to ONNX, and CPU-only at inference. They run fully offline, with no cloud, no API key, and no data leaving your hardware. Inside OpenVoiceOS, the `ovos-tts-plugin-phoonnx` plugin handles fetching and loading them. For the full hardware and architecture story, see [TTS That Runs on a Potato](/blog/2026-05-10-tts-that-runs-on-a-potato).
 
 ## The G2P research that makes it possible
 
-Speaking a language well is not only about the voice — it is about knowing how the writing is *meant* to sound. That is the job of **grapheme-to-phoneme (G2P)** conversion: turning written text into the sequence of phonemes the model actually pronounces. Every new language we take on comes with its own G2P research, and that research is where a lot of the real work lives.
+Speaking a language well takes more than a voice. It takes knowing how the writing is meant to sound. That is the job of grapheme-to-phoneme (G2P) conversion: turning written text into the sequence of phonemes the model pronounces. Every new language we take on needs its own G2P research first, and that research is most of the real work.
 
-phoonnx is deliberately flexible here. It can drive a whole range of phonemizers — eSpeak, Gruut, Epitran, model-based [ByT5 G2P](https://huggingface.co/collections/OpenVoiceOS/g2p-models-6886a8d612825c3fe65befa0), and language-specific tools where general engines fall short. This connects directly to our broader phonetics stack: our **[orthography-to-IPA research](/blog/2026-01-15-grapheme-to-ipa-for-350-languages)** and the **[Lusophone phonemizers](/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)** we have built for the Portuguese family feed the same goal — accurate IPA for languages that the big TTS providers have never bothered to model carefully. When a language has no good off-the-shelf phonemizer, that gap *is* the project. We do the spelling-to-sound research first, then the voice follows.
-
+phoonnx can drive a range of phonemizers: eSpeak, Gruut, Epitran, the model-based [ByT5 G2P](https://huggingface.co/collections/OpenVoiceOS/g2p-models-6886a8d612825c3fe65befa0), and language-specific tools where general engines fall short. Our [orthography-to-IPA research](/blog/2026-01-15-grapheme-to-ipa-for-350-languages) and the [Lusophone phonemizers](/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes) we built for the Portuguese family feed the same goal: accurate IPA for languages the big TTS providers have never modeled carefully. When a language has no good off-the-shelf phonemizer, that gap is the project. We do the spelling-to-sound research first, then the voice follows.
 
 ## Two models for every language asked for
 
-Here is the concrete offer, and it is the heart of the partnership: **for every language someone requests, we will build two TTS models — Miro and Dii.** Not a roadmap of someday-maybes; a standing commitment. Ask for a language, and the universal pair comes to it.
+The offer at the heart of the partnership: for every language someone requests, we build two TTS models, Miro and Dii. This is a standing commitment, not a roadmap. Ask for a language, and the pair comes to it.
 
-And we mean *every* language, not just the comfortable, commercially obvious ones. The voices that are missing from the world are rarely the ones with a hundred million speakers — they are the **endangered and minority languages** that mainstream TTS quietly ignores because the market is too small to bother. Those are exactly the languages we want to reach: communities who have never had a high-quality synthetic voice to call their own, and who have no reason to expect a Silicon Valley vendor to ever provide one.
+We mean every language, not only the ones with the largest speaker counts. Endangered and minority languages, the ones mainstream TTS ignores because the market is small, are exactly what we want to reach: communities who have never had a synthetic voice of their own.
 
-This is not a promise for later. As of this writing, the [**phoonnx TTS models collection**](https://huggingface.co/collections/TigreGotico/phoonnx-tts-models) on Hugging Face lists 13 languages with at least one shipped voice, and 8 of those — Basque, Arabic, European Portuguese, **Asturian**, **Aragonese**, **Frisian**, Occitan, and Colombian Spanish — already have both Miro and Dii available.
+As of this writing, the [phoonnx TTS models collection](https://huggingface.co/collections/TigreGotico/phoonnx-tts-models) on Hugging Face lists 13 languages with at least one shipped voice. Eight of those, Basque, Arabic, European Portuguese, Asturian, Aragonese, Frisian, Occitan, and Colombian Spanish, already have both Miro and Dii available.
 
 ## Open and self-hosted
 
-The voices are **free and open source**, run **offline and self-hosted** so nothing you say leaves your hardware, and the whole stack — engine, phonemizers, G2P research, trained voices — is open for a community to take and keep.
+The voices are free and open source. They run offline and self-hosted, so nothing you say leaves your hardware. The whole stack, engine, phonemizers, G2P research, and trained voices, is open for a community to take and keep.
 
-If your language is not on the list yet, that is not a closed door — it is a request waiting to be made.
+If your language is not on the list yet, ask for it.

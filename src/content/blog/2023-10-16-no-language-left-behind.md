@@ -20,13 +20,13 @@ OpenVoiceOS (OVOS) is a community-driven, open-source voice assistant platform. 
 
 ## Language Detection from Audio
 
-OVOS identifies the language spoken in audio before it hits the ASR transcription step, letting the ASR plugin transcribe accurately rather than guessing. I built several plugins for this:
+OVOS identifies the language spoken in audio before it reaches the ASR (automatic speech recognition) step, letting the ASR plugin transcribe accurately rather than guessing. I built several plugins for this:
 
 - [ovos-audio-transformer-plugin-speechbrain-langdetect](https://github.com/OpenVoiceOS/ovos-audio-transformer-plugin-speechbrain-langdetect)
 - [ovos-audio-transformer-plugin-speechflow-langdetect](https://github.com/OpenVoiceOS/ovos-audio-transformer-plugin-speechflow-langdetect)
 - [ovos-stt-plugin-fasterwhisper](https://github.com/OpenVoiceOS/ovos-stt-plugin-fasterwhisper)
 
-Language detection is constrained to the languages listed in your OVOS config — classifications outside that set are rejected, so you don't accidentally switch to a language nobody in your household speaks.
+Language detection is constrained to the languages listed in your OVOS config. Classifications outside that set are rejected, so you don't accidentally switch to a language nobody in your household speaks.
 
 ```json
 {
@@ -51,11 +51,11 @@ FasterWhisper's language classifier model size is configurable:
 
 ## Text Language Translation
 
-[No Language Left Behind (NLLB)](https://ai.meta.com/research/no-language-left-behind/) is Meta's open-source model for high-quality direct translation between 200 languages — including low-resource languages like Asturian, Luganda, and Urdu. That name inspired this post.
+[No Language Left Behind (NLLB)](https://ai.meta.com/research/no-language-left-behind/) is Meta's open-source model for high-quality direct translation between 200 languages, including low-resource languages like Asturian, Luganda, and Urdu. That name inspired this post.
 
-The [ovos-translate-plugin-nllb](https://github.com/OpenVoiceOS/ovos-translate-plugin-nllb) runs NLLB locally inside OVOS. Skills are slow to gain full native-language support, but with this plugin users no longer need to wait — OVOS translates incoming utterances and outgoing responses on the fly, so any skill works in any of those 200 languages.
+The [ovos-translate-plugin-nllb](https://github.com/OpenVoiceOS/ovos-translate-plugin-nllb) runs NLLB locally inside OVOS. Skills are slow to gain full native-language support. With this plugin, users don't have to wait: OVOS translates incoming utterances and outgoing responses on the fly, so any skill works in any of those 200 languages.
 
-For lower-powered hardware, [ovos-translate-server-plugin](https://github.com/OpenVoiceOS/ovos-translate-server-plugin) offloads translation to a remote server. Public servers are listed out of the box; self-hosting is strongly recommended for privacy. **Using a public server means trusting its operator with all your utterances.**
+For lower-powered hardware, [ovos-translate-server-plugin](https://github.com/OpenVoiceOS/ovos-translate-server-plugin) offloads translation to a remote server. Public servers are listed out of the box, but self-hosting is strongly recommended for privacy. Using a public server means trusting its operator with all your utterances.
 
 Translation plugins of note:
 - [ovos-translate-plugin-nllb](https://github.com/OpenVoiceOS/ovos-translate-plugin-nllb)
@@ -77,7 +77,7 @@ Translation plugins of note:
 
 The [OVOS Bidirectional Translation plugin](https://github.com/OpenVoiceOS/ovos-bidirectional-translation-plugin/tree/dev) ties detection and translation together with two pipeline stages: an **Utterance Transformer** (translates incoming text into OVOS's configured language) and a **Dialog Transformer** (translates the response back into the user's original language).
 
-Optional `verify_lang` mode cross-checks the detected text language against the session language — useful on chat platforms where a single OVOS instance serves multilingual users. Requires a [language detection module](https://openvoiceos.github.io/ovos-technical-manual/lang_support/) configured in `language.detection_module` and a translation plugin (`ovos-translate-plugin-nllb` for local or `ovos-translate-server-plugin` for remote).
+Optional `verify_lang` mode cross-checks the detected text language against the session language. This is useful on chat platforms where a single OVOS instance serves multilingual users. It requires a [language detection module](https://openvoiceos.github.io/ovos-technical-manual/lang_support/) configured in `language.detection_module` and a translation plugin (`ovos-translate-plugin-nllb` for local or `ovos-translate-server-plugin` for remote).
 
 ### Configuration
 
@@ -99,9 +99,9 @@ Optional `verify_lang` mode cross-checks the detected text language against the 
 
 Each component is independently useful, but they compose cleanly:
 
-1. **Audio language detection** — tells the ASR plugin which language to transcribe.
-2. **Utterance translation** — converts non-native utterances into the assistant's configured language before skill matching.
-3. **Dialog translation** — translates the assistant's response back to the user's language before TTS.
+1. Audio language detection tells the ASR plugin which language to transcribe.
+2. Utterance translation converts non-native utterances into the assistant's configured language before skill matching.
+3. Dialog translation translates the assistant's response back to the user's language before TTS.
 
 The result: OVOS can process any of NLLB's 200 languages end-to-end, without the skills themselves needing translations.
 
