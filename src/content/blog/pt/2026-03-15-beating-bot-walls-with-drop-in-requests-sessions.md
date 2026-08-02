@@ -1,6 +1,6 @@
 ---
 title: "Sessões requests Componíveis e Prontas a Usar para Acesso Resiliente a Dados Públicos"
-description: "Duas subclasses componíveis de requests.Session para ler páginas web públicas de forma fiável sem um navegador headless no caminho crítico: transporte compatível com TLS, um proxy FlareSolverr para desafios JS, um recurso à Wayback Machine e pedidos com IP diversificado — unblock_requests e anon_requests."
+description: "Duas subclasses componíveis de requests.Session para ler páginas web públicas de forma fiável sem um navegador headless no caminho crítico: transporte compatível com TLS, um proxy FlareSolverr para desafios JS, um recurso à Wayback Machine e pedidos com IP diversificado: unblock_requests e anon_requests."
 date: 2026-03-15
 lang: pt
 author: "Casimiro Ferreira"
@@ -14,47 +14,49 @@ tags:
 draft: false
 ---
 
-Grande parte do nosso trabalho — clientes de metadados de media, enriquecimento de
-catálogos, arquivo — depende de ler páginas web **públicas** de forma fiável. O
-problema raramente são os dados; é que grande parte da infraestrutura de deteção
+Grande parte do nosso trabalho (clientes de metadados de media, enriquecimento de
+catálogos, arquivo) depende de ler páginas web **públicas** de forma fiável. O
+problema raramente são os dados. É que grande parte da infraestrutura de deteção
 de bots foi afinada contra ataques automatizados e acaba por classificar
 incorretamente qualquer cliente não-navegador bem-comportado como um deles. Isso
 acontece em dois eixos distintos:
 
-- **"O que és tu?"** — a Cloudflare e afins assinalam pedidos não pelo *que*
+- **"O que és tu?"** A Cloudflare e afins assinalam pedidos não pelo *que*
   pedes, mas pelo *aspeto* que tens à saída: o teu handshake TLS, a tua impressão
-  digital JA3, se consegues executar um desafio JavaScript. Um handshake simples
+  digital JA3 (um resumo de como o teu handshake TLS está construído, que difere
+  entre um navegador e uma biblioteca HTTP simples mesmo quando ambos pedem a
+  mesma página), se consegues executar um desafio JavaScript. Um handshake simples
   do `requests` não se parece nada com o de um navegador, pelo que fica preso em
   verificações destinadas a abuso automatizado, mesmo quando o próprio tráfego é
   benigno.
-- **"Quem és tu?"** — a reputação de IP e os limites de taxa ignoram por completo
-  a tua impressão digital; contam quantos pedidos vêm de um único endereço, o que
+- **"Quem és tu?"** A reputação de IP e os limites de taxa ignoram por completo
+  a tua impressão digital. Contam quantos pedidos vêm de um único endereço, o que
   pode penalizar um único cliente bem-comportado tão facilmente como um abusivo.
 
 Os dois eixos são ortogonais, por isso respondemos-lhes com duas pequenas
 bibliotecas que se empilham de forma limpa: o **unblock_requests** responde a *o
 que és tu*, e o **anon_requests** responde a *quem és tu*. Ambas são substitutos
 diretos de uma sessão `requests` no código do dia a dia. Este artigo é
-especificamente sobre essa camada de transporte — a parte dos bytes à saída — e não
+especificamente sobre essa camada de transporte, a parte dos bytes à saída, e não
 sobre o parsing ou o pipeline que assenta por cima.
 
 **Âmbito, dito sem rodeios:** estes transportes destinam-se apenas a páginas
 públicas e não autenticadas. Respeitam o `robots.txt` e qualquer crawl-delay
-declarado — vê o nosso **[artigo sobre robots.txt e sitemaps](/pt/blog/2026-03-01-robot-txt-sitemaps-ethical-web-scraping)**
-para saber como verificamos isso antes de escrever um scraper — e todo o cliente
+declarado (vê o nosso **[artigo sobre robots.txt e sitemaps](/pt/blog/2026-03-01-robot-txt-sitemaps-ethical-web-scraping)**
+para saber como verificamos isso antes de escrever um scraper), e todo o cliente
 construído sobre eles é mantido a volumes de pedidos baixos, pelo que uma origem
 alvo nunca vê carga significativa vinda de nós. Isto não é uma cláusula de
-isenção acrescentada depois; é uma restrição de engenharia real sobre como estas
+isenção acrescentada depois. É uma restrição de engenharia real sobre como estas
 sessões são usadas, porque um cliente resiliente que também é desconsiderado
 anula o seu próprio propósito.
 
 ## A restrição de design: manter a forma do `requests`
 
 As sessões do `unblock_requests` fazem subclasse de `requests.Session` e apenas
-sobrepõem o `request()` — tudo o resto (`.get()`, `.post()`, cookies, cabeçalhos,
+sobrepõem o `request()`. Tudo o resto (`.get()`, `.post()`, cookies, cabeçalhos,
 semântica de context manager) é herdado, pelo que qualquer código tipado contra
 `requests.Session` as aceita sem alterações. As sessões do `anon_requests` envolvem
-em vez de fazer subclasse — expõem os mesmos métodos de verbo e a mesma interface
+em vez de fazer subclasse. Expõem os mesmos métodos de verbo e a mesma interface
 de context manager, mas reconstroem a sua sessão interna a cada rotação:
 
 ```python
@@ -75,15 +77,15 @@ no ecrã de ninguém, e nada no caminho crítico precisa de um display.
 
 O `unblock_requests` torna um cliente Python simples interoperável com
 **verificações de deteção de bots afinadas para navegadores**. Escolhes um transporte
-com o argumento `mode=` (ou a variável de ambiente `UNBLOCK_REQUESTS_TRANSPORT` —
+com o argumento `mode=` (ou a variável de ambiente `UNBLOCK_REQUESTS_TRANSPORT`;
 argumentos explícitos ganham sempre). Os quatro principais:
 
 | Modo | O que faz |
 |---|---|
 | `curl_cffi` *(predefinição)* | Impersonação TLS/JA3 do Chrome via `curl_cffi`. Passa como um handshake com forma de navegador na maioria das redes sem infraestrutura extra. |
 | `requests` | `requests` simples, sem impersonação. |
-| `flaresolverr` | Encaminha através de um navegador headless FlareSolverr que resolve o desafio JS — dados **em direto**. |
-| `wayback` | Lê o snapshot mais recente do Internet Archive — desatualizado, mas não precisa de nada. |
+| `flaresolverr` | Encaminha através de um navegador headless FlareSolverr que resolve o desafio JS: dados **em direto**. |
+| `wayback` | Lê o snapshot mais recente do Internet Archive: desatualizado, mas não precisa de nada. |
 
 A predefinição, `curl_cffi`, é a vitória barata. A maioria dos veredictos "és um
 bot" resume-se a uma discrepância de impressão digital TLS: o `requests` de origem
@@ -93,7 +95,7 @@ que o handshake e o JA3 alinham e a verificação simplesmente passa. Nenhum
 JavaScript executado, nenhum navegador arrancado.
 
 Quando um site escala para um verdadeiro desafio JS interativo, o `curl_cffi` não
-chega — algo tem de executar o desafio. É aí que entra o modo `flaresolverr`: uma
+chega. Algo tem de executar o desafio. É aí que entra o modo `flaresolverr`: uma
 instância de [FlareSolverr](https://github.com/FlareSolverr/FlareSolverr) que
 alojas tu próprio faz a resolução num navegador headless **fora do teu processo**, e
 o `unblock_requests` limita-se a fazer POST para ela e a extrair o HTML resolvido da
@@ -108,7 +110,7 @@ CloudflareSession(flaresolverr_url="http://host:8191",
 
 ## Degradação graciosa para o arquivo
 
-A infraestrutura tem dias maus — o FlareSolverr está em baixo, o site está
+A infraestrutura tem dias maus: o FlareSolverr está em baixo, o site está
 inacessível, o desafio é neste momento insolúvel. Em vez de falhar todo o trabalho,
 a sessão pode recorrer à **Wayback Machine**. A deteção de desafios é heurística:
 um pequeno auxiliar `is_challenge()` fareja a primeira parte do corpo à procura dos
@@ -121,16 +123,16 @@ está protegido pela Cloudflare, por isso o `requests` simples chega lá.
 
 Duas notas de implementação que vale a pena conhecer: nos modos `wayback` e
 `flaresolverr` o resultado é uma `requests.Response` *sintetizada* mas genuína,
-construída a partir do HTML obtido — pelo que `stream=`, adaptadores personalizados
+construída a partir do HTML obtido, pelo que `stream=`, adaptadores personalizados
 e connection pooling não se aplicam aí, ao passo que os modos `requests`/`curl_cffi`
-são totalmente nativos. E o recurso ao arquivo só dispara para GETs; nunca
+são totalmente nativos. E o recurso ao arquivo só dispara para GETs. Nunca
 reproduzimos silenciosamente um pedido mutante a partir de um arquivo.
 
 ## Camada dois: o `anon_requests` e a rotação de IP
 
 O problema ortogonal é a **reputação de IP**. Mesmo um handshake com forma de
 navegador perfeito pode apanhar limite de taxa se todos os pedidos vierem de um
-único endereço — as heurísticas baseadas em volume olham para o endereço, não
+único endereço. As heurísticas baseadas em volume olham para o endereço, não
 para a impressão digital. O `anon_requests` distribui a carga por vários
 endereços com `RotatingProxySession` (proxies públicos extraídos, validação
 opcional, SOCKS5/HTTP) e `RotatingTorSession` (circuitos Tor rotativos), pelo
@@ -148,7 +150,7 @@ with RotatingProxySession(proxy_type=ProxyType.SOCKS5, validate=True) as s:
 ## A composição: carga distribuída **e** um handshake compatível de uma só vez
 
 Estas duas bibliotecas foram desenhadas para se empilhar em vez de se sobrepor. As
-sessões do `anon_requests` aceitam um `session_factory` — qualquer callable que
+sessões do `anon_requests` aceitam um `session_factory`, qualquer callable que
 devolva uma `requests.Session`, com predefinição `requests.Session`. As definições
 de rotação e proxy são aplicadas ao que quer que essa factory devolva. Assim,
 injetas uma `CloudflareSession` como factory e obténs ambos os comportamentos num só
@@ -164,21 +166,21 @@ session = RotatingProxySession(
 session.get(url)   # spreads load across IPs *and* uses a browser-compatible handshake
 ```
 
-O proxy rotativo flui através de *todos* os transportes — incluindo para dentro do
+O proxy rotativo flui através de *todos* os transportes, incluindo para dentro do
 FlareSolverr, que conduz o seu navegador headless através do campo `proxy` do pedido
-de resolução. Assim, o pedido inteiro — handshake, resolução do desafio e IP de
-saída — mantém-se consistente de ponta a ponta, o que é simplesmente o
+de resolução. Assim, o pedido inteiro (handshake, resolução do desafio e IP de
+saída) mantém-se consistente de ponta a ponta, o que é o
 comportamento correto para um cliente que não está a tentar parecer mais do que
 um único visitante.
 
 ## Porquê esta forma
 
 Manter cada preocupação na sua própria subclasse fina de `requests.Session`
-significa que quem chama escolhe apenas o que precisa — só impersonação TLS, a stack
-completa de rotação-mais-resolução, ou qualquer coisa pelo meio — trocando um
+significa que quem chama escolhe apenas o que precisa (só impersonação TLS, a stack
+completa de rotação-mais-resolução, ou qualquer coisa pelo meio) trocando um
 construtor, não reescrevendo o seu código HTTP. A ferramenta cara e pesada (um
 navegador a sério) fica *fora do processo* no FlareSolverr e só é invocada quando um
-desafio JS genuinamente o exige; o caso comum é um handshake impersonado e barato. E
+desafio JS genuinamente o exige. O caso comum é um handshake impersonado e barato. E
 quando a web em direto se recusa, o arquivo responde.
 
 A junção do `session_factory` é onde acontece a composição, e é o que mantém as

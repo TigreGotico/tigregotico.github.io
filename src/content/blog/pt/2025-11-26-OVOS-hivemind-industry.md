@@ -49,7 +49,7 @@ Projetos como a **[WALLABI](https://wasabiproject.eu/wallabi)** e a **[HUMANENER
 
 ### **3. Assistência à Manutenção Preditiva**
 
-Experiências como a **[GENIUS-PM](https://wasabiproject.eu/genius-pm)** usam o assistente para dar aos técnicos de manutenção acesso rápido a dados de saúde das máquinas, explicações de falhas e passos de reparação — especialmente quando têm as mãos ocupadas.
+Experiências como a **[GENIUS-PM](https://wasabiproject.eu/genius-pm)** usam o assistente para dar aos técnicos de manutenção acesso rápido a dados de saúde das máquinas, explicações de falhas e passos de reparação, especialmente quando têm as mãos ocupadas.
 
 ### **4. Logística, Movimentação de Materiais e Apoio ao Armazém**
 
@@ -61,7 +61,7 @@ A **[ONBOARD](https://wasabiproject.eu/onboard)** e a **[AI-MODE](https://wasabi
 
 ### **6. Sustentabilidade, Rastreio de Resíduos e Eficiência de Recursos**
 
-A **[VAFER](https://wasabiproject.eu/vafer)** integra interfaces de voz com sistemas que monitorizam a reciclagem, a reutilização de materiais e os fluxos de recursos — reporte sem usar as mãos em ambientes fabris.
+A **[VAFER](https://wasabiproject.eu/vafer)** integra interfaces de voz com sistemas que monitorizam a reciclagem, a reutilização de materiais e os fluxos de recursos, com reporte sem usar as mãos em ambientes fabris.
 
 Tudo isto depende do OVOS e do HiveMind para encaminhar a comunicação entre dispositivos, interface Android e sistemas de backend.
 
@@ -81,7 +81,7 @@ Na WASABI, este motor RASA está ligado ao OVOS como uma **skill**, tratando do 
 Um front-end Android para os trabalhadores, ligando-se ao OVOS através do HiveMind.
 
 Versão inicial lançada aqui:
-[https://github.com/BIBA-GmbH/Mycroft-Android](https://github.com/BIBA-GmbH/Mycroft-Android)
+[BIBA-GmbH/Mycroft-Android](https://github.com/BIBA-GmbH/Mycroft-Android)
 
 As funcionalidades incluem:
 
@@ -105,12 +105,12 @@ Isto forma a stack padrão de assistente de voz industrial que todas as experiê
 ### **4. Um Dataset de Fala Industrial**
 
 A COALA publicou um dataset de fala multilingue gravado em fábricas e oficinas:
-[https://zenodo.org/record/8268928](https://zenodo.org/record/8268928)
+[zenodo.org/record/8268928](https://zenodo.org/record/8268928)
 
 ---
 
 ## Porque Funciona para a Indústria
 
-Os objetivos de design que importam no chão de fábrica — transparência total para setores regulados, implementação local/edge sem dependência da nuvem, skills modulares para lógica proprietária e a capacidade do HiveMind de distribuir nós de voz por uma instalação — foram incorporados desde o início, não acrescentados a posteriori.
+Os objetivos de design que importam no chão de fábrica foram incorporados desde o início, e não acrescentados a posteriori: transparência total para setores regulados, implementação local/edge sem dependência da nuvem, skills modulares para lógica proprietária e a capacidade do HiveMind de distribuir nós de voz por uma instalação.
 
 Código-fonte do OVOS e do HiveMind: [github.com/OpenVoiceOS](https://github.com/OpenVoiceOS) · [github.com/JarbasHiveMind](https://github.com/JarbasHiveMind)
