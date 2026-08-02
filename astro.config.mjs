@@ -1,7 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import { unified } from '@astrojs/markdown-remark';
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import mdx from '@astrojs/mdx';
 
@@ -57,5 +57,8 @@ export default defineConfig({
       remarkPlugins: [remarkReadingTime, remarkBaseLinks],
     }),
   },
-  integrations: [tailwind(), mdx(), sitemap()],
+  integrations: [mdx(), sitemap()],
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });

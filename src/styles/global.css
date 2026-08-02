@@ -1,7 +1,67 @@
 @import './fonts.css';
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+/* Class-based dark mode (mirrors old `darkMode: 'class'`): `.dark` on
+   `<html>` (or an ancestor) activates the `dark:` variant. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@source '../**/*.{astro,html,js,jsx,md,mdx,ts,tsx}';
+
+@theme {
+  /* Colour tokens are re-exposed as real CSS colours here so Tailwind's
+     opacity modifiers (e.g. bg-primary/10) work. The underlying RGB
+     channels live in the palette blocks below, named `--color-*-rgb` to
+     avoid colliding with these theme entries (and so scripts/check-contrast.mjs
+     can keep parsing plain "R G B" triplets). */
+  --color-bg: rgb(var(--color-bg-rgb));
+  --color-surface: rgb(var(--color-surface-rgb));
+  --color-elevated: rgb(var(--color-elevated-rgb));
+  --color-fg: rgb(var(--color-fg-rgb));
+  --color-muted: rgb(var(--color-muted-rgb));
+  --color-border: rgb(var(--color-border-rgb));
+  --color-primary: rgb(var(--color-primary-rgb));
+  --color-primary-fg: rgb(var(--color-primary-fg-rgb));
+  --color-accent: rgb(var(--color-accent-rgb));
+
+  --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Playfair Display', ui-serif, Georgia, serif;
+  --font-display: Cinzel, ui-serif, Georgia, serif;
+
+  --shadow-gothic: 0 10px 40px -12px rgb(0 0 0 / 0.35);
+}
+
+/* Custom utilities (v4's `@utility` API) — these need to be real utilities,
+   not plain classes, so they remain `@apply`-able from `.btn-primary`,
+   `.btn-ghost` and `.card-hover` below. */
+@utility btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+@utility card {
+  position: relative;
+  border-radius: 1rem;
+  border-width: 1px;
+  border-color: var(--color-border);
+  background-color: var(--color-surface);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-elevate);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
 
 @layer base {
   .dark {
@@ -12,15 +72,15 @@
     color-scheme: light;
 
     /* Light theme — warm off-white, near-black ink (RGB channels). */
-    --color-bg: 250 248 246;
-    --color-surface: 255 255 255;
-    --color-elevated: 255 253 252;
-    --color-fg: 26 22 30;
-    --color-muted: 88 82 96;
-    --color-border: 226 220 228;
-    --color-primary: 180 83 9;
-    --color-primary-fg: 26 20 10;
-    --color-accent: 217 119 6;
+    --color-bg-rgb: 250 248 246;
+    --color-surface-rgb: 255 255 255;
+    --color-elevated-rgb: 255 253 252;
+    --color-fg-rgb: 26 22 30;
+    --color-muted-rgb: 88 82 96;
+    --color-border-rgb: 226 220 228;
+    --color-primary-rgb: 180 83 9;
+    --color-primary-fg-rgb: 26 20 10;
+    --color-accent-rgb: 217 119 6;
 
     /* Gradient + glow system — amber to ember. */
     --grad-from: 245 158 11;
@@ -47,15 +107,15 @@
 
   :root.dark {
     /* Dark theme — warm near-black, gold ink. */
-    --color-bg: 13 12 10;
-    --color-surface: 23 21 17;
-    --color-elevated: 32 28 22;
-    --color-fg: 245 242 236;
-    --color-muted: 176 168 152;
-    --color-border: 52 46 36;
-    --color-primary: 251 191 36;
-    --color-primary-fg: 26 20 10;
-    --color-accent: 245 158 11;
+    --color-bg-rgb: 13 12 10;
+    --color-surface-rgb: 23 21 17;
+    --color-elevated-rgb: 32 28 22;
+    --color-fg-rgb: 245 242 236;
+    --color-muted-rgb: 176 168 152;
+    --color-border-rgb: 52 46 36;
+    --color-primary-rgb: 251 191 36;
+    --color-primary-fg-rgb: 26 20 10;
+    --color-accent-rgb: 245 158 11;
 
     --grad-from: 251 191 36;
     --grad-via: 245 158 11;
@@ -71,15 +131,15 @@
   /* ── Palette: hivemind ── blue + black + white with golden borders/accents.
      Mirrors the HiveMind product identity. Both light and dark token sets. */
   :root[data-theme='hivemind'] {
-    --color-bg: 248 250 252;
-    --color-surface: 255 255 255;
-    --color-elevated: 255 255 255;
-    --color-fg: 10 12 20;
-    --color-muted: 71 80 98;
-    --color-border: 184 134 11;
-    --color-primary: 29 78 216;
-    --color-primary-fg: 255 255 255;
-    --color-accent: 146 107 17;
+    --color-bg-rgb: 248 250 252;
+    --color-surface-rgb: 255 255 255;
+    --color-elevated-rgb: 255 255 255;
+    --color-fg-rgb: 10 12 20;
+    --color-muted-rgb: 71 80 98;
+    --color-border-rgb: 184 134 11;
+    --color-primary-rgb: 29 78 216;
+    --color-primary-fg-rgb: 255 255 255;
+    --color-accent-rgb: 146 107 17;
 
     /* Blue → indigo with a gold sheen at the tail. */
     --grad-from: 37 99 235;
@@ -95,15 +155,15 @@
 
   :root.dark[data-theme='hivemind'] {
     /* True near-black with white ink and gold hairline borders. */
-    --color-bg: 10 11 16;
-    --color-surface: 20 23 33;
-    --color-elevated: 28 32 46;
-    --color-fg: 245 247 252;
-    --color-muted: 167 178 201;
-    --color-border: 212 175 55;
-    --color-primary: 96 165 250;
-    --color-primary-fg: 8 11 20;
-    --color-accent: 212 175 55;
+    --color-bg-rgb: 10 11 16;
+    --color-surface-rgb: 20 23 33;
+    --color-elevated-rgb: 28 32 46;
+    --color-fg-rgb: 245 247 252;
+    --color-muted-rgb: 167 178 201;
+    --color-border-rgb: 212 175 55;
+    --color-primary-rgb: 96 165 250;
+    --color-primary-fg-rgb: 8 11 20;
+    --color-accent-rgb: 212 175 55;
 
     --grad-from: 96 165 250;
     --grad-via: 102 105 248;
@@ -118,15 +178,15 @@
 
   /* ── Palette: noir ── elegant monochrome with a single restrained gold accent. */
   :root[data-theme='noir'] {
-    --color-bg: 247 246 243;
-    --color-surface: 255 255 255;
-    --color-elevated: 255 255 255;
-    --color-fg: 20 20 22;
-    --color-muted: 82 82 88;
-    --color-border: 220 218 212;
-    --color-primary: 28 28 30;
-    --color-primary-fg: 250 250 248;
-    --color-accent: 138 100 15;
+    --color-bg-rgb: 247 246 243;
+    --color-surface-rgb: 255 255 255;
+    --color-elevated-rgb: 255 255 255;
+    --color-fg-rgb: 20 20 22;
+    --color-muted-rgb: 82 82 88;
+    --color-border-rgb: 220 218 212;
+    --color-primary-rgb: 28 28 30;
+    --color-primary-fg-rgb: 250 250 248;
+    --color-accent-rgb: 138 100 15;
 
     --grad-from: 28 28 30;
     --grad-via: 138 100 15;
@@ -140,15 +200,15 @@
   }
 
   :root.dark[data-theme='noir'] {
-    --color-bg: 13 13 14;
-    --color-surface: 22 22 24;
-    --color-elevated: 30 30 33;
-    --color-fg: 244 244 242;
-    --color-muted: 166 166 170;
-    --color-border: 48 48 52;
-    --color-primary: 240 240 238;
-    --color-primary-fg: 16 16 18;
-    --color-accent: 212 175 55;
+    --color-bg-rgb: 13 13 14;
+    --color-surface-rgb: 22 22 24;
+    --color-elevated-rgb: 30 30 33;
+    --color-fg-rgb: 244 244 242;
+    --color-muted-rgb: 166 166 170;
+    --color-border-rgb: 48 48 52;
+    --color-primary-rgb: 240 240 238;
+    --color-primary-fg-rgb: 16 16 18;
+    --color-accent-rgb: 212 175 55;
 
     --grad-from: 244 244 242;
     --grad-via: 212 175 55;
@@ -164,15 +224,15 @@
   /* "Purple AI Slop" — a deliberately garish violet/magenta scheme. The house
      style of every AI-generated site; shipped as a self-aware joke palette. */
   :root[data-theme='slop'] {
-    --color-bg: 246 240 255;
-    --color-surface: 255 255 255;
-    --color-elevated: 250 245 255;
-    --color-fg: 36 20 60;
-    --color-muted: 99 80 130;
-    --color-border: 216 180 254;
-    --color-primary: 124 58 237;
-    --color-primary-fg: 255 255 255;
-    --color-accent: 192 38 211;
+    --color-bg-rgb: 246 240 255;
+    --color-surface-rgb: 255 255 255;
+    --color-elevated-rgb: 250 245 255;
+    --color-fg-rgb: 36 20 60;
+    --color-muted-rgb: 99 80 130;
+    --color-border-rgb: 216 180 254;
+    --color-primary-rgb: 124 58 237;
+    --color-primary-fg-rgb: 255 255 255;
+    --color-accent-rgb: 192 38 211;
 
     --grad-from: 132 87 234;
     --grad-via: 184 60 203;
@@ -186,15 +246,15 @@
   }
 
   :root.dark[data-theme='slop'] {
-    --color-bg: 15 10 31;
-    --color-surface: 28 18 50;
-    --color-elevated: 38 24 64;
-    --color-fg: 240 235 255;
-    --color-muted: 184 168 214;
-    --color-border: 91 60 160;
-    --color-primary: 192 132 252;
-    --color-primary-fg: 20 12 35;
-    --color-accent: 232 121 249;
+    --color-bg-rgb: 15 10 31;
+    --color-surface-rgb: 28 18 50;
+    --color-elevated-rgb: 38 24 64;
+    --color-fg-rgb: 240 235 255;
+    --color-muted-rgb: 184 168 214;
+    --color-border-rgb: 91 60 160;
+    --color-primary-rgb: 192 132 252;
+    --color-primary-fg-rgb: 20 12 35;
+    --color-accent-rgb: 232 121 249;
 
     --grad-from: 167 139 250;
     --grad-via: 232 121 249;
@@ -255,9 +315,6 @@
   }
 
   /* Buttons */
-  .btn {
-    @apply relative inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-semibold transition-all duration-200;
-  }
   .btn-primary {
     @apply btn text-primary-fg;
     background: var(--gradient-brand);
@@ -277,14 +334,6 @@
   }
 
   /* Cards — hairline border, elevation, gradient-glow on hover. */
-  .card {
-    @apply relative rounded-2xl border border-border bg-surface p-6;
-    box-shadow: var(--shadow-elevate);
-    transition:
-      transform 0.25s ease,
-      box-shadow 0.25s ease,
-      border-color 0.25s ease;
-  }
   /* Gradient hairline that fades in on hover. */
   .card::after {
     content: '';
@@ -336,7 +385,7 @@
   /* Eyebrow label above headings — Cinzel, wide tracking. */
   .eyebrow {
     @apply inline-flex items-center gap-2 font-display text-xs font-semibold uppercase tracking-[0.28em];
-    color: rgb(var(--color-primary));
+    color: rgb(var(--color-primary-rgb));
   }
   .eyebrow::before {
     content: '';
@@ -389,7 +438,7 @@
   /* Sticky header — translucent blur once scrolled. */
   #site-header.is-scrolled {
     @apply border-border bg-bg/75 backdrop-blur-xl;
-    box-shadow: 0 1px 0 rgb(var(--color-border) / 0.6);
+    box-shadow: 0 1px 0 rgb(var(--color-border-rgb) / 0.6);
   }
 
   /* Section divider — gradient hairline that fades at both ends. */
@@ -418,13 +467,14 @@
   }
 
   .surface-alt {
-    background: rgb(var(--color-surface) / 0.5);
+    background: rgb(var(--color-surface-rgb) / 0.5);
   }
 }
 
 /* Prose: long-form markdown rendered from content collections. */
-.prose-content {
-  @apply leading-relaxed text-fg;
+@utility prose-content {
+  line-height: 1.625;
+  color: var(--color-fg);
 }
 .prose-content > * + * {
   @apply mt-4;
@@ -453,7 +503,7 @@
 }
 .prose-content code {
   @apply rounded bg-surface px-1.5 py-0.5 font-mono text-sm text-primary;
-  border: 1px solid rgb(var(--color-border));
+  border: 1px solid rgb(var(--color-border-rgb));
 }
 .prose-content pre {
   @apply overflow-x-auto rounded-xl border border-border p-4 text-sm;

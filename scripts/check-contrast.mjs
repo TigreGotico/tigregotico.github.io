@@ -12,7 +12,7 @@ const cssPath = join(__dirname, '..', 'src', 'styles', 'global.css');
 const css = readFileSync(cssPath, 'utf8');
 
 const MIN_RATIO = 4.5;
-const TOKENS = ['--color-primary-fg', '--grad-from', '--grad-via', '--grad-to'];
+const TOKENS = ['--color-primary-fg-rgb', '--grad-from', '--grad-via', '--grad-to'];
 
 function channelToLinear(c) {
   const v = c / 255;
@@ -61,7 +61,7 @@ while ((match = blockRegex.exec(css)) !== null) {
     }
   }
 
-  if (found['--color-primary-fg'] && (found['--grad-from'] || found['--grad-via'] || found['--grad-to'])) {
+  if (found['--color-primary-fg-rgb'] && (found['--grad-from'] || found['--grad-via'] || found['--grad-to'])) {
     palettes.push({ selector, ...found });
   }
 }
@@ -77,7 +77,7 @@ let anyFail = false;
 
 const rows = [];
 for (const palette of palettes) {
-  const fg = palette['--color-primary-fg'];
+  const fg = palette['--color-primary-fg-rgb'];
   for (const stop of stopNames) {
     const rgb = palette[stop];
     if (!rgb) continue;

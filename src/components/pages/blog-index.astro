@@ -330,7 +330,7 @@ for (const { category } of posts) {
                 <div class="relative -mx-6 -mt-6 mb-5 aspect-[16/9] overflow-hidden border-b border-border bg-bg">
                   <div
                     class="pointer-events-none absolute inset-0 z-10"
-                    style="background: linear-gradient(180deg, transparent 55%, rgb(var(--color-surface) / 0.85) 100%);"
+                    style="background: linear-gradient(180deg, transparent 55%, rgb(var(--color-surface-rgb) / 0.85) 100%);"
                     aria-hidden="true"
                   />
                   {cover ? (
@@ -392,6 +392,8 @@ for (const { category } of posts) {
 </Base>
 
 <style>
+  @reference '../../styles/global.css';
+
   .chip {
     @apply inline-flex items-center gap-1.5 rounded-full border border-border bg-surface/60 px-3.5 py-1.5 text-sm text-muted transition-colors;
   }
