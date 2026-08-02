@@ -1,6 +1,6 @@
 ---
 title: "Synthetic Wakeword Datasets: Seven Assistant Names, One Detector"
-description: "We published seven synthetic wakeword datasets for common voice assistant names — hey_computer, hey_mycroft, hey_siri, alexa, home_assistant, voice_assistant, wake_up. Train a detector that works everywhere."
+description: "We published seven synthetic wakeword datasets for common voice assistant names: hey_computer, hey_mycroft, hey_siri, alexa, home_assistant, voice_assistant, wake_up. Train a detector that works everywhere."
 date: 2025-10-14
 author: "Casimiro Ferreira"
 tags:
@@ -13,7 +13,7 @@ tags:
 draft: false
 ---
 
-Seven assistant names. Seven datasets. All audio generated entirely from the **[phoonnx](https://github.com/TigreGotico/phoonnx)** TTS framework using Miro and Dii voices — no human recordings, no consent forms, no privacy exposure.
+Seven assistant names. Seven datasets. All audio is generated entirely by the **[phoonnx](https://github.com/TigreGotico/phoonnx)** TTS framework using the Miro and Dii voices. No human recordings. No consent forms. No privacy exposure.
 
 - **[hey_computer](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-hey_computer)**
 - **[hey_mycroft](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-hey_mycroft)**
@@ -23,17 +23,17 @@ Seven assistant names. Seven datasets. All audio generated entirely from the **[
 - **[voice_assistant](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-voice_assistant)**
 - **[wake_up](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-wake_up)**
 
-Each dataset is a flat set of roughly a thousand positive clips — the wakeword spoken with varied speakers, rates, and prosody. Hard negatives and background noise ship as separate companion datasets you mix in at training time: [not-wake-words-speech-en](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-en), [not-wake-words-speech-pt](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-pt), and [ambient_noises](https://huggingface.co/datasets/TigreGotico/ambient_noises).
+Each dataset is a flat set of roughly a thousand positive clips: the wakeword spoken with varied speakers, rates, and prosody. Hard negatives and background noise ship as separate companion datasets you mix in at training time: [not-wake-words-speech-en](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-en), [not-wake-words-speech-pt](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-pt), and [ambient_noises](https://huggingface.co/datasets/TigreGotico/ambient_noises).
 
 ## Why synthetic
 
-Real recordings require months of collection, consent forms for every speaker, and still leave accent gaps you didn't anticipate. Synthetic generation inverts that:
+Real recordings take months to collect. Every speaker needs a consent form, and the result still leaves accent gaps you didn't anticipate. Synthetic generation avoids all of that.
 
-- **Reproducible**: same generation settings, same voices → the same audio. Full audit trail, no consent-form archaeology.
+- **Reproducible**: the same generation settings and voices produce the same audio, with a full audit trail and no consent-form archaeology.
 - **Auditable**: the generation pipeline is the documentation.
 - **Scalable**: varying speaking rate and speaker characteristics is a parameter change, not a studio session.
 
-For wakeword detection the relevant property is acoustic distinctiveness, not naturalness. Synthetic data is well-matched to that requirement.
+For wakeword detection, what matters is acoustic distinctiveness, not naturalness. Synthetic data fits that requirement.
 
 ## Use these
 
