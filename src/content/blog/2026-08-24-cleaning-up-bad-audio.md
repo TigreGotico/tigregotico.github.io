@@ -1,6 +1,6 @@
 ---
 title: "Cleaning Up Bad Audio: Denoising and Bandwidth Extension in audiosronnx"
-description: "A deep dive into audiosronnx's two separate jobs — removing noise and rebuilding missing high frequencies — with the real engine registry, model sizes and licenses, the rejected-models list, and how to check whether the output actually improved."
+description: "audiosronnx treats denoising and bandwidth extension as two separate jobs: the real engine registry, model sizes and licenses, the rejected-models list, and how to check whether the output actually improved."
 date: 2026-08-01
 lang: en
 author: "Casimiro Ferreira"
@@ -133,52 +133,58 @@ with the specific reason, which makes it one of the more useful documents in the
 because it shows the actual boundaries of what "pure ONNX, CPU-only" can do today rather
 than asserting them.
 
-**Iterative samplers have no static graph to export.** Diffusion and flow-matching models
-run a network many times per utterance, with a loop whose length is not fixed at export
-time. AudioSR (a roughly 6 GB latent-diffusion pipeline with a separate VAE, LDM and
-vocoder) and SGMSE both fall here — SGMSE's own 2025 streaming follow-up only reaches real
-time on a consumer GPU, let alone CPU.
+### Iterative samplers have no static graph to export
 
-**Location-variable convolutions look disqualifying and mostly are not.** `resemble-enhance`
-was long rejected in this document over LVCNet, the vocoder's location-variable
-convolution, on the theory that kernels predicted per position through `unfold` and
-`einsum` cannot fold into a static graph. Tested directly, that turned out to be wrong —
-both ops have ONNX equivalents. The actual failure is a separate, well-understood tracing
-error ("ONNX export of convolution for kernel of unknown shape") already solved elsewhere in
-the codebase for BigVGAN's resamplers. What still keeps `resemble-enhance` out is scale: four
-networks including a CFM ODE sampler and an autoencoder, at 44.1 kHz — a scope decision, not
-an impossibility.
+Diffusion and flow-matching models run a network many times per utterance, with a loop
+whose length is not fixed at export time. AudioSR (a roughly 6 GB latent-diffusion pipeline
+with a separate VAE, LDM and vocoder) and SGMSE both fall here. SGMSE's own 2025 streaming
+follow-up only reaches real time on a consumer GPU, let alone CPU.
 
-**Some models have nothing trained to export.** RNNoise ships as hand-written C, not a
-graph in a trainable framework — porting it would mean retraining an equivalent network from
-scratch. Fast-ULCNet publishes only architecture code, no checkpoint at all.
+### Location-variable convolutions look disqualifying and mostly are not
 
-**A restrictive license is a labelling decision, not automatic disqualification** — that is
-exactly why `callenhancer` and `metadenoiser` ship. What *is* disqualifying is weights
-published with no license at all: mdctGAN was rejected for exactly that, on top of a
+`resemble-enhance` was long rejected in this document over LVCNet, the vocoder's
+location-variable convolution, on the theory that kernels predicted per position through
+`unfold` and `einsum` cannot fold into a static graph. Tested directly, that turned out to
+be wrong: both ops have ONNX equivalents. The actual failure is a separate, well-understood
+tracing error ("ONNX export of convolution for kernel of unknown shape") already solved
+elsewhere in the codebase for BigVGAN's resamplers. What still keeps `resemble-enhance` out
+is scale: four networks including a CFM ODE sampler and an autoencoder, at 44.1 kHz. That is
+a scope decision, not an impossibility.
+
+### Some models have nothing trained to export
+
+RNNoise ships as hand-written C, not a graph in a trainable framework, so porting it would
+mean retraining an equivalent network from scratch. Fast-ULCNet publishes only architecture
+code, no checkpoint at all.
+
+### A restrictive license is a labelling decision, not automatic disqualification
+
+That is exactly why `callenhancer` and `metadenoiser` ship. What *is* disqualifying is
+weights published with no license at all: mdctGAN was rejected for exactly that, on top of a
 `torch.fft`-based front end that does not export reliably.
 
-**`torch.stft` called inside the model is a real structural blocker.** NU-Wave2's sampler
-loop is not the problem — that could run in numpy outside the graph, the same way every
-other engine's STFT does. What blocks it is that its `forward` method calls `torch.stft`
-and `torch.istft` internally, which the library deliberately keeps out of every graph it
-ships, and which is also the operator that exports least reliably in general. Fixing it
-would mean splitting the model at the transform boundary, real restructuring rather than an
-operator swap.
+### `torch.stft` called inside the model is a real structural blocker
 
-**Reproducing a model's architecture is not the same as reproducing its output.** LiSenNet
-is 56 K parameters, under 300 KB — it would be the smallest engine in the library. Its
-publicly available ONNX port runs and produces plausible-looking attenuated audio, but
-measured end to end it destroys the signal: −10.8 dB SNR at 11 dB input. Reproducing the
-port's own reference implementation exactly gives the identical negative result, which means
-the reference implementation itself does not match the front end its own documentation
-describes — there is no correct target to validate against yet.
+NU-Wave2's sampler loop is not the problem; that could run in numpy outside the graph, the
+same way every other engine's STFT does. What blocks it is that its `forward` method calls
+`torch.stft` and `torch.istft` internally, which the library deliberately keeps out of every
+graph it ships, and which is also the operator that exports least reliably in general.
+Fixing it would mean splitting the model at the transform boundary, real restructuring
+rather than an operator swap.
 
-The pattern across all of these is that the interesting failures are rarely "the model is
-too big" or "diffusion is slow." They are specific: an unsupported operator with an exact
-replacement (`torch.complex` has no ONNX op, but `atan2(im, re)` computes the same phase
-angle), a tensor built from an input's runtime shape that a tracer cannot pin down, or a
-transform placed on the wrong side of a graph boundary.
+### Reproducing a model's architecture is not the same as reproducing its output
+
+LiSenNet is 56 K parameters, under 300 KB, which would make it the smallest engine in the
+library. Its publicly available ONNX port runs and produces plausible-looking attenuated
+audio, but measured end to end it destroys the signal: −10.8 dB SNR at 11 dB input.
+Reproducing the port's own reference implementation exactly gives the identical negative
+result, which means the reference implementation itself does not match the front end its
+own documentation describes. There is no correct target to validate against yet.
+
+These rejections are rarely about size or speed. Each has a specific, narrow cause: an
+unsupported operator with an exact replacement (`torch.complex` has no ONNX op, but
+`atan2(im, re)` computes the same phase angle), a tensor built from an input's runtime shape
+that a tracer cannot pin down, or a transform placed on the wrong side of a graph boundary.
 
 ## Confirming the output actually got better
 
@@ -187,8 +193,8 @@ look identical from the outside: a denoiser that mutes speech along with the noi
 bandwidth extender that adds a high band with the wrong harmonic content, both produce audio
 that plays back without error and can even sound cleaner to a casual listen.
 
-The sibling library `speechonnxmetrics` exists to make that judgment measurable instead of
-impressionistic. It scores audio on **MOS** (Mean Opinion Score, a 1–5 rating of perceived
+The sibling library `speechonnxmetrics` turns that judgment into a number instead of an
+impression. It scores audio on **MOS** (Mean Opinion Score, a 1–5 rating of perceived
 quality) two ways: no-reference neural predictors like DNSMOS and UTMOS, which score a
 recording with no clean original to compare against, and intrusive metrics like STOI and
 SI-SDR, which need the clean reference and measure how close the output actually is to it.
@@ -214,7 +220,7 @@ including `speechonnxmetrics` itself, is covered in
 [A Family of Pure-ONNX Speech Libraries](/blog/2026-08-03-a-family-of-pure-onnx-speech-libraries).
 
 Cleaning up audio before it reaches a recognizer, a speaker ID system, or a human listener
-is its own piece of engineering, with its own registry of trade-offs and its own list of
-approaches that were tried and did not survive contact with a real signal.
+is a distinct engineering problem, with its own trade-offs between models and its own list
+of approaches that did not survive contact with a real signal.
 
 Questions about applying this to a specific pipeline: [get in touch](/contact).

@@ -1,6 +1,6 @@
 ---
 title: "A Family of Pure-ONNX Speech Libraries"
-description: "TigreGótico maintains a set of speech libraries — bandwidth extension, voice cloning, speaker embeddings, VAD, word stress, phonemization, TTS, and a metrics library to score them all — that share one runtime rule: only onnxruntime and numpy, no PyTorch, no GPU required."
+description: "TigreGótico maintains a set of speech libraries — bandwidth extension, voice cloning, speaker embeddings, VAD, word stress, phonemization, TTS, and a metrics library to score them all — that share one runtime rule: onnxruntime and numpy only, no PyTorch, no GPU required."
 date: 2026-08-01
 lang: en
 author: "Casimiro Ferreira"
@@ -17,17 +17,20 @@ draft: false
 ONNX is a file format for a trained neural network: the weights and the computation
 graph, frozen, with no dependency on the framework that trained it. A model exported to
 ONNX can run through **ONNX Runtime**, a small inference engine that does nothing but
-execute that graph. It does not know how the model was trained, does not support
-training, and does not need PyTorch or TensorFlow installed.
+execute that graph.
+
+It does not know how the model was trained, does not support training, and does not
+need PyTorch or TensorFlow installed.
 
 Several of our libraries hold to one rule: at runtime, the only dependencies are
-`onnxruntime` and `numpy`. Not "mostly" — the import of the package itself never
-pulls in a training framework. `audiosronnx` (bandwidth extension and denoising),
-`voiceclonnx` (voice cloning), `speakeronnx` (speaker embeddings), `speechonnxmetrics`
-(evaluation), `stressonnx` (word stress), `vadonnx` (voice activity detection), and
-`phoonnx` (phonemization and text-to-speech) all follow it, each in its own PyPI
-package. Two more, `phoonnx.js` and `precise-onnx-js`, apply the same idea in the
-browser with `onnxruntime-web` instead.
+`onnxruntime` and `numpy`. Not "mostly": the import of the package itself never pulls in
+a training framework.
+
+`audiosronnx` (bandwidth extension and denoising), `voiceclonnx` (voice cloning),
+`speakeronnx` (speaker embeddings), `speechonnxmetrics` (evaluation), `stressonnx` (word
+stress), `vadonnx` (voice activity detection), and `phoonnx` (phonemization and
+text-to-speech) all follow it, each in its own PyPI package. Two more, `phoonnx.js` and
+`precise-onnx-js`, apply the same idea in the browser with `onnxruntime-web` instead.
 
 ## Why bother
 
@@ -53,34 +56,39 @@ inference too. It's convenient during development. It's a liability in productio
 
 The constraint is real, and it is not free.
 
-**You cannot fine-tune in-process.** An ONNX graph has no optimizer, no backward pass.
-Every one of these libraries treats models as fixed artifacts: you load them and run
-them. Training or fine-tuning happens separately, with the original framework, and the
-result gets exported to ONNX afterward. `stressonnx` and `speechonnxmetrics` both keep
-an optional `export` extra that pulls in `torch` purely for that offline conversion step
-— never for inference.
+### You cannot fine-tune in-process
 
-**Not every architecture exports cleanly.** Dynamic control flow, custom CUDA kernels,
-or ops with no ONNX equivalent can block a straightforward export. `audiosronnx`'s
-README documents this directly: it keeps a [not-shipped list](https://github.com/TigreGotico/audiosronnx)
-of models it evaluated and rejected, with reasons, rather than pretending every research
-model ports over.
+An ONNX graph has no optimizer, no backward pass. Every one of these libraries treats
+models as fixed artifacts: you load them and run them. Training or fine-tuning happens
+separately, with the original framework, and the result gets exported to ONNX afterward.
+`stressonnx` and `speechonnxmetrics` both keep an optional `export` extra that pulls in
+`torch` purely for that offline conversion step, never for inference.
 
-**Preprocessing has to be reimplemented by hand.** A framework like PyTorch or Kaldi
-ships fast, tested implementations of STFT (turning a waveform into a spectrogram),
-mel-filterbank features, and resampling. Once the model itself no longer depends on
-that framework, its preprocessing can't either — `speakeronnx` reimplements an 80-band
-log-mel filterbank in pure NumPy for exactly this reason, and `audiosronnx` does the
-same for STFT and resampling. It's more code to get right, and it needs its own parity
-tests against the original.
+### Not every architecture exports cleanly
+
+Dynamic control flow, custom CUDA kernels, or ops with no ONNX equivalent can block a
+straightforward export. `audiosronnx`'s README documents this directly: it keeps a
+[not-shipped list](https://github.com/TigreGotico/audiosronnx) of models it evaluated
+and rejected, with reasons, rather than pretending every research model ports over.
+
+### Preprocessing has to be reimplemented by hand
+
+A framework like PyTorch or Kaldi ships fast, tested implementations of STFT (turning a
+waveform into a spectrogram), mel-filterbank features, and resampling. Once the model
+itself no longer depends on that framework, its preprocessing can't either.
+
+`speakeronnx` reimplements an 80-band log-mel filterbank in pure NumPy for exactly this
+reason, and `audiosronnx` does the same for STFT and resampling. It's more code to get
+right, and it needs its own parity tests against the original.
 
 ## One task, several engines, one API
 
 Trained speech models vary enormously by language, recording condition, and target
 domain. A speaker-verification model trained on clean read speech may fail on phone
 audio. A voice-cloning model tuned for English timbre transfer may lose intelligibility
-on tonal languages. There's no single model that wins everywhere, so committing to one
-up front is a guess.
+on tonal languages.
+
+There's no single model that wins everywhere, so committing to one up front is a guess.
 
 Each library in this family picks a single task and wraps several independent published
 models behind one interface, so switching engines is a one-line change instead of a
@@ -101,9 +109,10 @@ wide, _ = load_sr("lavasr").upscale(clean, rate)                  # extend to 48
 `mpsenet`, `gtcrn`, `cmgan`, `metadenoiser`, `mossformergan`, `voicefixer`,
 `deepfilternet`), from a 0.54 MB model to a 415 MB one, under different licenses.
 `load_sr` registers seven bandwidth extenders (`lavasr`, `novasr`, `flowhigh`,
-`hifiganbwe`, `apbwe`, `sidon`, `callenhancer`). Dominated models — ones another engine
-beats on every measured axis — stay in the registry anyway, so a published benchmark
-result stays reproducible on demand.
+`hifiganbwe`, `apbwe`, `sidon`, `callenhancer`).
+
+Dominated models, ones another engine beats on every measured axis, stay in the
+registry anyway, so a published benchmark result stays reproducible on demand.
 
 `voiceclonnx` takes the same approach for voice cloning — converting the voice in an
 existing recording to sound like a different reference speaker, without going through
@@ -118,10 +127,11 @@ out = cloner.clone_voice("source.wav", "reference.wav", "out.wav")
 
 Ten engines are registered (`facodec`, `openvoice`, `chatterbox`, `triaan`, `cosyvoice`,
 `bicodec`, `knnvc`, `focalcodec`, `lscodec`, `rvc`), spanning six distinct model
-families — kNN feature-swap, factorized codec, flow-matching, tone-color transfer,
-AR codec-LM, and speaker-decoupled codec. Behind the scenes each one ships with
-published intelligibility and speaker-similarity numbers, so picking an engine is a
-comparison, not a coin flip.
+families: kNN feature-swap, factorized codec, flow-matching, tone-color transfer,
+AR codec-LM, and speaker-decoupled codec.
+
+Each one ships with published intelligibility and speaker-similarity numbers, so picking
+an engine is a comparison, not a coin flip.
 
 `vadonnx` applies the pattern to voice activity detection — deciding which parts of an
 audio stream contain speech at all:
@@ -199,22 +209,23 @@ live as separate downloads on the [TigreGótico Hugging Face
 org](https://huggingface.co/TigreGotico), fetched on first use and cached locally, so
 picking a different engine is a config change, not a redeployment.
 
-## Closing the loop: judging engines instead of guessing
+## Measuring which engine actually wins
 
 Registering many engines behind one API only pays off if you can tell which one is
 actually better for your input. That's what `speechonnxmetrics` is for: a metrics
 library built on the same `numpy` + `onnxruntime` constraint, so scoring a model costs
 nothing extra to install.
 
-It groups metrics into three kinds. **No-reference MOS** estimators — UTMOS, DNSMOS,
-NISQA, SIGMOS — predict a **Mean Opinion Score**, the 1-to-5 naturalness rating a human
+It groups metrics into three kinds. **No-reference MOS** estimators (UTMOS, DNSMOS,
+NISQA, SIGMOS) predict a **Mean Opinion Score**, the 1-to-5 naturalness rating a human
 listener panel would give a clip, without needing a clean reference to compare against.
-**Intrusive metrics** — STOI (short-time objective intelligibility), SI-SDR
-(scale-invariant signal-to-distortion ratio), MCD (mel-cepstral distortion) — need a
+
+**Intrusive metrics** (STOI, short-time objective intelligibility; SI-SDR,
+scale-invariant signal-to-distortion ratio; MCD, mel-cepstral distortion) need a
 matching clean reference and measure how close the output is to it. **ASR-based text
-metrics** — WER (word error rate) and CER (character error rate) — run a speech
-recognizer over the output and compare the transcript to the expected text, catching
-cases where a model produces audio that sounds fine but says the wrong words.
+metrics**, WER (word error rate) and CER (character error rate), run a speech recognizer
+over the output and compare the transcript to the expected text, catching cases where a
+model produces audio that sounds fine but says the wrong words.
 
 ```python
 import speechonnxmetrics as s
@@ -226,23 +237,25 @@ print(s.score("clone_output.wav", ["stoi", "mcd", "si_sdr"], ref="source.wav"))
 # -> {'stoi': 0.662..., 'mcd': 10.459..., 'si_sdr': -26.937...}
 ```
 
-This turns engine selection from a listening test into a table. `voiceclonnx`
-publishes exactly that comparison for its ten cloning engines — WER against the
-source transcript plus a separate speaker-similarity score for each one, so "facodec
-gives 0% WER" or "lscodec trades WER for stronger timbre transfer" are measured claims,
-not impressions. Multiply that across languages and recording conditions and manual
-comparison stops being realistic; an objective metric is what makes a ten-engine
-registry usable instead of overwhelming.
+This turns engine selection from a listening test into a table. `voiceclonnx` publishes
+exactly that comparison for its ten cloning engines: WER against the source transcript
+plus a separate speaker-similarity score for each one, so "facodec gives 0% WER" or
+"lscodec trades WER for stronger timbre transfer" are measured claims, not impressions.
+
+Multiply that across languages and recording conditions and manual comparison stops
+being realistic. An objective metric is what keeps a ten-engine registry manageable.
 
 ## Where this is useful
 
-If you need offline speech processing — cleaning up a recording, cloning a voice,
-detecting who is speaking, or synthesizing one — on hardware that will never see a GPU,
+If you need offline speech processing (cleaning up a recording, cloning a voice,
+detecting who is speaking, or synthesizing one) on hardware that will never see a GPU,
 this is the shape to look for: a small runtime dependency, a choice of published models
 instead of one fixed default, and a way to measure which one actually works for your
-case. Every library above is a `pip install` away, MIT- or Apache-licensed at the code
-level (individual model weights carry their own upstream licenses, documented per
-engine), and runs the same on a laptop, a server, or a Raspberry Pi.
+case.
+
+Every library above is a `pip install` away, MIT- or Apache-licensed at the code level
+(individual model weights carry their own upstream licenses, documented per engine), and
+runs the same on a laptop, a server, or a Raspberry Pi.
 
 Get in touch through [/contact](/contact) or see what else we build at
 [/services](/services).
