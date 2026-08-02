@@ -479,7 +479,7 @@ const collaborations = (await getCollection('collaborations')).map((c) => c.data
               data-tags={project.tags.join('|')}
               data-featured={project.featured ? 'true' : 'false'}
             >
-              <ProjectCard project={project} withImage={false} categoryLabel={label(project.category)} locale={locale} />
+              <ProjectCard project={project} withImage={false} categoryLabel={categories.map(label).join(', ')} locale={locale} />
             </div>
           );
         })
