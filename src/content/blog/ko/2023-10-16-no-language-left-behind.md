@@ -2,6 +2,7 @@
 title: "소외되는 언어 없이"
 description: "언어 감지, 번역 플러그인, 양방향 번역 기능을 통해 OpenVoiceOS의 언어 장벽을 없앱니다."
 date: 2023-10-16
+updated: 2026-08-01
 lang: ko
 author: "Casimiro Ferreira"
 tags:
@@ -86,7 +87,7 @@ FasterWhisper의 언어 분류 모델 크기는 설정할 수 있습니다:
     "ovos-utterance-translation-plugin": {
         "bidirectional": true,
         "verify_lang": false,
-        "ignore_invalid": true,
+        "ignore_invalid_langs": true,
         "translate_secondary_langs": true
     }
 },

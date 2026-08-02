@@ -2,6 +2,7 @@
 title: "바랑케뉴어를 위한 최초의 음소화기 소개"
 description: "g2p_barranquenho는 포르투갈 바랑코스의 이베로-로망스 접촉 언어인 바랑케뉴어를 위한 최초의 오픈 자소-음소 변환기입니다. 규칙은 해당 지자체가 새로 발표한 정서법 규약에서 도출되었으며, 함께 커밋된 원본 자료로 감사할 수 있습니다."
 date: 2025-12-12
+updated: 2026-08-01
 lang: ko
 author: "Casimiro Ferreira"
 tags:
@@ -18,18 +19,15 @@ draft: false
 
 바랑케뉴어는 포르투갈어나 스페인어의 방언이 아니라, 진정으로 독립적인 체계입니다. 바랑코스 시의회는 최근 사전, 정서법 규약, 기초 문법이라는 세 가지 기초 문헌을 발표했으며, 이 문헌들이 우리에게 필요한 규칙을 제공했습니다. 발표 내용은 다음과 같습니다: ["Un Enormi Passu para u Barranquenhu i para a Cultura Barranquenha!"](https://cm-barrancos.pt/21976/un-enormi-passu-para-u-barranquenhu-i-para-a-cultura-barranquenha).
 
-그 정서법 규약으로부터 규칙 집합을 도출했습니다. 음소화기는 소문자로 변환된 입력에 대해 두 번의 패스를 실행합니다.
+그 정서법 규약으로부터 규칙 집합을 도출했습니다 — 하지만 텍스트에 대해 직접 짠 전용 패스를 만드는 대신, 공유 **[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)** 엔진 안의 언어 스펙 `ext-PT-x-barrancos`로 존재합니다. 이 스펙의 자소 표, 이음 규칙, 강세 모델, 단어 경계 연성(sandhi)은 바랑케뉴어의 모든 실현형을 기술합니다: 여러 글자로 이루어진 자소는 규약이 문서화한 대로 축약되며(`tch` → /tʃ/, `ch` → /ʃ/, `nh` → /ɲ/, `lh` → /ʎ/), 비모음 이중모음은 `m`/`n` 앞에서 나타나고, `v`는 항상 /b/로 매핑되며, `h`는 두 모어 언어와 달리 발음되는 /h/로 나타납니다.
 
-1. **중자음 패스(Digraph pass)** — 여러 글자로 이루어진 자소를 축약합니다: `tch` → /tʃ/, `ch` → /ʃ/, `nh` → /ɲ/, `lh` → /ʎ/, 그리고 전설 모음 앞의 `qu`/`gu` → /k//g/.
-2. **자소 패스(Grapheme pass)** — 나머지 문자를 문맥 민감 규칙으로 IPA에 매핑합니다: `m`/`n` 앞의 비모음 이중모음(예: `an` → /ɐ͂/), 어말 `e` → /ɨ/, `v`는 항상 → /b/, 어두를 제외한 유성음화된 `s` → /z/, `r` 대 `rr`(탄설음 대 전동음), 그리고 두 모어 언어와 달리 발음되는 /h/로서의 `h`.
-
-`x` 자소가 가장 복잡한 논리를 가지며, 바랑케뉴어 규약이 규정하지 않는 부분에서는 포르투갈어 문맥 휴리스틱으로 대체됩니다.
+`g2p_barranquenho` 자체는 그 스펙에 의해 구동되는 `orthography2ipa.G2P` 위의 얇은 호출부 래퍼입니다: 텍스트 정규화(대소문자 통합, 스펙이 기대하는 형태로의 토큰화), 숫자 확장, 안정적인 `phonemize`/`transcribe` 인터페이스는 이 래퍼가 담당하지만 음운 규칙 자체는 담당하지 않습니다 — 규칙을 개선하려면 상위(upstream)의 스펙을 편집해야 하며, 그렇게 하면 모든 다운스트림 소비자가 그 수정을 공유합니다.
 
 실제 예시:
 
-> "Un Enormi Passu para u Barranquenhu i para a Cultura Barranquenha" → `ũ ẽjoɾmj pasu paɾɐ u bɐrɐ͂keɲu j paɾɐ ɐ kultuɾɐ bɐrɐ͂keɲɐ`
+> "Un Enormi Passu para u Barranquenhu i para a Cultura Barranquenha" → `ˈũ eˈnɔɾmi ˈpas̺u ˈpaɾɐ ˈu bɐrɐ̃ˈkɛɲu ˈi ˈpaɾɐ ɐ kuˈltuɾɐ bɐrɐ̃ˈkɛɲɐ`
 
-이 라이브러리는 단일 함수 `phonemize(word: str) -> list[str]`이며, 런타임 의존성이 없는 순수 Python입니다. 원본 PDF(규약, 사전, 문법)는 저장소 루트에 커밋되어 있어 규칙을 원본 자료에 대해 감사할 수 있습니다.
+원본 PDF(규약, 사전, 문법)는 저장소 루트에 커밋되어 있어 규칙을 원본 자료에 대해 감사할 수 있습니다.
 
 ### 다음 단계
 

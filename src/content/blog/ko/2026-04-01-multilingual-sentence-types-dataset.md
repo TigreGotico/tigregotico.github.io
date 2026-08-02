@@ -2,6 +2,7 @@
 title: "다국어 문장 유형 데이터셋: 질문, 명령, 진술"
 description: "sentence-types-multilingual을 공개했습니다 — 일곱 개 언어에 걸친 약 70,000개의 문장을 문법적 유형(질문, 명령, 진술, 감탄)에 따라 분류한 데이터셋입니다. little_questions 라우팅 라이브러리를 뒷받침하는 학습 코퍼스입니다."
 date: 2026-04-01
+updated: 2026-08-01
 lang: ko
 author: "Casimiro Ferreira"
 tags:
@@ -20,19 +21,20 @@ draft: false
 
 ## 라벨이 실제로 의미하는 것
 
-이 데이터셋은 네 가지 최상위 유형을 사용하며, 이는 `little_questions`(이 데이터를 소비하는 추론 라이브러리)가 발화를 라우팅하는 방식에 직접 대응됩니다.
+이 데이터셋은 행마다 하나의 `label` 열만 있는, type/sub-type 구분이 없는 평평한 6개 라벨 집합을 사용하며, 이는 `little_questions`(이 데이터를 소비하는 추론 라이브러리)가 발화를 라우팅하는 방식에 직접 대응됩니다.
 
-- **question** — 하위 유형으로 더 세분화됩니다: `yes_no_question`, `wh_question`, `tag_question`. `little_questions` 내부의 EAT 분류 체계는 53개의 세분화된 답변 유형 라벨(사람, 위치, 수량, 정의 등)을 추가하지만, 문장 유형 분류가 첫 번째 관문입니다.
-- **command** — 명령형 및 요청 형태입니다. 명령은 답변을 기대하지 않습니다. 실행을 기대합니다.
+- **wh_question** — wh-단어(무엇, 어디, 누구 등)를 중심으로 구성된 질문입니다.
+- **polar_question** — 예/아니오 질문입니다. `little_questions` 내부의 EAT 분류 체계는 이 질문 라벨들 위에 53개의 세분화된 답변 유형 라벨(사람, 위치, 수량, 정의 등)을 추가하지만, 문장 유형 분류가 첫 번째 관문입니다.
+- **command** — 명령형입니다. 명령은 답변을 기대하지 않습니다. 실행을 기대합니다.
+- **request** — 정중하거나 간접적인 행동 요청으로, 순수한 명령형과는 구별됩니다.
 - **statement** — 평서형입니다. 대화 맥락에서 진술은 종종 하류에서 중요한 극성(polarity)을 지닙니다: 이전 질문에 대한 답변을 해석하기 위해 진술에 대해 예/아니오/아마도 분류기가 실행됩니다.
 - **exclamation** — 감정적으로 표시된 발화로, 중립적인 평서문과는 다른 처리가 필요합니다.
 
 ```json
 {
-  "text": "What time is it?",
   "language": "en",
-  "type": "question",
-  "sub_type": "wh_question"
+  "label": "wh_question",
+  "text": "What time is it?"
 }
 ```
 
@@ -48,7 +50,7 @@ draft: false
 
 ## 하류 스택
 
-이 데이터로 학습된 모델들은 **[little_questions](https://github.com/TigreGotico/little_questions)** 안에 포함되어 배포됩니다 — 문장 유형에 대한 언어별 ONNX 분류기와 43개 언어 예/아니오 극성 모델을 갖춘, 의존성이 없는(numpy + onnxruntime) 오프라인 라이브러리입니다. 모델은 영어의 경우 휠(wheel) 안에 번들되며, 다른 언어의 경우 지연 다운로드됩니다. HuggingFace 소스는 `TigreGotico/sentence-types` 와 `TigreGotico/eat-classifiers` 입니다.
+이 데이터로 학습된 모델들은 **[little_questions](https://github.com/TigreGotico/little_questions)** 안에 포함되어 배포됩니다 — 문장 유형에 대한 언어별 ONNX 분류기와 43개 언어 예/아니오 극성 모델을 갖춘, 의존성이 없는(numpy + onnxruntime) 오프라인 라이브러리입니다. 모델은 영어의 경우 휠(wheel) 안에 번들되며, 다른 언어의 경우 지연 다운로드됩니다. 문장 유형 분류기는 HuggingFace에 `TigreGotico/sentence-types`로 공개되어 있으며, EAT 답변 유형 분류기는 내부적으로 학습되어 공개 배포되지 않습니다.
 
 ```python
 from little_questions import Sentence

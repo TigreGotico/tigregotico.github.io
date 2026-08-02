@@ -2,6 +2,7 @@
 title: "감성 분석 모델로는 항의와 작별 인사를 구별할 수 없다"
 description: "화나 보이는 지원 메시지 두 개. 하나는 고객이 에스컬레이션 하려는 것이고, 다른 하나는 아무 말 없이 떠나려는 것이다. 거의 모든 감정 모델이 이 둘을 구별하지 못한다 — 같은 축이 빠져 있기 때문이다. emotion-algebra를 소개한다."
 date: 2026-07-13
+updated: 2026-08-01
 lang: ko
 author: "Casimiro Ferreira"
 tags:
@@ -155,7 +156,7 @@ angry, afraid = affect_from_texts([
     "I don't know if I'm doing this right and I'm scared I've broken something.",
 ])
 
-angry.valence,  angry.potency    # -0.43, +0.16   -> 'annoyance'
+angry.valence,  angry.potency    # -0.43, +0.16   -> 'disgust'
 afraid.valence, afraid.potency   # -0.47, -0.43   -> 'apprehension'
 ```
 

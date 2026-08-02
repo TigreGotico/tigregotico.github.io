@@ -2,6 +2,7 @@
 title: "Robots.txt, Sitemap, 그리고 윤리적 웹 스크래핑"
 description: "스크래퍼를 만들기 전에 사이트를 정찰하세요. sitemapper는 robots.txt를 읽고, 모든 sitemap을 가져오며, 선택적으로 링크 그래프를 크롤링합니다. 따라서 여러분의 스크래퍼는 무차별 대입 대신 사이트 자체의 계약에서 출발합니다."
 date: 2026-03-01
+updated: 2026-08-01
 lang: ko
 author: "Casimiro Ferreira"
 tags:
@@ -35,10 +36,12 @@ from sitemapper import discover
 
 info = discover("https://www.python.org")
 print(info.summary())
-# Base URL:         https://www.python.org
-# Sitemaps found:   1
+# Base URL:       https://www.python.org
+# Blocked:        False
+# Sitemaps found: 1
 # URLs in sitemaps: 342
-# Crawl-delay:      None
+# Crawl-delay:    None
+# Sitemap directives in robots.txt: 1
 
 # What pace does the site ask for?
 if info.robots.crawl_delay:
@@ -92,11 +95,11 @@ pip install sitemapper
 pip install sitemapper[stealth]   # adds curl_cffi TLS impersonation
 ```
 
-라이브러리로 사용하거나 명령줄에서 사용하세요. `--json`은 다른 도구로 파이핑할 수 있도록 전체 발견 결과를 내보내고, `--crawl`은 링크 그래프 단계를 추가합니다.
+라이브러리로 사용하거나 명령줄에서 사용하세요. `--json FILE`은 다른 도구가 사용할 수 있도록 전체 발견 결과를 파일로 기록하고, `--crawl`은 링크 그래프 단계를 추가합니다.
 
 ```bash
 python -m sitemapper https://example.com
-python -m sitemapper https://example.com --crawl --max-pages 50 --json
+python -m sitemapper https://example.com --crawl --max-pages 50 --json out.json
 ```
 
 이것은 자유 소프트웨어이며 여러분 자신의 하드웨어에서 실행됩니다. 모든 스크래퍼를 정찰로 시작하세요.
