@@ -60,11 +60,13 @@ The **LGPL** sits between the two.
 
 ## Question one: is there an author?
 
-Copyright needs a human author. The US Copyright Office has held this consistently,
-and in *Thaler v. Perlmutter* the D.C. Circuit agreed: the Copyright Act "requires
-all eligible work to be authored in the first instance by a human being"
-(No. 23-5233, D.C. Cir., 18 March 2025; the Supreme Court denied certiorari in March
-2026). The European standard lands in a similar place: protection requires the
+Copyright needs a human author. The US Copyright Office has held this consistently
+in its [AI policy guidance](https://copyright.gov/ai/ai_policy_guidance.pdf), and in
+[*Thaler v. Perlmutter*](https://media.cadc.uscourts.gov/opinions/docs/2025/03/23-5233.pdf)
+the D.C. Circuit agreed: the Copyright Act "requires all eligible work to be authored
+in the first instance by a human being" (No. 23-5233, D.C. Cir., 18 March 2025). The
+Supreme Court [denied certiorari](https://www.scotusblog.com/cases/thaler-v-perlmutter/)
+on 2 March 2026, leaving that holding in place. The European standard lands in a similar place: protection requires the
 "author's own intellectual creation", which presupposes an author who creates.
 
 Neither says AI-assisted work is unprotectable, only that what a machine generates
@@ -97,14 +99,18 @@ compiler emitted it".
 
 ## The strongest argument on the other side
 
-There is a serious case that a cross-language reimplementation is fine. In *SAS
-Institute v World Programming* (CJEU, C-406/10, 2 May 2012), the Court held that
-"neither the functionality of a computer program nor the programming language and
-the format of data files used in a computer program in order to exploit certain of
-its functions constitute a form of expression of that program". The Software
-Directive (2009/24/EC, Article 1(2)) says the same about the ideas and principles
-underlying a program, and the Court held that a licensee may study a program's
-behaviour to determine the ideas behind it, and reimplement them.
+There is a serious case that a cross-language reimplementation is fine. In
+[*SAS Institute v World Programming*](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62010CJ0406)
+(CJEU, C-406/10, 2 May 2012), the Court held that "neither the functionality of a
+computer program nor the programming language and the format of data files used in a
+computer program in order to exploit certain of its functions constitute a form of
+expression of that program". The
+[Software Directive](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32009L0024)
+says the same in Article 1(2): "Ideas and principles which underlie any element of a
+computer program, including those which underlie its interfaces, are not protected by
+copyright under this Directive." The Court also held that a licensee may observe,
+study or test a program's functioning to determine the ideas behind it, and
+reimplement them.
 
 That means what a phonemizer *does*, turning this grapheme sequence into that
 phoneme, is not owned by anyone: the Galician stress rules are facts about
