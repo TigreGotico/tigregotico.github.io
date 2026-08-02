@@ -1,6 +1,6 @@
 ---
 title: "Usenet in 2026: a clean, pre-AI text corpus for training and evaluation"
-description: "Usenet is a pristine archive of pre-AI human discourse — decades of newsgroup posts, all human-written, none of it touched by language models. That makes it valuable training and evaluation data for language and speech models. We built a small Python tool to harvest it."
+description: "Usenet is a pristine archive of pre-AI human discourse: decades of newsgroup posts, all human-written, none of it touched by language models. That makes it valuable training and evaluation data for language and speech models. We built a small Python tool to harvest it."
 date: 2026-07-01
 author: "Casimiro Ferreira"
 tags:
@@ -16,7 +16,7 @@ Most open-web text corpora are contaminated: LLM-generated text has leaked into 
 
 ## Usenet as a pre-AI corpus
 
-Usenet receives thousands of posts per day across hundreds of active groups. Archive back to the 1980s and you have **millions of articles** — each a signal of what humans actually cared about, argued about, wanted to know — with provenance clean enough to cite.
+Usenet receives thousands of posts per day across hundreds of active groups. Archive back to the 1980s and you have **millions of articles**, each a signal of what humans actually cared about, argued about, wanted to know, with provenance clean enough to cite.
 
 We built a tool called **usenet** that makes harvesting this straightforward:
 
@@ -31,7 +31,7 @@ with UsenetServer("news.neodome.net") as server:
         print(f"{article.subject} by {article.author}")
 ```
 
-Most public servers no longer support `NEWNEWS` (query by date), so **group-based browsing is the standard approach.** You scrape one group at a time — not a barrier, just the protocol reality.
+Most public servers no longer support `NEWNEWS` (query by date), so **group-based browsing is the standard approach.** You scrape one group at a time. That's not a barrier, just the protocol reality.
 
 To turn a newsgroup into a training dataset, `dataset.py` harvests articles into JSONL:
 
@@ -80,6 +80,6 @@ for server in servers:
 
 ## Why this matters
 
-Usenet is a provenance-clean archive of human-authored text at scale, predating the era of machine-generated content. Whether you are training models, building datasets, or studying internet discourse before it was diluted by AI-generated text, that archive is still there and still growing.
+Usenet is a provenance-clean archive of human-authored text at scale, predating the era of machine-generated content. If you're training models, building datasets, or studying internet discourse before it was diluted by AI-generated text, that archive is still there and still growing.
 
-**Repository:** [**github.com/TigreGotico/usenet**](https://github.com/TigreGotico/usenet) — harvest Usenet into training datasets; read publicly with no account.
+**Repository:** [**github.com/TigreGotico/usenet**](https://github.com/TigreGotico/usenet): harvest Usenet into training datasets, read publicly with no account.
