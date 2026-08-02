@@ -1,6 +1,6 @@
 ---
 title: "OpenVoiceOS and Home Assistant: A Voice Automation Dream Team"
-description: "Home Assistant handles automation; OVOS handles voice. Three integration layers make the combination work: Wyoming bridges for HA's voice pipeline, ovos-persona-server as a conversational agent, and HiveMind for surfacing OVOS devices as native HA entities."
+description: "Home Assistant handles automation. OVOS handles voice. Three integration layers make the combination work: Wyoming bridges for HA's voice pipeline, ovos-persona-server as a conversational agent, and HiveMind for surfacing OVOS devices as native HA entities."
 date: 2025-09-17
 author: "Casimiro Ferreira"
 tags:
@@ -13,7 +13,7 @@ draft: false
 
 > This blog was originally posted in the [OpenVoiceOS blog](https://blog.openvoiceos.org/posts/2025-09-17-ovos_ha_dream_team)
 
-Home Assistant handles automation; OVOS handles voice. Neither tries to be the other. That division of responsibility is why the combination works: HA’s device integrations and automation engine paired with OVOS’s flexible, fully local voice stack.
+Home Assistant handles automation. OVOS handles voice. Neither tries to be the other. That division of responsibility is why the combination works: HA’s device integrations and automation engine paired with OVOS’s flexible, fully local voice stack.
 
 This post covers the three integration layers: Wyoming bridges for HA’s voice pipeline, ovos-persona-server as a conversational agent, and HiveMind for surfacing OVOS devices as native HA entities.
 
@@ -21,7 +21,7 @@ This post covers the three integration layers: Wyoming bridges for HA’s voice 
 
 ## Wyoming Bridges: OVOS Voice Plugins in Home Assistant
 
-The Wyoming protocol is HA's standard interface for external ASR, TTS, and wakeword services. We built Wyoming bridges that expose any OVOS plugin over that protocol — meaning HA gains access to every plugin in the OVOS ecosystem, not just a curated shortlist.
+The Wyoming protocol is HA's standard interface for external ASR, TTS, and wakeword services. We built Wyoming bridges that expose any OVOS plugin over that protocol, so HA gains access to every plugin in the OVOS ecosystem instead of a curated shortlist.
 
 
 * [Wyoming OVOS ASR](https://github.com/TigreGotico/wyoming-ovos-stt): Convert spoken commands into text for Home Assistant to understand.
@@ -35,7 +35,7 @@ The [OVOS Wyoming Docker](https://github.com/TigreGotico/ovos-wyoming-docker) pr
 Accessibility includes language accessibility. This integration brings high-quality, publicly funded voices from projects like **[ILENIA](https://proyectoilenia.es/demostradores-2025/prototipo-ovos/)** to a wider audience. Home Assistant users get natural-sounding voices for languages like Catalan and Galician, straight from the projects that built them.
 
 * **Matxa TTS for Catalan:** The [`ovos-tts-plugin-matxa-multispeaker-cat`](https://github.com/OpenVoiceOS/ovos-tts-plugin-matxa-multispeaker-cat) provides multi-speaker text-to-speech capabilities for the Catalan language.
-* **NosTTS for Galician:** The [`ovos-tts-plugin-nos`](https://github.com/OpenVoiceOS/ovos-tts-plugin-nos) offers robust text-to-speech in Galician.
+* **NosTTS for Galician:** The [`ovos-tts-plugin-nos`](https://github.com/OpenVoiceOS/ovos-tts-plugin-nos) offers text-to-speech in Galician.
 
 ![ILENIA logo](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/ilenia.png)
 
@@ -48,7 +48,7 @@ Want to take it a step further? You can set up OVOS as a full-fledged conversati
 ![ollama setup in Home Assistant](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/ollama_setup.png)
 
 
-In this setup, Home Assistant passes the user's text to the [ovos-persona-server](https://openvoiceos.github.io/ovos-technical-manual/150-personas/); OVOS works out the intent and returns the answer for Home Assistant to speak. And because [ovos-persona-server](https://github.com/OpenVoiceOS/ovos-persona-server) exposes Ollama-compatible endpoints, the same server plugs into any app that speaks the Ollama or OpenAI APIs — not just Home Assistant.
+In this setup, Home Assistant passes the user's text to the [ovos-persona-server](https://openvoiceos.github.io/ovos-technical-manual/150-personas/). OVOS works out the intent and returns the answer for Home Assistant to speak. And because [ovos-persona-server](https://github.com/OpenVoiceOS/ovos-persona-server) exposes Ollama-compatible endpoints, the same server plugs into any app that speaks the Ollama or OpenAI APIs, and not only Home Assistant.
 
 ![chat with OVOS in Home Assistant](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/agent_chat.png)
 
@@ -57,7 +57,7 @@ In this setup, Home Assistant passes the user's text to the [ovos-persona-server
 
 ## OVOS with the Voice PE
 
-The [Home Assistant Voice Preview Edition](https://www.home-assistant.io/voice-pe) is a dedicated hardware satellite for HA's voice pipeline. It works with all the Wyoming services described above — point it at any running wyoming-ovos-stt, wyoming-ovos-tts, or wyoming-ovos-wakeword instance.
+The [Home Assistant Voice Preview Edition](https://www.home-assistant.io/voice-pe) is a dedicated hardware satellite for HA's voice pipeline. It works with all the Wyoming services described above: point it at any running wyoming-ovos-stt, wyoming-ovos-tts, or wyoming-ovos-wakeword instance.
 
 ![Configuring Home Assistant Voice Preview Edition](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/voice_pe_config.png)
 
@@ -65,7 +65,7 @@ The [Home Assistant Voice Preview Edition](https://www.home-assistant.io/voice-p
 
 ## Surfacing OVOS Devices as Home Assistant Entities with HiveMind
 
-If you have dedicated OVOS devices, the [HiveMind HomeAssistant](https://github.com/JarbasHiveMind/hivemind-homeassistant) integration makes them show up as native entities in Home Assistant — one unified control panel for the whole fleet.
+If you have dedicated OVOS devices, the [HiveMind HomeAssistant](https://github.com/JarbasHiveMind/hivemind-homeassistant) integration makes them show up as native entities in Home Assistant: one unified control panel for the whole fleet.
 
 
 ### **Setting up HiveMind Integration:**
@@ -107,14 +107,14 @@ OVOS devices also show up as standard media players in Home Assistant, so you ca
 
 ## Controlling Home Assistant Entities from OVOS
 
-The community-maintained [skill-homeassistant](https://github.com/OscillateLabsLLC/skill-homeassistant) gives OVOS direct control over Home Assistant entities via the HA REST API. Install it on your OVOS device and you can say "turn on the living room lights" or "set the thermostat to 21 degrees" — fully local, no cloud.
+The community-maintained [skill-homeassistant](https://github.com/OscillateLabsLLC/skill-homeassistant) gives OVOS direct control over Home Assistant entities via the HA REST API. Install it on your OVOS device and you can say "turn on the living room lights" or "set the thermostat to 21 degrees", fully local, with no cloud involved.
 
 -----
 
 ## What's Rough
 
-The Wyoming bridges and HiveMind integration are the most mature pieces here; the persona-server-as-conversational-agent path is newer and worth trying first if you want to see the ceiling of what OVOS + HA can do together. Bug reports and PRs are welcome across the repos linked above.
+The Wyoming bridges and HiveMind integration are the most mature pieces here. The persona-server-as-conversational-agent path is newer; try it first if you want to see the ceiling of what OVOS + HA can do together. Bug reports and PRs are welcome across the repos linked above.
 
 ---
 
-OpenVoiceOS is a community project — if you believe voice assistants should be open, inclusive, and user-controlled, [support the project](https://www.openvoiceos.org/contribution) with funding, open data, or translations.
+OpenVoiceOS is a community project. If you believe voice assistants should be open, inclusive, and user-controlled, [support the project](https://www.openvoiceos.org/contribution) with funding, open data, or translations.

@@ -48,7 +48,7 @@ Projects like **[WALLABI](https://wasabiproject.eu/wallabi)** and **[HUMANENERDI
 
 ### **3. Predictive Maintenance Assistance**
 
-Experiments such as **[GENIUS-PM](https://wasabiproject.eu/genius-pm)** use the assistant to give maintenance techs quick access to machine health data, fault explanations, and repair steps—especially when their hands are occupied.
+Experiments such as **[GENIUS-PM](https://wasabiproject.eu/genius-pm)** use the assistant to give maintenance techs quick access to machine health data, fault explanations, and repair steps, especially when their hands are occupied.
 
 ### **4. Logistics, Material Handling & Warehouse Support**
 
@@ -60,7 +60,7 @@ Experiments such as **[GENIUS-PM](https://wasabiproject.eu/genius-pm)** use the 
 
 ### **6. Sustainability, Waste Tracking & Resource Efficiency**
 
-**[VAFER](https://wasabiproject.eu/vafer)** integrates voice interfaces with systems that monitor recycling, material reuse, and resource flows—hands-free reporting in factory environments.
+**[VAFER](https://wasabiproject.eu/vafer)** integrates voice interfaces with systems that monitor recycling, material reuse, and resource flows, with hands-free reporting in factory environments.
 
 All of these rely on OVOS and on HiveMind for routing communication between devices, Android UI, and backend systems.
 
@@ -80,7 +80,7 @@ In WASABI, this RASA engine is plugged into OVOS as a **skill**, handling domain
 An Android front-end for workers, connecting to OVOS through HiveMind.
 
 Early version released here:
-[https://github.com/BIBA-GmbH/Mycroft-Android](https://github.com/BIBA-GmbH/Mycroft-Android)
+[BIBA-GmbH/Mycroft-Android](https://github.com/BIBA-GmbH/Mycroft-Android)
 
 Features include:
 
@@ -104,13 +104,13 @@ This forms the standard industrial voice-assistant stack that all WASABI experim
 ### **4. An Industrial Speech Dataset**
 
 COALA published a multilingual speech dataset recorded in factories and workshops:
-[https://zenodo.org/record/8268928](https://zenodo.org/record/8268928)
+[zenodo.org/record/8268928](https://zenodo.org/record/8268928)
 
 ---
 
 ## Why It Works for Industry
 
-The design goals that matter on the factory floor — full transparency for regulated sectors, local/edge deployment with no cloud dependency, modular skills for proprietary logic, and HiveMind's ability to distribute voice nodes across a facility — were baked in from the start, not retrofitted.
+The design goals that matter on the factory floor were baked in from the start, not retrofitted: full transparency for regulated sectors, local/edge deployment with no cloud dependency, modular skills for proprietary logic, and HiveMind's ability to distribute voice nodes across a facility.
 
 OVOS and HiveMind source code: [github.com/OpenVoiceOS](https://github.com/OpenVoiceOS) · [github.com/JarbasHiveMind](https://github.com/JarbasHiveMind)
 
