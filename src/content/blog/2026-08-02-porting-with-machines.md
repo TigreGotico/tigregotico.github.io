@@ -345,6 +345,46 @@ positions at once, and we would rather not. The honest options are the same ones
 Debian is weighing — disclosure, contributor accountability, or a rule nobody can
 verify — and we have not picked one.
 
+## The objection that has nothing to do with copyright
+
+Everything above treats this as a legal question. The strongest objection is not
+a legal one, and it is worth stating in its own terms rather than folded into
+the licensing argument, because it stands whichever way the licensing lands.
+
+Codeberg, the FLOSS forge, took a position in July 2026 through two
+member-approved motions. Their
+[reasoning](https://blog.codeberg.org/protecting-our-floss-commons-from-llms.html)
+barely mentions copyright. It is about what this does to the commons. They point
+at costs pushed onto everyone else — energy, hardware, the crawler traffic that
+forces small forges to put up defences that get in the way of ordinary users.
+They point at what they call vibe-coded projects: software generated once,
+published, and never maintained, filling a shared space that only works because
+people tend what they put in it. And they point at the reviewers:
+
+> Maintainers are under an increased work-load due to people submitting (often
+> well-meaning) low-effort, LLM-generated contributions that require substantial
+> amounts of time to review.
+
+That last one is the part we find hardest to argue with, because it is already
+true and it does not depend on any unsettled question. Generating a plausible
+patch is now much cheaper than reviewing one. A maintainer's attention is the
+one input in free software that has not become cheaper, and it is the input
+everything else depends on. A contribution that takes ten seconds to produce and
+an hour to check has moved cost from the person who wanted something to the
+person who has to live with it.
+
+We are on the wrong end of this criticism and we know it. One of these
+repositories carries a "vibe coded" badge, put there by us. What we would say in
+our defence is narrow: these ports are maintained, they are tested against the
+originals, and we answer for them. But that is a claim about our conduct, not a
+rebuttal — and the cost Codeberg describes is borne by whoever reviews the next
+patch, not by whoever is confident about their own.
+
+Notice that this objection survives every argument in this post. Suppose the
+CJEU reasoning holds, no derivative work is created, the licences were never
+engaged. Codeberg's case is untouched, because it was never about who owns the
+output. It is about who pays for it.
+
 ## The part we are not going to pretend is settled
 
 We may not have needed to do any of that.
