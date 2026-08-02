@@ -282,29 +282,15 @@ We have not resolved how we will handle it, and we are poorly placed to be stric
 ship ports written by a model. A project that publishes machine-written code and
 refuses machine-written contributions holds two incompatible positions at once.
 
-## The other axis the argument runs along
-
-Debian's debate is about provenance and licensing. It is not the only axis, and the
-second has nothing to do with copyright.
-
-Codeberg, the FLOSS forge, adopted two member-approved motions in July 2026 and
+Licensing is not the only axis this argument runs along, though it is the one this
+post is about. Codeberg adopted two member-approved motions in July 2026 and
 [set out its reasoning](https://blog.codeberg.org/protecting-our-floss-commons-from-llms.html)
-in terms that barely touch licences. The objections are about costs and effort:
-energy and hardware pushed onto everyone, crawler traffic that pressures small
-forges into defences that also obstruct ordinary users, single-use "vibe-coded"
-projects published and never maintained, and the load on reviewers:
-
-> Maintainers are under an increased work-load due to people submitting (often
-> well-meaning) low-effort, LLM-generated contributions that require substantial
-> amounts of time to review.
-
-Their Terms of Use now discourage such projects, applied case by case rather than by
-mass removal.
-
-So two independent questions are in circulation, and a project can land anywhere on
-the grid: whether machine-written code can be licensed at all, and whether the
-ecosystem can absorb the volume. Debian is voting on the first and has not concluded.
-Codeberg acted on the second. Neither settles the other.
+almost without mentioning licences at all: their objections are the energy and hardware
+cost, the crawler traffic, the unmaintained single-use projects, and above all the
+review burden that low-effort generated patches put on maintainers. That is a separate
+question from whether the code can be licensed, and a project can land anywhere on the
+grid. Debian is voting on the first and has not concluded; Codeberg acted on the
+second.
 
 ## The part we are not going to pretend is settled
 
