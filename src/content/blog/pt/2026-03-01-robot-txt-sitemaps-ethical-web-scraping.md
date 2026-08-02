@@ -1,6 +1,6 @@
 ---
 title: "Robots.txt, Sitemaps e Scraping Ético"
-description: "Antes de construir um scraper, faça o reconhecimento do site. O sitemapper lê o robots.txt, obtém todos os sitemaps e, opcionalmente, percorre o grafo de ligações — para que o seu scraper parta do próprio contrato do site em vez da força bruta."
+description: "Antes de construir um scraper, faça o reconhecimento do site. O sitemapper lê o robots.txt, obtém todos os sitemaps e, opcionalmente, percorre o grafo de ligações, para que o seu scraper parta do próprio contrato do site em vez da força bruta."
 date: 2026-03-01
 updated: 2026-08-01
 lang: pt
@@ -36,9 +36,9 @@ entre si). Ler isto primeiro responde a três perguntas antes de escrever uma
 
 ## Descoberta passiva: robots.txt + sitemaps
 
-O `discover()` obtém o robots.txt e todos os sitemaps que conseguir encontrar —
+O `discover()` obtém o robots.txt e todos os sitemaps que conseguir encontrar,
 incluindo diretivas `Sitemap:`, índices de sitemaps que apontam para
-sub-sitemaps e ficheiros comprimidos com gzip — sem rastrear uma única página
+sub-sitemaps e ficheiros comprimidos com gzip, sem rastrear uma única página
 HTML:
 
 ```python
@@ -69,12 +69,12 @@ for url in info.urls:
 O detalhe por agente está lá quando precisa dele: `info.robots.groups` contém
 cada bloco `User-agent` com os seus `allows`, `disallows` e `crawl_delay`, por
 ordem no documento. Se um site não tiver robots.txt nenhum, `is_allowed()`
-devolve `True` para tudo — a ausência de política é, ela própria, a política.
+devolve `True` para tudo. A ausência de política é, ela própria, a política.
 
-O ganho do scraping orientado por sitemaps: em vez de descobrir URLs através do
-rastreio (lento, ruidoso, incompleto), parte da própria lista dos mantenedores.
-Faz scraping do que o site declara importante, ao ritmo que declara aceitável,
-numa fração dos pedidos.
+O scraping orientado por sitemaps compensa porque evita descobrir URLs através
+do rastreio (lento, ruidoso, incompleto) e parte da própria lista dos
+mantenedores. Faz scraping do que o site declara importante, ao ritmo que
+declara aceitável, numa fração dos pedidos.
 
 ## Descoberta ativa: o grafo de ligações
 
@@ -92,7 +92,7 @@ print(graph.summary())
 # Top external domains: ...
 ```
 
-Isto diz-lhe a topologia real — que páginas ligam a quê — para que possa
+Isto diz-lhe a topologia real, que páginas ligam a quê, para que possa
 decidir se o site justifica sequer um scraper estruturado. Descoberta e rastreio
 são chamadas deliberadamente separadas: o passo passivo nunca obtém HTML, por
 isso pode sempre fazer o reconhecimento de forma educada antes de decidir
@@ -102,9 +102,10 @@ rastrear.
 
 O reconhecimento de um site é inútil se o próprio reconhecimento for barrado por
 muros anti-bot. Todo o HTTP do sitemapper passa pelo
-[`unblock_requests`](https://github.com/TigreGotico/unblock_requests) — o
-transporte com personificação de TLS do nosso
-**[artigo sobre transporte anti-bot](/pt/blog/2026-03-15-beating-bot-walls-with-drop-in-requests-sessions)** —
+[`unblock_requests`](https://github.com/TigreGotico/unblock_requests), o
+transporte com personificação de TLS (imita a impressão digital TLS de um
+navegador real) do nosso
+**[artigo sobre transporte anti-bot](/pt/blog/2026-03-15-beating-bot-walls-with-drop-in-requests-sessions)**,
 por isso o robots.txt e os sitemaps chegam mesmo em sites protegidos pela
 Cloudflare. Uma instância FlareSolverr ou um recurso à Wayback Machine podem ser
 ativados com variáveis de ambiente (`SITEMAPPER_FLARESOLVERR_URL`,
@@ -112,19 +113,19 @@ ativados com variáveis de ambiente (`SITEMAPPER_FLARESOLVERR_URL`,
 
 ## Porque é que isto importa
 
-**Crawl-delay**: um site que declara `Crawl-delay: 2` está a dizer-lhe a que
-velocidade quer ser acedido. Ignore-o e é bloqueado — ou degrada o site para
-toda a gente. Respeite-o e o seu scraper joga limpo.
+Um site que declara `Crawl-delay: 2` está a dizer-lhe a que velocidade quer ser
+acedido. Ignore-o e arrisca-se a ser bloqueado, ou degrada o site para toda a
+gente. Respeite-o e o seu scraper joga limpo.
 
-**Sitemaps em vez de rastreio**: um sitemap lista o que o site quer indexado. O
-rastreio cego de ligações pode tocar em cinco vezes mais URLs para encontrar o
-mesmo conteúdo. Comece pelo sitemap quando existe um; é mais rápido para si e
-mais leve para o servidor.
+Um sitemap lista o que o site quer indexado. O rastreio cego de ligações pode
+tocar em cinco vezes mais URLs para encontrar o mesmo conteúdo, por isso
+comece pelo sitemap quando existe um. É mais rápido para si e mais leve para o
+servidor.
 
-**Âmbito antes do código**: alguns sites proíbem o scraping de forma explícita
-no robots.txt; outros têm sitemaps que já contêm tudo o que precisa. Dez
-segundos de `discover()` dizem-lhe em que situação está antes de investir num
-parser.
+O âmbito importa antes do código. Alguns sites proíbem o scraping de forma
+explícita no robots.txt. Outros têm sitemaps que já contêm tudo o que precisa.
+Dez segundos de `discover()` dizem-lhe em que situação está antes de investir
+num parser.
 
 ## A ferramenta
 
@@ -133,7 +134,7 @@ pip install sitemapper
 pip install sitemapper[stealth]   # adds curl_cffi TLS impersonation
 ```
 
-Use-a como biblioteca, ou a partir da linha de comandos — `--json FILE` escreve a
+Use-a como biblioteca, ou a partir da linha de comandos: `--json FILE` escreve a
 descoberta completa num ficheiro para outras ferramentas consumirem, `--crawl`
 acrescenta o passo do grafo de ligações:
 

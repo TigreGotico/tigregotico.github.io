@@ -67,13 +67,15 @@ corretamente.
 
 A **semelhança de locutor** mede identidade: se o resultado realmente soa
 como o locutor-alvo, e não como o original. É calculada extraindo um
-embedding de locutor — uma impressão digital numérica compacta do timbre
+embedding de locutor (uma impressão digital numérica compacta do timbre
 de uma voz, a cor tonal que faz uma voz soar diferente de outra à mesma
-altura e volume — do resultado e do clipe de referência, e comparando-os
-por semelhança de cosseno. Uma pontuação de 1.0 significa timbre idêntico;
-a própria referência do `voiceclonnx` — uma cópia não convertida da
-origem pontuada face ao alvo — situa-se em 0.09, pelo que qualquer coisa
-significativamente acima disso está a fazer trabalho de conversão real.
+altura e volume) do resultado e do clipe de referência, e comparando-os
+por semelhança de cosseno.
+
+Uma pontuação de 1.0 significa timbre idêntico. A própria referência do
+`voiceclonnx`, uma cópia não convertida da origem pontuada face ao alvo,
+situa-se em 0.09, pelo que qualquer coisa significativamente acima disso
+está a fazer trabalho de conversão real.
 
 O `voiceclonnx` publica ambos os números para cada motor, medidos face à
 mesma frase convertida para duas vozes de referência. O WER vem do
@@ -111,72 +113,82 @@ semelhança), o que é uma propriedade da sua arquitetura, coberta a seguir.
 Os motores dividem-se em abordagens distintas, e a abordagem prevê onde um
 motor cai na tabela acima.
 
-**Troca de características kNN** (`knnvc`, `focalcodec`). O áudio de
-origem é dividido em quadros curtos, cada um transformado num vetor de
-características por um codificador auto-supervisionado pré-treinado. Para
-cada quadro de origem, o algoritmo encontra os *k* quadros mais próximos
-numa reserva de características do locutor-alvo e faz a média deles,
-substituindo o timbre da origem quadro a quadro enquanto mantém o
-conteúdo fonético subjacente onde foi extraído da própria representação
-do codificador. Não há um descodificador aprendido a mapear uma voz para
-outra — a troca é uma pesquisa por vizinhos mais próximos — o que explica
-porque a transferência de timbre pode ser agressiva (o `focalcodec`
-atinge 0.61 de semelhança) ao custo de por vezes distorcer quadros que
-tiveram uma correspondência fraca na reserva-alvo, o que aparece como WER.
+### Troca de características kNN (`knnvc`, `focalcodec`)
 
-**Codec fatorizado** (`facodec`). Um codec de áudio neuronal — um modelo
-que comprime a fala numa sequência de tokens compacta e a reconstrói —
-treinado para dividir explicitamente esses tokens em fluxos separados de
-conteúdo e timbre. Como o conteúdo é um fluxo dedicado, o descodificador
-reconstrói as palavras com alta fidelidade; só o fluxo de timbre é trocado
-pelo do locutor-alvo. Essa separação explícita é o motivo pelo qual o
-`facodec` atinge 0% de WER: a preservação do conteúdo não está a competir
-com nada.
+O áudio de origem é dividido em quadros curtos, cada um transformado num
+vetor de características por um codificador auto-supervisionado
+pré-treinado. Para cada quadro de origem, o algoritmo encontra os *k*
+quadros mais próximos numa reserva de características do locutor-alvo e
+faz a média deles, substituindo o timbre da origem quadro a quadro
+enquanto mantém o conteúdo fonético subjacente onde foi extraído da
+própria representação do codificador. Não há um descodificador aprendido
+a mapear uma voz para outra; a troca é uma pesquisa por vizinhos mais
+próximos, o que explica porque a transferência de timbre pode ser
+agressiva (o `focalcodec` atinge 0.61 de semelhança) ao custo de por
+vezes distorcer quadros que tiveram uma correspondência fraca na
+reserva-alvo, o que aparece como WER.
 
-**Transferência de tom-cor** (`openvoice`). Um módulo de conversão muda a
-cor tonal — contorno de altura e timbre — depois de um codificador
-separado ter fixado o conteúdo linguístico, semelhante em espírito à
-abordagem do codec fatorizado mas implementado como um passo de
-transferência de cor sobre um mel-espetrograma em vez de tokens discretos.
-Também atinge 0% de WER, com semelhança algo mais baixa do que o
-`facodec`.
+### Codec fatorizado (`facodec`)
 
-**AR codec-LM** (`chatterbox`). Um modelo de linguagem autorregressivo que
-prevê tokens de codec um a um, condicionado pelo embedding do
-locutor-alvo, à semelhança de um modelo de linguagem de texto-para-fala
-mas condicionado pelos tokens de conteúdo da gravação de origem em vez de
-texto. Por gerar a prosódia (ritmo, ênfase, entoação) como parte do mesmo
-processo autorregressivo em vez de a copiar diretamente da origem,
-consegue transportar o estilo de fala junto com o timbre — o que explica
-porque a documentação regista a "mudança fonte-para-alvo mais forte" — e
-é o único motor que pontua bem em inteligibilidade e semelhança ao mesmo
-tempo.
+Um codec de áudio neuronal (um modelo que comprime a fala numa sequência
+de tokens compacta e a reconstrói) treinado para dividir explicitamente
+esses tokens em fluxos separados de conteúdo e timbre. Como o conteúdo é
+um fluxo dedicado, o descodificador reconstrói as palavras com alta
+fidelidade; só o fluxo de timbre é trocado pelo do locutor-alvo. Essa
+separação explícita é o motivo pelo qual o `facodec` atinge 0% de WER: a
+preservação do conteúdo não está a competir com nada.
 
-**Flow-matching** (`cosyvoice`). Um processo generativo contínuo que
-refina iterativamente ruído no mel-espetrograma alvo, usando um resolvedor
-de EDO (equação diferencial ordinária) com um número configurável de
-passos (`ode_steps`, por defeito 10). O seu codificador de conteúdo é
-concebido para transferência entre línguas, e essa generalidade é
-provavelmente o motivo pelo qual a sua pontuação de semelhança com o alvo
-é a mais baixa do conjunto: a representação otimiza para
-independência de língua, não para a correspondência de locutor mais
-apertada.
+### Transferência de tom-cor (`openvoice`)
 
-**Codec desacoplado de locutor** (`lscodec`). Tal como o `facodec`, um
-codec treinado para separar conteúdo de identidade de locutor, mas
-afinado para empurrar a semelhança ainda mais longe ao custo direto da
-precisão do fluxo de conteúdo, ficando em ~35% de WER com a segunda maior
-semelhança do conjunto.
+Um módulo de conversão muda a cor tonal (contorno de altura e timbre)
+depois de um codificador separado ter fixado o conteúdo linguístico,
+semelhante em espírito à abordagem do codec fatorizado mas implementado
+como um passo de transferência de cor sobre um mel-espetrograma em vez de
+tokens discretos. Também atinge 0% de WER, com semelhança algo mais baixa
+do que o `facodec`.
 
-**Codecs Triple-AAN e semântico-mais-tokens-globais** (`triaan`,
-`bicodec`) ficam no meio nos dois eixos: WER moderado, semelhança
-moderada, sem viés forte para nenhum dos lados.
+### AR codec-LM (`chatterbox`)
 
-**Codec any-to-ONE + vocoder** (`rvc`). Construído sobre o ContentVec (um
-codificador de conteúdo) alimentando um vocoder VITS, treinado por voz-alvo
-em vez de aceitar um clipe de referência arbitrário. O `reference_voice`
-para este motor é um caminho para um ficheiro de modelo RVC `.onnx` ou um
-ID de repositório do Hugging Face, não um ficheiro de áudio:
+Um modelo de linguagem autorregressivo que prevê tokens de codec um a um,
+condicionado pelo embedding do locutor-alvo, à semelhança de um modelo de
+linguagem de texto-para-fala mas condicionado pelos tokens de conteúdo da
+gravação de origem em vez de texto. Por gerar a prosódia (ritmo, ênfase,
+entoação) como parte do mesmo processo autorregressivo em vez de a copiar
+diretamente da origem, consegue transportar o estilo de fala junto com o
+timbre. É por isso que a documentação regista a "mudança fonte-para-alvo
+mais forte", e é o único motor que pontua bem em inteligibilidade e
+semelhança ao mesmo tempo.
+
+### Flow-matching (`cosyvoice`)
+
+Um processo generativo contínuo que refina iterativamente ruído no
+mel-espetrograma alvo, usando um resolvedor de EDO (equação diferencial
+ordinária) com um número configurável de passos (`ode_steps`, por defeito
+10). O seu codificador de conteúdo é concebido para transferência entre
+línguas, e essa generalidade é provavelmente o motivo pelo qual a sua
+pontuação de semelhança com o alvo é a mais baixa do conjunto: a
+representação otimiza para independência de língua, não para a
+correspondência de locutor mais apertada.
+
+### Codec desacoplado de locutor (`lscodec`)
+
+Tal como o `facodec`, um codec treinado para separar conteúdo de
+identidade de locutor, mas afinado para empurrar a semelhança ainda mais
+longe ao custo direto da precisão do fluxo de conteúdo, ficando em ~35%
+de WER com a segunda maior semelhança do conjunto.
+
+### Codecs Triple-AAN e semântico-mais-tokens-globais (`triaan`, `bicodec`)
+
+Estes ficam no meio nos dois eixos: WER moderado, semelhança moderada,
+sem viés forte para nenhum dos lados.
+
+### Codec any-to-ONE + vocoder (`rvc`)
+
+Construído sobre o ContentVec (um codificador de conteúdo) alimentando um
+vocoder VITS, treinado por voz-alvo em vez de aceitar um clipe de
+referência arbitrário. O `reference_voice` para este motor é um caminho
+para um ficheiro de modelo RVC `.onnx` ou um ID de repositório do Hugging
+Face, não um ficheiro de áudio:
 
 ```python
 cloner = VoiceCloner(engine="rvc")
@@ -193,47 +205,47 @@ diretamente pelo ID do repositório.
 
 ## Decidir qual correr
 
-**Pipeline rápida e de uso geral.** Começar com o `facodec` ou o
+Para uma pipeline rápida e de uso geral, comece com o `facodec` ou o
 `openvoice`. Ambos atingem 0% de WER medido com semelhança moderada (0.44
 e 0.37), e ambos trazem uma variante quantizada INT8 sem regressão de
-qualidade listada — passar `quantized=True` para um modelo mais pequeno e
+qualidade listada. Passe `quantized=True` para um modelo mais pequeno e
 mais rápido.
 
-**Semelhança de locutor máxima.** Usar o `focalcodec` (0.61 de
+Para semelhança de locutor máxima, use o `focalcodec` (0.61 de
 semelhança, a mais alta medida) se os 15-19% de WER forem aceitáveis para
 o caso de uso, ou o `chatterbox` (0.54 de semelhança, 4-8% de WER) se não
 forem. O `chatterbox` também corre a 24 kHz, a taxa de saída mais alta
-para conversão any-to-any no conjunto — o `rvc` chega a 48 kHz mas só no
+para conversão any-to-any no conjunto. O `rvc` chega a 48 kHz mas só no
 modo any-to-ONE acima.
 
-**Hardware de baixos recursos.** O `knnvc` em INT8 ocupa cerca de 123 MB
-em disco, o menor no conjunto, com 0.49 de semelhança e 12-15% de WER —
-um compromisso razoável para memória limitada. Nem todos os motores
-quantizam de forma limpa: o `focalcodec` e o `cosyvoice` estão
+Para hardware de baixos recursos, o `knnvc` em INT8 ocupa cerca de 123 MB
+em disco, o menor no conjunto, com 0.49 de semelhança e 12-15% de WER: um
+compromisso razoável para memória limitada. Nem todos os motores
+quantizam de forma limpa. O `focalcodec` e o `cosyvoice` estão
 documentados como degradando-se em INT8, por isso mantenha-se esses dois
 em fp32.
 
-**Uma língua para a qual o motor não foi treinado.** O codificador de
+Para uma língua para a qual o motor não foi treinado, o codificador de
 conteúdo do `cosyvoice` é construído para transferência entre línguas, o
 que é a razão documentada para o preferir a um motor afinado para
 conversão na mesma língua, mesmo que a sua semelhança medida (0.21) seja
 a mais baixa dos nove motores diretamente comparáveis.
 
-**Identidade de voz acima da redação exata.** O `lscodec` dá a
-transferência de timbre mais forte entre os motores da família codec
-(0.54, empatado com o `chatterbox`) ao custo do WER mais alto do conjunto
-comparável (~35%). Escolha-o quando o objetivo for "isto soa como o
-locutor-alvo" e erros de palavra ocasionais no resultado forem
+Quando a identidade de voz importa mais do que a redação exata, o
+`lscodec` dá a transferência de timbre mais forte entre os motores da
+família codec (0.54, empatado com o `chatterbox`) ao custo do WER mais
+alto do conjunto comparável (~35%). Escolha-o quando o objetivo for "isto
+soa como o locutor-alvo" e erros de palavra ocasionais no resultado forem
 toleráveis.
 
-**Uma única voz fixa da comunidade em vez de um clipe arbitrário.** O
-`rvc`, usando um modelo de voz `.onnx` pré-treinado em vez de uma
-gravação de referência.
+Para uma única voz fixa da comunidade em vez de um clipe arbitrário, use
+o `rvc` com um modelo de voz `.onnx` pré-treinado em vez de uma gravação
+de referência.
 
-**Restrição não-comercial a verificar primeiro.** Os pesos do `bicodec`
-são licenciados sob CC BY-NC-SA 4.0. Os pesos de todos os outros motores
-são MIT, Apache-2.0, ou CC BY 4.0. Verifique a licença do peso específico
-que implementar antes de o distribuir comercialmente.
+Uma restrição de licenciamento a verificar primeiro: os pesos do
+`bicodec` são licenciados sob CC BY-NC-SA 4.0. Os pesos de todos os
+outros motores são MIT, Apache-2.0, ou CC BY 4.0. Verifique a licença do
+peso específico que implementar antes de o distribuir comercialmente.
 
 ## O que não faz bem, e em quem não deve ser usado
 

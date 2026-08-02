@@ -1,6 +1,6 @@
 ---
 title: "Escritas e Notações Fonéticas: O Que o scriptconv Realmente Converte"
-description: "Uma análise aprofundada ao scriptconv, a biblioteca sem dependências que deteta sistemas de escrita e converte entre notações fonéticas. Cobre IPA, ARPABET e X-SAMPA; deteção de escrita ISO-15924; transliteração Buckwalter para árabe; decomposição de Hangul em jamo; e conversão de kana, com exemplos reais e executados e limites honestos."
+description: "Uma visita ao scriptconv, a biblioteca sem dependências que deteta sistemas de escrita e converte entre notações fonéticas. Cobre IPA, ARPABET e X-SAMPA, deteção de escrita ISO-15924, transliteração Buckwalter para árabe, decomposição de Hangul em jamo, e conversão de kana, com exemplos reais e executados e limites honestos."
 date: 2026-08-01
 lang: pt
 author: "Casimiro Ferreira"
@@ -16,7 +16,7 @@ draft: false
 Um dicionário de pronúncia norte-americano diz que um gato soa a
 `K AE1 T`. O Alfabeto Fonético Internacional escreve o mesmo som como
 `kæt`. Um sistema diferente, apenas ASCII, escreve-o como `k"{t`. Os três
-descrevem exatamente o mesmo par de fonemas — um som "k" seguido de um "a"
+descrevem exatamente o mesmo par de fonemas: um som "k" seguido de um "a"
 curto seguido de um "t". Nada no som mudou. Só mudou o alfabeto usado para
 o escrever.
 
@@ -25,26 +25,26 @@ que uma fonte. Um conjunto de dados de fala construído a partir de um
 dicionário norte-americano usa uma notação. Um léxico europeu usa outra.
 Um motor de texto-para-fala espera uma terceira. Antes de qualquer um
 desses dados poder ser combinado, pesquisado, ou comparado, tem de ser
-traduzido de um alfabeto fonético para outro — a mesma tarefa que um
+traduzido de um alfabeto fonético para outro. É a mesma tarefa que um
 tradutor faz entre línguas humanas, exceto que aqui as "línguas" são
 formas de escrever som em vez de formas de escrever palavras.
 
 O `scriptconv` é uma pequena biblioteca em Python que faz essa tradução,
 mais uma tarefa relacionada um nível acima: descobrir em que sistema de
 escrita um trecho de texto sequer está antes de se poder fazer qualquer
-outra coisa com ele. Não tem opinião nenhuma sobre linguística — não
+outra coisa com ele. Não tem opinião nenhuma sobre linguística. Não
 adivinha como uma palavra se pronuncia. Apenas move símbolos que já
 representam sons conhecidos de uma notação para outra, e identifica
 escritas a partir dos próprios carateres.
 
 ## Alguns termos, definidos com clareza
 
-- **Escrita** (script): um sistema de escrita — o conjunto real de
+- **Escrita** (script): um sistema de escrita, o conjunto real de
   carateres, como o latino, o cirílico, ou o hangul. Não é o mesmo que uma
   língua: o inglês, o francês e o vietnamita usam todos a escrita latina,
   e o sérvio pode escrever-se tanto em cirílico como em latino.
 - **Ortografia**: as regras convencionais de escrita para uma língua
-  específica numa escrita — maiúsculas, marcas de acento, espaçamento.
+  específica numa escrita: maiúsculas, marcas de acento, espaçamento.
 - **Fonema**: uma unidade distinta de som numa língua, como o som "k" em
   "cat".
 - **IPA** (Alfabeto Fonético Internacional): um alfabeto padrão para
@@ -94,7 +94,7 @@ ipa_to_arpa("həlˈoʊ", stress=True)
 ```
 
 Os marcadores de acento sobrevivem à ida e volta. O ARPABET marca o
-acento com um dígito colado à vogal (`OW1`); o IPA marca-o com um `ˈ`
+acento com um dígito colado à vogal (`OW1`). O IPA marca-o com um `ˈ`
 colocado antes da sílaba tónica. `arpa_to_ipa(..., stress=True)` move
 essa informação, e converter de volta reconstrói exatamente os dígitos
 originais.
@@ -117,11 +117,11 @@ coberto abaixo.
 
 ## Detetar a escrita antes de fazer qualquer outra coisa
 
-Antes de um software poder decidir como processar um trecho de texto —
-em que direção o renderizar, que corretor ortográfico correr, que fonte
-escolher — tem de saber em que escrita o texto está. Essa é uma pergunta
+Antes de um software poder decidir como processar um trecho de texto (em
+que direção o renderizar, que corretor ortográfico correr, que fonte
+escolher), tem de saber em que escrita o texto está. Essa é uma pergunta
 diferente de em que língua está. A escrita identifica o conjunto de
-carateres; a língua identifica o vocabulário e a gramática. O sérvio, de
+carateres. A língua identifica o vocabulário e a gramática. O sérvio, de
 novo, pode ser cirílico ou latino. O usbeque também pode. O `scriptconv`
 deteta a escrita diretamente a partir dos carateres, e separadamente mapeia
 um código de língua para a escrita em que é convencionalmente escrita:
@@ -145,7 +145,7 @@ lang_to_script("uzb_cyr")
 # 'Cyrl'
 ```
 
-O `detect_script` devolve um código ISO 15924 — o registo padrão de
+O `detect_script` devolve um código ISO 15924, o registo padrão de
 etiquetas de quatro letras para escritas (`Cyrl` para cirílico, `Hang`
 para hangul, `Latn` para latino, `Arab` para árabe). O `script_runs`
 divide texto misto em trechos contíguos por escrita, o que é o que um
@@ -160,8 +160,8 @@ em pipelines reais para que o `scriptconv` trate cada uma diretamente.
 
 O **Buckwalter**, para árabe, é um esquema de transliteração ASCII que
 mapeia cada letra e diacrítico árabe para um caráter ASCII específico,
-um-para-um, para que a grafia original — incluindo as marcas de vogais
-que a maioria do texto nativo omite — possa ser reconstruída exatamente.
+um-para-um, para que a grafia original (incluindo as marcas de vogais
+que a maioria do texto nativo omite) possa ser reconstruída exatamente.
 Existe porque a escrita árabe é incómoda de tratar em pipelines e
 ferramentas construídas à volta de ASCII: ordenação, diffing, expressões
 regulares, e formatos de texto mais antigos tornam-se todos mais fáceis
@@ -182,17 +182,17 @@ arabic_to_buckwalter("رحمٰن")
 ```
 
 O último exemplo inclui o alef adaga, um pequeno diacrítico
-sobrescrito usado num punhado de palavras (`رحمٰن`, *rahman*) — o
+sobrescrito usado num punhado de palavras (`رحمٰن`, *rahman*). O
 Buckwalter tem um caráter ASCII específico reservado para ele (`` ` ``),
 distinto de um alef normal, para que a transliteração não colapse os
 dois.
 
 O **Hangul** parece blocos silábicos, mas cada bloco é um agregado
-composto de letras individuais (jamo) dispostas numa grelha — da mesma
+composto de letras individuais (jamo) dispostas numa grelha, da mesma
 forma que "H", "A", "N" se combinam visualmente num único glifo para "han"
 em vez de serem escritos da esquerda para a direita. Software que precisa
-das letras individuais — para pesquisa, para análise fonológica, para
-alimentar um sistema diferente — tem de as separar de novo:
+das letras individuais (para pesquisa, para análise fonológica, para
+alimentar um sistema diferente) tem de as separar de novo:
 
 ```python
 from scriptconv.translit import decompose_hangul
@@ -206,7 +206,7 @@ decompose_hangul("국민")
 
 Esse último exemplo importa pelo que *não* faz: 국민 (*gungmin*, "cidadão")
 pronuncia-se com assimilação nasal, `[ɡuŋmin]`, mas o `decompose_hangul`
-devolve as letras tal como escritas — `ㄱㅜㄱㅁㅣㄴ`, sem assimilação —
+devolve as letras tal como escritas, `ㄱㅜㄱㅁㅣㄴ`, sem assimilação,
 porque a decomposição é aritmética sobre o ponto de código Unicode, não
 uma regra fonológica. Diz o que foi escrito, não o que soa.
 
@@ -226,8 +226,8 @@ kana_to_hira("カタカナ")
 
 ## Porque é que isto vive na sua própria biblioteca
 
-Um phonemizer — uma ferramenta que adivinha como se pronuncia uma palavra
-escrita — precisa de juízo linguístico: regras de acentuação, exceções,
+Um phonemizer (uma ferramenta que adivinha como se pronuncia uma palavra
+escrita) precisa de juízo linguístico: regras de acentuação, exceções,
 pronúncia dependente do contexto. O `scriptconv` deliberadamente não tem
 nada disso. Cada função acima é uma pesquisa em tabela ou um cálculo de
 ponto de código: mesma entrada, mesma saída, sem adivinhar, sem modelo de
@@ -236,8 +236,8 @@ realmente soa. É isso que o torna seguro para partilhar entre todos os
 phonemizers que precisam dele, em vez de cada phonemizer reimplementar a
 sua própria tabela ARPABET com os seus próprios bugs. O artigo
 [a stack de fonologia](/pt/blog/2026-08-10-the-phonology-stack) cobre como
-os motores reais de adivinhação de pronúncia — os que carregam opiniões
-linguísticas — são construídos por cima desta camada em vez de a
+os motores reais de adivinhação de pronúncia (os que carregam opiniões
+linguísticas) são construídos por cima desta camada em vez de a
 duplicarem.
 
 ## Onde o mapeamento não é exato
@@ -257,8 +257,8 @@ inventário IPA completo mas não têm garantia de fazer a ida e volta de
 forma limpa a partir do seu próprio lado. O Kirshenbaum e o Buckwalter
 fazem a ida e volta de forma limpa a partir do seu próprio lado para IPA
 mas não o inverso. O mantoq, o alfabeto fonético do fonemizador de árabe
-halabi, só converte numa direção, para IPA — não há conversor de volta.
-Nada disto está escondido nalgum docstring; são dados que a biblioteca
+halabi, só converte numa direção, para IPA. Não há conversor de volta.
+Nada disto está escondido nalgum docstring. São dados que a biblioteca
 expõe para que quem chama possa verificar antes de assumir que uma ida e
 volta é segura.
 
