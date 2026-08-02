@@ -64,4 +64,4 @@ La scala di quel lavoro di conversione, contata direttamente da ciò che è pubb
 
 La maggior parte delle lingue non ottiene mai un'opzione vocale offline commerciale, perché il mercato per quella sola lingua non giustifica a un fornitore di costruirne una. Il modello descritto sopra — prendere un checkpoint aperto esistente, convertirlo in un formato che gira sull'hardware che avete davvero, quantizzarlo per farlo stare, verificarlo rispetto all'originale e collegarlo a un plugin — non dipende dalla dimensione del mercato. Dipende dall'esistenza di un checkpoint aperto da cui partire, il che è sempre più il caso normale.
 
-Se avete un modello vocale che gira solo su una GPU di addestramento, o un dispositivo che al momento non ha supporto vocale offline nella sua lingua, [contattateci](/contact) o guardate come si presenta questo lavoro end-to-end sulla nostra [pagina servizi](/services).
+Se avete un modello vocale che gira solo su una GPU di addestramento, o un dispositivo che al momento non ha supporto vocale offline nella sua lingua, [contattateci](/it/contact) o guardate come si presenta questo lavoro end-to-end sulla nostra [pagina servizi](/it/services).

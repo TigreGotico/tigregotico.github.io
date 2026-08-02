@@ -117,4 +117,4 @@ Ejecutarlo antes y después de un eliminador de ruido o extensor y la forma de u
 
 Limpiar el audio antes de que llegue a un reconocedor, a un sistema de identificación de hablante o a un oyente humano es una pieza de ingeniería en sí misma, con su propio registro de compromisos y su propia lista de enfoques que se probaron y no sobrevivieron al contacto con una señal real.
 
-Preguntas sobre cómo aplicar esto a un pipeline concreto: [ponte en contacto](/contact).
+Preguntas sobre cómo aplicar esto a un pipeline concreto: [ponte en contacto](/es/contact).

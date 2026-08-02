@@ -145,4 +145,4 @@ Cela transforme le choix d'un moteur, d'un test d'écoute, en un tableau. `voice
 
 Si vous avez besoin de traitement vocal hors ligne — nettoyer un enregistrement, cloner une voix, détecter qui parle, ou en synthétiser une — sur du matériel qui ne verra jamais de GPU, c'est la forme à rechercher : une petite dépendance d'exécution, un choix de modèles publiés plutôt qu'un seul par défaut figé, et un moyen de mesurer lequel fonctionne réellement pour votre cas. Chacune des bibliothèques ci-dessus n'est qu'à un `pip install`, sous licence MIT ou Apache au niveau du code (les poids de modèles individuels portent leurs propres licences amont, documentées par moteur), et tourne de la même façon sur un ordinateur portable, un serveur, ou un Raspberry Pi.
 
-Contactez-nous via [/contact](/contact) ou découvrez ce que nous construisons d'autre sur [/services](/services).
+Contactez-nous via [/contact](/fr/contact) ou découvrez ce que nous construisons d'autre sur [/services](/fr/services).

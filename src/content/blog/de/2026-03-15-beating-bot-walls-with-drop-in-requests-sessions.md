@@ -42,7 +42,7 @@ um das Parsing oder die Pipeline darüber.
 **Der Geltungsbereich, unverblümt gesagt:** Diese Transporte sind ausschließlich
 für öffentliche, nicht authentifizierte Seiten gedacht. Sie respektieren
 `robots.txt` und jede deklarierte Crawl-Verzögerung — siehe unseren
-**[Beitrag zu robots.txt &amp; Sitemaps](/blog/2026-03-01-robot-txt-sitemaps-ethical-web-scraping)**
+**[Beitrag zu robots.txt &amp; Sitemaps](/de/blog/2026-03-01-robot-txt-sitemaps-ethical-web-scraping)**
 dazu, wie wir das prüfen, bevor wir einen Scraper schreiben — und jeder darauf
 aufbauende Client wird auf ein niedriges Anfragevolumen beschränkt, sodass eine
 Zielseite nie eine nennenswerte Last von uns sieht. Das ist kein nachträglich

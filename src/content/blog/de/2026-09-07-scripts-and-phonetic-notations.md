@@ -150,4 +150,4 @@ ARPABET scheitert in beiden Richtungen: Es hat ein eingeschränktes, englischspe
 
 ---
 
-Wenn Sie Ausspracheinformationen aus mehreren Quellen zusammenfügen, oder Schriften erkennen und Text normalisieren müssen, bevor er einen Phonemizer erreicht, [nehmen Sie Kontakt auf](/contact) oder sehen Sie, was wir sonst noch in diesem Bereich bauen, auf der [Leistungsseite](/services).
+Wenn Sie Ausspracheinformationen aus mehreren Quellen zusammenfügen, oder Schriften erkennen und Text normalisieren müssen, bevor er einen Phonemizer erreicht, [nehmen Sie Kontakt auf](/de/contact) oder sehen Sie, was wir sonst noch in diesem Bereich bauen, auf der [Leistungsseite](/de/services).

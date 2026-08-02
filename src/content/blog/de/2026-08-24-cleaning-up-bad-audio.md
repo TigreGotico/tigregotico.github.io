@@ -117,4 +117,4 @@ Führt man das vor und nach einem Entrauscher oder Erweiterer aus, ergibt sich d
 
 Audio zu bereinigen, bevor es einen Erkenner, ein Sprecher-ID-System oder eine menschliche Zuhörerschaft erreicht, ist eine eigene Ingenieursaufgabe, mit ihrer eigenen Registry an Kompromissen und ihrer eigenen Liste an Ansätzen, die probiert wurden und den Kontakt mit einem echten Signal nicht überlebt haben.
 
-Fragen zur Anwendung darauf in einer bestimmten Pipeline: [nehmen Sie Kontakt auf](/contact).
+Fragen zur Anwendung darauf in einer bestimmten Pipeline: [nehmen Sie Kontakt auf](/de/contact).

@@ -37,7 +37,7 @@ draft: false
 
 **النطاق، بوضوح:** وسائل النقل هذه مخصصة للصفحات العامة غير المُوثَّقة فقط. فهي
 تحترم `robots.txt` وأي تأخير زحف مُعلَن — انظر
-**[مقالة robots.txt وخرائط المواقع](/blog/2026-03-01-robot-txt-sitemaps-ethical-web-scraping)**
+**[مقالة robots.txt وخرائط المواقع](/ar/blog/2026-03-01-robot-txt-sitemaps-ethical-web-scraping)**
 لمعرفة كيف نتحقق من ذلك قبل كتابة أي كاشطة — ويُبقى كل عميل مبني فوقها عند أحجام
 طلبات منخفضة، بحيث لا يرى الموقع الهدف أبدًا حِملًا معتبرًا منّا. هذا ليس تنصّلًا
 مُلحَقًا لاحقًا؛ إنه قيد هندسي حقيقي على طريقة استخدام هذه الجلسات، لأن عميلًا
@@ -172,4 +172,4 @@ session.get(url)   # spreads load across IPs *and* uses a browser-compatible han
 [`unblock_requests`](https://github.com/TigreGotico/unblock_requests) و
 [`anon_requests`](https://github.com/TigreGotico/anon_requests).
 
-تُشغّل وسائل النقل هذه جميع **[كاشطات قواعد بيانات الموسيقى](/blog/2026-04-20-music-database-scrapers)** لدينا. لاستطلاع موقع قبل بناء أي كاشطة، انظر **[sitemapper](https://github.com/TigreGotico/sitemapper)** و**[مقالة robots.txt وخرائط المواقع](/blog/2026-03-01-robot-txt-sitemaps-ethical-web-scraping)**.
+تُشغّل وسائل النقل هذه جميع **[كاشطات قواعد بيانات الموسيقى](/ar/blog/2026-04-20-music-database-scrapers)** لدينا. لاستطلاع موقع قبل بناء أي كاشطة، انظر **[sitemapper](https://github.com/TigreGotico/sitemapper)** و**[مقالة robots.txt وخرائط المواقع](/ar/blog/2026-03-01-robot-txt-sitemaps-ethical-web-scraping)**.

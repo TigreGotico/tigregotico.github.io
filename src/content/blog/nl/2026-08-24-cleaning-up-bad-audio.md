@@ -251,7 +251,7 @@ SNR-cijfers in de ruisonderdrukkertabel hierboven: een getal gekoppeld aan
 een specifieke ruisconditie, geen bijvoeglijk naamwoord. De bredere familie
 van pure-ONNX-spraakbibliotheken waarin dit past, inclusief
 `speechonnxmetrics` zelf, wordt behandeld in
-[A Family of Pure-ONNX Speech Libraries](/blog/2026-08-03-a-family-of-pure-onnx-speech-libraries).
+[A Family of Pure-ONNX Speech Libraries](/nl/blog/2026-08-03-a-family-of-pure-onnx-speech-libraries).
 
 Audio opschonen voordat het een herkenner, een sprekeridentificatiesysteem,
 of een menselijke luisteraar bereikt, is op zichzelf staand
@@ -260,4 +260,4 @@ van benaderingen die geprobeerd zijn en het contact met een echt signaal
 niet overleefden.
 
 Vragen over de toepassing hiervan op een specifieke pijplijn:
-[neem contact op](/contact).
+[neem contact op](/nl/contact).

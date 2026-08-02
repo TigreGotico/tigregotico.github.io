@@ -60,4 +60,4 @@ A escala desse trabalho de conversão, contada diretamente a partir do que está
 
 A maioria das línguas nunca chega a ter uma opção comercial de fala offline, porque o mercado só para essa língua não justifica um fornecedor construir uma. O padrão acima — pegar num checkpoint aberto existente, convertê-lo para um formato que corre no hardware que realmente se tem, quantizá-lo para caber, verificá-lo face ao original e ligá-lo a um plugin — não depende da dimensão do mercado. Depende de haver um checkpoint aberto de onde partir, o que é cada vez mais o caso normal.
 
-Se tem um modelo de fala que só corre numa GPU de treino, ou um dispositivo que atualmente não tem suporte de fala offline na sua língua, [entre em contacto](/contact) ou veja como é este trabalho de ponta a ponta na [nossa página de serviços](/services).
+Se tem um modelo de fala que só corre numa GPU de treino, ou um dispositivo que atualmente não tem suporte de fala offline na sua língua, [entre em contacto](/pt/contact) ou veja como é este trabalho de ponta a ponta na [nossa página de serviços](/pt/services).

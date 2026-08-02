@@ -253,7 +253,7 @@ tabella dei denoiser sopra: un numero legato a una condizione di rumore
 specifica, non un aggettivo. La famiglia più ampia di librerie vocali in
 puro ONNX in cui questa si inserisce, incluso `speechonnxmetrics` stessa, è
 trattata in
-[A Family of Pure-ONNX Speech Libraries](/blog/2026-08-03-a-family-of-pure-onnx-speech-libraries).
+[A Family of Pure-ONNX Speech Libraries](/it/blog/2026-08-03-a-family-of-pure-onnx-speech-libraries).
 
 Ripulire l'audio prima che raggiunga un riconoscitore, un sistema di
 identificazione del parlante o un ascoltatore umano è un'ingegneria a sé,
@@ -261,4 +261,4 @@ con il proprio registro di compromessi e il proprio elenco di approcci
 tentati e non sopravvissuti al contatto con un segnale reale.
 
 Domande sull'applicazione di questo a una pipeline specifica:
-[mettetevi in contatto](/contact).
+[mettetevi in contatto](/it/contact).

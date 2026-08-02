@@ -154,7 +154,7 @@ Portuguese has the deepest stack, because Portuguese pronunciation depends on mo
 - **[tugamorph](https://github.com/TigreGotico/tugamorph)** is a rule-based morphological analyser: it segments a word into prefix, root, suffix, inflection and clitic, using only the Python standard library, optionally sharpened by silabificador and tugatagger.
 - **[bifonia](https://github.com/TigreGotico/bifonia)** resolves European Portuguese heterophonic homographs — words like "sede" (thirst, `ˈsedɨ`, vs. headquarters, `ˈsɛdɨ`) where the correct pronunciation depends on meaning, not grammar. See **[Saying It Right: Disambiguating Portuguese Heterophones for TTS](/blog/2026-06-12-disambiguating-portuguese-heterographs-for-tts)** for how it was built and evaluated. This is the concrete case behind the lattice idea above: orthography2ipa can supply both candidate readings of "sede", but only a meaning-aware layer like bifonia can choose between them.
 
-For more on how silabificador and tugaphone work together day to day, see **[Classical NLP for Portuguese: Syllabification and Grapheme-to-Phoneme](/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**, and for the broader engine underneath all of this, **[Grapheme-to-IPA for 676 Languages](/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**.
+For more on how silabificador and tugaphone work together day to day, see **[Classical NLP for Portuguese: Syllabification and Grapheme-to-Phoneme](/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**, and for the broader engine underneath all of this, **[Grapheme-to-IPA for 820 Languages](/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**.
 
 ## Sound-based search: phonematcher
 

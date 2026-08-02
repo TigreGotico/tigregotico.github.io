@@ -40,7 +40,7 @@ sobre o parsing ou o pipeline que assenta por cima.
 
 **Âmbito, dito sem rodeios:** estes transportes destinam-se apenas a páginas
 públicas e não autenticadas. Respeitam o `robots.txt` e qualquer crawl-delay
-declarado — vê o nosso **[artigo sobre robots.txt e sitemaps](/blog/2026-03-01-robot-txt-sitemaps-ethical-web-scraping)**
+declarado — vê o nosso **[artigo sobre robots.txt e sitemaps](/pt/blog/2026-03-01-robot-txt-sitemaps-ethical-web-scraping)**
 para saber como verificamos isso antes de escrever um scraper — e todo o cliente
 construído sobre eles é mantido a volumes de pedidos baixos, pelo que uma origem
 alvo nunca vê carga significativa vinda de nós. Isto não é uma cláusula de

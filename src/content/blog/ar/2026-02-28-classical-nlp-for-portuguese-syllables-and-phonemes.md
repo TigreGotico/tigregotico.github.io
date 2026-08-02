@@ -81,4 +81,4 @@ pip install git+https://github.com/TigreGotico/silabificador
 
 وللاطلاع على التعيينات متعددة اللغات الأوسع، انظر [orthography2ipa](https://github.com/TigreGotico/orthography2ipa). حتمية وسريعة وتعمل دون اتصال ومبنية لتشمل كامل اتساع العالم الناطق بالبرتغالية.
 
-تستند حزمة الصوتيات البرتغالية هذه إلى **[عملنا في تحويل الحروف الكتابية إلى IPA لـ 820 لغة](/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**، مشكّلةً العمود الفقري الصوتي لـ **[TTS الذي يعمل على بطاطا](/blog/2026-05-10-tts-that-runs-on-a-potato)** و **[صوتَي Miro و Dii متعددَي اللغات](/blog/2026-06-15-two-voices-every-language-miro-and-dii)**.
+تستند حزمة الصوتيات البرتغالية هذه إلى **[عملنا في تحويل الحروف الكتابية إلى IPA لـ 820 لغة](/ar/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**، مشكّلةً العمود الفقري الصوتي لـ **[TTS الذي يعمل على بطاطا](/ar/blog/2026-05-10-tts-that-runs-on-a-potato)** و **[صوتَي Miro و Dii متعددَي اللغات](/ar/blog/2026-06-15-two-voices-every-language-miro-and-dii)**.

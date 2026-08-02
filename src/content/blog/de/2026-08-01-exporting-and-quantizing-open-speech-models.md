@@ -171,5 +171,5 @@ Normalfall ist.
 
 Wenn Sie ein Sprachmodell haben, das nur auf einer Trainings-GPU läuft, oder ein
 Gerät, das derzeit keine Offline-Sprachunterstützung in seiner Sprache hat,
-[nehmen Sie Kontakt auf](/contact) oder sehen Sie sich an, wie diese Arbeit von
-Anfang bis Ende aussieht, auf [unserer Leistungsseite](/services).
+[nehmen Sie Kontakt auf](/de/contact) oder sehen Sie sich an, wie diese Arbeit von
+Anfang bis Ende aussieht, auf [unserer Leistungsseite](/de/services).

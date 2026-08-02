@@ -243,7 +243,7 @@ verzachting.
 Niets hiervan is nuttig op zichzelf. Het wordt nuttig op het moment dat
 meerdere engines op dezelfde voet vergeleken moeten worden — welke
 TTS-engine, welke STT-engine, welk verbeteringsmodel als standaard te
-gebruiken. De [pure-ONNX-spraakbibliotheken](/blog/2026-08-03-a-family-of-pure-onnx-speech-libraries)
+gebruiken. De [pure-ONNX-spraakbibliotheken](/nl/blog/2026-08-03-a-family-of-pure-onnx-speech-libraries)
 die `speechonnxmetrics` gebouwd werd om te evalueren — TTS, ASR,
 ruisonderdrukking, stemklonen — publiceren vergelijkingen per engine
 geproduceerd met precies de metrieken hierboven: no-reference MOS voor
@@ -254,4 +254,4 @@ getal dat iemand anders kan controleren.
 
 Als uw project een taal, een engine of een opnameconditie nodig heeft die
 op deze manier geëvalueerd moet worden en dat nog niet gedekt is,
-[neem dan contact op](/contact) of bekijk [onze diensten](/services).
+[neem dan contact op](/nl/contact) of bekijk [onze diensten](/nl/services).

@@ -245,7 +245,7 @@ plusieurs prédicteurs ensemble, et traiter leur désaccord comme une invite
 Rien de tout cela n'est utile isolément. Cela devient utile au moment où
 plusieurs moteurs doivent être comparés sur un pied d'égalité — quel moteur
 TTS, quel moteur STT, quel modèle d'amélioration adopter par défaut. Les
-[bibliothèques de parole en ONNX pur](/blog/2026-08-03-a-family-of-pure-onnx-speech-libraries)
+[bibliothèques de parole en ONNX pur](/fr/blog/2026-08-03-a-family-of-pure-onnx-speech-libraries)
 que `speechonnxmetrics` a été construite pour évaluer — TTS, ASR,
 débruitage, clonage vocal — publient des comparaisons par moteur produites
 avec exactement les métriques ci-dessus : MOS sans référence pour les
@@ -256,4 +256,4 @@ nombre que quelqu'un d'autre peut vérifier.
 
 Si votre projet a besoin d'une langue, d'un moteur ou d'une condition
 d'enregistrement évalués de cette manière et que ce n'est pas encore
-couvert, [contactez-nous](/contact) ou consultez [nos services](/services).
+couvert, [contactez-nous](/fr/contact) ou consultez [nos services](/fr/services).

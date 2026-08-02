@@ -252,5 +252,5 @@ trainingsset van diens stem; er is alleen veel minder van nodig om een
 bruikbaar resultaat te produceren, wat een reden is voor meer voorzichtigheid,
 niet minder.
 
-Neem contact op via [contact](/contact) of bekijk [wat we aanbieden](/services)
+Neem contact op via [contact](/nl/contact) of bekijk [wat we aanbieden](/nl/services)
 als stemconversie deel uitmaakt van een pijplijn die u bouwt.
