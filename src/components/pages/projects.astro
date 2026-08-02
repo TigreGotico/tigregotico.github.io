@@ -490,6 +490,8 @@ const collaborations = (await getCollection('collaborations')).map((c) => c.data
 </Base>
 
 <style>
+  @reference '../../styles/global.css';
+
   .chip {
     @apply inline-flex items-center gap-1.5 rounded-full border border-border bg-surface/60 px-3.5 py-1.5 text-sm text-muted transition-colors;
   }
