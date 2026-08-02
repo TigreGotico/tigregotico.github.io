@@ -345,6 +345,32 @@ positions at once, and we would rather not. The honest options are the same ones
 Debian is weighing — disclosure, contributor accountability, or a rule nobody can
 verify — and we have not picked one.
 
+## The other axis the argument runs along
+
+Debian's debate is about provenance and licensing. It is not the only axis, and
+the second one has nothing to do with copyright.
+
+Codeberg, the FLOSS forge, adopted two member-approved motions in July 2026 and
+[set out its reasoning](https://blog.codeberg.org/protecting-our-floss-commons-from-llms.html)
+in terms that barely touch licences. The objections are about costs and effort:
+energy and hardware consumption pushed onto everyone; crawler traffic that
+pressures small forges into defences that also obstruct ordinary users;
+single-use "vibe-coded" projects published and never maintained; and the load on
+the people who review:
+
+> Maintainers are under an increased work-load due to people submitting (often
+> well-meaning) low-effort, LLM-generated contributions that require substantial
+> amounts of time to review.
+
+Their Terms of Use now discourage such projects, applied case by case by
+moderators rather than by mass removal.
+
+So there are two independent questions in circulation, and a project can land
+anywhere on the grid: whether machine-written code can be licensed at all, and
+whether the ecosystem can absorb the volume. Debian is voting on the first and
+has not concluded. Codeberg has acted on the second. Neither outcome settles the
+other, and the answers a project gives to each are largely uncorrelated.
+
 ## The part we are not going to pretend is settled
 
 We may not have needed to do any of that.
