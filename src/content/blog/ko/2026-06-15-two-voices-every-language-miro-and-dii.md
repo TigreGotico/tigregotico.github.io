@@ -33,7 +33,7 @@ draft: false
 
 언어를 잘 말하는 것은 목소리에만 관한 것이 아닙니다 — 글이 *어떻게* 소리 나야 하는지를 아는 것에 관한 것입니다. 그것이 **자소-음소 변환(G2P)** 의 역할입니다: 쓰인 텍스트를 모델이 실제로 발음하는 음소 열로 바꾸는 것입니다. 우리가 다루는 모든 새로운 언어에는 그 자체의 G2P 연구가 따라오며, 진짜 작업의 상당 부분은 바로 그 연구에 있습니다.
 
-phoonnx는 여기서 의도적으로 유연합니다. 다양한 음소화기(phonemizer) — eSpeak, Gruut, Epitran, 모델 기반 [ByT5 G2P](https://huggingface.co/collections/OpenVoiceOS/g2p-models-6886a8d612825c3fe65befa0), 그리고 일반 엔진이 부족한 곳에서는 언어별 도구 — 를 구동할 수 있습니다. 이는 우리의 더 넓은 음성학 스택과 직접 연결됩니다: 우리의 **[820개 언어를 위한 정서법-IPA 연구](/ko/blog/2026-01-15-grapheme-to-ipa-for-350-languages)** 와 포르투갈어 계열을 위해 구축한 **[루소폰 음소화기](/ko/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)** 는 같은 목표를 지향합니다 — 대형 TTS 제공업체가 결코 신경 써서 모델링하지 않은 언어들을 위한 정확한 IPA입니다. 어떤 언어에 기성품으로 좋은 음소화기가 없을 때, 그 공백이 바로 프로젝트입니다. 우리는 철자-소리 연구를 먼저 하고, 그다음 목소리가 뒤따릅니다.
+phoonnx는 여기서 의도적으로 유연합니다. 다양한 음소화기(phonemizer) — eSpeak, Gruut, Epitran, 모델 기반 [ByT5 G2P](https://huggingface.co/collections/OpenVoiceOS/g2p-models-6886a8d612825c3fe65befa0), 그리고 일반 엔진이 부족한 곳에서는 언어별 도구 — 를 구동할 수 있습니다. 이는 우리의 더 넓은 음성학 스택과 직접 연결됩니다: 우리의 **[정서법-IPA 연구](/ko/blog/2026-01-15-grapheme-to-ipa-for-350-languages)** 와 포르투갈어 계열을 위해 구축한 **[루소폰 음소화기](/ko/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)** 는 같은 목표를 지향합니다 — 대형 TTS 제공업체가 결코 신경 써서 모델링하지 않은 언어들을 위한 정확한 IPA입니다. 어떤 언어에 기성품으로 좋은 음소화기가 없을 때, 그 공백이 바로 프로젝트입니다. 우리는 철자-소리 연구를 먼저 하고, 그다음 목소리가 뒤따릅니다.
 
 
 ## 요청되는 모든 언어를 위한 두 개의 모델
