@@ -154,6 +154,10 @@ const S = {
 
 // Equalizer bars — varied heights/delays for an organic waveform.
 const bars = [0.35, 0.6, 0.85, 1, 0.7, 0.45, 0.9, 0.55, 0.75, 1, 0.5, 0.8, 0.4, 0.65, 0.95, 0.6];
+
+// The headline is split so its second half can carry the brand gradient.
+// Japanese and Chinese run words together; Korean spaces them like Latin script.
+const headlineGap = ['ja', 'zh'].includes(locale) ? '' : ' ';
 ---
 <section
   class="relative -mx-6 -mt-12 overflow-hidden px-6 pb-20 pt-24 sm:pb-28 sm:pt-32"
@@ -182,8 +186,7 @@ const bars = [0.35, 0.6, 0.85, 1, 0.7, 0.45, 0.9, 0.55, 0.75, 1, 0.5, 0.8, 0.4, 
     <p class="eyebrow mb-5 reveal" data-reveal>{S.eyebrow}</p>
 
     <h1 class="display-1 max-w-4xl text-balance reveal" data-reveal data-reveal-delay="60">
-      {S.h1a}
-      <span class="text-gradient">{S.h1b}</span>
+      {S.h1a}{headlineGap}<span class="text-gradient">{S.h1b}</span>
     </h1>
 
     <!-- Animated soundwave / equalizer motif -->
