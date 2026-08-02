@@ -345,45 +345,31 @@ positions at once, and we would rather not. The honest options are the same ones
 Debian is weighing — disclosure, contributor accountability, or a rule nobody can
 verify — and we have not picked one.
 
-## The objection that has nothing to do with copyright
+## The other axis the argument runs along
 
-Everything above treats this as a legal question. The strongest objection is not
-a legal one, and it is worth stating in its own terms rather than folded into
-the licensing argument, because it stands whichever way the licensing lands.
+Debian's debate is about provenance and licensing. It is not the only axis, and
+the second one has nothing to do with copyright.
 
-Codeberg, the FLOSS forge, took a position in July 2026 through two
-member-approved motions. Their
-[reasoning](https://blog.codeberg.org/protecting-our-floss-commons-from-llms.html)
-barely mentions copyright. It is about what this does to the commons. They point
-at costs pushed onto everyone else — energy, hardware, the crawler traffic that
-forces small forges to put up defences that get in the way of ordinary users.
-They point at what they call vibe-coded projects: software generated once,
-published, and never maintained, filling a shared space that only works because
-people tend what they put in it. And they point at the reviewers:
+Codeberg, the FLOSS forge, adopted two member-approved motions in July 2026 and
+[set out its reasoning](https://blog.codeberg.org/protecting-our-floss-commons-from-llms.html)
+in terms that barely touch licences. The objections are about costs and effort:
+energy and hardware consumption pushed onto everyone; crawler traffic that
+pressures small forges into defences that also obstruct ordinary users;
+single-use "vibe-coded" projects published and never maintained; and the load on
+the people who review:
 
 > Maintainers are under an increased work-load due to people submitting (often
 > well-meaning) low-effort, LLM-generated contributions that require substantial
 > amounts of time to review.
 
-That last one is the part we find hardest to argue with, because it is already
-true and it does not depend on any unsettled question. Generating a plausible
-patch is now much cheaper than reviewing one. A maintainer's attention is the
-one input in free software that has not become cheaper, and it is the input
-everything else depends on. A contribution that takes ten seconds to produce and
-an hour to check has moved cost from the person who wanted something to the
-person who has to live with it.
+Their Terms of Use now discourage such projects, applied case by case by
+moderators rather than by mass removal.
 
-We are on the wrong end of this criticism and we know it. One of these
-repositories carries a "vibe coded" badge, put there by us. What we would say in
-our defence is narrow: these ports are maintained, they are tested against the
-originals, and we answer for them. But that is a claim about our conduct, not a
-rebuttal — and the cost Codeberg describes is borne by whoever reviews the next
-patch, not by whoever is confident about their own.
-
-Notice that this objection survives every argument in this post. Suppose the
-CJEU reasoning holds, no derivative work is created, the licences were never
-engaged. Codeberg's case is untouched, because it was never about who owns the
-output. It is about who pays for it.
+So there are two independent questions in circulation, and a project can land
+anywhere on the grid: whether machine-written code can be licensed at all, and
+whether the ecosystem can absorb the volume. Debian is voting on the first and
+has not concluded. Codeberg has acted on the second. Neither outcome settles the
+other, and the answers a project gives to each are largely uncorrelated.
 
 ## The part we are not going to pretend is settled
 
