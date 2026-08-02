@@ -16,26 +16,26 @@ draft: false
 
 Uma boa voz TTS offline para português europeu não existia. A gravação de estúdio
 é cara, leva meses, e na maior parte das línguas do mundo as gravações
-simplesmente nunca aconteceram. Por isso construímos quatro do zero — sem cabine
-de gravação, sem ator de voz, sem nuvem.
+simplesmente nunca aconteceram. Por isso construímos quatro do zero, sem cabine
+de gravação, sem ator de voz e sem nuvem.
 
 ### A pipeline de três passos
 
-**1. Gerar pares de fala sintéticos.** Usamos uma voz TTS existente como dadora —
-qualquer fonte que consiga produzir áudio inteligível — e corremo-la sobre um
+**1. Gerar pares de fala sintéticos.** Usamos uma voz TTS existente como dadora
+(qualquer fonte que consiga produzir áudio inteligível) e corremo-la sobre um
 grande corpus de texto para produzir milhares de pares de áudio/texto. A voz
 dadora não precisa de ser de alta qualidade. Só precisa de ser suficientemente
 coerente para se aprender a partir dela.
 
 **2. Aplicar conversão de voz.** Um passo de conversão de voz transforma o timbre
-da dadora numa nova identidade — género, idade ou personagem diferentes. O áudio
-resultante soa como a voz alvo, não como a dadora. É aqui que nasce uma nova
-personalidade.
+da dadora numa nova identidade: género, idade ou personagem diferentes. O áudio
+resultante soa como a voz alvo, não como a dadora.
 
-**3. Treinar um modelo VITS compacto.** O áudio convertido torna-se o conjunto de
-treino para um pequeno modelo de arquitetura VITS via
-[phoonnx_train](https://github.com/TigreGotico/phoonnx). O modelo terminado é
-exportado para ONNX e corre inteiramente offline — num Raspberry Pi se for
+**3. Treinar um modelo VITS compacto.** VITS é uma arquitetura neuronal de
+texto-para-fala. O áudio convertido torna-se o conjunto de treino para um
+pequeno modelo VITS via [phoonnx_train](https://github.com/TigreGotico/phoonnx).
+O modelo terminado é exportado para ONNX (um formato portátil para correr
+modelos treinados) e corre inteiramente offline, num Raspberry Pi se for
 necessário.
 
 ### Salvaguardas éticas
@@ -50,8 +50,8 @@ seja negligenciável.
 ### Aplicado ao português europeu
 
 O português europeu não tinha nenhuma voz offline aberta de alta qualidade.
-Produzimos quatro vozes — incluindo as identidades Miro e Dii que são agora as
-vozes OVOS por defeito para `pt-PT` — usando exatamente esta pipeline. Correm
+Produzimos quatro vozes, incluindo as identidades Miro e Dii que são agora as
+vozes OVOS por defeito para `pt-PT`, usando exatamente esta pipeline. Correm
 confortavelmente em hardware modesto, não exigem ligação à internet, e os dados de
 treino estão [publicados abertamente](https://huggingface.co/TigreGotico) para que
 qualquer pessoa os possa reproduzir ou estender.

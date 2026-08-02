@@ -17,17 +17,17 @@ draft: false
 ## Uma interface para toda a web musical
 
 A web da música está fragmentada por muitos sites independentes. O Bandcamp vende-te um FLAC e uma
-licença Creative Commons; o SoundCloud transmite um remix que mais ninguém aloja;
-a SomaFM mantém um conjunto de canais de rádio suportados pelos ouvintes;
-e vários sites geridos pela comunidade mantêm enciclopédias curadas de
+licença Creative Commons. O SoundCloud transmite um remix que mais ninguém aloja.
+A SomaFM mantém um conjunto de canais de rádio suportados pelos ouvintes.
+Vários sites geridos pela comunidade mantêm enciclopédias curadas de
 rock progressivo, jazz, clássica e metal. Cada site tem a sua própria marcação, as
 suas próprias manias, a sua própria ideia do que sequer é uma "faixa".
 
 Mantemos uma família de clientes Python pequenos, focados e de código aberto que
 domam essa confusão. Todos eles fazem, em espírito, a mesma coisa: alcançam uma
-fonte de música e devolvem-te **modelos de metadados de media tipados** — objetos
-validados em vez de dicionários frágeis — para que o resto do teu código nunca
-tenha de se importar de que site vieram os dados. Sete dos nove estão publicados no PyPI; os outros dois instalam-se diretamente a partir do GitHub. Todos
+fonte de música e devolvem **modelos de metadados de media tipados**, objetos
+validados em vez de dicionários frágeis, para que o resto do teu código nunca
+tenha de se importar de que site vieram os dados. Sete dos nove estão publicados no PyPI. Os outros dois instalam-se diretamente a partir do GitHub. Todos
 falam o mesmo vocabulário.
 
 Eis a visita guiada.
@@ -35,49 +35,48 @@ Eis a visita guiada.
 ## Streaming e rádio
 
 **[py_bandcamp](https://github.com/TigreGotico/py_bandcamp)** faz scraping do
-Bandcamp: procura faixas, álbuns, artistas e editoras; navega por etiqueta de
-género; obtém recomendações e artistas relacionados a partir de uma semente; e
+Bandcamp. Procura faixas, álbuns, artistas e editoras, navega por etiqueta de
+género, obtém recomendações e artistas relacionados a partir de uma semente, e
 extrai um URL de MP3 transmissível. As procuras devolvem objetos `Release`
-tipados que transportam título, capa, géneros, créditos e — crucialmente para os
-mentalizados no FOSS — um campo de licença ao estilo SPDX com uma verificação
-`is_open()` para que possas distinguir um lançamento Creative Commons de um com
-todos os direitos reservados. Uma conversão de álbum de fidelidade total preenche
-a tracklist ordenada a pedido.
+tipados que transportam título, capa, géneros, créditos e um campo de licença
+ao estilo SPDX com uma verificação `is_open()`, para que possas distinguir um
+lançamento Creative Commons de um com todos os direitos reservados. Uma
+conversão de álbum de fidelidade total preenche a tracklist ordenada a pedido.
 
 **[nuvem_de_som](https://github.com/TigreGotico/nuvem_de_som)** é o nosso cliente
-de SoundCloud, e é o canivete suíço do lote. Três backends independentes — um
-backend de API rico em metadados, um scraper de HTML sem dependências, e um
-backend yt-dlp — assentam por trás de um orquestrador que recua graciosamente de
-um para o seguinte. Procura faixas e pessoas, resolve URLs de stream diretos
-(progressivo ou HLS), descarrega faixas e playlists inteiras, e até traz uma
-aplicação de terminal, `nds`, para procurar e reproduzir a partir da linha de
-comandos. Os lançamentos vêm de volta com codec, taxa de bits, géneros, país,
-licença SPDX e tracklists completas dos sets.
+de SoundCloud. Três backends independentes, um backend de API rico em metadados,
+um scraper de HTML sem dependências, e um backend yt-dlp, assentam por trás de
+um orquestrador que recua de um para o seguinte. Procura faixas e pessoas,
+resolve URLs de stream diretos (progressivo ou HLS), descarrega faixas e
+playlists inteiras, e traz uma aplicação de terminal, `nds`, para procurar e
+reproduzir a partir da linha de comandos. Os lançamentos vêm de volta com
+codec, taxa de bits, géneros, país, licença SPDX e tracklists completas dos
+sets.
 
 **[radiosoma](https://github.com/TigreGotico/radiosoma)** envolve a API pública de
-canais da SomaFM. A SomaFM é a extremidade amigável e de API aberta do espetro, e
-o cliente modela-a de forma limpa: cada canal é uma obra, e **cada codificação de
-stream** — AAC a 130 kbps, MP3 a 256 kbps, HE-AAC a 64 e 32 kbps — torna-se o seu
-próprio `Release` desse canal, para que um consumidor possa escolher o melhor
-ajuste e desduplicar por identidade. O feed de faixas recentes surge como um
-horário arrumado do que tem estado a tocar.
+canais da SomaFM. A SomaFM tem uma API aberta, e o cliente modela-a
+diretamente: cada canal é uma obra, e cada codificação de stream (AAC a 130
+kbps, MP3 a 256 kbps, HE-AAC a 64 e 32 kbps) torna-se o seu próprio `Release`
+desse canal, para que um consumidor possa escolher o melhor ajuste e
+desduplicar por identidade. O feed de faixas recentes mostra um horário do que
+tem estado a tocar.
 
 **[tunein](https://github.com/TigreGotico/tunein)** é um cliente TuneIn não
 oficial para as estações de rádio linear e IPTV do mundo. Um caminho rápido
-devolve apenas o payload da procura; uma chamada de enriquecimento opcional
-preenche género, língua, país, indicativo e slogan. Como o TuneIn devolve
-múltiplos URLs de stream por estação — diferentes taxas de bits, espelhos e
-protocolos — cada um torna-se o seu próprio `Release`, deixando de novo o
-consumidor escolher no momento da reprodução. Uma pequena CLI dá-te saída em
-tabela ou JSON.
+devolve apenas o payload da procura. Uma chamada de enriquecimento opcional
+preenche género, língua, país, indicativo e slogan. O TuneIn devolve múltiplos
+URLs de stream por estação (diferentes taxas de bits, espelhos e protocolos),
+por isso cada um torna-se o seu próprio `Release`, deixando o consumidor
+escolher no momento da reprodução. Uma pequena CLI dá-te saída em tabela ou
+JSON.
 
 **[pyheartradio](https://github.com/TigreGotico/pyheartradio)** fala com a API
-pública do iHeartRadio — sem chave, sem conta. Procura estações, podcasts,
-artistas, faixas e playlists; obtém episódios de podcast com URLs de stream de
-áudio diretos; e conta com obtenções de detalhes em paralelo para que as pesquisas
-de estação e artista corram concorrentemente. Cada modelo oferece os auxiliares
-`to_external_ids()` e `to_signals()` para encaixar diretamente numa pipeline de
-metadados tipada.
+pública do iHeartRadio, sem precisar de chave nem de conta. Procura estações,
+podcasts, artistas, faixas e playlists, obtém episódios de podcast com URLs de
+stream de áudio diretos, e corre as pesquisas de estação e artista
+concorrentemente através de obtenções de detalhes em paralelo. Cada modelo
+oferece os auxiliares `to_external_ids()` e `to_signals()` para uso numa
+pipeline de metadados tipada.
 
 ## Enciclopédias e arquivos de música
 
@@ -85,67 +84,68 @@ A segunda metade da família visa os grandes catálogos comunitários.
 
 **[pyprogarchives](https://github.com/TigreGotico/pyprogarchives)** (Prog
 Archives), **[pyjazzmusicarchives](https://github.com/TigreGotico/pyjazzmusicarchives)**
-(Jazz Music Archives) — ambos instalam-se diretamente a partir dos respetivos repositórios GitHub em vez do PyPI — e
+(Jazz Music Archives), e
 **[pyclassicalarchives](https://github.com/TigreGotico/pyclassicalarchives)**
-(Classical Archives) partilham uma forma quase idêntica: navegar o índice A–Z,
-procurar por nome, e obter uma página completa de artista ou compositor com
-biografia, país e uma discografia avaliada pelos membros. Os Prog e Jazz Archives
-fazem scraping de HTML; os Classical Archives envolvem uma API JSON pública e
-expõem os álbuns de um compositor *e* uma árvore de obras achatada
-recursivamente. Cada modelo transporta o id canónico estável do site via
-`to_external_ids_dict()`, que é exatamente aquilo de que precisas para cruzar um
-catálogo com outro.
+(Classical Archives) partilham uma forma quase idêntica. Tanto o pyprogarchives
+como o pyjazzmusicarchives instalam-se diretamente a partir dos respetivos
+repositórios GitHub em vez do PyPI. Os três navegam o índice A–Z, procuram por
+nome, e obtêm uma página completa de artista ou compositor com biografia, país
+e uma discografia avaliada pelos membros. Os Prog e Jazz Archives fazem
+scraping de HTML. Os Classical Archives envolvem uma API JSON pública e expõem
+os álbuns de um compositor *e* uma árvore de obras achatada recursivamente.
+Cada modelo transporta o id canónico estável do site via
+`to_external_ids_dict()`, útil para cruzar um catálogo com outro.
 
 **[pymetal](https://github.com/TigreGotico/pymetal)** é o nosso cliente para a
-Encyclopaedia Metallum, os Metal Archives — e o mais ambicioso do conjunto. A
-maioria dos scrapers achata uma faixa para `(id, title, band, album)`. O pymetal
-recusa-se a perder aquilo que os Metal Archives mantêm separado: uma faixa pode
-creditar **várias bandas** (splits, colaborações), a **formação de uma banda é
-fatiada ao longo do tempo**, e uma faixa pode **aparecer em muitos lançamentos**
-(compilações, reedições, singles). Modela cada um como uma entidade de primeira
-classe indexada pelo id do arquivo, para que os re-scrapes sejam idempotentes. A
-superfície de endpoints é ampla — procura avançada de banda/álbum/canção, páginas
-completas de lançamento com atribuição por banda nos splits, formações
+Encyclopaedia Metallum, os Metal Archives, e o mais ambicioso do conjunto. A
+maioria dos scrapers achata uma faixa para `(id, title, band, album)`. O
+pymetal mantém aquilo que os Metal Archives mantêm separado: uma faixa pode
+creditar múltiplas bandas (splits, colaborações), a formação de uma banda muda
+ao longo do tempo, e uma faixa pode aparecer em muitos lançamentos
+(compilações, reedições, singles). Modela cada um como uma entidade distinta
+indexada pelo id do arquivo, para que os re-scrapes sejam idempotentes. A
+superfície de endpoints é ampla: procura avançada de banda/álbum/canção,
+páginas completas de lançamento com atribuição por banda nos splits, formações
 particionadas por estado com intervalos de datas de função, críticas,
-recomendações, ligações externas e letras — tudo como modelos Pydantic v2 que
+recomendações, ligações externas e letras, tudo como modelos Pydantic v2 que
 fazem round-trip através de JSON.
 
 Para além da música, **[tutubo](https://github.com/TigreGotico/tutubo)** faz
 scraping do YouTube e do YouTube Music, e
-**[pymal](https://github.com/TigreGotico/pymal)** cobre o MyAnimeList —
+**[pymal](https://github.com/TigreGotico/pymal)** cobre o MyAnimeList,
 estendendo os mesmos padrões de metadados tipados a categorias de media mais
-amplas. Todos emitem o mesmo vocabulário para que um único consumidor a jusante
-lide com tudo de forma uniforme.
+amplas. Todos emitem o mesmo vocabulário, para que um único consumidor a
+jusante lide com tudo de forma uniforme.
 
 ## Construídos para acesso conforme e de baixo volume
 
 Estes clientes obtêm apenas páginas de catálogo públicas, a volumes de pedidos
-baixos, e verificam o `robots.txt` de cada site antes de fazer scraping — vê o
+baixos, e verificam o `robots.txt` de cada site antes de fazer scraping. Vê o
 **[artigo sobre robots.txt e sitemaps](/pt/blog/2026-03-01-robot-txt-sitemaps-ethical-web-scraping)**
 para saber como funciona esse passo de reconhecimento. Por toda a família a
-camada HTTP é **plugável**: por defeito os clientes usam um transporte cujo
+camada HTTP é plugável. Por defeito os clientes usam um transporte cujo
 handshake TLS coincide com o de um navegador real (`curl_cffi` a coincidir com
 o TLS/JA3 do Chrome), para que um cliente bem-comportado não seja classificado
 incorretamente como automação maliciosa por sistemas de deteção afinados para
-abuso automatizado. As enciclopédias por trás da Cloudflare podem
-adicionalmente encaminhar através de uma instância FlareSolverr para dados em
-direto, ou ler a partir do Wayback Machine do Internet Archive como reserva. A
-camada de parsing é deliberadamente independente da forma como o HTML chega,
-por isso o mesmo código funciona seja qual for o transporte que escolheres.
+abuso automatizado. As enciclopédias por trás da Cloudflare também podem
+encaminhar através de uma instância FlareSolverr para dados em direto, ou ler
+a partir do Wayback Machine do Internet Archive como reserva. A camada de
+parsing é independente da forma como o HTML chega, por isso o mesmo código
+funciona seja qual for o transporte que escolheres.
 
 ## Um catálogo de música multi-fonte
 
 O verdadeiro retorno é o que acontece quando deixas de pensar nisto como nove
-ferramentas separadas. Como todos emitem o mesmo vocabulário de metadados tipado e
-todos expõem ids externos canónicos, podes espalhar um único artista por
-Bandcamp, SoundCloud, os diretórios de rádio e as enciclopédias, e depois dobrar
-os resultados num catálogo coerente — desduplicado por identidade, ciente das
-licenças, e pronto a alimentar um motor de recomendação, um servidor de media, ou
-um dataset de investigação.
+ferramentas separadas. Todos emitem o mesmo vocabulário de metadados tipado e
+todos expõem ids externos canónicos. Isso significa que podes espalhar um único
+artista por Bandcamp, SoundCloud, os diretórios de rádio e as enciclopédias, e
+depois dobrar os resultados num único catálogo: desduplicado por identidade,
+ciente das licenças, e pronto a alimentar um motor de recomendação, um
+servidor de media, ou um dataset de investigação.
 
 Cada um destes clientes é software livre, auto-alojável, e corre no teu próprio
 hardware, sem necessidade de chave de API. Escolhe a fonte que te interessa: faz
-`pip install` se estiver no PyPI, ou `pip install git+https://github.com/TigreGotico/<repo>` para o pyprogarchives e o pyjazzmusicarchives, que são apenas GitHub — e começa a construir.
+`pip install` se estiver no PyPI, ou `pip install git+https://github.com/TigreGotico/<repo>` para o pyprogarchives e o pyjazzmusicarchives, que são apenas GitHub. Depois começa a construir.
 
 Todos os scrapers andam sobre as nossas
 **[sessões requests componíveis e prontas a usar](/pt/blog/2026-03-15-beating-bot-walls-with-drop-in-requests-sessions)**.
