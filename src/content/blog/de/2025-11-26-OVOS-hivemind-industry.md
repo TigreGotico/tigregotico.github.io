@@ -49,7 +49,7 @@ Projekte wie **[WALLABI](https://wasabiproject.eu/wallabi)** und **[HUMANENERDIA
 
 ### **3. Unterstützung bei der vorausschauenden Wartung**
 
-Experimente wie **[GENIUS-PM](https://wasabiproject.eu/genius-pm)** nutzen den Assistenten, um Wartungstechnikern schnellen Zugriff auf Maschinenzustandsdaten, Fehlererklärungen und Reparaturschritte zu geben — insbesondere, wenn ihre Hände beschäftigt sind.
+Experimente wie **[GENIUS-PM](https://wasabiproject.eu/genius-pm)** nutzen den Assistenten, um Wartungstechnikern schnellen Zugriff auf Maschinenzustandsdaten, Fehlererklärungen und Reparaturschritte zu geben, insbesondere wenn ihre Hände beschäftigt sind.
 
 ### **4. Logistik, Materialhandhabung & Lagerunterstützung**
 
@@ -61,7 +61,7 @@ Experimente wie **[GENIUS-PM](https://wasabiproject.eu/genius-pm)** nutzen den A
 
 ### **6. Nachhaltigkeit, Abfallverfolgung & Ressourceneffizienz**
 
-**[VAFER](https://wasabiproject.eu/vafer)** integriert Sprachschnittstellen mit Systemen, die Recycling, Materialwiederverwendung und Ressourcenflüsse überwachen — freihändiges Berichten in Fabrikumgebungen.
+**[VAFER](https://wasabiproject.eu/vafer)** integriert Sprachschnittstellen mit Systemen, die Recycling, Materialwiederverwendung und Ressourcenflüsse überwachen, mit freihändigem Berichten in Fabrikumgebungen.
 
 All dies stützt sich auf OVOS und auf HiveMind zur Weiterleitung der Kommunikation zwischen Geräten, Android-Benutzeroberfläche und Backend-Systemen.
 
@@ -81,7 +81,7 @@ In WASABI ist diese RASA-Engine als **Skill** in OVOS eingebunden und übernimmt
 Ein Android-Frontend für Arbeiter, das sich über HiveMind mit OVOS verbindet.
 
 Frühe Version hier veröffentlicht:
-[https://github.com/BIBA-GmbH/Mycroft-Android](https://github.com/BIBA-GmbH/Mycroft-Android)
+[BIBA-GmbH/Mycroft-Android](https://github.com/BIBA-GmbH/Mycroft-Android)
 
 Zu den Funktionen gehören:
 
@@ -105,12 +105,12 @@ Dies bildet den Standard-Stack für industrielle Sprachassistenten, den alle WAS
 ### **4. Ein industrieller Sprachdatensatz**
 
 COALA veröffentlichte einen mehrsprachigen Sprachdatensatz, der in Fabriken und Werkstätten aufgenommen wurde:
-[https://zenodo.org/record/8268928](https://zenodo.org/record/8268928)
+[zenodo.org/record/8268928](https://zenodo.org/record/8268928)
 
 ---
 
 ## Warum es für die Industrie funktioniert
 
-Die Designziele, die in der Fertigung zählen — vollständige Transparenz für regulierte Branchen, lokale/Edge-Bereitstellung ohne Cloud-Abhängigkeit, modulare Skills für proprietäre Logik und die Fähigkeit von HiveMind, Sprachknoten über eine Anlage zu verteilen — waren von Anfang an eingebaut, nicht nachträglich hinzugefügt.
+Die Designziele, die in der Fertigung zählen, waren von Anfang an eingebaut und nicht nachträglich hinzugefügt: vollständige Transparenz für regulierte Branchen, lokale/Edge-Bereitstellung ohne Cloud-Abhängigkeit, modulare Skills für proprietäre Logik und die Fähigkeit von HiveMind, Sprachknoten über eine Anlage zu verteilen.
 
 Quellcode von OVOS und HiveMind: [github.com/OpenVoiceOS](https://github.com/OpenVoiceOS) · [github.com/JarbasHiveMind](https://github.com/JarbasHiveMind)
