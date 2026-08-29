@@ -1,6 +1,6 @@
 ---
 title: "Modelos de TTS que Funcionan en una Patata"
-description: "phoonnx es un framework de investigación para síntesis de voz basada en VITS, construido para funcionar cómodamente en hardware modesto. Sin GPU, sin nube, sin clave de API — solo una voz ONNX de ~15,65 millones de parámetros y una CPU. Aquí explicamos lo pequeña que puede ser una buena voz, y cómo las entrenamos."
+description: "phoonnx es un framework de investigación para síntesis de voz basada en VITS, construido para funcionar cómodamente en hardware modesto. Sin GPU, sin nube, sin clave de API: solo una voz ONNX de ~15,65 millones de parámetros y una CPU. Aquí explicamos lo pequeña que puede ser una buena voz, y cómo las entrenamos."
 date: 2026-05-10
 lang: es
 author: "Casimiro Ferreira"
@@ -15,7 +15,7 @@ draft: false
 ---
 
 Una buena síntesis de voz no requiere una GPU ni una suscripción en la nube. Una
-voz natural y multilingüe cabe en algo que te daría vergüenza llamar servidor — el tipo de placa que guardas en un cajón "por si
+voz natural y multilingüe cabe en algo que te daría vergüenza llamar servidor: el tipo de placa que guardas en un cajón "por si
 acaso". Una patata.
 
 [**phoonnx**](https://github.com/TigreGotico/phoonnx) es nuestro framework de
@@ -26,8 +26,8 @@ podemos *entrenar nosotros mismos* desde cero.
 ## ¿Cómo de pequeño es pequeño?
 
 Pongamos un número real en lugar de generalidades. Cogimos una voz phoonnx de
-producción — la voz en euskera "Miro"
-(`OpenVoiceOS/phoonnx_eu-ES_miro_espeak`) — directamente de Hugging Face y contamos
+producción, la voz en euskera "Miro"
+(`OpenVoiceOS/phoonnx_eu-ES_miro_espeak`), directamente de Hugging Face y contamos
 los pesos del grafo ONNX:
 
 ```python
@@ -37,10 +37,10 @@ print(sum(int(np.prod(i.dims)) for i in m.graph.initializer))
 # 15650459
 ```
 
-**~15,65 millones de parámetros.** Esa es la voz completa — codificador,
-descodificador, todo — en un archivo de 63 MB. La voz femenina "Dii" de la misma
+**~15,65 millones de parámetros.** Esa es la voz completa: codificador,
+descodificador, y todo lo demás, en un archivo de 63 MB. La voz femenina "Dii" de la misma
 publicación cuenta *exactamente el mismo* número, porque comparten la arquitectura
-VITS estándar de phoonnx; la personalidad reside en los pesos, no en capacidad
+VITS estándar de phoonnx. La personalidad reside en los pesos, no en capacidad
 adicional.
 
 Para poner las cosas en perspectiva: una sola capa de un modelo de lenguaje
@@ -50,18 +50,19 @@ y aun así habla con fluidez.
 ## Por qué VITS, y por qué ONNX
 
 [VITS](https://arxiv.org/abs/2106.06103) es la columna vertebral de toda voz
-phoonnx. Es una arquitectura de extremo a extremo — entra texto (bueno, fonemas) y
-sale forma de onda — sin un vocoder aparte al que atender y sin un bucle
+phoonnx. Es una arquitectura de extremo a extremo: entra texto (bueno, fonemas) y
+sale forma de onda, sin un vocoder aparte al que atender y sin un bucle
 autorregresivo que avanza muestra a muestra. Ese diseño de extremo a extremo es
 precisamente lo que lo hace viable en una patata: una pasada hacia adelante,
 síntesis paralela, listo.
 
 No llevamos PyTorch al borde de la red. Las voces entrenadas se exportan a **ONNX**
-y se ejecutan a través de [`onnxruntime`](https://onnxruntime.ai/) en la **CPU** —
+y se ejecutan a través de [`onnxruntime`](https://onnxruntime.ai/) en la **CPU**,
 sin CUDA, sin GPU, sin ruleta de controladores. `onnxruntime` es un motor C++
 compacto y portátil, y un grafo de 15 millones de parámetros está muy dentro de lo
-que un núcleo de clase Raspberry Pi procesa más rápido que en tiempo real. El
-resultado es un asistente de voz que sigue hablando cuando tu internet se cae,
+que un núcleo de clase Raspberry Pi procesa más rápido que en tiempo real.
+
+El resultado es un asistente de voz que sigue hablando cuando tu internet se cae,
 cuando el proveedor de la nube tiene una interrupción, o cuando simplemente nunca
 quisiste que el audio de tu hogar saliera de casa.
 
@@ -70,7 +71,7 @@ quisiste que el audio de tu hogar saliera de casa.
 Un modelo acústico diminuto puede permitirse ser diminuto porque phoonnx hace el
 trabajo lingüístico difícil *por adelantado*, en el fonemizador. Un fonemizador
 (grafema a fonema, o G2P) convierte el texto escrito en la secuencia de unidades de
-sonido que el modelo realmente pronuncia — de modo que la red VITS nunca tiene que
+sonido que el modelo realmente pronuncia, de modo que la red VITS nunca tiene que
 aprender ortografía, solo sonido.
 
 Nuestro trabajo con fonemas se basa en **[grafema a IPA para más de 350 lenguas](/es/blog/2026-01-15-grapheme-to-ipa-for-350-languages)** y en **[fonética clásica del portugués](/es/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**, que hacen posible entrenar voces para lenguas con pocos recursos sin semanas de anotación experta.
@@ -83,8 +84,10 @@ ejército de ellos: `espeak-ng`, [gruut](https://github.com/rhasspy/gruut),
 catalogadas en Glottolog), además de especialistas como
 [mantoq](https://github.com/mush42/mantoq) para el árabe,
 **[cotovia](https://github.com/TigreGotico/pycotovia)** para el gallego, OpenJTalk
-para el japonés, y KoG2P para el coreano. Emiten IPA, ARPA, Pinyin, Hangul,
-Buckwalter — lo que cada lengua necesite. Hay incluso un G2P multilingüe basado en
+para el japonés, y KoG2P para el coreano.
+
+Emiten IPA, ARPA, Pinyin, Hangul,
+Buckwalter: lo que cada lengua necesite. Hay incluso un G2P multilingüe basado en
 modelo construido sobre ByT5, exportado a ONNX como todo lo demás.
 
 Descargar la ortografía en el fonemizador es el truco que permite que un modelo de
@@ -103,7 +106,7 @@ voces en primer lugar.
 - **Preprocesamiento** de un conjunto de datos al estilo LJSpeech en datos de
   entrenamiento fonemizados.
 - **Entrenamiento** del generador VITS (esos ~15,65 millones de parámetros) en una
-  única GPU de gama de consumo o media — un modelo tan pequeño no requiere un
+  única GPU de gama de consumo o media. Un modelo tan pequeño no requiere un
   clúster de entrenamiento.
 - **Exportación** del punto de control terminado a ONNX con un solo script, listo
   para colocarse directamente en `onnxruntime` en un dispositivo.
@@ -111,8 +114,8 @@ voces en primer lugar.
 Como la receta es abierta y los modelos son pequeños, construir una voz totalmente
 nueva para una lengua que *no* tiene ninguna opción abierta sin conexión es un
 proyecto de escala de un fin de semana, no de escala de una beca de investigación.
-Así es como hemos ido cubriendo huecos para lenguas desatendidas — euskera,
-mirandés, portugués europeo y más — en lugar de esperar a que un proveedor decida
+Así es como hemos ido cubriendo huecos para lenguas desatendidas, incluidos el euskera,
+el mirandés, el portugués europeo y más, en lugar de esperar a que un proveedor decida
 que una lengua es comercialmente interesante.
 
 ## Ya integrado en tu asistente
@@ -139,12 +142,12 @@ phoonnx-voices download OpenVoiceOS/phoonnx_pt-PT_miro_tugaphone
 ```
 
 Y como phoonnx habla VITS sobre ONNX puro, su motor de inferencia también ejecuta
-voces entrenadas por Piper, Mimic3, Coqui y MMS — **más de mil lenguas y voces** en
-total. Un runtime pequeño, un catálogo enorme, y nada de ello llamando a casa.
+voces entrenadas por Piper, Mimic3, Coqui y MMS: **más de mil lenguas y voces** en
+total. Un runtime pequeño, y un catálogo enorme, y nada de ello llamando a casa.
 
 ## La cuestión
 
-La tecnología de voz que te respeta tiene que funcionar *donde tú estás* — en tu
+La tecnología de voz que te respeta tiene que funcionar *donde tú estás*, en tu
 hardware, bajo tu control, con el cable de red desenchufado si quieres. phoonnx es
 nuestra apuesta de que la manera de llegar ahí no son modelos más grandes, sino la
 arquitectura correcta hecha pequeña: VITS para la columna vertebral, fonemizadores
