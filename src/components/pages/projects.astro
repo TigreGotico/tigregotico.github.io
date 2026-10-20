@@ -17,7 +17,7 @@ const S = {
     lead: 'Our open-source work — FOSS, self-hostable libraries and tools spanning voice AI, data extraction, datasets, NLP, and games, plus the OpenVoiceOS and HiveMind ecosystem we help build. No lock-in, no mandatory cloud.',
     beyond1: 'Beyond the code, our open datasets and models are published on',
     beyond2: 'and our training notebooks live in the',
-    beyond3: 'repository.',
+    beyond3: ' repository.',
     community: 'Community',
     communityTitle: 'Working with the community',
     communityLead:
@@ -241,7 +241,7 @@ const S = {
     "lead": "کار متن‌باز ما — کتابخانه‌ها و ابزارهای FOSS و قابل میزبانی شخصی که هوش مصنوعی صدا، استخراج داده، مجموعه‌داده‌ها، NLP و بازی‌ها را در بر می‌گیرند، به‌علاوه اکوسیستم OpenVoiceOS و HiveMind که به ساخت آن کمک می‌کنیم. بدون وابستگی اجباری، بدون ابر الزامی.",
     "beyond1": "فراتر از کد، مجموعه‌داده‌ها و مدل‌های باز ما منتشر شده‌اند در",
     "beyond2": "و نوت‌بوک‌های آموزشی ما در مخزن",
-    "beyond3": "قرار دارند.",
+    "beyond3": " قرار دارند.",
     "community": "جامعه",
     "communityTitle": "کار با جامعه",
     "communityLead": "ما در پروژه‌های شرکای مستقل مشارکت می‌کنیم و کارهای دارای بودجه عمومی را به بنیاد OpenVoiceOS اهدا می‌کنیم.",
@@ -264,7 +264,7 @@ const S = {
     "lead": "हमारा ओपन-सोर्स कार्य — FOSS, स्व-होस्ट करने योग्य लाइब्रेरी और उपकरण जो वॉइस AI, डेटा निष्कर्षण, डेटासेट, NLP और गेम्स तक फैले हैं, साथ ही OpenVoiceOS और HiveMind पारिस्थितिकी तंत्र जिसे बनाने में हम मदद करते हैं। कोई लॉक-इन नहीं, कोई अनिवार्य क्लाउड नहीं।",
     "beyond1": "कोड से परे, हमारे ओपन डेटासेट और मॉडल प्रकाशित हैं",
     "beyond2": "और हमारी प्रशिक्षण नोटबुक्स रहती हैं",
-    "beyond3": "रिपॉज़िटरी में।",
+    "beyond3": " रिपॉज़िटरी में।",
     "community": "समुदाय",
     "communityTitle": "समुदाय के साथ काम करना",
     "communityLead": "हम स्वतंत्र भागीदारों में योगदान करते हैं और सार्वजनिक रूप से वित्तपोषित कार्य को OpenVoiceOS फाउंडेशन को दान करते हैं।",
@@ -406,9 +406,9 @@ const collaborations = (await getCollection('collaborations')).map((c) => c.data
   <PageHeader eyebrow={S.eyebrow} title={S.title} lead={S.lead} />
 
   <p class="-mt-4 max-w-3xl text-muted">
-    {S.beyond1}
-    <a class="font-medium text-primary hover:underline" href="https://huggingface.co/TigreGotico" rel="noopener">Hugging Face</a>,
-    {S.beyond2}
+    {S.beyond1}{' '}
+    <a class="font-medium text-primary hover:underline" href="https://huggingface.co/TigreGotico" rel="noopener">Hugging Face</a>,{' '}
+    {S.beyond2}{' '}
     <a class="font-medium text-primary hover:underline" href="https://github.com/TigreGotico/ml-notebooks" rel="noopener">ml-notebooks</a>{S.beyond3}
   </p>
 
