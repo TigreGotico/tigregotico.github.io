@@ -29,7 +29,7 @@ order: 6
 - **GitHub:** [github.com/TigreGotico](https://github.com/TigreGotico) — 저희의 오픈 소스 프로젝트
 - **데이터셋:** [huggingface.co/TigreGotico](https://huggingface.co/TigreGotico) — Hugging Face의 데이터셋과 모델
 - **OpenVoiceOS:** [openvoiceos.org](https://openvoiceos.org) — 저희가 지원하는 독립 재단
-- **커뮤니티:** [OpenVoiceOS Matrix 채팅](https://matrix.to/#/#OpenVoiceOS:matrix.org)에 참여하여 저희 및 커뮤니티와 대화하십시오
+- **커뮤니티:** [OpenVoiceOS Matrix 채팅](https://matrix.to/#/#openvoiceos:matrix.org)에 참여하여 저희 및 커뮤니티와 대화하십시오
 
 ## 문의하기 전에 궁금한 점이 있으십니까?
 

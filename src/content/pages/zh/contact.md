@@ -28,7 +28,7 @@ order: 6
 - **GitHub：** [github.com/TigreGotico](https://github.com/TigreGotico)——我们的开源项目
 - **数据集：** [huggingface.co/TigreGotico](https://huggingface.co/TigreGotico)——Hugging Face 上的数据集与模型
 - **OpenVoiceOS：** [openvoiceos.org](https://openvoiceos.org)——我们支持的独立基金会
-- **社区：** 加入 [OpenVoiceOS Matrix 聊天室](https://matrix.to/#/#OpenVoiceOS:matrix.org)，与我们和社区交流
+- **社区：** 加入 [OpenVoiceOS Matrix 聊天室](https://matrix.to/#/#openvoiceos:matrix.org)，与我们和社区交流
 
 ## 联系之前还有疑问？
 

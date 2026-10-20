@@ -40,6 +40,7 @@ Niets van wat u typt wordt naar ons verzonden. Wanneer u een stem kiest, downloa
 uw browser de open modelbestanden van [Hugging Face](https://huggingface.co), wat
 onderworpen is aan het [privacybeleid van Hugging Face](https://huggingface.co/privacy).
 De synthese zelf gebeurt op uw apparaat.
+De demo laadt ook de ONNX Runtime-engine van het jsDelivr-CDN; daarvoor geldt het [privacybeleid van jsDelivr](https://www.jsdelivr.com/terms/privacy-policy-jsdelivr-net).
 
 ## E-mail
 
@@ -51,7 +52,7 @@ delen uw adres met niemand.
 
 De entiteit die verantwoordelijk is voor deze website is:
 
-**TigreGótico Lda**
+**Tigre Gótico - Consultoria Informática, Lda**
 Praceta António Sérgio, nº 317, 4º Esquerdo
 4450-048 Matosinhos, Portugal
 Btw (NIF): PT517914190

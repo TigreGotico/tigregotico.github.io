@@ -39,6 +39,7 @@ order: 7
 तो आपका ब्राउज़र [Hugging Face](https://huggingface.co) से ओपन मॉडल फ़ाइलें
 डाउनलोड करता है, जो [Hugging Face गोपनीयता नीति](https://huggingface.co/privacy)
 के अधीन है। संश्लेषण स्वयं आपके डिवाइस पर होता है।
+डेमो ONNX Runtime इंजन को jsDelivr CDN से भी लोड करता है, जिस पर [jsDelivr की गोपनीयता नीति](https://www.jsdelivr.com/terms/privacy-policy-jsdelivr-net) लागू होती है।
 
 ## ईमेल
 
@@ -50,7 +51,7 @@ order: 7
 
 इस वेबसाइट के लिए ज़िम्मेदार संस्था है:
 
-**TigreGótico Lda**
+**Tigre Gótico - Consultoria Informática, Lda**
 Praceta António Sérgio, nº 317, 4º Esquerdo
 4450-048 Matosinhos, Portugal
 VAT (NIF): PT517914190

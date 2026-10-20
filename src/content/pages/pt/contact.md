@@ -32,7 +32,7 @@ conversa.
 - **GitHub:** [github.com/TigreGotico](https://github.com/TigreGotico) — os nossos projetos de código aberto
 - **Datasets:** [huggingface.co/TigreGotico](https://huggingface.co/TigreGotico) — conjuntos de dados e modelos no Hugging Face
 - **OpenVoiceOS:** [openvoiceos.org](https://openvoiceos.org) — a fundação independente que apoiamos
-- **Comunidade:** junte-se ao [chat Matrix do OpenVoiceOS](https://matrix.to/#/#OpenVoiceOS:matrix.org) para falar connosco e com a comunidade
+- **Comunidade:** junte-se ao [chat Matrix do OpenVoiceOS](https://matrix.to/#/#openvoiceos:matrix.org) para falar connosco e com a comunidade
 
 ## Dúvidas Antes de Escrever?
 

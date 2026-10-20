@@ -36,6 +36,7 @@ Nothing you type is sent to us. When you pick a voice, your browser downloads
 the open model files from [Hugging Face](https://huggingface.co), which is
 subject to the [Hugging Face privacy policy](https://huggingface.co/privacy).
 Synthesis itself happens on your device.
+The demo also loads the ONNX Runtime engine from the jsDelivr CDN, which is subject to the [jsDelivr privacy policy](https://www.jsdelivr.com/terms/privacy-policy-jsdelivr-net).
 
 ## Email
 
@@ -47,7 +48,7 @@ with anyone.
 
 The entity responsible for this website is:
 
-**TigreGótico Lda**
+**Tigre Gótico - Consultoria Informática, Lda**
 Praceta António Sérgio, nº 317, 4º Esquerdo
 4450-048 Matosinhos, Portugal
 VAT (NIF): PT517914190

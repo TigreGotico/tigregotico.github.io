@@ -28,7 +28,7 @@ order: 6
 - **GitHub:** [github.com/TigreGotico](https://github.com/TigreGotico) — پروژه‌های متن‌باز ما
 - **مجموعه‌داده‌ها:** [huggingface.co/TigreGotico](https://huggingface.co/TigreGotico) — مجموعه‌داده‌ها و مدل‌ها در Hugging Face
 - **OpenVoiceOS:** [openvoiceos.org](https://openvoiceos.org) — بنیاد مستقلی که از آن پشتیبانی می‌کنیم
-- **جامعه:** به [گفتگوی Matrix در OpenVoiceOS](https://matrix.to/#/#OpenVoiceOS:matrix.org) بپیوندید تا با ما و جامعه گفتگو کنید
+- **جامعه:** به [گفتگوی Matrix در OpenVoiceOS](https://matrix.to/#/#openvoiceos:matrix.org) بپیوندید تا با ما و جامعه گفتگو کنید
 
 ## پرسشی پیش از تماس دارید؟
 

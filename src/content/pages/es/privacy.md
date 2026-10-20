@@ -41,6 +41,7 @@ navegador descarga los archivos abiertos del modelo desde
 [Hugging Face](https://huggingface.co), que está sujeto a la
 [política de privacidad de Hugging Face](https://huggingface.co/privacy). La
 síntesis en sí ocurre en su dispositivo.
+La demostración también carga el motor ONNX Runtime desde la CDN jsDelivr, sujeta a la [política de privacidad de jsDelivr](https://www.jsdelivr.com/terms/privacy-policy-jsdelivr-net).
 
 ## Correo electrónico
 
@@ -52,7 +53,7 @@ dirección con nadie.
 
 La entidad responsable de este sitio web es:
 
-**TigreGótico Lda**
+**Tigre Gótico - Consultoria Informática, Lda**
 Praceta António Sérgio, nº 317, 4º Esquerdo
 4450-048 Matosinhos, Portugal
 NIF: PT517914190

@@ -39,6 +39,7 @@ browser**. Niente di ciò che digiti ci viene inviato. Quando scegli una voce, i
 tuo browser scarica i file aperti del modello da [Hugging Face](https://huggingface.co), che è
 soggetto alla [politica sulla privacy di Hugging Face](https://huggingface.co/privacy).
 La sintesi stessa avviene sul tuo dispositivo.
+La demo carica anche il motore ONNX Runtime dalla CDN jsDelivr, soggetta all'[informativa sulla privacy di jsDelivr](https://www.jsdelivr.com/terms/privacy-policy-jsdelivr-net).
 
 ## Email
 
@@ -50,7 +51,7 @@ tuo indirizzo con nessuno.
 
 L'entità responsabile di questo sito web è:
 
-**TigreGótico Lda**
+**Tigre Gótico - Consultoria Informática, Lda**
 Praceta António Sérgio, nº 317, 4º Esquerdo
 4450-048 Matosinhos, Portugal
 P. IVA (NIF): PT517914190

@@ -27,6 +27,7 @@ order: 7
 这个交互式[文本转语音演示](/demo)**完全在您的浏览器中运行**。您输入的任何内容都不会发送给我们。当您选择一个语音时，您的浏览器会从
 [Hugging Face](https://huggingface.co) 下载开放的模型文件，这受
 [Hugging Face 隐私政策](https://huggingface.co/privacy)约束。合成本身发生在您的设备上。
+演示还会从 jsDelivr CDN 加载 ONNX Runtime 引擎，受 [jsDelivr 隐私政策](https://www.jsdelivr.com/terms/privacy-policy-jsdelivr-net)约束。
 
 ## 电子邮件
 
@@ -36,7 +37,7 @@ order: 7
 
 对本网站负责的实体是：
 
-**TigreGótico Lda**
+**Tigre Gótico - Consultoria Informática, Lda**
 Praceta António Sérgio, nº 317, 4º Esquerdo
 4450-048 Matosinhos, Portugal
 VAT (NIF): PT517914190
