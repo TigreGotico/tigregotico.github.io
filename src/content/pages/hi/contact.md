@@ -30,7 +30,7 @@ order: 6
 - **GitHub:** [github.com/TigreGotico](https://github.com/TigreGotico) — हमारी ओपन-सोर्स परियोजनाएँ
 - **डेटासेट:** [huggingface.co/TigreGotico](https://huggingface.co/TigreGotico) — Hugging Face पर डेटासेट और मॉडल
 - **OpenVoiceOS:** [openvoiceos.org](https://openvoiceos.org) — वह स्वतंत्र फाउंडेशन जिसका हम समर्थन करते हैं
-- **समुदाय:** हमसे और समुदाय से बात करने के लिए [OpenVoiceOS Matrix चैट](https://matrix.to/#/#OpenVoiceOS:matrix.org) से जुड़ें
+- **समुदाय:** हमसे और समुदाय से बात करने के लिए [OpenVoiceOS Matrix चैट](https://matrix.to/#/#openvoiceos:matrix.org) से जुड़ें
 
 ## संपर्क करने से पहले प्रश्न?
 

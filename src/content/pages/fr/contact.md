@@ -31,7 +31,7 @@ un plan de conversation.
 - **GitHub :** [github.com/TigreGotico](https://github.com/TigreGotico) — nos projets en logiciel libre
 - **Jeux de données :** [huggingface.co/TigreGotico](https://huggingface.co/TigreGotico) — jeux de données et modèles sur Hugging Face
 - **OpenVoiceOS :** [openvoiceos.org](https://openvoiceos.org) — la fondation indépendante que nous soutenons
-- **Communauté :** rejoignez le [chat Matrix d'OpenVoiceOS](https://matrix.to/#/#OpenVoiceOS:matrix.org) pour échanger avec nous et la communauté
+- **Communauté :** rejoignez le [chat Matrix d'OpenVoiceOS](https://matrix.to/#/#openvoiceos:matrix.org) pour échanger avec nous et la communauté
 
 ## Des questions avant de nous écrire ?
 
