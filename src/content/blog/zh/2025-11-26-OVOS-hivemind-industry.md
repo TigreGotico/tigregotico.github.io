@@ -12,7 +12,7 @@ tags:
 draft: false
 ---
 
-**[COALA](https://coala-ai.de)** 和 **[WASABI](https://wasabiproject.eu)** 两个欧盟项目在 **[OpenVoiceOS](https://openvoiceos.org)**（一个非营利的开源语音平台）和 **[HiveMind](https://jarbashivemind.github.io/HiveMind-community-docs/)** 之上构建了一整套工业语音助手框架，将它们与自有的 Android UI、NLP 引擎和 Docker 栈相集成。
+**[COALA](https://cordis.europa.eu/project/id/957296)** 和 **[WASABI](https://wasabiproject.eu)** 两个欧盟项目在 **[OpenVoiceOS](https://openvoiceos.org)**（一个非营利的开源语音平台）和 **[HiveMind](https://jarbashivemind.github.io/HiveMind-community-docs/)** 之上构建了一整套工业语音助手框架，将它们与自有的 Android UI、NLP 引擎和 Docker 栈相集成。
 
 我并未参与这些部署。而这正是重点所在：这套技术栈是凭借自身的优点被采用的，采用者是有着真实工业需求的团队。
 

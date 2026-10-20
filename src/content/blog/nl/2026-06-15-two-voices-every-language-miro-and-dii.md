@@ -14,7 +14,7 @@ tags:
 draft: false
 ---
 
-> **Beluister ze nu:** de [Voices Demo](../../demo) draait Miro & Dii live in je
+> **Beluister ze nu:** de [Voices Demo](/demo/) draait Miro & Dii live in je
 > browser — kies een taal, typ een zin, en luister. Geen installatie, geen server.
 
 Mensen onthouden de stem van een assistent beter dan zijn naam. Dus de kernvraag van onze samenwerking met [OpenVoiceOS](https://www.openvoiceos.org/) is een praktische: op wie moet de assistent lijken, in elke taal?

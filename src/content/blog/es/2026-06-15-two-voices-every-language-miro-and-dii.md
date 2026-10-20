@@ -14,7 +14,7 @@ tags:
 draft: false
 ---
 
-> **Escúchalas ahora:** la [Demo de Voces](../../demo) ejecuta a Miro y Dii en directo en tu
+> **Escúchalas ahora:** la [Demo de Voces](/demo/) ejecuta a Miro y Dii en directo en tu
 > navegador — elige una lengua, escribe una frase y escucha. Sin instalación, sin servidor.
 
 Las personas recuerdan la voz de un asistente más que su nombre. Por eso, la pregunta central de nuestra colaboración con [OpenVoiceOS](https://www.openvoiceos.org/) es práctica: ¿a quién debería sonar el asistente, en cada lengua?

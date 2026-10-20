@@ -12,7 +12,7 @@ tags:
 draft: false
 ---
 
-यूरोपीय संघ की **[COALA](https://coala-ai.de)** और **[WASABI](https://wasabiproject.eu)** परियोजनाओं ने **[OpenVoiceOS](https://openvoiceos.org)** (एक गैर-लाभकारी ओपन-सोर्स वॉइस प्लेटफ़ॉर्म) और **[HiveMind](https://jarbashivemind.github.io/HiveMind-community-docs/)** के ऊपर एक संपूर्ण औद्योगिक वॉइस-असिस्टेंट फ्रेमवर्क तैयार किया, जिसे उन्होंने अपने स्वयं के Android UI, NLP इंजन और Docker स्टैक के साथ एकीकृत किया।
+यूरोपीय संघ की **[COALA](https://cordis.europa.eu/project/id/957296)** और **[WASABI](https://wasabiproject.eu)** परियोजनाओं ने **[OpenVoiceOS](https://openvoiceos.org)** (एक गैर-लाभकारी ओपन-सोर्स वॉइस प्लेटफ़ॉर्म) और **[HiveMind](https://jarbashivemind.github.io/HiveMind-community-docs/)** के ऊपर एक संपूर्ण औद्योगिक वॉइस-असिस्टेंट फ्रेमवर्क तैयार किया, जिसे उन्होंने अपने स्वयं के Android UI, NLP इंजन और Docker स्टैक के साथ एकीकृत किया।
 
 मैं इन परिनियोजनों में शामिल नहीं था। यही मुख्य बात है: यह स्टैक अपनी स्वयं की खूबियों के आधार पर, वास्तविक औद्योगिक आवश्यकताओं वाली टीमों द्वारा अपनाया जा रहा है।
 

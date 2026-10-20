@@ -12,7 +12,7 @@ tags:
 draft: false
 ---
 
-بنى المشروعان الأوروبيان **[COALA](https://coala-ai.de)** و**[WASABI](https://wasabiproject.eu)** إطار عمل كاملًا لمساعد صوتي صناعي فوق **[OpenVoiceOS](https://openvoiceos.org)** (منصة صوتية مفتوحة المصدر غير ربحية) و**[HiveMind](https://jarbashivemind.github.io/HiveMind-community-docs/)**، مُدمِجَين إياهما مع واجهة Android ومحرك NLP وحزمة Docker الخاصة بهما.
+بنى المشروعان الأوروبيان **[COALA](https://cordis.europa.eu/project/id/957296)** و**[WASABI](https://wasabiproject.eu)** إطار عمل كاملًا لمساعد صوتي صناعي فوق **[OpenVoiceOS](https://openvoiceos.org)** (منصة صوتية مفتوحة المصدر غير ربحية) و**[HiveMind](https://jarbashivemind.github.io/HiveMind-community-docs/)**، مُدمِجَين إياهما مع واجهة Android ومحرك NLP وحزمة Docker الخاصة بهما.
 
 لم أشارك في عمليات النشر هذه. وهذا هو بيت القصيد: تُعتمَد الحزمة بناءً على جدارتها الذاتية، من قِبل فرق ذات متطلبات صناعية حقيقية.
 

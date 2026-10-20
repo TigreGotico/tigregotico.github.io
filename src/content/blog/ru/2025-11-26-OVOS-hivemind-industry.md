@@ -12,7 +12,7 @@ tags:
 draft: false
 ---
 
-Проекты ЕС **[COALA](https://coala-ai.de)** и **[WASABI](https://wasabiproject.eu)** построили целый промышленный фреймворк голосового ассистента поверх **[OpenVoiceOS](https://openvoiceos.org)** (некоммерческой голосовой платформы с открытым исходным кодом) и **[HiveMind](https://jarbashivemind.github.io/HiveMind-community-docs/)**, интегрировав их со своим собственным Android-интерфейсом, NLP-движком и стеком Docker.
+Проекты ЕС **[COALA](https://cordis.europa.eu/project/id/957296)** и **[WASABI](https://wasabiproject.eu)** построили целый промышленный фреймворк голосового ассистента поверх **[OpenVoiceOS](https://openvoiceos.org)** (некоммерческой голосовой платформы с открытым исходным кодом) и **[HiveMind](https://jarbashivemind.github.io/HiveMind-community-docs/)**, интегрировав их со своим собственным Android-интерфейсом, NLP-движком и стеком Docker.
 
 Я не участвовал в этих внедрениях. В этом-то и суть: стек внедряется благодаря собственным достоинствам, командами с реальными промышленными требованиями.
 

@@ -12,7 +12,7 @@ tags:
 draft: false
 ---
 
-EU プロジェクトの **[COALA](https://coala-ai.de)** と **[WASABI](https://wasabiproject.eu)** は、**[OpenVoiceOS](https://openvoiceos.org)**（非営利のオープンソース音声プラットフォーム）と **[HiveMind](https://jarbashivemind.github.io/HiveMind-community-docs/)** を基盤として、産業用音声アシスタントのフレームワーク全体を構築し、独自の Android UI、NLP エンジン、Docker スタックと統合しました。
+EU プロジェクトの **[COALA](https://cordis.europa.eu/project/id/957296)** と **[WASABI](https://wasabiproject.eu)** は、**[OpenVoiceOS](https://openvoiceos.org)**（非営利のオープンソース音声プラットフォーム）と **[HiveMind](https://jarbashivemind.github.io/HiveMind-community-docs/)** を基盤として、産業用音声アシスタントのフレームワーク全体を構築し、独自の Android UI、NLP エンジン、Docker スタックと統合しました。
 
 私はこれらの導入には関わっていませんでした。それこそが要点です。このスタックは、実際の産業要件を持つチームによって、その実力そのものによって採用されているのです。
 

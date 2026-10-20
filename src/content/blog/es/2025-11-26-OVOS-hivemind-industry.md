@@ -12,7 +12,7 @@ tags:
 draft: false
 ---
 
-Los proyectos europeos **[COALA](https://coala-ai.de)** y **[WASABI](https://wasabiproject.eu)** construyeron todo un framework de asistente de voz industrial sobre **[OpenVoiceOS](https://openvoiceos.org)** (una plataforma de voz de código abierto sin ánimo de lucro) y **[HiveMind](https://jarbashivemind.github.io/HiveMind-community-docs/)**, integrándolos con su propia interfaz Android, motor de NLP y stack de Docker.
+Los proyectos europeos **[COALA](https://cordis.europa.eu/project/id/957296)** y **[WASABI](https://wasabiproject.eu)** construyeron todo un framework de asistente de voz industrial sobre **[OpenVoiceOS](https://openvoiceos.org)** (una plataforma de voz de código abierto sin ánimo de lucro) y **[HiveMind](https://jarbashivemind.github.io/HiveMind-community-docs/)**, integrándolos con su propia interfaz Android, motor de NLP y stack de Docker.
 
 No participé en estas implementaciones. Esa es la cuestión: el stack se está adoptando por sus propios méritos, por equipos con requisitos industriales reales.
 

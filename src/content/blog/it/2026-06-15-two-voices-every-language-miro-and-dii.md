@@ -14,7 +14,7 @@ tags:
 draft: false
 ---
 
-> **Ascoltatele ora:** la [Demo delle Voci](../../demo) esegue Miro e Dii dal vivo nel
+> **Ascoltatele ora:** la [Demo delle Voci](/demo/) esegue Miro e Dii dal vivo nel
 > vostro browser — scegliete una lingua, digitate una frase e ascoltate. Nessuna installazione, nessun server.
 
 Le persone ricordano la voce di un assistente più del suo nome. Perciò la domanda centrale della nostra collaborazione con [OpenVoiceOS](https://www.openvoiceos.org/) è pratica: a chi dovrebbe assomigliare l'assistente, in ogni lingua?
