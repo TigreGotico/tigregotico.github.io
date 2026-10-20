@@ -1,12 +1,12 @@
 # tigregotico.github.io
 
 The [TigreGótico](https://tigregotico.pt/) company
-website. It is a static Astro 5 site with zero client-side JavaScript on
+website. It is a static Astro 7 site with zero client-side JavaScript on
 regular pages, self-hosted fonts, and no third-party requests.
 
 ## Stack
 
-- **[Astro 5](https://astro.build)** static output, content collections with
+- **[Astro 7](https://astro.build)** static output, content collections with
   Zod-validated schemas (`src/content.config.ts`)
 - **Tailwind CSS** with CSS custom properties powering four color palettes
   (tiger, hivemind, noir, slop) and dark mode
@@ -34,7 +34,7 @@ deployment base path prefixed at build time.
 ## Deploy
 
 GitHub Actions (`.github/workflows/deploy.yml`) builds the site and deploys
-it to GitHub Pages on push to `dev` or `master`. A weekly rebuild also runs
+it to GitHub Pages on push to `dev`. A weekly rebuild also runs
 so date-scheduled blog posts publish on time. The site is served at the
 domain root (`https://tigregotico.pt/`). The `BASE` constant in
 `astro.config.mjs` is `'/'` accordingly.
