@@ -300,8 +300,11 @@
     background: rgb(var(--grad-via) / 0.28);
   }
 
+  /* An outline, not a ring: components such as .btn-primary set their own
+     box-shadow, which would replace a ring-based indicator. */
   :focus-visible {
-    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-bg;
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
   }
 }
 
@@ -510,7 +513,10 @@
   box-shadow: var(--shadow-elevate);
 }
 .prose-content pre code {
-  @apply border-0 bg-transparent p-0 text-fg;
+  /* Inherit the code theme's foreground from <pre>; text-fg is dark in the
+     light theme and unreadable on the dark code background. */
+  @apply border-0 bg-transparent p-0;
+  color: inherit;
 }
 .prose-content img {
   @apply rounded-xl;
