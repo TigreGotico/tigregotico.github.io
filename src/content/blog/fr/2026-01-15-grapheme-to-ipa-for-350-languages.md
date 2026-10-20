@@ -1,8 +1,8 @@
 ---
-title: "Graphème-vers-IPA pour 820 langues"
-description: "orthography2ipa est une ressource en données pures, ancrée linguistiquement, qui associe l'orthographe à l'IPA et modélise la façon dont les phonèmes se réalisent en tant qu'allophones à travers 909 spécifications de langue, 820 langues et plus de 20 familles linguistiques. Un treillis de candidats, une lignée dialectale et un ensemble de spécifications validé par schéma et cité à la littérature dialectologique — sans poids entraînés, entièrement auto-hébergeable."
+title: "Graphème-vers-IPA pour plus de 7000 langues"
+description: "orthography2ipa est une ressource en données pures, ancrée linguistiquement, qui associe l'orthographe à l'IPA et modélise la façon dont les phonèmes se réalisent en tant qu'allophones à travers 7396 spécifications de langue et plus de 200 familles linguistiques. Un treillis de candidats, une lignée dialectale et un ensemble de spécifications validé par schéma et cité à la littérature dialectologique — sans poids entraînés, entièrement auto-hébergeable."
 date: 2026-01-15
-updated: 2026-08-01
+updated: 2026-10-20
 lang: fr
 author: "Casimiro Ferreira"
 tags:
@@ -17,7 +17,7 @@ tags:
 draft: false
 ---
 
-**[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)** est un paquet Python en données pures — JSON déclaratif, logique fine et enfichable, sans poids entraînés — qui associe l'orthographe à l'IPA et modélise la façon dont ces phonèmes se réalisent en contexte. Il fournit **909 spécifications de langue couvrant 820 langues** (plus 89 nœuds de clade purement classificatoires) à travers **plus de 20 familles linguistiques**. Installez-le, lisez les données, forkez les données. Rien n'est caché dans un checkpoint.
+**[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)** est un paquet Python en données pures — JSON déclaratif, logique fine et enfichable, sans poids entraînés — qui associe l'orthographe à l'IPA et modélise la façon dont ces phonèmes se réalisent en contexte. Il fournit **7396 spécifications de langue** (plus 275 nœuds de clade purement classificatoires) à travers **plus de 200 familles linguistiques**. Ce nombre augmente à mesure que des spécifications sont ajoutées ; `len(orthography2ipa.available_codes())` renvoie la valeur actuelle. Installez-le, lisez les données, forkez les données. Rien n'est caché dans un checkpoint.
 
 C'est la couche phonologique qui sous-tend tout ce qui vient en aval : le treillis de candidats qu'il produit est consommé par le frontend TTS arabe [arbtok](https://github.com/TigreGotico/arbtok), les stacks portugais [TugaPhone](https://github.com/TigreGotico/tugaphone) et [silabificador](https://github.com/TigreGotico/silabificador) (voir **[NLP classique pour les syllabes et les phonèmes du portugais](/fr/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**), le [phonémiseur du barranquenho](/fr/blog/2025-12-12-barranquenho), le phonémiseur du mirandais, et l'ancrage phonémique du **[TTS qui tourne sur une patate](/fr/blog/2026-05-10-tts-that-runs-on-a-potato)**.
 
@@ -52,7 +52,7 @@ Les arbres de dialectes restent maintenables parce que les fichiers JSON prennen
 
 ## Profond sur le terrain, pas seulement large
 
-Le chiffre de 820 est l'ampleur ; la profondeur est là où réside le travail. Les spécifications descendent lecte par lecte là où le fait la littérature dialectologique, et chacune est citée à cette littérature avec des renvois aux pages plutôt qu'extraite par correspondance de motifs à partir d'une charte phonémique.
+Le chiffre de 7396 est l'ampleur ; la profondeur est là où réside le travail. Les spécifications descendent lecte par lecte là où le fait la littérature dialectologique, et chacune est citée à cette littérature avec des renvois aux pages plutôt qu'extraite par correspondance de motifs à partir d'une charte phonémique.
 
 La couverture **ibérique** en est l'exemple le plus clair : **plus de 100 spécifications** pour les langues de la péninsule. Toutes les langues romanes d'Espagne — castillan, catalan/valencien, galicien (à la fois les normes de la RAG et réintégrationnistes), asturien, aragonais et ses variétés de vallée (ansotano, chistabín, benasqués…), estrémègne — aux côtés du basque, des créoles ibéro-romans, et des couches historiques que la plupart des ressources ignorent entièrement : l'**arabe andalou** et le **mozarabe**. Le versant arabe porte **34 lectes dialectaux** (du najdi et du hijazi jusqu'au levantin, au maghrébin et aux variétés péninsulaires), et le versant lusophone **46 lectes du portugais et des langues du Portugal**, jusqu'au rionorais, au guadramilais et aux sous-dialectes du mirandais.
 
@@ -68,7 +68,7 @@ tok = PhonetokTokenizer(orthography2ipa.get("en-GB"))
 
 tok.ipa_best("through")                 # 'θɹɔː'
 for path in tok.ipa_beam("through", beam_width=8):
-    print(path.ipa, path.score)         # θɹɔː 0.0, ðɹɔː 1.0, θɹoʊ 1.0, …
+    print(path.ipa, path.score)         # θɹɔː 0.0, ðɹɔː 1.0, θɹəʊ 1.0, …
 ```
 
 Le treillis est le contrat sur lequel toute la famille en aval se construit. Un moteur spécifique à une langue consomme le treillis partagé et n'ajoute que la phonologie qu'une table statique ne peut exprimer, maintenant chaque consommateur sur le même noyau ancré :
@@ -84,13 +84,13 @@ Comme les données sont structurées plutôt que cuites dans des poids, vous pou
 from orthography2ipa.distance import phonological_distance
 d = phonological_distance(orthography2ipa.get("pt-BR"), orthography2ipa.get("pt-PT"))
 
-d.combined                    # 0.0515 — near-identical
+d.combined                    # 0.0562 — near-identical
 d.inventory.feature_mean      # phoneme-inventory distance
 d.grapheme.mean_ipa_distance  # grapheme-mapping divergence
 d.allophone_sim               # allophone-overlap similarity
 ```
 
-Les vecteurs de caractéristiques sont également exposés, si bien qu'une paire quasi identique comme les deux standards portugais se situe à 0,0515, tandis que les paires véritablement distantes se séparent nettement. C'est utile aussi bien pour les décisions de transfer learning que pour le bootstrapping de langues à faibles ressources et la dialectométrie.
+Les vecteurs de caractéristiques sont également exposés, si bien qu'une paire quasi identique comme les deux standards portugais se situe à 0,0562, tandis que les paires véritablement distantes se séparent nettement. C'est utile aussi bien pour les décisions de transfer learning que pour le bootstrapping de langues à faibles ressources et la dialectométrie.
 
 ## Comment nous savons que les données valent quelque chose
 
@@ -102,7 +102,7 @@ Les chiffres, à lire comme directionnels et toujours cités à leur source ([`d
 
 - **Dialectes arabes, entrée nue non diacritée** — le cas difficile et réaliste en déploiement. Sur le gold TTS à entrée nue d'arbtok (33 lectes), la fusion rawi-treillis sous licence dialectale atteint un **PER moyen de 0,189**, battant le même ensemble exécuté comme générateur libre (0,193), la marge se concentrant sur les lectes qui divergent le plus du MSA. Sur la plupart des lectes, arbtok bat espeak-ng sur l'entrée nue ; sur le MSA lui-même, espeak — qui est calibré pour le MSA — l'emporte encore (espeak 0,176 vs arbtok 0,245).
 - **Dialectes arabes, entrée diacritée** — avec les marques présentes, le PER d'arbtok se situe à **0,01–0,08** par lecte, bien en dessous de la voix MSA unique d'espeak (p. ex. najdi 0,009 vs espeak 0,221 ; égyptien 0,027 vs espeak 0,287). espeak n'a pas de voix dialectales, c'est donc honnêtement une comparaison entre choses de nature différente — mais l'écart est précisément le point.
-- **Portugais, face au gold humain expert** — le portugais européen de Lisbonne atteint un **PER de 0,029** (88 % de correspondance exacte) sur des sources primaires avec renvois aux pages, et le gold mirandais de locuteurs natifs à **0,146**.
+- **Portugais, face au gold humain expert** — le portugais européen de Lisbonne atteint un **PER de 0,029** (88 % de correspondance exacte) sur des sources primaires avec renvois aux pages, et le gold mirandais de locuteurs natifs à **0,132**.
 
 Chacun de ces chiffres est une propriété de l'état actuel des données, recoupée avec un intervalle de confiance bootstrap, et non un trophée de classement. Là où l'intervalle est large ou l'échantillon minuscule, le scoreboard le dit.
 

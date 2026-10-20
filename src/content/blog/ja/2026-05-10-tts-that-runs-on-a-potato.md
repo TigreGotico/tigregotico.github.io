@@ -2,6 +2,7 @@
 title: "ジャガイモの上でも動く TTS モデル"
 description: "phoonnx は、低スペックのハードウェアでも快適に動作するように作られた、VITS ベースのテキスト読み上げのための研究フレームワークです。GPU なし、クラウドなし、API キーなし — 約 1,565 万パラメータの ONNX 音声と CPU だけ。良質な音声がどれほど小さくできるか、そして私たちがどう学習させるかをご紹介します。"
 date: 2026-05-10
+updated: 2026-10-20
 lang: ja
 author: "Casimiro Ferreira"
 tags:
@@ -43,7 +44,7 @@ print(sum(int(np.prod(i.dims)) for i in m.graph.initializer))
 
 小さな音響モデルが小さくいられるのは、phoonnx が難しい言語的作業を*事前に*、音素化器の中で行うからです。音素化器(書記素から音素へ、すなわち G2P)は、書かれたテキストを、モデルが実際に話す音の単位の列に変換します — そのおかげで VITS ネットワークは綴りを学ぶ必要が一切なく、音だけを学べばよいのです。
 
-私たちの音素の作業は **[820 の言語のための書記素から IPA へ](/ja/blog/2026-01-15-grapheme-to-ipa-for-350-languages)** と **[古典的なポルトガル語音声学](/ja/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)** に根ざしており、これにより数週間の専門家アノテーションなしに低資源言語の音声を学習させることが可能になります。
+私たちの音素の作業は **[7000以上の言語のための書記素から IPA へ](/ja/blog/2026-01-15-grapheme-to-ipa-for-350-languages)** と **[古典的なポルトガル語音声学](/ja/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)** に根ざしており、これにより数週間の専門家アノテーションなしに低資源言語の音声を学習させることが可能になります。
 
 phoonnx は意図的に音素化器に依存しない設計であり、その小さな軍勢を同梱しています。`espeak-ng`、[gruut](https://github.com/rhasspy/gruut)、[epitran](https://github.com/dmort27/epitran)、[misaki](https://github.com/hexgrad/misaki)、[transphone](https://github.com/xinjli/transphone)(Glottolog にカタログ化された数千もの言語に手を伸ばします)、さらにアラビア語向けの [mantoq](https://github.com/mush42/mantoq)、ガリシア語向けの **[cotovia](https://github.com/TigreGotico/pycotovia)**、日本語向けの OpenJTalk、韓国語向けの KoG2P といった専門家群です。それらは IPA、ARPA、Pinyin、Hangul、Buckwalter を出力します — その言語が必要とするものは何でも。他のすべてと同様に ONNX にエクスポートされた、ByT5 上に構築されたモデルベースの多言語 G2P さえあります。
 

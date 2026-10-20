@@ -3,7 +3,7 @@ title: "NLP clásico para el portugués: silabificación y grafema a fonema"
 description: "Un vistazo a nuestra pila de NLP para el portugués, basada en reglas y totalmente sin conexión — silabificador para la silabificación y TugaPhone para el grafema a fonema con conciencia dialectal — y cómo se conectan con el trabajo más amplio de orthography2ipa para las variedades lusófonas. Sin cajas negras de aprendizaje profundo: determinista, rápido y con pocas dependencias."
 date: 2026-02-28
 lang: es
-updated: 2026-08-01
+updated: 2026-10-20
 author: "Casimiro Ferreira"
 tags:
   - "NLP"
@@ -66,7 +66,7 @@ TugaPhone es honesto sobre sus límites: la cobertura del léxico es más escasa
 
 ### El panorama más amplio: orthography2ipa
 
-El portugués es una variedad entre muchas, y el mismo patrón de ingeniería generaliza. [orthography2ipa](https://github.com/TigreGotico/orthography2ipa) es un paquete de Python de datos puros con mapeos de grafema→IPA y alófonos con motivación lingüística que abarca 820 lenguas en más de 20 familias lingüísticas. Traza una distinción clara que cualquier sistema serio de G2P necesita: un **mapa de grafemas** dice qué fonemas *puede* representar una grafía, mientras que un **mapa de alófonos** dice cómo un fonema realmente *se realiza* en un contexto dado. Las variedades regionales se modelan como sus propias especificaciones vinculadas mediante un linaje ponderado de múltiples antepasados, de modo que los árboles dialectales heredan de sus padres en vez de duplicar datos.
+El portugués es una variedad entre muchas, y el mismo patrón de ingeniería generaliza. [orthography2ipa](https://github.com/TigreGotico/orthography2ipa) es un paquete de Python de datos puros con mapeos de grafema→IPA y alófonos con motivación lingüística que abarca 7396 lenguas en más de 200 familias lingüísticas. Traza una distinción clara que cualquier sistema serio de G2P necesita: un **mapa de grafemas** dice qué fonemas *puede* representar una grafía, mientras que un **mapa de alófonos** dice cómo un fonema realmente *se realiza* en un contexto dado. Las variedades regionales se modelan como sus propias especificaciones vinculadas mediante un linaje ponderado de múltiples antepasados, de modo que los árboles dialectales heredan de sus padres en vez de duplicar datos.
 
 Ese es el mismo instinto tras `pt-PT`, `pt-BR`, `pt-AO`, `pt-MZ` y `pt-TL` en TugaPhone: tratar cada variedad lusófona como ciudadana de primera clase con sus propias reglas, no como una desviación de un único acento canónico. Los datos son declarativos y la lógica es fina y conectable — puedes leer las reglas, citar sus fuentes y confiar en la salida.
 
@@ -75,10 +75,11 @@ Ese es el mismo instinto tras `pt-PT`, `pt-BR`, `pt-AO`, `pt-MZ` y `pt-TL` en Tu
 Todo lo de aquí es de código abierto e instalable hoy mismo:
 
 ```bash
-pip install tugaphone
-pip install git+https://github.com/TigreGotico/silabificador
+pip install --pre tugaphone silabificador
 ```
+
+La opción `--pre` instala la versión preliminar actual. La última versión estable de tugaphone produce una salida distinta de la de los ejemplos anteriores.
 
 Para los mapeos multilingües más amplios, véase [orthography2ipa](https://github.com/TigreGotico/orthography2ipa). Determinista, rápido, sin conexión, y construido para toda la amplitud del mundo de habla portuguesa.
 
-Esta pila de fonética del portugués se construye sobre nuestro **[trabajo de grafema a IPA para 820 lenguas](/es/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**, y forma la columna vertebral fonética de **[TTS que funciona en una patata](/es/blog/2026-05-10-tts-that-runs-on-a-potato)** y de las **[voces multilingües Miro y Dii](/es/blog/2026-06-15-two-voices-every-language-miro-and-dii)**.
+Esta pila de fonética del portugués se construye sobre nuestro **[trabajo de grafema a IPA para más de 7000 lenguas](/es/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**, y forma la columna vertebral fonética de **[TTS que funciona en una patata](/es/blog/2026-05-10-tts-that-runs-on-a-potato)** y de las **[voces multilingües Miro y Dii](/es/blog/2026-06-15-two-voices-every-language-miro-and-dii)**.

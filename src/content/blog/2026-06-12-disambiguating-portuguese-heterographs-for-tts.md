@@ -1,7 +1,8 @@
 ---
 title: "Saying It Right: Disambiguating Portuguese Heterophones for TTS"
-description: "Many European Portuguese words are spelled the same but pronounced differently depending on meaning, and getting the vowel wrong makes a TTS voice say the wrong word. We built bifonia-pt-homographs, an open meaning-labelled dataset of 56,891 sentences over 27 words, and a tiny zero-dependency resolver that hits ≈94% where heavyweight POS taggers plateau at ≈75%."
+description: "Many European Portuguese words are spelled the same but pronounced differently depending on meaning, and getting the vowel wrong makes a TTS voice say the wrong word. We built bifonia-pt-homographs, an open meaning-labelled dataset of 155,283 sentences over 131 words, and a tiny zero-dependency resolver that reaches 95.8% on a sense-balanced set of real sentences, where a spaCy POS tagger reaches 85.8%."
 date: 2026-06-12
+updated: 2026-10-20
 author: "Casimiro Ferreira"
 tags:
   - "Datasets"
@@ -35,11 +36,11 @@ A naive TTS system commits to one pronunciation per spelling. So it reads *thirs
 
 The obvious fix is to run a part-of-speech (POS) tagger over the sentence and pick the pronunciation by POS. That helps for some pairs, but it fails *by construction* whenever two meanings share a part of speech.
 
-Take `sede` again. *Thirst* and *headquarters* are **both nouns**. A POS tagger labels them identically, since there is no grammatical signal to tell them apart, so it can only ever guess the more common reading. We measured exactly this: on our test set, both spaCy and Stanza score **0%** on the *thirst* sense of `sede`. They always pick *headquarters*. The same structural ceiling shows up on `corte` (cut vs court), `forma` (mould vs shape), and `molho` (sauce vs bundle): when meaning splits within a single part of speech, grammar can't see it.
+Take `sede` again. *Thirst* and *headquarters* are **both nouns**. A POS tagger labels them identically, since there is no grammatical signal to tell them apart, so it can only ever guess the more common reading. We measured this: on the sentences of our test set where one part of speech carries two senses, spaCy reaches only 74.0%. The same structural ceiling shows up on `corte` (cut vs court), `forma` (mould vs shape), and `molho` (sauce vs bundle): when meaning splits within a single part of speech, grammar can't see it.
 
 ### The dataset: labelling meaning, not grammar
 
-So we built an open dataset that labels the thing that actually matters: meaning. **`bifonia-pt-homographs`** is **56,891 European Portuguese sentences** covering **27 heterophonic homographs**. Every sentence is labelled with the word, its **meaning** (sense), its part of speech, its IPA pronunciation, and a diacritic-restored form (for example *sêde* vs *séde*) that makes the intended reading unambiguous on the page.
+So we built an open dataset that labels the thing that actually matters: meaning. **`bifonia-pt-homographs`** is **155,283 European Portuguese sentences** covering **131 heterophonic homographs**. Every sentence is labelled with the word, its **meaning** (sense), its part of speech, its IPA pronunciation, and a diacritic-restored form (for example *sêde* vs *séde*) that makes the intended reading unambiguous on the page.
 
 The bucket key is meaning. That is the whole point. A single record looks like this:
 
@@ -61,12 +62,11 @@ With meaning-labelled data, we could measure how different approaches do at pick
 
 | Approach | Accuracy |
 | --- | --- |
-| Always guess the most common sense | ≈53% |
-| spaCy POS → meaning | ≈66% |
-| Stanza POS → meaning | ≈75% |
-| `bifonia` rule + meaning resolver | **≈94%** |
+| Always guess the most common sense | 48.2% |
+| spaCy POS → meaning | 85.8% |
+| `bifonia` rule + meaning resolver | **95.8%** |
 
-The POS-based approaches plateau exactly where you'd expect: they can route by grammar but never by meaning, so the within-noun splits are out of reach. Our resolver, the [`bifonia`](https://github.com/TigreGotico/bifonia) library, is lightweight and **fully dependency-free**. It reaches **≈94%**, and hits **100%** on the `sede`/*thirst* case the POS taggers get **0%** on.
+The POS-based approaches plateau exactly where you'd expect: they can route by grammar but never by meaning, so the within-noun splits are out of reach. Our resolver, the [`bifonia`](https://github.com/TigreGotico/bifonia) library, is lightweight and **fully dependency-free**. It reaches **95.8%** on the full set. On the POS-ambiguous sentences, where spaCy reaches **74.0%**, it reaches **97.6%**. The figures come from `bifonia-pt-homographs-gold`, a sense-balanced set of 2,346 real sentences (OpenSubtitles, Wikipedia, web pages) labelled independently of the engine.
 
 The number matters less than the reason behind it: a small, fast, fully open component beats heavyweight neural POS taggers on this task because it resolves *meaning*, not just grammar. No GPU, no model download, no network call.
 
@@ -78,4 +78,4 @@ Because the dataset is open and the resolver is tiny and forkable, anyone buildi
 
 ### Try it
 
-The dataset is on Hugging Face at [`TigreGotico/bifonia-pt-homographs`](https://huggingface.co/datasets/TigreGotico/bifonia-pt-homographs), and the resolver lives at [`bifonia`](https://github.com/TigreGotico/bifonia). It slots into the broader Portuguese phonetics work behind **[Classical NLP for Portuguese](/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)** and the **[grapheme-to-IPA stack for 350+ languages](/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**: small, deterministic pieces that make a voice pronounce a language the way its speakers actually do.
+The dataset is on Hugging Face at [`TigreGotico/bifonia-pt-homographs`](https://huggingface.co/datasets/TigreGotico/bifonia-pt-homographs), and the resolver lives at [`bifonia`](https://github.com/TigreGotico/bifonia). It slots into the broader Portuguese phonetics work behind **[Classical NLP for Portuguese](/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)** and the **[grapheme-to-IPA stack for 7,000+ languages](/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**: small, deterministic pieces that make a voice pronounce a language the way its speakers actually do.

@@ -2,6 +2,7 @@
 title: "TTS-modellen die op een aardappel draaien"
 description: "phoonnx is een onderzoeksframework voor VITS-gebaseerde tekst-naar-spraak, gebouwd om comfortabel op zwakke hardware te draaien. Geen GPU, geen cloud, geen API-sleutel — alleen een ONNX-stem van ~15,65 miljoen parameters en een CPU. Zo klein kan een goede stem zijn, en zo trainen we ze."
 date: 2026-05-10
+updated: 2026-10-20
 lang: nl
 author: "Casimiro Ferreira"
 tags:
@@ -43,7 +44,7 @@ We sturen geen PyTorch naar de edge. Getrainde stemmen worden geëxporteerd naar
 
 Een klein akoestisch model kan zich veroorloven klein te zijn omdat phoonnx het zware linguïstische werk *vooraf* doet, in de fonemizer. Een fonemizer (grafeem-naar-foneem, of G2P) zet geschreven tekst om in de reeks klankeenheden die het model daadwerkelijk uitspreekt — zodat het VITS-netwerk nooit spelling hoeft te leren, alleen klank.
 
-Ons foneemwerk is geworteld in **[grafeem-naar-IPA voor 350+ talen](/nl/blog/2026-01-15-grapheme-to-ipa-for-350-languages)** en **[klassieke Portugese fonetiek](/nl/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**, die het mogelijk maken stemmen te trainen voor talen met weinig hulpbronnen zonder wekenlange annotatie door experts.
+Ons foneemwerk is geworteld in **[grafeem-naar-IPA voor 7000+ talen](/nl/blog/2026-01-15-grapheme-to-ipa-for-350-languages)** en **[klassieke Portugese fonetiek](/nl/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**, die het mogelijk maken stemmen te trainen voor talen met weinig hulpbronnen zonder wekenlange annotatie door experts.
 
 phoonnx is bewust fonemizer-agnostisch en levert een klein legioen ervan mee: `espeak-ng`, [gruut](https://github.com/rhasspy/gruut), [epitran](https://github.com/dmort27/epitran), [misaki](https://github.com/hexgrad/misaki), [transphone](https://github.com/xinjli/transphone) (dat reikt in de duizenden talen gecatalogiseerd in Glottolog), plus specialisten zoals [mantoq](https://github.com/mush42/mantoq) voor Arabisch, **[cotovia](https://github.com/TigreGotico/pycotovia)** voor Galicisch, OpenJTalk voor Japans, en KoG2P voor Koreaans. Ze sturen IPA, ARPA, Pinyin, Hangul, Buckwalter uit — wat de taal ook nodig heeft. Er is zelfs een modelgebaseerde meertalige G2P gebouwd op ByT5, net als al het andere geëxporteerd naar ONNX.
 

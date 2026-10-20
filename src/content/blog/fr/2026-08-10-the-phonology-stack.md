@@ -2,6 +2,7 @@
 title: "Comment s'articule notre pile de phonologie"
 description: "Une visite architecturale de notre pile texte-vers-prononciation : scriptconv pour la notation, orthography2ipa comme moteur graphème-vers-IPA multilingue, des frontends spécifiques à chaque langue construits par-dessus pour le portugais, le basque, le mirandais, le barranquenho et l'arabe, et phonematcher pour la recherche fondée sur le son. Explique pourquoi ces couches existent, ce qu'est un treillis de candidats, et donne des sorties dialectales réelles."
 date: 2026-08-01
+updated: 2026-10-20
 lang: fr
 author: "Casimiro Ferreira"
 tags:
@@ -69,12 +70,12 @@ Chaque couche au-dessus de celle-ci peut supposer que la conversion de notation 
 
 ### Le moteur : orthography2ipa
 
-[orthography2ipa](https://github.com/TigreGotico/orthography2ipa) est le moteur multilingue. Il prend une spécification de langue — une description déclarative des règles graphème-vers-phonème de cette langue — et un morceau de texte, et produit de l'IPA. Au moment d'écrire ces lignes, il fournit des spécifications couvrant **820 langues** (`available_codes()` sur le paquet installé renvoie une liste de cette longueur ; considérez ce chiffre exact comme une cible mouvante, puisque des spécifications sont ajoutées au fil du temps).
+[orthography2ipa](https://github.com/TigreGotico/orthography2ipa) est le moteur multilingue. Il prend une spécification de langue — une description déclarative des règles graphème-vers-phonème de cette langue — et un morceau de texte, et produit de l'IPA. Au moment d'écrire ces lignes, il fournit des spécifications couvrant **7396 langues** (`available_codes()` sur le paquet installé renvoie une liste de cette longueur ; considérez ce chiffre exact comme une cible mouvante, puisque des spécifications sont ajoutées au fil du temps).
 
 ```python
 >>> import orthography2ipa as o
 >>> len(o.available_codes())
-820
+7396
 ```
 
 Le moteur lui-même n'embarque aucun code spécifique à une langue. Une nouvelle langue est un nouveau fichier de spécification, validé contre le même schéma que toutes les autres spécifications.
@@ -89,7 +90,7 @@ Reprenons « read » :
 >>> from orthography2ipa import G2P
 >>> g = G2P("en")
 >>> g.transcribe("read")
-'ɹiːd'
+'ˈɹiːd'
 >>> g.candidates("read")
 [IPAPath('ɹiːd', score=0.0), IPAPath('ɹɛd', score=1.0)]
 ```
@@ -102,11 +103,11 @@ Deux locuteurs de la même langue peuvent prononcer la même phrase différemmen
 
 | Dialecte | Sortie |
 |---|---|
-| pt-PT (Portugal) | `ˈbõ ˈdiɐ ˈkomu eˈʃta vɔˈse` |
-| pt-BR (Brésil) | `ˈbõ ˈdʒiɐ ˈkɔ̃mʊ eˈsta voˈse` |
-| pt-AO (Angola) | `ˈbõ ˈdiɐ ˈkomʊ eˈsta vɔˈse` |
-| pt-MZ (Mozambique) | `ˈbõ ˈdiɐ ˈkomu eˈsta vɔˈse` |
-| pt-TL (Timor-Leste) | `ˈbõ ˈdiə ˈkoɔmʊ eˈsta vɔˈse` |
+| pt-PT (Portugal) | `ˈbõ ˈdiɐ ˈkomu eʃˈta vɔˈse` |
+| pt-BR (Brésil) | `ˈbõ ˈdʒiɐ ˈkɔ̃mʊ esˈta voˈse` |
+| pt-AO (Angola) | `ˈbõ ˈdiɐ ˈkomʊ esˈta vɔˈse` |
+| pt-MZ (Mozambique) | `ˈbõ ˈdiɐ ˈkomu esˈta vɔˈse` |
+| pt-TL (Timor-Leste) | `ˈbõ ˈdiə ˈkoɔmʊ esˈta vɔˈse` |
 
 (« Bom dia, como está você? » — « Bonjour, comment allez-vous ? ») Le squelette consonantique reste reconnaissable sur les cinq, mais deux marqueurs bien connus les distinguent immédiatement. Dans « dia », le portugais brésilien transforme le `d` devant un `i` en `dʒ`, le son du début de l'anglais « jam » — les autres gardent un `d` simple. Dans « está », le portugais européen prononce le `s` en fin de syllabe comme `ʃ`, le « sh » de « shoe », tandis que toutes les autres variétés gardent `s`. Un dictionnaire de prononciation construit à partir des règles d'un seul dialecte se trompe sur ces deux points pour l'auditeur de chaque autre dialecte.
 
@@ -115,7 +116,7 @@ Deux locuteurs de la même langue peuvent prononcer la même phrase différemmen
 ```python
 >>> from euskaphone import EuskaPhonemizer
 >>> EuskaPhonemizer().phonemize_sentence("Kaixo, zer moduz zaude?")
-'kai̯ʃo s̻er modus̻ s̻au̯de'
+'kai̯ʃo s̻er moðus̻ s̻au̯ðe'
 ```
 
 ## Les frontends spécifiques à chaque langue
@@ -129,7 +130,7 @@ Au-dessus du moteur partagé se trouvent des frontends qui ajoutent ce qu'une sp
   ```python
   >>> from mwl_phonemizer import phonemize
   >>> phonemize("Falo la lhéngua mirandesa.")
-  'ˈfalu lɐ ˈʎɛŋɡwa miɾɐˈndez̺ɐ.'
+  'ˈfalu lɐ ˈʎẽɡwɐ miɾɐ̃ˈdez̺ɐ.'
   ```
 
 - **[g2p_barranquenho](https://github.com/TigreGotico/g2p_barranquenho)** — le premier G2P ouvert pour le barranquenho, la langue de contact ibéro-romane de Barrancos, à la frontière entre le Portugal et l'Espagne. Voir **[Présentation du premier phonémiseur pour le barranquenho](/fr/blog/2025-12-12-barranquenho)** pour la façon dont ses règles ont été dérivées de la propre convention orthographique de la municipalité.
@@ -154,7 +155,7 @@ Le portugais possède la pile la plus profonde, parce que la prononciation portu
 - **[tugamorph](https://github.com/TigreGotico/tugamorph)** est un analyseur morphologique fondé sur des règles : il segmente un mot en préfixe, racine, suffixe, flexion et clitique, en n'utilisant que la bibliothèque standard de Python, optionnellement affiné par silabificador et tugatagger.
 - **[bifonia](https://github.com/TigreGotico/bifonia)** résout les homographes hétérophones du portugais européen — des mots comme « sede » (soif, `ˈsedɨ`, contre siège social, `ˈsɛdɨ`) où la prononciation correcte dépend du sens, pas de la grammaire. Voir **[Le dire correctement : désambiguïser les hétérophones portugais pour la TTS](/fr/blog/2026-06-12-disambiguating-portuguese-heterographs-for-tts)** pour la façon dont il a été construit et évalué. C'est le cas concret derrière l'idée de treillis ci-dessus : orthography2ipa peut fournir les deux lectures candidates de « sede », mais seule une couche sensible au sens comme bifonia peut choisir entre elles.
 
-Pour en savoir plus sur la façon dont silabificador et tugaphone fonctionnent ensemble au quotidien, voir **[NLP classique pour le portugais : syllabation et graphème-vers-phonème](/fr/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**, et pour le moteur plus large sous-jacent à tout cela, **[Graphème-vers-IPA pour 820 langues](/fr/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**.
+Pour en savoir plus sur la façon dont silabificador et tugaphone fonctionnent ensemble au quotidien, voir **[NLP classique pour le portugais : syllabation et graphème-vers-phonème](/fr/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**, et pour le moteur plus large sous-jacent à tout cela, **[Graphème-vers-IPA pour plus de 7000 langues](/fr/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**.
 
 ## Recherche fondée sur le son : phonematcher
 
@@ -174,7 +175,7 @@ Cette métrique de distance est utile dans deux situations concrètes : recherch
 
 ## Limites honnêtes
 
-La couverture à travers 820 spécifications de langue est inégale par construction : les langues disposant d'une littérature phonologique établie et d'un lexique produisent une meilleure sortie que les langues dotées d'une spécification mince, principalement déduite de conventions orthographiques générales. La qualité est systématiquement meilleure là où un lexique curé existe — le portugais, adossé à tugalex, est le cas le plus solide de la pile ; les langues reposant uniquement sur les règles de la spécification sans lexique géreront mal le vocabulaire irrégulier et les emprunts.
+La couverture à travers 7396 spécifications de langue est inégale par construction : les langues disposant d'une littérature phonologique établie et d'un lexique produisent une meilleure sortie que les langues dotées d'une spécification mince, principalement déduite de conventions orthographiques générales. La qualité est systématiquement meilleure là où un lexique curé existe — le portugais, adossé à tugalex, est le cas le plus solide de la pile ; les langues reposant uniquement sur les règles de la spécification sans lexique géreront mal le vocabulaire irrégulier et les emprunts.
 
 Quelques composants ne sont explicitement pas des références finies et relues par des locuteurs natifs : arbtok est maintenu par un locuteur non natif de l'arabe et devrait être vérifié auprès d'un jugement natif avant utilisation dans quoi que ce soit destiné aux utilisateurs. Les frontends construits sur des spécifications minces héritent de cette minceur — un frontend ne vaut que ce que valent la spécification et le lexique qui le sous-tendent.
 

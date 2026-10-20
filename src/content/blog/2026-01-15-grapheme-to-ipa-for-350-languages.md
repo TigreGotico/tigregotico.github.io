@@ -1,8 +1,8 @@
 ---
-title: "Grapheme-to-IPA for 820 Languages"
-description: "orthography2ipa is a pure-data, linguistically grounded resource that maps spelling to IPA and models how phonemes surface as allophones across 909 language specs, 820 languages, and 20+ language families. A candidate lattice, a maximal-munch tokenizer, phonological and script distance metrics, dialect lineage, and a schema-validated spec set cited to the dialectological literature — no trained weights, fully self-hostable."
+title: "Grapheme-to-IPA for 7,000+ Languages"
+description: "orthography2ipa is a pure-data, linguistically grounded resource that maps spelling to IPA and models how phonemes surface as allophones across 7,396 language specs and more than 200 language families. A candidate lattice, a maximal-munch tokenizer, phonological and script distance metrics, dialect lineage, and a schema-validated spec set cited to the dialectological literature — no trained weights, fully self-hostable."
 date: 2026-01-15
-updated: 2026-08-01
+updated: 2026-10-20
 author: "Casimiro Ferreira"
 tags:
   - "G2P"
@@ -16,7 +16,7 @@ tags:
 draft: false
 ---
 
-**[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)** is a pure-data Python package: declarative JSON, thin pluggable logic, no trained weights. It maps spelling to IPA and models how those phonemes surface in context. It ships **909 language specs covering 820 languages** (plus 89 classification-only clade nodes) across **20+ language families**. Install it, read the data, fork the data. Nothing is hidden in a checkpoint.
+**[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)** is a pure-data Python package: declarative JSON, thin pluggable logic, no trained weights. It maps spelling to IPA and models how those phonemes surface in context. It ships **7,396 language specs** (plus 275 classification-only clade nodes) across **more than 200 language families**. The count grows as specs are added; `len(orthography2ipa.available_codes())` returns the current number. Install it, read the data, fork the data. Nothing is hidden in a checkpoint.
 
 It is the phonology layer beneath everything downstream. The candidate lattice it produces feeds several projects: the Arabic TTS frontend [arbtok](https://github.com/TigreGotico/arbtok), the Portuguese [TugaPhone](https://github.com/TigreGotico/tugaphone) and [silabificador](https://github.com/TigreGotico/silabificador) stacks (see **[classical NLP for Portuguese syllables and phonemes](/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**), the [Barranquenho phonemizer](/blog/2025-12-12-barranquenho), the Mirandese phonemizer, and the phoneme grounding for **[TTS that runs on a potato](/blog/2026-05-10-tts-that-runs-on-a-potato)**.
 
@@ -51,7 +51,7 @@ Dialect trees stay maintainable because JSON files support `graphemes_base` / `a
 
 ## Deep on the ground, not just wide
 
-The 820 figure is breadth. The depth is where the work is. A lect is a specific language variety, such as a dialect or a standard register. The specs go lect by lect where the dialectological literature does, and each one is cited to that literature with page pins rather than pattern-matched from a phoneme chart.
+The 7,396 figure is breadth. The depth is where the work is. A lect is a specific language variety, such as a dialect or a standard register. The specs go lect by lect where the dialectological literature does, and each one is cited to that literature with page pins rather than pattern-matched from a phoneme chart.
 
 The **Iberian** coverage is the clearest example: **100+ specs** for the languages of the peninsula. This covers every Romance language of Spain: Castilian, Catalan/Valencian, Galician (both the RAG and reintegrationist norms), Asturian, Aragonese and its valley varieties (Ansotano, Chistabín, Benasqués…), and Extremaduran. It also covers Basque, the Ibero-Romance creoles, and the historical layers most resources skip entirely: **Andalusi Arabic** and **Mozarabic**. The Arabic side carries **34 dialect lects** (from Najdi and Hejazi through Levantine, Maghrebi and the peninsular varieties). The Lusophone side carries **46 Portuguese-and-Portugal-language lects**, down to Rionorese, Guadramilese, and the Mirandese sub-dialects.
 
@@ -67,7 +67,7 @@ tok = PhonetokTokenizer(orthography2ipa.get("en-GB"))
 
 tok.ipa_best("through")                 # 'θɹɔː'
 for path in tok.ipa_beam("through", beam_width=8):
-    print(path.ipa, path.score)         # θɹɔː 0.0, ðɹɔː 1.0, θɹoʊ 1.0, …
+    print(path.ipa, path.score)         # θɹɔː 0.0, ðɹɔː 1.0, θɹəʊ 1.0, …
 ```
 
 The lattice is the contract the whole downstream family builds on. A language-specific engine consumes the shared lattice and adds only the phonology a static table cannot express, keeping every consumer on the same grounded core:
@@ -83,13 +83,13 @@ Because the data is structured rather than baked into weights, you can compare l
 from orthography2ipa.distance import phonological_distance
 d = phonological_distance(orthography2ipa.get("pt-BR"), orthography2ipa.get("pt-PT"))
 
-d.combined                    # 0.0515 — near-identical
+d.combined                    # 0.0562 — near-identical
 d.inventory.feature_mean      # phoneme-inventory distance
 d.grapheme.mean_ipa_distance  # grapheme-mapping divergence
 d.allophone_sim               # allophone-overlap similarity
 ```
 
-Feature vectors are exposed too, so a near-identical pair like the two Portuguese standards lands at 0.0515 while genuinely distant pairs separate cleanly. This is useful for transfer-learning decisions, low-resource bootstrapping, and dialectometry alike.
+Feature vectors are exposed too, so a near-identical pair like the two Portuguese standards lands at 0.0562 while genuinely distant pairs separate cleanly. This is useful for transfer-learning decisions, low-resource bootstrapping, and dialectometry alike.
 
 ## How we know the data is any good
 
@@ -101,7 +101,7 @@ The numbers, read as directional and always cited to their source ([`docs/scoreb
 
 - **Arabic dialects, bare undiacritized input**: the hard, deployment-realistic case. On arbtok's bare-input TTS gold (33 lects), the rawi-lattice fusion under dialect licensing reaches a **mean PER (phoneme error rate) of 0.189**, beating the same ensemble run as a free generator (0.193), with the margin concentrated on the lects that diverge most from Modern Standard Arabic (MSA). On most lects arbtok beats espeak-ng on the bare input. On MSA itself, espeak, which is MSA-tuned, still wins (espeak 0.176 vs arbtok 0.245).
 - **Arabic dialects, diacritized input**: with the marks present, arbtok's PER sits at **0.01–0.08** per lect, well under espeak's single MSA voice (e.g. Najdi 0.009 vs espeak 0.221, Egyptian 0.027 vs espeak 0.287). espeak has no dialect voices, so this comparison is apples-to-oranges, but the gap is the point.
-- **Portuguese, against expert-human gold**: Lisbon European Portuguese lands at **PER 0.029** (88% exact-match) on page-pinned primary sources, and the native-speaker Mirandese gold at **0.146**.
+- **Portuguese, against expert-human gold**: Lisbon European Portuguese lands at **PER 0.029** (88% exact-match) on page-pinned primary sources, and the native-speaker Mirandese gold at **0.132**.
 
 Every one of those is a current-state property of the data, cross-referenced to a bootstrap confidence interval, not a leaderboard trophy. Where the interval is wide or the sample tiny, the scoreboard says so.
 

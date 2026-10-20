@@ -3,7 +3,7 @@ title: "推出首个巴兰克诺语音素转换器"
 description: "g2p_barranquenho 是首个面向巴兰克诺语的开放字素转音素转换器。巴兰克诺语是葡萄牙巴兰科斯的伊比利亚-罗曼语接触语言——其规则源自该市新近发布的正字法约定，可对照仓库中所收录的源文件进行审核。"
 date: 2025-12-12
 lang: zh
-updated: 2026-08-01
+updated: 2026-10-20
 author: "Casimiro Ferreira"
 tags:
   - "Phonemization"
@@ -25,7 +25,7 @@ draft: false
 
 实际运行中：
 
-> "Un Enormi Passu para u Barranquenhu i para a Cultura Barranquenha" → `ˈũ eˈnɔɾmi ˈpas̺u ˈpaɾɐ ˈu bɐrɐ̃ˈkɛɲu ˈi ˈpaɾɐ ɐ kuˈltuɾɐ bɐrɐ̃ˈkɛɲɐ`
+> "Un Enormi Passu para u Barranquenhu i para a Cultura Barranquenha" → `ˈũ eˈnɔɾmi ˈpas̺u ˈpaɾɐ ˈu bɐrɐ̃ˈkɛɲu ˈi ˈpaɾɐ ɐ kulˈtuɾɐ bɐrɐ̃ˈkɛɲɐ`
 
 源 PDF 文件（约定、词典、语法）都收录在仓库根目录中，因此规则可对照其来源进行审核。
 

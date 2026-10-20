@@ -1,7 +1,8 @@
 ---
 title: "Decirlo Bien: Desambiguar Heterófonos del Portugués para TTS"
-description: "Muchas palabras del portugués europeo se escriben igual pero se pronuncian de forma diferente según su significado — y equivocar la vocal hace que una voz TTS diga la palabra equivocada. Construimos bifonia-pt-homographs, un conjunto de datos abierto etiquetado por significado con 56 891 frases sobre 27 palabras, y un resolutor diminuto y sin dependencias que alcanza ≈94 % donde los etiquetadores POS pesados se estancan en ≈75 %."
+description: "Muchas palabras del portugués europeo se escriben igual pero se pronuncian de forma diferente según su significado — y equivocar la vocal hace que una voz TTS diga la palabra equivocada. Construimos bifonia-pt-homographs, un conjunto de datos abierto etiquetado por significado con 155 283 frases sobre 131 palabras, y un resolutor diminuto y sin dependencias que alcanza el 95,8 % en un conjunto equilibrado por significado de frases reales, donde un etiquetador POS como spaCy alcanza el 85,8 %."
 date: 2026-06-12
+updated: 2026-10-20
 lang: es
 author: "Casimiro Ferreira"
 tags:
@@ -54,9 +55,7 @@ gramatical.
 
 Tomemos `sede` de nuevo. *Sed* y *central* son **ambos sustantivos**. Un etiquetador
 POS los etiqueta de forma idéntica — no hay señal gramatical para distinguirlos — así
-que solo puede adivinar la lectura más común. Medimos exactamente esto: en nuestro
-conjunto de prueba, tanto spaCy como Stanza obtienen un **0 %** en el sentido *sed*
-de `sede`. Siempre eligen *central*. El mismo techo estructural aparece en `corte`
+que solo puede adivinar la lectura más común. Lo medimos: en las frases de nuestro conjunto de prueba en que una misma categoría gramatical encierra dos sentidos, spaCy solo alcanza el 74,0 %. El mismo techo estructural aparece en `corte`
 (corte vs corte real), `forma` (molde vs forma) y `molho` (salsa vs manojo): cuando
 el significado se divide dentro de una única categoría gramatical, la gramática no
 puede verlo.
@@ -64,8 +63,8 @@ puede verlo.
 ### El conjunto de datos: etiquetar el significado, no la gramática
 
 Así que construimos un conjunto de datos abierto que etiqueta lo que realmente
-importa — el significado. **`bifonia-pt-homographs`** son **56 891 frases del
-portugués europeo** que cubren **27 homógrafos heterófonos**. Cada frase está
+importa — el significado. **`bifonia-pt-homographs`** son **155 283 frases del
+portugués europeo** que cubren **131 homógrafos heterófonos**. Cada frase está
 etiquetada con la palabra, su **significado** (sentido), su categoría gramatical, su
 pronunciación IPA, y una forma con diacríticos restaurados (por ejemplo *sêde* vs
 *séde*) que hace inequívoca la lectura pretendida sobre el papel.
@@ -96,17 +95,15 @@ enfoques al elegir el significado correcto — y por tanto la pronunciación cor
 
 | Enfoque | Precisión |
 | --- | --- |
-| Adivinar siempre el sentido más común | ≈53 % |
-| spaCy POS → significado | ≈66 % |
-| Stanza POS → significado | ≈75 % |
-| Resolutor de reglas + significado de `bifonia` | **≈94 %** |
+| Adivinar siempre el sentido más común | 48,2 % |
+| spaCy POS → significado | 85,8 % |
+| Resolutor de reglas + significado de `bifonia` | **95,8 %** |
 
 Los enfoques basados en POS se estancan justo donde cabría esperar: pueden enrutar
 por gramática pero nunca por significado, así que las divisiones dentro de un
 sustantivo quedan fuera de su alcance. Nuestro resolutor — la biblioteca
 [`bifonia`](https://github.com/TigreGotico/bifonia), ligera y **totalmente libre de
-dependencias** — alcanza el **≈94 %**, y, lo que es crucial, logra el **100 %** en el
-caso `sede`/*sed* en el que los etiquetadores POS obtienen un **0 %**.
+dependencias** — alcanza el **95,8 %** en el conjunto completo. En las frases ambiguas para el POS, donde spaCy alcanza el **74,0 %**, alcanza el **97,6 %**. Las cifras proceden de `bifonia-pt-homographs-gold`, un conjunto equilibrado por significado de 2346 frases reales (OpenSubtitles, Wikipedia, páginas web) etiquetado con independencia del motor.
 
 El titular no es solo el número. Es que un componente pequeño, rápido y totalmente
 abierto supera a etiquetadores POS neuronales pesados en esta tarea — porque resuelve
@@ -137,6 +134,6 @@ El conjunto de datos está en Hugging Face en
 y el resolutor vive en [`bifonia`](https://github.com/TigreGotico/bifonia). Se
 integra en el trabajo más amplio de fonética del portugués que hay detrás de **[NLP
 clásico para portugués](/es/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**
-y del **[stack de grafema a IPA para más de 350 lenguas](/es/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**
+y del **[stack de grafema a IPA para más de 7000 lenguas](/es/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**
 — piezas pequeñas y deterministas que hacen que una voz pronuncie una lengua como
 realmente lo hacen sus hablantes.

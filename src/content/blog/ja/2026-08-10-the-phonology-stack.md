@@ -2,6 +2,7 @@
 title: "音韻論スタックはどう組み合わさっているか"
 description: "私たちのテキストから発音へのスタックのアーキテクチャ案内: 表記法のための scriptconv、言語間の書記素から IPA へのエンジンである orthography2ipa、ポルトガル語・バスク語・ミランダ語・バランケーニョ語・アラビア語のためにその上に構築された言語固有のフロントエンド、そして音に基づく検索のための phonematcher。各レイヤーがなぜ存在するのか、候補ラティスとは何か、そして実際の方言出力を示します。"
 date: 2026-08-01
+updated: 2026-10-20
 lang: ja
 author: "Casimiro Ferreira"
 tags:
@@ -69,12 +70,12 @@ draft: false
 
 ### エンジン: orthography2ipa
 
-[orthography2ipa](https://github.com/TigreGotico/orthography2ipa) は言語間エンジンです。言語仕様 — その言語の書記素から音素への規則の宣言的な記述 — とテキストの断片を受け取り、IPA を生成します。この記事を書いている時点で、**820 の言語**をカバーする仕様を提供しています(インストールされたパッケージの `available_codes()` はその長さのリストを返します。仕様は時間とともに追加されるため、正確な数値は変動するものと考えてください)。
+[orthography2ipa](https://github.com/TigreGotico/orthography2ipa) は言語間エンジンです。言語仕様 — その言語の書記素から音素への規則の宣言的な記述 — とテキストの断片を受け取り、IPA を生成します。この記事を書いている時点で、**7396 の言語**をカバーする仕様を提供しています(インストールされたパッケージの `available_codes()` はその長さのリストを返します。仕様は時間とともに追加されるため、正確な数値は変動するものと考えてください)。
 
 ```python
 >>> import orthography2ipa as o
 >>> len(o.available_codes())
-820
+7396
 ```
 
 エンジン自体には言語固有のコードは組み込まれていません。新しい言語は、他のすべての仕様と同じスキーマに対して検証される新しい仕様ファイルにすぎません。
@@ -89,7 +90,7 @@ draft: false
 >>> from orthography2ipa import G2P
 >>> g = G2P("en")
 >>> g.transcribe("read")
-'ɹiːd'
+'ˈɹiːd'
 >>> g.candidates("read")
 [IPAPath('ɹiːd', score=0.0), IPAPath('ɹɛd', score=1.0)]
 ```
@@ -102,11 +103,11 @@ draft: false
 
 | 方言 | 出力 |
 |---|---|
-| pt-PT(ポルトガル) | `ˈbõ ˈdiɐ ˈkomu eˈʃta vɔˈse` |
-| pt-BR(ブラジル) | `ˈbõ ˈdʒiɐ ˈkɔ̃mʊ eˈsta voˈse` |
-| pt-AO(アンゴラ) | `ˈbõ ˈdiɐ ˈkomʊ eˈsta vɔˈse` |
-| pt-MZ(モザンビーク) | `ˈbõ ˈdiɐ ˈkomu eˈsta vɔˈse` |
-| pt-TL(東ティモール) | `ˈbõ ˈdiə ˈkoɔmʊ eˈsta vɔˈse` |
+| pt-PT(ポルトガル) | `ˈbõ ˈdiɐ ˈkomu eʃˈta vɔˈse` |
+| pt-BR(ブラジル) | `ˈbõ ˈdʒiɐ ˈkɔ̃mʊ esˈta voˈse` |
+| pt-AO(アンゴラ) | `ˈbõ ˈdiɐ ˈkomʊ esˈta vɔˈse` |
+| pt-MZ(モザンビーク) | `ˈbõ ˈdiɐ ˈkomu esˈta vɔˈse` |
+| pt-TL(東ティモール) | `ˈbõ ˈdiə ˈkoɔmʊ esˈta vɔˈse` |
 
 ("Bom dia, como está você?" — 「おはようございます、お元気ですか?」)子音の骨格は五つの方言すべてで見分けがつくままですが、二つのよく知られた標識がすぐにこれらを区別します。"dia" では、ブラジルポルトガル語は `i` の前の `d` を英語の "jam" の最初の音である `dʒ` に変えますが、他の方言は単純な `d` を保ちます。"está" では、ヨーロッパポルトガル語は音節末の `s` を "shoe" の "sh" の音である `ʃ` として発音しますが、他のすべての変種は `s` を保ちます。一つの方言の規則から作られた発音辞書は、他のすべての方言の聴取者に対してこの両方を間違えます。
 
@@ -115,7 +116,7 @@ draft: false
 ```python
 >>> from euskaphone import EuskaPhonemizer
 >>> EuskaPhonemizer().phonemize_sentence("Kaixo, zer moduz zaude?")
-'kai̯ʃo s̻er modus̻ s̻au̯de'
+'kai̯ʃo s̻er moðus̻ s̻au̯ðe'
 ```
 
 ## 言語固有のフロントエンド
@@ -129,7 +130,7 @@ draft: false
   ```python
   >>> from mwl_phonemizer import phonemize
   >>> phonemize("Falo la lhéngua mirandesa.")
-  'ˈfalu lɐ ˈʎɛŋɡwa miɾɐˈndez̺ɐ.'
+  'ˈfalu lɐ ˈʎẽɡwɐ miɾɐ̃ˈdez̺ɐ.'
   ```
 
 - **[g2p_barranquenho](https://github.com/TigreGotico/g2p_barranquenho)** — ポルトガル・スペイン国境のバランコス地域のイベロ・ロマンス系接触言語であるバランケーニョ語のための初のオープンな G2P です。その規則が自治体自身の正書法規約からどう導出されたかは、**[バランケーニョ語で初となる音素変換器のご紹介](/ja/blog/2025-12-12-barranquenho)** をご覧ください。
@@ -154,7 +155,7 @@ draft: false
 - **[tugamorph](https://github.com/TigreGotico/tugamorph)** はルールベースの形態素解析器です。Python 標準ライブラリのみを使い、単語を接頭辞、語根、接尾辞、活用、接語に分割し、任意で silabificador と tugatagger によって精度を高めます。
 - **[bifonia](https://github.com/TigreGotico/bifonia)** はヨーロッパポルトガル語の異音同綴語 — "sede"(渇き、`ˈsedɨ`、対 本部、`ˈsɛdɨ`)のように、正しい発音が文法ではなく意味に依存する単語 — を解消します。それがどう作られ評価されたかは、**[正しく発音する: TTS のためのポルトガル語異音同綴語の解消](/ja/blog/2026-06-12-disambiguating-portuguese-heterographs-for-tts)** をご覧ください。これは上記のラティスの発想の背後にある具体例です。orthography2ipa は "sede" の両方の候補読みを提供できますが、bifonia のような意味を知る層だけがその中から選べます。
 
-silabificador と tugaphone が日々どう連携しているかについては、**[ポルトガル語のための古典的NLP: 音節分割と書記素から音素への変換](/ja/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)** を、そしてこのすべての下にあるより広いエンジンについては **[820の言語に対応するグラフェムからIPAへの変換](/ja/blog/2026-01-15-grapheme-to-ipa-for-350-languages)** をご覧ください。
+silabificador と tugaphone が日々どう連携しているかについては、**[ポルトガル語のための古典的NLP: 音節分割と書記素から音素への変換](/ja/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)** を、そしてこのすべての下にあるより広いエンジンについては **[7000以上の言語に対応するグラフェムからIPAへの変換](/ja/blog/2026-01-15-grapheme-to-ipa-for-350-languages)** をご覧ください。
 
 ## 音に基づく検索: phonematcher
 
@@ -174,7 +175,7 @@ silabificador と tugaphone が日々どう連携しているかについては�
 
 ## 正直な限界
 
-820の言語仕様にわたるカバレッジは、構造上、一様ではありません。確立された音韻論の文献と辞書を持つ言語は、主に一般的な正書法の慣習から推測された薄い仕様しか持たない言語よりも良い出力を出します。品質は、キュレーションされた辞書が存在する場所で一貫して最も良く、tugalex に支えられたポルトガル語がこのスタックの中で最も強い事例です。辞書なしで純粋に仕様の規則だけに依存する言語は、不規則な語彙や借用語を誤って処理します。
+7396の言語仕様にわたるカバレッジは、構造上、一様ではありません。確立された音韻論の文献と辞書を持つ言語は、主に一般的な正書法の慣習から推測された薄い仕様しか持たない言語よりも良い出力を出します。品質は、キュレーションされた辞書が存在する場所で一貫して最も良く、tugalex に支えられたポルトガル語がこのスタックの中で最も強い事例です。辞書なしで純粋に仕様の規則だけに依存する言語は、不規則な語彙や借用語を誤って処理します。
 
 いくつかの構成要素は、明示的に未完成の、ネイティブによってレビューされていない参照物です。arbtok はアラビア語のネイティブ話者ではない人が保守しているため、ユーザー向けの何かに使う前にネイティブの判断に対して確認すべきです。薄い仕様の上に構築されたフロントエンドは、その薄さをそのまま受け継ぎます — フロントエンドは、その下にある仕様と辞書と同じだけしか良くありません。
 

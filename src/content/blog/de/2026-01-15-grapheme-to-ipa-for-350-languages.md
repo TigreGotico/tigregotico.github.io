@@ -1,9 +1,9 @@
 ---
-title: "Graphem-zu-IPA für 820 Sprachen"
-description: "orthography2ipa ist eine rein datenbasierte, linguistisch fundierte Ressource, die Schreibweise auf IPA abbildet und modelliert, wie Phoneme über 909 Sprachspezifikationen, 820 Sprachen und mehr als 20 Sprachfamilien hinweg als Allophone auftreten. Ein Kandidatengitter, dialektale Abstammung und ein schemavalidierter, mit der dialektologischen Literatur belegter Spezifikationssatz — keine trainierten Gewichte, vollständig selbst hostbar."
+title: "Graphem-zu-IPA für über 7000 Sprachen"
+description: "orthography2ipa ist eine rein datenbasierte, linguistisch fundierte Ressource, die Schreibweise auf IPA abbildet und modelliert, wie Phoneme über 7396 Sprachspezifikationen und mehr als 200 Sprachfamilien hinweg als Allophone auftreten. Ein Kandidatengitter, dialektale Abstammung und ein schemavalidierter, mit der dialektologischen Literatur belegter Spezifikationssatz — keine trainierten Gewichte, vollständig selbst hostbar."
 date: 2026-01-15
 lang: de
-updated: 2026-08-01
+updated: 2026-10-20
 author: "Casimiro Ferreira"
 tags:
   - "G2P"
@@ -17,7 +17,7 @@ tags:
 draft: false
 ---
 
-**[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)** ist ein rein datenbasiertes Python-Paket — deklaratives JSON, dünne einsteckbare Logik, keine trainierten Gewichte —, das Schreibweise auf IPA abbildet und modelliert, wie diese Phoneme im Kontext auftreten. Es liefert **909 Sprachspezifikationen, die 820 Sprachen abdecken** (plus 89 rein klassifikatorische Klade-Knoten) über **mehr als 20 Sprachfamilien** hinweg. Installieren Sie es, lesen Sie die Daten, forken Sie die Daten. Nichts ist in einem Checkpoint verborgen.
+**[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)** ist ein rein datenbasiertes Python-Paket — deklaratives JSON, dünne einsteckbare Logik, keine trainierten Gewichte —, das Schreibweise auf IPA abbildet und modelliert, wie diese Phoneme im Kontext auftreten. Es liefert **7396 Sprachspezifikationen** (plus 275 rein klassifikatorische Klade-Knoten) über **mehr als 200 Sprachfamilien** hinweg. Die Zahl wächst mit neuen Spezifikationen; `len(orthography2ipa.available_codes())` liefert den aktuellen Wert. Installieren Sie es, lesen Sie die Daten, forken Sie die Daten. Nichts ist in einem Checkpoint verborgen.
 
 Es ist die Phonologie-Schicht unter allem Nachgelagerten: Das Kandidatengitter, das es erzeugt, wird vom arabischen TTS-Frontend [arbtok](https://github.com/TigreGotico/arbtok), den portugiesischen Stacks [TugaPhone](https://github.com/TigreGotico/tugaphone) und [silabificador](https://github.com/TigreGotico/silabificador) (siehe **[klassisches NLP für portugiesische Silben und Phoneme](/de/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**), dem [Barranquenho-Phonemizer](/de/blog/2025-12-12-barranquenho), dem Mirandesischen Phonemizer und der Phonem-Grundlage für **[TTS, das auf einer Kartoffel läuft](/de/blog/2026-05-10-tts-that-runs-on-a-potato)** konsumiert.
 
@@ -52,7 +52,7 @@ Dialektbäume bleiben pflegbar, weil JSON-Dateien die Vererbung `graphemes_base`
 
 ## Tief am Boden, nicht nur breit
 
-Die Zahl 820 steht für Breite; die Tiefe ist dort, wo die Arbeit liegt. Die Spezifikationen gehen Lekt für Lekt so weit, wie es die dialektologische Literatur tut, und jede einzelne ist mit dieser Literatur samt Seitenverankerungen belegt, statt aus einer Phonemtabelle abgeleitet zu werden.
+Die Zahl 7396 steht für Breite; die Tiefe ist dort, wo die Arbeit liegt. Die Spezifikationen gehen Lekt für Lekt so weit, wie es die dialektologische Literatur tut, und jede einzelne ist mit dieser Literatur samt Seitenverankerungen belegt, statt aus einer Phonemtabelle abgeleitet zu werden.
 
 Die **iberische** Abdeckung ist das deutlichste Beispiel: **mehr als 100 Spezifikationen** für die Sprachen der Halbinsel. Jede romanische Sprache Spaniens — Kastilisch, Katalanisch/Valencianisch, Galicisch (sowohl die RAG- als auch die reintegrationistische Norm), Asturisch, Aragonesisch und seine Talvarianten (Ansotano, Chistabín, Benasqués…), Extremadurisch — neben Baskisch, den iberoromanischen Kreolsprachen und den historischen Schichten, die die meisten Ressourcen völlig überspringen: **Andalusisches Arabisch** und **Mozarabisch**. Die arabische Seite umfasst **34 Dialektlekte** (von Nadschdi und Hidschasi über Levantinisch, Maghrebinisch bis zu den Halbinselvarianten), und die lusophone Seite **46 Lekte des Portugiesischen und der Sprachen Portugals**, bis hinunter zu Rionoresisch, Guadramilesisch und den mirandesischen Subdialekten.
 
@@ -68,7 +68,7 @@ tok = PhonetokTokenizer(orthography2ipa.get("en-GB"))
 
 tok.ipa_best("through")                 # 'θɹɔː'
 for path in tok.ipa_beam("through", beam_width=8):
-    print(path.ipa, path.score)         # θɹɔː 0.0, ðɹɔː 1.0, θɹoʊ 1.0, …
+    print(path.ipa, path.score)         # θɹɔː 0.0, ðɹɔː 1.0, θɹəʊ 1.0, …
 ```
 
 Das Gitter ist der Vertrag, auf dem die gesamte nachgelagerte Familie aufbaut. Eine sprachspezifische Engine konsumiert das gemeinsame Gitter und fügt nur die Phonologie hinzu, die eine statische Tabelle nicht ausdrücken kann, sodass jeder Konsument auf demselben fundierten Kern bleibt:
@@ -84,13 +84,13 @@ Da die Daten strukturiert sind statt in Gewichte eingebacken, können Sie Sprach
 from orthography2ipa.distance import phonological_distance
 d = phonological_distance(orthography2ipa.get("pt-BR"), orthography2ipa.get("pt-PT"))
 
-d.combined                    # 0.0515 — near-identical
+d.combined                    # 0.0562 — near-identical
 d.inventory.feature_mean      # phoneme-inventory distance
 d.grapheme.mean_ipa_distance  # grapheme-mapping divergence
 d.allophone_sim               # allophone-overlap similarity
 ```
 
-Auch Merkmalsvektoren werden bereitgestellt, sodass ein nahezu identisches Paar wie die beiden portugiesischen Standards bei 0,0515 landet, während wirklich weit entfernte Paare sich sauber trennen. Das ist gleichermaßen nützlich für Transfer-Learning-Entscheidungen, das Bootstrapping ressourcenarmer Sprachen und die Dialektometrie.
+Auch Merkmalsvektoren werden bereitgestellt, sodass ein nahezu identisches Paar wie die beiden portugiesischen Standards bei 0,0562 landet, während wirklich weit entfernte Paare sich sauber trennen. Das ist gleichermaßen nützlich für Transfer-Learning-Entscheidungen, das Bootstrapping ressourcenarmer Sprachen und die Dialektometrie.
 
 ## Woher wir wissen, dass die Daten gut sind
 
@@ -102,7 +102,7 @@ Die Zahlen, gelesen als richtungsweisend und stets mit ihrer Quelle belegt ([`do
 
 - **Arabische Dialekte, blanke undiakritisierte Eingabe** — der schwere, einsatzrealistische Fall. Auf arbtoks TTS-Gold mit blanker Eingabe (33 Lekte) erreicht die Rawi-Gitter-Fusion unter Dialektlizenzierung eine **mittlere PER von 0,189** und schlägt damit dasselbe Ensemble, das als freier Generator läuft (0,193), wobei sich der Vorsprung auf die Lekte konzentriert, die am stärksten vom MSA abweichen. Bei den meisten Lekten schlägt arbtok espeak-ng bei der blanken Eingabe; beim MSA selbst gewinnt espeak — das MSA-optimiert ist — immer noch (espeak 0,176 vs. arbtok 0,245).
 - **Arabische Dialekte, diakritisierte Eingabe** — mit vorhandenen Zeichen liegt arbtoks PER bei **0,01–0,08** pro Lekt, deutlich unter espeaks einzelner MSA-Stimme (z. B. Nadschdi 0,009 vs. espeak 0,221; Ägyptisch 0,027 vs. espeak 0,287). espeak hat keine Dialektstimmen, das ist also ehrlicherweise ein Vergleich von Äpfeln mit Birnen — aber der Abstand ist der Punkt.
-- **Portugiesisch, gegen menschliches Expertengold** — das Lissabonner europäische Portugiesisch landet bei **PER 0,029** (88 % exakte Übereinstimmung) auf seitenverankerten Primärquellen und das muttersprachliche mirandesische Gold bei **0,146**.
+- **Portugiesisch, gegen menschliches Expertengold** — das Lissabonner europäische Portugiesisch landet bei **PER 0,029** (88 % exakte Übereinstimmung) auf seitenverankerten Primärquellen und das muttersprachliche mirandesische Gold bei **0,132**.
 
 Jede dieser Zahlen ist eine Ist-Zustands-Eigenschaft der Daten, querverwiesen auf ein Bootstrap-Konfidenzintervall, keine Ranglisten-Trophäe. Wo das Intervall breit oder die Stichprobe winzig ist, sagt das Scoreboard das.
 

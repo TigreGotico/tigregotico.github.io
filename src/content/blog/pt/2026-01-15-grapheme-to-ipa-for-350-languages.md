@@ -1,8 +1,8 @@
 ---
-title: "Grafema-para-IPA para 820 Línguas"
-description: "O orthography2ipa é um recurso de dados puros, linguisticamente fundamentado, que mapeia a grafia para IPA e modela alofones ao longo de 909 especificações, 820 línguas e mais de 20 famílias linguísticas. Lattice de candidatos, tokenizador maximal-munch, métricas de distância e linhagem dialetal — sem pesos treinados, totalmente auto-hospedável."
+title: "Grafema-para-IPA para mais de 7000 Línguas"
+description: "O orthography2ipa é um recurso de dados puros, linguisticamente fundamentado, que mapeia a grafia para IPA e modela alofones ao longo de 7396 especificações e mais de 200 famílias linguísticas. Lattice de candidatos, tokenizador maximal-munch, métricas de distância e linhagem dialetal — sem pesos treinados, totalmente auto-hospedável."
 date: 2026-01-15
-updated: 2026-08-01
+updated: 2026-10-20
 lang: pt
 author: "Casimiro Ferreira"
 tags:
@@ -17,7 +17,7 @@ tags:
 draft: false
 ---
 
-O **[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)** é um pacote Python de dados puros: JSON declarativo, lógica fina e plugável, sem pesos treinados. Mapeia a grafia para IPA e modela como esses fonemas se realizam em contexto. Traz **909 especificações de língua que cobrem 820 línguas** (mais 89 nós de clado apenas para classificação) ao longo de **mais de 20 famílias linguísticas**. Instale-o, leia os dados, faça fork dos dados. Nada está escondido num checkpoint.
+O **[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)** é um pacote Python de dados puros: JSON declarativo, lógica fina e plugável, sem pesos treinados. Mapeia a grafia para IPA e modela como esses fonemas se realizam em contexto. Traz **7396 especificações de língua** (mais 275 nós de clado apenas para classificação) ao longo de **mais de 200 famílias linguísticas**. O número cresce à medida que se acrescentam especificações; `len(orthography2ipa.available_codes())` devolve o valor atual. Instale-o, leia os dados, faça fork dos dados. Nada está escondido num checkpoint.
 
 É a camada de fonologia por baixo de tudo o que vem a jusante. A lattice de candidatos que produz alimenta vários projetos: o frontend de TTS árabe [arbtok](https://github.com/TigreGotico/arbtok), as stacks portuguesas [TugaPhone](https://github.com/TigreGotico/tugaphone) e [silabificador](https://github.com/TigreGotico/silabificador) (ver **[NLP clássico para sílabas e fonemas do português](/pt/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**), o [phonemizer do barranquenho](/pt/blog/2025-12-12-barranquenho), o phonemizer do mirandês, e a fundamentação fonémica do **[TTS que corre numa batata](/pt/blog/2026-05-10-tts-that-runs-on-a-potato)**.
 
@@ -52,7 +52,7 @@ As árvores de dialetos mantêm-se sustentáveis porque os ficheiros JSON suport
 
 ## Profundo no terreno, não apenas amplo
 
-O número 820 é a amplitude. A profundidade é onde está o trabalho. Um lecto é uma variedade específica de uma língua, como um dialeto ou um registo padrão. As especificações vão lecto a lecto onde a literatura dialetológica o faz, e cada uma é citada a essa literatura com fixação de página, em vez de ser inferida por correspondência de padrões a partir de uma tabela de fonemas.
+O número 7396 é a amplitude. A profundidade é onde está o trabalho. Um lecto é uma variedade específica de uma língua, como um dialeto ou um registo padrão. As especificações vão lecto a lecto onde a literatura dialetológica o faz, e cada uma é citada a essa literatura com fixação de página, em vez de ser inferida por correspondência de padrões a partir de uma tabela de fonemas.
 
 A cobertura **ibérica** é o exemplo mais claro: **mais de 100 especificações** para as línguas da península. Isto cobre todas as línguas românicas de Espanha: castelhano, catalão/valenciano, galego (tanto a norma da RAG como a reintegracionista), asturiano, aragonês e as suas variedades de vale (ansotano, chistabín, benasqués…), e estremenho. Cobre também o basco, os crioulos ibero-românicos e as camadas históricas que a maioria dos recursos ignora por completo: o **árabe andalusi** e o **moçárabe**. O lado árabe transporta **34 lectos dialetais** (do najdi e do hijazi ao levantino, ao magrebino e às variedades peninsulares). O lado lusófono transporta **46 lectos do português e das línguas de Portugal**, até ao rionorês, ao guadramilês e aos subdialetos do mirandês.
 
@@ -68,7 +68,7 @@ tok = PhonetokTokenizer(orthography2ipa.get("en-GB"))
 
 tok.ipa_best("through")                 # 'θɹɔː'
 for path in tok.ipa_beam("through", beam_width=8):
-    print(path.ipa, path.score)         # θɹɔː 0.0, ðɹɔː 1.0, θɹoʊ 1.0, …
+    print(path.ipa, path.score)         # θɹɔː 0.0, ðɹɔː 1.0, θɹəʊ 1.0, …
 ```
 
 A lattice é o contrato sobre o qual toda a família a jusante assenta. Um motor específico de uma língua consome a lattice partilhada e acrescenta apenas a fonologia que uma tabela estática não consegue exprimir, mantendo cada consumidor sobre o mesmo núcleo fundamentado:
@@ -84,13 +84,13 @@ Como os dados são estruturados em vez de cozidos em pesos, pode-se comparar lí
 from orthography2ipa.distance import phonological_distance
 d = phonological_distance(orthography2ipa.get("pt-BR"), orthography2ipa.get("pt-PT"))
 
-d.combined                    # 0.0515 — near-identical
+d.combined                    # 0.0562 — near-identical
 d.inventory.feature_mean      # phoneme-inventory distance
 d.grapheme.mean_ipa_distance  # grapheme-mapping divergence
 d.allophone_sim               # allophone-overlap similarity
 ```
 
-Os vetores de características também são expostos, pelo que um par quase idêntico como os dois padrões portugueses fica em 0,0515, enquanto pares genuinamente distantes se separam de forma nítida. Isto é útil tanto para decisões de transfer learning, como para bootstrapping de línguas de poucos recursos e para dialetometria.
+Os vetores de características também são expostos, pelo que um par quase idêntico como os dois padrões portugueses fica em 0,0562, enquanto pares genuinamente distantes se separam de forma nítida. Isto é útil tanto para decisões de transfer learning, como para bootstrapping de línguas de poucos recursos e para dialetometria.
 
 ## Como sabemos que os dados prestam
 
@@ -102,7 +102,7 @@ Os números, lidos como direcionais e sempre citados à sua fonte ([`docs/scoreb
 
 - **Dialetos árabes, input não diacritizado e nu**: o caso difícil e realista para deployment. No gold de TTS de input nu do arbtok (33 lectos), a fusão rawi-lattice sob licenciamento dialetal atinge um **PER (taxa de erro fonémico) médio de 0,189**, batendo o mesmo ensemble corrido como gerador livre (0,193), com a margem concentrada nos lectos que mais divergem do árabe padrão moderno (MSA). Na maioria dos lectos o arbtok bate o espeak-ng no input nu. No próprio MSA, o espeak, que é afinado para MSA, ainda vence (espeak 0,176 vs arbtok 0,245).
 - **Dialetos árabes, input diacritizado**: com as marcas presentes, o PER do arbtok fica em **0,01–0,08** por lecto, bem abaixo da única voz MSA do espeak (por exemplo, najdi 0,009 vs espeak 0,221, egípcio 0,027 vs espeak 0,287). O espeak não tem vozes dialetais, pelo que esta comparação é entre alhos e bugalhos, mas a diferença é o que interessa.
-- **Português, contra gold humano especializado**: o português europeu de Lisboa fica em **PER 0,029** (88% de correspondência exata) sobre fontes primárias com fixação de página, e o gold mirandês de falante nativo em **0,146**.
+- **Português, contra gold humano especializado**: o português europeu de Lisboa fica em **PER 0,029** (88% de correspondência exata) sobre fontes primárias com fixação de página, e o gold mirandês de falante nativo em **0,132**.
 
 Cada um destes é uma propriedade do estado atual dos dados, cruzada com um intervalo de confiança bootstrap, não um troféu de leaderboard. Onde o intervalo é largo ou a amostra minúscula, o scoreboard di-lo.
 

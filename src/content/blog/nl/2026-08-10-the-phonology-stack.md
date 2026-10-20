@@ -2,6 +2,7 @@
 title: "Hoe de fonologiestack in elkaar zit"
 description: "Een architectuurrondleiding langs onze tekst-naar-uitspraak-stack: scriptconv voor notatie, orthography2ipa als de taaloverschrijdende grafeem-naar-IPA-engine, taalspecifieke frontends daarbovenop voor Portugees, Baskisch, Mirandees, Barranquenho en Arabisch, en phonematcher voor klankgebaseerd zoeken. Laat zien waarom de lagen bestaan, wat een kandidaat-lattice is, en echte dialectuitvoer."
 date: 2026-08-01
+updated: 2026-10-20
 lang: nl
 author: "Casimiro Ferreira"
 tags:
@@ -69,12 +70,12 @@ Elke laag hierboven kan ervan uitgaan dat notatieconversie al is opgelost.
 
 ### De engine: orthography2ipa
 
-[orthography2ipa](https://github.com/TigreGotico/orthography2ipa) is de taaloverschrijdende engine. Het neemt een taalspecificatie — een declaratieve beschrijving van de grafeem-naar-foneem-regels van die taal — en een stuk tekst, en produceert IPA. Op het moment van schrijven levert het specificaties die **820 talen** dekken (`available_codes()` op het geïnstalleerde pakket geeft een lijst van die lengte terug; behandel het exacte cijfer als een bewegend doel, aangezien er in de loop van de tijd specificaties worden toegevoegd).
+[orthography2ipa](https://github.com/TigreGotico/orthography2ipa) is de taaloverschrijdende engine. Het neemt een taalspecificatie — een declaratieve beschrijving van de grafeem-naar-foneem-regels van die taal — en een stuk tekst, en produceert IPA. Op het moment van schrijven levert het specificaties die **7396 talen** dekken (`available_codes()` op het geïnstalleerde pakket geeft een lijst van die lengte terug; behandel het exacte cijfer als een bewegend doel, aangezien er in de loop van de tijd specificaties worden toegevoegd).
 
 ```python
 >>> import orthography2ipa as o
 >>> len(o.available_codes())
-820
+7396
 ```
 
 De engine zelf bevat geen ingebakken taalspecifieke code. Een nieuwe taal is een nieuw specificatiebestand, getoetst aan hetzelfde schema als elke andere specificatie.
@@ -89,7 +90,7 @@ Neem "read" opnieuw:
 >>> from orthography2ipa import G2P
 >>> g = G2P("en")
 >>> g.transcribe("read")
-'ɹiːd'
+'ˈɹiːd'
 >>> g.candidates("read")
 [IPAPath('ɹiːd', score=0.0), IPAPath('ɹɛd', score=1.0)]
 ```
@@ -102,11 +103,11 @@ Twee sprekers van dezelfde taal kunnen dezelfde zin verschillend uitspreken, en 
 
 | Dialect | Uitvoer |
 |---|---|
-| pt-PT (Portugal) | `ˈbõ ˈdiɐ ˈkomu eˈʃta vɔˈse` |
-| pt-BR (Brazilië) | `ˈbõ ˈdʒiɐ ˈkɔ̃mʊ eˈsta voˈse` |
-| pt-AO (Angola) | `ˈbõ ˈdiɐ ˈkomʊ eˈsta vɔˈse` |
-| pt-MZ (Mozambique) | `ˈbõ ˈdiɐ ˈkomu eˈsta vɔˈse` |
-| pt-TL (Oost-Timor) | `ˈbõ ˈdiə ˈkoɔmʊ eˈsta vɔˈse` |
+| pt-PT (Portugal) | `ˈbõ ˈdiɐ ˈkomu eʃˈta vɔˈse` |
+| pt-BR (Brazilië) | `ˈbõ ˈdʒiɐ ˈkɔ̃mʊ esˈta voˈse` |
+| pt-AO (Angola) | `ˈbõ ˈdiɐ ˈkomʊ esˈta vɔˈse` |
+| pt-MZ (Mozambique) | `ˈbõ ˈdiɐ ˈkomu esˈta vɔˈse` |
+| pt-TL (Oost-Timor) | `ˈbõ ˈdiə ˈkoɔmʊ esˈta vɔˈse` |
 
 ("Bom dia, como está você?" — "Goedemorgen, hoe gaat het met u?") Het medeklinkerskelet blijft herkenbaar over alle vijf, maar twee bekende markeringen onderscheiden ze meteen. In "dia" verandert het Braziliaans Portugees de `d` vóór een `i` in `dʒ`, de klank aan het begin van het Engelse "jam" — de andere houden een gewone `d` aan. In "está" spreekt het Europees Portugees de `s` aan het einde van een lettergreep uit als `ʃ`, de "sh" van "shoe", terwijl elke andere variëteit `s` aanhoudt. Een uitspraakwoordenboek gebouwd op de regels van één dialect krijgt beide fout voor de luisteraar van elk ander dialect.
 
@@ -115,7 +116,7 @@ Twee sprekers van dezelfde taal kunnen dezelfde zin verschillend uitspreken, en 
 ```python
 >>> from euskaphone import EuskaPhonemizer
 >>> EuskaPhonemizer().phonemize_sentence("Kaixo, zer moduz zaude?")
-'kai̯ʃo s̻er modus̻ s̻au̯de'
+'kai̯ʃo s̻er moðus̻ s̻au̯ðe'
 ```
 
 ## De taalspecifieke frontends
@@ -129,7 +130,7 @@ Boven de gedeelde engine zitten frontends die toevoegen wat een algemene specifi
   ```python
   >>> from mwl_phonemizer import phonemize
   >>> phonemize("Falo la lhéngua mirandesa.")
-  'ˈfalu lɐ ˈʎɛŋɡwa miɾɐˈndez̺ɐ.'
+  'ˈfalu lɐ ˈʎẽɡwɐ miɾɐ̃ˈdez̺ɐ.'
   ```
 
 - **[g2p_barranquenho](https://github.com/TigreGotico/g2p_barranquenho)** — de eerste open G2P voor het Barranquenho, de Ibero-Romaanse contacttaal van Barrancos, aan de grens tussen Portugal en Spanje. Zie **[Wij presenteren de eerste phonemizer voor het Barranquenho](/nl/blog/2025-12-12-barranquenho)** voor hoe de regels ervan zijn afgeleid uit de eigen spellingsconventie van de gemeente.
@@ -154,7 +155,7 @@ Het Portugees heeft de diepste stack, omdat Portugese uitspraak van meer afhangt
 - **[tugamorph](https://github.com/TigreGotico/tugamorph)** is een op regels gebaseerde morfologische analysator: het segmenteert een woord in voorvoegsel, stam, achtervoegsel, verbuiging en clitisch, met alleen de Python-standaardbibliotheek, optioneel aangescherpt door silabificador en tugatagger.
 - **[bifonia](https://github.com/TigreGotico/bifonia)** lost Europees-Portugese heterofone homografen op — woorden zoals "sede" (dorst, `ˈsedɨ`, versus hoofdkwartier, `ˈsɛdɨ`) waarbij de juiste uitspraak van betekenis afhangt, niet van grammatica. Zie **[Goed uitspreken: Portugese heterofonen ontrafelen voor TTS](/nl/blog/2026-06-12-disambiguating-portuguese-heterographs-for-tts)** voor hoe het is gebouwd en geëvalueerd. Dit is het concrete geval achter het lattice-idee hierboven: orthography2ipa kan beide kandidaatlezingen van "sede" leveren, maar alleen een betekenisbewuste laag zoals bifonia kan daartussen kiezen.
 
-Voor meer over hoe silabificador en tugaphone dagelijks samenwerken, zie **[Klassieke NLP voor het Portugees: lettergreepverdeling en grafeem-naar-foneem](/nl/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**, en voor de bredere engine die aan dit alles ten grondslag ligt, **[Grafeem-naar-IPA voor 820 talen](/nl/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**.
+Voor meer over hoe silabificador en tugaphone dagelijks samenwerken, zie **[Klassieke NLP voor het Portugees: lettergreepverdeling en grafeem-naar-foneem](/nl/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**, en voor de bredere engine die aan dit alles ten grondslag ligt, **[Grafeem-naar-IPA voor meer dan 7000 talen](/nl/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**.
 
 ## Klankgebaseerd zoeken: phonematcher
 
@@ -174,7 +175,7 @@ Die afstandsmetriek is nuttig in twee concrete situaties: een catalogus van woor
 
 ## Eerlijke grenzen
 
-De dekking over 820 taalspecificaties is per constructie ongelijk: talen met een gevestigde fonologische literatuur en een lexicon leveren betere uitvoer dan talen met een dunne specificatie die vooral is afgeleid uit algemene orthografische conventies. De kwaliteit is consequent het best waar een gecureerd lexicon bestaat — het Portugees, ondersteund door tugalex, is het sterkste geval in de stack; talen die puur op specificatieregels leunen zonder lexicon, verwerken onregelmatige en geleende woordenschat verkeerd.
+De dekking over 7396 taalspecificaties is per constructie ongelijk: talen met een gevestigde fonologische literatuur en een lexicon leveren betere uitvoer dan talen met een dunne specificatie die vooral is afgeleid uit algemene orthografische conventies. De kwaliteit is consequent het best waar een gecureerd lexicon bestaat — het Portugees, ondersteund door tugalex, is het sterkste geval in de stack; talen die puur op specificatieregels leunen zonder lexicon, verwerken onregelmatige en geleende woordenschat verkeerd.
 
 Een paar componenten zijn expliciet geen afgewerkte, door moedertaalsprekers gecontroleerde referenties: arbtok wordt onderhouden door iemand die geen moedertaalspreker Arabisch is en moet tegen het oordeel van een moedertaalspreker worden gecontroleerd voordat het in iets gebruikersgerichts wordt gebruikt. Frontends gebouwd op dunne specificaties erven die dunheid — een frontend is maar zo goed als de specificatie en het lexicon eronder.
 

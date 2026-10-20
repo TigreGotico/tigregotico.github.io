@@ -2,7 +2,7 @@
 title: "포르투갈어를 위한 고전 NLP: 음절 분석과 자소-음소 변환"
 description: "규칙 기반이며 완전히 오프라인으로 동작하는 우리의 포르투갈어 NLP 스택을 살펴봅니다. 음절 분석을 위한 silabificador와 방언을 인식하는 자소-음소 변환을 위한 TugaPhone, 그리고 이들이 루소폰 변이형을 위한 더 넓은 orthography2ipa 작업과 어떻게 연결되는지를 다룹니다. 딥러닝 블랙박스 없이 결정론적이고 빠르며 의존성이 가볍습니다."
 date: 2026-02-28
-updated: 2026-08-01
+updated: 2026-10-20
 lang: ko
 author: "Casimiro Ferreira"
 tags:
@@ -66,7 +66,7 @@ TugaPhone은 자신의 한계에 대해 정직합니다. 아프리카와 동티�
 
 ### 더 넓은 그림: orthography2ipa
 
-포르투갈어는 여러 변이형 중 하나이며, 동일한 엔지니어링 패턴이 일반화됩니다. [orthography2ipa](https://github.com/TigreGotico/orthography2ipa)는 20개 이상의 어족에 걸친 820개 언어를 아우르는, 언어학적으로 동기 부여된 자소→IPA 및 이음 매핑의 순수 데이터 기반 Python 패키지입니다. 이것은 진지한 G2P 시스템이라면 어느 것이든 필요로 하는 뚜렷한 구분을 그립니다: **자소 맵**은 어떤 철자가 *표현할 수 있는* 음소를 말하는 반면, **이음 맵**은 음소가 주어진 문맥에서 실제로 어떻게 *실현되는지*를 말합니다. 지역 변이형은 가중치가 부여된 다중 조상 계보로 연결된 각자의 사양으로 모델링되므로, 방언 트리는 데이터를 복제하는 대신 부모로부터 상속받습니다.
+포르투갈어는 여러 변이형 중 하나이며, 동일한 엔지니어링 패턴이 일반화됩니다. [orthography2ipa](https://github.com/TigreGotico/orthography2ipa)는 200개 이상의 어족에 걸친 7396개 언어를 아우르는, 언어학적으로 동기 부여된 자소→IPA 및 이음 매핑의 순수 데이터 기반 Python 패키지입니다. 이것은 진지한 G2P 시스템이라면 어느 것이든 필요로 하는 뚜렷한 구분을 그립니다: **자소 맵**은 어떤 철자가 *표현할 수 있는* 음소를 말하는 반면, **이음 맵**은 음소가 주어진 문맥에서 실제로 어떻게 *실현되는지*를 말합니다. 지역 변이형은 가중치가 부여된 다중 조상 계보로 연결된 각자의 사양으로 모델링되므로, 방언 트리는 데이터를 복제하는 대신 부모로부터 상속받습니다.
 
 그것이 TugaPhone의 `pt-PT`, `pt-BR`, `pt-AO`, `pt-MZ`, `pt-TL` 뒤에 있는 동일한 직관입니다: 각 루소폰 변이형을 하나의 정전(正典) 억양에서의 일탈이 아니라 자신의 규칙을 가진 일급 시민으로 취급하는 것. 데이터는 선언적이고 로직은 얇고 플러그 가능합니다 — 규칙을 읽고, 그 출처를 인용하고, 출력을 신뢰할 수 있습니다.
 
@@ -75,10 +75,11 @@ TugaPhone은 자신의 한계에 대해 정직합니다. 아프리카와 동티�
 여기의 모든 것은 오픈 소스이며 오늘 바로 설치할 수 있습니다.
 
 ```bash
-pip install tugaphone
-pip install git+https://github.com/TigreGotico/silabificador
+pip install --pre tugaphone silabificador
 ```
+
+`--pre` 옵션은 현재의 프리릴리스 버전을 설치합니다. tugaphone의 최신 안정 버전은 위의 예시와 다른 출력을 냅니다.
 
 더 넓은 다국어 매핑에 대해서는 [orthography2ipa](https://github.com/TigreGotico/orthography2ipa)를 참조하십시오. 결정론적이고 빠르며 오프라인이고, 포르투갈어권 세계 전체의 폭을 위해 구축되었습니다.
 
-이 포르투갈어 음성학 스택은 우리의 **[820개 언어를 위한 자소-IPA 작업](/ko/blog/2026-01-15-grapheme-to-ipa-for-350-languages)** 위에 세워졌으며, **[감자에서도 돌아가는 TTS](/ko/blog/2026-05-10-tts-that-runs-on-a-potato)**와 **[Miro & Dii 다국어 음성](/ko/blog/2026-06-15-two-voices-every-language-miro-and-dii)**의 음성적 근간을 이룹니다.
+이 포르투갈어 음성학 스택은 우리의 **[7000개 이상 언어를 위한 자소-IPA 작업](/ko/blog/2026-01-15-grapheme-to-ipa-for-350-languages)** 위에 세워졌으며, **[감자에서도 돌아가는 TTS](/ko/blog/2026-05-10-tts-that-runs-on-a-potato)**와 **[Miro & Dii 다국어 음성](/ko/blog/2026-06-15-two-voices-every-language-miro-and-dii)**의 음성적 근간을 이룹니다.

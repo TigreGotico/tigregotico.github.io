@@ -2,7 +2,7 @@
 title: "معرفی نخستین فونمایزر برای بارانکنیو"
 description: "g2p_barranquenho نخستین مبدل باز نویسه‌به‌واج برای بارانکنیو است، زبان تماسی ایبرو-رومی بارانکوس در پرتغال — قواعدی برگرفته از قرارداد املایی تازه‌منتشرشدهٔ شهرداری، قابل بازبینی در برابر منابع موجود در مخزن."
 date: 2025-12-12
-updated: 2026-08-01
+updated: 2026-10-20
 lang: fa
 author: "Casimiro Ferreira"
 tags:
@@ -25,7 +25,7 @@ draft: false
 
 در عمل:
 
-> "Un Enormi Passu para u Barranquenhu i para a Cultura Barranquenha" → `ˈũ eˈnɔɾmi ˈpas̺u ˈpaɾɐ ˈu bɐrɐ̃ˈkɛɲu ˈi ˈpaɾɐ ɐ kuˈltuɾɐ bɐrɐ̃ˈkɛɲɐ`
+> "Un Enormi Passu para u Barranquenhu i para a Cultura Barranquenha" → `ˈũ eˈnɔɾmi ˈpas̺u ˈpaɾɐ ˈu bɐrɐ̃ˈkɛɲu ˈi ˈpaɾɐ ɐ kulˈtuɾɐ bɐrɐ̃ˈkɛɲɐ`
 
 ‏PDF های منبع (قرارداد، فرهنگ لغت، دستور زبان) در ریشهٔ مخزن قرار داده شده‌اند تا قواعد در برابر منبع خود قابل بازبینی باشند.
 

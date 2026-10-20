@@ -2,7 +2,7 @@
 title: "نقدّم أول محوّل صوتي للبرانكينهو"
 description: "g2p_barranquenho هو أول محوّل مفتوح من الحروف إلى الفونيمات للبرانكينهو، لغة الاتصال الإيبيرية الرومانسية في بارانكوس، البرتغال — قواعد مشتقة من الاتفاقية الإملائية التي نشرتها البلدية حديثًا، قابلة للمراجعة مقابل المصادر المُضمَّنة في المستودع."
 date: 2025-12-12
-updated: 2026-08-01
+updated: 2026-10-20
 lang: ar
 author: "Casimiro Ferreira"
 tags:
@@ -25,7 +25,7 @@ draft: false
 
 عمليًّا:
 
-> "Un Enormi Passu para u Barranquenhu i para a Cultura Barranquenha" → `ˈũ eˈnɔɾmi ˈpas̺u ˈpaɾɐ ˈu bɐrɐ̃ˈkɛɲu ˈi ˈpaɾɐ ɐ kuˈltuɾɐ bɐrɐ̃ˈkɛɲɐ`
+> "Un Enormi Passu para u Barranquenhu i para a Cultura Barranquenha" → `ˈũ eˈnɔɾmi ˈpas̺u ˈpaɾɐ ˈu bɐrɐ̃ˈkɛɲu ˈi ˈpaɾɐ ɐ kulˈtuɾɐ bɐrɐ̃ˈkɛɲɐ`
 
 ملفات PDF المصدرية (الاتفاقية، القاموس، القواعد) مُضمَّنة في جذر المستودع بحيث تكون القواعد قابلة للمراجعة مقابل مصدرها.
 

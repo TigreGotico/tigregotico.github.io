@@ -2,7 +2,7 @@
 title: "바랑케뉴어를 위한 최초의 음소화기 소개"
 description: "g2p_barranquenho는 포르투갈 바랑코스의 이베로-로망스 접촉 언어인 바랑케뉴어를 위한 최초의 오픈 자소-음소 변환기입니다. 규칙은 해당 지자체가 새로 발표한 정서법 규약에서 도출되었으며, 함께 커밋된 원본 자료로 감사할 수 있습니다."
 date: 2025-12-12
-updated: 2026-08-01
+updated: 2026-10-20
 lang: ko
 author: "Casimiro Ferreira"
 tags:
@@ -25,7 +25,7 @@ draft: false
 
 실제 예시:
 
-> "Un Enormi Passu para u Barranquenhu i para a Cultura Barranquenha" → `ˈũ eˈnɔɾmi ˈpas̺u ˈpaɾɐ ˈu bɐrɐ̃ˈkɛɲu ˈi ˈpaɾɐ ɐ kuˈltuɾɐ bɐrɐ̃ˈkɛɲɐ`
+> "Un Enormi Passu para u Barranquenhu i para a Cultura Barranquenha" → `ˈũ eˈnɔɾmi ˈpas̺u ˈpaɾɐ ˈu bɐrɐ̃ˈkɛɲu ˈi ˈpaɾɐ ɐ kulˈtuɾɐ bɐrɐ̃ˈkɛɲɐ`
 
 원본 PDF(규약, 사전, 문법)는 저장소 루트에 커밋되어 있어 규칙을 원본 자료에 대해 감사할 수 있습니다.
 

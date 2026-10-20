@@ -2,6 +2,7 @@
 title: "How the Phonology Stack Fits Together"
 description: "An architecture tour of our text-to-pronunciation stack: scriptconv for notation, orthography2ipa as the cross-language grapheme-to-IPA engine, language-specific frontends built on top of it for Portuguese, Basque, Mirandese, Barranquenho and Arabic, and phonematcher for sound-based search. Shows why the layers exist, what a candidate lattice is, and real dialect output."
 date: 2026-08-01
+updated: 2026-10-20
 author: "Casimiro Ferreira"
 tags:
   - "G2P"
@@ -69,12 +70,12 @@ Every layer above this one can assume notation conversion is already solved.
 
 ### The engine: orthography2ipa
 
-[orthography2ipa](https://github.com/TigreGotico/orthography2ipa) is the cross-language engine. It takes a language spec, a declarative description of that language's grapheme-to-phoneme rules, and a piece of text, and produces IPA. As of this writing it ships specs covering **820 languages** (`available_codes()` on the installed package returns a list of that length; treat the exact figure as a moving target, since specs are added over time).
+[orthography2ipa](https://github.com/TigreGotico/orthography2ipa) is the cross-language engine. It takes a language spec, a declarative description of that language's grapheme-to-phoneme rules, and a piece of text, and produces IPA. As of this writing it ships specs covering **7,396 languages** (`available_codes()` on the installed package returns a list of that length; treat the exact figure as a moving target, since specs are added over time).
 
 ```python
 >>> import orthography2ipa as o
 >>> len(o.available_codes())
-820
+7396
 ```
 
 The engine itself has no language-specific code baked in. A new language is a new spec file, checked against the same schema as every other spec.
@@ -89,7 +90,7 @@ Take "read" again:
 >>> from orthography2ipa import G2P
 >>> g = G2P("en")
 >>> g.transcribe("read")
-'ɹiːd'
+'ˈɹiːd'
 >>> g.candidates("read")
 [IPAPath('ɹiːd', score=0.0), IPAPath('ɹɛd', score=1.0)]
 ```
@@ -102,11 +103,11 @@ Two speakers of the same language can pronounce the same sentence differently, a
 
 | Dialect | Output |
 |---|---|
-| pt-PT (Portugal) | `ˈbõ ˈdiɐ ˈkomu eˈʃta vɔˈse` |
-| pt-BR (Brazil) | `ˈbõ ˈdʒiɐ ˈkɔ̃mʊ eˈsta voˈse` |
-| pt-AO (Angola) | `ˈbõ ˈdiɐ ˈkomʊ eˈsta vɔˈse` |
-| pt-MZ (Mozambique) | `ˈbõ ˈdiɐ ˈkomu eˈsta vɔˈse` |
-| pt-TL (Timor-Leste) | `ˈbõ ˈdiə ˈkoɔmʊ eˈsta vɔˈse` |
+| pt-PT (Portugal) | `ˈbõ ˈdiɐ ˈkomu eʃˈta vɔˈse` |
+| pt-BR (Brazil) | `ˈbõ ˈdʒiɐ ˈkɔ̃mʊ esˈta voˈse` |
+| pt-AO (Angola) | `ˈbõ ˈdiɐ ˈkomʊ esˈta vɔˈse` |
+| pt-MZ (Mozambique) | `ˈbõ ˈdiɐ ˈkomu esˈta vɔˈse` |
+| pt-TL (Timor-Leste) | `ˈbõ ˈdiə ˈkoɔmʊ esˈta vɔˈse` |
 
 ("Bom dia, como está você?", "Good morning, how are you?") The consonant skeleton stays recognizable across all five, but two well-known markers separate them immediately. In "dia", Brazilian Portuguese turns the `d` before an `i` into `dʒ`, the sound at the start of English "jam"; the others keep a plain `d`. In "está", European Portuguese pronounces the `s` at the end of a syllable as `ʃ`, the "sh" of "shoe", while every other variety keeps `s`. A pronunciation dictionary built from one dialect's rules gets both of these wrong for every other dialect's listener.
 
@@ -115,7 +116,7 @@ Two speakers of the same language can pronounce the same sentence differently, a
 ```python
 >>> from euskaphone import EuskaPhonemizer
 >>> EuskaPhonemizer().phonemize_sentence("Kaixo, zer moduz zaude?")
-'kai̯ʃo s̻er modus̻ s̻au̯de'
+'kai̯ʃo s̻er moðus̻ s̻au̯ðe'
 ```
 
 ## The language-specific frontends
@@ -129,7 +130,7 @@ Above the shared engine sit frontends that add what a general spec cannot: irreg
   ```python
   >>> from mwl_phonemizer import phonemize
   >>> phonemize("Falo la lhéngua mirandesa.")
-  'ˈfalu lɐ ˈʎɛŋɡwa miɾɐˈndez̺ɐ.'
+  'ˈfalu lɐ ˈʎẽɡwɐ miɾɐ̃ˈdez̺ɐ.'
   ```
 
 - **[g2p_barranquenho](https://github.com/TigreGotico/g2p_barranquenho)**: the first open G2P for Barranquenho, the Ibero-Romance contact language of Barrancos, on the Portugal-Spain border. See **[Introducing the First Phonemizer for Barranquenho](/blog/2025-12-12-barranquenho)** for how its rules were derived from the municipality's own orthographic convention.
@@ -154,7 +155,7 @@ Portuguese has the deepest stack, because Portuguese pronunciation depends on mo
 - **[tugamorph](https://github.com/TigreGotico/tugamorph)** is a rule-based morphological analyser: it segments a word into prefix, root, suffix, inflection and clitic, using only the Python standard library, optionally sharpened by silabificador and tugatagger.
 - **[bifonia](https://github.com/TigreGotico/bifonia)** resolves European Portuguese heterophonic homographs: words like "sede" (thirst, `ˈsedɨ`, vs. headquarters, `ˈsɛdɨ`) where the correct pronunciation depends on meaning, not grammar. See **[Saying It Right: Disambiguating Portuguese Heterophones for TTS](/blog/2026-06-12-disambiguating-portuguese-heterographs-for-tts)** for how it was built and evaluated. This is the concrete case behind the lattice idea above: orthography2ipa can supply both candidate readings of "sede", but only a meaning-aware layer like bifonia can choose between them.
 
-For more on how silabificador and tugaphone work together day to day, see **[Classical NLP for Portuguese: Syllabification and Grapheme-to-Phoneme](/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**, and for the broader engine underneath all of this, **[Grapheme-to-IPA for 820 Languages](/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**.
+For more on how silabificador and tugaphone work together day to day, see **[Classical NLP for Portuguese: Syllabification and Grapheme-to-Phoneme](/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**, and for the broader engine underneath all of this, **[Grapheme-to-IPA for 7,000+ Languages](/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**.
 
 ## Sound-based search: phonematcher
 
@@ -174,7 +175,7 @@ That distance metric is useful in two concrete situations: searching a catalogue
 
 ## Honest limits
 
-Coverage across 820 language specs is uneven by construction: languages with an established phonological literature and a lexicon get better output than languages with a thin spec inferred mostly from general orthographic conventions. Quality is consistently best where a curated lexicon exists: Portuguese, backed by tugalex, is the strongest case in the stack. Languages relying purely on spec rules without a lexicon will mishandle irregular and loan vocabulary.
+Coverage across 7,396 language specs is uneven by construction: languages with an established phonological literature and a lexicon get better output than languages with a thin spec inferred mostly from general orthographic conventions. Quality is consistently best where a curated lexicon exists: Portuguese, backed by tugalex, is the strongest case in the stack. Languages relying purely on spec rules without a lexicon will mishandle irregular and loan vocabulary.
 
 A few components are explicitly not finished, native-reviewed references: arbtok is maintained by a non-native Arabic speaker and should be checked against native judgment before use in anything user-facing. Frontends built on thin specs inherit that thinness. A frontend is only as good as the spec and lexicon underneath it.
 

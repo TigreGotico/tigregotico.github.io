@@ -1,7 +1,8 @@
 ---
 title: "Dizê-lo Corretamente: Desambiguar Heterófonos do Português para TTS"
-description: "Muitas palavras do português europeu escrevem-se da mesma forma mas pronunciam-se de modo diferente consoante o significado, e errar a vogal faz uma voz de TTS dizer a palavra errada. Construímos o bifonia-pt-homographs, um dataset aberto e anotado por significado com 56.891 frases sobre 27 palavras, e um resolvedor minúsculo e sem dependências que atinge ≈94% onde etiquetadores morfossintáticos pesados estagnam nos ≈75%."
+description: "Muitas palavras do português europeu escrevem-se da mesma forma mas pronunciam-se de modo diferente consoante o significado, e errar a vogal faz uma voz de TTS dizer a palavra errada. Construímos o bifonia-pt-homographs, um dataset aberto e anotado por significado com 155.283 frases sobre 131 palavras, e um resolvedor minúsculo e sem dependências que atinge 95,8% num conjunto de frases reais equilibrado por significado, onde o etiquetador POS do spaCy atinge 85,8%."
 date: 2026-06-12
+updated: 2026-10-20
 lang: pt
 author: "Casimiro Ferreira"
 tags:
@@ -36,11 +37,11 @@ Um sistema de TTS ingénuo compromete-se com uma única pronúncia por grafia. A
 
 A correção óbvia é passar um etiquetador morfossintático (POS) sobre a frase e escolher a pronúncia pela classe gramatical. Isso ajuda em alguns pares, mas falha *por construção* sempre que dois significados partilham a mesma classe gramatical.
 
-Voltemos a `sede`. *Ter sede* e *quartel-general* são **ambos nomes**. Um etiquetador POS rotula-os de forma idêntica, dado que não há sinal gramatical que os distinga, pelo que só pode adivinhar a leitura mais comum. Medimos exatamente isto: no nosso conjunto de teste, tanto o spaCy como o Stanza obtêm **0%** no sentido de *ter sede* de `sede`. Escolhem sempre *quartel-general*. O mesmo teto estrutural surge em `corte` (corte vs corte real), `forma` (molde vs forma) e `molho` (tempero vs feixe): quando o significado se divide dentro de uma única classe gramatical, a gramática não o consegue ver.
+Voltemos a `sede`. *Ter sede* e *quartel-general* são **ambos nomes**. Um etiquetador POS rotula-os de forma idêntica, dado que não há sinal gramatical que os distinga, pelo que só pode adivinhar a leitura mais comum. Medimo-lo: nas frases do nosso conjunto de teste em que uma mesma classe gramatical tem dois sentidos, o spaCy atinge apenas 74,0%. O mesmo teto estrutural surge em `corte` (corte vs corte real), `forma` (molde vs forma) e `molho` (tempero vs feixe): quando o significado se divide dentro de uma única classe gramatical, a gramática não o consegue ver.
 
 ### O dataset: anotar o significado, não a gramática
 
-Por isso construímos um dataset aberto que anota aquilo que realmente importa: o significado. O **`bifonia-pt-homographs`** é composto por **56.891 frases em português europeu** que cobrem **27 homógrafos heterófonos**. Cada frase está anotada com a palavra, o seu **significado** (sentido), a sua classe gramatical, a sua pronúncia em IPA e uma forma com diacríticos restaurados (por exemplo *sêde* vs *séde*) que torna a leitura pretendida inequívoca na página.
+Por isso construímos um dataset aberto que anota aquilo que realmente importa: o significado. O **`bifonia-pt-homographs`** é composto por **155.283 frases em português europeu** que cobrem **131 homógrafos heterófonos**. Cada frase está anotada com a palavra, o seu **significado** (sentido), a sua classe gramatical, a sua pronúncia em IPA e uma forma com diacríticos restaurados (por exemplo *sêde* vs *séde*) que torna a leitura pretendida inequívoca na página.
 
 A chave de agrupamento é o significado. É esse todo o objetivo. Um único registo tem este aspeto:
 
@@ -62,12 +63,11 @@ Com dados anotados por significado, pudemos medir como diferentes abordagens se 
 
 | Abordagem | Exatidão |
 | --- | --- |
-| Adivinhar sempre o sentido mais comum | ≈53% |
-| POS do spaCy → significado | ≈66% |
-| POS do Stanza → significado | ≈75% |
-| Regra `bifonia` + resolvedor de significado | **≈94%** |
+| Adivinhar sempre o sentido mais comum | 48,2% |
+| POS do spaCy → significado | 85,8% |
+| Regra `bifonia` + resolvedor de significado | **95,8%** |
 
-As abordagens baseadas em POS estagnam exatamente onde seria de esperar: conseguem encaminhar por gramática mas nunca por significado, pelo que as divisões dentro da mesma classe de nome ficam fora de alcance. O nosso resolvedor, a biblioteca [`bifonia`](https://github.com/TigreGotico/bifonia), leve e **totalmente sem dependências**, atinge **≈94%** e, crucialmente, chega aos **100%** no caso `sede`/*ter sede* em que os etiquetadores POS obtêm **0%**.
+As abordagens baseadas em POS estagnam exatamente onde seria de esperar: conseguem encaminhar por gramática mas nunca por significado, pelo que as divisões dentro da mesma classe de nome ficam fora de alcance. O nosso resolvedor, a biblioteca [`bifonia`](https://github.com/TigreGotico/bifonia), leve e **totalmente sem dependências**, atinge **95,8%** no conjunto completo. Nas frases ambíguas para o POS, onde o spaCy atinge **74,0%**, atinge **97,6%**. Os valores provêm de `bifonia-pt-homographs-gold`, um conjunto equilibrado por significado com 2346 frases reais (OpenSubtitles, Wikipédia, páginas web), anotado independentemente do motor.
 
 O número importa menos do que a razão por detrás dele: um componente pequeno, rápido e totalmente aberto supera etiquetadores POS neuronais pesados nesta tarefa porque resolve o *significado*, e não apenas a gramática. Sem GPU, sem descarregar modelos, sem chamadas de rede.
 
@@ -79,4 +79,4 @@ Como o dataset é aberto e o resolvedor é minúsculo e passível de fork, qualq
 
 ### Experimente
 
-O dataset está no Hugging Face em [`TigreGotico/bifonia-pt-homographs`](https://huggingface.co/datasets/TigreGotico/bifonia-pt-homographs), e o resolvedor vive em [`bifonia`](https://github.com/TigreGotico/bifonia). Encaixa-se no trabalho mais amplo de fonética do português por detrás de **[NLP Clássico para Português](/pt/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)** e da **[stack de grafema-para-IPA para mais de 350 línguas](/pt/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**: peças pequenas e determinísticas que fazem uma voz pronunciar uma língua da forma como os seus falantes realmente o fazem.
+O dataset está no Hugging Face em [`TigreGotico/bifonia-pt-homographs`](https://huggingface.co/datasets/TigreGotico/bifonia-pt-homographs), e o resolvedor vive em [`bifonia`](https://github.com/TigreGotico/bifonia). Encaixa-se no trabalho mais amplo de fonética do português por detrás de **[NLP Clássico para Português](/pt/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)** e da **[stack de grafema-para-IPA para mais de 7000 línguas](/pt/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**: peças pequenas e determinísticas que fazem uma voz pronunciar uma língua da forma como os seus falantes realmente o fazem.

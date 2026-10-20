@@ -3,7 +3,7 @@ title: "Klassieke NLP voor het Portugees: lettergreepverdeling en grafeem-naar-f
 description: "Een blik op onze op regels gebaseerde, volledig offline Portugese NLP-stack — silabificador voor lettergreepverdeling en TugaPhone voor dialectbewuste grafeem-naar-foneem — en hoe deze aansluiten op het bredere orthography2ipa-werk voor Lusofone variëteiten. Geen deep-learning-blackboxes: deterministisch, snel en met weinig afhankelijkheden."
 date: 2026-02-28
 lang: nl
-updated: 2026-08-01
+updated: 2026-10-20
 author: "Casimiro Ferreira"
 tags:
   - "NLP"
@@ -66,7 +66,7 @@ TugaPhone is eerlijk over zijn grenzen: de lexicondekking is schaarser voor de A
 
 ### Het bredere plaatje: orthography2ipa
 
-Het Portugees is één variëteit onder vele, en hetzelfde engineeringpatroon generaliseert. [orthography2ipa](https://github.com/TigreGotico/orthography2ipa) is een puur op data gebaseerd Python-pakket met linguïstisch gemotiveerde grafeem→IPA- en allofoonafbeeldingen, dat 820 talen over meer dan 20 taalfamilies bestrijkt. Het maakt een scherp onderscheid dat elk serieus G2P-systeem nodig heeft: een **grafeemkaart** zegt welke fonemen een spelling *kan* vertegenwoordigen, terwijl een **allofoonkaart** zegt hoe een foneem zich daadwerkelijk *manifesteert* in een gegeven context. Regionale variëteiten worden gemodelleerd als hun eigen specificaties, verbonden via gewogen afstamming met meerdere voorouders, zodat dialectbomen erven van hun ouders in plaats van data te dupliceren.
+Het Portugees is één variëteit onder vele, en hetzelfde engineeringpatroon generaliseert. [orthography2ipa](https://github.com/TigreGotico/orthography2ipa) is een puur op data gebaseerd Python-pakket met linguïstisch gemotiveerde grafeem→IPA- en allofoonafbeeldingen, dat 7396 talen over meer dan 200 taalfamilies bestrijkt. Het maakt een scherp onderscheid dat elk serieus G2P-systeem nodig heeft: een **grafeemkaart** zegt welke fonemen een spelling *kan* vertegenwoordigen, terwijl een **allofoonkaart** zegt hoe een foneem zich daadwerkelijk *manifesteert* in een gegeven context. Regionale variëteiten worden gemodelleerd als hun eigen specificaties, verbonden via gewogen afstamming met meerdere voorouders, zodat dialectbomen erven van hun ouders in plaats van data te dupliceren.
 
 Dat is hetzelfde instinct achter `pt-PT`, `pt-BR`, `pt-AO`, `pt-MZ` en `pt-TL` in TugaPhone: behandel elke Lusofone variëteit als een volwaardige burger met zijn eigen regels, en niet als een afwijking van één canoniek accent. De data is declaratief en de logica is dun en pluggable — je kunt de regels lezen, hun bronnen citeren en de uitvoer vertrouwen.
 
@@ -75,10 +75,11 @@ Dat is hetzelfde instinct achter `pt-PT`, `pt-BR`, `pt-AO`, `pt-MZ` en `pt-TL` i
 Alles hier is open source en vandaag nog installeerbaar:
 
 ```bash
-pip install tugaphone
-pip install git+https://github.com/TigreGotico/silabificador
+pip install --pre tugaphone silabificador
 ```
+
+De optie `--pre` installeert de huidige pre-release. De nieuwste stabiele tugaphone-release geeft andere uitvoer dan de voorbeelden hierboven.
 
 Voor de bredere meertalige afbeeldingen, zie [orthography2ipa](https://github.com/TigreGotico/orthography2ipa). Deterministisch, snel, offline en gebouwd voor de volle breedte van de Portugeessprekende wereld.
 
-Deze Portugese fonetiekstack bouwt voort op ons **[grafeem-naar-IPA-werk voor 820 talen](/nl/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**, en vormt de fonetische ruggengraat voor **[TTS die op een aardappel draait](/nl/blog/2026-05-10-tts-that-runs-on-a-potato)** en de **[meertalige stemmen Miro & Dii](/nl/blog/2026-06-15-two-voices-every-language-miro-and-dii)**.
+Deze Portugese fonetiekstack bouwt voort op ons **[grafeem-naar-IPA-werk voor meer dan 7000 talen](/nl/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**, en vormt de fonetische ruggengraat voor **[TTS die op een aardappel draait](/nl/blog/2026-05-10-tts-that-runs-on-a-potato)** en de **[meertalige stemmen Miro & Dii](/nl/blog/2026-06-15-two-voices-every-language-miro-and-dii)**.

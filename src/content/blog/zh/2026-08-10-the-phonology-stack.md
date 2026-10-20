@@ -2,6 +2,7 @@
 title: "音系技术栈是如何拼接在一起的"
 description: "一次架构导览，带你了解我们的文本转发音技术栈：负责记音的 scriptconv，作为跨语言字素转 IPA 引擎的 orthography2ipa，构建在其上、面向葡萄牙语、巴斯克语、米兰达语、巴兰克诺语和阿拉伯语的语言专属前端，以及用于按发音检索的 phonematcher。展示这些层级为何存在、什么是候选词格，以及真实的方言输出。"
 date: 2026-08-01
+updated: 2026-10-20
 lang: zh
 author: "Casimiro Ferreira"
 tags:
@@ -69,12 +70,12 @@ draft: false
 
 ### 引擎：orthography2ipa
 
-[orthography2ipa](https://github.com/TigreGotico/orthography2ipa) 是跨语言引擎。它接收一份语言规格——对该语言字素转音素规则的声明式描述——和一段文本，产出 IPA。截至撰写本文时，它包含覆盖 **820 种语言** 的规格（已安装包上的 `available_codes()` 会返回这个长度的列表；由于规格会持续新增，请把这个确切数字当作一个会变动的值）。
+[orthography2ipa](https://github.com/TigreGotico/orthography2ipa) 是跨语言引擎。它接收一份语言规格——对该语言字素转音素规则的声明式描述——和一段文本，产出 IPA。截至撰写本文时，它包含覆盖 **7396 种语言** 的规格（已安装包上的 `available_codes()` 会返回这个长度的列表；由于规格会持续新增，请把这个确切数字当作一个会变动的值）。
 
 ```python
 >>> import orthography2ipa as o
 >>> len(o.available_codes())
-820
+7396
 ```
 
 引擎本身没有内置任何语言专属的代码。一门新语言就是一个新的规格文件，按照与其他所有规格相同的模式进行校验。
@@ -89,7 +90,7 @@ draft: false
 >>> from orthography2ipa import G2P
 >>> g = G2P("en")
 >>> g.transcribe("read")
-'ɹiːd'
+'ˈɹiːd'
 >>> g.candidates("read")
 [IPAPath('ɹiːd', score=0.0), IPAPath('ɹɛd', score=1.0)]
 ```
@@ -102,11 +103,11 @@ draft: false
 
 | 方言 | 输出 |
 |---|---|
-| pt-PT（葡萄牙） | `ˈbõ ˈdiɐ ˈkomu eˈʃta vɔˈse` |
-| pt-BR（巴西） | `ˈbõ ˈdʒiɐ ˈkɔ̃mʊ eˈsta voˈse` |
-| pt-AO（安哥拉） | `ˈbõ ˈdiɐ ˈkomʊ eˈsta vɔˈse` |
-| pt-MZ（莫桑比克） | `ˈbõ ˈdiɐ ˈkomu eˈsta vɔˈse` |
-| pt-TL（东帝汶） | `ˈbõ ˈdiə ˈkoɔmʊ eˈsta vɔˈse` |
+| pt-PT（葡萄牙） | `ˈbõ ˈdiɐ ˈkomu eʃˈta vɔˈse` |
+| pt-BR（巴西） | `ˈbõ ˈdʒiɐ ˈkɔ̃mʊ esˈta voˈse` |
+| pt-AO（安哥拉） | `ˈbõ ˈdiɐ ˈkomʊ esˈta vɔˈse` |
+| pt-MZ（莫桑比克） | `ˈbõ ˈdiɐ ˈkomu esˈta vɔˈse` |
+| pt-TL（东帝汶） | `ˈbõ ˈdiə ˈkoɔmʊ esˈta vɔˈse` |
 
 （"Bom dia, como está você?" —— "早上好，你好吗？"）辅音骨架在这五者之间都保持可辨认，但两个众所周知的标记立刻把它们区分开来。在 "dia" 中，巴西葡萄牙语把 `i` 前的 `d` 变成了 `dʒ`，即英语 "jam" 开头的那个音——其余变体保留一个普通的 `d`。在 "está" 中，欧洲葡萄牙语把音节末尾的 `s` 读作 `ʃ`，即 "shoe" 里的 "sh" 音，而其他每一种变体都保留 `s`。一部按某一方言规则构建的发音词典，对其他每一种方言的听者来说，这两处都会读错。
 
@@ -115,7 +116,7 @@ draft: false
 ```python
 >>> from euskaphone import EuskaPhonemizer
 >>> EuskaPhonemizer().phonemize_sentence("Kaixo, zer moduz zaude?")
-'kai̯ʃo s̻er modus̻ s̻au̯de'
+'kai̯ʃo s̻er moðus̻ s̻au̯ðe'
 ```
 
 ## 语言专属前端
@@ -129,7 +130,7 @@ draft: false
   ```python
   >>> from mwl_phonemizer import phonemize
   >>> phonemize("Falo la lhéngua mirandesa.")
-  'ˈfalu lɐ ˈʎɛŋɡwa miɾɐˈndez̺ɐ.'
+  'ˈfalu lɐ ˈʎẽɡwɐ miɾɐ̃ˈdez̺ɐ.'
   ```
 
 - **[g2p_barranquenho](https://github.com/TigreGotico/g2p_barranquenho)** —— 首个面向巴兰克诺语的开放 G2P，这是葡萄牙-西班牙边境巴兰科斯的伊比利亚-罗曼语接触语言。参见 **[推出首个巴兰克诺语音素转换器](/zh/blog/2025-12-12-barranquenho)** 了解它的规则是如何从该市自身的正字法约定中推导出来的。
@@ -154,7 +155,7 @@ draft: false
 - **[tugamorph](https://github.com/TigreGotico/tugamorph)** 是一个基于规则的形态分析器：它只用 Python 标准库，把一个词切分为前缀、词根、后缀、屈折变化和附着词，并可选地借助 silabificador 和 tugatagger 提升精度。
 - **[bifonia](https://github.com/TigreGotico/bifonia)** 消解欧洲葡萄牙语的异音同形词——像 "sede" 这样的词（口渴，`ˈsedɨ`，对比总部，`ˈsɛdɨ`），其正确读音取决于含义，而非语法。参见 **[说对读音：为 TTS 消歧葡萄牙语异音同形词](/zh/blog/2026-06-12-disambiguating-portuguese-heterographs-for-tts)** 了解它是如何构建和评估的。这正是上文词格理念背后的具体案例：orthography2ipa 可以同时提供 "sede" 的两个候选读音，但只有像 bifonia 这样理解含义的层，才能在两者之间做出选择。
 
-关于 silabificador 和 tugaphone 在日常中如何协同工作的更多内容，参见 **[面向葡萄牙语的经典 NLP：音节切分与字素到音素转换](/zh/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**；关于这一切之下更广泛的引擎，参见 **[面向 820 种语言的字素到 IPA 转换](/zh/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**。
+关于 silabificador 和 tugaphone 在日常中如何协同工作的更多内容，参见 **[面向葡萄牙语的经典 NLP：音节切分与字素到音素转换](/zh/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**；关于这一切之下更广泛的引擎，参见 **[面向 7000 多种语言的字素到 IPA 转换](/zh/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**。
 
 ## 基于声音的检索：phonematcher
 
@@ -174,7 +175,7 @@ draft: false
 
 ## 诚实地说明局限
 
-在 820 个语言规格之间，覆盖质量天然是不均衡的：拥有成熟音系学文献和词典的语言，产出的效果要好于那些主要靠通用正字法惯例推断出来的单薄规格的语言。质量最稳定的地方，是存在一份经过整理的词典之处——由 tugalex 支撑的葡萄牙语，是这个技术栈中最强的案例；那些纯靠规格规则、没有词典支撑的语言，会在不规则词汇和外来词上出错。
+在 7396 个语言规格之间，覆盖质量天然是不均衡的：拥有成熟音系学文献和词典的语言，产出的效果要好于那些主要靠通用正字法惯例推断出来的单薄规格的语言。质量最稳定的地方，是存在一份经过整理的词典之处——由 tugalex 支撑的葡萄牙语，是这个技术栈中最强的案例；那些纯靠规格规则、没有词典支撑的语言，会在不规则词汇和外来词上出错。
 
 有几个组件明确尚未成为完成品、经母语者审阅的参考：arbtok 由一位非阿拉伯语母语者维护，在用于任何面向用户的场景之前，应当对照母语者的判断加以核实。构建在单薄规格之上的前端，也继承了那份单薄——一个前端的好坏，取决于其底层的规格和词典。
 

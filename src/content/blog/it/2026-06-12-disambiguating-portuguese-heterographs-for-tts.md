@@ -1,7 +1,8 @@
 ---
 title: "Pronunciarlo Bene: Disambiguare gli Eterofoni Portoghesi per il TTS"
-description: "Molte parole del portoghese europeo si scrivono allo stesso modo ma si pronunciano diversamente a seconda del significato — e sbagliare la vocale fa dire alla voce TTS la parola sbagliata. Abbiamo costruito bifonia-pt-homographs, un dataset aperto etichettato per significato di 56.891 frasi su 27 parole, e un minuscolo risolutore a zero dipendenze che raggiunge ≈94% dove i pesanti tagger POS si fermano a ≈75%."
+description: "Molte parole del portoghese europeo si scrivono allo stesso modo ma si pronunciano diversamente a seconda del significato — e sbagliare la vocale fa dire alla voce TTS la parola sbagliata. Abbiamo costruito bifonia-pt-homographs, un dataset aperto etichettato per significato di 155.283 frasi su 131 parole, e un minuscolo risolutore a zero dipendenze che raggiunge il 95,8% su un insieme di frasi reali bilanciato per senso, dove un tagger POS come spaCy raggiunge l'85,8%."
 date: 2026-06-12
+updated: 2026-10-20
 lang: it
 author: "Casimiro Ferreira"
 tags:
@@ -36,11 +37,11 @@ Un sistema TTS ingenuo si impegna su una sola pronuncia per grafia. Così legge 
 
 La soluzione ovvia è far girare un tagger di parti del discorso (POS) sulla frase e scegliere la pronuncia in base al POS. Aiuta per alcune coppie, ma fallisce *per costruzione* ogni volta che due significati condividono una parte del discorso.
 
-Prendete di nuovo `sede`. *Sete* e *sede centrale* sono **entrambi sostantivi**. Un tagger POS li etichetta in modo identico — non c'è alcun segnale grammaticale per distinguerli — quindi può solo indovinare la lettura più comune. Abbiamo misurato esattamente questo: sul nostro test set, sia spaCy sia Stanza segnano **0%** sul senso *sete* di `sede`. Scelgono sempre *sede centrale*. Lo stesso soffitto strutturale si presenta su `corte` (taglio contro corte), `forma` (stampo contro forma) e `molho` (salsa contro fascio): quando il significato si divide all'interno di una singola parte del discorso, la grammatica non lo vede.
+Prendete di nuovo `sede`. *Sete* e *sede centrale* sono **entrambi sostantivi**. Un tagger POS li etichetta in modo identico — non c'è alcun segnale grammaticale per distinguerli — quindi può solo indovinare la lettura più comune. Lo abbiamo misurato: sulle frasi del nostro test set in cui una stessa parte del discorso porta due sensi, spaCy raggiunge solo il 74,0%. Lo stesso soffitto strutturale si presenta su `corte` (taglio contro corte), `forma` (stampo contro forma) e `molho` (salsa contro fascio): quando il significato si divide all'interno di una singola parte del discorso, la grammatica non lo vede.
 
 ### Il dataset: etichettare il significato, non la grammatica
 
-Perciò abbiamo costruito un dataset aperto che etichetta ciò che conta davvero — il significato. **`bifonia-pt-homographs`** è composto da **56.891 frasi in portoghese europeo** che coprono **27 omografi eterofonici**. Ogni frase è etichettata con la parola, il suo **significato** (senso), la sua parte del discorso, la sua pronuncia IPA e una forma con diacritici ripristinati (per esempio *sêde* contro *séde*) che rende inequivocabile sulla pagina la lettura intesa.
+Perciò abbiamo costruito un dataset aperto che etichetta ciò che conta davvero — il significato. **`bifonia-pt-homographs`** è composto da **155.283 frasi in portoghese europeo** che coprono **131 omografi eterofonici**. Ogni frase è etichettata con la parola, il suo **significato** (senso), la sua parte del discorso, la sua pronuncia IPA e una forma con diacritici ripristinati (per esempio *sêde* contro *séde*) che rende inequivocabile sulla pagina la lettura intesa.
 
 La chiave di raggruppamento è il significato — è tutto il punto. Un singolo record ha questo aspetto:
 
@@ -62,12 +63,11 @@ Con dati etichettati per significato, abbiamo potuto misurare come se la cavano 
 
 | Approccio | Accuratezza |
 | --- | --- |
-| Indovinare sempre il senso più comune | ≈53% |
-| POS di spaCy → significato | ≈66% |
-| POS di Stanza → significato | ≈75% |
-| Regola `bifonia` + risolutore di significato | **≈94%** |
+| Indovinare sempre il senso più comune | 48,2% |
+| POS di spaCy → significato | 85,8% |
+| Regola `bifonia` + risolutore di significato | **95,8%** |
 
-Gli approcci basati su POS si fermano esattamente dove ci si aspetterebbe: possono instradare per grammatica ma mai per significato, quindi le divisioni interne alla categoria dei sostantivi restano fuori portata. Il nostro risolutore — la libreria [`bifonia`](https://github.com/TigreGotico/bifonia), leggera e **completamente priva di dipendenze** — raggiunge il **≈94%**, e soprattutto tocca il **100%** sul caso `sede`/*sete* su cui i tagger POS ottengono lo **0%**.
+Gli approcci basati su POS si fermano esattamente dove ci si aspetterebbe: possono instradare per grammatica ma mai per significato, quindi le divisioni interne alla categoria dei sostantivi restano fuori portata. Il nostro risolutore — la libreria [`bifonia`](https://github.com/TigreGotico/bifonia), leggera e **completamente priva di dipendenze** — raggiunge il **95,8%** sull'insieme completo. Sulle frasi ambigue per POS, dove spaCy raggiunge il **74,0%**, raggiunge il **97,6%**. Le cifre provengono da `bifonia-pt-homographs-gold`, un insieme bilanciato per senso di 2.346 frasi reali (OpenSubtitles, Wikipedia, pagine web), etichettato in modo indipendente dal motore.
 
 Il titolo non è solo il numero. È che un componente piccolo, veloce e completamente aperto batte i pesanti tagger POS neurali su questo compito — perché risolve il *significato*, non solo la grammatica. Nessuna GPU, nessun download di modello, nessuna chiamata di rete.
 
@@ -79,4 +79,4 @@ Poiché il dataset è aperto e il risolutore è minuscolo e forkabile, chiunque 
 
 ### Provatelo
 
-Il dataset è su Hugging Face all'indirizzo [`TigreGotico/bifonia-pt-homographs`](https://huggingface.co/datasets/TigreGotico/bifonia-pt-homographs), e il risolutore vive in [`bifonia`](https://github.com/TigreGotico/bifonia). Si inserisce nel più ampio lavoro di fonetica portoghese dietro **[NLP classico per il portoghese](/it/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)** e lo **[stack grafema-a-IPA per oltre 350 lingue](/it/blog/2026-01-15-grapheme-to-ipa-for-350-languages)** — piccoli pezzi deterministici che fanno pronunciare a una voce una lingua nel modo in cui i suoi parlanti la pronunciano davvero.
+Il dataset è su Hugging Face all'indirizzo [`TigreGotico/bifonia-pt-homographs`](https://huggingface.co/datasets/TigreGotico/bifonia-pt-homographs), e il risolutore vive in [`bifonia`](https://github.com/TigreGotico/bifonia). Si inserisce nel più ampio lavoro di fonetica portoghese dietro **[NLP classico per il portoghese](/it/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)** e lo **[stack grafema-a-IPA per oltre 7000 lingue](/it/blog/2026-01-15-grapheme-to-ipa-for-350-languages)** — piccoli pezzi deterministici che fanno pronunciare a una voce una lingua nel modo in cui i suoi parlanti la pronunciano davvero.

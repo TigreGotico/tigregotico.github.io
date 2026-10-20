@@ -3,7 +3,7 @@ title: "面向葡萄牙语的经典 NLP：音节切分与字素到音素转换"
 description: "介绍我们基于规则、完全离线的葡萄牙语 NLP 技术栈 —— 用于音节切分的 silabificador 和支持方言的字素到音素转换工具 TugaPhone —— 以及它们如何与面向葡语各变体的更广泛的 orthography2ipa 工作相衔接。没有深度学习黑箱：确定性、快速、依赖极少。"
 date: 2026-02-28
 lang: zh
-updated: 2026-08-01
+updated: 2026-10-20
 author: "Casimiro Ferreira"
 tags:
   - "NLP"
@@ -66,7 +66,7 @@ TugaPhone 对自己的短板毫不掩饰：对于非洲和东帝汶方言，词�
 
 ### 更宏观的图景：orthography2ipa
 
-葡萄牙语只是众多语言变体之一，而同样的工程模式可以推广。[orthography2ipa](https://github.com/TigreGotico/orthography2ipa) 是一个纯数据的 Python 包，包含有语言学依据的字素→IPA 及音位变体映射，覆盖 20 多个语系中的 820 种语言。它划出了任何严肃的 G2P 系统都需要的一个清晰界限：**字素映射**说明某种拼写*能够*代表哪些音素，而**音位变体映射**则说明某个音素在给定上下文中实际是如何*呈现*出来的。区域变体被建模为各自独立的规范，通过带权重的多祖先谱系相互关联，因此方言树是从其父级继承数据，而不是重复地复制数据。
+葡萄牙语只是众多语言变体之一，而同样的工程模式可以推广。[orthography2ipa](https://github.com/TigreGotico/orthography2ipa) 是一个纯数据的 Python 包，包含有语言学依据的字素→IPA 及音位变体映射，覆盖 200 多个语系中的 7396 种语言。它划出了任何严肃的 G2P 系统都需要的一个清晰界限：**字素映射**说明某种拼写*能够*代表哪些音素，而**音位变体映射**则说明某个音素在给定上下文中实际是如何*呈现*出来的。区域变体被建模为各自独立的规范，通过带权重的多祖先谱系相互关联，因此方言树是从其父级继承数据，而不是重复地复制数据。
 
 这与 TugaPhone 中 `pt-PT`、`pt-BR`、`pt-AO`、`pt-MZ` 和 `pt-TL` 背后的直觉如出一辙：将每一种葡语变体都视为拥有自身规则的一等公民，而不是对某个唯一标准口音的偏离。数据是声明式的，逻辑则轻薄而可插拔 —— 你可以阅读这些规则、引用其来源，并信任其输出。
 
@@ -75,10 +75,11 @@ TugaPhone 对自己的短板毫不掩饰：对于非洲和东帝汶方言，词�
 这里的一切都是开源的，今天就可以安装：
 
 ```bash
-pip install tugaphone
-pip install git+https://github.com/TigreGotico/silabificador
+pip install --pre tugaphone silabificador
 ```
+
+`--pre` 选项会安装当前的预发布版本。tugaphone 的最新稳定版给出的输出与上面的示例不同。
 
 若想了解更广泛的多语言映射，请参阅 [orthography2ipa](https://github.com/TigreGotico/orthography2ipa)。确定性、快速、离线，并为整个葡语世界的广度而打造。
 
-这套葡萄牙语语音学技术栈建立在我们的 **[面向 820 种语言的字素到 IPA 工作](/zh/blog/2026-01-15-grapheme-to-ipa-for-350-languages)** 之上，为 **[能在土豆上运行的 TTS](/zh/blog/2026-05-10-tts-that-runs-on-a-potato)** 和 **[Miro 与 Dii 多语言语音](/zh/blog/2026-06-15-two-voices-every-language-miro-and-dii)** 构成了语音学的骨干。
+这套葡萄牙语语音学技术栈建立在我们的 **[面向 7000 多种语言的字素到 IPA 工作](/zh/blog/2026-01-15-grapheme-to-ipa-for-350-languages)** 之上，为 **[能在土豆上运行的 TTS](/zh/blog/2026-05-10-tts-that-runs-on-a-potato)** 和 **[Miro 与 Dii 多语言语音](/zh/blog/2026-06-15-two-voices-every-language-miro-and-dii)** 构成了语音学的骨干。

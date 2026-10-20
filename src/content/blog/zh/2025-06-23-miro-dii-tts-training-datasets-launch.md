@@ -2,6 +2,7 @@
 title: "Miro 和 Dii 的 TTS 训练数据：覆盖 20 个语区的 40 个开放数据集"
 description: "我们发布了 Miro 和 Dii 语音的 40 个合成训练数据集，涵盖葡萄牙语、荷兰语、德语、法语、意大利语、日语、西班牙语等等。大规模语音克隆：每种语言都有两个一致的身份。"
 date: 2025-06-23
+updated: 2026-10-20
 lang: zh
 author: "Casimiro Ferreira"
 tags:
@@ -18,7 +19,7 @@ draft: false
 
 我们发布了用于构建 Miro 和 Dii 的全部 **40 个合成训练数据集**——这两个语音身份是我们与 OpenVoiceOS 合作开发的。整套数据集涵盖欧洲葡萄牙语、巴西葡萄牙语、荷兰语、德语、法语、意大利语、日语、西班牙语、罗马尼亚语、波兰语、瑞典语、印地语、丹麦语、波斯语、英语、巴斯克语等等。每个数据集都遵循一致的命名约定：`tts-train-synthetic-miro_pt-PT`、`tts-train-synthetic-dii_pt-BR`、`tts-train-synthetic-miro_nl-NL`，其他语言对以此类推。
 
-每个数据集都是完全合成的——由生成的文本与合成的音频以 LJSpeech 布局配对而成，没有录音棚录制——并以开放许可证发布，因此任何人都可以重新训练或扩展该语音。音素化在 phoonnx 中于训练时进行，借鉴了我们[针对 350 多种语言的 G2P 研究](/zh/blog/2026-01-15-grapheme-to-ipa-for-350-languages)。
+每个数据集都是完全合成的——由生成的文本与合成的音频以 LJSpeech 布局配对而成，没有录音棚录制——并以开放许可证发布，因此任何人都可以重新训练或扩展该语音。音素化在 phoonnx 中于训练时进行，借鉴了我们[针对 7000 多种语言的 G2P 研究](/zh/blog/2026-01-15-grapheme-to-ipa-for-350-languages)。
 
 ## 语音身份如何在各语言之间保持一致
 

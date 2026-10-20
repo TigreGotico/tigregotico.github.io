@@ -2,6 +2,7 @@
 title: "Come si Incastra lo Stack di Fonologia"
 description: "Un tour architetturale del nostro stack testo-in-pronuncia: scriptconv per la notazione, orthography2ipa come motore grafema-in-IPA multilingue, frontend specifici per lingua costruiti sopra di esso per portoghese, basco, mirandese, barranquenho e arabo, e phonematcher per la ricerca basata sul suono. Mostra perché esistono i livelli, cos'è una lattice di candidati e output dialettali reali."
 date: 2026-08-01
+updated: 2026-10-20
 lang: it
 author: "Casimiro Ferreira"
 tags:
@@ -69,12 +70,12 @@ Ogni livello sopra questo può presupporre che la conversione di notazione sia g
 
 ### Il motore: orthography2ipa
 
-[orthography2ipa](https://github.com/TigreGotico/orthography2ipa) è il motore multilingue. Prende una specifica di lingua — una descrizione dichiarativa delle regole grafema-in-fonema di quella lingua — e un pezzo di testo, e produce IPA. Al momento in cui scriviamo include specifiche che coprono **820 lingue** (`available_codes()` sul pacchetto installato restituisce un elenco di quella lunghezza; considerate la cifra esatta come un bersaglio mobile, poiché le specifiche vengono aggiunte nel tempo).
+[orthography2ipa](https://github.com/TigreGotico/orthography2ipa) è il motore multilingue. Prende una specifica di lingua — una descrizione dichiarativa delle regole grafema-in-fonema di quella lingua — e un pezzo di testo, e produce IPA. Al momento in cui scriviamo include specifiche che coprono **7396 lingue** (`available_codes()` sul pacchetto installato restituisce un elenco di quella lunghezza; considerate la cifra esatta come un bersaglio mobile, poiché le specifiche vengono aggiunte nel tempo).
 
 ```python
 >>> import orthography2ipa as o
 >>> len(o.available_codes())
-820
+7396
 ```
 
 Il motore stesso non ha alcun codice specifico per lingua incorporato. Una nuova lingua è un nuovo file di specifica, verificato rispetto allo stesso schema di ogni altra specifica.
@@ -89,7 +90,7 @@ Riprendiamo "read":
 >>> from orthography2ipa import G2P
 >>> g = G2P("en")
 >>> g.transcribe("read")
-'ɹiːd'
+'ˈɹiːd'
 >>> g.candidates("read")
 [IPAPath('ɹiːd', score=0.0), IPAPath('ɹɛd', score=1.0)]
 ```
@@ -102,11 +103,11 @@ Due parlanti della stessa lingua possono pronunciare la stessa frase in modo div
 
 | Dialetto | Output |
 |---|---|
-| pt-PT (Portogallo) | `ˈbõ ˈdiɐ ˈkomu eˈʃta vɔˈse` |
-| pt-BR (Brasile) | `ˈbõ ˈdʒiɐ ˈkɔ̃mʊ eˈsta voˈse` |
-| pt-AO (Angola) | `ˈbõ ˈdiɐ ˈkomʊ eˈsta vɔˈse` |
-| pt-MZ (Mozambico) | `ˈbõ ˈdiɐ ˈkomu eˈsta vɔˈse` |
-| pt-TL (Timor Est) | `ˈbõ ˈdiə ˈkoɔmʊ eˈsta vɔˈse` |
+| pt-PT (Portogallo) | `ˈbõ ˈdiɐ ˈkomu eʃˈta vɔˈse` |
+| pt-BR (Brasile) | `ˈbõ ˈdʒiɐ ˈkɔ̃mʊ esˈta voˈse` |
+| pt-AO (Angola) | `ˈbõ ˈdiɐ ˈkomʊ esˈta vɔˈse` |
+| pt-MZ (Mozambico) | `ˈbõ ˈdiɐ ˈkomu esˈta vɔˈse` |
+| pt-TL (Timor Est) | `ˈbõ ˈdiə ˈkoɔmʊ esˈta vɔˈse` |
 
 ("Bom dia, como está você?" — "Buongiorno, come stai?") Lo scheletro consonantico resta riconoscibile in tutti e cinque, ma due marcatori ben noti li separano immediatamente. In "dia", il portoghese brasiliano trasforma la `d` prima di una `i` in `dʒ`, il suono all'inizio dell'inglese "jam" — gli altri mantengono una `d` semplice. In "está", il portoghese europeo pronuncia la `s` alla fine di una sillaba come `ʃ`, la "sh" di "shoe", mentre ogni altra varietà mantiene `s`. Un dizionario di pronuncia costruito sulle regole di un dialetto sbaglia entrambi questi aspetti per l'ascoltatore di ogni altro dialetto.
 
@@ -115,7 +116,7 @@ Due parlanti della stessa lingua possono pronunciare la stessa frase in modo div
 ```python
 >>> from euskaphone import EuskaPhonemizer
 >>> EuskaPhonemizer().phonemize_sentence("Kaixo, zer moduz zaude?")
-'kai̯ʃo s̻er modus̻ s̻au̯de'
+'kai̯ʃo s̻er moðus̻ s̻au̯ðe'
 ```
 
 ## I frontend specifici per lingua
@@ -129,7 +130,7 @@ Sopra il motore condiviso siedono frontend che aggiungono ciò che una specifica
   ```python
   >>> from mwl_phonemizer import phonemize
   >>> phonemize("Falo la lhéngua mirandesa.")
-  'ˈfalu lɐ ˈʎɛŋɡwa miɾɐˈndez̺ɐ.'
+  'ˈfalu lɐ ˈʎẽɡwɐ miɾɐ̃ˈdez̺ɐ.'
   ```
 
 - **[g2p_barranquenho](https://github.com/TigreGotico/g2p_barranquenho)** — il primo G2P aperto per il barranquenho, la lingua di contatto ibero-romanza di Barrancos, al confine tra Portogallo e Spagna. Vedi **[Presentiamo il Primo Fonemizzatore per il Barranquenho](/it/blog/2025-12-12-barranquenho)** per come le sue regole siano state derivate dalla convenzione ortografica dello stesso comune.
@@ -154,7 +155,7 @@ Il portoghese ha lo stack più profondo, perché la pronuncia portoghese dipende
 - **[tugamorph](https://github.com/TigreGotico/tugamorph)** è un analizzatore morfologico basato su regole: segmenta una parola in prefisso, radice, suffisso, flessione e clitico, usando solo la libreria standard di Python, opzionalmente affinato da silabificador e tugatagger.
 - **[bifonia](https://github.com/TigreGotico/bifonia)** risolve gli omografi eterofonici del portoghese europeo — parole come "sede" (sete, `ˈsedɨ`, contro sede aziendale, `ˈsɛdɨ`) dove la pronuncia corretta dipende dal significato, non dalla grammatica. Vedi **[Dirlo Bene: Disambiguare gli Eterofoni Portoghesi per il TTS](/it/blog/2026-06-12-disambiguating-portuguese-heterographs-for-tts)** per come è stato costruito e valutato. Questo è il caso concreto dietro l'idea di lattice sopra: orthography2ipa può fornire entrambe le letture candidate di "sede", ma solo un livello consapevole del significato come bifonia può scegliere tra esse.
 
-Per saperne di più su come silabificador e tugaphone lavorano insieme quotidianamente, vedi **[NLP Classico per il Portoghese: Sillabazione e Grafema-in-Fonema](/it/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**, e per il motore più ampio sotto tutto questo, **[Grafema-in-IPA per 820 Lingue](/it/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**.
+Per saperne di più su come silabificador e tugaphone lavorano insieme quotidianamente, vedi **[NLP Classico per il Portoghese: Sillabazione e Grafema-in-Fonema](/it/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**, e per il motore più ampio sotto tutto questo, **[Grafema-in-IPA per oltre 7000 Lingue](/it/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**.
 
 ## Ricerca basata sul suono: phonematcher
 
@@ -174,7 +175,7 @@ Quella metrica di distanza è utile in due situazioni concrete: cercare un catal
 
 ## Limiti onesti
 
-La copertura tra 820 specifiche di lingua è disomogenea per costruzione: le lingue con una letteratura fonologica consolidata e un lessico producono un output migliore delle lingue con una specifica sottile dedotta perlopiù da convenzioni ortografiche generali. La qualità è costantemente migliore dove esiste un lessico curato — il portoghese, sostenuto da tugalex, è il caso più solido dello stack; le lingue che si affidano solo alle regole della specifica senza un lessico gestiranno male il vocabolario irregolare e i prestiti.
+La copertura tra 7396 specifiche di lingua è disomogenea per costruzione: le lingue con una letteratura fonologica consolidata e un lessico producono un output migliore delle lingue con una specifica sottile dedotta perlopiù da convenzioni ortografiche generali. La qualità è costantemente migliore dove esiste un lessico curato — il portoghese, sostenuto da tugalex, è il caso più solido dello stack; le lingue che si affidano solo alle regole della specifica senza un lessico gestiranno male il vocabolario irregolare e i prestiti.
 
 Alcuni componenti non sono esplicitamente riferimenti finiti e revisionati da madrelingua: arbtok è mantenuto da un parlante non nativo dell'arabo e dovrebbe essere verificato rispetto al giudizio di un madrelingua prima dell'uso in qualcosa rivolto agli utenti. I frontend costruiti su specifiche sottili ereditano quella sottigliezza — un frontend vale quanto la specifica e il lessico che ha sotto.
 

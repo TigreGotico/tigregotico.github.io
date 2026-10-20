@@ -2,7 +2,7 @@
 title: "Classical NLP for Portuguese: Syllabification and Grapheme-to-Phoneme"
 description: "A look at our rule-based, fully offline Portuguese NLP stack: silabificador for syllabification and TugaPhone for dialect-aware grapheme-to-phoneme, and how they connect to the broader orthography2ipa work for Lusophone varieties. No deep-learning black boxes: deterministic, fast, and dependency-light."
 date: 2026-02-28
-updated: 2026-08-01
+updated: 2026-10-20
 author: "Casimiro Ferreira"
 tags:
   - "NLP"
@@ -67,7 +67,7 @@ TugaPhone is honest about its edges: lexicon coverage is sparser for the African
 
 ### The broader picture: orthography2ipa
 
-Portuguese is one variety among many, and the same engineering pattern generalizes. [orthography2ipa](https://github.com/TigreGotico/orthography2ipa) is a pure-data Python package of linguistically motivated grapheme→IPA and allophone mappings spanning 820 languages across 20+ language families. It draws a sharp distinction that any serious G2P system needs: a **grapheme map** says which phonemes a spelling *can* represent, while an **allophone map** says how a phoneme actually *surfaces* in a given context. Regional varieties are modeled as their own specifications linked through weighted multi-ancestor lineage, so dialect trees inherit from their parents instead of duplicating data.
+Portuguese is one variety among many, and the same engineering pattern generalizes. [orthography2ipa](https://github.com/TigreGotico/orthography2ipa) is a pure-data Python package of linguistically motivated grapheme→IPA and allophone mappings spanning 7,396 languages across more than 200 language families. It draws a sharp distinction that any serious G2P system needs: a **grapheme map** says which phonemes a spelling *can* represent, while an **allophone map** says how a phoneme actually *surfaces* in a given context. Regional varieties are modeled as their own specifications linked through weighted multi-ancestor lineage, so dialect trees inherit from their parents instead of duplicating data.
 
 That is the same instinct behind `pt-PT`, `pt-BR`, `pt-AO`, `pt-MZ`, and `pt-TL` in TugaPhone: treat each Lusophone variety on its own terms, with its own rules, not as a deviation from a single canonical accent. The data is declarative and the logic is thin and pluggable, so you can read the rules, cite their sources, and trust the output.
 
@@ -76,10 +76,11 @@ That is the same instinct behind `pt-PT`, `pt-BR`, `pt-AO`, `pt-MZ`, and `pt-TL`
 Everything here is open source and installable today:
 
 ```bash
-pip install tugaphone
-pip install git+https://github.com/TigreGotico/silabificador
+pip install --pre tugaphone silabificador
 ```
+
+The `--pre` flag installs the current pre-release. The latest stable tugaphone release gives different output from the examples above.
 
 For the broader multilingual mappings, see [orthography2ipa](https://github.com/TigreGotico/orthography2ipa). Deterministic, fast, offline, and built for the full breadth of the Portuguese-speaking world.
 
-This Portuguese phonetics stack builds on our **[grapheme-to-IPA work for 820 languages](/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**, forming the phonetic backbone for **[TTS that runs on a potato](/blog/2026-05-10-tts-that-runs-on-a-potato)** and **[Miro & Dii multilingual voices](/blog/2026-06-15-two-voices-every-language-miro-and-dii)**.
+This Portuguese phonetics stack builds on our **[grapheme-to-IPA work for 7,000+ languages](/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**, forming the phonetic backbone for **[TTS that runs on a potato](/blog/2026-05-10-tts-that-runs-on-a-potato)** and **[Miro & Dii multilingual voices](/blog/2026-06-15-two-voices-every-language-miro-and-dii)**.

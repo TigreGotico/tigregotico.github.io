@@ -3,7 +3,7 @@ title: "Presentiamo il Primo Fonemizzatore per il Barranquenho"
 description: "g2p_barranquenho è il primo convertitore aperto grafema-fonema per il barranquenho, la lingua di contatto ibero-romanza di Barrancos, Portogallo — regole derivate dalla convenzione ortografica recentemente pubblicata dal comune, verificabili rispetto alle fonti incluse nel repository."
 date: 2025-12-12
 lang: it
-updated: 2026-08-01
+updated: 2026-10-20
 author: "Casimiro Ferreira"
 tags:
   - "Phonemization"
@@ -25,7 +25,7 @@ Da quella convenzione ortografica abbiamo derivato l'insieme di regole — ma an
 
 In pratica:
 
-> "Un Enormi Passu para u Barranquenhu i para a Cultura Barranquenha" → `ˈũ eˈnɔɾmi ˈpas̺u ˈpaɾɐ ˈu bɐrɐ̃ˈkɛɲu ˈi ˈpaɾɐ ɐ kuˈltuɾɐ bɐrɐ̃ˈkɛɲɐ`
+> "Un Enormi Passu para u Barranquenhu i para a Cultura Barranquenha" → `ˈũ eˈnɔɾmi ˈpas̺u ˈpaɾɐ ˈu bɐrɐ̃ˈkɛɲu ˈi ˈpaɾɐ ɐ kulˈtuɾɐ bɐrɐ̃ˈkɛɲɐ`
 
 I PDF di origine (convenzione, dizionario, grammatica) sono inclusi nella radice del repository affinché le regole siano verificabili rispetto alla loro fonte.
 

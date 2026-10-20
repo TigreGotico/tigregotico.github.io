@@ -2,7 +2,7 @@
 title: "NLP Clássico para Português: Silabação e Grafema-para-Fonema"
 description: "Um olhar sobre a nossa stack de NLP para português, baseada em regras e totalmente offline: o silabificador para silabação e o TugaPhone para grafema-para-fonema sensível ao dialeto, e como se ligam ao trabalho mais alargado do orthography2ipa para as variedades lusófonas. Sem caixas negras de deep learning: determinístico, rápido e com poucas dependências."
 date: 2026-02-28
-updated: 2026-08-01
+updated: 2026-10-20
 lang: pt
 author: "Casimiro Ferreira"
 tags:
@@ -68,7 +68,7 @@ O TugaPhone é honesto quanto aos seus limites: a cobertura do léxico é mais e
 
 ### O quadro mais alargado: orthography2ipa
 
-O português é uma variedade entre muitas, e o mesmo padrão de engenharia generaliza-se. O [orthography2ipa](https://github.com/TigreGotico/orthography2ipa) é um pacote Python de dados puros com mapeamentos grafema→IPA e de alofones linguisticamente motivados, abrangendo 820 línguas em mais de 20 famílias linguísticas. Traça uma distinção nítida de que qualquer sistema de G2P sério precisa: um **mapa de grafemas** diz que fonemas uma grafia *pode* representar, ao passo que um **mapa de alofones** diz como um fonema efetivamente *se realiza* num dado contexto. As variedades regionais são modeladas como as suas próprias especificações, ligadas através de uma linhagem ponderada com múltiplos antepassados, pelo que as árvores dialetais herdam dos seus progenitores em vez de duplicar dados.
+O português é uma variedade entre muitas, e o mesmo padrão de engenharia generaliza-se. O [orthography2ipa](https://github.com/TigreGotico/orthography2ipa) é um pacote Python de dados puros com mapeamentos grafema→IPA e de alofones linguisticamente motivados, abrangendo 7396 línguas em mais de 200 famílias linguísticas. Traça uma distinção nítida de que qualquer sistema de G2P sério precisa: um **mapa de grafemas** diz que fonemas uma grafia *pode* representar, ao passo que um **mapa de alofones** diz como um fonema efetivamente *se realiza* num dado contexto. As variedades regionais são modeladas como as suas próprias especificações, ligadas através de uma linhagem ponderada com múltiplos antepassados, pelo que as árvores dialetais herdam dos seus progenitores em vez de duplicar dados.
 
 É esse o mesmo instinto por detrás de `pt-PT`, `pt-BR`, `pt-AO`, `pt-MZ` e `pt-TL` no TugaPhone: tratar cada variedade lusófona pelos seus próprios méritos, com as suas próprias regras, e não como um desvio de um único sotaque canónico. Os dados são declarativos e a lógica é fina e plugável, pelo que pode ler as regras, citar as suas fontes e confiar no resultado.
 
@@ -77,10 +77,11 @@ O português é uma variedade entre muitas, e o mesmo padrão de engenharia gene
 Tudo o que aqui está é open source e pode ser instalado já hoje:
 
 ```bash
-pip install tugaphone
-pip install git+https://github.com/TigreGotico/silabificador
+pip install --pre tugaphone silabificador
 ```
+
+A opção `--pre` instala a pré-versão atual. A última versão estável do tugaphone produz uma saída diferente da dos exemplos acima.
 
 Para os mapeamentos multilingues mais alargados, veja o [orthography2ipa](https://github.com/TigreGotico/orthography2ipa). Determinístico, rápido, offline e construído para toda a amplitude do mundo lusófono.
 
-Esta stack de fonética portuguesa assenta no nosso **[trabalho de grafema-para-IPA para 820 línguas](/pt/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**, formando a espinha dorsal fonética do **[TTS que corre numa batata](/pt/blog/2026-05-10-tts-that-runs-on-a-potato)** e das **[vozes multilingues Miro & Dii](/pt/blog/2026-06-15-two-voices-every-language-miro-and-dii)**.
+Esta stack de fonética portuguesa assenta no nosso **[trabalho de grafema-para-IPA para mais de 7000 línguas](/pt/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**, formando a espinha dorsal fonética do **[TTS que corre numa batata](/pt/blog/2026-05-10-tts-that-runs-on-a-potato)** e das **[vozes multilingues Miro & Dii](/pt/blog/2026-06-15-two-voices-every-language-miro-and-dii)**.

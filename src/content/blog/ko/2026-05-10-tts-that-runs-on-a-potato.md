@@ -2,6 +2,7 @@
 title: "감자에서도 돌아가는 TTS 모델"
 description: "phoonnx는 저사양 하드웨어에서 편안하게 실행되도록 만들어진, VITS 기반 텍스트 음성 변환을 위한 연구 프레임워크입니다. GPU도, 클라우드도, API 키도 없습니다 — 약 1,565만 개의 파라미터를 가진 ONNX 음성과 CPU 하나면 됩니다. 좋은 음성이 얼마나 작을 수 있는지, 그리고 우리가 그것을 어떻게 훈련하는지 소개합니다."
 date: 2026-05-10
+updated: 2026-10-20
 lang: ko
 author: "Casimiro Ferreira"
 tags:
@@ -43,7 +44,7 @@ print(sum(int(np.prod(i.dims)) for i in m.graph.initializer))
 
 작은 음향 모델이 작아도 되는 이유는 phoonnx가 어려운 언어학적 작업을 *앞단에서*, 음소화기(phonemizer)에서 처리하기 때문입니다. 음소화기(자소-음소 변환, 곧 G2P)는 쓰인 텍스트를 모델이 실제로 발음하는 소리 단위의 시퀀스로 변환합니다 — 그래서 VITS 네트워크는 철자를 배울 필요 없이 소리만 배우면 됩니다.
 
-우리의 음소 작업은 **[820개 언어를 위한 자소-IPA 변환](/ko/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**과 **[고전 포르투갈어 음성학](/ko/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**에 기반을 두고 있으며, 이는 몇 주에 걸친 전문가 주석 작업 없이도 저자원 언어를 위한 음성을 훈련하는 것을 가능하게 합니다.
+우리의 음소 작업은 **[7000개 이상 언어를 위한 자소-IPA 변환](/ko/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**과 **[고전 포르투갈어 음성학](/ko/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**에 기반을 두고 있으며, 이는 몇 주에 걸친 전문가 주석 작업 없이도 저자원 언어를 위한 음성을 훈련하는 것을 가능하게 합니다.
 
 phoonnx는 의도적으로 음소화기에 구애받지 않으며 작은 군대만큼의 음소화기를 묶어 제공합니다: `espeak-ng`, [gruut](https://github.com/rhasspy/gruut), [epitran](https://github.com/dmort27/epitran), [misaki](https://github.com/hexgrad/misaki), [transphone](https://github.com/xinjli/transphone)(Glottolog에 목록화된 수천 개의 언어에 손을 뻗습니다), 그리고 아랍어를 위한 [mantoq](https://github.com/mush42/mantoq), 갈리시아어를 위한 **[cotovia](https://github.com/TigreGotico/pycotovia)**, 일본어를 위한 OpenJTalk, 한국어를 위한 KoG2P 같은 전문가들이 있습니다. 이들은 IPA, ARPA, Pinyin, Hangul, Buckwalter를 내보냅니다 — 언어가 필요로 하는 무엇이든. 심지어 ByT5 위에 구축되어 다른 모든 것과 마찬가지로 ONNX로 내보내진, 모델 기반 다국어 G2P도 있습니다.
 

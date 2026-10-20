@@ -2,7 +2,7 @@
 title: "Présentation du premier phonémiseur pour le barranquenho"
 description: "g2p_barranquenho est le premier convertisseur graphème-phonème ouvert pour le barranquenho, la langue de contact ibéro-romane de Barrancos, au Portugal — des règles dérivées de la convention orthographique récemment publiée par la municipalité, vérifiables au regard des sources incluses dans le dépôt."
 date: 2025-12-12
-updated: 2026-08-01
+updated: 2026-10-20
 lang: fr
 author: "Casimiro Ferreira"
 tags:
@@ -25,7 +25,7 @@ Le barranquenho n'est un dialecte ni du portugais ni de l'espagnol ; c'est un sy
 
 En pratique :
 
-> "Un Enormi Passu para u Barranquenhu i para a Cultura Barranquenha" → `ˈũ eˈnɔɾmi ˈpas̺u ˈpaɾɐ ˈu bɐrɐ̃ˈkɛɲu ˈi ˈpaɾɐ ɐ kuˈltuɾɐ bɐrɐ̃ˈkɛɲɐ`
+> "Un Enormi Passu para u Barranquenhu i para a Cultura Barranquenha" → `ˈũ eˈnɔɾmi ˈpas̺u ˈpaɾɐ ˈu bɐrɐ̃ˈkɛɲu ˈi ˈpaɾɐ ɐ kulˈtuɾɐ bɐrɐ̃ˈkɛɲɐ`
 
 Les PDF sources (convention, dictionnaire, grammaire) sont inclus à la racine du dépôt afin que les règles soient vérifiables au regard de leur source.
 

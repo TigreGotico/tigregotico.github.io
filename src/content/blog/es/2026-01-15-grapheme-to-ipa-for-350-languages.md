@@ -1,9 +1,9 @@
 ---
-title: "Grafema a IPA para 820 lenguas"
-description: "orthography2ipa es un recurso de datos puros, con fundamento lingüístico, que mapea la ortografía a IPA y modela cómo los fonemas se realizan como alófonos a lo largo de 909 especificaciones, 820 lenguas y más de 20 familias lingüísticas. Enrejado de candidatos, tokenizador de máxima coincidencia, métricas de distancia fonológica y de escritura, linaje dialectal, y especificaciones citadas a la literatura dialectológica — sin pesos entrenados, totalmente autoalojable."
+title: "Grafema a IPA para más de 7000 lenguas"
+description: "orthography2ipa es un recurso de datos puros, con fundamento lingüístico, que mapea la ortografía a IPA y modela cómo los fonemas se realizan como alófonos a lo largo de 7396 especificaciones y más de 200 familias lingüísticas. Enrejado de candidatos, tokenizador de máxima coincidencia, métricas de distancia fonológica y de escritura, linaje dialectal, y especificaciones citadas a la literatura dialectológica — sin pesos entrenados, totalmente autoalojable."
 date: 2026-01-15
 lang: es
-updated: 2026-08-01
+updated: 2026-10-20
 author: "Casimiro Ferreira"
 tags:
   - "G2P"
@@ -17,7 +17,7 @@ tags:
 draft: false
 ---
 
-**[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)** es un paquete de Python de datos puros — JSON declarativo, lógica fina y conectable, sin pesos entrenados — que mapea la ortografía a IPA y modela cómo esos fonemas se realizan en contexto. Incluye **909 especificaciones de lengua que cubren 820 lenguas** (más 89 nodos de clado solo para clasificación) a lo largo de **más de 20 familias lingüísticas**. Instálelo, lea los datos, bifurque los datos. Nada está oculto en un checkpoint.
+**[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)** es un paquete de Python de datos puros — JSON declarativo, lógica fina y conectable, sin pesos entrenados — que mapea la ortografía a IPA y modela cómo esos fonemas se realizan en contexto. Incluye **7396 especificaciones de lengua** (más 275 nodos de clado solo para clasificación) a lo largo de **más de 200 familias lingüísticas**. La cifra crece al añadirse especificaciones; `len(orthography2ipa.available_codes())` devuelve el valor actual. Instálelo, lea los datos, bifurque los datos. Nada está oculto en un checkpoint.
 
 Es la capa de fonología que hay debajo de todo lo que está aguas abajo: el enrejado de candidatos que produce lo consume el frontend de TTS árabe [arbtok](https://github.com/TigreGotico/arbtok), las pilas del portugués [TugaPhone](https://github.com/TigreGotico/tugaphone) y [silabificador](https://github.com/TigreGotico/silabificador) (véase **[NLP clásico para sílabas y fonemas del portugués](/es/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**), el [fonemizador del barranqueño](/es/blog/2025-12-12-barranquenho), el fonemizador del mirandés y la base fonémica para **[TTS que funciona en una patata](/es/blog/2026-05-10-tts-that-runs-on-a-potato)**.
 
@@ -52,7 +52,7 @@ Los árboles dialectales se mantienen manejables porque los archivos JSON admite
 
 ## Profundo sobre el terreno, no solo amplio
 
-La cifra de 820 es la amplitud; la profundidad es donde está el trabajo. Las especificaciones van lecto por lecto allí donde lo hace la literatura dialectológica, y cada una se cita a esa literatura con referencias de página en vez de deducirse por coincidencia de patrones a partir de una tabla de fonemas.
+La cifra de 7396 es la amplitud; la profundidad es donde está el trabajo. Las especificaciones van lecto por lecto allí donde lo hace la literatura dialectológica, y cada una se cita a esa literatura con referencias de página en vez de deducirse por coincidencia de patrones a partir de una tabla de fonemas.
 
 La cobertura **ibérica** es el ejemplo más claro: **más de 100 especificaciones** para las lenguas de la península. Cada lengua romance de España — castellano, catalán/valenciano, gallego (tanto la norma de la RAG como la reintegracionista), asturiano, aragonés y sus variedades de valle (ansotano, chistabín, benasqués…), extremeño — junto al euskera, los criollos iberorromances y las capas históricas que la mayoría de los recursos omiten por completo: el **árabe andalusí** y el **mozárabe**. La vertiente árabe lleva **34 lectos dialectales** (del najdí y el hejazí pasando por el levantino, el magrebí y las variedades peninsulares), y la vertiente lusófona **46 lectos del portugués y de lenguas de Portugal**, hasta el rionorés, el guadramilés y los subdialectos del mirandés.
 
@@ -68,7 +68,7 @@ tok = PhonetokTokenizer(orthography2ipa.get("en-GB"))
 
 tok.ipa_best("through")                 # 'θɹɔː'
 for path in tok.ipa_beam("through", beam_width=8):
-    print(path.ipa, path.score)         # θɹɔː 0.0, ðɹɔː 1.0, θɹoʊ 1.0, …
+    print(path.ipa, path.score)         # θɹɔː 0.0, ðɹɔː 1.0, θɹəʊ 1.0, …
 ```
 
 El enrejado es el contrato sobre el que construye toda la familia aguas abajo. Un motor específico de la lengua consume el enrejado compartido y añade solo la fonología que una tabla estática no puede expresar, manteniendo a todos los consumidores sobre el mismo núcleo fundamentado:
@@ -84,13 +84,13 @@ Como los datos están estructurados en vez de horneados en pesos, puedes compara
 from orthography2ipa.distance import phonological_distance
 d = phonological_distance(orthography2ipa.get("pt-BR"), orthography2ipa.get("pt-PT"))
 
-d.combined                    # 0.0515 — near-identical
+d.combined                    # 0.0562 — near-identical
 d.inventory.feature_mean      # phoneme-inventory distance
 d.grapheme.mean_ipa_distance  # grapheme-mapping divergence
 d.allophone_sim               # allophone-overlap similarity
 ```
 
-Los vectores de rasgos también están expuestos, de modo que un par casi idéntico como los dos estándares del portugués aterriza en 0,0515 mientras que pares genuinamente distantes se separan con claridad. Esto es útil por igual para decisiones de aprendizaje por transferencia, para el arranque de lenguas de pocos recursos y para la dialectometría.
+Los vectores de rasgos también están expuestos, de modo que un par casi idéntico como los dos estándares del portugués aterriza en 0,0562 mientras que pares genuinamente distantes se separan con claridad. Esto es útil por igual para decisiones de aprendizaje por transferencia, para el arranque de lenguas de pocos recursos y para la dialectometría.
 
 ## Cómo sabemos si los datos son buenos
 
@@ -102,7 +102,7 @@ Las cifras, leídas como direccionales y siempre citadas a su fuente ([`docs/sco
 
 - **Dialectos árabes, entrada sin diacríticos y en crudo** — el caso difícil y realista para despliegue. Sobre el oro de TTS de entrada en crudo de arbtok (33 lectos), la fusión rawi-enrejado bajo la licencia dialectal alcanza un **PER medio de 0,189**, superando al mismo ensamble ejecutado como generador libre (0,193), con el margen concentrado en los lectos que más divergen del MSA. En la mayoría de los lectos arbtok supera a espeak-ng en la entrada en crudo; sobre el propio MSA, espeak — que está ajustado al MSA — sigue ganando (espeak 0,176 vs arbtok 0,245).
 - **Dialectos árabes, entrada diacritizada** — con las marcas presentes el PER de arbtok se sitúa en **0,01–0,08** por lecto, muy por debajo de la única voz MSA de espeak (p. ej. najdí 0,009 vs espeak 0,221; egipcio 0,027 vs espeak 0,287). espeak no tiene voces dialectales, así que esto es honestamente comparar peras con manzanas — pero la brecha es el punto.
-- **Portugués, frente a oro humano experto** — el portugués europeo de Lisboa aterriza en **PER 0,029** (88 % de coincidencia exacta) sobre fuentes primarias con referencia de página, y el oro mirandés de hablantes nativos en **0,146**.
+- **Portugués, frente a oro humano experto** — el portugués europeo de Lisboa aterriza en **PER 0,029** (88 % de coincidencia exacta) sobre fuentes primarias con referencia de página, y el oro mirandés de hablantes nativos en **0,132**.
 
 Cada una de esas cifras es una propiedad del estado actual de los datos, cruzada con un intervalo de confianza por bootstrap, no un trofeo de tabla de clasificación. Allí donde el intervalo es ancho o la muestra minúscula, el scoreboard lo dice.
 

@@ -2,7 +2,7 @@
 title: "Представляем первый фонемизатор для барранкеньу"
 description: "g2p_barranquenho — первый открытый конвертер графемы в фонему для барранкеньу, иберо-романского контактного языка Барранкуша, Португалия, — правила выведены из недавно опубликованной муниципалитетом орфографической конвенции и поддаются проверке по включённым в репозиторий источникам."
 date: 2025-12-12
-updated: 2026-08-01
+updated: 2026-10-20
 lang: ru
 author: "Casimiro Ferreira"
 tags:
@@ -25,7 +25,7 @@ draft: false
 
 На практике:
 
-> "Un Enormi Passu para u Barranquenhu i para a Cultura Barranquenha" → `ˈũ eˈnɔɾmi ˈpas̺u ˈpaɾɐ ˈu bɐrɐ̃ˈkɛɲu ˈi ˈpaɾɐ ɐ kuˈltuɾɐ bɐrɐ̃ˈkɛɲɐ`
+> "Un Enormi Passu para u Barranquenhu i para a Cultura Barranquenha" → `ˈũ eˈnɔɾmi ˈpas̺u ˈpaɾɐ ˈu bɐrɐ̃ˈkɛɲu ˈi ˈpaɾɐ ɐ kulˈtuɾɐ bɐrɐ̃ˈkɛɲɐ`
 
 Исходные PDF-файлы (конвенция, словарь, грамматика) включены в корень репозитория, чтобы правила можно было проверить по их источнику.
 

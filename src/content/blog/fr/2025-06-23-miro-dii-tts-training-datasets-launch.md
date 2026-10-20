@@ -2,6 +2,7 @@
 title: "Données d'entraînement TTS Miro & Dii : 40 datasets ouverts pour 20 locales"
 description: "Nous avons publié 40 datasets d'entraînement synthétiques pour les voix Miro et Dii en portugais, néerlandais, allemand, français, italien, japonais, espagnol et bien d'autres. Le clonage vocal à grande échelle : chaque langue reçoit deux identités cohérentes."
 date: 2025-06-23
+updated: 2026-10-20
 lang: fr
 author: "Casimiro Ferreira"
 tags:
@@ -18,7 +19,7 @@ draft: false
 
 L'ensemble des **40 datasets d'entraînement synthétiques** utilisés pour construire Miro et Dii — les identités vocales que nous avons développées en partenariat avec OpenVoiceOS. La collection couvre le portugais européen, le portugais du Brésil, le néerlandais, l'allemand, le français, l'italien, le japonais, l'espagnol, le roumain, le polonais, le suédois, le hindi, le danois, le farsi, l'anglais, le basque, et bien plus encore. Chaque dataset suit une convention de nommage cohérente : `tts-train-synthetic-miro_pt-PT`, `tts-train-synthetic-dii_pt-BR`, `tts-train-synthetic-miro_nl-NL`, et ainsi de suite pour chaque paire de langues.
 
-Chaque dataset est entièrement synthétique — du texte généré associé à de l'audio synthétisé au format LJSpeech, sans session en studio — et il est publié sous une licence ouverte afin que quiconque puisse réentraîner ou étendre la voix. La phonémisation a lieu au moment de l'entraînement dans phoonnx, en s'appuyant sur nos [recherches G2P pour plus de 350 langues](/fr/blog/2026-01-15-grapheme-to-ipa-for-350-languages).
+Chaque dataset est entièrement synthétique — du texte généré associé à de l'audio synthétisé au format LJSpeech, sans session en studio — et il est publié sous une licence ouverte afin que quiconque puisse réentraîner ou étendre la voix. La phonémisation a lieu au moment de l'entraînement dans phoonnx, en s'appuyant sur nos [recherches G2P pour plus de 7000 langues](/fr/blog/2026-01-15-grapheme-to-ipa-for-350-languages).
 
 ## Comment l'identité vocale reste cohérente d'une langue à l'autre
 

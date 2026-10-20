@@ -2,6 +2,7 @@
 title: "TTS-Modelle, die auf einer Kartoffel laufen"
 description: "phoonnx ist ein Forschungs-Framework für VITS-basierte Sprachsynthese, gebaut, um bequem auf schwacher Hardware zu laufen. Keine GPU, keine Cloud, kein API-Schlüssel — nur eine ONNX-Stimme mit rund 15,65 Millionen Parametern und eine CPU. Hier erfahren Sie, wie klein eine gute Stimme sein kann und wie wir sie trainieren."
 date: 2026-05-10
+updated: 2026-10-20
 lang: de
 author: "Casimiro Ferreira"
 tags:
@@ -71,7 +72,7 @@ schwere linguistische Arbeit *vorab* erledigt, im Phonemizer. Ein Phonemizer
 um, die das Modell tatsächlich spricht — sodass das VITS-Netz nie Rechtschreibung lernen
 muss, nur Klang.
 
-Unsere Arbeit an Phonemen fußt auf **[Graphem-zu-IPA für über 350 Sprachen](/de/blog/2026-01-15-grapheme-to-ipa-for-350-languages)** und **[klassischer portugiesischer Phonetik](/de/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**, die es ermöglichen, Stimmen für ressourcenarme Sprachen zu trainieren, ohne wochenlange Expertenannotation.
+Unsere Arbeit an Phonemen fußt auf **[Graphem-zu-IPA für über 7000 Sprachen](/de/blog/2026-01-15-grapheme-to-ipa-for-350-languages)** und **[klassischer portugiesischer Phonetik](/de/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**, die es ermöglichen, Stimmen für ressourcenarme Sprachen zu trainieren, ohne wochenlange Expertenannotation.
 
 phoonnx ist bewusst phonemizer-agnostisch und bringt eine kleine Armee davon mit:
 `espeak-ng`, [gruut](https://github.com/rhasspy/gruut),

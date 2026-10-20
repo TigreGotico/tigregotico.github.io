@@ -3,7 +3,7 @@ title: "Wij presenteren de eerste phonemizer voor het Barranquenho"
 description: "g2p_barranquenho is de eerste open grafeem-naar-foneem-omzetter voor het Barranquenho, de Ibero-Romaanse contacttaal van Barrancos, Portugal — regels afgeleid van de onlangs door de gemeente gepubliceerde spellingsconventie, controleerbaar aan de hand van de in de repository opgenomen bronnen."
 date: 2025-12-12
 lang: nl
-updated: 2026-08-01
+updated: 2026-10-20
 author: "Casimiro Ferreira"
 tags:
   - "Phonemization"
@@ -25,7 +25,7 @@ Uit die spellingsconventie hebben wij de regelset afgeleid — maar in plaats va
 
 In de praktijk:
 
-> "Un Enormi Passu para u Barranquenhu i para a Cultura Barranquenha" → `ˈũ eˈnɔɾmi ˈpas̺u ˈpaɾɐ ˈu bɐrɐ̃ˈkɛɲu ˈi ˈpaɾɐ ɐ kuˈltuɾɐ bɐrɐ̃ˈkɛɲɐ`
+> "Un Enormi Passu para u Barranquenhu i para a Cultura Barranquenha" → `ˈũ eˈnɔɾmi ˈpas̺u ˈpaɾɐ ˈu bɐrɐ̃ˈkɛɲu ˈi ˈpaɾɐ ɐ kulˈtuɾɐ bɐrɐ̃ˈkɛɲɐ`
 
 De bron-PDF's (conventie, woordenboek, grammatica) zijn opgenomen in de hoofdmap van de repository, zodat de regels controleerbaar zijn aan de hand van hun bron.
 

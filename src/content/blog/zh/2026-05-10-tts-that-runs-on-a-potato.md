@@ -2,6 +2,7 @@
 title: "能在土豆上运行的 TTS 模型"
 description: "phoonnx 是一个基于 VITS 的文本转语音研究框架，专为在低端硬件上舒适运行而打造。不需要 GPU，不需要云，不需要 API 密钥——只需一个约 1565 万参数的 ONNX 声音和一颗 CPU。这里将展示一个优秀的声音可以有多小，以及我们如何训练它们。"
 date: 2026-05-10
+updated: 2026-10-20
 lang: zh
 author: "Casimiro Ferreira"
 tags:
@@ -43,7 +44,7 @@ print(sum(int(np.prod(i.dims)) for i in m.graph.initializer))
 
 一个微小的声学模型之所以能承受得起自身的微小，是因为 phoonnx 把繁重的语言学工作 *提前* 做了，就在音素化器里。一个音素化器（字素转音素，即 G2P）把书面文本转换成模型实际发出的声音单元序列——这样 VITS 网络就永远不必学习拼写，只需学习声音。
 
-我们的音素工作植根于 **[350 多种语言的字素转 IPA](/zh/blog/2026-01-15-grapheme-to-ipa-for-350-languages)** 以及 **[经典葡萄牙语语音学](/zh/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**，它们使得为低资源语言训练声音成为可能，而无需数周的专家标注。
+我们的音素工作植根于 **[7000 多种语言的字素转 IPA](/zh/blog/2026-01-15-grapheme-to-ipa-for-350-languages)** 以及 **[经典葡萄牙语语音学](/zh/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**，它们使得为低资源语言训练声音成为可能，而无需数周的专家标注。
 
 phoonnx 刻意做到与音素化器无关，并捆绑了一小支它们组成的军队：`espeak-ng`、[gruut](https://github.com/rhasspy/gruut)、[epitran](https://github.com/dmort27/epitran)、[misaki](https://github.com/hexgrad/misaki)、[transphone](https://github.com/xinjli/transphone)（它触及 Glottolog 编目的数千种语言），外加一些专家工具，例如面向阿拉伯语的 [mantoq](https://github.com/mush42/mantoq)、面向加利西亚语的 **[cotovia](https://github.com/TigreGotico/pycotovia)**、面向日语的 OpenJTalk，以及面向韩语的 KoG2P。它们输出 IPA、ARPA、拼音、谚文、Buckwalter——语言需要什么就输出什么。甚至还有一个基于模型的多语言 G2P，构建在 ByT5 之上，像其他一切一样导出为 ONNX。
 

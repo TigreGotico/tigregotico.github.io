@@ -2,6 +2,7 @@
 title: "Dati di Addestramento TTS Miro & Dii: 40 Dataset Aperti in 20 Locale"
 description: "Abbiamo pubblicato 40 dataset di addestramento sintetici per le voci Miro e Dii in portoghese, neerlandese, tedesco, francese, italiano, giapponese, spagnolo e altro ancora. Clonazione vocale su larga scala: ogni lingua ottiene due identità coerenti."
 date: 2025-06-23
+updated: 2026-10-20
 lang: it
 author: "Casimiro Ferreira"
 tags:
@@ -18,7 +19,7 @@ draft: false
 
 Tutti i **40 dataset di addestramento sintetici** usati per costruire Miro e Dii — le identità vocali che abbiamo sviluppato in collaborazione con OpenVoiceOS. La raccolta copre portoghese europeo, portoghese brasiliano, neerlandese, tedesco, francese, italiano, giapponese, spagnolo, rumeno, polacco, svedese, hindi, danese, farsi, inglese, basco e altro ancora. Ogni dataset segue una convenzione di denominazione coerente: `tts-train-synthetic-miro_pt-PT`, `tts-train-synthetic-dii_pt-BR`, `tts-train-synthetic-miro_nl-NL`, e così via per ogni coppia di lingue.
 
-Ogni dataset è completamente sintetico — testo generato abbinato ad audio sintetizzato in layout LJSpeech, senza sessioni in studio — ed è rilasciato con una licenza aperta affinché chiunque possa riaddestrare o estendere la voce. La fonemizzazione avviene in fase di addestramento in phoonnx, appoggiandosi alla nostra [ricerca su G2P per oltre 350 lingue](/it/blog/2026-01-15-grapheme-to-ipa-for-350-languages).
+Ogni dataset è completamente sintetico — testo generato abbinato ad audio sintetizzato in layout LJSpeech, senza sessioni in studio — ed è rilasciato con una licenza aperta affinché chiunque possa riaddestrare o estendere la voce. La fonemizzazione avviene in fase di addestramento in phoonnx, appoggiandosi alla nostra [ricerca su G2P per oltre 7000 lingue](/it/blog/2026-01-15-grapheme-to-ipa-for-350-languages).
 
 ## Come l'identità vocale rimane coerente tra le lingue
 

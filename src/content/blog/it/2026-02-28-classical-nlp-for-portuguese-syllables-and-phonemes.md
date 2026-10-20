@@ -3,7 +3,7 @@ title: "NLP Classico per il Portoghese: Sillabazione e Grafema-in-Fonema"
 description: "Uno sguardo al nostro stack di NLP per il portoghese, basato su regole e completamente offline — silabificador per la sillabazione e TugaPhone per il grafema-in-fonema sensibile al dialetto — e come si collegano al più ampio lavoro di orthography2ipa per le varietà lusofone. Nessuna scatola nera di deep learning: deterministico, veloce e con poche dipendenze."
 date: 2026-02-28
 lang: it
-updated: 2026-08-01
+updated: 2026-10-20
 author: "Casimiro Ferreira"
 tags:
   - "NLP"
@@ -66,7 +66,7 @@ TugaPhone è onesto sui propri limiti: la copertura del lessico è più scarsa p
 
 ### Il quadro più ampio: orthography2ipa
 
-Il portoghese è una varietà tra molte, e lo stesso schema ingegneristico si generalizza. [orthography2ipa](https://github.com/TigreGotico/orthography2ipa) è un pacchetto Python a dati puri con mappature grafema→IPA e di allofoni linguisticamente motivate, che abbraccia 820 lingue in più di 20 famiglie linguistiche. Traccia una distinzione netta di cui ogni sistema di G2P serio ha bisogno: una **mappa di grafemi** dice quali fonemi un'ortografia *può* rappresentare, mentre una **mappa di allofoni** dice come un fonema effettivamente *si realizza* in un dato contesto. Le varietà regionali sono modellate come proprie specifiche, collegate attraverso un lignaggio ponderato a più antenati, così che gli alberi dialettali ereditino dai loro genitori anziché duplicare i dati.
+Il portoghese è una varietà tra molte, e lo stesso schema ingegneristico si generalizza. [orthography2ipa](https://github.com/TigreGotico/orthography2ipa) è un pacchetto Python a dati puri con mappature grafema→IPA e di allofoni linguisticamente motivate, che abbraccia 7396 lingue in più di 200 famiglie linguistiche. Traccia una distinzione netta di cui ogni sistema di G2P serio ha bisogno: una **mappa di grafemi** dice quali fonemi un'ortografia *può* rappresentare, mentre una **mappa di allofoni** dice come un fonema effettivamente *si realizza* in un dato contesto. Le varietà regionali sono modellate come proprie specifiche, collegate attraverso un lignaggio ponderato a più antenati, così che gli alberi dialettali ereditino dai loro genitori anziché duplicare i dati.
 
 È lo stesso istinto dietro `pt-PT`, `pt-BR`, `pt-AO`, `pt-MZ` e `pt-TL` in TugaPhone: trattare ogni varietà lusofona come un cittadino di pieno diritto con le proprie regole, e non come una deviazione da un unico accento canonico. I dati sono dichiarativi e la logica è sottile e pluggabile — puoi leggere le regole, citarne le fonti e fidarti del risultato.
 
@@ -75,10 +75,11 @@ Il portoghese è una varietà tra molte, e lo stesso schema ingegneristico si ge
 Tutto ciò che è qui è open source e installabile già oggi:
 
 ```bash
-pip install tugaphone
-pip install git+https://github.com/TigreGotico/silabificador
+pip install --pre tugaphone silabificador
 ```
+
+L'opzione `--pre` installa la versione preliminare attuale. L'ultima versione stabile di tugaphone produce un output diverso da quello degli esempi qui sopra.
 
 Per le mappature multilingue più ampie, vedi [orthography2ipa](https://github.com/TigreGotico/orthography2ipa). Deterministico, veloce, offline e costruito per l'intera ampiezza del mondo di lingua portoghese.
 
-Questo stack di fonetica portoghese si basa sul nostro **[lavoro di grafema-in-IPA per 820 lingue](/it/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**, formando la spina dorsale fonetica del **[TTS che gira su una patata](/it/blog/2026-05-10-tts-that-runs-on-a-potato)** e delle **[voci multilingue Miro & Dii](/it/blog/2026-06-15-two-voices-every-language-miro-and-dii)**.
+Questo stack di fonetica portoghese si basa sul nostro **[lavoro di grafema-in-IPA per oltre 7000 lingue](/it/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**, formando la spina dorsale fonetica del **[TTS che gira su una patata](/it/blog/2026-05-10-tts-that-runs-on-a-potato)** e delle **[voci multilingue Miro & Dii](/it/blog/2026-06-15-two-voices-every-language-miro-and-dii)**.

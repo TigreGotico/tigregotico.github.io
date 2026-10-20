@@ -2,7 +2,7 @@
 title: "बारांकेन्यो के लिए पहला फ़ोनमाइज़र प्रस्तुत है"
 description: "g2p_barranquenho बारांकेन्यो के लिए पहला ओपन ग्रैफ़ीम-टू-फ़ोनीम कन्वर्टर है, जो पुर्तगाल के बारांकोस की इबेरो-रोमांस संपर्क भाषा है — नियम नगरपालिका के नए प्रकाशित वर्तनी सम्मेलन से व्युत्पन्न, कमिट किए गए स्रोतों के विरुद्ध ऑडिट योग्य।"
 date: 2025-12-12
-updated: 2026-08-01
+updated: 2026-10-20
 lang: hi
 author: "Casimiro Ferreira"
 tags:
@@ -25,7 +25,7 @@ draft: false
 
 व्यवहार में:
 
-> "Un Enormi Passu para u Barranquenhu i para a Cultura Barranquenha" → `ˈũ eˈnɔɾmi ˈpas̺u ˈpaɾɐ ˈu bɐrɐ̃ˈkɛɲu ˈi ˈpaɾɐ ɐ kuˈltuɾɐ bɐrɐ̃ˈkɛɲɐ`
+> "Un Enormi Passu para u Barranquenhu i para a Cultura Barranquenha" → `ˈũ eˈnɔɾmi ˈpas̺u ˈpaɾɐ ˈu bɐrɐ̃ˈkɛɲu ˈi ˈpaɾɐ ɐ kulˈtuɾɐ bɐrɐ̃ˈkɛɲɐ`
 
 स्रोत PDF (सम्मेलन, शब्दकोश, व्याकरण) रिपॉज़िटरी रूट में कमिट किए गए हैं ताकि नियम अपने स्रोत के विरुद्ध ऑडिट योग्य हों।
 

@@ -1,8 +1,8 @@
 ---
-title: "820개 언어를 위한 자소-IPA 변환"
-description: "orthography2ipa는 철자를 IPA에 매핑하고, 909개의 언어 사양, 820개 언어, 20개 이상의 어족에 걸쳐 음소가 이음(allophone)으로 실현되는 방식을 모델링하는 순수 데이터 기반의 언어학적 근거를 갖춘 리소스입니다. 후보 격자(lattice), 최대 일치(maximal-munch) 토크나이저, 음운론적·문자적 거리 지표, 방언 계보, 그리고 방언학 문헌에 인용된 스키마 검증 사양 집합을 제공하며, 학습된 가중치 없이 완전히 자체 호스팅이 가능합니다."
+title: "7000개 이상 언어를 위한 자소-IPA 변환"
+description: "orthography2ipa는 철자를 IPA에 매핑하고, 7396개의 언어 사양, 200개 이상의 어족에 걸쳐 음소가 이음(allophone)으로 실현되는 방식을 모델링하는 순수 데이터 기반의 언어학적 근거를 갖춘 리소스입니다. 후보 격자(lattice), 최대 일치(maximal-munch) 토크나이저, 음운론적·문자적 거리 지표, 방언 계보, 그리고 방언학 문헌에 인용된 스키마 검증 사양 집합을 제공하며, 학습된 가중치 없이 완전히 자체 호스팅이 가능합니다."
 date: 2026-01-15
-updated: 2026-08-01
+updated: 2026-10-20
 lang: ko
 author: "Casimiro Ferreira"
 tags:
@@ -17,7 +17,7 @@ tags:
 draft: false
 ---
 
-**[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)**는 순수 데이터 기반의 Python 패키지입니다 — 선언적 JSON, 얇고 플러그 가능한 로직, 학습된 가중치 없음 — 철자를 IPA에 매핑하고 그 음소들이 문맥 속에서 어떻게 실현되는지를 모델링합니다. 이 패키지는 **20개 이상의 어족**에 걸쳐 **820개 언어를 아우르는 909개의 언어 사양**(그리고 분류 전용 분지군 노드 89개)을 제공합니다. 설치하고, 데이터를 읽고, 데이터를 포크하십시오. 체크포인트에 숨겨진 것은 아무것도 없습니다.
+**[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)**는 순수 데이터 기반의 Python 패키지입니다 — 선언적 JSON, 얇고 플러그 가능한 로직, 학습된 가중치 없음 — 철자를 IPA에 매핑하고 그 음소들이 문맥 속에서 어떻게 실현되는지를 모델링합니다. 이 패키지는 **200개 이상의 어족**에 걸쳐 **7396개의 언어 사양**(그리고 분류 전용 분지군 노드 275개)을 제공합니다. 사양이 추가되면 이 수는 늘어납니다. 현재 값은 `len(orthography2ipa.available_codes())`가 반환합니다. 설치하고, 데이터를 읽고, 데이터를 포크하십시오. 체크포인트에 숨겨진 것은 아무것도 없습니다.
 
 이 패키지는 하위의 모든 것 아래에 놓인 음운론 계층입니다. 이것이 만들어내는 후보 격자는 아랍어 TTS 프론트엔드 [arbtok](https://github.com/TigreGotico/arbtok), 포르투갈어 [TugaPhone](https://github.com/TigreGotico/tugaphone)과 [silabificador](https://github.com/TigreGotico/silabificador) 스택(**[포르투갈어 음절과 음소를 위한 고전 NLP](/ko/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)** 참조), [바랑케뉴어 음소화기](/ko/blog/2025-12-12-barranquenho), 미란다어 음소화기, 그리고 **[감자에서도 돌아가는 TTS](/ko/blog/2026-05-10-tts-that-runs-on-a-potato)**의 음소 근거가 소비합니다.
 
@@ -52,7 +52,7 @@ JSON 파일이 `graphemes_base` / `allophones_base` 상속을 지원하기 때�
 
 ## 넓기만 한 것이 아니라 깊게
 
-820이라는 숫자는 너비입니다. 작업의 무게는 깊이에 있습니다. 사양은 방언학 문헌이 다루는 만큼 방언별로 파고들며, 각각은 음소 표에서 패턴 매칭한 것이 아니라 그 문헌에 페이지를 고정해 인용됩니다.
+7396이라는 숫자는 너비입니다. 작업의 무게는 깊이에 있습니다. 사양은 방언학 문헌이 다루는 만큼 방언별로 파고들며, 각각은 음소 표에서 패턴 매칭한 것이 아니라 그 문헌에 페이지를 고정해 인용됩니다.
 
 **이베리아** 지역 커버리지가 가장 명확한 예입니다. 반도의 언어들을 위한 **100개 이상의 사양**이 있습니다. 스페인의 모든 로망스어 — 카스티야어, 카탈루냐어/발렌시아어, 갈리시아어(RAG 규범과 재통합주의 규범 모두), 아스투리아스어, 아라곤어와 그 계곡 변이들(안소타노어, 치스타빈어, 베나스케스어 등), 엑스트레마두라어 — 와 함께 바스크어, 이베리아-로망스 크레올, 그리고 대부분의 리소스가 통째로 건너뛰는 역사적 층위인 **안달루시 아랍어**와 **모사라베어**를 다룹니다. 아랍어 쪽은 **34개 방언 방언형**(나즈드어와 헤자즈어에서 레반트어, 마그레브어, 반도 변이들까지)을, 루소폰 쪽은 리오노레스어, 과드라밀레스어, 그리고 미란다어 하위 방언들까지 이르는 **46개 포르투갈어 및 포르투갈-언어 방언형**을 담고 있습니다.
 
@@ -68,7 +68,7 @@ tok = PhonetokTokenizer(orthography2ipa.get("en-GB"))
 
 tok.ipa_best("through")                 # 'θɹɔː'
 for path in tok.ipa_beam("through", beam_width=8):
-    print(path.ipa, path.score)         # θɹɔː 0.0, ðɹɔː 1.0, θɹoʊ 1.0, …
+    print(path.ipa, path.score)         # θɹɔː 0.0, ðɹɔː 1.0, θɹəʊ 1.0, …
 ```
 
 이 격자는 하위 계열 전체가 그 위에 구축되는 계약입니다. 언어별 엔진은 공유 격자를 소비하고 정적 테이블이 표현할 수 없는 음운론만을 추가하여, 모든 소비자를 동일한 근거 있는 코어 위에 유지합니다.
@@ -84,13 +84,13 @@ for path in tok.ipa_beam("through", beam_width=8):
 from orthography2ipa.distance import phonological_distance
 d = phonological_distance(orthography2ipa.get("pt-BR"), orthography2ipa.get("pt-PT"))
 
-d.combined                    # 0.0515 — near-identical
+d.combined                    # 0.0562 — near-identical
 d.inventory.feature_mean      # phoneme-inventory distance
 d.grapheme.mean_ipa_distance  # grapheme-mapping divergence
 d.allophone_sim               # allophone-overlap similarity
 ```
 
-특성 벡터도 노출되어 있어, 두 포르투갈어 표준처럼 거의 동일한 쌍은 0.0515로 나오는 반면 진정으로 멀리 떨어진 쌍은 명확하게 분리됩니다. 이는 전이 학습 결정, 저자원 부트스트래핑, 방언계측학(dialectometry) 모두에 유용합니다.
+특성 벡터도 노출되어 있어, 두 포르투갈어 표준처럼 거의 동일한 쌍은 0.0562로 나오는 반면 진정으로 멀리 떨어진 쌍은 명확하게 분리됩니다. 이는 전이 학습 결정, 저자원 부트스트래핑, 방언계측학(dialectometry) 모두에 유용합니다.
 
 ## 데이터가 좋은지 우리는 어떻게 아는가
 
@@ -102,7 +102,7 @@ d.allophone_sim               # allophone-overlap similarity
 
 - **아랍어 방언, 순수 비분음 입력** — 어렵고 배포 현실적인 경우입니다. arbtok의 순수 입력 TTS 골드(33개 방언형)에서 방언 허용 규칙 아래의 rawi-lattice fusion은 **평균 PER 0.189**에 도달하여, 동일 앙상블을 자유 생성기로 실행한 것(0.193)을 능가하며, 그 격차는 MSA에서 가장 크게 벗어나는 방언형들에 집중됩니다. 대부분의 방언형에서 arbtok은 순수 입력에 대해 espeak-ng를 능가합니다. MSA 자체에서는 MSA에 맞춰진 espeak가 여전히 이깁니다(espeak 0.176 대 arbtok 0.245).
 - **아랍어 방언, 분음 입력** — 분음 부호가 있을 때 arbtok의 PER은 방언형당 **0.01–0.08**에 놓이며, espeak의 단일 MSA 음성보다 훨씬 낮습니다(예: 나즈드어 0.009 대 espeak 0.221; 이집트어 0.027 대 espeak 0.287). espeak에는 방언 음성이 없으므로 이것은 솔직히 사과와 오렌지를 비교하는 격입니다 — 그러나 그 격차가 요점입니다.
-- **포르투갈어, 전문가-인간 골드 대비** — 리스본 유럽 포르투갈어는 페이지 고정 1차 출처에서 **PER 0.029**(88% 정확 일치)에 도달하고, 원어민 미란다어 골드는 **0.146**에 도달합니다.
+- **포르투갈어, 전문가-인간 골드 대비** — 리스본 유럽 포르투갈어는 페이지 고정 1차 출처에서 **PER 0.029**(88% 정확 일치)에 도달하고, 원어민 미란다어 골드는 **0.132**에 도달합니다.
 
 이들 각각은 리더보드 트로피가 아니라, 부트스트랩 신뢰 구간에 상호 참조된 데이터의 현재 상태 속성입니다. 구간이 넓거나 표본이 극히 작은 경우, 스코어보드는 그렇게 명시합니다.
 

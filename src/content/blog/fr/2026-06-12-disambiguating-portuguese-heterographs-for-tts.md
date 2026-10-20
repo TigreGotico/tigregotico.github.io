@@ -1,7 +1,8 @@
 ---
 title: "Le dire correctement : désambiguïser les hétérophones portugais pour la TTS"
-description: "De nombreux mots du portugais européen s'écrivent de la même façon mais se prononcent différemment selon le sens — et se tromper de voyelle fait dire le mauvais mot à une voix de TTS. Nous avons construit bifonia-pt-homographs, un jeu de données ouvert étiqueté par sens de 56 891 phrases sur 27 mots, et un résolveur minuscule et sans aucune dépendance qui atteint ≈94 % là où les étiqueteurs morphosyntaxiques lourds plafonnent à ≈75 %."
+description: "De nombreux mots du portugais européen s'écrivent de la même façon mais se prononcent différemment selon le sens — et se tromper de voyelle fait dire le mauvais mot à une voix de TTS. Nous avons construit bifonia-pt-homographs, un jeu de données ouvert étiqueté par sens de 155 283 phrases sur 131 mots, et un résolveur minuscule et sans aucune dépendance qui atteint 95,8 % sur un ensemble équilibré par sens de phrases réelles, là où l'étiqueteur POS de spaCy atteint 85,8 %."
 date: 2026-06-12
+updated: 2026-10-20
 lang: fr
 author: "Casimiro Ferreira"
 tags:
@@ -55,17 +56,15 @@ même catégorie grammaticale.
 Reprenons `sede`. *Soif* et *siège social* sont **tous deux des noms**. Un étiqueteur
 POS les étiquette de manière identique — il n'y a aucun signal grammatical pour les
 distinguer — de sorte qu'il ne peut jamais que deviner la lecture la plus fréquente.
-Nous avons mesuré exactement cela : sur notre ensemble de test, spaCy comme Stanza
-obtiennent **0 %** sur le sens *soif* de `sede`. Ils choisissent toujours *siège
-social*. Le même plafond structurel apparaît sur `corte` (coupe contre cour), `forma`
+Nous l'avons mesuré : sur les phrases de notre ensemble de test où une même catégorie grammaticale porte deux sens, spaCy n'atteint que 74,0 %. Le même plafond structurel apparaît sur `corte` (coupe contre cour), `forma`
 (moule contre forme) et `molho` (sauce contre botte) : quand le sens se scinde à
 l'intérieur d'une même catégorie grammaticale, la grammaire ne peut pas le voir.
 
 ### Le jeu de données : étiqueter le sens, pas la grammaire
 
 Nous avons donc construit un jeu de données ouvert qui étiquette la chose qui compte
-vraiment — le sens. **`bifonia-pt-homographs`** compte **56 891 phrases en portugais
-européen** couvrant **27 homographes hétérophones**. Chaque phrase est étiquetée avec
+vraiment — le sens. **`bifonia-pt-homographs`** compte **155 283 phrases en portugais
+européen** couvrant **131 homographes hétérophones**. Chaque phrase est étiquetée avec
 le mot, son **sens**, sa catégorie grammaticale, sa prononciation IPA, et une forme à
 diacritiques restaurés (par exemple *sêde* contre *séde*) qui rend la lecture voulue
 non ambiguë sur la page.
@@ -96,17 +95,15 @@ approches s'en tirent pour choisir le bon sens — et donc la bonne prononciatio
 
 | Approche | Justesse |
 | --- | --- |
-| Toujours deviner le sens le plus fréquent | ≈53 % |
-| POS spaCy → sens | ≈66 % |
-| POS Stanza → sens | ≈75 % |
-| Résolveur de règles + sens de `bifonia` | **≈94 %** |
+| Toujours deviner le sens le plus fréquent | 48,2 % |
+| POS spaCy → sens | 85,8 % |
+| Résolveur de règles + sens de `bifonia` | **95,8 %** |
 
 Les approches fondées sur le POS plafonnent exactement où l'on s'y attend : elles
 peuvent aiguiller par la grammaire mais jamais par le sens, si bien que les scissions à
 l'intérieur d'une catégorie de noms restent hors de portée. Notre résolveur — la
 bibliothèque [`bifonia`](https://github.com/TigreGotico/bifonia), légère et
-**entièrement sans dépendances** — atteint **≈94 %**, et surtout atteint **100 %** sur
-le cas `sede`/*soif* sur lequel les étiqueteurs POS obtiennent **0 %**.
+**entièrement sans dépendances** — atteint **95,8 %** sur l'ensemble complet. Sur les phrases ambiguës pour le POS, où spaCy atteint **74,0 %**, il atteint **97,6 %**. Ces chiffres viennent de `bifonia-pt-homographs-gold`, un ensemble équilibré par sens de 2346 phrases réelles (OpenSubtitles, Wikipédia, pages web), étiqueté indépendamment du moteur.
 
 Le point saillant n'est pas seulement le chiffre. C'est qu'un composant petit, rapide
 et entièrement ouvert bat des étiqueteurs POS neuronaux lourds sur cette tâche — parce
@@ -132,4 +129,4 @@ fondé sur des règles.
 
 ### Essayez-le
 
-Le jeu de données est sur Hugging Face à [`TigreGotico/bifonia-pt-homographs`](https://huggingface.co/datasets/TigreGotico/bifonia-pt-homographs), et le résolveur vit à [`bifonia`](https://github.com/TigreGotico/bifonia). Il s'insère dans le travail plus large sur la phonétique portugaise derrière **[le NLP classique pour le portugais](/fr/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)** et **[la pile graphème vers IPA pour plus de 350 langues](/fr/blog/2026-01-15-grapheme-to-ipa-for-350-languages)** — des pièces petites et déterministes qui font prononcer une langue à une voix comme ses locuteurs le font réellement.
+Le jeu de données est sur Hugging Face à [`TigreGotico/bifonia-pt-homographs`](https://huggingface.co/datasets/TigreGotico/bifonia-pt-homographs), et le résolveur vit à [`bifonia`](https://github.com/TigreGotico/bifonia). Il s'insère dans le travail plus large sur la phonétique portugaise derrière **[le NLP classique pour le portugais](/fr/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)** et **[la pile graphème vers IPA pour plus de 7000 langues](/fr/blog/2026-01-15-grapheme-to-ipa-for-350-languages)** — des pièces petites et déterministes qui font prononcer une langue à une voix comme ses locuteurs le font réellement.

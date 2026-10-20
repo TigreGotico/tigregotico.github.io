@@ -1,7 +1,8 @@
 ---
 title: "说对读音：为 TTS 消歧葡萄牙语异音同形词"
-description: "许多欧洲葡萄牙语单词拼写相同，但发音随含义而异——把元音读错，TTS 声音就会说出另一个词。我们构建了 bifonia-pt-homographs，一个开放的、按含义标注的数据集，涵盖 27 个单词共 56,891 个句子，还构建了一个微小、零依赖的消解器，准确率达约 94%，而重量级的 POS 标注器在约 75% 处便停滞不前。"
+description: "许多欧洲葡萄牙语单词拼写相同，但发音随含义而异——把元音读错，TTS 声音就会说出另一个词。我们构建了 bifonia-pt-homographs，一个开放的、按含义标注的数据集，涵盖 131 个单词共 155,283 个句子，还构建了一个微小、零依赖的消解器，在按含义平衡的真实句子集上准确率达 95.8%，而 spaCy 的 POS 标注器为 85.8%。"
 date: 2026-06-12
+updated: 2026-10-20
 lang: zh
 author: "Casimiro Ferreira"
 tags:
@@ -36,11 +37,11 @@ draft: false
 
 显而易见的修复办法，是对句子跑一个词性（POS）标注器，然后按词性来挑选发音。这对某些词对有帮助，但只要两种含义共享同一个词性，它就 *从构造上* 注定失败。
 
-再拿 `sede` 来说。*口渴* 和 *总部* **都是名词**。POS 标注器把它们标成一样的——没有任何语法信号能把它们区分开——所以它永远只能去猜那个更常见的读法。我们精确地测量了这一点：在我们的测试集上，spaCy 和 Stanza 在 `sede` 的 *口渴* 义项上都得 **0%**。它们总是挑 *总部*。同样的结构性天花板也出现在 `corte`（切口 vs 宫廷）、`forma`（模具 vs 形状）和 `molho`（酱汁 vs 一捆）上：当含义在单一词性内部分裂时，语法看不见它。
+再拿 `sede` 来说。*口渴* 和 *总部* **都是名词**。POS 标注器把它们标成一样的——没有任何语法信号能把它们区分开——所以它永远只能去猜那个更常见的读法。我们测量了这一点：在测试集中一个词性对应两个义项的句子上，spaCy 只有 74.0%。同样的结构性天花板也出现在 `corte`（切口 vs 宫廷）、`forma`（模具 vs 形状）和 `molho`（酱汁 vs 一捆）上：当含义在单一词性内部分裂时，语法看不见它。
 
 ### 数据集：标注含义，而非语法
 
-于是我们构建了一个开放数据集，标注那个真正重要的东西——含义。**`bifonia-pt-homographs`** 是 **56,891 个欧洲葡萄牙语句子**，覆盖 **27 个异音同形词**。每个句子都被标注了该单词、它的 **含义**（义项）、它的词性、它的 IPA 发音，以及一个恢复了变音符号的形式（例如 *sêde* 对 *séde*），使得意图中的读法在纸面上毫不含糊。
+于是我们构建了一个开放数据集，标注那个真正重要的东西——含义。**`bifonia-pt-homographs`** 是 **155,283 个欧洲葡萄牙语句子**，覆盖 **131 个异音同形词**。每个句子都被标注了该单词、它的 **含义**（义项）、它的词性、它的 IPA 发音，以及一个恢复了变音符号的形式（例如 *sêde* 对 *séde*），使得意图中的读法在纸面上毫不含糊。
 
 分桶的键是含义——这正是整件事的关键。一条记录长这样：
 
@@ -62,12 +63,11 @@ draft: false
 
 | 方法 | 准确率 |
 | --- | --- |
-| 总是猜最常见的义项 | 约 53% |
-| spaCy POS → 含义 | 约 66% |
-| Stanza POS → 含义 | 约 75% |
-| `bifonia` 规则 + 含义消解器 | **约 94%** |
+| 总是猜最常见的义项 | 48.2% |
+| spaCy POS → 含义 | 85.8% |
+| `bifonia` 规则 + 含义消解器 | **95.8%** |
 
-基于 POS 的方法恰好在你预料之处停滞：它们能按语法路由，却永远无法按含义路由，所以名词内部的分裂遥不可及。我们的消解器——[`bifonia`](https://github.com/TigreGotico/bifonia) 库，轻量且 **完全零依赖**——达到 **约 94%**，而且关键在于，它在 POS 标注器得 **0%** 的 `sede`/*口渴* 情形上达到了 **100%**。
+基于 POS 的方法恰好在你预料之处停滞：它们能按语法路由，却永远无法按含义路由，所以名词内部的分裂遥不可及。我们的消解器——[`bifonia`](https://github.com/TigreGotico/bifonia) 库，轻量且 **完全零依赖**——达到 **95.8%**（完整集合）。在词性无法区分的句子上，spaCy 为 **74.0%**，而它达到 **97.6%**。这些数字来自 `bifonia-pt-homographs-gold`，这是一个由 2,346 个真实句子（OpenSubtitles、维基百科、网页）构成、按义项平衡且独立于引擎标注的集合。
 
 亮点不只是那个数字。而是一个小巧、快速、完全开放的组件，在这项任务上击败了重量级的神经 POS 标注器——因为它消解的是 *含义*，而不仅仅是语法。没有 GPU，没有模型下载，没有网络调用。
 
@@ -79,4 +79,4 @@ draft: false
 
 ### 试用它
 
-数据集在 Hugging Face 上，地址是 [`TigreGotico/bifonia-pt-homographs`](https://huggingface.co/datasets/TigreGotico/bifonia-pt-homographs)，消解器位于 [`bifonia`](https://github.com/TigreGotico/bifonia)。它嵌入了更广泛的葡萄牙语语音学工作之中，背后是 **[面向葡萄牙语的经典 NLP](/zh/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)** 以及 **[面向 350 多种语言的字素转 IPA 技术栈](/zh/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**——它们都是小巧、确定性的部件，让一个声音以其使用者实际使用的方式来念出一门语言。
+数据集在 Hugging Face 上，地址是 [`TigreGotico/bifonia-pt-homographs`](https://huggingface.co/datasets/TigreGotico/bifonia-pt-homographs)，消解器位于 [`bifonia`](https://github.com/TigreGotico/bifonia)。它嵌入了更广泛的葡萄牙语语音学工作之中，背后是 **[面向葡萄牙语的经典 NLP](/zh/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)** 以及 **[面向 7000 多种语言的字素转 IPA 技术栈](/zh/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**——它们都是小巧、确定性的部件，让一个声音以其使用者实际使用的方式来念出一门语言。

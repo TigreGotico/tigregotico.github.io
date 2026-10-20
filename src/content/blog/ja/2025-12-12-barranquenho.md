@@ -2,7 +2,7 @@
 title: "バランケーニョ語で初となる音素変換器のご紹介"
 description: "g2p_barranquenho は、ポルトガルのバランコスで話されるイベロ・ロマンス系接触言語バランケーニョ語のための、初となるオープンな書記素-音素変換器です。規則は同自治体が新たに公開した正書法規約から導出されており、リポジトリに収録された原典に照らして検証できます。"
 date: 2025-12-12
-updated: 2026-08-01
+updated: 2026-10-20
 lang: ja
 author: "Casimiro Ferreira"
 tags:
@@ -25,7 +25,7 @@ draft: false
 
 実際には次のようになります。
 
-> "Un Enormi Passu para u Barranquenhu i para a Cultura Barranquenha" → `ˈũ eˈnɔɾmi ˈpas̺u ˈpaɾɐ ˈu bɐrɐ̃ˈkɛɲu ˈi ˈpaɾɐ ɐ kuˈltuɾɐ bɐrɐ̃ˈkɛɲɐ`
+> "Un Enormi Passu para u Barranquenhu i para a Cultura Barranquenha" → `ˈũ eˈnɔɾmi ˈpas̺u ˈpaɾɐ ˈu bɐrɐ̃ˈkɛɲu ˈi ˈpaɾɐ ɐ kulˈtuɾɐ bɐrɐ̃ˈkɛɲɐ`
 
 原典の PDF（規約、辞書、文法）はリポジトリのルートに収録されており、規則をその原典に照らして検証できます。
 

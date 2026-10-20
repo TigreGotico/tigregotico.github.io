@@ -3,7 +3,7 @@ title: "Klassisches NLP für Portugiesisch: Silbentrennung und Graphem-zu-Phonem
 description: "Ein Blick auf unseren regelbasierten, vollständig offline arbeitenden portugiesischen NLP-Stack — silabificador für die Silbentrennung und TugaPhone für dialektbewusstes Graphem-zu-Phonem — und wie sie mit der breiteren orthography2ipa-Arbeit für lusophone Varietäten zusammenhängen. Keine Deep-Learning-Blackboxen: deterministisch, schnell und abhängigkeitsarm."
 date: 2026-02-28
 lang: de
-updated: 2026-08-01
+updated: 2026-10-20
 author: "Casimiro Ferreira"
 tags:
   - "NLP"
@@ -66,7 +66,7 @@ TugaPhone ist ehrlich in Bezug auf seine Grenzen: Die Lexikonabdeckung ist für 
 
 ### Das größere Bild: orthography2ipa
 
-Portugiesisch ist eine Varietät unter vielen, und dasselbe Engineering-Muster lässt sich verallgemeinern. [orthography2ipa](https://github.com/TigreGotico/orthography2ipa) ist ein rein datenbasiertes Python-Paket mit linguistisch motivierten Graphem→IPA- und Allophon-Abbildungen, das 820 Sprachen über 20 Sprachfamilien hinweg umfasst. Es zieht eine scharfe Unterscheidung, die jedes ernsthafte G2P-System benötigt: Eine **Graphem-Abbildung** sagt, welche Phoneme eine Schreibweise darstellen *kann*, während eine **Allophon-Abbildung** sagt, wie ein Phonem in einem gegebenen Kontext tatsächlich *auftritt*. Regionale Varietäten werden als ihre eigenen Spezifikationen modelliert, die durch gewichtete Abstammung mit mehreren Vorfahren verknüpft sind, sodass Dialektbäume von ihren übergeordneten Einträgen erben, statt Daten zu duplizieren.
+Portugiesisch ist eine Varietät unter vielen, und dasselbe Engineering-Muster lässt sich verallgemeinern. [orthography2ipa](https://github.com/TigreGotico/orthography2ipa) ist ein rein datenbasiertes Python-Paket mit linguistisch motivierten Graphem→IPA- und Allophon-Abbildungen, das 7396 Sprachen über mehr als 200 Sprachfamilien hinweg umfasst. Es zieht eine scharfe Unterscheidung, die jedes ernsthafte G2P-System benötigt: Eine **Graphem-Abbildung** sagt, welche Phoneme eine Schreibweise darstellen *kann*, während eine **Allophon-Abbildung** sagt, wie ein Phonem in einem gegebenen Kontext tatsächlich *auftritt*. Regionale Varietäten werden als ihre eigenen Spezifikationen modelliert, die durch gewichtete Abstammung mit mehreren Vorfahren verknüpft sind, sodass Dialektbäume von ihren übergeordneten Einträgen erben, statt Daten zu duplizieren.
 
 Das ist derselbe Instinkt hinter `pt-PT`, `pt-BR`, `pt-AO`, `pt-MZ` und `pt-TL` in TugaPhone: jede lusophone Varietät als vollwertiges Element mit eigenen Regeln behandeln, nicht als Abweichung von einem einzigen kanonischen Akzent. Die Daten sind deklarativ und die Logik ist dünn und einsteckbar — Sie können die Regeln lesen, ihre Quellen zitieren und der Ausgabe vertrauen.
 
@@ -75,10 +75,11 @@ Das ist derselbe Instinkt hinter `pt-PT`, `pt-BR`, `pt-AO`, `pt-MZ` und `pt-TL` 
 Alles hier ist Open Source und heute installierbar:
 
 ```bash
-pip install tugaphone
-pip install git+https://github.com/TigreGotico/silabificador
+pip install --pre tugaphone silabificador
 ```
+
+Die Option `--pre` installiert die aktuelle Vorabversion. Die neueste stabile tugaphone-Version liefert andere Ausgaben als die obigen Beispiele.
 
 Für die breiteren mehrsprachigen Abbildungen siehe [orthography2ipa](https://github.com/TigreGotico/orthography2ipa). Deterministisch, schnell, offline und für die gesamte Bandbreite der portugiesischsprachigen Welt gebaut.
 
-Dieser portugiesische Phonetik-Stack baut auf unserer **[Graphem-zu-IPA-Arbeit für 820 Sprachen](/de/blog/2026-01-15-grapheme-to-ipa-for-350-languages)** auf und bildet das phonetische Rückgrat für **[TTS, das auf einer Kartoffel läuft](/de/blog/2026-05-10-tts-that-runs-on-a-potato)** und die **[mehrsprachigen Stimmen Miro & Dii](/de/blog/2026-06-15-two-voices-every-language-miro-and-dii)**.
+Dieser portugiesische Phonetik-Stack baut auf unserer **[Graphem-zu-IPA-Arbeit für über 7000 Sprachen](/de/blog/2026-01-15-grapheme-to-ipa-for-350-languages)** auf und bildet das phonetische Rückgrat für **[TTS, das auf einer Kartoffel läuft](/de/blog/2026-05-10-tts-that-runs-on-a-potato)** und die **[mehrsprachigen Stimmen Miro & Dii](/de/blog/2026-06-15-two-voices-every-language-miro-and-dii)**.

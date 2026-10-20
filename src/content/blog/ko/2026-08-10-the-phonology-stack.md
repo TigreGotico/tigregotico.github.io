@@ -2,6 +2,7 @@
 title: "음운론 스택이 어떻게 맞물리는가"
 description: "우리의 텍스트-발음 스택 아키텍처 안내: 표기법을 위한 scriptconv, 언어 간 자소-IPA 엔진인 orthography2ipa, 포르투갈어·바스크어·미란다어·바랑케뉴어·아랍어를 위해 그 위에 구축된 언어별 프론트엔드, 그리고 소리 기반 검색을 위한 phonematcher. 각 계층이 왜 존재하는지, 후보 격자란 무엇인지, 그리고 실제 방언 출력을 보여줍니다."
 date: 2026-08-01
+updated: 2026-10-20
 lang: ko
 author: "Casimiro Ferreira"
 tags:
@@ -69,12 +70,12 @@ draft: false
 
 ### 엔진: orthography2ipa
 
-[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)는 언어 간 엔진입니다. 언어 사양 — 그 언어의 자소-음소 규칙에 대한 선언적 기술 — 과 텍스트 조각을 받아 IPA를 만들어냅니다. 이 글을 쓰는 시점에 **820개 언어**를 아우르는 사양을 제공합니다(설치된 패키지의 `available_codes()`는 그 길이의 목록을 반환합니다. 사양이 시간이 지남에 따라 추가되므로 정확한 수치는 계속 변한다고 보십시오).
+[orthography2ipa](https://github.com/TigreGotico/orthography2ipa)는 언어 간 엔진입니다. 언어 사양 — 그 언어의 자소-음소 규칙에 대한 선언적 기술 — 과 텍스트 조각을 받아 IPA를 만들어냅니다. 이 글을 쓰는 시점에 **7396개 언어**를 아우르는 사양을 제공합니다(설치된 패키지의 `available_codes()`는 그 길이의 목록을 반환합니다. 사양이 시간이 지남에 따라 추가되므로 정확한 수치는 계속 변한다고 보십시오).
 
 ```python
 >>> import orthography2ipa as o
 >>> len(o.available_codes())
-820
+7396
 ```
 
 엔진 자체에는 언어별 코드가 내장되어 있지 않습니다. 새 언어는 다른 모든 사양과 동일한 스키마에 맞춰 검증되는 새 사양 파일일 뿐입니다.
@@ -89,7 +90,7 @@ draft: false
 >>> from orthography2ipa import G2P
 >>> g = G2P("en")
 >>> g.transcribe("read")
-'ɹiːd'
+'ˈɹiːd'
 >>> g.candidates("read")
 [IPAPath('ɹiːd', score=0.0), IPAPath('ɹɛd', score=1.0)]
 ```
@@ -102,11 +103,11 @@ draft: false
 
 | 방언 | 출력 |
 |---|---|
-| pt-PT (포르투갈) | `ˈbõ ˈdiɐ ˈkomu eˈʃta vɔˈse` |
-| pt-BR (브라질) | `ˈbõ ˈdʒiɐ ˈkɔ̃mʊ eˈsta voˈse` |
-| pt-AO (앙골라) | `ˈbõ ˈdiɐ ˈkomʊ eˈsta vɔˈse` |
-| pt-MZ (모잠비크) | `ˈbõ ˈdiɐ ˈkomu eˈsta vɔˈse` |
-| pt-TL (동티모르) | `ˈbõ ˈdiə ˈkoɔmʊ eˈsta vɔˈse` |
+| pt-PT (포르투갈) | `ˈbõ ˈdiɐ ˈkomu eʃˈta vɔˈse` |
+| pt-BR (브라질) | `ˈbõ ˈdʒiɐ ˈkɔ̃mʊ esˈta voˈse` |
+| pt-AO (앙골라) | `ˈbõ ˈdiɐ ˈkomʊ esˈta vɔˈse` |
+| pt-MZ (모잠비크) | `ˈbõ ˈdiɐ ˈkomu esˈta vɔˈse` |
+| pt-TL (동티모르) | `ˈbõ ˈdiə ˈkoɔmʊ esˈta vɔˈse` |
 
 ("Bom dia, como está você?" — "안녕하세요, 어떻게 지내세요?") 자음 골격은 다섯 방언 모두에서 알아볼 수 있게 남아 있지만, 두 가지 잘 알려진 표지가 즉시 이들을 구별해 줍니다. "dia"에서 브라질 포르투갈어는 `i` 앞의 `d`를 영어 "jam"의 첫소리인 `dʒ`로 바꾸는 반면, 다른 방언들은 그냥 `d`를 유지합니다. "está"에서 유럽 포르투갈어는 음절 끝의 `s`를 "shoe"의 "sh" 소리인 `ʃ`로 발음하는 반면, 다른 모든 변이형은 `s`를 유지합니다. 한 방언의 규칙으로 만든 발음 사전은 다른 모든 방언의 청자에게 이 두 가지를 모두 틀리게 됩니다.
 
@@ -115,7 +116,7 @@ draft: false
 ```python
 >>> from euskaphone import EuskaPhonemizer
 >>> EuskaPhonemizer().phonemize_sentence("Kaixo, zer moduz zaude?")
-'kai̯ʃo s̻er modus̻ s̻au̯de'
+'kai̯ʃo s̻er moðus̻ s̻au̯ðe'
 ```
 
 ## 언어별 프론트엔드
@@ -129,7 +130,7 @@ draft: false
   ```python
   >>> from mwl_phonemizer import phonemize
   >>> phonemize("Falo la lhéngua mirandesa.")
-  'ˈfalu lɐ ˈʎɛŋɡwa miɾɐˈndez̺ɐ.'
+  'ˈfalu lɐ ˈʎẽɡwɐ miɾɐ̃ˈdez̺ɐ.'
   ```
 
 - **[g2p_barranquenho](https://github.com/TigreGotico/g2p_barranquenho)** — 포르투갈-스페인 국경의 바랑코스 지역의 이베로-로망스 접촉 언어인 바랑케뉴어를 위한 최초의 오픈 G2P입니다. 그 규칙이 지자체 자체의 정서법 규약에서 어떻게 도출되었는지는 **[바랑케뉴어를 위한 최초의 음소화기 소개](/ko/blog/2025-12-12-barranquenho)**를 참고하세요.
@@ -154,7 +155,7 @@ draft: false
 - **[tugamorph](https://github.com/TigreGotico/tugamorph)**는 규칙 기반 형태 분석기입니다: Python 표준 라이브러리만 사용해 단어를 접두사, 어근, 접미사, 활용, 접어로 분절하며, 선택적으로 silabificador와 tugatagger로 정밀도를 높입니다.
 - **[bifonia](https://github.com/TigreGotico/bifonia)**는 유럽 포르투갈어의 이철동음이의어 — "sede"(갈증, `ˈsedɨ` 대 본부, `ˈsɛdɨ`)처럼 올바른 발음이 문법이 아니라 의미에 좌우되는 단어들 — 를 해소합니다. 그것이 어떻게 만들어지고 평가되었는지는 **[제대로 말하기: TTS를 위한 포르투갈어 이철동음이의어 해소](/ko/blog/2026-06-12-disambiguating-portuguese-heterographs-for-tts)**를 참고하세요. 이는 위의 격자 발상 뒤에 있는 구체적인 사례입니다: orthography2ipa는 "sede"의 두 후보 발음을 모두 제공할 수 있지만, bifonia 같은 의미를 아는 계층만이 그중에서 선택할 수 있습니다.
 
-silabificador와 tugaphone이 매일 어떻게 함께 작동하는지에 대해서는 **[포르투갈어를 위한 고전 NLP: 음절 분석과 자소-음소 변환](/ko/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**을, 그리고 이 모든 것 아래에 있는 더 넓은 엔진에 대해서는 **[820개 언어를 위한 자소-IPA 변환](/ko/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**을 참고하세요.
+silabificador와 tugaphone이 매일 어떻게 함께 작동하는지에 대해서는 **[포르투갈어를 위한 고전 NLP: 음절 분석과 자소-음소 변환](/ko/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**을, 그리고 이 모든 것 아래에 있는 더 넓은 엔진에 대해서는 **[7000개 이상 언어를 위한 자소-IPA 변환](/ko/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**을 참고하세요.
 
 ## 소리 기반 검색: phonematcher
 
@@ -174,7 +175,7 @@ silabificador와 tugaphone이 매일 어떻게 함께 작동하는지에 대해�
 
 ## 정직한 한계
 
-820개 언어 사양에 걸친 커버리지는 구조상 고르지 않습니다: 확립된 음운론 문헌과 사전을 갖춘 언어는 대체로 일반적인 정서법 관례에서 추론한 얕은 사양만 있는 언어보다 더 나은 출력을 냅니다. 품질은 정선된 사전이 존재하는 곳에서 일관되게 가장 좋습니다 — tugalex의 뒷받침을 받는 포르투갈어가 이 스택에서 가장 강한 사례입니다. 사전 없이 순전히 사양 규칙에만 의존하는 언어는 불규칙 어휘와 외래어를 잘못 처리합니다.
+7396개 언어 사양에 걸친 커버리지는 구조상 고르지 않습니다: 확립된 음운론 문헌과 사전을 갖춘 언어는 대체로 일반적인 정서법 관례에서 추론한 얕은 사양만 있는 언어보다 더 나은 출력을 냅니다. 품질은 정선된 사전이 존재하는 곳에서 일관되게 가장 좋습니다 — tugalex의 뒷받침을 받는 포르투갈어가 이 스택에서 가장 강한 사례입니다. 사전 없이 순전히 사양 규칙에만 의존하는 언어는 불규칙 어휘와 외래어를 잘못 처리합니다.
 
 몇몇 구성 요소는 명시적으로 완성되지 않은, 원어민 검토를 거치지 않은 참조물입니다: arbtok은 아랍어를 모국어로 하지 않는 사람이 유지 관리하므로 사용자에게 노출되는 어떤 것에 쓰기 전에 원어민의 판단에 대해 확인해야 합니다. 얕은 사양 위에 구축된 프론트엔드는 그 얕음을 그대로 물려받습니다 — 프론트엔드는 그 아래의 사양과 사전만큼만 좋습니다.
 

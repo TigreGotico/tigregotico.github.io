@@ -1,7 +1,8 @@
 ---
 title: "Het goed uitspreken: Portugese heterofonen desambigueren voor TTS"
-description: "Veel Europees-Portugese woorden worden hetzelfde gespeld maar afhankelijk van de betekenis anders uitgesproken — en de verkeerde klinker laat een TTS-stem het verkeerde woord zeggen. We bouwden bifonia-pt-homographs, een open betekenislabelede dataset van 56.891 zinnen over 27 woorden, en een piepkleine resolver zonder afhankelijkheden die ≈94% haalt waar zware POS-taggers blijven steken op ≈75%."
+description: "Veel Europees-Portugese woorden worden hetzelfde gespeld maar afhankelijk van de betekenis anders uitgesproken — en de verkeerde klinker laat een TTS-stem het verkeerde woord zeggen. We bouwden bifonia-pt-homographs, een open betekenislabelede dataset van 155.283 zinnen over 131 woorden, en een piepkleine resolver zonder afhankelijkheden die 95,8% haalt op een betekenisgebalanceerde set echte zinnen, waar een spaCy-POS-tagger 85,8% haalt."
 date: 2026-06-12
+updated: 2026-10-20
 lang: nl
 author: "Casimiro Ferreira"
 tags:
@@ -36,11 +37,11 @@ Een naïef TTS-systeem legt zich vast op één uitspraak per spelling. Dus leest
 
 De voor de hand liggende oplossing is een part-of-speech (POS) tagger over de zin te draaien en de uitspraak op basis van POS te kiezen. Dat helpt voor sommige paren, maar het faalt *per constructie* zodra twee betekenissen dezelfde woordsoort delen.
 
-Neem `sede` opnieuw. *Dorst* en *hoofdkantoor* zijn **beide zelfstandige naamwoorden**. Een POS-tagger labelt ze identiek — er is geen grammaticaal signaal om ze uit elkaar te houden — dus hij kan alleen maar gokken op de meest voorkomende lezing. We hebben precies dit gemeten: op onze testset scoren zowel spaCy als Stanza **0%** op de *dorst*-betekenis van `sede`. Ze kiezen altijd *hoofdkantoor*. Hetzelfde structurele plafond verschijnt bij `corte` (snee vs hof), `forma` (mal vs vorm) en `molho` (saus vs bundel): wanneer de betekenis binnen één woordsoort splitst, kan de grammatica het niet zien.
+Neem `sede` opnieuw. *Dorst* en *hoofdkantoor* zijn **beide zelfstandige naamwoorden**. Een POS-tagger labelt ze identiek — er is geen grammaticaal signaal om ze uit elkaar te houden — dus hij kan alleen maar gokken op de meest voorkomende lezing. We hebben dit gemeten: op de zinnen van onze testset waarin één woordsoort twee betekenissen draagt, haalt spaCy slechts 74,0%. Hetzelfde structurele plafond verschijnt bij `corte` (snee vs hof), `forma` (mal vs vorm) en `molho` (saus vs bundel): wanneer de betekenis binnen één woordsoort splitst, kan de grammatica het niet zien.
 
 ### De dataset: betekenis labelen, niet grammatica
 
-Dus bouwden we een open dataset die datgene labelt wat er echt toe doet — betekenis. **`bifonia-pt-homographs`** bestaat uit **56.891 Europees-Portugese zinnen** die **27 heterofone homografen** dekken. Elke zin is gelabeld met het woord, de **betekenis** (zin), de woordsoort, de IPA-uitspraak, en een vorm met herstelde diakritische tekens (bijvoorbeeld *sêde* vs *séde*) die de bedoelde lezing op papier ondubbelzinnig maakt.
+Dus bouwden we een open dataset die datgene labelt wat er echt toe doet — betekenis. **`bifonia-pt-homographs`** bestaat uit **155.283 Europees-Portugese zinnen** die **131 heterofone homografen** dekken. Elke zin is gelabeld met het woord, de **betekenis** (zin), de woordsoort, de IPA-uitspraak, en een vorm met herstelde diakritische tekens (bijvoorbeeld *sêde* vs *séde*) die de bedoelde lezing op papier ondubbelzinnig maakt.
 
 De bucketsleutel is betekenis — dat is de hele bedoeling. Eén record ziet er zo uit:
 
@@ -62,12 +63,11 @@ Met betekenisgelabelde data konden we meten hoe verschillende benaderingen prest
 
 | Benadering | Nauwkeurigheid |
 | --- | --- |
-| Altijd de meest voorkomende betekenis gokken | ≈53% |
-| spaCy POS → betekenis | ≈66% |
-| Stanza POS → betekenis | ≈75% |
-| `bifonia`-regel + betekenisresolver | **≈94%** |
+| Altijd de meest voorkomende betekenis gokken | 48,2% |
+| spaCy POS → betekenis | 85,8% |
+| `bifonia`-regel + betekenisresolver | **95,8%** |
 
-De POS-gebaseerde benaderingen blijven precies steken waar je het zou verwachten: ze kunnen routeren op grammatica maar nooit op betekenis, dus de splitsingen binnen zelfstandige naamwoorden blijven onbereikbaar. Onze resolver — de [`bifonia`](https://github.com/TigreGotico/bifonia)-bibliotheek, lichtgewicht en **volledig zonder afhankelijkheden** — bereikt **≈94%**, en haalt cruciaal **100%** op de `sede`/*dorst*-casus waar de POS-taggers **0%** halen.
+De POS-gebaseerde benaderingen blijven precies steken waar je het zou verwachten: ze kunnen routeren op grammatica maar nooit op betekenis, dus de splitsingen binnen zelfstandige naamwoorden blijven onbereikbaar. Onze resolver — de [`bifonia`](https://github.com/TigreGotico/bifonia)-bibliotheek, lichtgewicht en **volledig zonder afhankelijkheden** — bereikt **95,8%** op de volledige set. Op de zinnen die op POS dubbelzinnig zijn, waar spaCy **74,0%** haalt, bereikt hij **97,6%**. De cijfers komen uit `bifonia-pt-homographs-gold`, een betekenisgebalanceerde set van 2.346 echte zinnen (OpenSubtitles, Wikipedia, webpagina's) die onafhankelijk van de engine is gelabeld.
 
 De kop is niet alleen het getal. Het is dat een kleine, snelle, volledig open component de zware neurale POS-taggers op deze taak verslaat — omdat hij *betekenis* oplost, niet alleen grammatica. Geen GPU, geen modeldownload, geen netwerkoproep.
 
@@ -79,4 +79,4 @@ Omdat de dataset open is en de resolver klein en te forken, kan iedereen die een
 
 ### Probeer het
 
-De dataset staat op Hugging Face bij [`TigreGotico/bifonia-pt-homographs`](https://huggingface.co/datasets/TigreGotico/bifonia-pt-homographs), en de resolver leeft bij [`bifonia`](https://github.com/TigreGotico/bifonia). Het past in het bredere Portugese fonetiekwerk achter **[Klassieke NLP voor Portugees](/nl/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)** en de **[grafeem-naar-IPA-stack voor 350+ talen](/nl/blog/2026-01-15-grapheme-to-ipa-for-350-languages)** — kleine, deterministische stukjes die een stem een taal laten uitspreken zoals de sprekers ervan dat werkelijk doen.
+De dataset staat op Hugging Face bij [`TigreGotico/bifonia-pt-homographs`](https://huggingface.co/datasets/TigreGotico/bifonia-pt-homographs), en de resolver leeft bij [`bifonia`](https://github.com/TigreGotico/bifonia). Het past in het bredere Portugese fonetiekwerk achter **[Klassieke NLP voor Portugees](/nl/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)** en de **[grafeem-naar-IPA-stack voor 7000+ talen](/nl/blog/2026-01-15-grapheme-to-ipa-for-350-languages)** — kleine, deterministische stukjes die een stem een taal laten uitspreken zoals de sprekers ervan dat werkelijk doen.

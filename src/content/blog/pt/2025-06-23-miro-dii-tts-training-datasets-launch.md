@@ -2,6 +2,7 @@
 title: "Dados de Treino de TTS Miro & Dii: 40 Datasets Abertos em 20 Locales"
 description: "Publicámos 40 datasets de treino sintéticos para as vozes Miro e Dii em português, neerlandês, alemão, francês, italiano, japonês, espanhol e mais. Cada língua ganha duas identidades de voz consistentes, construídas com clonagem de voz."
 date: 2025-06-23
+updated: 2026-10-20
 lang: pt
 author: "Casimiro Ferreira"
 tags:
@@ -28,7 +29,7 @@ Cada dataset é totalmente sintético: texto gerado emparelhado com áudio sinte
 organizado no formato LJSpeech habitual para dados de treino de TTS, sem sessões de
 estúdio. Cada um é lançado sob uma licença aberta para que qualquer pessoa possa
 retreinar ou estender a voz. A fonemização acontece em tempo de treino no phoonnx,
-apoiando-se na nossa [investigação de G2P para mais de 350
+apoiando-se na nossa [investigação de G2P para mais de 7000
 línguas](/pt/blog/2026-01-15-grapheme-to-ipa-for-350-languages).
 
 ## Como a identidade da voz se mantém consistente entre línguas

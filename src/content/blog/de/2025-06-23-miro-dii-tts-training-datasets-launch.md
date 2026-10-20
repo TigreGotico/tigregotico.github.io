@@ -2,6 +2,7 @@
 title: "Miro-&-Dii-TTS-Trainingsdaten: 40 offene Datensätze in 20 Locales"
 description: "Wir haben 40 synthetische Trainingsdatensätze für die Stimmen Miro und Dii in Portugiesisch, Niederländisch, Deutsch, Französisch, Italienisch, Japanisch, Spanisch und mehr veröffentlicht. Voice Cloning im großen Maßstab: Jede Sprache erhält zwei konsistente Identitäten."
 date: 2025-06-23
+updated: 2026-10-20
 lang: de
 author: "Casimiro Ferreira"
 tags:
@@ -18,7 +19,7 @@ draft: false
 
 Alle **40 synthetischen Trainingsdatensätze**, die zum Aufbau von Miro und Dii verwendet wurden — die Stimmidentitäten, die wir in Partnerschaft mit OpenVoiceOS entwickelt haben. Die Sammlung umfasst europäisches Portugiesisch, brasilianisches Portugiesisch, Niederländisch, Deutsch, Französisch, Italienisch, Japanisch, Spanisch, Rumänisch, Polnisch, Schwedisch, Hindi, Dänisch, Farsi, Englisch, Baskisch und mehr. Jeder Datensatz folgt einer einheitlichen Namenskonvention: `tts-train-synthetic-miro_pt-PT`, `tts-train-synthetic-dii_pt-BR`, `tts-train-synthetic-miro_nl-NL` und so weiter für jedes Sprachpaar.
 
-Jeder Datensatz ist vollständig synthetisch — generierter Text gepaart mit synthetisiertem Audio im LJSpeech-Layout, ohne Studiositzungen — und wird unter einer offenen Lizenz veröffentlicht, sodass jeder die Stimme neu trainieren oder erweitern kann. Die Phonemisierung erfolgt zur Trainingszeit in phoonnx und stützt sich auf unsere [G2P-Forschung für über 350 Sprachen](/de/blog/2026-01-15-grapheme-to-ipa-for-350-languages).
+Jeder Datensatz ist vollständig synthetisch — generierter Text gepaart mit synthetisiertem Audio im LJSpeech-Layout, ohne Studiositzungen — und wird unter einer offenen Lizenz veröffentlicht, sodass jeder die Stimme neu trainieren oder erweitern kann. Die Phonemisierung erfolgt zur Trainingszeit in phoonnx und stützt sich auf unsere [G2P-Forschung für über 7000 Sprachen](/de/blog/2026-01-15-grapheme-to-ipa-for-350-languages).
 
 ## Wie die Stimmidentität sprachübergreifend konsistent bleibt
 

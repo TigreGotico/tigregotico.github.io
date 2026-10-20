@@ -1,7 +1,8 @@
 ---
 title: "Richtig ausgesprochen: Portugiesische Heterophone für TTS disambiguieren"
-description: "Viele europäisch-portugiesische Wörter werden gleich geschrieben, aber je nach Bedeutung unterschiedlich ausgesprochen — und ein falscher Vokal lässt eine TTS-Stimme das falsche Wort sagen. Wir haben bifonia-pt-homographs erstellt, einen offenen, nach Bedeutung annotierten Datensatz mit 56.891 Sätzen über 27 Wörter, sowie einen winzigen, abhängigkeitsfreien Resolver, der ≈94 % erreicht, wo schwergewichtige POS-Tagger bei ≈75 % stagnieren."
+description: "Viele europäisch-portugiesische Wörter werden gleich geschrieben, aber je nach Bedeutung unterschiedlich ausgesprochen — und ein falscher Vokal lässt eine TTS-Stimme das falsche Wort sagen. Wir haben bifonia-pt-homographs erstellt, einen offenen, nach Bedeutung annotierten Datensatz mit 155.283 Sätzen über 131 Wörter, sowie einen winzigen, abhängigkeitsfreien Resolver, der auf einem bedeutungsausgewogenen Satz echter Sätze 95,8 % erreicht, wo ein spaCy-POS-Tagger 85,8 % erreicht."
 date: 2026-06-12
+updated: 2026-10-20
 lang: de
 author: "Casimiro Ferreira"
 tags:
@@ -36,11 +37,11 @@ Ein naives TTS-System legt sich auf eine einzige Aussprache pro Schreibweise fes
 
 Die naheliegende Lösung besteht darin, einen Wortarten-Tagger (POS) über den Satz laufen zu lassen und die Aussprache anhand der Wortart auszuwählen. Das hilft bei einigen Paaren, scheitert aber *konstruktionsbedingt* immer dann, wenn sich zwei Bedeutungen dieselbe Wortart teilen.
 
-Nehmen wir noch einmal `sede`. *Durst* und *Hauptsitz* sind **beide Substantive**. Ein POS-Tagger etikettiert sie identisch — es gibt kein grammatisches Signal, das sie unterscheidet — und kann daher nur die häufigere Lesart erraten. Genau das haben wir gemessen: In unserem Testset erzielen sowohl spaCy als auch Stanza **0 %** bei der Bedeutung *Durst* von `sede`. Sie wählen immer *Hauptsitz*. Dieselbe strukturelle Obergrenze zeigt sich bei `corte` (Schnitt vs Hof), `forma` (Backform vs Form) und `molho` (Soße vs Bündel): Wenn sich die Bedeutung innerhalb einer einzigen Wortart aufteilt, kann die Grammatik sie nicht erkennen.
+Nehmen wir noch einmal `sede`. *Durst* und *Hauptsitz* sind **beide Substantive**. Ein POS-Tagger etikettiert sie identisch — es gibt kein grammatisches Signal, das sie unterscheidet — und kann daher nur die häufigere Lesart erraten. Das haben wir gemessen: Bei den Sätzen unseres Testsets, in denen eine Wortart zwei Bedeutungen trägt, erreicht spaCy nur 74,0 %. Dieselbe strukturelle Obergrenze zeigt sich bei `corte` (Schnitt vs Hof), `forma` (Backform vs Form) und `molho` (Soße vs Bündel): Wenn sich die Bedeutung innerhalb einer einzigen Wortart aufteilt, kann die Grammatik sie nicht erkennen.
 
 ### Der Datensatz: Bedeutung annotieren, nicht Grammatik
 
-Deshalb haben wir einen offenen Datensatz erstellt, der genau das annotiert, worauf es wirklich ankommt — die Bedeutung. **`bifonia-pt-homographs`** besteht aus **56.891 europäisch-portugiesischen Sätzen**, die **27 heterophone Homographe** abdecken. Jeder Satz ist mit dem Wort, seiner **Bedeutung** (Sinn), seiner Wortart, seiner IPA-Aussprache und einer mit Diakritika wiederhergestellten Form (zum Beispiel *sêde* vs *séde*) annotiert, die die beabsichtigte Lesart auf dem Papier eindeutig macht.
+Deshalb haben wir einen offenen Datensatz erstellt, der genau das annotiert, worauf es wirklich ankommt — die Bedeutung. **`bifonia-pt-homographs`** besteht aus **155.283 europäisch-portugiesischen Sätzen**, die **131 heterophone Homographe** abdecken. Jeder Satz ist mit dem Wort, seiner **Bedeutung** (Sinn), seiner Wortart, seiner IPA-Aussprache und einer mit Diakritika wiederhergestellten Form (zum Beispiel *sêde* vs *séde*) annotiert, die die beabsichtigte Lesart auf dem Papier eindeutig macht.
 
 Der Gruppierungsschlüssel ist die Bedeutung — das ist der ganze Sinn der Sache. Ein einzelner Datensatz sieht so aus:
 
@@ -62,12 +63,11 @@ Mit nach Bedeutung annotierten Daten konnten wir messen, wie gut verschiedene An
 
 | Ansatz | Genauigkeit |
 | --- | --- |
-| Immer die häufigste Bedeutung raten | ≈53 % |
-| spaCy POS → Bedeutung | ≈66 % |
-| Stanza POS → Bedeutung | ≈75 % |
-| `bifonia`-Regel + Bedeutungs-Resolver | **≈94 %** |
+| Immer die häufigste Bedeutung raten | 48,2 % |
+| spaCy POS → Bedeutung | 85,8 % |
+| `bifonia`-Regel + Bedeutungs-Resolver | **95,8 %** |
 
-Die POS-basierten Ansätze stagnieren genau dort, wo man es erwarten würde: Sie können nach Grammatik routen, aber niemals nach Bedeutung, sodass die Aufteilungen innerhalb der Substantivklasse außer Reichweite bleiben. Unser Resolver — die Bibliothek [`bifonia`](https://github.com/TigreGotico/bifonia), leichtgewichtig und **völlig abhängigkeitsfrei** — erreicht **≈94 %** und, was entscheidend ist, **100 %** im Fall `sede`/*Durst*, bei dem die POS-Tagger **0 %** erzielen.
+Die POS-basierten Ansätze stagnieren genau dort, wo man es erwarten würde: Sie können nach Grammatik routen, aber niemals nach Bedeutung, sodass die Aufteilungen innerhalb der Substantivklasse außer Reichweite bleiben. Unser Resolver — die Bibliothek [`bifonia`](https://github.com/TigreGotico/bifonia), leichtgewichtig und **völlig abhängigkeitsfrei** — erreicht **95,8 %** auf dem gesamten Satz. Bei den nach Wortart mehrdeutigen Sätzen, bei denen spaCy **74,0 %** erreicht, erreicht er **97,6 %**. Die Werte stammen aus `bifonia-pt-homographs-gold`, einem bedeutungsausgewogenen Satz aus 2.346 echten Sätzen (OpenSubtitles, Wikipedia, Webseiten), der unabhängig von der Engine annotiert wurde.
 
 Das Entscheidende ist nicht nur die Zahl. Es ist, dass eine kleine, schnelle, vollständig offene Komponente schwergewichtige neuronale POS-Tagger bei dieser Aufgabe schlägt — weil sie die *Bedeutung* auflöst, nicht nur die Grammatik. Keine GPU, kein Modell-Download, kein Netzwerkaufruf.
 
@@ -79,4 +79,4 @@ Da der Datensatz offen und der Resolver winzig und forkbar ist, kann jede Person
 
 ### Ausprobieren
 
-Der Datensatz befindet sich auf Hugging Face unter [`TigreGotico/bifonia-pt-homographs`](https://huggingface.co/datasets/TigreGotico/bifonia-pt-homographs), und der Resolver liegt unter [`bifonia`](https://github.com/TigreGotico/bifonia). Er fügt sich in die umfassendere portugiesische Phonetik-Arbeit ein, die hinter **[Klassisches NLP für Portugiesisch](/de/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)** und dem **[Graphem-zu-IPA-Stack für über 350 Sprachen](/de/blog/2026-01-15-grapheme-to-ipa-for-350-languages)** steht — kleine, deterministische Bausteine, die eine Stimme eine Sprache so aussprechen lassen, wie ihre Sprechenden es tatsächlich tun.
+Der Datensatz befindet sich auf Hugging Face unter [`TigreGotico/bifonia-pt-homographs`](https://huggingface.co/datasets/TigreGotico/bifonia-pt-homographs), und der Resolver liegt unter [`bifonia`](https://github.com/TigreGotico/bifonia). Er fügt sich in die umfassendere portugiesische Phonetik-Arbeit ein, die hinter **[Klassisches NLP für Portugiesisch](/de/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)** und dem **[Graphem-zu-IPA-Stack für über 7000 Sprachen](/de/blog/2026-01-15-grapheme-to-ipa-for-350-languages)** steht — kleine, deterministische Bausteine, die eine Stimme eine Sprache so aussprechen lassen, wie ihre Sprechenden es tatsächlich tun.

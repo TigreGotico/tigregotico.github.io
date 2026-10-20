@@ -2,6 +2,7 @@
 title: "Wie der Phonologie-Stack zusammenpasst"
 description: "Eine Architektur-Führung durch unseren Text-zu-Aussprache-Stack: scriptconv für Notation, orthography2ipa als sprachübergreifende Graphem-zu-IPA-Engine, sprachspezifische Frontends darauf aufbauend für Portugiesisch, Baskisch, Mirandesisch, Barranquenho und Arabisch, sowie phonematcher für klangbasierte Suche. Zeigt, warum die Ebenen existieren, was ein Kandidatengitter ist, und echte Dialekt-Ausgaben."
 date: 2026-08-01
+updated: 2026-10-20
 lang: de
 author: "Casimiro Ferreira"
 tags:
@@ -126,14 +127,14 @@ gelöst ist.
 sprachübergreifende Engine. Sie nimmt eine Sprachspezifikation — eine
 deklarative Beschreibung der Graphem-zu-Phonem-Regeln dieser Sprache — und ein
 Stück Text und erzeugt IPA. Zum Zeitpunkt dieses Beitrags liefert sie
-Spezifikationen für **820 Sprachen** aus (`available_codes()` am
+Spezifikationen für **7396 Sprachen** aus (`available_codes()` am
 installierten Paket gibt eine Liste dieser Länge zurück; betrachten Sie die
 genaue Zahl als beweglich, da laufend Spezifikationen hinzugefügt werden).
 
 ```python
 >>> import orthography2ipa as o
 >>> len(o.available_codes())
-820
+7396
 ```
 
 Die Engine selbst enthält keinen fest eingebauten sprachspezifischen Code.
@@ -154,7 +155,7 @@ Nehmen Sie noch einmal "read":
 >>> from orthography2ipa import G2P
 >>> g = G2P("en")
 >>> g.transcribe("read")
-'ɹiːd'
+'ˈɹiːd'
 >>> g.candidates("read")
 [IPAPath('ɹiːd', score=0.0), IPAPath('ɹɛd', score=1.0)]
 ```
@@ -183,11 +184,11 @@ unterstützten Dialekte geführt:
 
 | Dialekt | Ausgabe |
 |---|---|
-| pt-PT (Portugal) | `ˈbõ ˈdiɐ ˈkomu eˈʃta vɔˈse` |
-| pt-BR (Brasilien) | `ˈbõ ˈdʒiɐ ˈkɔ̃mʊ eˈsta voˈse` |
-| pt-AO (Angola) | `ˈbõ ˈdiɐ ˈkomʊ eˈsta vɔˈse` |
-| pt-MZ (Mosambik) | `ˈbõ ˈdiɐ ˈkomu eˈsta vɔˈse` |
-| pt-TL (Timor-Leste) | `ˈbõ ˈdiə ˈkoɔmʊ eˈsta vɔˈse` |
+| pt-PT (Portugal) | `ˈbõ ˈdiɐ ˈkomu eʃˈta vɔˈse` |
+| pt-BR (Brasilien) | `ˈbõ ˈdʒiɐ ˈkɔ̃mʊ esˈta voˈse` |
+| pt-AO (Angola) | `ˈbõ ˈdiɐ ˈkomʊ esˈta vɔˈse` |
+| pt-MZ (Mosambik) | `ˈbõ ˈdiɐ ˈkomu esˈta vɔˈse` |
+| pt-TL (Timor-Leste) | `ˈbõ ˈdiə ˈkoɔmʊ esˈta vɔˈse` |
 
 ("Bom dia, como está você?" — "Guten Morgen, wie geht es Ihnen?") Das
 Konsonantengerüst bleibt über alle fünf hinweg erkennbar, aber zwei bekannte
@@ -206,7 +207,7 @@ einer separaten Engine:
 ```python
 >>> from euskaphone import EuskaPhonemizer
 >>> EuskaPhonemizer().phonemize_sentence("Kaixo, zer moduz zaude?")
-'kai̯ʃo s̻er modus̻ s̻au̯de'
+'kai̯ʃo s̻er moðus̻ s̻au̯ðe'
 ```
 
 ## Die sprachspezifischen Frontends
@@ -228,7 +229,7 @@ Lexikon, Sandhi (Lautveränderungen an Wortgrenzen) und dialektspezifische
   ```python
   >>> from mwl_phonemizer import phonemize
   >>> phonemize("Falo la lhéngua mirandesa.")
-  'ˈfalu lɐ ˈʎɛŋɡwa miɾɐˈndez̺ɐ.'
+  'ˈfalu lɐ ˈʎẽɡwɐ miɾɐ̃ˈdez̺ɐ.'
   ```
 
 - **[g2p_barranquenho](https://github.com/TigreGotico/g2p_barranquenho)** —
@@ -298,7 +299,7 @@ Mehr dazu, wie silabificador und tugaphone im Alltag zusammenarbeiten, finden
 Sie unter
 **[Klassisches NLP für Portugiesisch: Silbentrennung und Graphem-zu-Phonem](/de/blog/2026-02-28-classical-nlp-for-portuguese-syllables-and-phonemes)**,
 und für die breitere Engine, die all dem zugrunde liegt,
-**[Graphem-zu-IPA für 820 Sprachen](/de/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**.
+**[Graphem-zu-IPA für über 7000 Sprachen](/de/blog/2026-01-15-grapheme-to-ipa-for-350-languages)**.
 
 ## Klangbasierte Suche: phonematcher
 
@@ -330,7 +331,7 @@ phonematcher ist nicht auf PyPI; es installiert sich aus dem Quellcode
 
 ## Ehrliche Grenzen
 
-Die Abdeckung über 820 Sprachspezifikationen ist konstruktionsbedingt
+Die Abdeckung über 7396 Sprachspezifikationen ist konstruktionsbedingt
 ungleichmäßig: Sprachen mit einer etablierten phonologischen Literatur und
 einem Lexikon liefern bessere Ausgaben als Sprachen mit einer dünnen
 Spezifikation, die größtenteils aus allgemeinen orthografischen Konventionen
