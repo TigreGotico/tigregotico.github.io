@@ -296,7 +296,10 @@
     "name": "OVOS M2V Pipeline",
     "description": "Model2Vec intent pipeline for OpenVoiceOS intent handling.",
     "url": "https://github.com/TigreGotico/ovos-m2v-pipeline",
-    "category": "ILENIA",
+    "category": [
+      "ILENIA",
+      "NLnet"
+    ],
     "tags": [
       "Model2Vec",
       "ONNX models",
@@ -383,7 +386,10 @@
     "id": "wakeforge",
     "name": "wakeforge",
     "description": "A wake-word model trainer developed under an NLnet grant for OpenVoiceOS — build custom, on-device wake words from your own samples.",
-    "category": "Wake Words",
+    "category": [
+      "Wake Words",
+      "NLnet"
+    ],
     "tags": [
       "NLnet",
       "on-device",

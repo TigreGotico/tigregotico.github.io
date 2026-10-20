@@ -4,7 +4,7 @@ import Section from '../Section.astro';
 import PageHeader from '../PageHeader.astro';
 import ProjectCard from '../ProjectCard.astro';
 import { getCollection } from 'astro:content';
-import { type Locale } from '../../i18n';
+import { cardUI, type Locale } from '../../i18n';
 
 interface Props { locale?: Locale }
 const locale: Locale = Astro.props.locale ?? 'en';
@@ -27,6 +27,7 @@ const S = {
     exploreLead: 'Filter by area to explore more — everything is open source.',
     filterLabel: 'Filter projects by category',
     resultsWord: 'results',
+    allWord: 'All',
     catLabels: {} as Record<string, string>,
     tagILENIA: 'Funded by the ILENIA project',
     tagNLnet: 'Funded by NLnet / NGI0 Commons Fund',
@@ -52,6 +53,7 @@ const S = {
     exploreLead: 'Filtre por área para explorar mais — tudo é código aberto.',
     filterLabel: 'Filtrar projetos por categoria',
     resultsWord: 'resultados',
+    allWord: 'Todos',
     catLabels: {
       'Speech Synthesis': 'Síntese de Fala',
       'Speech Recognition': 'Reconhecimento de Fala',
@@ -89,6 +91,7 @@ const S = {
     "exploreLead": "Filtre por área para explorar más: todo es código abierto.",
     "filterLabel": "Filtrar proyectos por categoría",
     resultsWord: 'resultados',
+    allWord: 'Todos',
     "catLabels": {"Speech Synthesis": "Síntesis de Voz", "Speech Recognition": "Reconocimiento de Voz", "Wake Words": "Palabras de Activación", "Phonetics & G2P": "Fonética y G2P", "NLP & Language": "NLP y Lenguaje", "LLM & Agents": "LLM y Agentes", "Media & Music": "Medios y Música", "Data & Scraping": "Datos y Scraping", "Voice Platform (OVOS)": "Plataforma de Voz (OVOS)", "HiveMind": "HiveMind", "Smart Home": "Hogar Inteligente", "Games": "Juegos", "Developer Tools": "Herramientas para Desarrolladores"} as Record<string, string>,
     "tagILENIA": "Financiado por el proyecto ILENIA",
     "tagNLnet": "Financiado por NLnet / NGI0 Commons Fund",
@@ -112,6 +115,7 @@ const S = {
     "exploreLead": "Filtern Sie nach Bereich, um mehr zu entdecken – alles ist Open Source.",
     "filterLabel": "Projekte nach Kategorie filtern",
     resultsWord: 'Ergebnisse',
+    allWord: 'Alle',
     "catLabels": {"Speech Synthesis": "Sprachsynthese", "Speech Recognition": "Spracherkennung", "Wake Words": "Aktivierungswörter", "Phonetics & G2P": "Phonetik & G2P", "NLP & Language": "NLP & Sprache", "LLM & Agents": "LLM & Agenten", "Media & Music": "Medien & Musik", "Data & Scraping": "Daten & Scraping", "Voice Platform (OVOS)": "Sprachplattform (OVOS)", "HiveMind": "HiveMind", "Smart Home": "Smart Home", "Games": "Spiele", "Developer Tools": "Entwicklerwerkzeuge"} as Record<string, string>,
     "tagILENIA": "Gefördert durch das ILENIA-Projekt",
     "tagNLnet": "Gefördert durch NLnet / NGI0 Commons Fund",
@@ -135,6 +139,7 @@ const S = {
     "exploreLead": "Filter op gebied om meer te verkennen – alles is open source.",
     "filterLabel": "Projecten filteren op categorie",
     resultsWord: 'resultaten',
+    allWord: 'Alle',
     "catLabels": {"Speech Synthesis": "Spraaksynthese", "Speech Recognition": "Spraakherkenning", "Wake Words": "Activeringswoorden", "Phonetics & G2P": "Fonetiek & G2P", "NLP & Language": "NLP & Taal", "LLM & Agents": "LLM & Agents", "Media & Music": "Media & Muziek", "Data & Scraping": "Data & Scraping", "Voice Platform (OVOS)": "Spraakplatform (OVOS)", "HiveMind": "HiveMind", "Smart Home": "Smarthome", "Games": "Games", "Developer Tools": "Ontwikkelaarstools"} as Record<string, string>,
     "tagILENIA": "Gefinancierd door het ILENIA-project",
     "tagNLnet": "Gefinancierd door NLnet / NGI0 Commons Fund",
@@ -158,6 +163,7 @@ const S = {
     "exploreLead": "Filtrez par domaine pour en explorer davantage : tout est open source.",
     "filterLabel": "Filtrer les projets par catégorie",
     resultsWord: 'résultats',
+    allWord: 'Tous',
     "catLabels": {"Speech Synthesis": "Synthèse vocale", "Speech Recognition": "Reconnaissance vocale", "Wake Words": "Mots d'activation", "Phonetics & G2P": "Phonétique et G2P", "NLP & Language": "NLP et langue", "LLM & Agents": "LLM et agents", "Media & Music": "Médias et musique", "Data & Scraping": "Données et scraping", "Voice Platform (OVOS)": "Plateforme vocale (OVOS)", "HiveMind": "HiveMind", "Smart Home": "Maison connectée", "Games": "Jeux", "Developer Tools": "Outils pour développeurs"} as Record<string, string>,
     "tagILENIA": "Financé par le projet ILENIA",
     "tagNLnet": "Financé par NLnet / NGI0 Commons Fund",
@@ -181,6 +187,7 @@ const S = {
     "exploreLead": "Filtra per area per esplorare di più — tutto è open source.",
     "filterLabel": "Filtra i progetti per categoria",
     resultsWord: 'risultati',
+    allWord: 'Tutti',
     "catLabels": {"Speech Synthesis": "Sintesi vocale", "Speech Recognition": "Riconoscimento vocale", "Wake Words": "Parole di attivazione", "Phonetics & G2P": "Fonetica e G2P", "NLP & Language": "NLP e Lingua", "LLM & Agents": "LLM e Agenti", "Media & Music": "Media e Musica", "Data & Scraping": "Dati e Scraping", "Voice Platform (OVOS)": "Piattaforma vocale (OVOS)", "HiveMind": "HiveMind", "Smart Home": "Casa intelligente", "Games": "Giochi", "Developer Tools": "Strumenti per sviluppatori"} as Record<string, string>,
     "tagILENIA": "Finanziato dal progetto ILENIA",
     "tagNLnet": "Finanziato da NLnet / NGI0 Commons Fund",
@@ -204,6 +211,7 @@ const S = {
     "exploreLead": "Фильтруйте по области, чтобы узнать больше — всё это открытый код.",
     "filterLabel": "Фильтровать проекты по категории",
     resultsWord: 'результатов',
+    allWord: 'Все',
     "catLabels": {"Speech Synthesis": "Синтез речи", "Speech Recognition": "Распознавание речи", "Wake Words": "Слова активации", "Phonetics & G2P": "Фонетика и G2P", "NLP & Language": "NLP и язык", "LLM & Agents": "LLM и агенты", "Media & Music": "Медиа и музыка", "Data & Scraping": "Данные и скрейпинг", "Voice Platform (OVOS)": "Голосовая платформа (OVOS)", "HiveMind": "HiveMind", "Smart Home": "Умный дом", "Games": "Игры", "Developer Tools": "Инструменты разработчика"} as Record<string, string>,
     "tagILENIA": "Финансируется проектом ILENIA",
     "tagNLnet": "Финансируется NLnet / NGI0 Commons Fund",
@@ -227,6 +235,7 @@ const S = {
     "exploreLead": "صفِّ حسب المجال لاستكشاف المزيد — كل شيء مفتوح المصدر.",
     "filterLabel": "تصفية المشاريع حسب الفئة",
     resultsWord: 'نتيجة',
+    allWord: 'الكل',
     "catLabels": {"Speech Synthesis": "توليف الكلام", "Speech Recognition": "التعرف على الكلام", "Wake Words": "كلمات التنبيه", "Phonetics & G2P": "الصوتيات وG2P", "NLP & Language": "معالجة اللغة الطبيعية واللغة", "LLM & Agents": "نماذج اللغة الكبيرة والوكلاء", "Media & Music": "الوسائط والموسيقى", "Data & Scraping": "البيانات والكشط", "Voice Platform (OVOS)": "منصة الصوت (OVOS)", "HiveMind": "HiveMind", "Smart Home": "المنزل الذكي", "Games": "الألعاب", "Developer Tools": "أدوات المطورين"} as Record<string, string>,
     "tagILENIA": "بتمويل من مشروع ILENIA",
     "tagNLnet": "بتمويل من NLnet / NGI0 Commons Fund",
@@ -250,6 +259,7 @@ const S = {
     "exploreLead": "برای کاوش بیشتر بر اساس حوزه فیلتر کنید — همه چیز متن‌باز است.",
     "filterLabel": "فیلتر پروژه‌ها بر اساس دسته",
     "resultsWord": "نتیجه",
+    "allWord": "همه",
     "catLabels": {} as Record<string, string>,
     "tagILENIA": "با بودجه پروژه ILENIA",
     "tagNLnet": "با بودجه NLnet / NGI0 Commons Fund",
@@ -273,6 +283,7 @@ const S = {
     "exploreLead": "अधिक अन्वेषण के लिए क्षेत्र के अनुसार फ़िल्टर करें — सब कुछ ओपन सोर्स है।",
     "filterLabel": "श्रेणी के अनुसार प्रोजेक्ट फ़िल्टर करें",
     "resultsWord": "परिणाम",
+    "allWord": "सभी",
     "catLabels": {"Speech Synthesis": "वाक् संश्लेषण", "Speech Recognition": "वाक् पहचान", "Wake Words": "वेक वर्ड्स", "Phonetics & G2P": "ध्वन्यात्मकता और G2P", "NLP & Language": "NLP और भाषा", "LLM & Agents": "LLM और एजेंट", "Media & Music": "मीडिया और संगीत", "Data & Scraping": "डेटा और स्क्रैपिंग", "Voice Platform (OVOS)": "वॉइस प्लेटफ़ॉर्म (OVOS)", "HiveMind": "HiveMind", "Smart Home": "स्मार्ट होम", "Games": "गेम्स", "Developer Tools": "डेवलपर उपकरण"} as Record<string, string>,
     "tagILENIA": "ILENIA परियोजना द्वारा वित्तपोषित",
     "tagNLnet": "NLnet / NGI0 Commons Fund द्वारा वित्तपोषित",
@@ -296,6 +307,7 @@ const S = {
     "exploreLead": "按领域筛选以探索更多——一切皆为开源。",
     "filterLabel": "按类别筛选项目",
     "resultsWord": "项结果",
+    "allWord": "全部",
     "catLabels": {} as Record<string, string>,
     "tagILENIA": "由 ILENIA 项目资助",
     "tagNLnet": "由 NLnet / NGI0 Commons Fund 资助",
@@ -319,6 +331,7 @@ const S = {
     "exploreLead": "분야별로 필터링하여 더 살펴보세요 — 모든 것이 오픈 소스입니다.",
     "filterLabel": "카테고리별로 프로젝트 필터링",
     "resultsWord": "건",
+    "allWord": "전체",
     "catLabels": {"Speech Synthesis": "음성 합성", "Speech Recognition": "음성 인식", "Wake Words": "호출어", "Phonetics & G2P": "음성학 및 G2P", "NLP & Language": "NLP 및 언어", "LLM & Agents": "LLM 및 에이전트", "Media & Music": "미디어 및 음악", "Data & Scraping": "데이터 및 스크래핑", "Voice Platform (OVOS)": "음성 플랫폼 (OVOS)", "HiveMind": "HiveMind", "Smart Home": "스마트 홈", "Games": "게임", "Developer Tools": "개발자 도구"} as Record<string, string>,
     "tagILENIA": "ILENIA 프로젝트 지원",
     "tagNLnet": "NLnet / NGI0 Commons Fund 지원",
@@ -342,6 +355,7 @@ const S = {
     "exploreLead": "分野で絞り込んでさらに探索できます — すべてオープンソースです。",
     "filterLabel": "カテゴリでプロジェクトを絞り込む",
     "resultsWord": "件",
+    "allWord": "すべて",
     "catLabels": {} as Record<string, string>,
     "tagILENIA": "ILENIAプロジェクトによる資金提供",
     "tagNLnet": "NLnet / NGI0 Commons Fundによる資金提供",
@@ -395,7 +409,7 @@ const tagMeta: Record<string, string> = {
   Portuguese: S.tagPortuguese,
   JavaScript: S.tagJavaScript,
 };
-const tagFilters = ['Portuguese', 'JavaScript', 'NLnet']
+const tagFilters = ['Portuguese', 'JavaScript']
   .map((t) => ({ tag: t, count: projects.filter((p) => p.tags.includes(t)).length, title: tagMeta[t] }))
   .filter((t) => t.count > 0);
 
@@ -412,27 +426,6 @@ const collaborations = (await getCollection('collaborations')).map((c) => c.data
     <a class="font-medium text-primary hover:underline" href="https://github.com/TigreGotico/ml-notebooks" rel="noopener">ml-notebooks</a>{S.beyond3}
   </p>
 
-  <Section
-    eyebrow={S.community}
-    title={S.communityTitle}
-    lead={S.communityLead}
-    class="pt-0"
-  >
-    {collaborations.length > 0 && (
-      <div class="grid gap-4 sm:grid-cols-2">
-        {collaborations.map((collab) => (
-          <article class="card-hover reveal" data-reveal>
-            <h3 class="display-3 text-lg">
-              <a href={collab.url} class="transition-colors hover:text-primary" rel="noopener">
-                {collab.name}
-              </a>
-            </h3>
-            <p class="mt-2 text-sm leading-relaxed text-muted">{collab.descriptions?.[locale] ?? collab.description}</p>
-          </article>
-        ))}
-      </div>
-    )}
-  </Section>
 
   <Section eyebrow={S.explore} title={S.exploreTitle} lead={S.exploreLead}>
     <div
@@ -441,6 +434,16 @@ const collaborations = (await getCollection('collaborations')).map((c) => c.data
       role="group"
       aria-label={S.filterLabel}
     >
+      <button type="button" data-filter="featured" aria-pressed="true" class="chip">
+        <span class="chip-label">{cardUI[locale].featured}</span>
+        <span class="chip-sep" aria-hidden="true">·</span>
+        <span class="chip-count">{featured.length}</span>
+      </button>
+      <button type="button" data-filter="all" aria-pressed="false" class="chip">
+        <span class="chip-label">{S.allWord}</span>
+        <span class="chip-sep" aria-hidden="true">·</span>
+        <span class="chip-count">{projects.length}</span>
+      </button>
       {
         categories.map((c) => (
           <button type="button" data-filter={c} aria-pressed="false" class="chip">
@@ -487,6 +490,28 @@ const collaborations = (await getCollection('collaborations')).map((c) => c.data
     </div>
   </Section>
 
+  <Section
+    eyebrow={S.community}
+    title={S.communityTitle}
+    lead={S.communityLead}
+    class="pt-0"
+  >
+    {collaborations.length > 0 && (
+      <div class="grid gap-4 sm:grid-cols-2">
+        {collaborations.map((collab) => (
+          <article class="card-hover reveal" data-reveal>
+            <h3 class="display-3 text-lg">
+              <a href={collab.url} class="transition-colors hover:text-primary" rel="noopener">
+                {collab.name}
+              </a>
+            </h3>
+            <p class="mt-2 text-sm leading-relaxed text-muted">{collab.descriptions?.[locale] ?? collab.description}</p>
+          </article>
+        ))}
+      </div>
+    )}
+  </Section>
+
 </Base>
 
 <style>
@@ -524,7 +549,6 @@ const collaborations = (await getCollection('collaborations')).map((c) => c.data
     var chips = bar.querySelectorAll('[data-filter]');
     var items = grid.querySelectorAll('.project-item');
     var statusEl = document.getElementById('project-status');
-    var filterActive = false;
     function announce() {
       if (!statusEl) return;
       var n = 0;
@@ -533,44 +557,37 @@ const collaborations = (await getCollection('collaborations')).map((c) => c.data
     }
 
     function set(val) {
-      filterActive = true;
       for (var i = 0; i < chips.length; i++) {
-        chips[i].setAttribute(
-          'aria-pressed',
-          String(chips[i].getAttribute('data-filter') === val)
-        );
+        chips[i].setAttribute('aria-pressed', String(chips[i].getAttribute('data-filter') === val));
       }
       var tag = val.indexOf('tag:') === 0 ? val.slice(4) : null;
       for (var j = 0; j < items.length; j++) {
         var show;
-        if (tag)
-          show = (items[j].getAttribute('data-tags') || '').split('|').indexOf(tag) !== -1;
-        else {
-          var projectCategories = (items[j].getAttribute('data-categories') || '').split('|');
-          show = projectCategories.indexOf(val) !== -1;
-        }
+        if (val === 'all') show = true;
+        else if (val === 'featured') show = items[j].getAttribute('data-featured') === 'true';
+        else if (tag) show = (items[j].getAttribute('data-tags') || '').split('|').indexOf(tag) !== -1;
+        else show = (items[j].getAttribute('data-categories') || '').split('|').indexOf(val) !== -1;
         items[j].hidden = !show;
       }
+      // Keep the filter in the URL so a reload or a shared link shows the same list.
+      var hash = val === 'featured' ? '' : '#filter=' + encodeURIComponent(val);
+      history.replaceState(null, '', location.pathname + location.search + hash);
       announce();
     }
 
-    function showFeatured() {
-      filterActive = false;
-      for (var i = 0; i < chips.length; i++) {
-        chips[i].setAttribute('aria-pressed', 'false');
-      }
-      for (var j = 0; j < items.length; j++) {
-        items[j].hidden = items[j].getAttribute('data-featured') !== 'true';
-      }
-      announce();
+    function known(val) {
+      for (var i = 0; i < chips.length; i++) if (chips[i].getAttribute('data-filter') === val) return true;
+      return false;
     }
 
-    // Show featured projects by default
-    showFeatured();
+    var initial = decodeURIComponent((location.hash.match(/^#filter=(.+)$/) || [])[1] || '');
+    set(known(initial) ? initial : 'featured');
 
     for (var i = 0; i < chips.length; i++) {
       chips[i].addEventListener('click', function () {
-        set(this.getAttribute('data-filter'));
+        // A second click on the active chip returns to the featured list.
+        var val = this.getAttribute('data-filter');
+        set(this.getAttribute('aria-pressed') === 'true' && val !== 'featured' ? 'featured' : val);
       });
     }
   })();
