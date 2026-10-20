@@ -2,8 +2,8 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    # dev deploys the staging/preview Pages site; master is production.
-    branches: [master, dev]
+    # The repo has one Pages site, so only dev deploys to it.
+    branches: [dev]
   # Weekly rebuild so date-scheduled blog posts auto-publish once their date passes.
   schedule:
     - cron: '0 6 * * 1'

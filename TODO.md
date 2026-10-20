@@ -20,4 +20,3 @@
 ## Deployment
 
 - Weekly scheduled rebuild (for date-scheduled blog posts) is configured but no posts use `date` in the future yet
-- When migrating to `tigregotico.github.io` root, need to: change `base` to `/`, update SEO URLs, redirect old paths
