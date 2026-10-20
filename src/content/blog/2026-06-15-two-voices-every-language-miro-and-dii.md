@@ -13,7 +13,7 @@ tags:
 draft: false
 ---
 
-> **Hear them now:** the [Voices Demo](../../demo) runs Miro & Dii live in your
+> **Hear them now:** the [Voices Demo](/demo/) runs Miro & Dii live in your
 > browser. Pick a language, type a sentence, and listen. No install, no server.
 
 People remember the voice of an assistant more than its name. So the core question of our partnership with [OpenVoiceOS](https://www.openvoiceos.org/) is a practical one: who should the assistant sound like, in every language?

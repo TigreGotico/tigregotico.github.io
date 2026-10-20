@@ -12,7 +12,7 @@ tags:
 draft: false
 ---
 
-EU 프로젝트 **[COALA](https://coala-ai.de)**와 **[WASABI](https://wasabiproject.eu)**는 **[OpenVoiceOS](https://openvoiceos.org)**(비영리 오픈소스 음성 플랫폼)와 **[HiveMind](https://jarbashivemind.github.io/HiveMind-community-docs/)**를 기반으로 산업용 음성 비서 프레임워크 전체를 구축하고, 이를 자체 Android UI, NLP 엔진, Docker 스택과 통합했습니다.
+EU 프로젝트 **[COALA](https://cordis.europa.eu/project/id/957296)**와 **[WASABI](https://wasabiproject.eu)**는 **[OpenVoiceOS](https://openvoiceos.org)**(비영리 오픈소스 음성 플랫폼)와 **[HiveMind](https://jarbashivemind.github.io/HiveMind-community-docs/)**를 기반으로 산업용 음성 비서 프레임워크 전체를 구축하고, 이를 자체 Android UI, NLP 엔진, Docker 스택과 통합했습니다.
 
 저는 이러한 배포에 관여하지 않았습니다. 바로 그 점이 중요합니다. 이 스택은 실제 산업 요구사항을 가진 팀들에 의해 그 자체의 장점만으로 채택되고 있습니다.
 

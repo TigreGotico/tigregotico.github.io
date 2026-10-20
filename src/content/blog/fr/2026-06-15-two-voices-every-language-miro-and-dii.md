@@ -14,7 +14,7 @@ tags:
 draft: false
 ---
 
-> **Écoutez-les maintenant :** la [Démo des voix](../../demo) fait tourner Miro et Dii en direct dans votre
+> **Écoutez-les maintenant :** la [Démo des voix](/demo/) fait tourner Miro et Dii en direct dans votre
 > navigateur — choisissez une langue, tapez une phrase et écoutez. Sans installation, sans serveur.
 
 Les gens retiennent la voix d'un assistant plus que son nom. La question centrale de notre partenariat avec [OpenVoiceOS](https://www.openvoiceos.org/) est donc pratique : à qui l'assistant devrait-il ressembler, dans chaque langue ?

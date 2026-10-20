@@ -12,7 +12,7 @@ tags:
 draft: false
 ---
 
-De EU-projecten **[COALA](https://coala-ai.de)** en **[WASABI](https://wasabiproject.eu)** bouwden een compleet industrieel spraakassistent-framework bovenop **[OpenVoiceOS](https://openvoiceos.org)** (een non-profit open-source spraakplatform) en **[HiveMind](https://jarbashivemind.github.io/HiveMind-community-docs/)**, en integreren die met hun eigen Android-UI, NLP-engine en Docker-stack.
+De EU-projecten **[COALA](https://cordis.europa.eu/project/id/957296)** en **[WASABI](https://wasabiproject.eu)** bouwden een compleet industrieel spraakassistent-framework bovenop **[OpenVoiceOS](https://openvoiceos.org)** (een non-profit open-source spraakplatform) en **[HiveMind](https://jarbashivemind.github.io/HiveMind-community-docs/)**, en integreren die met hun eigen Android-UI, NLP-engine en Docker-stack.
 
 Ik was niet betrokken bij deze implementaties. Dat is nu juist het punt: de stack wordt op eigen kracht overgenomen, door teams met reële industriële eisen.
 

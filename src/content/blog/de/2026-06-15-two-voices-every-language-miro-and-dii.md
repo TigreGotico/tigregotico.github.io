@@ -14,7 +14,7 @@ tags:
 draft: false
 ---
 
-> **Hören Sie sie jetzt:** die [Voices Demo](../../demo) lässt Miro & Dii live in Ihrem
+> **Hören Sie sie jetzt:** die [Voices Demo](/demo/) lässt Miro & Dii live in Ihrem
 > Browser laufen — wählen Sie eine Sprache, tippen Sie einen Satz und hören Sie zu. Keine Installation, kein Server.
 
 Menschen erinnern sich an die Stimme eines Assistenten mehr als an seinen Namen. Deshalb ist die Kernfrage unserer Partnerschaft mit [OpenVoiceOS](https://www.openvoiceos.org/) eine praktische: Wem sollte der Assistent in jeder Sprache ähneln?

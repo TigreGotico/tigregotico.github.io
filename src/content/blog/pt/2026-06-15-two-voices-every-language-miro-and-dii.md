@@ -14,7 +14,7 @@ tags:
 draft: false
 ---
 
-> **Ouça-as agora:** a [Demo de Vozes](../../demo) corre o Miro e a Dii ao vivo no seu
+> **Ouça-as agora:** a [Demo de Vozes](/demo/) corre o Miro e a Dii ao vivo no seu
 > navegador. Escolha uma língua, escreva uma frase e ouça. Sem instalação, sem servidor.
 
 As pessoas recordam a voz de um assistente mais do que o seu nome. Por isso, a pergunta central da nossa parceria com o [OpenVoiceOS](https://www.openvoiceos.org/) é prática: com quem deve o assistente parecer-se, em todas as línguas?
