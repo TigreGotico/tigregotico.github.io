@@ -94,6 +94,8 @@ const projects = defineCollection({
     imageLocal: z.string().optional(),
     // "featured" is a flag, not a second collection.
     featured: z.boolean().default(false),
+    // Flagship rank: flagships show as cards on the home page, lowest first.
+    flagship: z.number().int().positive().optional(),
     // Tease not-yet-public work: shows a "Coming soon" badge and no link.
     comingSoon: z.boolean().default(false),
     // Self-hostable (runs on your own hardware). True for our FOSS work by default.

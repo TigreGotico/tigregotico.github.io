@@ -25,10 +25,12 @@ interface Props {
   withImage?: boolean;
   /** Localized display name for the category badge. */
   categoryLabel?: string;
+  /** Show the category badge; the home page flagship row omits it. */
+  showCategory?: boolean;
   locale?: Locale;
 }
 
-const { project, withImage = false, categoryLabel, locale = 'en' } = Astro.props;
+const { project, withImage = false, categoryLabel, showCategory = true, locale = 'en' } = Astro.props;
 const c = cardUI[locale];
 const selfHosted = project.selfHosted !== false;
 const localImg = projectImage(project.imageLocal);
@@ -88,13 +90,15 @@ const badgeStyle = `--h:${meta.hue}; background:hsl(${meta.hue} 70% 55% / 0.12);
   }
 
   <div class="mb-3 flex items-center justify-between gap-2">
-    <span
-      class="cat-badge inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-medium"
-      style={badgeStyle}
-    >
-      <Icon name={meta.icon} class="h-3.5 w-3.5" />
-      {label}
-    </span>
+    {showCategory && (
+      <span
+        class="cat-badge inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-medium"
+        style={badgeStyle}
+      >
+        <Icon name={meta.icon} class="h-3.5 w-3.5" />
+        {label}
+      </span>
+    )}
     {project.comingSoon ? (
       <span class="badge-accent">{c.comingSoon}</span>
     ) : project.featured && !withImage ? (

@@ -3,6 +3,7 @@ import Base from '../../layouts/Base.astro';
 import Section from '../Section.astro';
 import Hero from '../Hero.astro';
 import Icon from '../Icon.astro';
+import ProjectCard from '../ProjectCard.astro';
 import { getEntry, getCollection, render } from 'astro:content';
 import { site } from '../../data/site';
 import { pageEntryId, localePath, blogPath, blogSlug, type Locale } from '../../i18n';
@@ -655,6 +656,10 @@ const whatWeDo = S.whatWeDo;
 
 // "The stack we steward" word-marks.
 const stack = ['OpenVoiceOS', 'HiveMind'];
+const flagships = (await getCollection('projects'))
+  .map((p) => p.data)
+  .filter((p) => p.flagship !== undefined && !p.hidden)
+  .sort((a, b) => a.flagship! - b.flagship!);
 ---
 
 <Base title={home!.data.title} description={home!.data.description} locale={locale}>
@@ -742,6 +747,9 @@ const stack = ['OpenVoiceOS', 'HiveMind'];
     class="surface-alt -mx-6 rounded-3xl px-6"
   >
     <p class="max-w-3xl text-muted">{S.featuredBody}</p>
+    <div class="mt-8 grid gap-6 md:grid-cols-3">
+      {flagships.map((project) => <ProjectCard project={project} showCategory={false} locale={locale} />)}
+    </div>
     <p class="mt-8 flex flex-wrap gap-x-6 gap-y-2">
       <a class="inline-flex items-center gap-1 font-medium text-primary hover:underline" href={link('/projects')}>
         {S.browseAll} <Icon name="arrow" class="h-4 w-4" />

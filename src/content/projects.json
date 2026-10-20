@@ -1,5 +1,155 @@
 [
   {
+    "id": "wakephonehubert",
+    "name": "WakePhoneHuBERT",
+    "url": "https://huggingface.co/TigreGotico/wakephonehubert",
+    "category": [
+      "Wake Words",
+      "Speech Recognition"
+    ],
+    "tags": [
+      "ONNX",
+      "on-device",
+      "voice activity",
+      "IPA",
+      "keyword spotting"
+    ],
+    "featured": true,
+    "flagship": 1,
+    "description": "A 3.5 MB streaming speech model in ONNX. From 16 kHz audio it gives voice activity every 20 ms, IPA phones trained on 24 languages, and keyword spotting from typed text. It runs in the browser.",
+    "descriptions": {
+      "pt": "Um modelo de fala em streaming de 3,5 MB, em ONNX. A partir de áudio a 16 kHz dá a atividade de voz a cada 20 ms, fones IPA treinados em 24 línguas e deteção de palavras-chave a partir de texto escrito. Corre no navegador.",
+      "es": "Un modelo de voz en streaming de 3,5 MB en ONNX. A partir de audio a 16 kHz da la actividad de voz cada 20 ms, fonos IPA entrenados en 24 idiomas y detección de palabras clave a partir de texto escrito. Funciona en el navegador.",
+      "de": "Ein 3,5 MB großes Streaming-Sprachmodell in ONNX. Aus 16-kHz-Audio liefert es alle 20 ms die Sprachaktivität, IPA-Phone aus 24 Trainingssprachen und Schlüsselworterkennung aus getipptem Text. Es läuft im Browser.",
+      "nl": "Een streaming-spraakmodel van 3,5 MB in ONNX. Uit 16 kHz-audio geeft het elke 20 ms de spraakactiviteit, IPA-klanken getraind op 24 talen en trefwoorddetectie op basis van getypte tekst. Het draait in de browser.",
+      "fr": "Un modèle vocal en streaming de 3,5 Mo en ONNX. À partir d'un audio 16 kHz, il donne l'activité vocale toutes les 20 ms, des phones IPA appris sur 24 langues et la détection de mots-clés à partir d'un texte saisi. Il tourne dans le navigateur.",
+      "it": "Un modello vocale in streaming da 3,5 MB in ONNX. Da audio a 16 kHz fornisce l'attività vocale ogni 20 ms, foni IPA addestrati su 24 lingue e il rilevamento di parole chiave da testo digitato. Funziona nel browser.",
+      "ru": "Потоковая речевая модель размером 3,5 МБ в формате ONNX. По аудио 16 кГц она даёт голосовую активность каждые 20 мс, фоны IPA, обученные на 24 языках, и поиск ключевых слов по набранному тексту. Работает в браузере.",
+      "ar": "نموذج كلام متدفق بحجم 3.5 ميغابايت بصيغة ONNX. من صوت بتردد 16 كيلوهرتز يعطي نشاط الصوت كل 20 ملي ثانية، وأصوات IPA مدرّبة على 24 لغة، واكتشاف الكلمات المفتاحية من نص مكتوب. يعمل في المتصفح.",
+      "fa": "یک مدل گفتار جریانی ۳٫۵ مگابایتی در قالب ONNX. از صدای ۱۶ کیلوهرتز، فعالیت صوتی را هر ۲۰ میلی‌ثانیه، واج‌های IPA آموزش‌دیده روی ۲۴ زبان و تشخیص کلیدواژه از متن تایپ‌شده می‌دهد. در مرورگر اجرا می‌شود.",
+      "hi": "ONNX में 3.5 MB का स्ट्रीमिंग स्पीच मॉडल। 16 kHz ऑडियो से यह हर 20 ms पर आवाज़ की गतिविधि, 24 भाषाओं पर प्रशिक्षित IPA ध्वनियाँ और टाइप किए गए पाठ से कीवर्ड पहचान देता है। यह ब्राउज़र में चलता है।",
+      "zh": "一个 3.5 MB 的 ONNX 流式语音模型。它从 16 kHz 音频中每 20 毫秒给出语音活动，输出基于 24 种语言训练的 IPA 音素，并能根据输入的文字检测关键词。可在浏览器中运行。",
+      "ko": "ONNX 형식의 3.5MB 스트리밍 음성 모델입니다. 16kHz 오디오에서 20ms마다 음성 활동, 24개 언어로 학습한 IPA 음소, 입력한 텍스트 기반 키워드 감지를 제공합니다. 브라우저에서 실행됩니다.",
+      "ja": "ONNX 形式の 3.5 MB のストリーミング音声モデル。16 kHz の音声から 20 ms ごとの音声区間、24 言語で学習した IPA 音素、入力したテキストによるキーワード検出を出力します。ブラウザで動作します。"
+    }
+  },
+  {
+    "id": "rawi",
+    "name": "rawi",
+    "url": "https://huggingface.co/TigreGotico/rawi-ensemble",
+    "category": "NLP & Language",
+    "tags": [
+      "Arabic",
+      "diacritization",
+      "tashkeel",
+      "ONNX"
+    ],
+    "featured": true,
+    "flagship": 2,
+    "description": "Arabic diacritization (tashkeel) in a 4.9 MB int8 ONNX model, with a 2.04% diacritic error rate on held-out text. It restores hamza and the dagger alef, and runs in pure onnxruntime through text2tashkeel.",
+    "descriptions": {
+      "pt": "Diacritização do árabe (tashkeel) num modelo ONNX int8 de 4,9 MB, com 2,04% de taxa de erro de diacríticos em texto de teste. Repõe a hamza e o alef sobrescrito, e corre só com onnxruntime através do text2tashkeel.",
+      "es": "Diacritización del árabe (tashkeel) en un modelo ONNX int8 de 4,9 MB, con un 2,04 % de tasa de error de diacríticos en texto de prueba. Restaura la hamza y el alef superíndice, y funciona solo con onnxruntime mediante text2tashkeel.",
+      "de": "Arabische Diakritisierung (Taschkil) in einem 4,9 MB großen int8-ONNX-Modell, mit 2,04 % Diakritika-Fehlerrate auf Testtext. Es stellt Hamza und das hochgestellte Alif wieder her und läuft rein mit onnxruntime über text2tashkeel.",
+      "nl": "Arabische diakritisering (tashkeel) in een int8-ONNX-model van 4,9 MB, met 2,04% diakritische foutmarge op testtekst. Het herstelt de hamza en de superscript-alif en draait puur op onnxruntime via text2tashkeel.",
+      "fr": "Diacritisation de l'arabe (tashkeel) dans un modèle ONNX int8 de 4,9 Mo, avec un taux d'erreur diacritique de 2,04 % sur un texte de test. Il restaure la hamza et l'alif suscrit, et tourne avec onnxruntime seul via text2tashkeel.",
+      "it": "Diacritizzazione dell'arabo (tashkeel) in un modello ONNX int8 da 4,9 MB, con un tasso di errore dei diacritici del 2,04% su testo di prova. Ripristina la hamza e l'alif in apice, e funziona con il solo onnxruntime tramite text2tashkeel.",
+      "ru": "Расстановка огласовок в арабском тексте (ташкиль) моделью ONNX int8 размером 4,9 МБ, с ошибкой 2,04% на тестовом тексте. Восстанавливает хамзу и надстрочный алиф и работает только на onnxruntime через text2tashkeel.",
+      "ar": "تشكيل النص العربي في نموذج ONNX بدقة int8 وحجم 4.9 ميغابايت، بمعدل خطأ في التشكيل 2.04% على نص الاختبار. يستعيد الهمزة والألف الخنجرية، ويعمل عبر onnxruntime وحده من خلال text2tashkeel.",
+      "fa": "اعراب‌گذاری عربی (تشکیل) در یک مدل ONNX از نوع int8 با حجم ۴٫۹ مگابایت، با نرخ خطای اعراب ۲٫۰۴٪ روی متن آزمون. همزه و الف خنجری را بازمی‌گرداند و تنها با onnxruntime از طریق text2tashkeel اجرا می‌شود.",
+      "hi": "4.9 MB के int8 ONNX मॉडल में अरबी विशेषक-चिह्नन (तश्कील), परीक्षण पाठ पर 2.04% विशेषक त्रुटि दर के साथ। यह हम्ज़ा और ऊपरी अलिफ़ लौटाता है, और text2tashkeel के माध्यम से केवल onnxruntime पर चलता है।",
+      "zh": "阿拉伯语标音符恢复（tashkeel），模型为 4.9 MB 的 int8 ONNX，在测试文本上的标音符错误率为 2.04%。它能恢复 hamza 和上标 alef，并通过 text2tashkeel 仅用 onnxruntime 运行。",
+      "ko": "4.9MB int8 ONNX 모델로 하는 아랍어 발음 부호 복원(tashkeel)으로, 테스트 텍스트에서 발음 부호 오류율 2.04%입니다. 함자와 위첨자 알리프를 복원하며 text2tashkeel을 통해 onnxruntime만으로 실행됩니다.",
+      "ja": "4.9 MB の int8 ONNX モデルによるアラビア語の母音記号付与（タシュキール）。テスト用テキストでの記号誤り率は 2.04% です。ハムザと上付きアリフも復元し、text2tashkeel を通じて onnxruntime だけで動作します。"
+    }
+  },
+  {
+    "id": "jevasio",
+    "name": "Jevásio",
+    "url": "https://huggingface.co/TigreGotico/jevasio-4b",
+    "category": "NLP & Language",
+    "tags": [
+      "Portuguese",
+      "decision model",
+      "classification"
+    ],
+    "featured": true,
+    "flagship": 3,
+    "description": "Decision models for European Portuguese, at 0.8B and 4B parameters. Given a text and typed questions about it, they return calibrated probabilities over the options in one forward pass, with no generated text. Licence: CC BY-NC-SA 4.0.",
+    "descriptions": {
+      "pt": "Modelos de decisão para português europeu, com 0,8B e 4B de parâmetros. Dado um texto e perguntas tipadas sobre ele, devolvem probabilidades calibradas para as opções numa só passagem, sem gerar texto. Licença: CC BY-NC-SA 4.0.",
+      "es": "Modelos de decisión para portugués europeo, de 0,8B y 4B parámetros. Dado un texto y preguntas tipadas sobre él, devuelven probabilidades calibradas sobre las opciones en una sola pasada, sin generar texto. Licencia: CC BY-NC-SA 4.0.",
+      "de": "Entscheidungsmodelle für europäisches Portugiesisch mit 0,8B und 4B Parametern. Zu einem Text und typisierten Fragen dazu liefern sie in einem Durchlauf kalibrierte Wahrscheinlichkeiten über die Optionen, ohne Text zu generieren. Lizenz: CC BY-NC-SA 4.0.",
+      "nl": "Beslissingsmodellen voor Europees Portugees, met 0,8B en 4B parameters. Bij een tekst en getypeerde vragen erover geven ze in één doorgang gekalibreerde kansen over de opties, zonder tekst te genereren. Licentie: CC BY-NC-SA 4.0.",
+      "fr": "Modèles de décision pour le portugais européen, de 0,8B et 4B paramètres. Pour un texte et des questions typées à son sujet, ils renvoient des probabilités calibrées sur les options en une seule passe, sans générer de texte. Licence : CC BY-NC-SA 4.0.",
+      "it": "Modelli decisionali per il portoghese europeo, da 0,8B e 4B parametri. Dato un testo e domande tipizzate su di esso, restituiscono probabilità calibrate sulle opzioni in un solo passaggio, senza generare testo. Licenza: CC BY-NC-SA 4.0.",
+      "ru": "Модели принятия решений для европейского португальского, на 0,8B и 4B параметров. По тексту и типизированным вопросам о нём они за один проход возвращают откалиброванные вероятности вариантов, не генерируя текст. Лицензия: CC BY-NC-SA 4.0.",
+      "ar": "نماذج قرار للبرتغالية الأوروبية بحجم 0.8B و4B من المعاملات. عند إعطائها نصًا وأسئلة محددة النوع عنه، تعيد احتمالات معايرة للخيارات في تمريرة واحدة، دون توليد نص. الترخيص: CC BY-NC-SA 4.0.",
+      "fa": "مدل‌های تصمیم‌گیری برای پرتغالی اروپایی با ۰٫۸ و ۴ میلیارد پارامتر. با گرفتن یک متن و پرسش‌های نوع‌دار درباره آن، در یک گذر احتمال‌های کالیبره‌شده برای گزینه‌ها برمی‌گردانند، بدون تولید متن. مجوز: CC BY-NC-SA 4.0.",
+      "hi": "यूरोपीय पुर्तगाली के लिए 0.8B और 4B पैरामीटर वाले निर्णय मॉडल। किसी पाठ और उस पर टाइप किए गए प्रश्नों के लिए ये एक ही पास में विकल्पों पर कैलिब्रेटेड संभावनाएँ लौटाते हैं, बिना पाठ जनरेट किए। लाइसेंस: CC BY-NC-SA 4.0।",
+      "zh": "面向欧洲葡萄牙语的决策模型，参数量为 0.8B 和 4B。给定一段文本和关于它的类型化问题，模型在一次前向计算中返回各选项的校准概率，不生成文本。许可证：CC BY-NC-SA 4.0。",
+      "ko": "유럽 포르투갈어용 결정 모델로, 0.8B와 4B 파라미터 버전이 있습니다. 텍스트와 그에 대한 타입이 지정된 질문을 주면, 텍스트를 생성하지 않고 한 번의 순전파로 선택지에 대한 보정된 확률을 반환합니다. 라이선스: CC BY-NC-SA 4.0.",
+      "ja": "ヨーロッパ・ポルトガル語向けの意思決定モデル（0.8B と 4B パラメータ）。テキストとそれに関する型付きの質問を与えると、テキストを生成せず、1 回の順伝播で選択肢ごとの較正済み確率を返します。ライセンス: CC BY-NC-SA 4.0。"
+    }
+  },
+  {
+    "id": "linguonnx",
+    "name": "linguonnx",
+    "url": "https://github.com/TigreGotico/linguonnx",
+    "category": "NLP & Language",
+    "tags": [
+      "ONNX",
+      "translation",
+      "language identification",
+      "on-device"
+    ],
+    "featured": true,
+    "description": "Language identification and machine translation on ONNX Runtime, with no torch. It runs ONNX exports of GlotLID, lid.176 and OpenLID, and of Marian (opus-mt), M2M100, NLLB-200 and MADLAD, and routes each language pair to a model or a chain of models.",
+    "descriptions": {
+      "pt": "Identificação de língua e tradução automática sobre ONNX Runtime, sem torch. Corre exportações ONNX do GlotLID, lid.176 e OpenLID, e do Marian (opus-mt), M2M100, NLLB-200 e MADLAD, e encaminha cada par de línguas para um modelo ou uma cadeia de modelos.",
+      "es": "Identificación de idioma y traducción automática sobre ONNX Runtime, sin torch. Ejecuta exportaciones ONNX de GlotLID, lid.176 y OpenLID, y de Marian (opus-mt), M2M100, NLLB-200 y MADLAD, y dirige cada par de idiomas a un modelo o una cadena de modelos.",
+      "de": "Spracherkennung und maschinelle Übersetzung auf ONNX Runtime, ohne torch. Es führt ONNX-Exporte von GlotLID, lid.176 und OpenLID sowie von Marian (opus-mt), M2M100, NLLB-200 und MADLAD aus und leitet jedes Sprachpaar an ein Modell oder eine Modellkette.",
+      "nl": "Taalherkenning en machinevertaling op ONNX Runtime, zonder torch. Het draait ONNX-exports van GlotLID, lid.176 en OpenLID, en van Marian (opus-mt), M2M100, NLLB-200 en MADLAD, en stuurt elk taalpaar naar een model of een keten van modellen.",
+      "fr": "Identification de la langue et traduction automatique sur ONNX Runtime, sans torch. Il exécute des exports ONNX de GlotLID, lid.176 et OpenLID, ainsi que de Marian (opus-mt), M2M100, NLLB-200 et MADLAD, et oriente chaque paire de langues vers un modèle ou une chaîne de modèles.",
+      "it": "Identificazione della lingua e traduzione automatica su ONNX Runtime, senza torch. Esegue esportazioni ONNX di GlotLID, lid.176 e OpenLID, e di Marian (opus-mt), M2M100, NLLB-200 e MADLAD, e instrada ogni coppia di lingue verso un modello o una catena di modelli.",
+      "ru": "Определение языка и машинный перевод на ONNX Runtime, без torch. Запускает ONNX-экспорты GlotLID, lid.176 и OpenLID, а также Marian (opus-mt), M2M100, NLLB-200 и MADLAD, и направляет каждую языковую пару к модели или цепочке моделей.",
+      "ar": "تحديد اللغة والترجمة الآلية على ONNX Runtime، دون torch. يشغّل نسخ ONNX من GlotLID وlid.176 وOpenLID، ومن Marian (opus-mt) وM2M100 وNLLB-200 وMADLAD، ويوجّه كل زوج لغوي إلى نموذج أو سلسلة نماذج.",
+      "fa": "تشخیص زبان و ترجمه ماشینی روی ONNX Runtime، بدون torch. خروجی‌های ONNX مدل‌های GlotLID، lid.176 و OpenLID و نیز Marian (opus-mt)، M2M100، NLLB-200 و MADLAD را اجرا می‌کند و هر جفت زبانی را به یک مدل یا زنجیره‌ای از مدل‌ها می‌سپارد.",
+      "hi": "ONNX Runtime पर भाषा पहचान और मशीनी अनुवाद, बिना torch के। यह GlotLID, lid.176 और OpenLID, तथा Marian (opus-mt), M2M100, NLLB-200 और MADLAD के ONNX निर्यात चलाता है, और हर भाषा-युग्म को किसी मॉडल या मॉडलों की शृंखला तक भेजता है।",
+      "zh": "基于 ONNX Runtime 的语言识别和机器翻译，不依赖 torch。它运行 GlotLID、lid.176、OpenLID 以及 Marian (opus-mt)、M2M100、NLLB-200 和 MADLAD 的 ONNX 导出版本，并为每个语言对选择一个模型或一串模型。",
+      "ko": "torch 없이 ONNX Runtime에서 동작하는 언어 식별 및 기계 번역입니다. GlotLID, lid.176, OpenLID와 Marian(opus-mt), M2M100, NLLB-200, MADLAD의 ONNX 내보내기를 실행하고, 각 언어 쌍을 하나의 모델이나 모델 체인으로 연결합니다.",
+      "ja": "torch を使わない ONNX Runtime 上の言語識別と機械翻訳。GlotLID、lid.176、OpenLID と、Marian (opus-mt)、M2M100、NLLB-200、MADLAD の ONNX エクスポートを実行し、言語ペアごとにモデルまたはモデルの連鎖を選びます。"
+    }
+  },
+  {
+    "id": "chronologia",
+    "name": "chronologia",
+    "url": "https://github.com/TigreGotico/chronologia",
+    "category": "NLP & Language",
+    "tags": [
+      "dates",
+      "calendars",
+      "parsing"
+    ],
+    "featured": false,
+    "description": "Reads dates written by people in 40 languages and reckons across 17 calendar systems. Answers are spans, not instants, and it refuses to guess when the text does not say.",
+    "descriptions": {
+      "pt": "Lê datas escritas por pessoas em 40 línguas e faz contas em 17 sistemas de calendário. As respostas são intervalos, não instantes, e não adivinha quando o texto não o diz.",
+      "es": "Lee fechas escritas por personas en 40 idiomas y calcula en 17 sistemas de calendario. Las respuestas son intervalos, no instantes, y no adivina cuando el texto no lo dice.",
+      "de": "Liest von Menschen geschriebene Datumsangaben in 40 Sprachen und rechnet in 17 Kalendersystemen. Antworten sind Zeitspannen statt Zeitpunkte, und es rät nicht, wenn der Text es nicht sagt.",
+      "nl": "Leest door mensen geschreven datums in 40 talen en rekent in 17 kalenderstelsels. Antwoorden zijn tijdsspannes, geen tijdstippen, en het gokt niet als de tekst het niet zegt.",
+      "fr": "Lit les dates écrites par des humains dans 40 langues et calcule dans 17 systèmes de calendrier. Les réponses sont des intervalles, pas des instants, et il ne devine pas quand le texte ne le dit pas.",
+      "it": "Legge date scritte da persone in 40 lingue e calcola in 17 sistemi di calendario. Le risposte sono intervalli, non istanti, e non tira a indovinare quando il testo non lo dice.",
+      "ru": "Читает даты, написанные людьми на 40 языках, и считает в 17 календарных системах. Ответы — интервалы, а не моменты, и он не гадает, если текст этого не говорит.",
+      "ar": "يقرأ التواريخ التي يكتبها البشر بأربعين لغة ويحسب عبر 17 نظامًا تقويميًا. الإجابات فترات لا لحظات، ولا يخمّن حين لا يذكر النص ذلك.",
+      "fa": "تاریخ‌هایی را که انسان‌ها به ۴۰ زبان می‌نویسند می‌خواند و در ۱۷ نظام تقویمی محاسبه می‌کند. پاسخ‌ها بازه‌اند نه لحظه، و وقتی متن چیزی نمی‌گوید حدس نمی‌زند.",
+      "hi": "40 भाषाओं में लोगों द्वारा लिखी तारीखें पढ़ता है और 17 कैलेंडर प्रणालियों में गणना करता है। उत्तर क्षण नहीं, अवधि होते हैं, और जब पाठ नहीं बताता तो यह अनुमान नहीं लगाता।",
+      "zh": "读取人们用 40 种语言写下的日期，并在 17 种历法之间换算。结果是时间区间而不是时间点；文本没有说明时，它不会猜测。",
+      "ko": "40개 언어로 사람이 쓴 날짜를 읽고 17개 달력 체계에서 계산합니다. 답은 시점이 아니라 기간이며, 텍스트가 말하지 않으면 추측하지 않습니다.",
+      "ja": "40 言語で人が書いた日付を読み取り、17 の暦法で計算します。答えは時点ではなく期間で、テキストに書かれていないことは推測しません。"
+    }
+  },
+  {
     "id": "phoonnx",
     "name": "phoonnx",
     "description": "A Python library for multilingual phonemization and Text-to-Speech (TTS) using ONNX models.",
@@ -361,7 +511,7 @@
       "normalization",
       "vocabulary"
     ],
-    "featured": true,
+    "featured": false,
     "url": "https://github.com/TigreGotico/mediavocab",
     "descriptions": {
       "pt": "Um vocabulário partilhado de metadados de media e uma camada de normalização que unifica a forma como títulos, artistas e identificadores são mapeados entre clientes de media e integrações do Music Assistant.",
@@ -1303,7 +1453,7 @@
       "anti-bot",
       "scraping"
     ],
-    "featured": true,
+    "featured": false,
     "descriptions": {
       "pt": "Uma subclasse de requests.Session que contorna a Cloudflare (impersonação curl_cffi, FlareSolverr, recurso ao Wayback) — o transporte anti-bot por detrás dos nossos scrapers.",
       "es": "Una subclase de requests.Session que sortea Cloudflare (impersonación con curl_cffi, FlareSolverr, respaldo con Wayback): el transporte antibots que hay detrás de nuestros scrapers.",
@@ -1668,7 +1818,7 @@
       "classification",
       "questions"
     ],
-    "featured": true,
+    "featured": false,
     "descriptions": {
       "pt": "Analisa e classifica perguntas.",
       "es": "Analiza y clasifica preguntas.",
