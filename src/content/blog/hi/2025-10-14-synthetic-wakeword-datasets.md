@@ -2,6 +2,7 @@
 title: "सिंथेटिक वेकवर्ड डेटासेट: सात असिस्टेंट नाम, एक डिटेक्टर"
 description: "हमने सामान्य वॉइस असिस्टेंट नामों के लिए सात सिंथेटिक वेकवर्ड डेटासेट प्रकाशित किए हैं — hey_computer, hey_mycroft, hey_siri, alexa, home_assistant, voice_assistant, wake_up। एक ऐसा डिटेक्टर प्रशिक्षित करें जो हर जगह काम करे।"
 date: 2025-10-14
+updated: 2026-10-20
 lang: hi
 author: "Casimiro Ferreira"
 tags:
@@ -14,7 +15,7 @@ tags:
 draft: false
 ---
 
-सात असिस्टेंट नाम। सात डेटासेट। सारा ऑडियो पूरी तरह **[phoonnx](https://github.com/TigreGotico/phoonnx)** TTS फ्रेमवर्क से Miro और Dii वॉइस का उपयोग करके तैयार किया गया — कोई मानवीय रिकॉर्डिंग नहीं, कोई सहमति फॉर्म नहीं, कोई गोपनीयता जोखिम नहीं।
+सात असिस्टेंट नाम। सात डेटासेट। सारा ऑडियो मशीन-जनित है: edge-tts, Piper, Google TTS, Amazon Polly और OmniVoice जैसे टेक्स्ट-टू-स्पीच इंजन, और उसके बाद अधिक वक्ताओं का अनुकरण करने के लिए वॉइस कन्वर्ज़न। उपयोग किए गए इंजन हर डेटासेट कार्ड पर सूचीबद्ध हैं — कोई मानवीय रिकॉर्डिंग नहीं, कोई सहमति फॉर्म नहीं, कोई गोपनीयता जोखिम नहीं।
 
 - **[hey_computer](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-hey_computer)**
 - **[hey_mycroft](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-hey_mycroft)**
@@ -24,7 +25,7 @@ draft: false
 - **[voice_assistant](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-voice_assistant)**
 - **[wake_up](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-wake_up)**
 
-प्रत्येक डेटासेट लगभग एक हज़ार सकारात्मक क्लिप का एक सपाट संग्रह है — विविध वक्ताओं, गति और प्रोसोडी के साथ बोली गई वेकवर्ड। कठिन नकारात्मक नमूने और पृष्ठभूमि शोर अलग साथी डेटासेट के रूप में उपलब्ध हैं जिन्हें आप प्रशिक्षण के समय मिलाते हैं: [not-wake-words-speech-en](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-en), [not-wake-words-speech-pt](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-pt), और [ambient_noises](https://huggingface.co/datasets/TigreGotico/ambient_noises)।
+प्रत्येक डेटासेट सकारात्मक क्लिप का एक सपाट संग्रह है, लगभग 1,300 (hey_siri) से लगभग 27,800 (hey_mycroft) क्लिप तक — विविध वक्ताओं, गति और प्रोसोडी के साथ बोली गई वेकवर्ड। कठिन नकारात्मक नमूने और पृष्ठभूमि शोर अलग साथी डेटासेट के रूप में उपलब्ध हैं जिन्हें आप प्रशिक्षण के समय मिलाते हैं: [not-wake-words-speech-en](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-en), [not-wake-words-speech-pt](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-pt), और [ambient_noises](https://huggingface.co/datasets/TigreGotico/ambient_noises)।
 
 ## सिंथेटिक क्यों
 
@@ -40,4 +41,4 @@ draft: false
 
 OpenVoiceOS, Mycroft, या किसी भी खुले वॉइस सिस्टम के लिए अपना खुद का वेकवर्ड डिटेक्टर प्रशिक्षित करें। नकारात्मक-नमूना संवर्धन के लिए घरेलू और सार्वजनिक-डोमेन पृष्ठभूमि-क्लिप डेटासेट भी उपलब्ध हैं: [building_106_kitchen_3secs](https://huggingface.co/datasets/TigreGotico/building_106_kitchen_3secs), [public_domain_sounds_3secs](https://huggingface.co/datasets/TigreGotico/public_domain_sounds_3secs), और [FMA_3secs](https://huggingface.co/datasets/TigreGotico/FMA_3secs)।
 
-[**HuggingFace पर सभी वेकवर्ड डेटासेट → TigreGotico**](https://huggingface.co/datasets?author=TigreGotico&tags=wakeword)
+[**HuggingFace पर सभी वेकवर्ड डेटासेट → TigreGotico**](https://huggingface.co/datasets?author=TigreGotico&search=synthetic-wakeword)

@@ -2,6 +2,7 @@
 title: "Wenn alle eine App veröffentlichen, veröffentlichen wir Stimme: Websites in Sprach-Apps verwandeln"
 description: "Jede Website, die zählt, wurde in eine mobile App verpackt. Wir schlagen den umgekehrten Schritt für das Zeitalter der Stimme und der Kommandozeile vor: eine saubere API plus eine Sprach-Skill pro Website, damit das Web per Ohr und per Tastatur durchsuchbar wird. Eine Website nach der anderen ergibt in der Summe einen Sprach-Browser."
 date: 2026-07-04
+updated: 2026-10-20
 lang: de
 author: "Casimiro Ferreira"
 tags:
@@ -110,15 +111,9 @@ typisiert und ehrlich darüber sind, was sie zurückgeben. Unordentliches HTML g
 einem LLM nichts, woran es sich festhalten könnte. Ein typisierter Client gibt ihm
 eine Kontrolloberfläche.
 
-Deshalb bringen unsere Website-Clients eine **`SKILL.md`** mit — eine Beschreibung
-in einfacher Sprache dessen, was die API tut, ihrer Verben, ihrer Rückgabetypen und
-Beispielaufrufe, geschrieben, damit ein Agent sie liest. Richten Sie einen
-LLM-gesteuerten Assistenten darauf, und der Client wird zu einem Werkzeug, das das
-Modell sofort verwenden kann: kein Klebecode, keine maßgeschneiderte Integration,
-nur „hier ist, was diese Website kann, in Worten." Ein Dokument verwandelt einen
-Scraper in etwas, das ein Sprachmodell in Ihrem Auftrag bedienen kann.
+Eine **`SKILL.md`** würde es einem Agenten ermöglichen, einen solchen Client zu nutzen: eine Beschreibung in einfacher Sprache dessen, was die API tut, ihrer Verben, ihrer Rückgabetypen und Beispielaufrufe, geschrieben, damit ein Agent sie liest. Keiner unserer Website-Clients liefert eine solche Datei mit. Richtet man einen LLM-gesteuerten Assistenten darauf, könnte er den Client als Werkzeug verwenden: kein Klebecode, keine maßgeschneiderte Integration, nur „hier ist, was diese Website kann, in Worten." Ein Dokument würde einen Scraper in etwas verwandeln, das ein Sprachmodell in Ihrem Auftrag bedienen kann.
 
-Es sind dieselben strukturierten Daten, die drei Front-Ends zugleich bedienen: eine
+Es sind dieselben strukturierten Daten, die drei Front-Ends zugleich bedienen könnten: eine
 **CLI** für Terminal-Nutzer, ein **OCP-/Sprach-Plugin** für die freihändige
 Nutzung und ein **LLM-Werkzeug** für die Steuerung per natürlicher Sprache. Bauen
 Sie die API einmal; tragen Sie sie auf drei Weisen.

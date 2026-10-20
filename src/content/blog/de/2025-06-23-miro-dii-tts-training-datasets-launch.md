@@ -1,7 +1,8 @@
 ---
-title: "Miro-&-Dii-TTS-Trainingsdaten: 40 offene Datensätze in 20 Locales"
+title: "Miro-&-Dii-TTS-Trainingsdaten: 40 öffentliche Datensätze in 20 Locales"
 description: "Wir haben 40 synthetische Trainingsdatensätze für die Stimmen Miro und Dii in Portugiesisch, Niederländisch, Deutsch, Französisch, Italienisch, Japanisch, Spanisch und mehr veröffentlicht. Voice Cloning im großen Maßstab: Jede Sprache erhält zwei konsistente Identitäten."
 date: 2025-06-23
+updated: 2026-10-20
 lang: de
 author: "Casimiro Ferreira"
 tags:
@@ -18,7 +19,7 @@ draft: false
 
 Alle **40 synthetischen Trainingsdatensätze**, die zum Aufbau von Miro und Dii verwendet wurden — die Stimmidentitäten, die wir in Partnerschaft mit OpenVoiceOS entwickelt haben. Die Sammlung umfasst europäisches Portugiesisch, brasilianisches Portugiesisch, Niederländisch, Deutsch, Französisch, Italienisch, Japanisch, Spanisch, Rumänisch, Polnisch, Schwedisch, Hindi, Dänisch, Farsi, Englisch, Baskisch und mehr. Jeder Datensatz folgt einer einheitlichen Namenskonvention: `tts-train-synthetic-miro_pt-PT`, `tts-train-synthetic-dii_pt-BR`, `tts-train-synthetic-miro_nl-NL` und so weiter für jedes Sprachpaar.
 
-Jeder Datensatz ist vollständig synthetisch — generierter Text gepaart mit synthetisiertem Audio im LJSpeech-Layout, ohne Studiositzungen — und wird unter einer offenen Lizenz veröffentlicht, sodass jeder die Stimme neu trainieren oder erweitern kann. Die Phonemisierung erfolgt zur Trainingszeit in phoonnx und stützt sich auf unsere [G2P-Forschung für über 350 Sprachen](/de/blog/2026-01-15-grapheme-to-ipa-for-350-languages).
+Jeder Datensatz ist vollständig synthetisch — generierter Text gepaart mit synthetisiertem Audio im LJSpeech-Layout, ohne Studiositzungen — und wird unter der Lizenz CC-BY-NC-ND-4.0 veröffentlicht, die nicht-kommerzielle Nutzung mit Namensnennung erlaubt, aber keine Bearbeitungen und keine kommerzielle Nutzung. Die Phonemisierung erfolgt zur Trainingszeit in phoonnx und stützt sich auf unsere [G2P-Forschung für über 350 Sprachen](/de/blog/2026-01-15-grapheme-to-ipa-for-350-languages).
 
 ## Wie die Stimmidentität sprachübergreifend konsistent bleibt
 
@@ -28,9 +29,9 @@ Die praktische Konsequenz: ein Portugiesischsprecher, ein Niederländischspreche
 
 ## Warum die Trainingsdaten veröffentlichen
 
-Ein Checkpoint ohne seine Trainingsdaten ist eine Blackbox. Die Veröffentlichung macht die Stimme **überprüfbar** (Sie können genau sehen, woraus sie gelernt hat), **reproduzierbar** (führen Sie `phoonnx_train` auf denselben Daten aus und erhalten Sie dasselbe Ergebnis) und **erweiterbar** (Sätze hinzufügen, für einen Dialekt feinabstimmen, einen neuen Sprecher darauf aufbauen).
+Ein Checkpoint ohne seine Trainingsdaten ist eine Blackbox. Die Veröffentlichung macht die Stimme **überprüfbar** (Sie können genau sehen, woraus sie gelernt hat) und **reproduzierbar** (führen Sie `phoonnx_train` auf denselben Daten aus und erhalten Sie dasselbe Ergebnis). Die Lizenz erlaubt keine Bearbeitungen; die Daten zu erweitern, für einen Dialekt feinabzustimmen oder einen neuen Sprecher darauf aufzubauen, erfordert daher unsere Erlaubnis.
 
-Das ist vor allem für die ressourcenarmen Sprachen auf dieser Liste von Bedeutung. Wenn die Trainingsdaten offen sind, kann die Gemeinschaft, die eine Sprache spricht, ihre eigene Stimme verbessern — ohne darauf zu warten, dass ein Anbieter sie für kommerziell interessant befindet.
+Das ist vor allem für die ressourcenarmen Sprachen auf dieser Liste von Bedeutung. Wenn die Trainingsdaten öffentlich sind, kann die Gemeinschaft, die eine Sprache spricht, nachvollziehen und prüfen, woraus ihre eigene Stimme entstanden ist — ohne darauf zu warten, dass ein Anbieter sie für kommerziell interessant befindet.
 
 ## Wo Sie alles finden
 

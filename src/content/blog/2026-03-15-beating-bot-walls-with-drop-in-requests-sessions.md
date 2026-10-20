@@ -2,6 +2,7 @@
 title: "Composable, Drop-In requests Sessions for Resilient Public-Data Access"
 description: "Two composable requests.Session subclasses for reading public web pages reliably without a headless browser in the hot path: TLS-compatible transport, a FlareSolverr proxy for JS challenges, a Wayback Machine fallback, and IP-diversified requests: unblock_requests and anon_requests."
 date: 2026-03-15
+updated: 2026-10-20
 author: "Casimiro Ferreira"
 tags:
   - "HTTP"
@@ -37,9 +38,9 @@ that stack cleanly: **unblock_requests** answers *what are you*,
 bytes-on-the-wire part, not the parsing or the pipeline that sits above it.
 
 **Scope, plainly stated:** these transports are for public, non-authenticated
-pages only. They honor `robots.txt` and any declared crawl-delay (see our
+pages only. They do not read `robots.txt` or apply any crawl-delay; that is the caller's job (see our
 **[robots.txt &amp; sitemaps post](/blog/2026-03-01-robot-txt-sitemaps-ethical-web-scraping)**
-for how we check that before writing a scraper), and every client built on
+for how we check that before writing a scraper). Every client built on
 top of them is kept to low request volumes, so a target origin never sees
 meaningful load from us. That is not a disclaimer bolted on afterward. It is
 a real engineering constraint on how these sessions get used, because a

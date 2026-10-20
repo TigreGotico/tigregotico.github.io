@@ -2,6 +2,7 @@
 title: "Synthetische Wakeword-datasets: Zeven Assistentnamen, Eén Detector"
 description: "We publiceerden zeven synthetische wakeword-datasets voor gangbare namen van spraakassistenten — hey_computer, hey_mycroft, hey_siri, alexa, home_assistant, voice_assistant, wake_up. Train een detector die overal werkt."
 date: 2025-10-14
+updated: 2026-10-20
 lang: nl
 author: "Casimiro Ferreira"
 tags:
@@ -14,7 +15,7 @@ tags:
 draft: false
 ---
 
-Zeven assistentnamen. Zeven datasets. Alle audio is volledig gegenereerd met het TTS-framework **[phoonnx](https://github.com/TigreGotico/phoonnx)** met behulp van de stemmen Miro en Dii — geen menselijke opnames, geen toestemmingsformulieren, geen blootstelling van privacy.
+Zeven assistentnamen. Zeven datasets. Alle audio is machinaal gegenereerd: tekst-naar-spraak-engines zoals edge-tts, Piper, Google TTS, Amazon Polly en OmniVoice, gevolgd door stemconversie om meer sprekers te simuleren. De gebruikte engines staan op de kaart van elke dataset — geen menselijke opnames, geen toestemmingsformulieren, geen blootstelling van privacy.
 
 - **[hey_computer](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-hey_computer)**
 - **[hey_mycroft](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-hey_mycroft)**
@@ -24,7 +25,7 @@ Zeven assistentnamen. Zeven datasets. Alle audio is volledig gegenereerd met het
 - **[voice_assistant](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-voice_assistant)**
 - **[wake_up](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-wake_up)**
 
-Elke dataset is een platte verzameling van ongeveer duizend positieve clips — het wakeword uitgesproken met gevarieerde sprekers, snelheden en prosodie. Harde negatieven en achtergrondruis worden geleverd als aparte begeleidende datasets die u tijdens het trainen bijmengt: [not-wake-words-speech-en](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-en), [not-wake-words-speech-pt](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-pt), en [ambient_noises](https://huggingface.co/datasets/TigreGotico/ambient_noises).
+Elke dataset is een platte verzameling van positieve clips, van ongeveer 1300 (hey_siri) tot ongeveer 27.800 (hey_mycroft) — het wakeword uitgesproken met gevarieerde sprekers, snelheden en prosodie. Harde negatieven en achtergrondruis worden geleverd als aparte begeleidende datasets die u tijdens het trainen bijmengt: [not-wake-words-speech-en](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-en), [not-wake-words-speech-pt](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-pt), en [ambient_noises](https://huggingface.co/datasets/TigreGotico/ambient_noises).
 
 ## Waarom synthetisch
 
@@ -40,4 +41,4 @@ Voor wakeword-detectie is de relevante eigenschap akoestische onderscheidbaarhei
 
 Train uw eigen wakeword-detector voor OpenVoiceOS, Mycroft of elk open spraaksysteem. Voor het aanvullen van negatieve voorbeelden zijn er ook datasets met huishoudelijke en publiek domein achtergrondclips: [building_106_kitchen_3secs](https://huggingface.co/datasets/TigreGotico/building_106_kitchen_3secs), [public_domain_sounds_3secs](https://huggingface.co/datasets/TigreGotico/public_domain_sounds_3secs), en [FMA_3secs](https://huggingface.co/datasets/TigreGotico/FMA_3secs).
 
-[**Alle wakeword-datasets op HuggingFace → TigreGotico**](https://huggingface.co/datasets?author=TigreGotico&tags=wakeword)
+[**Alle wakeword-datasets op HuggingFace → TigreGotico**](https://huggingface.co/datasets?author=TigreGotico&search=synthetic-wakeword)

@@ -2,6 +2,7 @@
 title: "합성 웨이크워드 데이터셋: 일곱 개의 비서 이름, 하나의 감지기"
 description: "일반적인 음성 비서 이름을 위한 일곱 개의 합성 웨이크워드 데이터셋을 공개했습니다 — hey_computer, hey_mycroft, hey_siri, alexa, home_assistant, voice_assistant, wake_up. 어디서나 작동하는 감지기를 학습시키세요."
 date: 2025-10-14
+updated: 2026-10-20
 lang: ko
 author: "Casimiro Ferreira"
 tags:
@@ -14,7 +15,7 @@ tags:
 draft: false
 ---
 
-일곱 개의 비서 이름. 일곱 개의 데이터셋. 모든 오디오는 Miro와 Dii 음성을 사용하여 **[phoonnx](https://github.com/TigreGotico/phoonnx)** TTS 프레임워크에서 전적으로 생성되었습니다 — 사람의 녹음도, 동의서도, 개인정보 노출도 없습니다.
+일곱 개의 비서 이름. 일곱 개의 데이터셋. 모든 오디오는 기계가 생성했습니다. edge-tts, Piper, Google TTS, Amazon Polly, OmniVoice 같은 음성 합성 엔진으로 만든 뒤 화자를 늘리기 위해 음성 변환을 적용했으며, 사용한 엔진은 각 데이터셋 카드에 나열되어 있습니다 — 사람의 녹음도, 동의서도, 개인정보 노출도 없습니다.
 
 - **[hey_computer](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-hey_computer)**
 - **[hey_mycroft](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-hey_mycroft)**
@@ -24,7 +25,7 @@ draft: false
 - **[voice_assistant](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-voice_assistant)**
 - **[wake_up](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-wake_up)**
 
-각 데이터셋은 약 천 개의 긍정 클립으로 이루어진 평면 집합입니다 — 다양한 화자, 속도, 운율로 발화된 웨이크워드입니다. 하드 네거티브와 배경 소음은 학습 시점에 섞어 넣는 별도의 동반 데이터셋으로 제공됩니다: [not-wake-words-speech-en](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-en), [not-wake-words-speech-pt](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-pt), [ambient_noises](https://huggingface.co/datasets/TigreGotico/ambient_noises).
+각 데이터셋은 긍정 클립으로 이루어진 평면 집합으로, 클립 수는 약 1,300개(hey_siri)에서 약 27,800개(hey_mycroft)까지입니다 — 다양한 화자, 속도, 운율로 발화된 웨이크워드입니다. 하드 네거티브와 배경 소음은 학습 시점에 섞어 넣는 별도의 동반 데이터셋으로 제공됩니다: [not-wake-words-speech-en](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-en), [not-wake-words-speech-pt](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-pt), [ambient_noises](https://huggingface.co/datasets/TigreGotico/ambient_noises).
 
 ## 합성인 이유
 
@@ -40,4 +41,4 @@ draft: false
 
 OpenVoiceOS, Mycroft, 또는 어떤 오픈 음성 시스템을 위한 자신만의 웨이크워드 감지기를 학습시키세요. 네거티브 샘플 증강을 위해 가정용 및 퍼블릭 도메인 배경 클립 데이터셋도 있습니다: [building_106_kitchen_3secs](https://huggingface.co/datasets/TigreGotico/building_106_kitchen_3secs), [public_domain_sounds_3secs](https://huggingface.co/datasets/TigreGotico/public_domain_sounds_3secs), [FMA_3secs](https://huggingface.co/datasets/TigreGotico/FMA_3secs).
 
-[**HuggingFace의 모든 웨이크워드 데이터셋 → TigreGotico**](https://huggingface.co/datasets?author=TigreGotico&tags=wakeword)
+[**HuggingFace의 모든 웨이크워드 데이터셋 → TigreGotico**](https://huggingface.co/datasets?author=TigreGotico&search=synthetic-wakeword)

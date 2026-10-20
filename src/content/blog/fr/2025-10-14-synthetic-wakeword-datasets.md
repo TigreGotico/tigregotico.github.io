@@ -2,6 +2,7 @@
 title: "Jeux de données de wakeword synthétiques : sept noms d'assistant, un seul détecteur"
 description: "Nous avons publié sept jeux de données de wakeword synthétiques pour des noms d'assistant vocal courants — hey_computer, hey_mycroft, hey_siri, alexa, home_assistant, voice_assistant, wake_up. Entraînez un détecteur qui fonctionne partout."
 date: 2025-10-14
+updated: 2026-10-20
 lang: fr
 author: "Casimiro Ferreira"
 tags:
@@ -14,9 +15,7 @@ tags:
 draft: false
 ---
 
-Sept noms d'assistant. Sept jeux de données. Tout l'audio est généré entièrement à
-partir de la framework TTS **[phoonnx](https://github.com/TigreGotico/phoonnx)** en
-utilisant les voix Miro et Dii — sans enregistrements humains, sans formulaires de
+Sept noms d'assistant. Sept jeux de données. Tout l'audio est généré par machine : des moteurs de synthèse vocale comme edge-tts, Piper, Google TTS, Amazon Polly et OmniVoice, suivis d'une conversion de voix pour simuler davantage de locuteurs. Les moteurs utilisés sont listés sur la fiche de chaque jeu de données — sans enregistrements humains, sans formulaires de
 consentement, sans exposition de la vie privée.
 
 - **[hey_computer](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-hey_computer)**
@@ -27,7 +26,7 @@ consentement, sans exposition de la vie privée.
 - **[voice_assistant](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-voice_assistant)**
 - **[wake_up](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-wake_up)**
 
-Chaque jeu de données est un ensemble plat d'environ un millier de clips positifs — le
+Chaque jeu de données est un ensemble plat de clips positifs, d'environ 1 300 (hey_siri) à environ 27 800 (hey_mycroft) — le
 wakeword prononcé avec des locuteurs, des débits et une prosodie variés. Les négatifs
 difficiles et le bruit de fond sont fournis dans des jeux de données compagnons
 séparés que vous mélangez au moment de l'entraînement :
@@ -59,4 +58,4 @@ des jeux de données de clips de fond domestiques et du domaine public :
 [public_domain_sounds_3secs](https://huggingface.co/datasets/TigreGotico/public_domain_sounds_3secs),
 et [FMA_3secs](https://huggingface.co/datasets/TigreGotico/FMA_3secs).
 
-[**Tous les jeux de données de wakeword sur HuggingFace → TigreGotico**](https://huggingface.co/datasets?author=TigreGotico&tags=wakeword)
+[**Tous les jeux de données de wakeword sur HuggingFace → TigreGotico**](https://huggingface.co/datasets?author=TigreGotico&search=synthetic-wakeword)

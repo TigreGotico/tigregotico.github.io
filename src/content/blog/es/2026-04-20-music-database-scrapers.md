@@ -3,7 +3,7 @@ title: "Presentamos nuestros scrapers de bases de datos de música"
 description: "Un recorrido por la familia de clientes Python tipados que mantenemos para fuentes de música — Bandcamp, SoundCloud, SomaFM, TuneIn, iHeartRadio y las grandes enciclopedias musicales — todos emitiendo metadatos de medios consistentes y tipados tras una única interfaz limpia y circulando sobre el mismo transporte HTTP conforme y de bajo volumen."
 date: 2026-04-20
 lang: es
-updated: 2026-08-01
+updated: 2026-10-20
 author: "Casimiro Ferreira"
 tags:
   - "Scrapers"
@@ -46,7 +46,7 @@ Más allá de la música, **[tutubo](https://github.com/TigreGotico/tutubo)** ha
 
 ## Construidos para un acceso conforme y de bajo volumen
 
-Estos clientes obtienen únicamente páginas de catálogo públicas, con volúmenes de petición bajos, y comprueban el `robots.txt` de cada sitio antes de hacer scraping — véase la
+Estos clientes obtienen únicamente páginas de catálogo públicas, con volúmenes de petición bajos. No leen el `robots.txt` de ningún sitio ni aplican un crawl-delay, así que esa comprobación corresponde a quien los usa — véase la
 **[entrada sobre robots.txt y sitemaps](/es/blog/2026-03-01-robot-txt-sitemaps-ethical-web-scraping)**
 para saber cómo funciona ese paso de reconocimiento. En toda la familia la capa HTTP es **enchufable**: por defecto los clientes usan un transporte cuyo handshake TLS coincide con el de un navegador real (`curl_cffi` emulando el TLS/JA3 de Chrome), para que un cliente que se comporta bien no sea clasificado erróneamente como automatización maliciosa por sistemas de detección ajustados para el abuso programado. Las enciclopedias tras Cloudflare pueden además enrutar a través de una instancia FlareSolverr para datos en directo, o leer desde la Wayback Machine del Internet Archive como respaldo. La capa de parsing es deliberadamente independiente de cómo llega el HTML, así que el mismo código funciona sea cual sea el transporte que elijas.
 

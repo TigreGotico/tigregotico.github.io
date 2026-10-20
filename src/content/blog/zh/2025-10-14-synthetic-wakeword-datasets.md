@@ -2,6 +2,7 @@
 title: "合成唤醒词数据集：七个助手名字，一个检测器"
 description: "我们为常见的语音助手名字发布了七个合成唤醒词数据集——hey_computer、hey_mycroft、hey_siri、alexa、home_assistant、voice_assistant、wake_up。训练一个到处都能用的检测器。"
 date: 2025-10-14
+updated: 2026-10-20
 lang: zh
 author: "Casimiro Ferreira"
 tags:
@@ -14,7 +15,7 @@ tags:
 draft: false
 ---
 
-七个助手名字。七个数据集。所有音频都完全由 **[phoonnx](https://github.com/TigreGotico/phoonnx)** TTS 框架使用 Miro 和 Dii 语音生成——没有真人录音，没有同意书，没有隐私暴露。
+七个助手名字。七个数据集。所有音频均为机器生成：先用 edge-tts、Piper、Google TTS、Amazon Polly 和 OmniVoice 等语音合成引擎生成，再用语音转换模拟更多说话人，所用引擎列在每个数据集的说明卡中——没有真人录音，没有同意书，没有隐私暴露。
 
 - **[hey_computer](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-hey_computer)**
 - **[hey_mycroft](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-hey_mycroft)**
@@ -24,7 +25,7 @@ draft: false
 - **[voice_assistant](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-voice_assistant)**
 - **[wake_up](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-wake_up)**
 
-每个数据集都是大约一千个正样本片段的扁平集合——由不同的说话人、语速和韵律说出的唤醒词。困难负样本和背景噪声则作为独立的配套数据集提供，你可以在训练时混入：[not-wake-words-speech-en](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-en)、[not-wake-words-speech-pt](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-pt) 和 [ambient_noises](https://huggingface.co/datasets/TigreGotico/ambient_noises)。
+每个数据集都是正样本片段的扁平集合，数量从约 1,300 个（hey_siri）到约 27,800 个（hey_mycroft）——由不同的说话人、语速和韵律说出的唤醒词。困难负样本和背景噪声则作为独立的配套数据集提供，你可以在训练时混入：[not-wake-words-speech-en](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-en)、[not-wake-words-speech-pt](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-pt) 和 [ambient_noises](https://huggingface.co/datasets/TigreGotico/ambient_noises)。
 
 ## 为什么用合成数据
 
@@ -40,4 +41,4 @@ draft: false
 
 为 OpenVoiceOS、Mycroft 或任何开放的语音系统训练你自己的唤醒词检测器。对于负样本增强，还有一些家居和公有领域的背景片段数据集：[building_106_kitchen_3secs](https://huggingface.co/datasets/TigreGotico/building_106_kitchen_3secs)、[public_domain_sounds_3secs](https://huggingface.co/datasets/TigreGotico/public_domain_sounds_3secs) 和 [FMA_3secs](https://huggingface.co/datasets/TigreGotico/FMA_3secs)。
 
-[**HuggingFace 上的全部唤醒词数据集 → TigreGotico**](https://huggingface.co/datasets?author=TigreGotico&tags=wakeword)
+[**HuggingFace 上的全部唤醒词数据集 → TigreGotico**](https://huggingface.co/datasets?author=TigreGotico&search=synthetic-wakeword)

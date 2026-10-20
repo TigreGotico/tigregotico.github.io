@@ -2,7 +2,7 @@
 title: "Robots.txt, साइटमैप्स, और नैतिक वेब स्क्रैपिंग"
 description: "स्क्रैपर बनाने से पहले, साइट की टोह लें। sitemapper robots.txt पढ़ता है, हर साइटमैप लाता है, और वैकल्पिक रूप से लिंक ग्राफ़ को क्रॉल करता है — ताकि आपका स्क्रैपर क्रूर बल के बजाय साइट के अपने अनुबंध से शुरू हो।"
 date: 2026-03-01
-updated: 2026-08-01
+updated: 2026-10-20
 lang: hi
 author: "Casimiro Ferreira"
 tags:
@@ -120,10 +120,7 @@ FlareSolverr इंस्टेंस या Wayback Machine फ़ॉलबै�
 
 ## उपकरण
 
-```bash
-pip install sitemapper
-pip install sitemapper[stealth]   # adds curl_cffi TLS impersonation
-```
+sitemapper PyPI पर प्रकाशित नहीं है। वहाँ `sitemapper` नाम एक असंबंधित प्रोजेक्ट का है, इसलिए `pip install sitemapper` कोई दूसरा सॉफ़्टवेयर इंस्टॉल करता है। कोड [sitemapper रिपॉज़िटरी](https://github.com/TigreGotico/sitemapper) में है। वैकल्पिक `stealth` एक्स्ट्रा `curl_cffi` के ज़रिए TLS अनुकरण जोड़ता है।
 
 इसे एक लाइब्रेरी के रूप में उपयोग करें, या कमांड लाइन से — `--json FILE` अन्य टूल्स के उपभोग के लिए
 पूरी खोज को एक फ़ाइल में लिखता है, `--crawl` लिंक-ग्राफ़ चरण जोड़ता है:

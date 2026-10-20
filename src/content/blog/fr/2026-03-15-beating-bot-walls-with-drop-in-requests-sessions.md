@@ -2,6 +2,7 @@
 title: "Des sessions requests composables et prêtes à l'emploi pour un accès résilient aux données publiques"
 description: "Deux sous-classes composables de requests.Session pour lire de façon fiable des pages web publiques sans navigateur headless dans le chemin critique : un transport compatible TLS, un proxy FlareSolverr pour les défis JS, un repli sur la Wayback Machine et des requêtes à IP diversifiées — unblock_requests et anon_requests."
 date: 2026-03-15
+updated: 2026-10-20
 lang: fr
 author: "Casimiro Ferreira"
 tags:
@@ -40,10 +41,10 @@ spécifiquement sur cette couche de transport — la partie octets-sur-le-fil �
 sur le parsing ou le pipeline qui repose au-dessus.
 
 **La portée, clairement énoncée :** ces transports sont destinés uniquement aux
-pages publiques, non authentifiées. Ils respectent le `robots.txt` et tout
-crawl-delay déclaré — voir notre
+pages publiques, non authentifiées. Ils ne lisent pas le `robots.txt` et n'appliquent aucun
+crawl-delay ; c'est le rôle de l'appelant — voir notre
 **[article sur robots.txt et les sitemaps](/fr/blog/2026-03-01-robot-txt-sitemaps-ethical-web-scraping)**
-pour la façon dont nous vérifions cela avant d'écrire un scraper — et chaque client
+pour la façon dont nous vérifions cela avant d'écrire un scraper. Chaque client
 construit dessus est maintenu à de faibles volumes de requêtes, de sorte qu'une
 origine cible ne voit jamais de charge significative venant de nous. Ce n'est pas
 un avertissement ajouté après coup ; c'est une contrainte d'ingénierie réelle sur la

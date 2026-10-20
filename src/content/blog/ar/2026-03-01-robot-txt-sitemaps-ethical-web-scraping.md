@@ -2,7 +2,7 @@
 title: "ملف Robots.txt وخرائط المواقع وكشط الويب الأخلاقي"
 description: "قبل أن تبني أداة كشط، استكشف الموقع. تقرأ أداة sitemapper ملف robots.txt، وتجلب كل خرائط الموقع، وتزحف اختياريًا عبر رسم الروابط البياني — بحيث تنطلق أداة الكشط لديك من عقد الموقع نفسه بدلًا من القوة الغاشمة."
 date: 2026-03-01
-updated: 2026-08-01
+updated: 2026-10-20
 lang: ar
 author: "Casimiro Ferreira"
 tags:
@@ -121,10 +121,7 @@ print(graph.summary())
 
 ## الأداة
 
-```bash
-pip install sitemapper
-pip install sitemapper[stealth]   # adds curl_cffi TLS impersonation
-```
+حزمة sitemapper غير منشورة على PyPI. الاسم `sitemapper` هناك يخص مشروعًا آخر لا علاقة له بها، لذا فإن `pip install sitemapper` يثبّت برنامجًا مختلفًا. الشيفرة موجودة في [مستودع sitemapper](https://github.com/TigreGotico/sitemapper). الإضافة الاختيارية `stealth` تضيف انتحال بصمة TLS عبر `curl_cffi`.
 
 استخدمها كمكتبة، أو من سطر الأوامر — تكتب `--json FILE` الاكتشاف الكامل إلى
 ملف لتستهلكه أدوات أخرى، وتضيف `--crawl` خطوة رسم الروابط البياني:

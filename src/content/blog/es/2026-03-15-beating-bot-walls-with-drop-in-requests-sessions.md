@@ -2,6 +2,7 @@
 title: "Sesiones requests componibles y directas para un acceso resiliente a datos públicos"
 description: "Dos subclases componibles de requests.Session para leer páginas web públicas de forma fiable sin un navegador headless en la ruta caliente: transporte compatible con TLS, un proxy FlareSolverr para los desafíos JS, un respaldo a Wayback Machine, y peticiones con IP diversificada — unblock_requests y anon_requests."
 date: 2026-03-15
+updated: 2026-10-20
 lang: es
 author: "Casimiro Ferreira"
 tags:
@@ -39,10 +40,10 @@ específicamente de esa capa de transporte — la parte de los bytes en el cable
 no del análisis ni de la pipeline que se asienta encima.
 
 **El alcance, dicho con claridad:** estos transportes son solo para páginas
-públicas y sin autenticación. Respetan `robots.txt` y cualquier crawl-delay
-declarado — véase nuestra **[entrada sobre robots.txt y
+públicas y sin autenticación. No leen `robots.txt` ni aplican ningún crawl-delay;
+eso corresponde a quien las usa — véase nuestra **[entrada sobre robots.txt y
 sitemaps](/es/blog/2026-03-01-robot-txt-sitemaps-ethical-web-scraping)** para
-cómo comprobamos eso antes de escribir un scraper — y todo cliente construido
+cómo comprobamos eso antes de escribir un scraper. Todo cliente construido
 sobre ellos se mantiene con volúmenes de petición bajos, de modo que un origen
 objetivo nunca ve carga significativa procedente de nosotros. Eso no es un
 aviso legal añadido a posteriori; es una restricción de ingeniería real sobre

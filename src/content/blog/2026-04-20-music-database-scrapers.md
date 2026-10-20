@@ -2,7 +2,7 @@
 title: "Introducing Our Music Database Scrapers"
 description: "A tour of the family of typed Python clients we maintain for music sources — Bandcamp, SoundCloud, SomaFM, TuneIn, iHeartRadio, and the great music encyclopedias — all emitting consistent, typed media metadata behind one clean interface and riding the same compliant, low-volume HTTP transport."
 date: 2026-04-20
-updated: 2026-08-01
+updated: 2026-10-20
 author: "Casimiro Ferreira"
 tags:
   - "Scrapers"
@@ -45,7 +45,7 @@ Beyond music, **[tutubo](https://github.com/TigreGotico/tutubo)** scrapes YouTub
 
 ## Built for compliant, low-volume access
 
-These clients fetch public catalogue pages only, at low request volumes, and check each site's `robots.txt` before scraping. See the
+These clients fetch public catalogue pages only, at low request volumes. They do not read a site's `robots.txt` or apply a crawl-delay, so that check is the caller's job. See the
 **[robots.txt &amp; sitemaps post](/blog/2026-03-01-robot-txt-sitemaps-ethical-web-scraping)**
 for how that recon step works. Across the family the HTTP layer is pluggable. By default the clients use a transport whose TLS handshake matches a real browser (`curl_cffi` matching Chrome's TLS/JA3), so a well-behaved client is not misclassified as malicious automation by detection systems tuned for scripted abuse. The Cloudflare-fronted encyclopedias can also route through a FlareSolverr instance for live data, or read from the Internet Archive's Wayback Machine as a fallback. The parsing layer is independent of how the HTML arrives, so the same code works whichever transport you choose.
 

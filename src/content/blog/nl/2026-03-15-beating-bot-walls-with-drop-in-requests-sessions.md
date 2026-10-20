@@ -2,6 +2,7 @@
 title: "Samenstelbare, kant-en-klare requests-sessies voor veerkrachtige toegang tot publieke data"
 description: "Twee samenstelbare subklassen van requests.Session voor het betrouwbaar lezen van publieke webpagina's zonder headless browser in het kritieke pad: TLS-compatibel transport, een FlareSolverr-proxy voor JS-uitdagingen, een terugval op de Wayback Machine en IP-gediversifieerde verzoeken — unblock_requests en anon_requests."
 date: 2026-03-15
+updated: 2026-10-20
 lang: nl
 author: "Casimiro Ferreira"
 tags:
@@ -39,9 +40,9 @@ transportlaag — het gedeelte van de bytes op de lijn — en niet over het pars
 pipeline die daarbovenop rust.
 
 **Bereik, ondubbelzinnig gesteld:** deze transporten zijn alleen voor publieke,
-niet-geauthenticeerde pagina's. Ze respecteren `robots.txt` en elke gedeclareerde
-crawl-delay — zie ons **[artikel over robots.txt &amp; sitemaps](/nl/blog/2026-03-01-robot-txt-sitemaps-ethical-web-scraping)**
-voor hoe wij dat controleren voordat we een scraper schrijven — en elke client die
+niet-geauthenticeerde pagina's. Ze lezen `robots.txt` niet en passen geen
+crawl-delay toe; dat is de taak van de aanroeper — zie ons **[artikel over robots.txt &amp; sitemaps](/nl/blog/2026-03-01-robot-txt-sitemaps-ethical-web-scraping)**
+voor hoe wij dat controleren voordat we een scraper schrijven. Elke client die
 erop wordt gebouwd, houdt zich aan lage verzoekvolumes, zodat een doelserver nooit
 merkbare belasting van ons ziet. Dat is geen achteraf toegevoegde disclaimer; het is
 een echte technische beperking op hoe deze sessies worden gebruikt, want een

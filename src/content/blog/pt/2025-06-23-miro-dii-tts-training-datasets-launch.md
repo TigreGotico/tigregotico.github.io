@@ -1,7 +1,8 @@
 ---
-title: "Dados de Treino de TTS Miro & Dii: 40 Datasets Abertos em 20 Locales"
+title: "Dados de Treino de TTS Miro & Dii: 40 Datasets Públicos em 20 Locales"
 description: "Publicámos 40 datasets de treino sintéticos para as vozes Miro e Dii em português, neerlandês, alemão, francês, italiano, japonês, espanhol e mais. Cada língua ganha duas identidades de voz consistentes, construídas com clonagem de voz."
 date: 2025-06-23
+updated: 2026-10-20
 lang: pt
 author: "Casimiro Ferreira"
 tags:
@@ -26,8 +27,8 @@ consistente: `tts-train-synthetic-miro_pt-PT`, `tts-train-synthetic-dii_pt-BR`,
 
 Cada dataset é totalmente sintético: texto gerado emparelhado com áudio sintetizado,
 organizado no formato LJSpeech habitual para dados de treino de TTS, sem sessões de
-estúdio. Cada um é lançado sob uma licença aberta para que qualquer pessoa possa
-retreinar ou estender a voz. A fonemização acontece em tempo de treino no phoonnx,
+estúdio. Cada um é lançado sob a licença CC-BY-NC-ND-4.0, que permite a utilização
+não comercial com atribuição e não permite obras derivadas nem utilização comercial. A fonemização acontece em tempo de treino no phoonnx,
 apoiando-se na nossa [investigação de G2P para mais de 350
 línguas](/pt/blog/2026-01-15-grapheme-to-ipa-for-350-languages).
 
@@ -47,13 +48,14 @@ nativamente.
 ## Porquê publicar os dados de treino
 
 Um checkpoint sem os seus dados de treino é uma caixa negra. Publicar os dados
-permite a qualquer pessoa ver exatamente com o que o modelo aprendeu, correr o
-`phoonnx_train` sobre os mesmos dados para obter o mesmo resultado, e estendê-lo:
-acrescentar frases, afinar para um dialeto, ou construir um novo locutor por cima.
+permite a qualquer pessoa ver exatamente com o que o modelo aprendeu e correr o
+`phoonnx_train` sobre os mesmos dados para obter o mesmo resultado. A licença não
+permite obras derivadas, pelo que estender os dados, afiná-los para um dialeto ou
+construir um novo locutor por cima exige a nossa autorização.
 
 Isto importa sobretudo para as línguas de poucos recursos desta lista. Quando os
-dados de treino são abertos, a comunidade que fala uma língua pode melhorar a sua
-própria voz sem esperar que um fornecedor decida que ela é comercialmente
+dados de treino são públicos, a comunidade que fala uma língua pode ver e verificar com
+o que a sua própria voz foi construída, sem esperar que um fornecedor decida que ela é comercialmente
 interessante.
 
 ## Onde encontrar tudo

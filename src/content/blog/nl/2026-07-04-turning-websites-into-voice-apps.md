@@ -2,6 +2,7 @@
 title: "Als iedereen een app uitbrengt, brengen wij stem uit: websites veranderen in spraakapps"
 description: "Elke site die ertoe doet, werd verpakt in een mobiele app. Wij stellen de omgekeerde beweging voor voor het spraak- en CLI-tijdperk: een schone API plus een spraakskill per site, zodat het web doorbladerbaar wordt op het gehoor en met het toetsenbord. Eén site tegelijk telt het op tot een spraakbrowser."
 date: 2026-07-04
+updated: 2026-10-20
 lang: nl
 author: "Casimiro Ferreira"
 tags:
@@ -99,14 +100,9 @@ steeds vaker iets wat het model gewoon *levert*, zolang de tools die het krijgt 
 getypeerd en eerlijk zijn over wat ze teruggeven. Rommelige HTML geeft een LLM niets
 om zich aan vast te houden. Een getypeerde client geeft het een bedieningsoppervlak.
 
-Dus onze website-clients leveren een **`SKILL.md`** mee — een beschrijving in gewone
-taal van wat de API doet, zijn werkwoorden, zijn retourtypes en voorbeeldaanroepen,
-geschreven om door een agent gelezen te worden. Richt een LLM-aangedreven assistent
-erop en de client wordt een tool die het model onmiddellijk kan gebruiken: geen
-lijmcode, geen maatwerkintegratie, gewoon "dit is wat deze site kan, in woorden." Eén
-document verandert een scraper in iets wat een taalmodel namens jou kan bedienen.
+Een **`SKILL.md`** zou een agent in staat stellen zo'n client te gebruiken: een beschrijving in gewone taal van wat de API doet, zijn werkwoorden, zijn retourtypes en voorbeeldaanroepen, geschreven om door een agent gelezen te worden. Geen van onze website-clients levert er een mee. Als je een LLM-aangedreven assistent erop richt, kan hij de client als tool gebruiken: geen lijmcode, geen maatwerkintegratie, gewoon "dit is wat deze site kan, in woorden." Eén document zou een scraper veranderen in iets wat een taalmodel namens jou kan bedienen.
 
-Het zijn dezelfde gestructureerde data die drie front-ends tegelijk bedienen: een
+Het zijn dezelfde gestructureerde data die drie front-ends tegelijk kunnen bedienen: een
 **CLI** voor terminalgebruikers, een **OCP/spraakplugin** voor handsfree gebruik, en
 een **LLM-tool** voor natuurlijke-taalbediening. Bouw de API één keer; draag hem op
 drie manieren.

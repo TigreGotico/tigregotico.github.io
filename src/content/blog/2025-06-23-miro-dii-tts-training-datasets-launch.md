@@ -1,7 +1,8 @@
 ---
-title: "Miro & Dii TTS Training Data: 40 Open Datasets Across 20 Locales"
+title: "Miro & Dii TTS Training Data: 40 Public Datasets Across 20 Locales"
 description: "We published 40 synthetic training datasets for the Miro and Dii voices across Portuguese, Dutch, German, French, Italian, Japanese, Spanish, and more. Every language gets two consistent voice identities, built with voice cloning."
 date: 2025-06-23
+updated: 2026-10-20
 author: "Casimiro Ferreira"
 tags:
   - "TTS"
@@ -17,7 +18,7 @@ draft: false
 
 We are releasing all 40 synthetic training datasets used to build Miro and Dii, the voice identities we developed in partnership with OpenVoiceOS. The collection spans European Portuguese, Brazilian Portuguese, Dutch, German, French, Italian, Japanese, Spanish, Romanian, Polish, Swedish, Hindi, Danish, Farsi, English, Basque, and more. Each dataset follows a consistent naming convention: `tts-train-synthetic-miro_pt-PT`, `tts-train-synthetic-dii_pt-BR`, `tts-train-synthetic-miro_nl-NL`, and so on for each language pair.
 
-Every dataset is fully synthetic: generated text paired with synthesised audio, laid out in the LJSpeech format common for TTS training data, with no studio sessions. Each is released under an open licence so anyone can retrain or extend the voice. Phonemization happens at training time in phoonnx, drawing on our [G2P research for 350+ languages](/blog/2026-01-15-grapheme-to-ipa-for-350-languages).
+Every dataset is fully synthetic: generated text paired with synthesised audio, laid out in the LJSpeech format common for TTS training data, with no studio sessions. Each is released under the CC-BY-NC-ND-4.0 licence, which allows non-commercial use with attribution and does not allow derivative works or commercial use. Phonemization happens at training time in phoonnx, drawing on our [G2P research for 350+ languages](/blog/2026-01-15-grapheme-to-ipa-for-350-languages).
 
 ## How the voice identity stays consistent across languages
 
@@ -27,9 +28,9 @@ The practical result is that a Portuguese speaker, a Dutch speaker, and a Japane
 
 ## Why publish the training data
 
-A checkpoint without its training data is a black box. Publishing the data lets anyone see exactly what the model learned from, run `phoonnx_train` on the same data to get the same result, and extend it: add sentences, fine-tune for a dialect, or build a new speaker on top.
+A checkpoint without its training data is a black box. Publishing the data lets anyone see exactly what the model learned from and run `phoonnx_train` on the same data to get the same result. The licence does not allow derivative works, so extending the data, fine-tuning for a dialect, or building a new speaker on top needs our permission.
 
-This matters most for the low-resource languages on this list. When the training data is open, the community that speaks a language can improve its own voice without waiting for a vendor to decide it is commercially interesting.
+This matters most for the low-resource languages on this list. When the training data is public, the community that speaks a language can see what its own voice was built from and check it, without waiting for a vendor to decide it is commercially interesting.
 
 ## Where to find everything
 

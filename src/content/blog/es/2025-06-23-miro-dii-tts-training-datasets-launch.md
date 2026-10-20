@@ -1,7 +1,8 @@
 ---
-title: "Datos de Entrenamiento de TTS Miro & Dii: 40 Datasets Abiertos en 20 Locales"
+title: "Datos de Entrenamiento de TTS Miro & Dii: 40 Datasets Públicos en 20 Locales"
 description: "Hemos publicado 40 datasets de entrenamiento sintéticos para las voces Miro y Dii en portugués, neerlandés, alemán, francés, italiano, japonés, español y más. Clonación de voz a escala: cada idioma obtiene dos identidades consistentes."
 date: 2025-06-23
+updated: 2026-10-20
 lang: es
 author: "Casimiro Ferreira"
 tags:
@@ -18,7 +19,7 @@ draft: false
 
 Todos los **40 datasets de entrenamiento sintéticos** utilizados para construir Miro y Dii — las identidades de voz que desarrollamos en colaboración con OpenVoiceOS. La colección abarca portugués europeo, portugués de Brasil, neerlandés, alemán, francés, italiano, japonés, español, rumano, polaco, sueco, hindi, danés, farsi, inglés, euskera y más. Cada dataset sigue una convención de nombres consistente: `tts-train-synthetic-miro_pt-PT`, `tts-train-synthetic-dii_pt-BR`, `tts-train-synthetic-miro_nl-NL`, y así sucesivamente para cada par de idiomas.
 
-Cada dataset es totalmente sintético — texto generado emparejado con audio sintetizado en formato LJSpeech, sin sesiones de estudio — y se publica bajo una licencia abierta para que cualquiera pueda reentrenar o ampliar la voz. La fonemización ocurre en tiempo de entrenamiento en phoonnx, apoyándose en nuestra [investigación de G2P para más de 350 idiomas](/es/blog/2026-01-15-grapheme-to-ipa-for-350-languages).
+Cada dataset es totalmente sintético — texto generado emparejado con audio sintetizado en formato LJSpeech, sin sesiones de estudio — y se publica bajo la licencia CC-BY-NC-ND-4.0, que permite el uso no comercial con atribución y no permite obras derivadas ni el uso comercial. La fonemización ocurre en tiempo de entrenamiento en phoonnx, apoyándose en nuestra [investigación de G2P para más de 350 idiomas](/es/blog/2026-01-15-grapheme-to-ipa-for-350-languages).
 
 ## Cómo la identidad de la voz se mantiene consistente entre idiomas
 
@@ -28,9 +29,9 @@ La consecuencia práctica: un hablante de portugués, un hablante de neerlandés
 
 ## Por qué publicar los datos de entrenamiento
 
-Un checkpoint sin sus datos de entrenamiento es una caja negra. Publicarlos hace que la voz sea **auditable** (puedes ver exactamente de qué aprendió), **reproducible** (ejecuta `phoonnx_train` sobre los mismos datos y obtén el mismo resultado) y **extensible** (añade frases, ajústala para un dialecto, construye un nuevo locutor encima).
+Un checkpoint sin sus datos de entrenamiento es una caja negra. Publicarlos hace que la voz sea **auditable** (puedes ver exactamente de qué aprendió) y **reproducible** (ejecuta `phoonnx_train` sobre los mismos datos y obtén el mismo resultado). La licencia no permite obras derivadas, así que ampliar los datos, ajustar la voz para un dialecto o construir un nuevo locutor encima requiere nuestro permiso.
 
-Esto importa sobre todo para los idiomas de pocos recursos de esta lista. Cuando los datos de entrenamiento son abiertos, la comunidad que habla un idioma puede mejorar su propia voz — sin esperar a que un proveedor decida que es comercialmente interesante.
+Esto importa sobre todo para los idiomas de pocos recursos de esta lista. Cuando los datos de entrenamiento son públicos, la comunidad que habla un idioma puede ver y comprobar con qué se construyó su propia voz — sin esperar a que un proveedor decida que es comercialmente interesante.
 
 ## Dónde encontrarlo todo
 

@@ -2,7 +2,7 @@
 title: "Robots.txt、サイトマップ、そして倫理的なウェブスクレイピング"
 description: "スクレイパーを構築する前に、まずサイトを偵察しましょう。sitemapper は robots.txt を読み込み、すべてのサイトマップを取得し、必要に応じてリンクグラフを巡回します。これにより、スクレイパーは力任せではなく、サイト自身の契約から出発できます。"
 date: 2026-03-01
-updated: 2026-08-01
+updated: 2026-10-20
 lang: ja
 author: "Casimiro Ferreira"
 tags:
@@ -128,10 +128,7 @@ Machine へのフォールバックは、環境変数（`SITEMAPPER_FLARESOLVERR
 
 ## ツール
 
-```bash
-pip install sitemapper
-pip install sitemapper[stealth]   # adds curl_cffi TLS impersonation
-```
+sitemapper は PyPI で公開されていません。PyPI 上の `sitemapper` という名前は無関係のプロジェクトのもので、`pip install sitemapper` は別のソフトウェアをインストールします。コードは [sitemapper リポジトリ](https://github.com/TigreGotico/sitemapper)にあります。オプションの `stealth` エクストラは、`curl_cffi` による TLS 偽装を追加します。
 
 ライブラリとして、あるいはコマンドラインから使えます。`--json FILE` は発見結果の
 全体を他のツールが利用できるようファイルに書き出し、`--crawl` はリンクグラフの

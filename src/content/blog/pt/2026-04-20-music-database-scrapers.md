@@ -2,7 +2,7 @@
 title: "Apresentamos os Nossos Scrapers de Bases de Dados de Música"
 description: "Uma visita guiada à família de clientes Python tipados que mantemos para fontes de música — Bandcamp, SoundCloud, SomaFM, TuneIn, iHeartRadio, e as grandes enciclopédias musicais — todos a emitir metadados de media consistentes e tipados por trás de uma interface limpa e a andar sobre o mesmo transporte HTTP conforme e de baixo volume."
 date: 2026-04-20
-updated: 2026-08-01
+updated: 2026-10-20
 lang: pt
 author: "Casimiro Ferreira"
 tags:
@@ -120,7 +120,7 @@ jusante lide com tudo de forma uniforme.
 ## Construídos para acesso conforme e de baixo volume
 
 Estes clientes obtêm apenas páginas de catálogo públicas, a volumes de pedidos
-baixos, e verificam o `robots.txt` de cada site antes de fazer scraping. Vê o
+baixos. Não leem o `robots.txt` de nenhum site nem aplicam qualquer crawl-delay, pelo que essa verificação cabe a quem os usa. Vê o
 **[artigo sobre robots.txt e sitemaps](/pt/blog/2026-03-01-robot-txt-sitemaps-ethical-web-scraping)**
 para saber como funciona esse passo de reconhecimento. Por toda a família a
 camada HTTP é plugável. Por defeito os clientes usam um transporte cujo

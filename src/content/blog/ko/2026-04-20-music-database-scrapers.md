@@ -2,7 +2,7 @@
 title: "우리의 음악 데이터베이스 스크래퍼를 소개합니다"
 description: "우리가 유지 관리하는, 음악 소스를 위한 타입 지정 Python 클라이언트 제품군을 둘러봅니다 — Bandcamp, SoundCloud, SomaFM, TuneIn, iHeartRadio, 그리고 위대한 음악 백과사전들 — 모두가 하나의 깔끔한 인터페이스 뒤에서 일관되고 타입이 지정된 미디어 메타데이터를 내보내며, 동일한 준법적이고 저용량인 HTTP 전송 위에서 동작합니다."
 date: 2026-04-20
-updated: 2026-08-01
+updated: 2026-10-20
 lang: ko
 author: "Casimiro Ferreira"
 tags:
@@ -46,7 +46,7 @@ draft: false
 
 ## 준법적이고 저용량인 접근을 위해 만들어짐
 
-이 클라이언트들은 공개 카탈로그 페이지만을, 낮은 요청량으로 가져오며, 스크래핑에 앞서 각 사이트의 `robots.txt`를 확인합니다 — 그 정찰 단계가 어떻게 동작하는지는 **[robots.txt 및 sitemap 글](/ko/blog/2026-03-01-robot-txt-sitemaps-ethical-web-scraping)**을 참고하세요. 이 제품군 전반에서 HTTP 계층은 **플러그형**입니다: 기본적으로 클라이언트는 실제 브라우저와 TLS 핸드셰이크가 일치하는 전송(Chrome의 TLS/JA3와 일치하는 `curl_cffi`)을 사용하여, 스크립트 남용을 겨냥해 조정된 탐지 시스템이 잘 동작하는 클라이언트를 악성 자동화로 오분류하지 않도록 합니다. Cloudflare로 가려진 백과사전들은 추가로 실시간 데이터를 위해 FlareSolverr 인스턴스를 경유하거나, 대체 수단으로 Internet Archive의 Wayback Machine에서 읽을 수 있습니다. 파싱 계층은 HTML이 어떻게 도착하는지와 의도적으로 독립적이므로, 어떤 전송을 선택하든 동일한 코드가 동작합니다.
+이 클라이언트들은 공개 카탈로그 페이지만을, 낮은 요청량으로 가져옵니다. 사이트의 `robots.txt`를 읽지 않고 crawl-delay도 적용하지 않으므로, 그 확인은 호출하는 쪽의 몫입니다 — 그 정찰 단계가 어떻게 동작하는지는 **[robots.txt 및 sitemap 글](/ko/blog/2026-03-01-robot-txt-sitemaps-ethical-web-scraping)**을 참고하세요. 이 제품군 전반에서 HTTP 계층은 **플러그형**입니다: 기본적으로 클라이언트는 실제 브라우저와 TLS 핸드셰이크가 일치하는 전송(Chrome의 TLS/JA3와 일치하는 `curl_cffi`)을 사용하여, 스크립트 남용을 겨냥해 조정된 탐지 시스템이 잘 동작하는 클라이언트를 악성 자동화로 오분류하지 않도록 합니다. Cloudflare로 가려진 백과사전들은 추가로 실시간 데이터를 위해 FlareSolverr 인스턴스를 경유하거나, 대체 수단으로 Internet Archive의 Wayback Machine에서 읽을 수 있습니다. 파싱 계층은 HTML이 어떻게 도착하는지와 의도적으로 독립적이므로, 어떤 전송을 선택하든 동일한 코드가 동작합니다.
 
 ## 다중 소스 음악 카탈로그
 

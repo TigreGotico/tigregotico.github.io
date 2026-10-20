@@ -2,6 +2,7 @@
 title: "Kombinierbare, direkt einsetzbare requests-Sessions für widerstandsfähigen Zugriff auf öffentliche Daten"
 description: "Zwei kombinierbare requests.Session-Subklassen, um öffentliche Webseiten zuverlässig zu lesen, ohne im heißen Pfad einen Headless-Browser zu starten: TLS-kompatibler Transport, ein FlareSolverr-Proxy für JS-Challenges, ein Wayback-Machine-Fallback und IP-diversifizierte Anfragen — unblock_requests und anon_requests."
 date: 2026-03-15
+updated: 2026-10-20
 lang: de
 author: "Casimiro Ferreira"
 tags:
@@ -40,10 +41,10 @@ geht es speziell um diese Transportschicht — den Bytes-auf-der-Leitung-Teil �
 um das Parsing oder die Pipeline darüber.
 
 **Der Geltungsbereich, unverblümt gesagt:** Diese Transporte sind ausschließlich
-für öffentliche, nicht authentifizierte Seiten gedacht. Sie respektieren
-`robots.txt` und jede deklarierte Crawl-Verzögerung — siehe unseren
+für öffentliche, nicht authentifizierte Seiten gedacht. Sie lesen
+`robots.txt` nicht und wenden keine Crawl-Verzögerung an; das ist Aufgabe des Aufrufers — siehe unseren
 **[Beitrag zu robots.txt &amp; Sitemaps](/de/blog/2026-03-01-robot-txt-sitemaps-ethical-web-scraping)**
-dazu, wie wir das prüfen, bevor wir einen Scraper schreiben — und jeder darauf
+dazu, wie wir das prüfen, bevor wir einen Scraper schreiben. Jeder darauf
 aufbauende Client wird auf ein niedriges Anfragevolumen beschränkt, sodass eine
 Zielseite nie eine nennenswerte Last von uns sieht. Das ist kein nachträglich
 angeklebter Disclaimer; es ist eine echte technische Randbedingung dafür, wie

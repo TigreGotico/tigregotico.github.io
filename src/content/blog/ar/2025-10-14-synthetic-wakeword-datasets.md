@@ -2,6 +2,7 @@
 title: "مجموعات بيانات كلمات الإيقاظ الاصطناعية: سبعة أسماء لمساعدين، كاشف واحد"
 description: "نشرنا سبع مجموعات بيانات اصطناعية لكلمات الإيقاظ لأسماء شائعة للمساعدين الصوتيين — hey_computer و hey_mycroft و hey_siri و alexa و home_assistant و voice_assistant و wake_up. درِّب كاشفًا يعمل في كل مكان."
 date: 2025-10-14
+updated: 2026-10-20
 lang: ar
 author: "Casimiro Ferreira"
 tags:
@@ -14,7 +15,7 @@ tags:
 draft: false
 ---
 
-سبعة أسماء لمساعدين. سبع مجموعات بيانات. كل الصوت مُولَّد بالكامل من إطار عمل التحويل من النص إلى الكلام **[phoonnx](https://github.com/TigreGotico/phoonnx)** باستخدام صوتَي Miro و Dii — دون تسجيلات بشرية، ودون استمارات موافقة، ودون تعريض للخصوصية.
+سبعة أسماء لمساعدين. سبع مجموعات بيانات. كل الصوت مُولَّد آليًا بمحركات تحويل النص إلى كلام مثل edge-tts وPiper وGoogle TTS وAmazon Polly وOmniVoice، ثم بتحويل الصوت لمحاكاة متحدثين إضافيين؛ وتُسرد المحركات المستخدمة في بطاقة كل مجموعة بيانات — دون تسجيلات بشرية، ودون استمارات موافقة، ودون تعريض للخصوصية.
 
 - **[hey_computer](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-hey_computer)**
 - **[hey_mycroft](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-hey_mycroft)**
@@ -24,7 +25,7 @@ draft: false
 - **[voice_assistant](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-voice_assistant)**
 - **[wake_up](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-wake_up)**
 
-كل مجموعة بيانات هي مجموعة مسطحة من نحو ألف مقطع إيجابي — كلمة الإيقاظ منطوقة بمتحدثين ومعدلات ونبرات متنوعة. تُشحن العينات السلبية الصعبة وضوضاء الخلفية كمجموعات بيانات مرافقة منفصلة تمزجها أثناء التدريب: [not-wake-words-speech-en](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-en) و[not-wake-words-speech-pt](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-pt) و[ambient_noises](https://huggingface.co/datasets/TigreGotico/ambient_noises).
+كل مجموعة بيانات هي مجموعة مسطحة من المقاطع الإيجابية، من نحو 1,300 مقطع (hey_siri) إلى نحو 27,800 مقطع (hey_mycroft) — كلمة الإيقاظ منطوقة بمتحدثين ومعدلات ونبرات متنوعة. تُشحن العينات السلبية الصعبة وضوضاء الخلفية كمجموعات بيانات مرافقة منفصلة تمزجها أثناء التدريب: [not-wake-words-speech-en](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-en) و[not-wake-words-speech-pt](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-pt) و[ambient_noises](https://huggingface.co/datasets/TigreGotico/ambient_noises).
 
 ## لماذا الاصطناعي
 
@@ -40,4 +41,4 @@ draft: false
 
 درِّب كاشف كلمات الإيقاظ الخاص بك لـ OpenVoiceOS أو Mycroft أو أي نظام صوتي مفتوح. لتعزيز العينات السلبية تتوفر أيضًا مجموعات بيانات لمقاطع خلفية منزلية ومن الملكية العامة: [building_106_kitchen_3secs](https://huggingface.co/datasets/TigreGotico/building_106_kitchen_3secs) و[public_domain_sounds_3secs](https://huggingface.co/datasets/TigreGotico/public_domain_sounds_3secs) و[FMA_3secs](https://huggingface.co/datasets/TigreGotico/FMA_3secs).
 
-[**كل مجموعات بيانات كلمات الإيقاظ على HuggingFace ← TigreGotico**](https://huggingface.co/datasets?author=TigreGotico&tags=wakeword)
+[**كل مجموعات بيانات كلمات الإيقاظ على HuggingFace ← TigreGotico**](https://huggingface.co/datasets?author=TigreGotico&search=synthetic-wakeword)

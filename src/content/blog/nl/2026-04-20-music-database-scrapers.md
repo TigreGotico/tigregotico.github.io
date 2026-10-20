@@ -3,7 +3,7 @@ title: "Wij stellen onze Muziekdatabase-Scrapers voor"
 description: "Een rondleiding langs de familie getypeerde Python-clients die we onderhouden voor muziekbronnen — Bandcamp, SoundCloud, SomaFM, TuneIn, iHeartRadio en de grote muziekencyclopedieën — die allemaal consistente, getypeerde mediametadata uitsturen achter één schone interface en op dezelfde compliante HTTP-transportlaag met laag volume draaien."
 date: 2026-04-20
 lang: nl
-updated: 2026-08-01
+updated: 2026-10-20
 author: "Casimiro Ferreira"
 tags:
   - "Scrapers"
@@ -46,7 +46,7 @@ Naast muziek scrapet **[tutubo](https://github.com/TigreGotico/tutubo)** YouTube
 
 ## Gebouwd voor compliante toegang met laag volume
 
-Deze clients halen alleen publieke cataloguspagina's op, met lage verzoekvolumes, en controleren de `robots.txt` van elke site voordat ze scrapen — zie het
+Deze clients halen alleen publieke cataloguspagina's op, met lage verzoekvolumes. Ze lezen de `robots.txt` van een site niet en passen geen crawl-delay toe, dus die controle is de taak van de aanroeper — zie het
 **[artikel over robots.txt &amp; sitemaps](/nl/blog/2026-03-01-robot-txt-sitemaps-ethical-web-scraping)**
 voor hoe die verkenningsstap werkt. In de hele familie is de HTTP-laag **pluggable**: standaard gebruiken de clients een transport waarvan de TLS-handshake overeenkomt met die van een echte browser (`curl_cffi` dat Chrome's TLS/JA3 nabootst), zodat een welgemanierde client niet ten onrechte als kwaadaardige automatisering wordt geclassificeerd door detectiesystemen die op scriptmatig misbruik zijn afgesteld. De encyclopedieën achter Cloudflare kunnen bovendien via een FlareSolverr-instantie routeren voor live gegevens, of als terugval lezen uit de Wayback Machine van het Internet Archive. De parseerlaag is bewust onafhankelijk van hoe de HTML binnenkomt, zodat dezelfde code werkt ongeacht welk transport je kiest.
 

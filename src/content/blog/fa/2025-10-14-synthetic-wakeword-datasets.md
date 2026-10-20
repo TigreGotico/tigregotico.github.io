@@ -2,6 +2,7 @@
 title: "مجموعه‌داده‌های مصنوعی Wakeword: هفت نام دستیار، یک آشکارساز"
 description: "ما هفت مجموعه‌دادهٔ مصنوعی wakeword برای نام‌های رایج دستیارهای صوتی منتشر کردیم — hey_computer، hey_mycroft، hey_siri، alexa، home_assistant، voice_assistant، wake_up. یک آشکارساز آموزش دهید که همه‌جا کار کند."
 date: 2025-10-14
+updated: 2026-10-20
 lang: fa
 author: "Casimiro Ferreira"
 tags:
@@ -14,7 +15,7 @@ tags:
 draft: false
 ---
 
-هفت نام دستیار. هفت مجموعه‌داده. تمام صداها به‌طور کامل از چارچوب TTS **[phoonnx](https://github.com/TigreGotico/phoonnx)** با استفاده از صداهای Miro و Dii تولید شده‌اند — بدون هیچ ضبط انسانی، بدون هیچ فرم رضایت، بدون هیچ افشای حریم خصوصی.
+هفت نام دستیار. هفت مجموعه‌داده. تمام صداها مصنوعی‌اند: با موتورهای تبدیل متن به گفتار مانند edge-tts، Piper، Google TTS، Amazon Polly و OmniVoice تولید شده و سپس برای شبیه‌سازی گویندگان بیشتر، تبدیل صدا روی آن‌ها اعمال شده است. موتورهای به‌کاررفته در کارت هر مجموعه‌داده فهرست شده‌اند — بدون هیچ ضبط انسانی، بدون هیچ فرم رضایت، بدون هیچ افشای حریم خصوصی.
 
 - **[hey_computer](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-hey_computer)**
 - **[hey_mycroft](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-hey_mycroft)**
@@ -24,7 +25,7 @@ draft: false
 - **[voice_assistant](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-voice_assistant)**
 - **[wake_up](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-wake_up)**
 
-هر مجموعه‌داده یک مجموعهٔ تخت از حدود هزار کلیپ مثبت است — wakeword که با گویندگان، آهنگ‌ها و نواخت‌های گوناگون بیان شده است. نمونه‌های منفی دشوار (hard negatives) و نویز پس‌زمینه به‌صورت مجموعه‌داده‌های همراهِ جداگانه عرضه می‌شوند که در زمان آموزش با آن‌ها ترکیب می‌کنید: [not-wake-words-speech-en](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-en)، [not-wake-words-speech-pt](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-pt) و [ambient_noises](https://huggingface.co/datasets/TigreGotico/ambient_noises).
+هر مجموعه‌داده یک مجموعهٔ تخت از کلیپ‌های مثبت است، از حدود ۱٬۳۰۰ کلیپ (hey_siri) تا حدود ۲۷٬۸۰۰ کلیپ (hey_mycroft) — wakeword که با گویندگان، آهنگ‌ها و نواخت‌های گوناگون بیان شده است. نمونه‌های منفی دشوار (hard negatives) و نویز پس‌زمینه به‌صورت مجموعه‌داده‌های همراهِ جداگانه عرضه می‌شوند که در زمان آموزش با آن‌ها ترکیب می‌کنید: [not-wake-words-speech-en](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-en)، [not-wake-words-speech-pt](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-pt) و [ambient_noises](https://huggingface.co/datasets/TigreGotico/ambient_noises).
 
 ## چرا مصنوعی
 
@@ -40,4 +41,4 @@ draft: false
 
 آشکارساز wakeword خودتان را برای OpenVoiceOS، Mycroft یا هر سامانهٔ صوتی باز آموزش دهید. برای افزون‌سازی نمونه‌های منفی، مجموعه‌داده‌های کلیپ پس‌زمینهٔ خانگی و در مالکیت عمومی نیز وجود دارند: [building_106_kitchen_3secs](https://huggingface.co/datasets/TigreGotico/building_106_kitchen_3secs)، [public_domain_sounds_3secs](https://huggingface.co/datasets/TigreGotico/public_domain_sounds_3secs) و [FMA_3secs](https://huggingface.co/datasets/TigreGotico/FMA_3secs).
 
-[**تمام مجموعه‌داده‌های wakeword در HuggingFace ← TigreGotico**](https://huggingface.co/datasets?author=TigreGotico&tags=wakeword)
+[**تمام مجموعه‌داده‌های wakeword در HuggingFace ← TigreGotico**](https://huggingface.co/datasets?author=TigreGotico&search=synthetic-wakeword)

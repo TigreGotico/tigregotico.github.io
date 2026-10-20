@@ -2,6 +2,7 @@
 title: "Dataset Sintetici di Wakeword: Sette Nomi di Assistente, Un Rilevatore"
 description: "Abbiamo pubblicato sette dataset sintetici di wakeword per i nomi più comuni degli assistenti vocali — hey_computer, hey_mycroft, hey_siri, alexa, home_assistant, voice_assistant, wake_up. Addestra un rilevatore che funziona ovunque."
 date: 2025-10-14
+updated: 2026-10-20
 lang: it
 author: "Casimiro Ferreira"
 tags:
@@ -14,7 +15,7 @@ tags:
 draft: false
 ---
 
-Sette nomi di assistente. Sette dataset. Tutto l'audio generato interamente a partire dal framework TTS **[phoonnx](https://github.com/TigreGotico/phoonnx)** usando le voci Miro e Dii — senza registrazioni umane, senza moduli di consenso, senza esposizione della privacy.
+Sette nomi di assistente. Sette dataset. Tutto l'audio è generato da macchina: motori di sintesi vocale come edge-tts, Piper, Google TTS, Amazon Polly e OmniVoice, seguiti da conversione vocale per simulare più parlanti. I motori usati sono elencati nella scheda di ciascun dataset — senza registrazioni umane, senza moduli di consenso, senza esposizione della privacy.
 
 - **[hey_computer](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-hey_computer)**
 - **[hey_mycroft](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-hey_mycroft)**
@@ -24,7 +25,7 @@ Sette nomi di assistente. Sette dataset. Tutto l'audio generato interamente a pa
 - **[voice_assistant](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-voice_assistant)**
 - **[wake_up](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-wake_up)**
 
-Ogni dataset è un insieme piatto di circa mille clip positivi — la wakeword pronunciata con locutori, ritmi e prosodia variati. I negativi difficili e il rumore di fondo vengono forniti come dataset complementari separati che mescoli al momento dell'addestramento: [not-wake-words-speech-en](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-en), [not-wake-words-speech-pt](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-pt), e [ambient_noises](https://huggingface.co/datasets/TigreGotico/ambient_noises).
+Ogni dataset è un insieme piatto di clip positivi, da circa 1.300 (hey_siri) a circa 27.800 (hey_mycroft) — la wakeword pronunciata con locutori, ritmi e prosodia variati. I negativi difficili e il rumore di fondo vengono forniti come dataset complementari separati che mescoli al momento dell'addestramento: [not-wake-words-speech-en](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-en), [not-wake-words-speech-pt](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-pt), e [ambient_noises](https://huggingface.co/datasets/TigreGotico/ambient_noises).
 
 ## Perché sintetico
 
@@ -40,4 +41,4 @@ Per il rilevamento di wakeword la proprietà rilevante è la distintività acust
 
 Addestra il tuo rilevatore di wakeword per OpenVoiceOS, Mycroft o qualsiasi sistema vocale aperto. Per l'aumento dei campioni negativi ci sono anche dataset di clip di sottofondo domestici e di pubblico dominio: [building_106_kitchen_3secs](https://huggingface.co/datasets/TigreGotico/building_106_kitchen_3secs), [public_domain_sounds_3secs](https://huggingface.co/datasets/TigreGotico/public_domain_sounds_3secs), e [FMA_3secs](https://huggingface.co/datasets/TigreGotico/FMA_3secs).
 
-[**Tutti i dataset di wakeword su HuggingFace → TigreGotico**](https://huggingface.co/datasets?author=TigreGotico&tags=wakeword)
+[**Tutti i dataset di wakeword su HuggingFace → TigreGotico**](https://huggingface.co/datasets?author=TigreGotico&search=synthetic-wakeword)

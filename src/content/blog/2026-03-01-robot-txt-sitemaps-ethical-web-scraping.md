@@ -2,7 +2,7 @@
 title: "Robots.txt, Sitemaps, and Ethical Web Scraping"
 description: "Before you build a scraper, scout the site. sitemapper reads robots.txt, fetches every sitemap, and optionally crawls the link graph, so your scraper starts from the site's own contract instead of brute force."
 date: 2026-03-01
-updated: 2026-08-01
+updated: 2026-10-20
 author: "Casimiro Ferreira"
 tags:
   - "Web Scraping"
@@ -122,10 +122,7 @@ in a parser.
 
 ## The tool
 
-```bash
-pip install sitemapper
-pip install sitemapper[stealth]   # adds curl_cffi TLS impersonation
-```
+sitemapper is not published on PyPI. The `sitemapper` name there belongs to an unrelated project, so `pip install sitemapper` installs different software. The code is in the [sitemapper repository](https://github.com/TigreGotico/sitemapper). The optional `stealth` extra adds `curl_cffi` TLS impersonation.
 
 Use it as a library, or from the command line: `--json FILE` writes the full
 discovery to a file for other tools to consume, `--crawl` adds the link-graph step:

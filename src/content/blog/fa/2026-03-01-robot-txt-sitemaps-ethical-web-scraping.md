@@ -2,7 +2,7 @@
 title: "Robots.txt، نقشه‌های سایت و اسکرپینگ اخلاقی وب"
 description: "پیش از آنکه یک اسکرپر بسازید، سایت را شناسایی کنید. sitemapper فایل robots.txt را می‌خواند، هر نقشه‌ی سایت را دریافت می‌کند و به‌صورت اختیاری گراف پیوندها را می‌پیماید — تا اسکرپر شما به‌جای زور بازو از قرارداد خودِ سایت آغاز کند."
 date: 2026-03-01
-updated: 2026-08-01
+updated: 2026-10-20
 lang: fa
 author: "Casimiro Ferreira"
 tags:
@@ -125,10 +125,7 @@ print(graph.summary())
 
 ## ابزار
 
-```bash
-pip install sitemapper
-pip install sitemapper[stealth]   # adds curl_cffi TLS impersonation
-```
+sitemapper روی PyPI منتشر نشده است. نام `sitemapper` در آنجا به یک پروژهٔ نامرتبط تعلق دارد، پس `pip install sitemapper` نرم‌افزار دیگری را نصب می‌کند. کد در [مخزن sitemapper](https://github.com/TigreGotico/sitemapper) قرار دارد. افزونهٔ اختیاری `stealth` شبیه‌سازی TLS را با `curl_cffi` اضافه می‌کند.
 
 آن را به‌عنوان کتابخانه به کار ببرید، یا از خط فرمان — `--json FILE` کل کشف را
 در یک فایل برای مصرف ابزارهای دیگر می‌نویسد، `--crawl` گام گراف پیوندها را می‌افزاید:

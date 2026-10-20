@@ -2,7 +2,7 @@
 title: "Robots.txt, Sitemap, 그리고 윤리적 웹 스크래핑"
 description: "스크래퍼를 만들기 전에 사이트를 정찰하세요. sitemapper는 robots.txt를 읽고, 모든 sitemap을 가져오며, 선택적으로 링크 그래프를 크롤링합니다. 따라서 여러분의 스크래퍼는 무차별 대입 대신 사이트 자체의 계약에서 출발합니다."
 date: 2026-03-01
-updated: 2026-08-01
+updated: 2026-10-20
 lang: ko
 author: "Casimiro Ferreira"
 tags:
@@ -90,10 +90,7 @@ print(graph.summary())
 
 ## 도구
 
-```bash
-pip install sitemapper
-pip install sitemapper[stealth]   # adds curl_cffi TLS impersonation
-```
+sitemapper는 PyPI에 게시되어 있지 않습니다. PyPI의 `sitemapper`라는 이름은 관련 없는 다른 프로젝트의 것이므로, `pip install sitemapper`는 다른 소프트웨어를 설치합니다. 코드는 [sitemapper 저장소](https://github.com/TigreGotico/sitemapper)에 있습니다. 선택 사항인 `stealth` extra는 `curl_cffi`를 통한 TLS 위장을 추가합니다.
 
 라이브러리로 사용하거나 명령줄에서 사용하세요. `--json FILE`은 다른 도구가 사용할 수 있도록 전체 발견 결과를 파일로 기록하고, `--crawl`은 링크 그래프 단계를 추가합니다.
 

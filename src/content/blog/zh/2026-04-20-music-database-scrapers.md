@@ -3,7 +3,7 @@ title: "隆重推出我们的音乐数据库抓取器"
 description: "带你了解我们维护的一系列类型化 Python 客户端，覆盖各类音乐来源——Bandcamp、SoundCloud、SomaFM、TuneIn、iHeartRadio，以及各大音乐百科全书——它们全部通过一个简洁的接口输出一致的、类型化的媒体元数据，并共用同一套合规、低请求量的 HTTP 传输层。"
 date: 2026-04-20
 lang: zh
-updated: 2026-08-01
+updated: 2026-10-20
 author: "Casimiro Ferreira"
 tags:
   - "Scrapers"
@@ -46,7 +46,7 @@ draft: false
 
 ## 为合规、低请求量的访问而生
 
-这些客户端只抓取公开的目录页面，请求量很低，并且会在抓取前检查各站点的 `robots.txt`——参见
+这些客户端只抓取公开的目录页面，请求量很低。它们不读取各站点的 `robots.txt`，也不应用爬取延迟，这项检查由调用方负责——参见
 **[关于 robots.txt 与 sitemap 的文章](/zh/blog/2026-03-01-robot-txt-sitemaps-ethical-web-scraping)**
 了解这一侦察步骤是如何工作的。在整个系列中，HTTP 层是 **可插拔的**：客户端默认使用一个 TLS 握手与真实浏览器相符的传输层（`curl_cffi`，匹配 Chrome 的 TLS/JA3），这样一个行为得体的客户端就不会被那些针对脚本化滥用调优的检测系统误判为恶意自动化程序。由 Cloudflare 挡在前面的百科全书还可以额外通过一个 FlareSolverr 实例来获取实时数据，或者以互联网档案馆的 Wayback Machine 作为回退。解析层刻意独立于 HTML 的到达方式，因此无论你选择哪种传输，同一套代码都能工作。
 

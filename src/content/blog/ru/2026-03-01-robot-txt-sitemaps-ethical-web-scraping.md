@@ -2,7 +2,7 @@
 title: "Robots.txt, карты сайта и этичный веб-скрапинг"
 description: "Прежде чем строить скрапер, проведите разведку сайта. sitemapper читает robots.txt, получает все карты сайта и опционально обходит граф ссылок — чтобы ваш скрапер отталкивался от собственного контракта сайта, а не от грубой силы."
 date: 2026-03-01
-updated: 2026-08-01
+updated: 2026-10-20
 lang: ru
 author: "Casimiro Ferreira"
 tags:
@@ -90,10 +90,7 @@ print(graph.summary())
 
 ## Инструмент
 
-```bash
-pip install sitemapper
-pip install sitemapper[stealth]   # adds curl_cffi TLS impersonation
-```
+sitemapper не опубликован на PyPI. Имя `sitemapper` там принадлежит несвязанному проекту, поэтому `pip install sitemapper` установит другое программное обеспечение. Код находится в [репозитории sitemapper](https://github.com/TigreGotico/sitemapper). Необязательный extra `stealth` добавляет имитацию TLS через `curl_cffi`.
 
 Используйте его как библиотеку или из командной строки — `--json FILE` записывает полное обнаружение в файл для потребления другими инструментами, `--crawl` добавляет шаг с графом ссылок:
 

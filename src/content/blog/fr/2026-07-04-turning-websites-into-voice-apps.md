@@ -2,6 +2,7 @@
 title: "Si tout le monde lance une app, nous lancerons la voix : transformer les sites web en applications vocales"
 description: "Chaque site qui compte a fini enveloppé dans une app mobile. Nous proposons le mouvement inverse pour l'ère de la voix et de la ligne de commande : une API propre plus une skill vocale par site, pour que le web devienne navigable à l'oreille et au clavier. Un site à la fois, tout cela finit par former un navigateur vocal."
 date: 2026-07-04
+updated: 2026-10-20
 lang: fr
 author: "Casimiro Ferreira"
 tags:
@@ -107,15 +108,9 @@ qu'on lui remet sont bien typés et honnêtes quant à ce qu'ils renvoient. Un H
 désordonné ne donne rien au LLM à quoi se raccrocher. Un client typé lui donne
 une surface de contrôle.
 
-C'est pourquoi nos clients de site web embarquent un **`SKILL.md`** — une
-description en langage clair de ce que fait l'API, de ses verbes, de ses types de
-retour et d'exemples d'appels, écrite pour être lue par un agent. Pointez un
-assistant piloté par LLM vers lui et le client devient un outil que le modèle
-peut utiliser immédiatement : pas de code de colle, pas d'intégration sur mesure,
-juste « voici ce que ce site sait faire, en mots ». Un seul document transforme
-un scraper en quelque chose qu'un modèle de langage peut opérer en votre nom.
+Un **`SKILL.md`** permettrait à un agent d'utiliser un tel client : une description en langage clair de ce que fait l'API, de ses verbes, de ses types de retour et d'exemples d'appels, écrite pour être lue par un agent. Aucun de nos clients de site web n'en embarque. Si l'on y pointe un assistant piloté par LLM, il pourrait utiliser le client comme un outil : pas de code de colle, pas d'intégration sur mesure, juste « voici ce que ce site sait faire, en mots ». Un seul document transformerait un scraper en quelque chose qu'un modèle de langage peut opérer en votre nom.
 
-Ce sont les mêmes données structurées qui servent trois front-ends à la fois :
+Ce sont les mêmes données structurées qui peuvent servir trois front-ends à la fois :
 une **CLI** pour les utilisateurs de terminal, un **plugin OCP/voix** pour un
 usage sans les mains, et un **outil LLM** pour un contrôle en langage naturel.
 Construisez l'API une fois ; portez-la de trois façons.

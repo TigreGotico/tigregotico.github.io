@@ -2,6 +2,7 @@
 title: "Datasets Sintéticos de Wakeword: Sete Nomes de Assistente, Um Detetor"
 description: "Publicámos sete datasets sintéticos de wakeword para nomes comuns de assistentes de voz: hey_computer, hey_mycroft, hey_siri, alexa, home_assistant, voice_assistant, wake_up. Treina um detetor que funciona em todo o lado."
 date: 2025-10-14
+updated: 2026-10-20
 lang: pt
 author: "Casimiro Ferreira"
 tags:
@@ -14,9 +15,7 @@ tags:
 draft: false
 ---
 
-Sete nomes de assistente. Sete datasets. Todo o áudio é gerado inteiramente pela
-framework TTS **[phoonnx](https://github.com/TigreGotico/phoonnx)** usando as
-vozes Miro e Dii. Sem gravações humanas. Sem formulários de consentimento. Sem
+Sete nomes de assistente. Sete datasets. Todo o áudio é gerado por máquina: motores de síntese de fala como edge-tts, Piper, Google TTS, Amazon Polly e OmniVoice, seguidos de conversão de voz para simular mais locutores. Os motores usados constam da ficha de cada dataset. Sem gravações humanas. Sem formulários de consentimento. Sem
 exposição de privacidade.
 
 - **[hey_computer](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-hey_computer)**
@@ -27,7 +26,7 @@ exposição de privacidade.
 - **[voice_assistant](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-voice_assistant)**
 - **[wake_up](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-wake_up)**
 
-Cada dataset é um conjunto plano de cerca de mil clips positivos: a wakeword dita
+Cada dataset é um conjunto plano de clips positivos, de cerca de 1300 (hey_siri) a cerca de 27 800 (hey_mycroft): a wakeword dita
 com locutores, ritmos e prosódia variados. Os negativos difíceis e o ruído de
 fundo vêm como datasets companheiros separados que misturas no momento do treino:
 [not-wake-words-speech-en](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-en),
@@ -59,4 +58,4 @@ clips de fundo domésticos e de domínio público:
 [public_domain_sounds_3secs](https://huggingface.co/datasets/TigreGotico/public_domain_sounds_3secs),
 e [FMA_3secs](https://huggingface.co/datasets/TigreGotico/FMA_3secs).
 
-[**Todos os datasets de wakeword no HuggingFace → TigreGotico**](https://huggingface.co/datasets?author=TigreGotico&tags=wakeword)
+[**Todos os datasets de wakeword no HuggingFace → TigreGotico**](https://huggingface.co/datasets?author=TigreGotico&search=synthetic-wakeword)

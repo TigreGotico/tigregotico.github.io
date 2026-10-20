@@ -2,6 +2,7 @@
 title: "Se Tutti Lanciano un'App, Noi Lanciamo la Voce: Trasformare i Siti Web in App Vocali"
 description: "Ogni sito che conta è finito avvolto in un'app mobile. Proponiamo la mossa opposta per l'era della voce e della CLI: un'API pulita più una skill vocale per sito, così che il web diventi navigabile con l'orecchio e con la tastiera. Un sito alla volta, tutto sommato dà un browser vocale."
 date: 2026-07-04
+updated: 2026-10-20
 lang: it
 author: "Casimiro Ferreira"
 tags:
@@ -102,15 +103,9 @@ strumenti che gli vengono consegnati siano ben tipizzati e onesti su ciò che
 restituiscono. L'HTML disordinato non dà a un LLM nulla a cui aggrapparsi. Un client
 tipizzato gli dà una superficie di controllo.
 
-Perciò i nostri client per siti web includono un **`SKILL.md`** — una descrizione in
-linguaggio semplice di ciò che l'API fa, dei suoi verbi, dei suoi tipi di ritorno e
-di esempi di chiamate, scritta perché un agente la legga. Puntate un assistente
-guidato da LLM su di esso e il client diventa uno strumento che il modello può usare
-immediatamente: nessun codice di collegamento, nessuna integrazione su misura, solo
-"ecco cosa può fare questo sito, a parole". Un documento trasforma uno scraper in
-qualcosa che un modello linguistico può operare per vostro conto.
+Un **`SKILL.md`** permetterebbe a un agente di usare un client del genere: una descrizione in linguaggio semplice di ciò che l'API fa, dei suoi verbi, dei suoi tipi di ritorno e di esempi di chiamate, scritta perché un agente la legga. Nessuno dei nostri client per siti web ne include uno. Puntando su quel file un assistente guidato da LLM, il client potrebbe diventare uno strumento: nessun codice di collegamento, nessuna integrazione su misura, solo "ecco cosa può fare questo sito, a parole". Un documento trasformerebbe uno scraper in qualcosa che un modello linguistico può operare per vostro conto.
 
-Sono gli stessi dati strutturati a servire tre front-end contemporaneamente: una
+Sono gli stessi dati strutturati che possono servire tre front-end contemporaneamente: una
 **CLI** per gli utenti di terminale, un **plugin OCP/vocale** per l'uso a mani
 libere, e uno **strumento LLM** per il controllo in linguaggio naturale. Costruite
 l'API una volta; indossatela in tre modi.

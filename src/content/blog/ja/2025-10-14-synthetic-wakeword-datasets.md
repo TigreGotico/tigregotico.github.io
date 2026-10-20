@@ -2,6 +2,7 @@
 title: "合成ウェイクワードデータセット: 7 つのアシスタント名、1 つの検出器"
 description: "一般的な音声アシスタント名（hey_computer、hey_mycroft、hey_siri、alexa、home_assistant、voice_assistant、wake_up）向けに 7 つの合成ウェイクワードデータセットを公開しました。どこでも動作する検出器を学習しましょう。"
 date: 2025-10-14
+updated: 2026-10-20
 lang: ja
 author: "Casimiro Ferreira"
 tags:
@@ -14,7 +15,7 @@ tags:
 draft: false
 ---
 
-7 つのアシスタント名。7 つのデータセット。すべての音声は、Miro と Dii の音声を用いて **[phoonnx](https://github.com/TigreGotico/phoonnx)** TTS フレームワークから完全に生成されたものです。人間による収録も、同意書も、プライバシーの露出もありません。
+7 つのアシスタント名。7 つのデータセット。すべての音声は機械生成です。edge-tts、Piper、Google TTS、Amazon Polly、OmniVoice などの音声合成エンジンで作成し、話者を増やすために音声変換を適用しています。使用したエンジンは各データセットのカードに記載されています。人間による収録も、同意書も、プライバシーの露出もありません。
 
 - **[hey_computer](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-hey_computer)**
 - **[hey_mycroft](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-hey_mycroft)**
@@ -24,7 +25,7 @@ draft: false
 - **[voice_assistant](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-voice_assistant)**
 - **[wake_up](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-wake_up)**
 
-各データセットは、およそ 1,000 個のポジティブクリップからなるフラットな集合です。すなわち、さまざまな話者、話速、韻律で発話されたウェイクワードです。ハードネガティブと背景ノイズは、学習時に混合する別の付随データセットとして提供されます。[not-wake-words-speech-en](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-en)、[not-wake-words-speech-pt](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-pt)、[ambient_noises](https://huggingface.co/datasets/TigreGotico/ambient_noises) です。
+各データセットは、ポジティブクリップからなるフラットな集合で、クリップ数はおよそ 1,300（hey_siri）からおよそ 27,800（hey_mycroft）です。すなわち、さまざまな話者、話速、韻律で発話されたウェイクワードです。ハードネガティブと背景ノイズは、学習時に混合する別の付随データセットとして提供されます。[not-wake-words-speech-en](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-en)、[not-wake-words-speech-pt](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-pt)、[ambient_noises](https://huggingface.co/datasets/TigreGotico/ambient_noises) です。
 
 ## なぜ合成なのか
 
@@ -40,4 +41,4 @@ draft: false
 
 OpenVoiceOS、Mycroft、あるいは任意のオープンな音声システム向けに、独自のウェイクワード検出器を学習しましょう。ネガティブサンプルの拡張用には、家庭内やパブリックドメインの背景クリップデータセットもあります。[building_106_kitchen_3secs](https://huggingface.co/datasets/TigreGotico/building_106_kitchen_3secs)、[public_domain_sounds_3secs](https://huggingface.co/datasets/TigreGotico/public_domain_sounds_3secs)、[FMA_3secs](https://huggingface.co/datasets/TigreGotico/FMA_3secs) です。
 
-[**HuggingFace 上のすべてのウェイクワードデータセット → TigreGotico**](https://huggingface.co/datasets?author=TigreGotico&tags=wakeword)
+[**HuggingFace 上のすべてのウェイクワードデータセット → TigreGotico**](https://huggingface.co/datasets?author=TigreGotico&search=synthetic-wakeword)

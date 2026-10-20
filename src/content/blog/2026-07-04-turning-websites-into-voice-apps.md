@@ -2,6 +2,7 @@
 title: "If Everyone Ships an App, We'll Ship Voice: Turning Websites Into Voice Apps"
 description: "Every site that matters got wrapped in a mobile app. We propose the opposite move for the voice and CLI era: a clean API plus a voice skill per site, so the web becomes browsable by ear and by keyboard. One site at a time, it adds up to a voice browser."
 date: 2026-07-04
+updated: 2026-10-20
 author: "Casimiro Ferreira"
 tags:
   - "Voice"
@@ -96,14 +97,9 @@ as the tools it is handed are well-typed and honest about what they return.
 Messy HTML gives an LLM nothing to hold onto. A typed client gives it a control
 surface.
 
-So our website clients ship a **`SKILL.md`**, a plain-language
-description of what the API does, its verbs, its return types, and example
-calls, written for an agent to read. Point an LLM-driven assistant at it and the
-client becomes a tool the model can use immediately: no glue code, no bespoke
-integration, just "here is what this site can do, in words." One document turns
-a scraper into something a language model can operate on your behalf.
+A **`SKILL.md`** would let an agent use such a client: a plain-language description of what the API does, its verbs, its return types, and example calls, written for an agent to read. None of our website clients ships one. Pointed at that file, an LLM-driven assistant could use the client as a tool: no glue code, no bespoke integration, just "here is what this site can do, in words." One document would turn a scraper into something a language model can operate on your behalf.
 
-It is the same structured data serving three front-ends at once: a **CLI** for
+It is the same structured data that can serve three front-ends at once: a **CLI** for
 terminal users, an **OCP/voice plugin** for hands-free use, and an **LLM tool**
 for natural-language control. Build the API once; wear it three ways.
 

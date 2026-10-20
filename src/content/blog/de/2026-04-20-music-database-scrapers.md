@@ -3,7 +3,7 @@ title: "Wir stellen vor: Unsere Scraper für Musikdatenbanken"
 description: "Eine Führung durch die Familie typisierter Python-Clients, die wir für Musikquellen pflegen — Bandcamp, SoundCloud, SomaFM, TuneIn, iHeartRadio und die großen Musikenzyklopädien — die allesamt konsistente, typisierte Media-Metadaten hinter einer sauberen Schnittstelle ausgeben und auf demselben regelkonformen HTTP-Transport mit niedrigem Volumen aufsetzen."
 date: 2026-04-20
 lang: de
-updated: 2026-08-01
+updated: 2026-10-20
 author: "Casimiro Ferreira"
 tags:
   - "Scrapers"
@@ -46,7 +46,7 @@ Die zweite Hälfte der Familie richtet sich an die großen Community-Kataloge.
 
 ## Gebaut für regelkonformen Zugriff mit niedrigem Volumen
 
-Diese Clients rufen ausschließlich öffentliche Katalogseiten ab, mit niedrigem Anfragevolumen, und prüfen die `robots.txt` jeder Seite vor dem Scrapen — siehe den
+Diese Clients rufen ausschließlich öffentliche Katalogseiten ab, mit niedrigem Anfragevolumen. Sie lesen die `robots.txt` einer Seite nicht und wenden keine Crawl-Verzögerung an; diese Prüfung ist Aufgabe des Aufrufers — siehe den
 **[Beitrag zu robots.txt &amp; Sitemaps](/de/blog/2026-03-01-robot-txt-sitemaps-ethical-web-scraping)**
 für die Funktionsweise dieses Aufklärungsschritts. In der gesamten Familie ist die HTTP-Schicht **einsteckbar**: Standardmäßig verwenden die Clients einen Transport, dessen TLS-Handshake dem eines echten Browsers entspricht (`curl_cffi`, das Chromes TLS/JA3 nachbildet), sodass ein wohlverhaltener Client von Erkennungssystemen, die auf skriptgesteuerten Missbrauch abgestimmt sind, nicht als bösartige Automatisierung fehlklassifiziert wird. Die von Cloudflare abgeschirmten Enzyklopädien können zusätzlich über eine FlareSolverr-Instanz für Live-Daten geleitet werden oder als Fallback aus der Wayback Machine des Internet Archive lesen. Die Parsing-Schicht ist bewusst unabhängig davon, wie das HTML ankommt, sodass derselbe Code funktioniert, welchen Transport Sie auch wählen.
 

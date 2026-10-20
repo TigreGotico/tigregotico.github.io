@@ -2,6 +2,7 @@
 title: "Синтетические датасеты слов активации: семь имён ассистентов, один детектор"
 description: "Мы опубликовали семь синтетических датасетов слов активации для распространённых имён голосовых ассистентов — hey_computer, hey_mycroft, hey_siri, alexa, home_assistant, voice_assistant, wake_up. Обучите детектор, который работает везде."
 date: 2025-10-14
+updated: 2026-10-20
 lang: ru
 author: "Casimiro Ferreira"
 tags:
@@ -14,7 +15,7 @@ tags:
 draft: false
 ---
 
-Семь имён ассистентов. Семь датасетов. Всё аудио полностью сгенерировано фреймворком TTS **[phoonnx](https://github.com/TigreGotico/phoonnx)** с использованием голосов Miro и Dii — без человеческих записей, без форм согласия, без раскрытия конфиденциальных данных.
+Семь имён ассистентов. Семь датасетов. Всё аудио сгенерировано машиной: движками синтеза речи, такими как edge-tts, Piper, Google TTS, Amazon Polly и OmniVoice, с последующим преобразованием голоса для имитации большего числа дикторов. Использованные движки перечислены в карточке каждого датасета — без человеческих записей, без форм согласия, без раскрытия конфиденциальных данных.
 
 - **[hey_computer](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-hey_computer)**
 - **[hey_mycroft](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-hey_mycroft)**
@@ -24,7 +25,7 @@ draft: false
 - **[voice_assistant](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-voice_assistant)**
 - **[wake_up](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-wake_up)**
 
-Каждый датасет — это плоский набор из примерно тысячи положительных клипов: слово активации, произнесённое с разными дикторами, темпами и просодией. Сложные негативные примеры и фоновый шум поставляются как отдельные сопутствующие датасеты, которые вы подмешиваете во время обучения: [not-wake-words-speech-en](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-en), [not-wake-words-speech-pt](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-pt) и [ambient_noises](https://huggingface.co/datasets/TigreGotico/ambient_noises).
+Каждый датасет — это плоский набор из положительных клипов, примерно от 1300 (hey_siri) до 27 800 (hey_mycroft): слово активации, произнесённое с разными дикторами, темпами и просодией. Сложные негативные примеры и фоновый шум поставляются как отдельные сопутствующие датасеты, которые вы подмешиваете во время обучения: [not-wake-words-speech-en](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-en), [not-wake-words-speech-pt](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-pt) и [ambient_noises](https://huggingface.co/datasets/TigreGotico/ambient_noises).
 
 ## Почему синтетика
 
@@ -40,4 +41,4 @@ draft: false
 
 Обучите собственный детектор слова активации для OpenVoiceOS, Mycroft или любой открытой голосовой системы. Для аугментации негативными примерами также есть датасеты бытовых и общедоступных фоновых клипов: [building_106_kitchen_3secs](https://huggingface.co/datasets/TigreGotico/building_106_kitchen_3secs), [public_domain_sounds_3secs](https://huggingface.co/datasets/TigreGotico/public_domain_sounds_3secs) и [FMA_3secs](https://huggingface.co/datasets/TigreGotico/FMA_3secs).
 
-[**Все датасеты слов активации на HuggingFace → TigreGotico**](https://huggingface.co/datasets?author=TigreGotico&tags=wakeword)
+[**Все датасеты слов активации на HuggingFace → TigreGotico**](https://huggingface.co/datasets?author=TigreGotico&search=synthetic-wakeword)

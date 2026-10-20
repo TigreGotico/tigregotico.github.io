@@ -2,6 +2,7 @@
 title: "Se Toda a Gente Lança uma App, Nós Lançamos Voz: Transformar Websites em Aplicações de Voz"
 description: "Todos os sites que importam acabaram embrulhados numa app móvel. Propomos o movimento inverso para a era da voz e da linha de comandos: uma API limpa mais uma skill de voz por site, para que a web se torne navegável de ouvido e por teclado. Um site de cada vez, tudo somado dá um navegador de voz."
 date: 2026-07-04
+updated: 2026-10-20
 lang: pt
 author: "Casimiro Ferreira"
 tags:
@@ -104,15 +105,9 @@ conversacional por cima é cada vez mais algo que o modelo simplesmente
 honestas quanto ao que devolvem. HTML confuso não dá a um LLM nada a que se
 agarrar. Um cliente tipado dá-lhe uma superfície de controlo.
 
-Por isso, os nossos clientes de website trazem um **`SKILL.md`**, uma descrição
-em linguagem simples do que a API faz, dos seus verbos, dos seus tipos de retorno
-e exemplos de chamadas, escrita para um agente ler. Aponta um assistente movido a
-LLM para ele e o cliente torna-se uma ferramenta que o modelo pode usar
-imediatamente: sem código de cola, sem integração à medida, apenas "eis o que
-este site consegue fazer, por palavras." Um documento transforma um scraper em
-algo que um modelo de linguagem consegue operar em teu nome.
+Um **`SKILL.md`** permitiria a um agente usar um cliente destes: uma descrição em linguagem simples do que a API faz, dos seus verbos, dos seus tipos de retorno e exemplos de chamadas, escrita para um agente ler. Nenhum dos nossos clientes de website traz um. Se apontares um assistente movido a LLM para esse ficheiro, ele poderia usar o cliente como ferramenta: sem código de cola, sem integração à medida, apenas "eis o que este site consegue fazer, por palavras." Um documento transformaria um scraper em algo que um modelo de linguagem consegue operar em teu nome.
 
-São os mesmos dados estruturados a servir três front-ends ao mesmo tempo: uma
+São os mesmos dados estruturados que podem servir três front-ends ao mesmo tempo: uma
 **CLI** para utilizadores de terminal, um **plugin OCP/voz** para uso sem mãos, e
 uma **ferramenta LLM** para controlo por linguagem natural. Constrói a API uma
 vez; usa-a de três maneiras.
