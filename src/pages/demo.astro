@@ -20,6 +20,8 @@ for (const v of sorted) {
   }
   byVoice.get(v.voice)!.push(v);
 }
+// English is the default: most visitors read the page in English.
+const DEFAULT_VOICE = 'pipertts_en-GB_dii';
 const groups = order.map((name) => ({
   label: VOICE_LABELS[name] || name,
   items: byVoice.get(name)!,
@@ -56,8 +58,8 @@ const groups = order.map((name) => ({
           groups.map((g) => (
             <optgroup label={g.label}>
               {g.items.map((v) => (
-                <option value={v.id} data-ha={v.haCompatible ? '1' : '0'}>
-                  {v.langLabel} · {v.haCompatible ? 'eSpeak (Home Assistant)' : 'Unicode'}
+                <option value={v.id} data-ha={v.haCompatible ? '1' : '0'} selected={v.id === DEFAULT_VOICE}>
+                  {v.voice} · {v.langLabel} · {v.haCompatible ? 'eSpeak (Home Assistant)' : 'Unicode'}
                 </option>
               ))}
             </optgroup>
@@ -114,6 +116,10 @@ const groups = order.map((name) => ({
         <button id="synth" class="btn btn-primary">Synthesize</button>
         <span id="status" class="text-sm text-muted" aria-live="polite"></span>
       </div>
+      <p class="mt-3 text-xs text-muted">
+        The first run of a voice downloads about 64 MB for the voice and up to 45 MB for the speech
+        engine. Your browser keeps them, so the next run starts at once.
+      </p>
 
       <div id="result" class="mt-5 hidden">
         <audio id="player" controls class="w-full"></audio>
@@ -220,6 +226,7 @@ const groups = order.map((name) => ({
     // @ts-expect-error — emscripten module ships no types
     import espeakFactory from 'espeak-ng';
     import espeakWasmUrl from 'espeak-ng/dist/espeak-ng.wasm?url';
+    import ortWasmUrl from 'onnxruntime-web/ort-wasm-simd-threaded.jsep.wasm?url';
 
     const espeakTokenize = makeEspeakTokenizer(espeakFactory, espeakWasmUrl);
     const byId = new Map(voices.map((v) => [v.id, v]));
@@ -271,7 +278,11 @@ const groups = order.map((name) => ({
       const entry = byId.get(sel.value);
       if (!entry) return;
       const text = textEl.value.trim();
-      if (!text) return;
+      if (!text) {
+        status.textContent = 'Type some text first.';
+        textEl.focus();
+        return;
+      }
       btn.disabled = true;
       try {
         if (cache.has(entry.id)) {
@@ -279,6 +290,9 @@ const groups = order.map((name) => ({
         } else {
           status.textContent = 'loading voice…';
           loaded = await loadVoice(entry, {
+            // Serve the ONNX Runtime engine from this site, not from a CDN.
+            // onnxruntime-web accepts a per-file map; phoonnx types the option as a prefix string.
+            wasmPaths: { wasm: ortWasmUrl } as unknown as string,
             onProgress: (frac, label) => {
               status.textContent = `${label}${frac ? ` — ${Math.round(frac * 100)}%` : ''}`;
             },
