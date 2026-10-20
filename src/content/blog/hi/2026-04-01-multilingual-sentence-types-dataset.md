@@ -2,7 +2,7 @@
 title: "एक बहुभाषी वाक्य-प्रकार डेटासेट: प्रश्न, आदेश, कथन"
 description: "हमने sentence-types-multilingual प्रकाशित किया — सात भाषाओं में लगभग 70,000 वाक्य, व्याकरणिक प्रकार (प्रश्न, आदेश, कथन, विस्मयादिबोधक) के अनुसार वर्गीकृत। यह little_questions रूटिंग लाइब्रेरी के पीछे का प्रशिक्षण कॉर्पस है।"
 date: 2026-04-01
-updated: 2026-08-01
+updated: 2026-10-20
 lang: hi
 author: "Casimiro Ferreira"
 tags:
@@ -50,14 +50,14 @@ draft: false
 
 ## डाउनस्ट्रीम स्टैक
 
-इस डेटा पर प्रशिक्षित मॉडल **[little_questions](https://github.com/TigreGotico/little_questions)** के भीतर आते हैं — एक शून्य-निर्भरता वाली ऑफ़लाइन लाइब्रेरी (numpy + onnxruntime) जिसमें वाक्य-प्रकार के लिए प्रति-भाषा ONNX वर्गीकारक और एक 43-भाषा yes/no ध्रुवीयता मॉडल है। मॉडल अंग्रेज़ी के लिए in-wheel बंडल किए गए हैं और अन्य भाषाओं के लिए आलस्य से (lazy) डाउनलोड होते हैं। वाक्य-प्रकार वर्गीकारक HuggingFace पर `TigreGotico/sentence-types` के रूप में प्रकाशित हैं; EAT उत्तर-प्रकार वर्गीकारक आंतरिक रूप से प्रशिक्षित किए जाते हैं और सार्वजनिक रूप से जारी नहीं किए जाते।
+इस डेटा पर प्रशिक्षित मॉडल **[little_questions](https://github.com/TigreGotico/little_questions)** के भीतर आते हैं — एक ऑफ़लाइन लाइब्रेरी जो केवल numpy और onnxruntime पर निर्भर है, जिसमें वाक्य-प्रकार के लिए प्रति-भाषा ONNX वर्गीकारक और एक 43-भाषा yes/no ध्रुवीयता मॉडल है। मॉडल अंग्रेज़ी के लिए in-wheel बंडल किए गए हैं और अन्य भाषाओं के लिए आलस्य से (lazy) डाउनलोड होते हैं। वाक्य-प्रकार वर्गीकारक HuggingFace पर `TigreGotico/sentence-type-classifiers` के रूप में प्रकाशित हैं; अंग्रेज़ी EAT उत्तर-प्रकार वर्गीकारक wheel के भीतर शामिल हैं।
 
 ```python
 from little_questions import Sentence
 
-s = Sentence("What time is it?")
+s = Sentence("When was the telephone invented?")
 print(s.sentence_type)     # "question"
-print(s.classification)    # e.g. "NUM:date"
+print(s.classification)    # "NUM:date"
 ```
 
 `little_questions` OVOS और LILACS के लिए प्राकृतिक-भाषा रूटिंग परत है: यह वर्गीकृत करना कि कोई उच्चारण प्रश्न है, आदेश है या कथन — यही पहला डिस्पैच निर्णय है जो एक वॉइस पाइपलाइन लेती है।

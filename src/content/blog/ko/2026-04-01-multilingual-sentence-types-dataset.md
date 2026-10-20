@@ -2,7 +2,7 @@
 title: "다국어 문장 유형 데이터셋: 질문, 명령, 진술"
 description: "sentence-types-multilingual을 공개했습니다 — 일곱 개 언어에 걸친 약 70,000개의 문장을 문법적 유형(질문, 명령, 진술, 감탄)에 따라 분류한 데이터셋입니다. little_questions 라우팅 라이브러리를 뒷받침하는 학습 코퍼스입니다."
 date: 2026-04-01
-updated: 2026-08-01
+updated: 2026-10-20
 lang: ko
 author: "Casimiro Ferreira"
 tags:
@@ -50,14 +50,14 @@ draft: false
 
 ## 하류 스택
 
-이 데이터로 학습된 모델들은 **[little_questions](https://github.com/TigreGotico/little_questions)** 안에 포함되어 배포됩니다 — 문장 유형에 대한 언어별 ONNX 분류기와 43개 언어 예/아니오 극성 모델을 갖춘, 의존성이 없는(numpy + onnxruntime) 오프라인 라이브러리입니다. 모델은 영어의 경우 휠(wheel) 안에 번들되며, 다른 언어의 경우 지연 다운로드됩니다. 문장 유형 분류기는 HuggingFace에 `TigreGotico/sentence-types`로 공개되어 있으며, EAT 답변 유형 분류기는 내부적으로 학습되어 공개 배포되지 않습니다.
+이 데이터로 학습된 모델들은 **[little_questions](https://github.com/TigreGotico/little_questions)** 안에 포함되어 배포됩니다 — 문장 유형에 대한 언어별 ONNX 분류기와 43개 언어 예/아니오 극성 모델을 갖춘, numpy와 onnxruntime에만 의존하는 오프라인 라이브러리입니다. 모델은 영어의 경우 휠(wheel) 안에 번들되며, 다른 언어의 경우 지연 다운로드됩니다. 문장 유형 분류기는 HuggingFace에 `TigreGotico/sentence-type-classifiers`로 공개되어 있으며, 영어 EAT 답변 유형 분류기는 휠(wheel) 안에 포함되어 있습니다.
 
 ```python
 from little_questions import Sentence
 
-s = Sentence("What time is it?")
+s = Sentence("When was the telephone invented?")
 print(s.sentence_type)     # "question"
-print(s.classification)    # e.g. "NUM:date"
+print(s.classification)    # "NUM:date"
 ```
 
 `little_questions` 는 OVOS와 LILACS를 위한 자연어 라우팅 계층입니다: 발화가 질문인지, 명령인지, 진술인지 분류하는 것은 음성 파이프라인이 내리는 첫 번째 디스패치 결정입니다.

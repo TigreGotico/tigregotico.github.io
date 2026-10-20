@@ -2,6 +2,7 @@
 title: "문자 체계와 음성 표기법: scriptconv가 실제로 변환하는 것"
 description: "문자 체계를 감지하고 음성 표기법 사이를 변환하는 의존성 없는 라이브러리 scriptconv에 대한 심층 분석. IPA, ARPABET, X-SAMPA; ISO-15924 문자 체계 감지; 아랍어를 위한 Buckwalter 음역; 자모로의 한글 분해; 가나 변환을 실제로 실행된 예제와 정직한 한계와 함께 다룹니다."
 date: 2026-08-01
+updated: 2026-10-20
 lang: ko
 author: "Casimiro Ferreira"
 tags:
@@ -64,7 +65,7 @@ from scriptconv import DEFAULT_GRAPH
 # ['arpa->ipa', 'ipa->x-sampa']
 ```
 
-이 허브를 거쳐 총 아홉 개의 표기법이 트랜스코딩됩니다: ARPABET, X-SAMPA, Kirshenbaum, Lexique, Cotovía, RFE, mantoq, 그리고 아래에서 다룰 Buckwalter입니다.
+이 허브를 거쳐 총 일곱 개의 표기법이 트랜스코딩됩니다: ARPABET, X-SAMPA, Kirshenbaum, Lexique, Cotovía, RFE, mantoq입니다. 아래에서 다룰 Buckwalter는 여기에 포함되지 않으며, 아랍 문자와의 사이에서만 변환합니다.
 
 ## 다른 무엇보다 먼저 문자 체계 감지하기
 
@@ -146,7 +147,7 @@ kana_to_hira("カタカナ")
 
 표기법 사이의 변환이 항상 무손실인 것은 아니며, `scriptconv`는 이를 놀라운 일로 남겨두는 대신 조회 가능한 데이터로 기록합니다. 각 표기법은 독립적으로 추적되는 두 가지 속성을 갖습니다: 그것을 IPA로 변환했다가 되돌리면 원래 기호가 정확히 재현되는지, 그리고 IPA를 그것으로 변환했다가 되돌리면 모든 IPA 기호가 재현되는지입니다.
 
-ARPABET은 양방향 모두 실패합니다: 제한적인 영어 전용 음소 목록을 가지고 있어서, IPA → ARPABET → IPA로 가면 ARPABET의 테이블에 기호가 없는, IPA가 만들 수 있는 구별을 잃을 수 있습니다. X-SAMPA와 Lexique는 전체 IPA 목록을 충실히 다루지만 자신들 쪽에서 시작할 때 깔끔하게 왕복한다는 보장은 없습니다. Kirshenbaum과 Buckwalter는 자신들 쪽에서 IPA로는 깔끔하게 왕복하지만 반대는 그렇지 않습니다. 할라비 아랍어 음성화기의 음성 알파벳인 Mantoq는 IPA로 가는 한 방향으로만 변환됩니다 — 되돌리는 변환기는 없습니다. 이 중 어느 것도 어딘가의 docstring에 묻혀 있지 않습니다. 호출자가 왕복이 안전하다고 가정하기 전에 확인할 수 있도록 라이브러리가 노출하는 데이터입니다.
+ARPABET은 양방향 모두 실패합니다: 제한적인 영어 전용 음소 목록을 가지고 있어서, IPA → ARPABET → IPA로 가면 ARPABET의 테이블에 기호가 없는, IPA가 만들 수 있는 구별을 잃을 수 있습니다. X-SAMPA와 Lexique는 전체 IPA 목록을 충실히 다루지만 자신들 쪽에서 시작할 때 깔끔하게 왕복한다는 보장은 없습니다. Kirshenbaum은 자기 쪽에서 IPA로는 깔끔하게 왕복하지만 반대는 그렇지 않습니다. Buckwalter에는 IPA 변환기가 없고, 아랍 문자와의 사이를 변환하는 것만 있습니다. 할라비 아랍어 음성화기의 음성 알파벳인 Mantoq는 IPA로 가는 한 방향으로만 변환됩니다 — 되돌리는 변환기는 없습니다. 이 중 어느 것도 어딘가의 docstring에 묻혀 있지 않습니다. 호출자가 왕복이 안전하다고 가정하기 전에 확인할 수 있도록 라이브러리가 노출하는 데이터입니다.
 
 ---
 

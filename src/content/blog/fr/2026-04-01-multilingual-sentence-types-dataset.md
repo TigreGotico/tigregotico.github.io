@@ -2,7 +2,7 @@
 title: "Un jeu de données multilingue de types de phrases : questions, ordres, affirmations"
 description: "Nous avons publié sentence-types-multilingual — près de 70 000 phrases dans sept langues, classées par type grammatical (question, ordre, affirmation, exclamation). C'est le corpus d'entraînement derrière la bibliothèque de routage little_questions."
 date: 2026-04-01
-updated: 2026-08-01
+updated: 2026-10-20
 lang: fr
 author: "Casimiro Ferreira"
 tags:
@@ -50,14 +50,14 @@ Un modèle entraîné uniquement sur l'anglais se trompe sur ces cas partout ail
 
 ## La pile en aval
 
-Les modèles entraînés sur ces données sont distribués au sein de **[little_questions](https://github.com/TigreGotico/little_questions)** — une bibliothèque hors ligne sans dépendances (numpy + onnxruntime) dotée de classificateurs ONNX par langue pour le type de phrase et d'un modèle de polarité oui/non pour 43 langues. Les modèles sont inclus dans la wheel elle-même pour l'anglais et téléchargés de façon paresseuse pour les autres langues. Les classificateurs de type de phrase sont publiés sous `TigreGotico/sentence-types` sur HuggingFace ; les classificateurs de type de réponse EAT sont entraînés en interne et ne sont pas publiés publiquement.
+Les modèles entraînés sur ces données sont distribués au sein de **[little_questions](https://github.com/TigreGotico/little_questions)** — une bibliothèque hors ligne qui ne dépend que de numpy et onnxruntime, dotée de classificateurs ONNX par langue pour le type de phrase et d'un modèle de polarité oui/non pour 43 langues. Les modèles sont inclus dans la wheel elle-même pour l'anglais et téléchargés de façon paresseuse pour les autres langues. Les classificateurs de type de phrase sont publiés sous `TigreGotico/sentence-type-classifiers` sur HuggingFace ; les classificateurs anglais de type de réponse EAT sont inclus dans la wheel.
 
 ```python
 from little_questions import Sentence
 
-s = Sentence("What time is it?")
+s = Sentence("When was the telephone invented?")
 print(s.sentence_type)     # "question"
-print(s.classification)    # e.g. "NUM:date"
+print(s.classification)    # "NUM:date"
 ```
 
 `little_questions` est la couche de routage en langage naturel pour OVOS et LILACS : déterminer si un énoncé est une question, un ordre ou une affirmation est la première décision de répartition que prend une pipeline vocale.

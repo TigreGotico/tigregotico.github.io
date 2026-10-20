@@ -2,6 +2,7 @@
 title: "Portar con Máquinas, y la Pregunta de Licencia que No Pudimos Responder"
 description: "Reescribimos varios programas en C, C++ y Java — el G2P de espeak-ng, Cotovía, AhoTTS, HermiT — como Python puro, con una IA leyendo el código fuente original y un humano orquestando el trabajo. Nadie de nuestro lado leyó los originales. Eso plantea dos preguntas separadas: ¿puede el resultado ser propiedad de alguien siquiera, y es una obra derivada de la entrada? Mantuvimos las licencias originales porque era más barato que responder. Seguimos pensando que la pregunta está abierta."
 date: 2026-08-01
+updated: 2026-10-20
 lang: es
 author: "Casimiro Ferreira"
 tags:
@@ -345,7 +346,7 @@ aceptado código con derecho de autor de otra persona, bajo la garantía de un
 contribuyente que no tenía forma de comprobarlo. Todo el valor del DCO está en
 que la persona que lo firma estaba en posición de saberlo. Aquí no lo está.
 
-Debian está trabajando en esto ahora mismo. Una
+Debian ha tratado este asunto. Una
 [resolución general sobre el uso de LLM](https://www.debian.org/vote/2026/vote_002)
 entró en su período de discusión el 23 de julio de 2026 con cinco propuestas en
 la papeleta. Cubren toda la gama: la Propuesta A enmendaría el Contrato Social
@@ -357,8 +358,7 @@ individuales impongan sus propias prohibiciones; las Propuestas B, D y E
 permiten el trabajo asistido por IA bajo condiciones, construidas
 respectivamente sobre verificación de licencias, responsabilidad del
 contribuyente, divulgación, y restricciones al envío de material confidencial
-a servicios en la nube. En el momento de escribir esto está en discusión y no
-hay nada decidido.
+a servicios en la nube. La votación se desarrolló del 15 al 28 de agosto de 2026 y ganó la opción 5, «Responsible Use of Generative AI»: Debian ni respalda ni prohíbe las herramientas de IA generativa, y hace responsables a los contribuyentes de lo que envían.
 
 Esa es la segunda vez. Un
 [intento anterior en 2024](https://lwn.net/Articles/972331/) terminó sin
@@ -404,8 +404,7 @@ por moderadores en lugar de por eliminación masiva.
 
 Así que hay dos preguntas independientes en circulación, y un proyecto puede
 caer en cualquier punto de la rejilla: si el código escrito por máquina puede
-licenciarse en absoluto, y si el ecosistema puede absorber el volumen. Debian
-está votando sobre la primera y no ha concluido. Codeberg ha actuado sobre la
+licenciarse en absoluto, y si el ecosistema puede absorber el volumen. Debian resolvió la primera por votación. Codeberg ha actuado sobre la
 segunda. Ningún resultado zanja el otro, y las respuestas que un proyecto da a
 cada una están en gran medida sin correlación.
 

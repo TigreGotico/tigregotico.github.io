@@ -2,6 +2,7 @@
 title: "文字与音标记法：scriptconv 到底在转换什么"
 description: "深入剖析 scriptconv——这个零依赖库，负责检测文字系统并在各种音标记法之间转换。涵盖 IPA、ARPABET 和 X-SAMPA；ISO-15924 文字检测；阿拉伯语的 Buckwalter 转写；谚文分解为字母（jamo）；以及假名转换，配有真实、实际执行过的示例和坦诚的局限说明。"
 date: 2026-08-01
+updated: 2026-10-20
 lang: zh
 author: "Casimiro Ferreira"
 tags:
@@ -64,7 +65,7 @@ from scriptconv import DEFAULT_GRAPH
 # ['arpa->ipa', 'ipa->x-sampa']
 ```
 
-总共有九种记法通过这个枢纽转码：ARPABET、X-SAMPA、Kirshenbaum、Lexique、Cotovía、RFE 和 mantoq，外加 Buckwalter（下文详述）。
+总共有七种记法通过这个枢纽转码：ARPABET、X-SAMPA、Kirshenbaum、Lexique、Cotovía、RFE 和 mantoq。Buckwalter（下文详述）不在其中：它只在阿拉伯文字与 Buckwalter 之间转换。
 
 ## 在做任何其他事之前先检测文字
 
@@ -146,7 +147,7 @@ kana_to_hira("カタカナ")
 
 在各记法之间转换并不总是无损的，`scriptconv` 把这一点记录为可查询的数据，而不是留作一个意外惊喜。每种记法都独立追踪两个属性：把它转换为 IPA 再转换回来，是否能精确复现原始符号；以及把 IPA 转换成它再转换回来，是否能复现每一个 IPA 符号。
 
-ARPABET 在两个方向上都不行：它的音素清单是受限的、专属于英语的，所以 IPA → ARPABET → IPA 这条路径可能会丢失一些 IPA 能表达、但 ARPABET 表中没有对应符号的区别。X-SAMPA 和 Lexique 忠实覆盖了完整的 IPA 清单，但不保证从它们自己那一侧出发能干净地往返。Kirshenbaum 和 Buckwalter 从它们自己那一侧转到 IPA 能干净地往返，反过来则不行。Mantoq，哈拉比阿拉伯语音素转换器所用的音标字母表，只能单向转换成 IPA——没有反向转换器。这些都没有被埋在某个文档字符串里；这是这个库主动暴露出来的数据，方便调用方在假定一次往返转换是安全的之前先查一查。
+ARPABET 在两个方向上都不行：它的音素清单是受限的、专属于英语的，所以 IPA → ARPABET → IPA 这条路径可能会丢失一些 IPA 能表达、但 ARPABET 表中没有对应符号的区别。X-SAMPA 和 Lexique 忠实覆盖了完整的 IPA 清单，但不保证从它们自己那一侧出发能干净地往返。Kirshenbaum 从它自己那一侧转到 IPA 能干净地往返，反过来则不行。Buckwalter 没有到 IPA 的转换器，只有与阿拉伯文字之间的转换器。Mantoq，哈拉比阿拉伯语音素转换器所用的音标字母表，只能单向转换成 IPA——没有反向转换器。这些都没有被埋在某个文档字符串里；这是这个库主动暴露出来的数据，方便调用方在假定一次往返转换是安全的之前先查一查。
 
 ---
 

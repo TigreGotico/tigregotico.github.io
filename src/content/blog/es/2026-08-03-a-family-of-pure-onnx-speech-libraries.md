@@ -1,7 +1,8 @@
 ---
 title: "Una Familia de Bibliotecas de Voz en ONNX Puro"
-description: "TigreGótico mantiene un conjunto de bibliotecas de voz — extensión de ancho de banda, clonación de voz, embeddings de hablante, VAD, acentuación de palabras, fonemización, TTS y una biblioteca de métricas para puntuarlas todas — que comparten una regla en tiempo de ejecución: solo onnxruntime y numpy, sin PyTorch, sin GPU necesaria."
+description: "TigreGótico mantiene un conjunto de bibliotecas de voz — extensión de ancho de banda, clonación de voz, embeddings de hablante, VAD, acentuación de palabras, fonemización, TTS y una biblioteca de métricas para puntuarlas todas — que comparten una regla en tiempo de ejecución: onnxruntime y numpy para la inferencia, sin PyTorch, sin GPU necesaria."
 date: 2026-08-01
+updated: 2026-10-20
 lang: es
 author: "Casimiro Ferreira"
 tags:
@@ -16,7 +17,7 @@ draft: false
 
 ONNX es un formato de archivo para una red neuronal entrenada: los pesos y el grafo de cómputo, congelados, sin dependencia del framework que la entrenó. Un modelo exportado a ONNX puede ejecutarse a través de **ONNX Runtime**, un pequeño motor de inferencia que no hace nada más que ejecutar ese grafo. No sabe cómo se entrenó el modelo, no soporta entrenamiento, y no necesita PyTorch ni TensorFlow instalados.
 
-Varias de nuestras bibliotecas se ciñen a una regla: en tiempo de ejecución, las únicas dependencias son `onnxruntime` y `numpy`. No «casi siempre» — el propio import del paquete nunca trae consigo un framework de entrenamiento. `audiosronnx` (extensión de ancho de banda y eliminación de ruido), `voiceclonnx` (clonación de voz), `speakeronnx` (embeddings de hablante), `speechonnxmetrics` (evaluación), `stressonnx` (acentuación de palabras), `vadonnx` (detección de actividad de voz) y `phoonnx` (fonemización y texto a voz) siguen todas esta regla, cada una en su propio paquete de PyPI. Otras dos, `phoonnx.js` y `precise-onnx-js`, aplican la misma idea en el navegador con `onnxruntime-web` en su lugar.
+Varias de nuestras bibliotecas se ciñen a una regla: en tiempo de ejecución, la inferencia solo necesita `onnxruntime` y `numpy`, además de pequeños paquetes auxiliares para la E/S de audio y la descarga de modelos. El propio import del paquete nunca trae consigo un framework de entrenamiento. `audiosronnx` (extensión de ancho de banda y eliminación de ruido), `voiceclonnx` (clonación de voz), `speakeronnx` (embeddings de hablante), `speechonnxmetrics` (evaluación), `stressonnx` (acentuación de palabras), `vadonnx` (detección de actividad de voz) y `phoonnx` (fonemización y texto a voz) siguen todas esta regla, cada una en su propio paquete de PyPI. Otras dos, `phoonnx.js` y `precise-onnx-js`, aplican la misma idea en el navegador con `onnxruntime-web` en su lugar.
 
 ## Por qué molestarse
 
@@ -64,7 +65,7 @@ cloner = VoiceCloner(engine="facodec")
 out = cloner.clone_voice("source.wav", "reference.wav", "out.wav")
 ```
 
-Hay diez motores registrados (`facodec`, `openvoice`, `chatterbox`, `triaan`, `cosyvoice`, `bicodec`, `knnvc`, `focalcodec`, `lscodec`, `rvc`), que abarcan seis familias de modelos distintas — intercambio de características kNN, codec factorizado, flow-matching, transferencia de tono de color, AR codec-LM y codec desacoplado de hablante. Detrás de cada uno hay cifras publicadas de inteligibilidad y similitud de hablante, de modo que elegir un motor es una comparación, no una moneda al aire.
+Hay diez motores registrados (`facodec`, `openvoice`, `chatterbox`, `triaan`, `cosyvoice`, `bicodec`, `knnvc`, `focalcodec`, `lscodec`, `rvc`), que abarcan nueve familias de modelos distintas — intercambio de características kNN, codec factorizado, flow-matching, transferencia de tono de color, AR codec-LM, codec desacoplado de hablante, Triple-AAN, tokens semánticos más globales y ContentVec+VITS. Detrás de cada uno hay cifras publicadas de inteligibilidad y similitud de hablante, de modo que elegir un motor es una comparación, no una moneda al aire.
 
 `vadonnx` aplica el patrón a la detección de actividad de voz — decidir qué partes de un flujo de audio contienen habla siquiera:
 
@@ -76,7 +77,7 @@ segments = vad.get_speech_segments(audio, sample_rate=16000)
 # -> [SpeechSegment(start=0.32, end=2.27), SpeechSegment(start=3.27, end=4.45), ...]
 ```
 
-Hay seis familias de modelos registradas (`silero`, `marblenet`, `pyannote`, `fsmn`, `speechbrain`, `ten`), y una `IOSignature` declarativa permite que un único motor genérico impulse la mayoría de ellas, o apunte a cualquier archivo `.onnx` de VAD personalizado.
+Hay siete familias de modelos registradas (`silero`, `marblenet`, `pyannote`, `fsmn`, `speechbrain`, `ten`, `pulsevad`), y una `IOSignature` declarativa permite que un único motor genérico impulse la mayoría de ellas, o apunte a cualquier archivo `.onnx` de VAD personalizado.
 
 `speakeronnx` extrae un **embedding de hablante** — un vector de longitud fija que resume quién habla, independientemente de lo que dijo — y compara dos embeddings por similitud coseno para comprobar si dos clips son del mismo hablante:
 
@@ -89,7 +90,7 @@ alice2 = embedder.embed("alice_clip2.wav")
 print(cosine(alice1, alice2))   # e.g. 0.82 - same speaker
 ```
 
-Registra nueve modelos en cuatro familias de arquitectura (WeSpeaker, CAM++, ERes2Net, ReDimNet), con dimensiones de embedding y licencias publicadas.
+Registra nueve modelos en cinco familias de arquitectura (WeSpeaker, CAM++, ERes2Net, TitaNet, ReDimNet), con dimensiones de embedding y licencias publicadas.
 
 `stressonnx` elige la acentuación de palabras para los frontends de texto a voz — qué sílaba de una palabra lleva el énfasis, información que muchas lenguas no deletrean (el ruso *за́мок*, castillo, frente a *замо́к*, cerradura, comparten todas las letras). Registra una pipeline neuronal para el ruso, una segunda para el ucraniano y el bielorruso, y un backend de reglas y vocabulario que cubre 26 lenguas sin ninguna inferencia neuronal:
 
@@ -100,7 +101,7 @@ stress("старинный замок стоит на горе", "ru")
 # 'стари́нный за́мок сто́ит на горе́'
 ```
 
-`phoonnx` fonemiza texto (convierte palabras escritas en las unidades de sonido que consume un modelo de TTS) y ejecuta texto a voz a través de 17 motores de síntesis registrados y voces exportadas desde varios ecosistemas (phoonnx nativo, Piper, Mimic3, Coqui, MMS, Transformers):
+`phoonnx` fonemiza texto (convierte palabras escritas en las unidades de sonido que consume un modelo de TTS) y ejecuta texto a voz a través de 28 motores de síntesis registrados y voces exportadas desde varios ecosistemas (phoonnx nativo, Piper, Mimic3, Coqui, MMS, Transformers):
 
 ```python
 import wave
@@ -114,11 +115,13 @@ with wave.open("hello.wav", "wb") as wav_file:
 `phoonnx.js` traslada las mismas rutas de tokenización al navegador con `onnxruntime-web`, y `precise-onnx-js` porta la detección de palabra de activación (extracción de características MFCC más un clasificador ONNX, compatible con los modelos Mycroft Precise) a JavaScript, ambos sin servidor:
 
 ```ts
+// phoonnx.js is not on npm. Install it from GitHub:
+// npm install github:TigreGotico/phoonnx.js onnxruntime-web
 import { loadVoice, synthesizeWav } from "phoonnx";
 import { getVoice } from "phoonnx/voices";
 
-const voice = await loadVoice(getVoice("phoonnx_eu-ES_dii_unicode")!);
-const blob = await synthesizeWav(voice, "Kaixo mundua!");
+const voice = await loadVoice(getVoice("phoonnx_pt-PT_miro_unicode")!);
+const blob = await synthesizeWav(voice, "Olá, mundo!");
 ```
 
 Los pesos de `audiosronnx` (18 modelos publicados) y `voiceclonnx` (10 modelos publicados) viven como descargas separadas en la [organización de Hugging Face de TigreGótico](https://huggingface.co/TigreGotico), obtenidos en el primer uso y guardados en caché localmente, de modo que elegir un motor distinto es un cambio de configuración, no un nuevo despliegue.

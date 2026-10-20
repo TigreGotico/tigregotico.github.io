@@ -1,7 +1,8 @@
 ---
 title: "一族纯 ONNX 语音库"
-description: "TigreGótico 维护着一组语音库——带宽扩展、声音克隆、说话人嵌入、VAD、词重音、音素化、TTS，以及一个为它们全部打分的指标库——它们共用同一条运行时规则：只依赖 onnxruntime 和 numpy，不需要 PyTorch，也不需要 GPU。"
+description: "TigreGótico 维护着一组语音库——带宽扩展、声音克隆、说话人嵌入、VAD、词重音、音素化、TTS，以及一个为它们全部打分的指标库——它们共用同一条运行时规则：推理只依赖 onnxruntime 和 numpy，不需要 PyTorch，也不需要 GPU。"
 date: 2026-08-01
+updated: 2026-10-20
 lang: zh
 author: "Casimiro Ferreira"
 tags:
@@ -16,7 +17,7 @@ draft: false
 
 ONNX 是训练好的神经网络的一种文件格式：权重与计算图被冻结下来，不依赖训练它所用的框架。一个导出为 ONNX 的模型可以通过 **ONNX Runtime** 运行——这是一个小巧的推理引擎，除了执行那张计算图之外什么都不做。它不知道模型是怎么训练的，不支持训练，也不需要安装 PyTorch 或 TensorFlow。
 
-我们的多个库都恪守同一条规则：在运行时，唯一的依赖就是 `onnxruntime` 和 `numpy`。不是"大体上"——导入这个包本身绝不会带进来一个训练框架。`audiosronnx`（带宽扩展与降噪）、`voiceclonnx`（声音克隆）、`speakeronnx`（说话人嵌入）、`speechonnxmetrics`（评估）、`stressonnx`（词重音）、`vadonnx`（语音活动检测）和 `phoonnx`（音素化与文本转语音）全都遵循这条规则，各自作为独立的 PyPI 包发布。另外两个，`phoonnx.js` 和 `precise-onnx-js`，则在浏览器中用 `onnxruntime-web` 实现了同样的理念。
+我们的多个库都恪守同一条规则：在运行时，推理只需要 `onnxruntime` 和 `numpy`，外加用于音频读写和模型下载的小型辅助包。导入这个包本身绝不会带进来一个训练框架。`audiosronnx`（带宽扩展与降噪）、`voiceclonnx`（声音克隆）、`speakeronnx`（说话人嵌入）、`speechonnxmetrics`（评估）、`stressonnx`（词重音）、`vadonnx`（语音活动检测）和 `phoonnx`（音素化与文本转语音）全都遵循这条规则，各自作为独立的 PyPI 包发布。另外两个，`phoonnx.js` 和 `precise-onnx-js`，则在浏览器中用 `onnxruntime-web` 实现了同样的理念。
 
 ## 为什么要这么讲究
 
@@ -64,7 +65,7 @@ cloner = VoiceCloner(engine="facodec")
 out = cloner.clone_voice("source.wav", "reference.wav", "out.wav")
 ```
 
-它注册了十个引擎（`facodec`、`openvoice`、`chatterbox`、`triaan`、`cosyvoice`、`bicodec`、`knnvc`、`focalcodec`、`lscodec`、`rvc`），横跨六个不同的模型家族——kNN 特征替换、因式分解编解码器、流匹配、音色迁移、自回归编解码语言模型，以及说话人解耦编解码器。每一个背后都附带已发布的可懂度和说话人相似度数值，因此选择一个引擎是一次比较，而不是抛硬币。
+它注册了十个引擎（`facodec`、`openvoice`、`chatterbox`、`triaan`、`cosyvoice`、`bicodec`、`knnvc`、`focalcodec`、`lscodec`、`rvc`），横跨九个不同的模型家族——kNN 特征替换、因式分解编解码器、流匹配、音色迁移、自回归编解码语言模型、说话人解耦编解码器、Triple-AAN、语义加全局令牌，以及 ContentVec+VITS。每一个背后都附带已发布的可懂度和说话人相似度数值，因此选择一个引擎是一次比较，而不是抛硬币。
 
 `vadonnx` 把这一模式用在语音活动检测上——判断一段音频流中哪些部分究竟包含语音：
 
@@ -76,7 +77,7 @@ segments = vad.get_speech_segments(audio, sample_rate=16000)
 # -> [SpeechSegment(start=0.32, end=2.27), SpeechSegment(start=3.27, end=4.45), ...]
 ```
 
-它注册了六个模型家族（`silero`、`marblenet`、`pyannote`、`fsmn`、`speechbrain`、`ten`），一个声明式的 `IOSignature` 让一个通用引擎就能驱动其中大多数，或者指向任意自定义的 `.onnx` VAD 文件。
+它注册了七个模型家族（`silero`、`marblenet`、`pyannote`、`fsmn`、`speechbrain`、`ten`、`pulsevad`），一个声明式的 `IOSignature` 让一个通用引擎就能驱动其中大多数，或者指向任意自定义的 `.onnx` VAD 文件。
 
 `speakeronnx` 提取一个 **说话人嵌入**——一个固定长度的向量，概括的是"谁在说话"，与"说了什么"无关——并通过余弦相似度比较两个嵌入，判断两段音频是否来自同一说话人：
 
@@ -89,7 +90,7 @@ alice2 = embedder.embed("alice_clip2.wav")
 print(cosine(alice1, alice2))   # e.g. 0.82 - same speaker
 ```
 
-它在四个架构家族（WeSpeaker、CAM++、ERes2Net、ReDimNet）中注册了九个模型，附带已发布的嵌入维度和许可证信息。
+它在五个架构家族（WeSpeaker、CAM++、ERes2Net、TitaNet、ReDimNet）中注册了九个模型，附带已发布的嵌入维度和许可证信息。
 
 `stressonnx` 为文本转语音前端挑选词重音——一个词的哪个音节承载重音，这是很多语言在书写中并不标出的信息（俄语的 *за́мок*，城堡，与 *замо́к*，锁，字母完全相同）。它为俄语注册了一个神经网络流水线，为乌克兰语和白俄罗斯语注册了第二个，并为另外 26 种语言注册了一个完全不做神经推理的规则加词表后端：
 
@@ -100,7 +101,7 @@ stress("старинный замок стоит на горе", "ru")
 # 'стари́нный за́мок сто́ит на горе́'
 ```
 
-`phoonnx` 对文本进行音素化（把拼写出的词变成 TTS 模型消费的声音单元），并驱动跨 17 个已注册的合成引擎和从多个生态系统（原生 phoonnx、Piper、Mimic3、Coqui、MMS、Transformers）导出的语音的文本转语音：
+`phoonnx` 对文本进行音素化（把拼写出的词变成 TTS 模型消费的声音单元），并驱动跨 28 个已注册的合成引擎和从多个生态系统（原生 phoonnx、Piper、Mimic3、Coqui、MMS、Transformers）导出的语音的文本转语音：
 
 ```python
 import wave
@@ -114,11 +115,13 @@ with wave.open("hello.wav", "wb") as wav_file:
 `phoonnx.js` 把同样的分词器路径带进了浏览器，用的是 `onnxruntime-web`；`precise-onnx-js` 则把唤醒词检测（MFCC 特征提取加一个 ONNX 分类器，兼容 Mycroft Precise 模型）移植到了 JavaScript——两者都无需服务器：
 
 ```ts
+// phoonnx.js is not on npm. Install it from GitHub:
+// npm install github:TigreGotico/phoonnx.js onnxruntime-web
 import { loadVoice, synthesizeWav } from "phoonnx";
 import { getVoice } from "phoonnx/voices";
 
-const voice = await loadVoice(getVoice("phoonnx_eu-ES_dii_unicode")!);
-const blob = await synthesizeWav(voice, "Kaixo mundua!");
+const voice = await loadVoice(getVoice("phoonnx_pt-PT_miro_unicode")!);
+const blob = await synthesizeWav(voice, "Olá, mundo!");
 ```
 
 `audiosronnx`（18 个已发布模型）和 `voiceclonnx`（10 个已发布模型）的权重，作为独立的下载项存放在 [TigreGótico 的 Hugging Face 组织](https://huggingface.co/TigreGotico)中，首次使用时获取并在本地缓存，因此换一个引擎只是改一处配置，而不是重新部署。

@@ -2,6 +2,7 @@
 title: "制造业中的 OVOS 与 HiveMind"
 description: "COALA 和 WASABI 两个欧盟项目围绕 OVOS + HiveMind 构建了一整套工业语音助手框架，将它们与自有的工具、UI 和对话引擎相集成。"
 date: 2025-11-26
+updated: 2026-10-20
 lang: zh
 author: "Casimiro Ferreira"
 tags:
@@ -104,7 +105,7 @@ WASABI 项目的以下两份文档解释了 OVOS/HiveMind 的用法：
 
 ### **4. 工业语音数据集**
 
-COALA 发布了一个在工厂和车间录制的多语言语音数据集：
+COALA 发布了一个英语语音数据集，内容是制造业相关的脚本，由通过服务提供商雇佣的众包工作者朗读录制，并以 CC0 发布：
 [https://zenodo.org/record/8268928](https://zenodo.org/record/8268928)
 
 ---

@@ -2,6 +2,7 @@
 title: "Measuring Speech Quality Without a Listening Panel"
 description: "A working guide to speechonnxmetrics: what MOS, no-reference MOS predictors, intrusive signal metrics and ASR-based WER/CER actually measure, when each applies, real scores from real audio, and why a predicted MOS is evidence, not truth."
 date: 2026-08-01
+updated: 2026-10-20
 lang: en
 author: "Casimiro Ferreira"
 tags:
@@ -74,7 +75,7 @@ strings, not audio. `s.score()` only dispatches metrics that take a waveform.
 
 ## No-reference MOS: reading the numbers
 
-Four MOS estimators ship, each returning values on a 1–5 scale where higher is better,
+Five MOS estimators ship, each returning values on a 1–5 scale where higher is better,
 the same scale a human panel uses:
 
 | metric | dimensions | trained on | commercial use |
@@ -170,8 +171,7 @@ and a hypothesis (what the audio was actually transcribed as):
 | `wip` | 0–1 | higher is better | word information preserved (`1 − wil`) |
 
 A worked example: reference "the quick brown fox jumps over the lazy dog" against
-hypothesis "the quick brown fox jumped over a lazy dog" (one substitution, "jumps" →
-"jumped", one deletion of "the"):
+hypothesis "the quick brown fox jumped over a lazy dog" (two substitutions, "jumps" → "jumped" and "the" → "a"):
 
 ```python
 >>> from speechonnxmetrics import asr

@@ -2,6 +2,7 @@
 title: "Portare Codice con le Macchine, e la Domanda sulla Licenza a Cui Non Abbiamo Saputo Rispondere"
 description: "Abbiamo riscritto diversi programmi in C, C++ e Java — il G2P di espeak-ng, Cotovia, AhoTTS, HermiT — come puro Python, con un'IA che leggeva il codice sorgente originale e un essere umano a orchestrare il lavoro. Nessuno di noi ha letto gli originali. Questo solleva due domande distinte: il risultato può essere posseduto da qualcuno, ed è un'opera derivata dell'originale? Abbiamo mantenuto le licenze originali perché era più economico che rispondere. Pensiamo ancora che la domanda resti aperta."
 date: 2026-08-01
+updated: 2026-10-20
 lang: it
 author: "Casimiro Ferreira"
 tags:
@@ -366,7 +367,7 @@ garanzia data da un contributore che non aveva modo di verificarla. L'intero
 valore del DCO sta nel fatto che chi lo firma è in grado di sapere. Qui non
 lo è.
 
-Debian sta affrontando la questione proprio ora. Una
+Debian ha affrontato la questione. Una
 [risoluzione generale sull'uso degli LLM](https://www.debian.org/vote/2026/vote_002)
 è entrata nel suo periodo di discussione il 23 luglio 2026 con cinque
 proposte sulla scheda. Coprono l'intero spettro: la Proposta A emenderebbe il
@@ -378,7 +379,7 @@ manutentori di imporre i propri divieti; le Proposte B, D ed E permettono il
 lavoro assistito dall'IA a determinate condizioni, basate rispettivamente su
 verifica della licenza, responsabilità del contributore, dichiarazione
 esplicita e restrizioni sull'invio di materiale confidenziale a servizi
-cloud. Al momento in cui scriviamo è in discussione e nulla è stato deciso.
+cloud. Il voto si è svolto dal 15 al 28 agosto 2026 e ha vinto l'opzione 5, «Responsible Use of Generative AI»: Debian non approva né vieta gli strumenti di IA generativa e ritiene i contributori responsabili di ciò che inviano.
 
 È il secondo tentativo. Un
 [precedente tentativo nel 2024](https://lwn.net/Articles/972331/) si è
@@ -428,7 +429,7 @@ di massa.
 Ci sono quindi due domande indipendenti in circolazione, e un progetto può
 collocarsi ovunque sulla griglia: se il codice scritto da macchina possa
 essere concesso in licenza, e se l'ecosistema possa assorbire il volume.
-Debian sta votando sulla prima e non ha ancora concluso. Codeberg ha agito
+Debian ha deciso la prima con un voto. Codeberg ha agito
 sulla seconda. Nessuno dei due esiti risolve l'altro, e le risposte che un
 progetto dà a ciascuna sono in gran parte non correlate.
 

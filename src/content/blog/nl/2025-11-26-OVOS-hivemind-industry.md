@@ -2,6 +2,7 @@
 title: "OVOS & HiveMind in de Maakindustrie"
 description: "De EU-projecten COALA en WASABI hebben een compleet industrieel spraakassistent-framework rond OVOS + HiveMind gebouwd, en integreren die met hun eigen tools, UI en conversatie-engines."
 date: 2025-11-26
+updated: 2026-10-20
 lang: nl
 author: "Casimiro Ferreira"
 tags:
@@ -104,7 +105,7 @@ Dit vormt de standaard industriële spraakassistent-stack die alle WASABI-experi
 
 ### **4. Een industriële spraakdataset**
 
-COALA publiceerde een meertalige spraakdataset die in fabrieken en werkplaatsen is opgenomen:
+COALA publiceerde een Engelstalige spraakdataset met scripts uit de maakindustrie, voorgelezen door crowdworkers die via een dienstverlener zijn ingehuurd en vrijgegeven onder CC0:
 [https://zenodo.org/record/8268928](https://zenodo.org/record/8268928)
 
 ---

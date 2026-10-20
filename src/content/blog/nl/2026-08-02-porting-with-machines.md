@@ -2,6 +2,7 @@
 title: "Porten met machines, en de licentievraag die we niet konden beantwoorden"
 description: "We herschreven meerdere C-, C++- en Java-programma's — de G2P van espeak-ng, Cotovia, AhoTTS, HermiT — als puur Python, met een AI die de originele bron las en een mens die orkestreerde. Dat roept twee vragen op: kan de output überhaupt bezit zijn, en is het een afgeleid werk? We behielden de upstream-licenties omdat dat goedkoper was dan antwoorden."
 date: 2026-08-01
+updated: 2026-10-20
 lang: nl
 author: "Casimiro Ferreira"
 tags:
@@ -362,7 +363,7 @@ bijdrager die geen manier had om te controleren. De hele waarde van de DCO
 is dat de persoon die tekent in staat was om het te weten. Hier is dat niet
 het geval.
 
-Debian werkt dit nu uit. Een
+Debian heeft dit uitgewerkt. Een
 [algemene resolutie over LLM-gebruik](https://www.debian.org/vote/2026/vote_002)
 ging op 23 juli 2026 zijn discussieperiode in met vijf voorstellen op het
 stembiljet. Ze bestrijken de hele reeks: Voorstel A zou het Sociaal Contract
@@ -373,8 +374,7 @@ projectcommunicatie, en laat individuele maintainers hun eigen verboden
 opleggen; Voorstellen B, D en E staan AI-ondersteund werk toe onder
 voorwaarden, gebaseerd op respectievelijk licentieverificatie,
 verantwoordingsplicht van bijdragers, openbaarmaking, en beperkingen op het
-sturen van vertrouwelijk materiaal naar clouddiensten. Op het moment van
-schrijven wordt het bediscussieerd en is er niets besloten.
+sturen van vertrouwelijk materiaal naar clouddiensten. De stemming liep van 15 tot 28 augustus 2026 en optie 5, "Responsible Use of Generative AI", won: Debian onderschrijft generatieve AI-hulpmiddelen niet en verbiedt ze niet, en houdt bijdragers verantwoordelijk voor wat ze indienen.
 
 Dit is de tweede keer. Een
 [eerdere poging in 2024](https://lwn.net/Articles/972331/) eindigde zonder
@@ -420,8 +420,7 @@ door moderators in plaats van door massale verwijdering.
 
 Er circuleren dus twee onafhankelijke vragen, en een project kan overal op
 het rooster terechtkomen: of machinaal geschreven code überhaupt in licentie
-kan worden gegeven, en of het ecosysteem het volume kan absorberen. Debian
-stemt over de eerste en is niet tot een conclusie gekomen. Codeberg heeft
+kan worden gegeven, en of het ecosysteem het volume kan absorberen. Debian heeft de eerste bij stemming beslist. Codeberg heeft
 gehandeld op de tweede. Geen van beide uitkomsten regelt de andere, en de
 antwoorden die een project op elk geeft zijn grotendeels ongecorreleerd.
 

@@ -2,6 +2,7 @@
 title: "Porter avec des machines, et la question de licence à laquelle nous n'avons pas pu répondre"
 description: "Nous avons réécrit plusieurs programmes en C, C++ et Java — le G2P d'espeak-ng, Cotovia, AhoTTS, HermiT — en Python pur, avec une IA lisant la source et un humain orchestrant. Cela soulève deux questions : le résultat peut-il être possédé, et est-il une œuvre dérivée ? Nous avons gardé les licences amont, faute de mieux."
 date: 2026-08-01
+updated: 2026-10-20
 lang: fr
 author: "Casimiro Ferreira"
 tags:
@@ -374,7 +375,7 @@ l'assurance d'un contributeur qui n'avait aucun moyen de le vérifier. Toute
 la valeur du DCO tient à ce que la personne qui signe était en position de
 savoir. Ici, elle ne l'est pas.
 
-Debian travaille cette question en ce moment. Une
+Debian a tranché cette question. Une
 [résolution générale sur l'usage des LLM](https://www.debian.org/vote/2026/vote_002)
 est entrée en période de discussion le 23 juillet 2026 avec cinq
 propositions au scrutin. Elles couvrent tout l'éventail : la Proposition A
@@ -387,8 +388,7 @@ leurs propres interdictions ; les Propositions B, D et E autorisent le
 travail assisté par IA sous conditions, fondées diversement sur la
 vérification des licences, la responsabilisation des contributeurs, la
 divulgation, et des restrictions sur l'envoi de matériel confidentiel à des
-services cloud. Au moment d'écrire, c'est en discussion et rien n'est
-décidé.
+services cloud. Le vote s'est tenu du 15 au 28 août 2026 et l'option 5, « Responsible Use of Generative AI », l'a emporté : Debian n'approuve ni n'interdit les outils d'IA générative et tient les contributeurs responsables de ce qu'ils soumettent.
 
 C'est la deuxième fois. Une
 [tentative antérieure en 2024](https://lwn.net/Articles/972331/) s'est
@@ -436,7 +436,7 @@ suppression massive.
 Il y a donc deux questions indépendantes en circulation, et un projet peut
 se situer n'importe où sur la grille : si le code écrit par machine peut
 seulement être mis sous licence, et si l'écosystème peut absorber le
-volume. Debian vote sur la première et n'a pas conclu. Codeberg a agi sur la
+volume. Debian a tranché la première par un vote. Codeberg a agi sur la
 seconde. Aucun résultat ne règle l'autre, et les réponses qu'un projet donne
 à chacune sont largement décorrélées.
 

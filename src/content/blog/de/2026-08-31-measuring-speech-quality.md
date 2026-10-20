@@ -2,6 +2,7 @@
 title: "Sprachqualität messen ohne Hörer-Panel"
 description: "Ein praxisnaher Leitfaden zu speechonnxmetrics: was MOS, referenzlose MOS-Schätzer, intrusive Signalmetriken und ASR-basierte WER/CER tatsächlich messen, wann welche gilt, echte Werte von echtem Audio, und warum ein vorhergesagter MOS Beweis ist, nicht Wahrheit."
 date: 2026-08-01
+updated: 2026-10-20
 lang: de
 author: "Casimiro Ferreira"
 tags:
@@ -42,7 +43,7 @@ Textmetriken leben in einem separaten Modul, `speechonnxmetrics.asr`, weil sie Z
 
 ## Referenzloses MOS: die Zahlen lesen
 
-Vier MOS-Schätzer werden ausgeliefert, jeder gibt Werte auf einer Skala von 1 bis 5 zurück, wobei höher besser ist — dieselbe Skala, die ein menschliches Panel verwendet:
+Fünf MOS-Schätzer werden ausgeliefert, jeder gibt Werte auf einer Skala von 1 bis 5 zurück, wobei höher besser ist — dieselbe Skala, die ein menschliches Panel verwendet:
 
 | Metrik | Dimensionen | trainiert auf | kommerzielle Nutzung |
 |---|---|---|---|
@@ -109,7 +110,7 @@ Fünf Textmetriken stammen aus einer einzigen Levenshtein-Ausrichtung zwischen e
 | `wil` | 0–1 | niedriger ist besser | verlorene Wortinformation |
 | `wip` | 0–1 | höher ist besser | erhaltene Wortinformation (`1 − wil`) |
 
-Ein durchgerechnetes Beispiel: Referenz "the quick brown fox jumps over the lazy dog" gegen Hypothese "the quick brown fox jumped over a lazy dog" (eine Ersetzung, "jumps" → "jumped", eine Auslassung von "the"):
+Ein durchgerechnetes Beispiel: Referenz "the quick brown fox jumps over the lazy dog" gegen Hypothese "the quick brown fox jumped over a lazy dog" (zwei Ersetzungen, "jumps" → "jumped" und "the" → "a"):
 
 ```python
 >>> from speechonnxmetrics import asr

@@ -2,6 +2,7 @@
 title: "Scripts and Phonetic Notations: What scriptconv Actually Converts"
 description: "A tour of scriptconv, the zero-dependency library that detects writing systems and converts between phonetic notations. Covers IPA, ARPABET, and X-SAMPA, ISO-15924 script detection, Buckwalter transliteration for Arabic, Hangul decomposition into jamo, and kana conversion, with real, executed examples and honest limits."
 date: 2026-08-01
+updated: 2026-10-20
 author: "Casimiro Ferreira"
 tags:
   - "IPA"
@@ -64,7 +65,7 @@ from scriptconv import DEFAULT_GRAPH
 # ['arpa->ipa', 'ipa->x-sampa']
 ```
 
-Nine notations transcode through that hub in total: ARPABET, X-SAMPA, Kirshenbaum, Lexique, Cotovía, RFE, and mantoq, plus Buckwalter, covered below.
+Seven notations transcode through that hub in total: ARPABET, X-SAMPA, Kirshenbaum, Lexique, Cotovía, RFE, and mantoq. Buckwalter, covered below, is not one of them: it converts only to and from Arabic script.
 
 ## Detecting the script before doing anything else
 
@@ -146,7 +147,7 @@ A phonemizer (a tool that guesses how a written word is pronounced) needs lingui
 
 Converting between notations is not always lossless, and `scriptconv` records this as queryable data rather than leaving it as a surprise. Each notation has two independently tracked properties: whether converting it to IPA and back reproduces the original symbols exactly, and whether IPA converted into it and back reproduces every IPA symbol.
 
-ARPABET fails both directions: it has a restricted, English-specific phoneme inventory, so going IPA → ARPABET → IPA can lose distinctions IPA can make that ARPABET's table has no symbol for. X-SAMPA and Lexique cover the full IPA inventory faithfully but are not guaranteed to round-trip cleanly starting from their own side. Kirshenbaum and Buckwalter round-trip cleanly from their own side into IPA but not the reverse. Mantoq, the phonetic alphabet of the Halabi Arabic phonetiser, only converts one way, into IPA. There is no converter back. None of this is buried in a docstring somewhere. It is data the library exposes so a caller can check before assuming a round trip is safe.
+ARPABET fails both directions: it has a restricted, English-specific phoneme inventory, so going IPA → ARPABET → IPA can lose distinctions IPA can make that ARPABET's table has no symbol for. X-SAMPA and Lexique cover the full IPA inventory faithfully but are not guaranteed to round-trip cleanly starting from their own side. Kirshenbaum round-trips cleanly from its own side into IPA but not the reverse. Buckwalter has no IPA converter, only one to and from Arabic script. Mantoq, the phonetic alphabet of the Halabi Arabic phonetiser, only converts one way, into IPA. There is no converter back. None of this is buried in a docstring somewhere. It is data the library exposes so a caller can check before assuming a round trip is safe.
 
 ---
 

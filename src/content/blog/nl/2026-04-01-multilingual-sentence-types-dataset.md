@@ -3,7 +3,7 @@ title: "Een meertalige dataset van zinstypen: vragen, commando's, uitspraken"
 description: "We hebben sentence-types-multilingual gepubliceerd — bijna 70.000 zinnen in zeven talen, geclassificeerd naar grammaticaal type (vraag, commando, uitspraak, uitroep). Het is het trainingscorpus achter de routeringsbibliotheek little_questions."
 date: 2026-04-01
 lang: nl
-updated: 2026-08-01
+updated: 2026-10-20
 author: "Casimiro Ferreira"
 tags:
   - "Datasets"
@@ -50,14 +50,14 @@ Een model dat alleen op Engels is getraind, maakt deze gevallen overal elders fo
 
 ## De downstream-stack
 
-De modellen die op deze data zijn getraind, worden geleverd binnen **[little_questions](https://github.com/TigreGotico/little_questions)** — een offline bibliotheek zonder afhankelijkheden (numpy + onnxruntime) met ONNX-classificatoren per taal voor het zinstype en een ja/nee-polariteitsmodel voor 43 talen. De modellen zijn voor het Engels in de wheel zelf meegeleverd en worden voor andere talen lazy gedownload. De zinstype-classificatoren worden op HuggingFace gepubliceerd als `TigreGotico/sentence-types`; de EAT-antwoordtype-classificatoren worden intern getraind en niet publiek uitgebracht.
+De modellen die op deze data zijn getraind, worden geleverd binnen **[little_questions](https://github.com/TigreGotico/little_questions)** — een offline bibliotheek die alleen van numpy en onnxruntime afhangt, met ONNX-classificatoren per taal voor het zinstype en een ja/nee-polariteitsmodel voor 43 talen. De modellen zijn voor het Engels in de wheel zelf meegeleverd en worden voor andere talen lazy gedownload. De zinstype-classificatoren worden op HuggingFace gepubliceerd als `TigreGotico/sentence-type-classifiers`; de Engelse EAT-antwoordtype-classificatoren zitten in de wheel.
 
 ```python
 from little_questions import Sentence
 
-s = Sentence("What time is it?")
+s = Sentence("When was the telephone invented?")
 print(s.sentence_type)     # "question"
-print(s.classification)    # e.g. "NUM:date"
+print(s.classification)    # "NUM:date"
 ```
 
 `little_questions` is de natuurlijke-taal-routeringslaag voor OVOS en LILACS: classificeren of een uiting een vraag, een commando of een uitspraak is, is de eerste dispatchbeslissing die een spraakpipeline neemt.

@@ -2,6 +2,7 @@
 title: "OpenVoiceOS и Home Assistant: идеальная команда голосовой автоматизации"
 description: "Home Assistant отвечает за автоматизацию; OVOS отвечает за голос. Три слоя интеграции заставляют эту связку работать: мосты Wyoming для голосового конвейера HA, ovos-persona-server в роли разговорного агента и HiveMind для отображения устройств OVOS как нативных сущностей HA."
 date: 2025-09-17
+updated: 2026-10-20
 lang: ru
 author: "Casimiro Ferreira"
 tags:
@@ -25,11 +26,11 @@ Home Assistant отвечает за автоматизацию; OVOS отвеч
 Протокол Wyoming — это стандартный интерфейс HA для внешних сервисов ASR, TTS и распознавания слова активации. Мы построили мосты Wyoming, которые предоставляют любой плагин OVOS по этому протоколу, — а значит, HA получает доступ к каждому плагину в экосистеме OVOS, а не только к отобранному короткому списку.
 
 
-* [Wyoming OVOS ASR](https://github.com/TigreGotico/wyoming-ovos-stt): преобразует голосовые команды в текст, понятный Home Assistant.
-* [Wyoming OVOS TTS](https://github.com/TigreGotico/wyoming-ovos-tts): позволяет Home Assistant озвучивать ответы, используя разнообразные голосовые варианты OVOS.
-* [Wyoming OVOS Wakeword](https://github.com/TigreGotico/wyoming-ovos-wakeword): интегрирует пользовательские слова активации, позволяя вашей установке Home Assistant реагировать только когда она слышит выбранную вами триггерную фразу.
+* [Wyoming OVOS ASR](https://github.com/OpenVoiceOS/wyoming-ovos-stt): преобразует голосовые команды в текст, понятный Home Assistant.
+* [Wyoming OVOS TTS](https://github.com/OpenVoiceOS/wyoming-ovos-tts): позволяет Home Assistant озвучивать ответы, используя разнообразные голосовые варианты OVOS.
+* [Wyoming OVOS Wakeword](https://github.com/OpenVoiceOS/wyoming-ovos-wakeword): интегрирует пользовательские слова активации, позволяя вашей установке Home Assistant реагировать только когда она слышит выбранную вами триггерную фразу.
 
-Проект [OVOS Wyoming Docker](https://github.com/TigreGotico/ovos-wyoming-docker) упаковывает эти сервисы так, что до них — один `docker compose up`.
+Проект [OVOS Wyoming Docker](https://github.com/OpenVoiceOS/ovos-wyoming-docker) упаковывает эти сервисы так, что до них — один `docker compose up`.
 
 ### Многоязычный TTS из публично финансируемых языковых проектов
 
@@ -71,7 +72,7 @@ Home Assistant отвечает за автоматизацию; OVOS отвеч
 
 ### **Настройка интеграции HiveMind:**
 
-Чтобы интегрировать ваши устройства OVOS через HiveMind, вы обычно добавляете интеграцию HiveMind в Home Assistant. Это предполагает указание параметров подключения, таких как `name` для интеграции, `access_key`, `password`, `site_id`, `host` (IP-адрес или имя хоста вашего сервера HiveMind) и `port` (по умолчанию 5678). В зависимости от вашей конфигурации у вас также могут быть опции `allow_self_signed` (самоподписанные сертификаты) или включение `legacy_audio`.
+Чтобы интегрировать ваши устройства OVOS через HiveMind, вы обычно добавляете интеграцию HiveMind в Home Assistant. Это предполагает указание параметров подключения, таких как `name` для интеграции, `access_key`, `password`, `site_id`, `host` (IP-адрес или имя хоста вашего сервера HiveMind) и `port` (по умолчанию 5678). Вы также выбираете `device_type` (`agent`, `media_player` или `voice_assistant`) и можете включить `allow_self_signed`, чтобы принимать самоподписанные сертификаты.
 
 ![настройка HiveMind в Home Assistant](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/hivemind_setup.png)
 

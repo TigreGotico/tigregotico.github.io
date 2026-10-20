@@ -3,7 +3,7 @@ title: "Ein mehrsprachiger Satztypen-Datensatz: Fragen, Befehle, Aussagen"
 description: "Wir haben sentence-types-multilingual veröffentlicht — fast 70.000 Sätze über sieben Sprachen, klassifiziert nach grammatischem Typ (Frage, Befehl, Aussage, Ausruf). Es ist das Trainingskorpus hinter der Routing-Bibliothek little_questions."
 date: 2026-04-01
 lang: de
-updated: 2026-08-01
+updated: 2026-10-20
 author: "Casimiro Ferreira"
 tags:
   - "Datasets"
@@ -50,14 +50,14 @@ Ein Modell, das nur auf Englisch trainiert wurde, macht dies überall sonst fals
 
 ## Der nachgelagerte Stack
 
-Die auf diesen Daten trainierten Modelle sind in **[little_questions](https://github.com/TigreGotico/little_questions)** enthalten — einer abhängigkeitsfreien Offline-Bibliothek (numpy + onnxruntime) mit sprachspezifischen ONNX-Klassifikatoren für den Satztyp und einem Ja/Nein-Polaritätsmodell für 43 Sprachen. Die Modelle sind für Englisch im Wheel gebündelt und werden für andere Sprachen bei Bedarf heruntergeladen. Die Satztyp-Klassifikatoren sind unter `TigreGotico/sentence-types` auf HuggingFace veröffentlicht; die EAT-Antworttyp-Klassifikatoren werden intern trainiert und nicht öffentlich freigegeben.
+Die auf diesen Daten trainierten Modelle sind in **[little_questions](https://github.com/TigreGotico/little_questions)** enthalten — einer Offline-Bibliothek, die nur von numpy und onnxruntime abhängt, mit sprachspezifischen ONNX-Klassifikatoren für den Satztyp und einem Ja/Nein-Polaritätsmodell für 43 Sprachen. Die Modelle sind für Englisch im Wheel gebündelt und werden für andere Sprachen bei Bedarf heruntergeladen. Die Satztyp-Klassifikatoren sind unter `TigreGotico/sentence-type-classifiers` auf HuggingFace veröffentlicht; die englischen EAT-Antworttyp-Klassifikatoren sind im Wheel enthalten.
 
 ```python
 from little_questions import Sentence
 
-s = Sentence("What time is it?")
+s = Sentence("When was the telephone invented?")
 print(s.sentence_type)     # "question"
-print(s.classification)    # e.g. "NUM:date"
+print(s.classification)    # "NUM:date"
 ```
 
 `little_questions` ist die Routing-Ebene für natürliche Sprache für OVOS und LILACS: Zu klassifizieren, ob eine Äußerung eine Frage, ein Befehl oder eine Aussage ist, ist die erste Dispatch-Entscheidung, die eine Sprach-Pipeline trifft.

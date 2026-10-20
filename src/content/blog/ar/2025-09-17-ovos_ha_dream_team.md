@@ -2,6 +2,7 @@
 title: "OpenVoiceOS و Home Assistant: فريق الأحلام لأتمتة الصوت"
 description: "يتولى Home Assistant الأتمتة، ويتولى OVOS الصوت. ثلاث طبقات للتكامل تجعل هذا الاقتران ناجحًا: جسور Wyoming لخط أنابيب الصوت في HA، و ovos-persona-server كوكيل محادثة، و HiveMind لإظهار أجهزة OVOS ككيانات أصلية في HA."
 date: 2025-09-17
+updated: 2026-10-20
 lang: ar
 author: "Casimiro Ferreira"
 tags:
@@ -25,11 +26,11 @@ draft: false
 بروتوكول Wyoming هو الواجهة القياسية في HA لخدمات ASR و TTS وكلمة التنبيه الخارجية. لقد بنينا جسور Wyoming التي تكشف أي إضافة OVOS عبر هذا البروتوكول — ما يعني أن HA يكتسب الوصول إلى كل إضافة في منظومة OVOS، وليس مجرد قائمة مختارة محدودة.
 
 
-* [Wyoming OVOS ASR](https://github.com/TigreGotico/wyoming-ovos-stt): تحويل الأوامر المنطوقة إلى نص ليفهمه Home Assistant.
-* [Wyoming OVOS TTS](https://github.com/TigreGotico/wyoming-ovos-tts): تمكين Home Assistant من نطق الردود باستخدام خيارات الصوت المتنوعة في OVOS.
-* [Wyoming OVOS Wakeword](https://github.com/TigreGotico/wyoming-ovos-wakeword): دمج كلمات تنبيه مخصصة، ما يتيح لإعداد Home Assistant الخاص بك الاستجابة فقط عندما يسمع عبارة التنبيه التي اخترتها.
+* [Wyoming OVOS ASR](https://github.com/OpenVoiceOS/wyoming-ovos-stt): تحويل الأوامر المنطوقة إلى نص ليفهمه Home Assistant.
+* [Wyoming OVOS TTS](https://github.com/OpenVoiceOS/wyoming-ovos-tts): تمكين Home Assistant من نطق الردود باستخدام خيارات الصوت المتنوعة في OVOS.
+* [Wyoming OVOS Wakeword](https://github.com/OpenVoiceOS/wyoming-ovos-wakeword): دمج كلمات تنبيه مخصصة، ما يتيح لإعداد Home Assistant الخاص بك الاستجابة فقط عندما يسمع عبارة التنبيه التي اخترتها.
 
-يقوم مشروع [OVOS Wyoming Docker](https://github.com/TigreGotico/ovos-wyoming-docker) بتحزيم هذه الخدمات بحيث تصبح على بُعد أمر `docker compose up` واحد.
+يقوم مشروع [OVOS Wyoming Docker](https://github.com/OpenVoiceOS/ovos-wyoming-docker) بتحزيم هذه الخدمات بحيث تصبح على بُعد أمر `docker compose up` واحد.
 
 ### TTS متعدد اللغات من مشاريع لغوية مموَّلة عامًا
 
@@ -71,7 +72,7 @@ draft: false
 
 ### **إعداد تكامل HiveMind:**
 
-لدمج أجهزة OVOS الخاصة بك عبر HiveMind، ستضيف عادةً تكامل HiveMind في Home Assistant. يتضمن ذلك تقديم تفاصيل الاتصال مثل `name` للتكامل، و `access_key`، و `password`، و `site_id`، و `host` (عنوان IP أو اسم مضيف خادم HiveMind الخاص بك)، و `port` (القيمة الافتراضية 5678). قد تكون لديك أيضًا خيارات لـ `allow_self_signed` للشهادات أو تمكين `legacy_audio` بحسب إعدادك.
+لدمج أجهزة OVOS الخاصة بك عبر HiveMind، ستضيف عادةً تكامل HiveMind في Home Assistant. يتضمن ذلك تقديم تفاصيل الاتصال مثل `name` للتكامل، و `access_key`، و `password`، و `site_id`، و `host` (عنوان IP أو اسم مضيف خادم HiveMind الخاص بك)، و `port` (القيمة الافتراضية 5678). كما تختار `device_type` (`agent` أو `media_player` أو `voice_assistant`)، ويمكنك تفعيل `allow_self_signed` لقبول الشهادات الموقّعة ذاتيًا.
 
 ![إعداد HiveMind في Home Assistant](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/hivemind_setup.png)
 

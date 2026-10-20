@@ -1,7 +1,8 @@
 ---
 title: "Een familie van pure-ONNX-spraakbibliotheken"
-description: "TigreGótico onderhoudt een reeks spraakbibliotheken — bandbreedte-extensie, voice cloning, sprekersembeddings, VAD, woordklemtoon, fonemisatie, TTS, en een metrics-bibliotheek om ze allemaal te scoren — die één runtime-regel delen: alleen onnxruntime en numpy, geen PyTorch, geen GPU vereist."
+description: "TigreGótico onderhoudt een reeks spraakbibliotheken — bandbreedte-extensie, voice cloning, sprekersembeddings, VAD, woordklemtoon, fonemisatie, TTS, en een metrics-bibliotheek om ze allemaal te scoren — die één runtime-regel delen: onnxruntime en numpy voor inferentie, geen PyTorch, geen GPU vereist."
 date: 2026-08-01
+updated: 2026-10-20
 lang: nl
 author: "Casimiro Ferreira"
 tags:
@@ -16,7 +17,7 @@ draft: false
 
 ONNX is een bestandsformaat voor een getraind neuraal netwerk: de gewichten en de rekengraaf, bevroren, zonder afhankelijkheid van het framework waarmee het is getraind. Een naar ONNX geëxporteerd model kan draaien via **ONNX Runtime**, een kleine inferentie-engine die niets anders doet dan die graaf uitvoeren. Ze weet niet hoe het model is getraind, ondersteunt geen training, en heeft geen PyTorch of TensorFlow nodig.
 
-Verschillende van onze bibliotheken houden zich aan één regel: ten tijde van uitvoering zijn de enige afhankelijkheden `onnxruntime` en `numpy`. Niet "meestal" — het importeren van het pakket zelf haalt nooit een trainingsframework binnen. `audiosronnx` (bandbreedte-extensie en ruisonderdrukking), `voiceclonnx` (voice cloning), `speakeronnx` (sprekersembeddings), `speechonnxmetrics` (evaluatie), `stressonnx` (woordklemtoon), `vadonnx` (voice activity detection) en `phoonnx` (fonemisatie en tekst-naar-spraak) volgen dit allemaal, elk in zijn eigen PyPI-pakket. Nog twee, `phoonnx.js` en `precise-onnx-js`, passen hetzelfde idee toe in de browser, met `onnxruntime-web` in plaats daarvan.
+Verschillende van onze bibliotheken houden zich aan één regel: ten tijde van uitvoering heeft inferentie alleen `onnxruntime` en `numpy` nodig, plus kleine hulppakketten voor audio-I/O en het downloaden van modellen. Het importeren van het pakket zelf haalt nooit een trainingsframework binnen. `audiosronnx` (bandbreedte-extensie en ruisonderdrukking), `voiceclonnx` (voice cloning), `speakeronnx` (sprekersembeddings), `speechonnxmetrics` (evaluatie), `stressonnx` (woordklemtoon), `vadonnx` (voice activity detection) en `phoonnx` (fonemisatie en tekst-naar-spraak) volgen dit allemaal, elk in zijn eigen PyPI-pakket. Nog twee, `phoonnx.js` en `precise-onnx-js`, passen hetzelfde idee toe in de browser, met `onnxruntime-web` in plaats daarvan.
 
 ## Waarom de moeite
 
@@ -64,7 +65,7 @@ cloner = VoiceCloner(engine="facodec")
 out = cloner.clone_voice("source.wav", "reference.wav", "out.wav")
 ```
 
-Er zijn tien engines geregistreerd (`facodec`, `openvoice`, `chatterbox`, `triaan`, `cosyvoice`, `bicodec`, `knnvc`, `focalcodec`, `lscodec`, `rvc`), verspreid over zes verschillende modelfamilies — kNN-kenmerkuitwisseling, gefactoriseerde codec, flow-matching, toonkleuroverdracht, AR-codec-LM en sprekersontkoppelde codec. Achter de schermen levert elke engine gepubliceerde cijfers voor verstaanbaarheid en sprekersgelijkenis, zodat het kiezen van een engine een vergelijking is, geen muntworp.
+Er zijn tien engines geregistreerd (`facodec`, `openvoice`, `chatterbox`, `triaan`, `cosyvoice`, `bicodec`, `knnvc`, `focalcodec`, `lscodec`, `rvc`), verspreid over negen verschillende modelfamilies — kNN-kenmerkuitwisseling, gefactoriseerde codec, flow-matching, toonkleuroverdracht, AR-codec-LM, sprekersontkoppelde codec, Triple-AAN, semantische plus globale tokens en ContentVec+VITS. Achter de schermen levert elke engine gepubliceerde cijfers voor verstaanbaarheid en sprekersgelijkenis, zodat het kiezen van een engine een vergelijking is, geen muntworp.
 
 `vadonnx` past het patroon toe op voice activity detection — bepalen welke delen van een audiostream überhaupt spraak bevatten:
 
@@ -76,7 +77,7 @@ segments = vad.get_speech_segments(audio, sample_rate=16000)
 # -> [SpeechSegment(start=0.32, end=2.27), SpeechSegment(start=3.27, end=4.45), ...]
 ```
 
-Zes modelfamilies zijn geregistreerd (`silero`, `marblenet`, `pyannote`, `fsmn`, `speechbrain`, `ten`), en een declaratieve `IOSignature` laat één generieke engine de meeste ervan aansturen, of wijst naar elk aangepast `.onnx`-VAD-bestand.
+Zeven modelfamilies zijn geregistreerd (`silero`, `marblenet`, `pyannote`, `fsmn`, `speechbrain`, `ten`, `pulsevad`), en een declaratieve `IOSignature` laat één generieke engine de meeste ervan aansturen, of wijst naar elk aangepast `.onnx`-VAD-bestand.
 
 `speakeronnx` extraheert een **sprekersembedding** — een vector van vaste lengte die samenvat wie er spreekt, onafhankelijk van wat er gezegd is — en vergelijkt twee embeddings via cosine-gelijkenis om te controleren of twee clips dezelfde spreker zijn:
 
@@ -89,7 +90,7 @@ alice2 = embedder.embed("alice_clip2.wav")
 print(cosine(alice1, alice2))   # e.g. 0.82 - same speaker
 ```
 
-Het registreert negen modellen over vier architectuurfamilies (WeSpeaker, CAM++, ERes2Net, ReDimNet), met gepubliceerde embeddingdimensies en licenties.
+Het registreert negen modellen over vijf architectuurfamilies (WeSpeaker, CAM++, ERes2Net, TitaNet, ReDimNet), met gepubliceerde embeddingdimensies en licenties.
 
 `stressonnx` kiest woordklemtoon voor tekst-naar-spraak-frontends — welke lettergreep van een woord de nadruk draagt, informatie die veel talen niet uitspellen (Russisch *за́мок*, kasteel, versus *замо́к*, slot, delen elke letter). Het registreert een neurale pijplijn voor het Russisch, een tweede voor het Oekraïens en Wit-Russisch, en een op regels en woordenlijst gebaseerde backend die 26 talen dekt zonder enige neurale inferentie:
 
@@ -100,7 +101,7 @@ stress("старинный замок стоит на горе", "ru")
 # 'стари́нный за́мок сто́ит на горе́'
 ```
 
-`phoonnx` fonemiseert tekst (zet gespelde woorden om in de klankeenheden die een TTS-model verbruikt) en draait tekst-naar-spraak over 17 geregistreerde synthese-engines en stemmen geëxporteerd uit verschillende ecosystemen (native phoonnx, Piper, Mimic3, Coqui, MMS, Transformers):
+`phoonnx` fonemiseert tekst (zet gespelde woorden om in de klankeenheden die een TTS-model verbruikt) en draait tekst-naar-spraak over 28 geregistreerde synthese-engines en stemmen geëxporteerd uit verschillende ecosystemen (native phoonnx, Piper, Mimic3, Coqui, MMS, Transformers):
 
 ```python
 import wave
@@ -114,11 +115,13 @@ with wave.open("hello.wav", "wb") as wav_file:
 `phoonnx.js` draagt dezelfde tokenizer-paden over naar de browser met `onnxruntime-web`, en `precise-onnx-js` port wakewoorddetectie (MFCC-kenmerkextractie plus een ONNX-classificator, compatibel met Mycroft Precise-modellen) naar JavaScript, beide zonder server:
 
 ```ts
+// phoonnx.js is not on npm. Install it from GitHub:
+// npm install github:TigreGotico/phoonnx.js onnxruntime-web
 import { loadVoice, synthesizeWav } from "phoonnx";
 import { getVoice } from "phoonnx/voices";
 
-const voice = await loadVoice(getVoice("phoonnx_eu-ES_dii_unicode")!);
-const blob = await synthesizeWav(voice, "Kaixo mundua!");
+const voice = await loadVoice(getVoice("phoonnx_pt-PT_miro_unicode")!);
+const blob = await synthesizeWav(voice, "Olá, mundo!");
 ```
 
 Gewichten voor `audiosronnx` (18 gepubliceerde modellen) en `voiceclonnx` (10 gepubliceerde modellen) staan als aparte downloads op de [TigreGótico Hugging Face-organisatie](https://huggingface.co/TigreGotico), opgehaald bij eerste gebruik en lokaal gecachet, zodat het kiezen van een andere engine een configuratiewijziging is, geen herimplementatie.

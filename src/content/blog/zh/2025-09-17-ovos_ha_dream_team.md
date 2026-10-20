@@ -2,6 +2,7 @@
 title: "OpenVoiceOS 与 Home Assistant：语音自动化梦之队"
 description: "Home Assistant 负责自动化，OVOS 负责语音。三个集成层让这一组合得以运转：面向 HA 语音流水线的 Wyoming 桥接、作为对话代理的 ovos-persona-server，以及将 OVOS 设备呈现为原生 HA 实体的 HiveMind。"
 date: 2025-09-17
+updated: 2026-10-20
 lang: zh
 author: "Casimiro Ferreira"
 tags:
@@ -25,11 +26,11 @@ Home Assistant 负责自动化，OVOS 负责语音。两者都不试图成为对
 Wyoming 协议是 HA 用于对接外部 ASR、TTS 和唤醒词服务的标准接口。我们构建了 Wyoming 桥接，将任意 OVOS 插件通过该协议暴露出来——这意味着 HA 能够访问 OVOS 生态中的每一个插件，而不仅仅是经过挑选的一小部分。
 
 
-* [Wyoming OVOS ASR](https://github.com/TigreGotico/wyoming-ovos-stt)：将口头命令转换为文本，供 Home Assistant 理解。
-* [Wyoming OVOS TTS](https://github.com/TigreGotico/wyoming-ovos-tts)：让 Home Assistant 使用 OVOS 丰富多样的语音选项来朗读响应。
-* [Wyoming OVOS Wakeword](https://github.com/TigreGotico/wyoming-ovos-wakeword)：集成自定义唤醒词，让你的 Home Assistant 配置仅在听到你所选择的触发短语时才响应。
+* [Wyoming OVOS ASR](https://github.com/OpenVoiceOS/wyoming-ovos-stt)：将口头命令转换为文本，供 Home Assistant 理解。
+* [Wyoming OVOS TTS](https://github.com/OpenVoiceOS/wyoming-ovos-tts)：让 Home Assistant 使用 OVOS 丰富多样的语音选项来朗读响应。
+* [Wyoming OVOS Wakeword](https://github.com/OpenVoiceOS/wyoming-ovos-wakeword)：集成自定义唤醒词，让你的 Home Assistant 配置仅在听到你所选择的触发短语时才响应。
 
-[OVOS Wyoming Docker](https://github.com/TigreGotico/ovos-wyoming-docker) 项目将这些服务打包，因此只需一条 `docker compose up` 即可运行。
+[OVOS Wyoming Docker](https://github.com/OpenVoiceOS/ovos-wyoming-docker) 项目将这些服务打包，因此只需一条 `docker compose up` 即可运行。
 
 ### 来自公共资助语言项目的多语言 TTS
 
@@ -71,7 +72,7 @@ Wyoming 协议是 HA 用于对接外部 ASR、TTS 和唤醒词服务的标准接
 
 ### **设置 HiveMind 集成：**
 
-要通过 HiveMind 集成你的 OVOS 设备，你通常需要在 Home Assistant 中添加 HiveMind 集成。这涉及提供连接详情，例如集成的 `name`、`access_key`、`password`、`site_id`、`host`（你的 HiveMind 服务器的 IP 地址或主机名）以及 `port`（默认为 5678）。根据你的配置，你可能还有 `allow_self_signed`（允许自签名证书）或启用 `legacy_audio` 等选项。
+要通过 HiveMind 集成你的 OVOS 设备，你通常需要在 Home Assistant 中添加 HiveMind 集成。这涉及提供连接详情，例如集成的 `name`、`access_key`、`password`、`site_id`、`host`（你的 HiveMind 服务器的 IP 地址或主机名）以及 `port`（默认为 5678）。你还需要选择 `device_type`（`agent`、`media_player` 或 `voice_assistant`），并可以启用 `allow_self_signed` 来接受自签名证书。
 
 ![HiveMind setup in Home Assistant](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/hivemind_setup.png)
 

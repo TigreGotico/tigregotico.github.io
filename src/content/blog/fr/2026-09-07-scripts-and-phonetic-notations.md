@@ -2,6 +2,7 @@
 title: "Écritures et notations phonétiques : ce que convertit réellement scriptconv"
 description: "Une plongée dans scriptconv, la bibliothèque sans dépendance qui détecte les systèmes d'écriture et convertit entre notations phonétiques. Couvre l'IPA, l'ARPABET et le X-SAMPA ; la détection de script ISO-15924 ; la translittération Buckwalter pour l'arabe ; la décomposition du hangeul en jamo ; et la conversion des kana, avec de vrais exemples exécutés et des limites honnêtement énoncées."
 date: 2026-08-01
+updated: 2026-10-20
 lang: fr
 author: "Casimiro Ferreira"
 tags:
@@ -113,9 +114,7 @@ from scriptconv import DEFAULT_GRAPH
 # ['arpa->ipa', 'ipa->x-sampa']
 ```
 
-Neuf notations transcodent au total à travers ce hub : ARPABET, X-SAMPA,
-Kirshenbaum, Lexique, Cotovía, RFE et mantoq, plus Buckwalter, couvert
-ci-dessous.
+Sept notations transcodent au total à travers ce hub : ARPABET, X-SAMPA, Kirshenbaum, Lexique, Cotovía, RFE et mantoq. Buckwalter, couvert ci-dessous, n'en fait pas partie : il ne convertit que depuis et vers l'écriture arabe.
 
 ## Détecter le script avant de faire quoi que ce soit d'autre
 
@@ -260,9 +259,7 @@ restreint et spécifique à l'anglais, donc aller IPA → ARPABET → IPA peut
 perdre des distinctions que l'IPA peut faire mais pour lesquelles la table
 de l'ARPABET n'a pas de symbole. Le X-SAMPA et le Lexique couvrent
 fidèlement l'inventaire IPA complet mais ne sont pas garantis de faire
-l'aller-retour proprement depuis leur propre côté. Kirshenbaum et
-Buckwalter font l'aller-retour proprement depuis leur propre côté vers
-l'IPA mais pas l'inverse. Mantoq, l'alphabet phonétique du phonétiseur
+l'aller-retour proprement depuis leur propre côté. Kirshenbaum fait l'aller-retour proprement depuis son propre côté vers l'IPA mais pas l'inverse. Buckwalter n'a pas de convertisseur vers l'IPA, seulement un depuis et vers l'écriture arabe. Mantoq, l'alphabet phonétique du phonétiseur
 arabe Halabi, ne convertit que dans un sens, vers l'IPA — il n'y a pas de
 convertisseur retour. Rien de tout cela n'est enfoui dans une docstring
 quelque part ; ce sont des données que la bibliothèque expose pour qu'un

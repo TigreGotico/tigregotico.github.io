@@ -2,6 +2,7 @@
 title: "製造業における OVOS と HiveMind"
 description: "EU プロジェクト COALA と WASABI は、OVOS + HiveMind を中心に産業用音声アシスタントのフレームワーク全体を構築し、独自のツール、UI、対話エンジンと統合しました。"
 date: 2025-11-26
+updated: 2026-10-20
 lang: ja
 author: "Casimiro Ferreira"
 tags:
@@ -104,7 +105,7 @@ WASABI では、この RASA エンジンが **skill** として OVOS に組み�
 
 ### **4. 産業用音声データセット**
 
-COALA は、工場や作業場で録音された多言語音声データセットを公開しました：
+COALA は、製造業に関するスクリプトの英語音声データセットを公開しました。サービス提供事業者を通じて雇われたクラウドワーカーが読み上げたもので、CC0 で公開されています：
 [https://zenodo.org/record/8268928](https://zenodo.org/record/8268928)
 
 ---

@@ -2,7 +2,7 @@
 title: "یک مجموعه‌داده‌ی چندزبانه‌ی انواع جمله: پرسش‌ها، فرمان‌ها، گزاره‌ها"
 description: "ما sentence-types-multilingual را منتشر کردیم — نزدیک به ۷۰٬۰۰۰ جمله در هفت زبان، دسته‌بندی‌شده بر پایه‌ی نوع دستوری (پرسش، فرمان، گزاره، تعجب). این پیکره‌ی آموزشیِ پشتِ کتابخانه‌ی مسیریابیِ little_questions است."
 date: 2026-04-01
-updated: 2026-08-01
+updated: 2026-10-20
 lang: fa
 author: "Casimiro Ferreira"
 tags:
@@ -73,19 +73,18 @@ draft: false
 
 مدل‌های آموزش‌دیده بر این داده درونِ
 **[little_questions](https://github.com/TigreGotico/little_questions)** عرضه
-می‌شوند — یک کتابخانه‌ی برون‌خطِ بدونِ وابستگی (numpy + onnxruntime) با دسته‌بندهای
+می‌شوند — یک کتابخانه‌ی برون‌خط که تنها به numpy و onnxruntime وابسته است، با دسته‌بندهای
 ONNX به‌ازای هر زبان برای نوع جمله و یک مدل قطبیتِ بله/خیرِ ۴۳ زبانه. مدل‌ها برای
 انگلیسی درونِ wheel بسته‌بندی می‌شوند و برای زبان‌های دیگر با تنبلی بارگیری می‌شوند.
-دسته‌بندهای نوع جمله با نام `TigreGotico/sentence-types` روی HuggingFace منتشر
-شده‌اند؛ دسته‌بندهای نوع‌پاسخِ EAT به‌صورت داخلی آموزش دیده‌اند و به‌طور عمومی
-منتشر نشده‌اند.
+دسته‌بندهای نوع جمله با نام `TigreGotico/sentence-type-classifiers` روی HuggingFace منتشر
+شده‌اند؛ دسته‌بندهای انگلیسیِ نوع‌پاسخِ EAT درونِ wheel گنجانده شده‌اند.
 
 ```python
 from little_questions import Sentence
 
-s = Sentence("What time is it?")
+s = Sentence("When was the telephone invented?")
 print(s.sentence_type)     # "question"
-print(s.classification)    # e.g. "NUM:date"
+print(s.classification)    # "NUM:date"
 ```
 
 `little_questions` لایه‌ی مسیریابیِ زبان طبیعی برای OVOS و LILACS است:

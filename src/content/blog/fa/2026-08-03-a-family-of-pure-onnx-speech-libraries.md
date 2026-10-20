@@ -1,7 +1,8 @@
 ---
 title: "خانواده‌ای از کتابخانه‌های گفتاریِ خالصِ ONNX"
-description: "‏TigreGótico مجموعه‌ای از کتابخانه‌های گفتاری را نگهداری می‌کند — بسط پهنای‌باند، شبیه‌سازی صدا، جاسازی‌های گوینده، VAD، تکیهٔ واژه، واج‌سازی، TTS، و یک کتابخانهٔ سنجه برای امتیازدهی به همه‌ی آن‌ها — که یک قاعدهٔ زمان‌اجرا را مشترک دارند: تنها onnxruntime و numpy، بدون PyTorch، بدون نیاز به GPU."
+description: "‏TigreGótico مجموعه‌ای از کتابخانه‌های گفتاری را نگهداری می‌کند — بسط پهنای‌باند، شبیه‌سازی صدا، جاسازی‌های گوینده، VAD، تکیهٔ واژه، واج‌سازی، TTS، و یک کتابخانهٔ سنجه برای امتیازدهی به همه‌ی آن‌ها — که یک قاعدهٔ زمان‌اجرا را مشترک دارند: onnxruntime و numpy برای استنتاج، بدون PyTorch، بدون نیاز به GPU."
 date: 2026-08-01
+updated: 2026-10-20
 lang: fa
 author: "Casimiro Ferreira"
 tags:
@@ -16,7 +17,7 @@ draft: false
 
 ‏ONNX یک قالب فایل برای یک شبکهٔ عصبیِ آموزش‌دیده است: وزن‌ها و گراف محاسباتی، منجمدشده، بدون وابستگی به چارچوبی که آن را آموزش داده. مدلی که به ONNX صادر شده می‌تواند از میان **ONNX Runtime** اجرا شود، یک موتور استنتاج کوچک که کاری جز اجرای آن گراف نمی‌کند. نمی‌داند مدل چگونه آموزش دیده، از آموزش پشتیبانی نمی‌کند، و نیازی به نصب بودن PyTorch یا TensorFlow ندارد.
 
-چند تا از کتابخانه‌های ما یک قاعده را رعایت می‌کنند: در زمان اجرا، تنها وابستگی‌ها `onnxruntime` و `numpy` هستند. نه «بیشترِ اوقات» — خودِ import کردن بسته هرگز یک چارچوب آموزشی را نمی‌کشد. `audiosronnx` (بسط پهنای‌باند و رفع نویز)، `voiceclonnx` (شبیه‌سازی صدا)، `speakeronnx` (جاسازی‌های گوینده)، `speechonnxmetrics` (ارزیابی)، `stressonnx` (تکیهٔ واژه)، `vadonnx` (تشخیص فعالیت صوتی) و `phoonnx` (واج‌سازی و متن به گفتار) همگی از این قاعده پیروی می‌کنند، هر یک در بستهٔ PyPI خودش. دو تای دیگر، `phoonnx.js` و `precise-onnx-js`، همان ایده را در مرورگر با `onnxruntime-web` به کار می‌بندند.
+چند تا از کتابخانه‌های ما یک قاعده را رعایت می‌کنند: در زمان اجرا، استنتاج تنها به `onnxruntime` و `numpy` نیاز دارد، به‌علاوهٔ بسته‌های کمکی کوچک برای ورودی/خروجی صوتی و دانلود مدل. خودِ import کردن بسته هرگز یک چارچوب آموزشی را نمی‌کشد. `audiosronnx` (بسط پهنای‌باند و رفع نویز)، `voiceclonnx` (شبیه‌سازی صدا)، `speakeronnx` (جاسازی‌های گوینده)، `speechonnxmetrics` (ارزیابی)، `stressonnx` (تکیهٔ واژه)، `vadonnx` (تشخیص فعالیت صوتی) و `phoonnx` (واج‌سازی و متن به گفتار) همگی از این قاعده پیروی می‌کنند، هر یک در بستهٔ PyPI خودش. دو تای دیگر، `phoonnx.js` و `precise-onnx-js`، همان ایده را در مرورگر با `onnxruntime-web` به کار می‌بندند.
 
 ## چرا به این زحمت می‌ارزد
 
@@ -64,7 +65,7 @@ cloner = VoiceCloner(engine="facodec")
 out = cloner.clone_voice("source.wav", "reference.wav", "out.wav")
 ```
 
-ده موتور ثبت شده‌اند (`facodec`، `openvoice`، `chatterbox`، `triaan`، `cosyvoice`، `bicodec`، `knnvc`، `focalcodec`، `lscodec`، `rvc`)، که شش خانوادهٔ مدل متمایز را دربرمی‌گیرند — تعویض ویژگی kNN، codec فاکتورشده، flow-matching، انتقال رنگ‌آوا، AR codec-LM و codec جداشده از گوینده. در پشت صحنه هر یک با اعداد وضوح و شباهت-گویندهٔ منتشرشده عرضه می‌شود، پس انتخاب یک موتور یک مقایسه است، نه پرتاب سکه.
+ده موتور ثبت شده‌اند (`facodec`، `openvoice`، `chatterbox`، `triaan`، `cosyvoice`، `bicodec`، `knnvc`، `focalcodec`، `lscodec`، `rvc`)، که نه خانوادهٔ مدل متمایز را دربرمی‌گیرند — تعویض ویژگی kNN، codec فاکتورشده، flow-matching، انتقال رنگ‌آوا، AR codec-LM، codec جداشده از گوینده، Triple-AAN، توکن‌های معنایی به‌علاوهٔ سراسری و ContentVec+VITS. در پشت صحنه هر یک با اعداد وضوح و شباهت-گویندهٔ منتشرشده عرضه می‌شود، پس انتخاب یک موتور یک مقایسه است، نه پرتاب سکه.
 
 ‏`vadonnx` این الگو را برای تشخیص فعالیت صوتی به کار می‌بندد — تصمیم اینکه کدام بخش‌های یک جریان صوتی اصلاً گفتار دارند:
 
@@ -76,7 +77,7 @@ segments = vad.get_speech_segments(audio, sample_rate=16000)
 # -> [SpeechSegment(start=0.32, end=2.27), SpeechSegment(start=3.27, end=4.45), ...]
 ```
 
-شش خانوادهٔ مدل ثبت شده‌اند (`silero`، `marblenet`، `pyannote`، `fsmn`، `speechbrain`، `ten`)، و یک `IOSignature` اعلانی به یک موتور عمومیِ واحد اجازه می‌دهد بیشتر آن‌ها را برانَد، یا به هر فایل VAD سفارشیِ `.onnx` اشاره کند.
+هفت خانوادهٔ مدل ثبت شده‌اند (`silero`، `marblenet`، `pyannote`، `fsmn`، `speechbrain`، `ten`، `pulsevad`)، و یک `IOSignature` اعلانی به یک موتور عمومیِ واحد اجازه می‌دهد بیشتر آن‌ها را برانَد، یا به هر فایل VAD سفارشیِ `.onnx` اشاره کند.
 
 ‏`speakeronnx` یک **جاسازیِ گوینده** استخراج می‌کند — برداری با طول ثابت که خلاصه می‌کند چه‌کسی صحبت می‌کند، مستقل از آنچه گفته شده — و دو جاسازی را با شباهت کسینوسی مقایسه می‌کند تا بررسی کند آیا دو کلیپ همان گوینده‌اند:
 
@@ -89,7 +90,7 @@ alice2 = embedder.embed("alice_clip2.wav")
 print(cosine(alice1, alice2))   # e.g. 0.82 - same speaker
 ```
 
-این کتابخانه نه مدل را در چهار خانوادهٔ معماری ثبت می‌کند (WeSpeaker، CAM++، ERes2Net، ReDimNet)، با ابعاد جاسازی و مجوزهای منتشرشده.
+این کتابخانه نه مدل را در پنج خانوادهٔ معماری ثبت می‌کند (WeSpeaker، CAM++، ERes2Net، TitaNet، ReDimNet)، با ابعاد جاسازی و مجوزهای منتشرشده.
 
 ‏`stressonnx` تکیهٔ واژه را برای فرانت‌اندهای متن به گفتار انتخاب می‌کند — اینکه کدام هجای یک واژه تأکید را حمل می‌کند، اطلاعاتی که بسیاری از زبان‌ها آن را ننوشته می‌گذارند (روسی *за́мок*، قلعه، در برابر *замо́к*، قفل، هر حرف را مشترک دارند). یک خط لولهٔ عصبی برای روسی، دومی برای اوکراینی و بلاروسی، و یک باک‌اندِ مبتنی بر قاعده و واژگان که ۲۶ زبان را بدون هیچ استنتاج عصبی پوشش می‌دهد ثبت می‌کند:
 
@@ -100,7 +101,7 @@ stress("старинный замок стоит на горе", "ru")
 # 'стари́нный за́мок сто́ит на горе́'
 ```
 
-‏`phoonnx` متن را واج‌سازی می‌کند (واژه‌های هجی‌شده را به واحدهای صوتی‌ای که یک مدل TTS مصرف می‌کند تبدیل می‌کند) و متن به گفتار را در سراسر ۱۷ موتور ترکیب ثبت‌شده و صداهای صادرشده از چندین بوم‌سازگان (phoonnx بومی، Piper، Mimic3، Coqui، MMS، Transformers) اجرا می‌کند:
+‏`phoonnx` متن را واج‌سازی می‌کند (واژه‌های هجی‌شده را به واحدهای صوتی‌ای که یک مدل TTS مصرف می‌کند تبدیل می‌کند) و متن به گفتار را در سراسر ۲۸ موتور ترکیب ثبت‌شده و صداهای صادرشده از چندین بوم‌سازگان (phoonnx بومی، Piper، Mimic3، Coqui، MMS، Transformers) اجرا می‌کند:
 
 ```python
 import wave
@@ -114,11 +115,13 @@ with wave.open("hello.wav", "wb") as wav_file:
 ‏`phoonnx.js` همان مسیرهای توکن‌ساز را با `onnxruntime-web` به مرورگر می‌برد، و `precise-onnx-js` تشخیص wake-word (استخراج ویژگی MFCC به‌علاوه یک دسته‌بند ONNX، سازگار با مدل‌های Mycroft Precise) را به JavaScript منتقل می‌کند، هر دو بدون سرور:
 
 ```ts
+// phoonnx.js is not on npm. Install it from GitHub:
+// npm install github:TigreGotico/phoonnx.js onnxruntime-web
 import { loadVoice, synthesizeWav } from "phoonnx";
 import { getVoice } from "phoonnx/voices";
 
-const voice = await loadVoice(getVoice("phoonnx_eu-ES_dii_unicode")!);
-const blob = await synthesizeWav(voice, "Kaixo mundua!");
+const voice = await loadVoice(getVoice("phoonnx_pt-PT_miro_unicode")!);
+const blob = await synthesizeWav(voice, "Olá, mundo!");
 ```
 
 وزن‌های `audiosronnx` (۱۸ مدل منتشرشده) و `voiceclonnx` (۱۰ مدل منتشرشده) به‌صورت دانلودهای جداگانه در [سازمان Hugging Face تیگره‌گوتیکو](https://huggingface.co/TigreGotico) زندگی می‌کنند، در نخستین استفاده واکشی و به‌صورت محلی cache می‌شوند، پس انتخاب یک موتور متفاوت یک تغییر پیکربندی است، نه یک استقرار دوباره.

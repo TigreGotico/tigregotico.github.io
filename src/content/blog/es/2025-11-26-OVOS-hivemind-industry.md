@@ -2,6 +2,7 @@
 title: "OVOS y HiveMind en la Industria Manufacturera"
 description: "Los proyectos europeos COALA y WASABI han construido todo un framework de asistente de voz industrial en torno a OVOS + HiveMind, integrándolos con sus propias herramientas, interfaz y motores de conversación."
 date: 2025-11-26
+updated: 2026-10-20
 lang: es
 author: "Casimiro Ferreira"
 tags:
@@ -104,7 +105,7 @@ Esto forma el stack estándar de asistente de voz industrial que todos los exper
 
 ### **4. Un Dataset de Habla Industrial**
 
-COALA publicó un dataset de habla multilingüe grabado en fábricas y talleres:
+COALA publicó un dataset de habla en inglés con guiones del ámbito de la fabricación, leídos en voz alta por trabajadores de crowdsourcing contratados a través de un proveedor de servicios y publicados bajo CC0:
 [https://zenodo.org/record/8268928](https://zenodo.org/record/8268928)
 
 ---

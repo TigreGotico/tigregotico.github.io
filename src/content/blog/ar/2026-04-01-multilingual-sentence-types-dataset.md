@@ -2,7 +2,7 @@
 title: "مجموعة بيانات متعددة اللغات لأنواع الجُمَل: أسئلة، أوامر، تصريحات"
 description: "نشرنا sentence-types-multilingual — ما يقارب 70,000 جملة عبر سبع لغات، مصنّفة حسب النوع النحوي (سؤال، أمر، تصريح، تعجّب). إنها مجموعة بيانات التدريب التي تقف خلف مكتبة التوجيه little_questions."
 date: 2026-04-01
-updated: 2026-08-01
+updated: 2026-10-20
 lang: ar
 author: "Casimiro Ferreira"
 tags:
@@ -50,14 +50,14 @@ draft: false
 
 ## المنظومة النهائية
 
-تُوزَّع النماذج المدرَّبة على هذه البيانات داخل **[little_questions](https://github.com/TigreGotico/little_questions)** — وهي مكتبة غير متصلة بالإنترنت وبلا تبعيات (numpy + onnxruntime) تضم مصنِّفات ONNX لكل لغة لنوع الجملة ونموذج قطبية نعم/لا لـ 43 لغة. تُضمَّن النماذج داخل الـ wheel للإنجليزية وتُنزَّل بشكل كسول للغات الأخرى. تُنشَر مصنِّفات نوع الجملة باسم `TigreGotico/sentence-types` على HuggingFace؛ أما مصنِّفات نوع إجابة EAT فتُدرَّب داخليًا ولا تُنشَر علنًا.
+تُوزَّع النماذج المدرَّبة على هذه البيانات داخل **[little_questions](https://github.com/TigreGotico/little_questions)** — وهي مكتبة غير متصلة بالإنترنت لا تعتمد إلا على numpy وonnxruntime، وتضم مصنِّفات ONNX لكل لغة لنوع الجملة ونموذج قطبية نعم/لا لـ 43 لغة. تُضمَّن النماذج داخل الـ wheel للإنجليزية وتُنزَّل بشكل كسول للغات الأخرى. تُنشَر مصنِّفات نوع الجملة باسم `TigreGotico/sentence-type-classifiers` على HuggingFace؛ أما مصنِّفات نوع إجابة EAT الإنجليزية فتأتي مضمَّنة داخل الـ wheel.
 
 ```python
 from little_questions import Sentence
 
-s = Sentence("What time is it?")
+s = Sentence("When was the telephone invented?")
 print(s.sentence_type)     # "question"
-print(s.classification)    # e.g. "NUM:date"
+print(s.classification)    # "NUM:date"
 ```
 
 `little_questions` هي طبقة توجيه اللغة الطبيعية لـ OVOS و LILACS: إن تصنيف ما إذا كان المنطوق سؤالاً أو أمراً أو تصريحاً هو أول قرار إرسال يتخذه خط المعالجة الصوتي.

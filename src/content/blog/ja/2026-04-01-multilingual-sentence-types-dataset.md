@@ -2,7 +2,7 @@
 title: "多言語の文タイプ・データセット：疑問文、命令文、平叙文"
 description: "sentence-types-multilingual を公開しました。7言語にわたる約70,000文を、文法的なタイプ（疑問文、命令文、平叙文、感嘆文）で分類したものです。これは little_questions 経路制御ライブラリの背後にある訓練用コーパスです。"
 date: 2026-04-01
-updated: 2026-08-01
+updated: 2026-10-20
 lang: ja
 author: "Casimiro Ferreira"
 tags:
@@ -50,14 +50,14 @@ draft: false
 
 ## 下流のスタック
 
-このデータで訓練されたモデルは、**[little_questions](https://github.com/TigreGotico/little_questions)** の内部で配布されます。これは依存関係のないオフラインのライブラリ（numpy + onnxruntime）で、文タイプ用の言語別 ONNX 分類器と、43言語対応の yes/no 極性モデルを備えています。モデルは英語についてはwheel内に同梱され、その他の言語については遅延ダウンロードされます。文タイプ分類器は HuggingFace 上で `TigreGotico/sentence-types` として公開されており、EAT 回答タイプ分類器は内部で訓練されたもので、一般には公開されていません。
+このデータで訓練されたモデルは、**[little_questions](https://github.com/TigreGotico/little_questions)** の内部で配布されます。これはnumpy と onnxruntime だけに依存するオフラインのライブラリで、文タイプ用の言語別 ONNX 分類器と、43言語対応の yes/no 極性モデルを備えています。モデルは英語についてはwheel内に同梱され、その他の言語については遅延ダウンロードされます。文タイプ分類器は HuggingFace 上で `TigreGotico/sentence-type-classifiers` として公開されており、英語の EAT 回答タイプ分類器は wheel 内に同梱されています。
 
 ```python
 from little_questions import Sentence
 
-s = Sentence("What time is it?")
+s = Sentence("When was the telephone invented?")
 print(s.sentence_type)     # "question"
-print(s.classification)    # e.g. "NUM:date"
+print(s.classification)    # "NUM:date"
 ```
 
 `little_questions` は、OVOS と LILACS のための自然言語経路制御の層です。発話が疑問文なのか、命令文なのか、平叙文なのかを分類することは、音声パイプラインが下す最初のディスパッチの判断です。

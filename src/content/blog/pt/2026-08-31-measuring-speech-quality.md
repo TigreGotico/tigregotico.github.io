@@ -2,6 +2,7 @@
 title: "Medir a Qualidade da Fala Sem um Painel de Audição"
 description: "Um guia prático ao speechonnxmetrics: o que o MOS, os preditores de MOS sem referência, as métricas intrusivas de sinal e o WER/CER baseado em ASR realmente medem, quando cada um se aplica, pontuações reais de áudio real, e porque um MOS previsto é evidência, não verdade."
 date: 2026-08-01
+updated: 2026-10-20
 lang: pt
 author: "Casimiro Ferreira"
 tags:
@@ -84,7 +85,7 @@ que recebem uma forma de onda.
 
 ## MOS sem referência: lendo os números
 
-Distribuem-se quatro estimadores de MOS, cada um devolvendo valores numa
+Distribuem-se cinco estimadores de MOS, cada um devolvendo valores numa
 escala de 1–5 em que mais alto é melhor, a mesma escala que um painel
 humano usa:
 
@@ -191,7 +192,7 @@ efetivamente transcrito):
 
 Um exemplo trabalhado: referência "the quick brown fox jumps over the
 lazy dog" face à hipótese "the quick brown fox jumped over a lazy dog"
-(uma substituição, "jumps" → "jumped", uma eliminação de "the"):
+(duas substituições, "jumps" → "jumped" e "the" → "a"):
 
 ```python
 >>> from speechonnxmetrics import asr

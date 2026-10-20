@@ -2,6 +2,7 @@
 title: "Escritas e Notações Fonéticas: O Que o scriptconv Realmente Converte"
 description: "Uma visita ao scriptconv, a biblioteca sem dependências que deteta sistemas de escrita e converte entre notações fonéticas. Cobre IPA, ARPABET e X-SAMPA, deteção de escrita ISO-15924, transliteração Buckwalter para árabe, decomposição de Hangul em jamo, e conversão de kana, com exemplos reais e executados e limites honestos."
 date: 2026-08-01
+updated: 2026-10-20
 lang: pt
 author: "Casimiro Ferreira"
 tags:
@@ -111,9 +112,7 @@ from scriptconv import DEFAULT_GRAPH
 # ['arpa->ipa', 'ipa->x-sampa']
 ```
 
-Nove notações transcodificam através desse núcleo no total: ARPABET,
-X-SAMPA, Kirshenbaum, Lexique, Cotovía, RFE, e mantoq, mais Buckwalter,
-coberto abaixo.
+Sete notações transcodificam através desse núcleo no total: ARPABET, X-SAMPA, Kirshenbaum, Lexique, Cotovía, RFE, e mantoq. O Buckwalter, tratado abaixo, não é uma delas: só converte de e para a escrita árabe.
 
 ## Detetar a escrita antes de fazer qualquer outra coisa
 
@@ -254,9 +253,7 @@ restrito e específico do inglês, por isso ir IPA → ARPABET → IPA pode
 perder distinções que o IPA consegue fazer e para as quais a tabela do
 ARPABET não tem símbolo. O X-SAMPA e o Lexique cobrem fielmente o
 inventário IPA completo mas não têm garantia de fazer a ida e volta de
-forma limpa a partir do seu próprio lado. O Kirshenbaum e o Buckwalter
-fazem a ida e volta de forma limpa a partir do seu próprio lado para IPA
-mas não o inverso. O mantoq, o alfabeto fonético do fonemizador de árabe
+forma limpa a partir do seu próprio lado. O Kirshenbaum faz a ida e volta de forma limpa a partir do seu próprio lado para IPA mas não o inverso. O Buckwalter não tem conversor para IPA, apenas um de e para a escrita árabe. O mantoq, o alfabeto fonético do fonemizador de árabe
 halabi, só converte numa direção, para IPA. Não há conversor de volta.
 Nada disto está escondido nalgum docstring. São dados que a biblioteca
 expõe para que quem chama possa verificar antes de assumir que uma ida e

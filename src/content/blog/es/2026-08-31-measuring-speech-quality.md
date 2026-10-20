@@ -2,6 +2,7 @@
 title: "Medir la Calidad del Habla Sin un Panel de Escucha"
 description: "Una guía práctica de speechonnxmetrics: qué miden realmente el MOS, los predictores de MOS sin referencia, las métricas intrusivas de señal y el WER/CER basado en ASR, cuándo aplica cada uno, puntuaciones reales de audio real, y por qué un MOS predicho es evidencia, no verdad."
 date: 2026-08-01
+updated: 2026-10-20
 lang: es
 author: "Casimiro Ferreira"
 tags:
@@ -42,7 +43,7 @@ Las métricas de texto viven en un módulo separado, `speechonnxmetrics.asr`, po
 
 ## MOS sin referencia: leyendo los números
 
-Se incluyen cuatro estimadores de MOS, cada uno devolviendo valores en una escala de 1 a 5 donde más alto es mejor — la misma escala que usa un panel humano:
+Se incluyen cinco estimadores de MOS, cada uno devolviendo valores en una escala de 1 a 5 donde más alto es mejor — la misma escala que usa un panel humano:
 
 | métrica | dimensiones | entrenada con | uso comercial |
 |---|---|---|---|
@@ -109,7 +110,7 @@ Cinco métricas de texto proceden de una única alineación de Levenshtein entre
 | `wil` | 0–1 | más bajo es mejor | información de palabras perdida |
 | `wip` | 0–1 | más alto es mejor | información de palabras preservada (`1 − wil`) |
 
-Un ejemplo resuelto: referencia «the quick brown fox jumps over the lazy dog» frente a hipótesis «the quick brown fox jumped over a lazy dog» (una sustitución, «jumps» → «jumped», una eliminación de «the»):
+Un ejemplo resuelto: referencia «the quick brown fox jumps over the lazy dog» frente a hipótesis «the quick brown fox jumped over a lazy dog» (dos sustituciones, «jumps» → «jumped» y «the» → «a»):
 
 ```python
 >>> from speechonnxmetrics import asr

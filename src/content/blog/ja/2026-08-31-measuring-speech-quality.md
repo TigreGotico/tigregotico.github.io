@@ -2,6 +2,7 @@
 title: "聴取パネルなしで音声品質を測定する"
 description: "speechonnxmetrics の実践ガイド: MOS、参照なし MOS 予測器、侵襲的信号指標、ASR ベースの WER/CER が実際に何を測っているか、それぞれをいつ適用するか、実際の音声からの実際のスコア、そしてなぜ予測された MOS が真実ではなく証拠なのか。"
 date: 2026-08-01
+updated: 2026-10-20
 lang: ja
 author: "Casimiro Ferreira"
 tags:
@@ -42,7 +43,7 @@ s.score("degraded.wav", ["stoi", "mcd", "si_sdr"], ref="clean.wav")
 
 ## 参照なし MOS: 数値を読む
 
-四つの MOS 推定器が提供されており、それぞれ、人間のパネルが使うのと同じ 1〜5 の尺度(高いほど良い)で値を返します。
+五つの MOS 推定器が提供されており、それぞれ、人間のパネルが使うのと同じ 1〜5 の尺度(高いほど良い)で値を返します。
 
 | 指標 | 次元 | 学習データ | 商用利用 |
 |---|---|---|---|
@@ -109,7 +110,7 @@ s.score("degraded.wav", ["stoi", "mcd", "si_sdr"], ref="clean.wav")
 | `wil` | 0–1 | 低いほど良い | 失われた単語情報 |
 | `wip` | 0–1 | 高いほど良い | 保存された単語情報(`1 − wil`) |
 
-実例です。参照 "the quick brown fox jumps over the lazy dog" を仮説 "the quick brown fox jumped over a lazy dog" と比較(一つの置換、"jumps" → "jumped"、"the" の一つの削除)。
+実例です。参照 "the quick brown fox jumps over the lazy dog" を仮説 "the quick brown fox jumped over a lazy dog" と比較(二つの置換、"jumps" → "jumped" と "the" → "a")。
 
 ```python
 >>> from speechonnxmetrics import asr

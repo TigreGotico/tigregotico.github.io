@@ -3,7 +3,7 @@ title: "多语言句型数据集：疑问句、命令句、陈述句"
 description: "我们发布了 sentence-types-multilingual —— 涵盖七种语言、近 70,000 个句子，按语法类型（疑问句、命令句、陈述句、感叹句）分类。它是 little_questions 路由库背后的训练语料库。"
 date: 2026-04-01
 lang: zh
-updated: 2026-08-01
+updated: 2026-10-20
 author: "Casimiro Ferreira"
 tags:
   - "Datasets"
@@ -50,14 +50,14 @@ draft: false
 
 ## 下游技术栈
 
-在这些数据上训练出的模型，随 **[little_questions](https://github.com/TigreGotico/little_questions)** 一同发布 —— 这是一个零依赖的离线库（numpy + onnxruntime），配有按语言划分的、用于句型分类的 ONNX 分类器，以及一个支持 43 种语言的是/否极性模型。英语的模型直接打包进 wheel，其他语言的模型则按需惰性下载。句型分类器以 `TigreGotico/sentence-types` 的名义发布在 HuggingFace 上；EAT 答案类型分类器则是内部训练的，并未公开发布。
+在这些数据上训练出的模型，随 **[little_questions](https://github.com/TigreGotico/little_questions)** 一同发布 —— 这是一个只依赖 numpy 和 onnxruntime 的离线库，配有按语言划分的、用于句型分类的 ONNX 分类器，以及一个支持 43 种语言的是/否极性模型。英语的模型直接打包进 wheel，其他语言的模型则按需惰性下载。句型分类器以 `TigreGotico/sentence-type-classifiers` 的名义发布在 HuggingFace 上；英语的 EAT 答案类型分类器则随 wheel 一同提供。
 
 ```python
 from little_questions import Sentence
 
-s = Sentence("What time is it?")
+s = Sentence("When was the telephone invented?")
 print(s.sentence_type)     # "question"
-print(s.classification)    # e.g. "NUM:date"
+print(s.classification)    # "NUM:date"
 ```
 
 `little_questions` 是 OVOS 和 LILACS 的自然语言路由层：判断一句话语是疑问句、命令句还是陈述句，是语音流水线所做的第一个分派决策。

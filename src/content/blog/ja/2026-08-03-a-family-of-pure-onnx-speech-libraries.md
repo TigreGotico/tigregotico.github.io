@@ -1,7 +1,8 @@
 ---
 title: "純粋な ONNX 音声ライブラリ群"
-description: "TigreGótico は、帯域拡張、音声クローニング、話者埋め込み、VAD、単語アクセント、音素化、TTS、そしてそれらすべてを採点する指標ライブラリからなる音声ライブラリ群を維持しています — これらは一つのランタイムルールを共有します。onnxruntime と numpy だけを使い、PyTorch も GPU も不要です。"
+description: "TigreGótico は、帯域拡張、音声クローニング、話者埋め込み、VAD、単語アクセント、音素化、TTS、そしてそれらすべてを採点する指標ライブラリからなる音声ライブラリ群を維持しています — これらは一つのランタイムルールを共有します。推論には onnxruntime と numpy を使い、PyTorch も GPU も不要です。"
 date: 2026-08-01
+updated: 2026-10-20
 lang: ja
 author: "Casimiro Ferreira"
 tags:
@@ -16,7 +17,7 @@ draft: false
 
 ONNX は学習済みニューラルネットワークのためのファイル形式です。重みと計算グラフが凍結され、それを学習させたフレームワークへの依存はありません。ONNX にエクスポートされたモデルは、そのグラフを実行する以外何もしない小さな推論エンジンである **ONNX Runtime** を通じて実行できます。それはモデルがどのように学習されたかを知らず、学習をサポートせず、PyTorch や TensorFlow がインストールされている必要もありません。
 
-私たちのいくつかのライブラリは一つのルールを守っています。実行時の依存関係は `onnxruntime` と `numpy` だけです。「おおむね」ではなく — パッケージ自体をインポートするだけでは決して学習フレームワークを引き込みません。`audiosronnx`(帯域拡張とノイズ除去)、`voiceclonnx`(音声クローニング)、`speakeronnx`(話者埋め込み)、`speechonnxmetrics`(評価)、`stressonnx`(単語アクセント)、`vadonnx`(音声区間検出)、`phoonnx`(音素化とテキスト音声変換)はすべてこれに従い、それぞれ独自の PyPI パッケージとして存在します。さらに二つ、`phoonnx.js` と `precise-onnx-js` は、代わりにブラウザで `onnxruntime-web` を使って同じ考え方を適用します。
+私たちのいくつかのライブラリは一つのルールを守っています。実行時の推論に必要なのは `onnxruntime` と `numpy` だけで、これに音声入出力とモデルのダウンロード用の小さな補助パッケージが加わります。パッケージ自体をインポートするだけでは決して学習フレームワークを引き込みません。`audiosronnx`(帯域拡張とノイズ除去)、`voiceclonnx`(音声クローニング)、`speakeronnx`(話者埋め込み)、`speechonnxmetrics`(評価)、`stressonnx`(単語アクセント)、`vadonnx`(音声区間検出)、`phoonnx`(音素化とテキスト音声変換)はすべてこれに従い、それぞれ独自の PyPI パッケージとして存在します。さらに二つ、`phoonnx.js` と `precise-onnx-js` は、代わりにブラウザで `onnxruntime-web` を使って同じ考え方を適用します。
 
 ## なぜそこまでするのか
 
@@ -64,7 +65,7 @@ cloner = VoiceCloner(engine="facodec")
 out = cloner.clone_voice("source.wav", "reference.wav", "out.wav")
 ```
 
-十のエンジン(`facodec`、`openvoice`、`chatterbox`、`triaan`、`cosyvoice`、`bicodec`、`knnvc`、`focalcodec`、`lscodec`、`rvc`)が登録されており、kNN 特徴交換、因数分解コーデック、フローマッチング、音色転写、AR コーデック LM、話者分離コーデックという六つの異なるモデル系統にまたがっています。それぞれの背後には公開された明瞭度と話者類似度の数値があるため、エンジンを選ぶことはコイントスではなく比較になります。
+十のエンジン(`facodec`、`openvoice`、`chatterbox`、`triaan`、`cosyvoice`、`bicodec`、`knnvc`、`focalcodec`、`lscodec`、`rvc`)が登録されており、kNN 特徴交換、因数分解コーデック、フローマッチング、音色転写、AR コーデック LM、話者分離コーデック、Triple-AAN、意味トークンとグローバルトークン、ContentVec+VITS という九つの異なるモデル系統にまたがっています。それぞれの背後には公開された明瞭度と話者類似度の数値があるため、エンジンを選ぶことはコイントスではなく比較になります。
 
 `vadonnx` は同じパターンを音声区間検出 — オーディオストリームのどの部分に音声があるかを判断する作業 — に適用します。
 
@@ -76,7 +77,7 @@ segments = vad.get_speech_segments(audio, sample_rate=16000)
 # -> [SpeechSegment(start=0.32, end=2.27), SpeechSegment(start=3.27, end=4.45), ...]
 ```
 
-六つのモデル系統(`silero`、`marblenet`、`pyannote`、`fsmn`、`speechbrain`、`ten`)が登録されており、宣言的な `IOSignature` によって一つの汎用エンジンがそれらのほとんどを駆動でき、あるいは任意のカスタム `.onnx` VAD ファイルを指すこともできます。
+七つのモデル系統(`silero`、`marblenet`、`pyannote`、`fsmn`、`speechbrain`、`ten`、`pulsevad`)が登録されており、宣言的な `IOSignature` によって一つの汎用エンジンがそれらのほとんどを駆動でき、あるいは任意のカスタム `.onnx` VAD ファイルを指すこともできます。
 
 `speakeronnx` は、誰が話したかを何を話したかとは無関係に要約する固定長ベクトルである**話者埋め込み**を抽出し、コサイン類似度で二つの埋め込みを比較して二つのクリップが同一話者かどうかを確認します。
 
@@ -89,7 +90,7 @@ alice2 = embedder.embed("alice_clip2.wav")
 print(cosine(alice1, alice2))   # e.g. 0.82 - same speaker
 ```
 
-四つのアーキテクチャ系統(WeSpeaker、CAM++、ERes2Net、ReDimNet)にわたって九つのモデルを、公開された埋め込み次元とライセンスとともに登録しています。
+五つのアーキテクチャ系統(WeSpeaker、CAM++、ERes2Net、TitaNet、ReDimNet)にわたって九つのモデルを、公開された埋め込み次元とライセンスとともに登録しています。
 
 `stressonnx` はテキスト音声変換のフロントエンドのために単語アクセント — 単語のどの音節が強勢を受けるか、多くの言語が綴りで示さない情報(ロシア語の *за́мок*(城)と *замо́к*(錠)はすべての文字を共有します) — を選びます。ロシア語のための一つの神経パイプライン、ウクライナ語とベラルーシ語のためのもう一つ、そして神経推論をまったく使わずに 26 言語をカバーするルールと語彙のバックエンドを登録しています。
 
@@ -100,7 +101,7 @@ stress("старинный замок стоит на горе", "ru")
 # 'стари́нный за́мок сто́ит на горе́'
 ```
 
-`phoonnx` はテキストを音素化し(綴られた単語を TTS モデルが消費する音の単位に変え)、複数のエコシステム(ネイティブの phoonnx、Piper、Mimic3、Coqui、MMS、Transformers)からエクスポートされた 17 の登録済み合成エンジンと音声にわたってテキスト音声変換を実行します。
+`phoonnx` はテキストを音素化し(綴られた単語を TTS モデルが消費する音の単位に変え)、複数のエコシステム(ネイティブの phoonnx、Piper、Mimic3、Coqui、MMS、Transformers)からエクスポートされた 28 の登録済み合成エンジンと音声にわたってテキスト音声変換を実行します。
 
 ```python
 import wave
@@ -114,11 +115,13 @@ with wave.open("hello.wav", "wb") as wav_file:
 `phoonnx.js` は同じトークナイザーの経路を `onnxruntime-web` でブラウザに持ち込み、`precise-onnx-js` はウェイクワード検出(MFCC 特徴抽出と ONNX 分類器、Mycroft Precise モデルと互換)を JavaScript に移植します。どちらもサーバーなしで動作します。
 
 ```ts
+// phoonnx.js is not on npm. Install it from GitHub:
+// npm install github:TigreGotico/phoonnx.js onnxruntime-web
 import { loadVoice, synthesizeWav } from "phoonnx";
 import { getVoice } from "phoonnx/voices";
 
-const voice = await loadVoice(getVoice("phoonnx_eu-ES_dii_unicode")!);
-const blob = await synthesizeWav(voice, "Kaixo mundua!");
+const voice = await loadVoice(getVoice("phoonnx_pt-PT_miro_unicode")!);
+const blob = await synthesizeWav(voice, "Olá, mundo!");
 ```
 
 `audiosronnx`(公開モデル 18 個)と `voiceclonnx`(公開モデル 10 個)の重みは、[TigreGótico の Hugging Face 組織](https://huggingface.co/TigreGotico)に別々のダウンロードとして存在し、初回使用時に取得されてローカルにキャッシュされるため、別のエンジンを選ぶことは再デプロイではなく設定変更です。

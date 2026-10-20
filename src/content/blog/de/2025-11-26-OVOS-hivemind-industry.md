@@ -2,6 +2,7 @@
 title: "OVOS & HiveMind in der Fertigungsindustrie"
 description: "Die EU-Projekte COALA und WASABI haben ein komplettes industrielles Sprachassistenten-Framework rund um OVOS + HiveMind aufgebaut und diese mit ihren eigenen Werkzeugen, ihrer Benutzeroberfläche und ihren Konversations-Engines integriert."
 date: 2025-11-26
+updated: 2026-10-20
 lang: de
 author: "Casimiro Ferreira"
 tags:
@@ -104,7 +105,7 @@ Dies bildet den Standard-Stack für industrielle Sprachassistenten, den alle WAS
 
 ### **4. Ein industrieller Sprachdatensatz**
 
-COALA veröffentlichte einen mehrsprachigen Sprachdatensatz, der in Fabriken und Werkstätten aufgenommen wurde:
+COALA veröffentlichte einen englischsprachigen Sprachdatensatz mit Skripten aus der Fertigung, die von über einen Dienstleister angeworbenen Crowd-Arbeitern vorgelesen wurden und unter CC0 stehen:
 [https://zenodo.org/record/8268928](https://zenodo.org/record/8268928)
 
 ---

@@ -2,6 +2,7 @@
 title: "Scritture e Notazioni Fonetiche: Cosa Converte Davvero scriptconv"
 description: "Un approfondimento su scriptconv, la libreria a dipendenza zero che rileva i sistemi di scrittura e converte tra notazioni fonetiche. Copre IPA, ARPABET e X-SAMPA; il rilevamento di scrittura ISO-15924; la traslitterazione Buckwalter per l'arabo; la scomposizione dell'Hangul in jamo; e la conversione kana, con esempi reali, eseguiti, e limiti onesti."
 date: 2026-08-01
+updated: 2026-10-20
 lang: it
 author: "Casimiro Ferreira"
 tags:
@@ -111,9 +112,7 @@ from scriptconv import DEFAULT_GRAPH
 # ['arpa->ipa', 'ipa->x-sampa']
 ```
 
-In totale, nove notazioni transcodificano attraverso quell'hub: ARPABET,
-X-SAMPA, Kirshenbaum, Lexique, Cotovía, RFE e mantoq, più Buckwalter,
-trattato più avanti.
+In totale, sette notazioni transcodificano attraverso quell'hub: ARPABET, X-SAMPA, Kirshenbaum, Lexique, Cotovía, RFE e mantoq. Buckwalter, trattato più avanti, non è una di queste: converte solo da e verso la scrittura araba.
 
 ## Rilevare la scrittura prima di fare qualsiasi altra cosa
 
@@ -253,8 +252,7 @@ ristretto e specifico dell'inglese, quindi andare IPA → ARPABET → IPA può
 perdere distinzioni che l'IPA può fare ma per cui la tabella di ARPABET non
 ha alcun simbolo. X-SAMPA e Lexique coprono fedelmente l'intero inventario
 IPA ma non è garantito che facciano un percorso di andata e ritorno pulito
-partendo dal proprio lato. Kirshenbaum e Buckwalter fanno un percorso
-pulito dal proprio lato verso l'IPA ma non il contrario. Mantoq, l'alfabeto
+partendo dal proprio lato. Kirshenbaum fa un percorso pulito dal proprio lato verso l'IPA ma non il contrario. Buckwalter non ha un convertitore verso l'IPA, solo uno da e verso la scrittura araba. Mantoq, l'alfabeto
 fonetico del fonetizzatore arabo halabi, converte solo in una direzione,
 verso l'IPA — non esiste un convertitore di ritorno. Nulla di tutto ciò è
 sepolto in una docstring da qualche parte; sono dati che la libreria espone

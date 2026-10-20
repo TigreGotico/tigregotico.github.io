@@ -2,6 +2,7 @@
 title: "Escrituras y Notaciones Fonéticas: Qué Convierte Realmente scriptconv"
 description: "Un análisis en profundidad de scriptconv, la biblioteca sin dependencias que detecta sistemas de escritura y convierte entre notaciones fonéticas. Cubre IPA, ARPABET y X-SAMPA; detección de escritura ISO-15924; transliteración Buckwalter para el árabe; descomposición de hangul en jamo; y conversión de kana, con ejemplos reales, ejecutados, y límites honestos."
 date: 2026-08-01
+updated: 2026-10-20
 lang: es
 author: "Casimiro Ferreira"
 tags:
@@ -64,7 +65,7 @@ from scriptconv import DEFAULT_GRAPH
 # ['arpa->ipa', 'ipa->x-sampa']
 ```
 
-Nueve notaciones se transcodifican a través de ese concentrador en total: ARPABET, X-SAMPA, Kirshenbaum, Lexique, Cotovía, RFE y mantoq, más Buckwalter, cubierto a continuación.
+Siete notaciones se transcodifican a través de ese concentrador en total: ARPABET, X-SAMPA, Kirshenbaum, Lexique, Cotovía, RFE y mantoq. Buckwalter, que se cubre a continuación, no es una de ellas: solo convierte desde y hacia la escritura árabe.
 
 ## Detectar la escritura antes de hacer cualquier otra cosa
 
@@ -146,7 +147,7 @@ Un fonemizador — una herramienta que adivina cómo se pronuncia una palabra es
 
 Convertir entre notaciones no siempre carece de pérdidas, y `scriptconv` registra esto como datos consultables en lugar de dejarlo como sorpresa. Cada notación tiene dos propiedades rastreadas de forma independiente: si convertirla a IPA y de vuelta reproduce los símbolos originales exactamente, y si el IPA convertido a ella y de vuelta reproduce cada símbolo IPA.
 
-ARPABET falla en ambas direcciones: tiene un inventario de fonemas restringido, específico del inglés, así que ir de IPA → ARPABET → IPA puede perder distinciones que el IPA puede hacer y para las que la tabla de ARPABET no tiene símbolo. X-SAMPA y Lexique cubren el inventario completo del IPA fielmente pero no está garantizado que hagan un viaje de ida y vuelta limpio empezando por su propio lado. Kirshenbaum y Buckwalter hacen un viaje de ida y vuelta limpio desde su propio lado hacia el IPA pero no al revés. Mantoq, el alfabeto fonético del fonemizador del árabe halabí, solo convierte en una dirección, hacia el IPA — no hay conversor de vuelta. Nada de esto está enterrado en algún docstring; son datos que la biblioteca expone para que quien la use pueda comprobar antes de asumir que un viaje de ida y vuelta es seguro.
+ARPABET falla en ambas direcciones: tiene un inventario de fonemas restringido, específico del inglés, así que ir de IPA → ARPABET → IPA puede perder distinciones que el IPA puede hacer y para las que la tabla de ARPABET no tiene símbolo. X-SAMPA y Lexique cubren el inventario completo del IPA fielmente pero no está garantizado que hagan un viaje de ida y vuelta limpio empezando por su propio lado. Kirshenbaum hace un viaje de ida y vuelta limpio desde su propio lado hacia el IPA pero no al revés. Buckwalter no tiene conversor al IPA, solo uno desde y hacia la escritura árabe. Mantoq, el alfabeto fonético del fonemizador del árabe halabí, solo convierte en una dirección, hacia el IPA — no hay conversor de vuelta. Nada de esto está enterrado en algún docstring; son datos que la biblioteca expone para que quien la use pueda comprobar antes de asumir que un viaje de ida y vuelta es seguro.
 
 ---
 

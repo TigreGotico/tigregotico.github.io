@@ -2,6 +2,7 @@
 title: "Portieren mit Maschinen, und die Lizenzfrage, die wir nicht beantworten konnten"
 description: "Wir haben mehrere C-, C++- und Java-Programme — das G2P von espeak-ng, Cotovía, AhoTTS, HermiT — als reines Python neu geschrieben, mit einer KI als Leserin des Original-Quellcodes und einem Menschen als Dirigenten. Niemand auf unserer Seite hat die Originale gelesen. Das wirft zwei Fragen auf: Kann das Ergebnis überhaupt Eigentum sein, und ist es abgeleitet? Wir behielten die ursprünglichen Lizenzen, weil das billiger war als die Antwort. Wir halten die Frage für offen."
 date: 2026-08-01
+updated: 2026-10-20
 lang: de
 author: "Casimiro Ferreira"
 tags:
@@ -367,7 +368,7 @@ eines Beitragenden, der keine Möglichkeit hatte, das zu prüfen. Der gesamte
 Wert des DCO liegt darin, dass die unterzeichnende Person in der Lage war,
 es zu wissen. Hier ist sie es nicht.
 
-Debian arbeitet gerade daran. Eine
+Debian hat sich damit befasst. Eine
 [Generalresolution zur LLM-Nutzung](https://www.debian.org/vote/2026/vote_002)
 ging am 23. Juli 2026 mit fünf Vorschlägen auf dem Stimmzettel in ihre
 Diskussionsphase. Sie decken die ganze Bandbreite ab: Vorschlag A würde den
@@ -378,8 +379,7 @@ menschliche Formulierung für Projektkommunikation, und erlaubt einzelnen
 Maintainern, eigene Verbote durchzusetzen; die Vorschläge B, D und E erlauben
 KI-unterstützte Arbeit unter Bedingungen, die jeweils auf Lizenzprüfung,
 Verantwortlichkeit der Beitragenden, Offenlegung und Einschränkungen beim
-Senden vertraulicher Materialien an Cloud-Dienste aufbauen. Zum Zeitpunkt des
-Verfassens wird darüber diskutiert, und nichts ist entschieden.
+Senden vertraulicher Materialien an Cloud-Dienste aufbauen. Die Abstimmung lief vom 15. bis 28. August 2026, und Option 5, „Responsible Use of Generative AI“, hat gewonnen: Debian befürwortet generative KI-Werkzeuge weder, noch verbietet es sie, und es macht die Beitragenden für das verantwortlich, was sie einreichen.
 
 Das ist die zweite Runde. Ein
 [früherer Versuch im Jahr 2024](https://lwn.net/Articles/972331/) endete ohne
@@ -428,7 +428,7 @@ Fall zu Fall durch Moderatoren statt durch Massenentfernung.
 Es gibt also zwei unabhängige Fragen im Umlauf, und ein Projekt kann
 irgendwo im Raster landen: ob maschinengeschriebener Code überhaupt
 lizenziert werden kann, und ob das Ökosystem das Volumen aufnehmen kann.
-Debian stimmt über die erste ab und hat nicht abgeschlossen. Codeberg hat
+Debian hat die erste per Abstimmung entschieden. Codeberg hat
 zur zweiten gehandelt. Kein Ergebnis klärt das andere, und die Antworten,
 die ein Projekt auf jede gibt, sind weitgehend unkorreliert.
 

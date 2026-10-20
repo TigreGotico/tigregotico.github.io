@@ -2,6 +2,7 @@
 title: "청취 패널 없이 음성 품질 측정하기"
 description: "speechonnxmetrics 실무 안내서: MOS, 참조 없는 MOS 예측기, 침습적 신호 지표, ASR 기반 WER/CER이 실제로 무엇을 측정하는지, 각각을 언제 적용하는지, 실제 오디오의 실제 점수, 그리고 예측된 MOS가 진실이 아니라 증거인 이유."
 date: 2026-08-01
+updated: 2026-10-20
 lang: ko
 author: "Casimiro Ferreira"
 tags:
@@ -42,7 +43,7 @@ s.score("degraded.wav", ["stoi", "mcd", "si_sdr"], ref="clean.wav")
 
 ## 참조 없는 MOS: 숫자 읽기
 
-네 개의 MOS 추정기가 제공되며, 각각 사람 패널이 사용하는 것과 같은 척도인 1~5 척도로 값을 반환합니다(높을수록 좋음):
+다섯 개의 MOS 추정기가 제공되며, 각각 사람 패널이 사용하는 것과 같은 척도인 1~5 척도로 값을 반환합니다(높을수록 좋음):
 
 | 지표 | 차원 | 학습 데이터 | 상업적 사용 |
 |---|---|---|---|
@@ -109,7 +110,7 @@ s.score("degraded.wav", ["stoi", "mcd", "si_sdr"], ref="clean.wav")
 | `wil` | 0–1 | 낮을수록 좋음 | 손실된 단어 정보 |
 | `wip` | 0–1 | 높을수록 좋음 | 보존된 단어 정보(`1 − wil`) |
 
-실제 예: 참조 "the quick brown fox jumps over the lazy dog"를 가설 "the quick brown fox jumped over a lazy dog"와 비교(치환 하나, "jumps" → "jumped", "the" 삭제 하나):
+실제 예: 참조 "the quick brown fox jumps over the lazy dog"를 가설 "the quick brown fox jumped over a lazy dog"와 비교(치환 두 개, "jumps" → "jumped"와 "the" → "a"):
 
 ```python
 >>> from speechonnxmetrics import asr

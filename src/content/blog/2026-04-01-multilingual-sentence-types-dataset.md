@@ -2,7 +2,7 @@
 title: "A Multilingual Sentence-Types Dataset: Questions, Commands, Statements"
 description: "We published sentence-types-multilingual — nearly 70,000 sentences across seven languages, classified by grammatical type (question, command, statement, exclamation). It is the training corpus behind the little_questions routing library."
 date: 2026-04-01
-updated: 2026-08-01
+updated: 2026-10-20
 author: "Casimiro Ferreira"
 tags:
   - "Datasets"
@@ -49,14 +49,14 @@ A model trained only on English gets these wrong everywhere else. Parallel label
 
 ## The downstream stack
 
-The models trained on this data ship inside **[little_questions](https://github.com/TigreGotico/little_questions)**, a zero-dependency offline library (numpy + onnxruntime) with per-language ONNX classifiers for sentence type and a 43-language yes/no polarity model. Models are bundled in-wheel for English and lazy-downloaded for other languages. The sentence-type classifiers are published as `TigreGotico/sentence-types` on HuggingFace. The EAT answer-type classifiers are trained internally and not publicly released.
+The models trained on this data ship inside **[little_questions](https://github.com/TigreGotico/little_questions)**, an offline library that depends only on numpy and onnxruntime, with per-language ONNX classifiers for sentence type and a 43-language yes/no polarity model. Models are bundled in-wheel for English and lazy-downloaded for other languages. The sentence-type classifiers are published as `TigreGotico/sentence-type-classifiers` on HuggingFace. The English EAT answer-type classifiers ship inside the wheel.
 
 ```python
 from little_questions import Sentence
 
-s = Sentence("What time is it?")
+s = Sentence("When was the telephone invented?")
 print(s.sentence_type)     # "question"
-print(s.classification)    # e.g. "NUM:date"
+print(s.classification)    # "NUM:date"
 ```
 
 `little_questions` is the natural-language routing layer for OVOS and LILACS: classifying whether an utterance is a question, command, or statement is the first dispatch decision a voice pipeline makes.

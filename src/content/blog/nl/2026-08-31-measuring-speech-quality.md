@@ -2,6 +2,7 @@
 title: "Spraakkwaliteit meten zonder luisterpanel"
 description: "Een praktische gids voor speechonnxmetrics: wat MOS, no-reference MOS-voorspellers, intrusieve signaalmetrieken en ASR-gebaseerde WER/CER daadwerkelijk meten, wanneer elk van toepassing is, echte scores op echte audio, en waarom een voorspelde MOS bewijs is, geen waarheid."
 date: 2026-08-01
+updated: 2026-10-20
 lang: nl
 author: "Casimiro Ferreira"
 tags:
@@ -79,7 +80,7 @@ die een golfvorm nemen.
 
 ## No-reference MOS: de getallen lezen
 
-Vier MOS-schatters worden geleverd, elk met waarden op een schaal van 1-5
+Vijf MOS-schatters worden geleverd, elk met waarden op een schaal van 1-5
 waar hoger beter is — dezelfde schaal die een menselijk panel gebruikt:
 
 | metriek | dimensies | getraind op | commercieel gebruik |
@@ -186,7 +187,7 @@ getranscribeerd werd):
 
 Een uitgewerkt voorbeeld: referentie "the quick brown fox jumps over the
 lazy dog" tegen hypothese "the quick brown fox jumped over a lazy dog"
-(één substitutie, "jumps" → "jumped", één verwijdering van "the"):
+(twee substituties, "jumps" → "jumped" en "the" → "a"):
 
 ```python
 >>> from speechonnxmetrics import asr

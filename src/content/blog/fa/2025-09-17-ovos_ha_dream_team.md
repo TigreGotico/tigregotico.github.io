@@ -2,6 +2,7 @@
 title: "OpenVoiceOS و Home Assistant: تیم رؤیایی خودکارسازی صوتی"
 description: "‏Home Assistant خودکارسازی را به عهده می‌گیرد؛ OVOS صدا را. سه لایهٔ یکپارچه‌سازی این ترکیب را کارآمد می‌کنند: پل‌های Wyoming برای خط‌لولهٔ صوتی HA، ovos-persona-server به‌عنوان یک عامل گفت‌وگویی، و HiveMind برای نمایش دستگاه‌های OVOS به‌عنوان موجودیت‌های بومی HA."
 date: 2025-09-17
+updated: 2026-10-20
 lang: fa
 author: "Casimiro Ferreira"
 tags:
@@ -25,11 +26,11 @@ draft: false
 پروتکل Wyoming رابط استاندارد HA برای سرویس‌های خارجی ASR، TTS و wakeword است. ما پل‌های Wyoming ساختیم که هر افزونهٔ OVOS را روی آن پروتکل در دسترس می‌گذارند — یعنی HA به هر افزونه در بوم‌سازگان OVOS دسترسی پیدا می‌کند، نه فقط یک فهرست کوتاه گزیده.
 
 
-* [Wyoming OVOS ASR](https://github.com/TigreGotico/wyoming-ovos-stt): فرمان‌های گفتاری را به متن تبدیل می‌کند تا Home Assistant آن‌ها را بفهمد.
-* [Wyoming OVOS TTS](https://github.com/TigreGotico/wyoming-ovos-tts): به Home Assistant امکان می‌دهد پاسخ‌ها را با گزینه‌های صوتی متنوع OVOS بیان کند.
-* [Wyoming OVOS Wakeword](https://github.com/TigreGotico/wyoming-ovos-wakeword): wakeword های سفارشی را یکپارچه می‌کند و به راه‌اندازی Home Assistant شما اجازه می‌دهد فقط زمانی پاسخ دهد که عبارت راه‌اندازِ انتخابی شما را بشنود.
+* [Wyoming OVOS ASR](https://github.com/OpenVoiceOS/wyoming-ovos-stt): فرمان‌های گفتاری را به متن تبدیل می‌کند تا Home Assistant آن‌ها را بفهمد.
+* [Wyoming OVOS TTS](https://github.com/OpenVoiceOS/wyoming-ovos-tts): به Home Assistant امکان می‌دهد پاسخ‌ها را با گزینه‌های صوتی متنوع OVOS بیان کند.
+* [Wyoming OVOS Wakeword](https://github.com/OpenVoiceOS/wyoming-ovos-wakeword): wakeword های سفارشی را یکپارچه می‌کند و به راه‌اندازی Home Assistant شما اجازه می‌دهد فقط زمانی پاسخ دهد که عبارت راه‌اندازِ انتخابی شما را بشنود.
 
-پروژهٔ [OVOS Wyoming Docker](https://github.com/TigreGotico/ovos-wyoming-docker) این سرویس‌ها را بسته‌بندی می‌کند تا با یک `docker compose up` در دسترس باشند.
+پروژهٔ [OVOS Wyoming Docker](https://github.com/OpenVoiceOS/ovos-wyoming-docker) این سرویس‌ها را بسته‌بندی می‌کند تا با یک `docker compose up` در دسترس باشند.
 
 ### TTS چندزبانه از پروژه‌های زبانیِ با بودجهٔ عمومی
 
@@ -71,7 +72,7 @@ draft: false
 
 ### **راه‌اندازی یکپارچه‌سازی HiveMind:**
 
-برای یکپارچه‌سازی دستگاه‌های OVOS از طریق HiveMind، معمولاً یکپارچه‌سازی HiveMind را در Home Assistant اضافه می‌کنید. این کار شامل ارائهٔ جزئیات اتصال مانند یک `name` برای یکپارچه‌سازی، یک `access_key`، `password`، `site_id`، `host` (نشانی IP یا نام میزبانِ سرور HiveMind شما) و `port` (که به‌طور پیش‌فرض 5678 است) می‌شود. بسته به راه‌اندازی‌تان ممکن است گزینه‌هایی نیز برای `allow_self_signed` گواهی‌ها یا فعال‌سازی `legacy_audio` داشته باشید.
+برای یکپارچه‌سازی دستگاه‌های OVOS از طریق HiveMind، معمولاً یکپارچه‌سازی HiveMind را در Home Assistant اضافه می‌کنید. این کار شامل ارائهٔ جزئیات اتصال مانند یک `name` برای یکپارچه‌سازی، یک `access_key`، `password`، `site_id`، `host` (نشانی IP یا نام میزبانِ سرور HiveMind شما) و `port` (که به‌طور پیش‌فرض 5678 است) می‌شود. همچنین یک `device_type` (`agent`، `media_player` یا `voice_assistant`) انتخاب می‌کنید و می‌توانید `allow_self_signed` را برای پذیرفتن گواهی‌های خودامضا فعال کنید.
 
 ![راه‌اندازی HiveMind در Home Assistant](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/hivemind_setup.png)
 

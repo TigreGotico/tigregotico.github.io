@@ -2,6 +2,7 @@
 title: "Portar com Máquinas, e a Questão de Licenciamento que Não Conseguimos Responder"
 description: "Reescrevemos vários programas em C, C++ e Java (o G2P do espeak-ng, o Cotovía, o AhoTTS, o HermiT) como Python puro, com uma IA a ler o código-fonte original e um humano a orquestrar. Ninguém do nosso lado leu os originais. Isso levanta duas questões separadas: o resultado pode sequer ser propriedade de alguém, e é derivado do que lhe deu origem? Mantivemos as licenças a montante porque isso saiu mais barato do que responder. Continuamos a achar que a questão está em aberto."
 date: 2026-08-01
+updated: 2026-10-20
 lang: pt
 author: "Casimiro Ferreira"
 tags:
@@ -270,13 +271,10 @@ aceitou-se código com direitos de autor de outra pessoa sob a garantia de
 um contribuidor que não tinha forma de verificar, e isso atinge com mais
 força os projetos com a proveniência mais cuidada.
 
-O Debian está a trabalhar nisto. Uma
+O Debian tratou disto. Uma
 [resolução geral sobre o uso de LLM](https://www.debian.org/vote/2026/vote_002)
-entrou no seu período de discussão em julho de 2026, cobrindo desde
-proibir por completo as contribuições assistidas por LLM até permiti-las
-sob divulgação e responsabilização, e nada está decidido. Uma
-[tentativa anterior em 2024](https://lwn.net/Articles/972331/) também
-terminou sem resolução: a objeção não foi que a preocupação fosse
+foi votada de 15 a 28 de agosto de 2026, cobrindo desde proibir por completo as contribuições assistidas por LLM até permiti-las sob divulgação e responsabilização. Ganhou a opção 5, «Responsible Use of Generative AI»: o Debian não recomenda nem proíbe as ferramentas de IA generativa e responsabiliza os contribuidores pelo que submetem. Uma
+[tentativa anterior em 2024](https://lwn.net/Articles/972331/) terminou sem resolução: a objeção não foi que a preocupação fosse
 infundada, mas que uma regra que ninguém consegue fazer cumprir não vale a
 pena adotar.
 
@@ -292,8 +290,7 @@ aprovadas pelos membros em julho de 2026 e
 quase sem tocar nas licenças: o consumo de energia e hardware, o tráfego
 de crawlers, os projetos de utilização única nunca mantidos, e a carga que
 os patches de baixo esforço impõem a quem revê. Isso é separado da
-questão de saber se o código pode ser licenciado. O Debian está a votar
-na primeira e não concluiu; o Codeberg agiu sobre a segunda.
+questão de saber se o código pode ser licenciado. O Debian decidiu a primeira por votação; o Codeberg agiu sobre a segunda.
 
 ## A parte que não vamos fingir que está resolvida
 

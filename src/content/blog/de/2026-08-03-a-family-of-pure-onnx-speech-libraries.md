@@ -1,7 +1,8 @@
 ---
 title: "Eine Familie reiner ONNX-Sprachbibliotheken"
-description: "TigreGótico pflegt eine Reihe von Sprachbibliotheken — Bandbreitenerweiterung, Voice Cloning, Sprecher-Embeddings, VAD, Wortbetonung, Phonemisierung, TTS und eine Metrik-Bibliothek, um sie alle zu bewerten — die sich an eine gemeinsame Laufzeitregel halten: nur onnxruntime und numpy, kein PyTorch, keine GPU erforderlich."
+description: "TigreGótico pflegt eine Reihe von Sprachbibliotheken — Bandbreitenerweiterung, Voice Cloning, Sprecher-Embeddings, VAD, Wortbetonung, Phonemisierung, TTS und eine Metrik-Bibliothek, um sie alle zu bewerten — die sich an eine gemeinsame Laufzeitregel halten: onnxruntime und numpy für die Inferenz, kein PyTorch, keine GPU erforderlich."
 date: 2026-08-01
+updated: 2026-10-20
 lang: de
 author: "Casimiro Ferreira"
 tags:
@@ -21,9 +22,7 @@ Inferenz-Engine, die nichts anderes tut, als diesen Graphen auszuführen. Sie we
 nicht, wie das Modell trainiert wurde, unterstützt kein Training und braucht kein
 installiertes PyTorch oder TensorFlow.
 
-Mehrere unserer Bibliotheken halten sich an eine Regel: Zur Laufzeit sind die
-einzigen Abhängigkeiten `onnxruntime` und `numpy`. Nicht "meistens" — der Import
-des Pakets selbst zieht niemals ein Trainings-Framework nach. `audiosronnx`
+Mehrere unserer Bibliotheken halten sich an eine Regel: Zur Laufzeit benötigt die Inferenz nur `onnxruntime` und `numpy`, dazu kleine Hilfspakete für Audio-E/A und den Modell-Download. Der Import des Pakets selbst zieht niemals ein Trainings-Framework nach. `audiosronnx`
 (Bandbreitenerweiterung und Entrauschung), `voiceclonnx` (Voice Cloning),
 `speakeronnx` (Sprecher-Embeddings), `speechonnxmetrics` (Evaluierung), `stressonnx`
 (Wortbetonung), `vadonnx` (Sprachaktivitätserkennung) und `phoonnx` (Phonemisierung
@@ -130,10 +129,7 @@ out = cloner.clone_voice("source.wav", "reference.wav", "out.wav")
 ```
 
 Zehn Engines sind registriert (`facodec`, `openvoice`, `chatterbox`, `triaan`,
-`cosyvoice`, `bicodec`, `knnvc`, `focalcodec`, `lscodec`, `rvc`), die sechs
-unterschiedliche Modellfamilien umfassen — kNN-Feature-Swap, faktorisierter
-Codec, Flow-Matching, Klangfarbenübertragung, AR-Codec-LM und
-sprecherentkoppelter Codec. Im Hintergrund liefert jede davon veröffentlichte
+`cosyvoice`, `bicodec`, `knnvc`, `focalcodec`, `lscodec`, `rvc`), die neun unterschiedliche Modellfamilien umfassen — kNN-Feature-Swap, faktorisierter Codec, Flow-Matching, Klangfarbenübertragung, AR-Codec-LM, sprecherentkoppelter Codec, Triple-AAN, semantische plus globale Tokens und ContentVec+VITS. Im Hintergrund liefert jede davon veröffentlichte
 Verständlichkeits- und Sprecherähnlichkeitswerte, sodass die Wahl einer Engine
 ein Vergleich ist, kein Münzwurf.
 
@@ -148,8 +144,8 @@ segments = vad.get_speech_segments(audio, sample_rate=16000)
 # -> [SpeechSegment(start=0.32, end=2.27), SpeechSegment(start=3.27, end=4.45), ...]
 ```
 
-Sechs Modellfamilien sind registriert (`silero`, `marblenet`, `pyannote`,
-`fsmn`, `speechbrain`, `ten`), und eine deklarative `IOSignature` lässt eine
+Sieben Modellfamilien sind registriert (`silero`, `marblenet`, `pyannote`,
+`fsmn`, `speechbrain`, `ten`, `pulsevad`), und eine deklarative `IOSignature` lässt eine
 einzige generische Engine die meisten davon ansteuern oder auf jede
 benutzerdefinierte `.onnx`-VAD-Datei zeigen.
 
@@ -167,8 +163,7 @@ alice2 = embedder.embed("alice_clip2.wav")
 print(cosine(alice1, alice2))   # e.g. 0.82 - same speaker
 ```
 
-Es registriert neun Modelle über vier Architekturfamilien (WeSpeaker, CAM++,
-ERes2Net, ReDimNet), mit veröffentlichten Embedding-Dimensionen und Lizenzen.
+Es registriert neun Modelle über fünf Architekturfamilien (WeSpeaker, CAM++, ERes2Net, TitaNet, ReDimNet), mit veröffentlichten Embedding-Dimensionen und Lizenzen.
 
 `stressonnx` wählt die Wortbetonung für Text-zu-Sprache-Frontends — welche
 Silbe eines Wortes die Betonung trägt, eine Information, die viele Sprachen
@@ -187,7 +182,7 @@ stress("старинный замок стоит на горе", "ru")
 
 `phoonnx` phonemisiert Text (verwandelt geschriebene Wörter in die
 Klangeinheiten, die ein TTS-Modell verarbeitet) und führt Text-zu-Sprache über
-17 registrierte Synthese-Engines und Stimmen aus mehreren Ökosystemen aus
+28 registrierte Synthese-Engines und Stimmen aus mehreren Ökosystemen aus
 (natives phoonnx, Piper, Mimic3, Coqui, MMS, Transformers):
 
 ```python
@@ -205,11 +200,13 @@ with wave.open("hello.wav", "wb") as wav_file:
 Mycroft-Precise-Modellen) nach JavaScript, beide ohne Server:
 
 ```ts
+// phoonnx.js is not on npm. Install it from GitHub:
+// npm install github:TigreGotico/phoonnx.js onnxruntime-web
 import { loadVoice, synthesizeWav } from "phoonnx";
 import { getVoice } from "phoonnx/voices";
 
-const voice = await loadVoice(getVoice("phoonnx_eu-ES_dii_unicode")!);
-const blob = await synthesizeWav(voice, "Kaixo mundua!");
+const voice = await loadVoice(getVoice("phoonnx_pt-PT_miro_unicode")!);
+const blob = await synthesizeWav(voice, "Olá, mundo!");
 ```
 
 Gewichte für `audiosronnx` (18 veröffentlichte Modelle) und `voiceclonnx` (10

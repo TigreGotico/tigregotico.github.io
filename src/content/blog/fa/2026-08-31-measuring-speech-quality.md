@@ -2,6 +2,7 @@
 title: "اندازه‌گیری کیفیت گفتار بدون یک پانل شنیداری"
 description: "یک راهنمای کاربردی برای speechonnxmetrics: اینکه MOS، پیش‌بین‌های MOS بدون‌مرجع، سنجه‌های سیگنالِ تهاجمی و WER/CER مبتنی بر ASR واقعاً چه چیزی را اندازه می‌گیرند، هر یک کِی به کار می‌آید، امتیازهای واقعی از صدای واقعی، و اینکه چرا یک MOS پیش‌بینی‌شده شواهد است، نه حقیقت."
 date: 2026-08-01
+updated: 2026-10-20
 lang: fa
 author: "Casimiro Ferreira"
 tags:
@@ -42,7 +43,7 @@ s.score("degraded.wav", ["stoi", "mcd", "si_sdr"], ref="clean.wav")
 
 ## MOS بدون‌مرجع: خواندن اعداد
 
-چهار برآوردگر MOS عرضه می‌شود، هر یک مقادیری روی یک مقیاس ۱ تا ۵ برمی‌گرداند که بالاتر بهتر است — همان مقیاسی که یک پانل انسانی به کار می‌برد:
+پنج برآوردگر MOS عرضه می‌شود، هر یک مقادیری روی یک مقیاس ۱ تا ۵ برمی‌گرداند که بالاتر بهتر است — همان مقیاسی که یک پانل انسانی به کار می‌برد:
 
 | سنجه | ابعاد | آموزش‌دیده روی | استفادهٔ تجاری |
 |---|---|---|---|
@@ -109,7 +110,7 @@ s.score("degraded.wav", ["stoi", "mcd", "si_sdr"], ref="clean.wav")
 | `wil` | ۰ تا ۱ | پایین‌تر بهتر است | اطلاعات واژگانیِ ازدست‌رفته |
 | `wip` | ۰ تا ۱ | بالاتر بهتر است | اطلاعات واژگانیِ حفظ‌شده (`1 − wil`) |
 
-یک مثال کارشده: مرجع "the quick brown fox jumps over the lazy dog" در برابر فرضیهٔ "the quick brown fox jumped over a lazy dog" (یک جایگزینی، "jumps" ← "jumped"، یک حذفِ "the"):
+یک مثال کارشده: مرجع "the quick brown fox jumps over the lazy dog" در برابر فرضیهٔ "the quick brown fox jumped over a lazy dog" (دو جایگزینی، "jumps" ← "jumped" و "the" ← "a"):
 
 ```python
 >>> from speechonnxmetrics import asr

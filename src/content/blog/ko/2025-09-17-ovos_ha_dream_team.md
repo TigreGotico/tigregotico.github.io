@@ -2,6 +2,7 @@
 title: "OpenVoiceOS와 Home Assistant: 음성 자동화 드림팀"
 description: "Home Assistant는 자동화를 담당하고, OVOS는 음성을 담당합니다. 세 가지 통합 계층이 이 조합을 작동하게 합니다: HA의 음성 파이프라인을 위한 Wyoming 브리지, 대화형 에이전트로서의 ovos-persona-server, 그리고 OVOS 기기를 네이티브 HA 엔티티로 노출하는 HiveMind."
 date: 2025-09-17
+updated: 2026-10-20
 lang: ko
 author: "Casimiro Ferreira"
 tags:
@@ -25,11 +26,11 @@ Home Assistant는 자동화를 담당하고, OVOS는 음성을 담당합니다. 
 Wyoming 프로토콜은 외부 ASR, TTS, 웨이크워드 서비스를 위한 HA의 표준 인터페이스입니다. 저희는 이 프로토콜을 통해 모든 OVOS 플러그인을 노출하는 Wyoming 브리지를 만들었습니다 — 즉, HA는 엄선된 짧은 목록뿐 아니라 OVOS 생태계의 모든 플러그인에 접근할 수 있게 됩니다.
 
 
-* [Wyoming OVOS ASR](https://github.com/TigreGotico/wyoming-ovos-stt): 음성 명령을 Home Assistant가 이해할 수 있도록 텍스트로 변환합니다.
-* [Wyoming OVOS TTS](https://github.com/TigreGotico/wyoming-ovos-tts): Home Assistant가 OVOS의 다양한 음성 옵션을 사용하여 응답을 말할 수 있게 합니다.
-* [Wyoming OVOS Wakeword](https://github.com/TigreGotico/wyoming-ovos-wakeword): 사용자 지정 웨이크워드를 통합하여, Home Assistant 설정이 선택한 트리거 문구를 들었을 때만 응답하도록 합니다.
+* [Wyoming OVOS ASR](https://github.com/OpenVoiceOS/wyoming-ovos-stt): 음성 명령을 Home Assistant가 이해할 수 있도록 텍스트로 변환합니다.
+* [Wyoming OVOS TTS](https://github.com/OpenVoiceOS/wyoming-ovos-tts): Home Assistant가 OVOS의 다양한 음성 옵션을 사용하여 응답을 말할 수 있게 합니다.
+* [Wyoming OVOS Wakeword](https://github.com/OpenVoiceOS/wyoming-ovos-wakeword): 사용자 지정 웨이크워드를 통합하여, Home Assistant 설정이 선택한 트리거 문구를 들었을 때만 응답하도록 합니다.
 
-[OVOS Wyoming Docker](https://github.com/TigreGotico/ovos-wyoming-docker) 프로젝트는 이러한 서비스를 패키징하여 `docker compose up` 한 번으로 사용할 수 있게 합니다.
+[OVOS Wyoming Docker](https://github.com/OpenVoiceOS/ovos-wyoming-docker) 프로젝트는 이러한 서비스를 패키징하여 `docker compose up` 한 번으로 사용할 수 있게 합니다.
 
 ### 공적 자금 지원 언어 프로젝트의 다국어 TTS
 
@@ -71,7 +72,7 @@ Wyoming 프로토콜은 외부 ASR, TTS, 웨이크워드 서비스를 위한 HA�
 
 ### **HiveMind 통합 설정하기:**
 
-HiveMind를 통해 OVOS 기기를 통합하려면 일반적으로 Home Assistant에서 HiveMind 통합을 추가합니다. 여기에는 통합을 위한 `name`, `access_key`, `password`, `site_id`, `host`(HiveMind 서버의 IP 주소 또는 호스트명), 그리고 `port`(기본값 5678)와 같은 연결 정보를 제공하는 것이 포함됩니다. 설정에 따라 `allow_self_signed` 인증서를 허용하거나 `legacy_audio`를 활성화하는 옵션도 있을 수 있습니다.
+HiveMind를 통해 OVOS 기기를 통합하려면 일반적으로 Home Assistant에서 HiveMind 통합을 추가합니다. 여기에는 통합을 위한 `name`, `access_key`, `password`, `site_id`, `host`(HiveMind 서버의 IP 주소 또는 호스트명), 그리고 `port`(기본값 5678)와 같은 연결 정보를 제공하는 것이 포함됩니다. 또한 `device_type`(`agent`, `media_player`, `voice_assistant` 중 하나)을 선택하며, 자체 서명 인증서를 허용하려면 `allow_self_signed`를 활성화할 수 있습니다.
 
 ![Home Assistant의 HiveMind 설정](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/hivemind_setup.png)
 

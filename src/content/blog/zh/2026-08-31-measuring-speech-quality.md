@@ -2,6 +2,7 @@
 title: "不靠听审团衡量语音质量"
 description: "一份 speechonnxmetrics 实战指南：MOS、无参考 MOS 预测器、侵入式信号指标，以及基于 ASR 的 WER/CER 究竟衡量什么，各自适用于何时，来自真实音频的真实分数，以及为什么一个预测出来的 MOS 是证据，而非真相。"
 date: 2026-08-01
+updated: 2026-10-20
 lang: zh
 author: "Casimiro Ferreira"
 tags:
@@ -42,7 +43,7 @@ s.score("degraded.wav", ["stoi", "mcd", "si_sdr"], ref="clean.wav")
 
 ## 无参考 MOS：如何读懂这些数字
 
-库中提供四个 MOS 估计器，每个都返回一个 1 到 5 分的数值，分数越高越好——与人类听审团所用的量表一致：
+库中提供五个 MOS 估计器，每个都返回一个 1 到 5 分的数值，分数越高越好——与人类听审团所用的量表一致：
 
 | 指标 | 维度 | 训练数据 | 是否可商用 |
 |---|---|---|---|
@@ -109,7 +110,7 @@ s.score("degraded.wav", ["stoi", "mcd", "si_sdr"], ref="clean.wav")
 | `wil` | 0–1 | 越低越好 | 丢失的词信息 |
 | `wip` | 0–1 | 越高越好 | 保留的词信息（`1 − wil`） |
 
-一个实例：参考文本 "the quick brown fox jumps over the lazy dog" 对照识别假设 "the quick brown fox jumped over a lazy dog"（一处替换，"jumps" → "jumped"，一处删除，删掉了 "the"）：
+一个实例：参考文本 "the quick brown fox jumps over the lazy dog" 对照识别假设 "the quick brown fox jumped over a lazy dog"（两处替换，"jumps" → "jumped"，以及 "the" → "a"）：
 
 ```python
 >>> from speechonnxmetrics import asr

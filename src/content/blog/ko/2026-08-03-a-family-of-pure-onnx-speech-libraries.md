@@ -1,7 +1,8 @@
 ---
 title: "순수 ONNX 음성 라이브러리 제품군"
-description: "TigreGótico는 대역폭 확장, 음성 복제, 화자 임베딩, VAD, 단어 강세, 음소화, TTS, 그리고 이들 모두를 채점하는 지표 라이브러리로 이루어진 음성 라이브러리 세트를 유지 관리합니다 — 이들은 하나의 런타임 규칙을 공유합니다: onnxruntime과 numpy만 사용하며, PyTorch도 GPU도 필요 없습니다."
+description: "TigreGótico는 대역폭 확장, 음성 복제, 화자 임베딩, VAD, 단어 강세, 음소화, TTS, 그리고 이들 모두를 채점하는 지표 라이브러리로 이루어진 음성 라이브러리 세트를 유지 관리합니다 — 이들은 하나의 런타임 규칙을 공유합니다: 추론에는 onnxruntime과 numpy를 사용하며, PyTorch도 GPU도 필요 없습니다."
 date: 2026-08-01
+updated: 2026-10-20
 lang: ko
 author: "Casimiro Ferreira"
 tags:
@@ -16,7 +17,7 @@ draft: false
 
 ONNX는 학습된 신경망을 위한 파일 형식입니다: 가중치와 연산 그래프가 고정되어 있으며, 이를 학습시킨 프레임워크에 대한 의존성이 없습니다. ONNX로 내보낸 모델은 그 그래프를 실행하는 것 외에는 아무것도 하지 않는 작은 추론 엔진인 **ONNX Runtime**을 통해 실행할 수 있습니다. 이는 모델이 어떻게 학습되었는지 알지 못하고, 학습을 지원하지 않으며, PyTorch나 TensorFlow가 설치되어 있을 필요도 없습니다.
 
-우리의 여러 라이브러리는 하나의 규칙을 지킵니다: 런타임에서 유일한 의존성은 `onnxruntime`과 `numpy`뿐입니다. "대체로"가 아니라 — 패키지 자체를 임포트하는 것만으로는 결코 학습 프레임워크를 끌어오지 않습니다. `audiosronnx`(대역폭 확장과 잡음 제거), `voiceclonnx`(음성 복제), `speakeronnx`(화자 임베딩), `speechonnxmetrics`(평가), `stressonnx`(단어 강세), `vadonnx`(음성 활동 감지), `phoonnx`(음소화 및 텍스트 음성 변환) 모두가 이를 따르며, 각각 자체 PyPI 패키지로 존재합니다. 두 개 더 있는 `phoonnx.js`와 `precise-onnx-js`는 브라우저에서 `onnxruntime-web`으로 동일한 아이디어를 적용합니다.
+우리의 여러 라이브러리는 하나의 규칙을 지킵니다: 런타임 추론에는 `onnxruntime`과 `numpy`만 필요하며, 여기에 오디오 입출력과 모델 다운로드를 위한 작은 보조 패키지가 더해집니다. 패키지 자체를 임포트하는 것만으로는 결코 학습 프레임워크를 끌어오지 않습니다. `audiosronnx`(대역폭 확장과 잡음 제거), `voiceclonnx`(음성 복제), `speakeronnx`(화자 임베딩), `speechonnxmetrics`(평가), `stressonnx`(단어 강세), `vadonnx`(음성 활동 감지), `phoonnx`(음소화 및 텍스트 음성 변환) 모두가 이를 따르며, 각각 자체 PyPI 패키지로 존재합니다. 두 개 더 있는 `phoonnx.js`와 `precise-onnx-js`는 브라우저에서 `onnxruntime-web`으로 동일한 아이디어를 적용합니다.
 
 ## 왜 이렇게까지 하는가
 
@@ -64,7 +65,7 @@ cloner = VoiceCloner(engine="facodec")
 out = cloner.clone_voice("source.wav", "reference.wav", "out.wav")
 ```
 
-열 개의 엔진(`facodec`, `openvoice`, `chatterbox`, `triaan`, `cosyvoice`, `bicodec`, `knnvc`, `focalcodec`, `lscodec`, `rvc`)이 등록되어 있으며, kNN 특징 교체, 인수분해 코덱, 흐름 매칭, 음색 전이, AR 코덱-LM, 화자 분리 코덱이라는 여섯 개의 서로 다른 모델 계열에 걸쳐 있습니다. 각각은 공개된 명료도 및 화자 유사도 수치와 함께 제공되므로, 엔진을 고르는 것은 동전 던지기가 아니라 비교입니다.
+열 개의 엔진(`facodec`, `openvoice`, `chatterbox`, `triaan`, `cosyvoice`, `bicodec`, `knnvc`, `focalcodec`, `lscodec`, `rvc`)이 등록되어 있으며, kNN 특징 교체, 인수분해 코덱, 흐름 매칭, 음색 전이, AR 코덱-LM, 화자 분리 코덱, Triple-AAN, 의미 토큰+전역 토큰, ContentVec+VITS라는 아홉 개의 서로 다른 모델 계열에 걸쳐 있습니다. 각각은 공개된 명료도 및 화자 유사도 수치와 함께 제공되므로, 엔진을 고르는 것은 동전 던지기가 아니라 비교입니다.
 
 `vadonnx`는 이 패턴을 음성 활동 감지 — 오디오 스트림의 어느 부분에 음성이 있는지 판단하는 작업 — 에 적용합니다:
 
@@ -76,7 +77,7 @@ segments = vad.get_speech_segments(audio, sample_rate=16000)
 # -> [SpeechSegment(start=0.32, end=2.27), SpeechSegment(start=3.27, end=4.45), ...]
 ```
 
-여섯 개의 모델 계열(`silero`, `marblenet`, `pyannote`, `fsmn`, `speechbrain`, `ten`)이 등록되어 있으며, 선언적인 `IOSignature`가 있어 하나의 범용 엔진이 대부분을 구동하거나, 커스텀 `.onnx` VAD 파일 어디로든 향할 수 있습니다.
+일곱 개의 모델 계열(`silero`, `marblenet`, `pyannote`, `fsmn`, `speechbrain`, `ten`, `pulsevad`)이 등록되어 있으며, 선언적인 `IOSignature`가 있어 하나의 범용 엔진이 대부분을 구동하거나, 커스텀 `.onnx` VAD 파일 어디로든 향할 수 있습니다.
 
 `speakeronnx`는 누가 말하고 있는지를 무엇을 말했는지와 무관하게 요약하는 고정 길이 벡터인 **화자 임베딩**을 추출하고, 코사인 유사도로 두 임베딩을 비교하여 두 클립이 같은 화자인지 확인합니다:
 
@@ -89,7 +90,7 @@ alice2 = embedder.embed("alice_clip2.wav")
 print(cosine(alice1, alice2))   # e.g. 0.82 - same speaker
 ```
 
-네 개의 아키텍처 계열(WeSpeaker, CAM++, ERes2Net, ReDimNet)에 걸쳐 아홉 개의 모델을, 공개된 임베딩 차원 및 라이선스와 함께 등록합니다.
+다섯 개의 아키텍처 계열(WeSpeaker, CAM++, ERes2Net, TitaNet, ReDimNet)에 걸쳐 아홉 개의 모델을, 공개된 임베딩 차원 및 라이선스와 함께 등록합니다.
 
 `stressonnx`는 텍스트 음성 변환 프론트엔드를 위해 단어 강세 — 단어의 어느 음절이 강세를 받는지, 많은 언어가 철자로 드러내지 않는 정보(러시아어 *за́мок*, 성(城), 대 *замо́к*, 자물쇠는 모든 글자를 공유합니다) — 를 선택합니다. 러시아어를 위한 신경 파이프라인 하나, 우크라이나어와 벨라루스어를 위한 또 하나, 그리고 신경 추론이 전혀 없이 26개 언어를 아우르는 규칙 및 어휘 기반 백엔드를 등록합니다:
 
@@ -100,7 +101,7 @@ stress("старинный замок стоит на горе", "ru")
 # 'стари́нный за́мок сто́ит на горе́'
 ```
 
-`phoonnx`는 텍스트를 음소화하고(철자로 쓰인 단어를 TTS 모델이 소비하는 소리 단위로 바꾸고), 여러 생태계(네이티브 phoonnx, Piper, Mimic3, Coqui, MMS, Transformers)에서 내보낸 17개의 등록된 합성 엔진과 음성에 걸쳐 텍스트 음성 변환을 실행합니다:
+`phoonnx`는 텍스트를 음소화하고(철자로 쓰인 단어를 TTS 모델이 소비하는 소리 단위로 바꾸고), 여러 생태계(네이티브 phoonnx, Piper, Mimic3, Coqui, MMS, Transformers)에서 내보낸 28개의 등록된 합성 엔진과 음성에 걸쳐 텍스트 음성 변환을 실행합니다:
 
 ```python
 import wave
@@ -114,11 +115,13 @@ with wave.open("hello.wav", "wb") as wav_file:
 `phoonnx.js`는 동일한 토크나이저 경로를 `onnxruntime-web`으로 브라우저까지 가져가며, `precise-onnx-js`는 웨이크워드 감지(MFCC 특성 추출과 ONNX 분류기, Mycroft Precise 모델과 호환)를 JavaScript로 이식합니다. 둘 다 서버 없이 동작합니다:
 
 ```ts
+// phoonnx.js is not on npm. Install it from GitHub:
+// npm install github:TigreGotico/phoonnx.js onnxruntime-web
 import { loadVoice, synthesizeWav } from "phoonnx";
 import { getVoice } from "phoonnx/voices";
 
-const voice = await loadVoice(getVoice("phoonnx_eu-ES_dii_unicode")!);
-const blob = await synthesizeWav(voice, "Kaixo mundua!");
+const voice = await loadVoice(getVoice("phoonnx_pt-PT_miro_unicode")!);
+const blob = await synthesizeWav(voice, "Olá, mundo!");
 ```
 
 `audiosronnx`(공개된 모델 18개)와 `voiceclonnx`(공개된 모델 10개)의 가중치는 [TigreGótico Hugging Face 조직](https://huggingface.co/TigreGotico)에 별도의 다운로드로 존재하며, 처음 사용할 때 가져와 로컬에 캐시되므로, 다른 엔진을 고르는 것은 재배포가 아니라 설정 변경입니다.

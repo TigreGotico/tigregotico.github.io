@@ -3,7 +3,7 @@ title: "Un dataset multilingüe de tipos de oración: preguntas, órdenes, afirm
 description: "Publicamos sentence-types-multilingual — casi 70.000 oraciones en siete lenguas, clasificadas por tipo gramatical (pregunta, orden, afirmación, exclamación). Es el corpus de entrenamiento tras la biblioteca de enrutamiento little_questions."
 date: 2026-04-01
 lang: es
-updated: 2026-08-01
+updated: 2026-10-20
 author: "Casimiro Ferreira"
 tags:
   - "Datasets"
@@ -50,14 +50,14 @@ Un modelo entrenado solo en inglés se equivoca en todo lo demás. Los datos par
 
 ## La pila aguas abajo
 
-Los modelos entrenados con estos datos se distribuyen dentro de **[little_questions](https://github.com/TigreGotico/little_questions)** — una biblioteca sin conexión y sin dependencias (numpy + onnxruntime) con clasificadores ONNX por lengua para el tipo de oración y un modelo de polaridad sí/no de 43 lenguas. Los modelos vienen empaquetados en el propio wheel para el inglés y se descargan de forma perezosa para las demás lenguas. Los clasificadores de tipo de oración se publican como `TigreGotico/sentence-types` en HuggingFace; los clasificadores de tipo de respuesta EAT se entrenan internamente y no se publican.
+Los modelos entrenados con estos datos se distribuyen dentro de **[little_questions](https://github.com/TigreGotico/little_questions)** — una biblioteca sin conexión que solo depende de numpy y onnxruntime, con clasificadores ONNX por lengua para el tipo de oración y un modelo de polaridad sí/no de 43 lenguas. Los modelos vienen empaquetados en el propio wheel para el inglés y se descargan de forma perezosa para las demás lenguas. Los clasificadores de tipo de oración se publican como `TigreGotico/sentence-type-classifiers` en HuggingFace; los clasificadores ingleses de tipo de respuesta EAT vienen incluidos en el wheel.
 
 ```python
 from little_questions import Sentence
 
-s = Sentence("What time is it?")
+s = Sentence("When was the telephone invented?")
 print(s.sentence_type)     # "question"
-print(s.classification)    # e.g. "NUM:date"
+print(s.classification)    # "NUM:date"
 ```
 
 `little_questions` es la capa de enrutamiento de lenguaje natural para OVOS y LILACS: clasificar si una locución es una pregunta, una orden o una afirmación es la primera decisión de despacho que toma una pipeline de voz.

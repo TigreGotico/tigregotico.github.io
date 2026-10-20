@@ -2,6 +2,7 @@
 title: "बिना किसी सुनने वाले पैनल के स्पीच गुणवत्ता मापना"
 description: "speechonnxmetrics के लिए एक कार्यशील गाइड: MOS, संदर्भ-रहित MOS अनुमानक, intrusive सिग्नल मेट्रिक्स, और ASR-आधारित WER/CER असल में क्या मापते हैं, हर एक कब लागू होता है, असली ऑडियो से असली स्कोर, और एक पूर्वानुमानित MOS प्रमाण क्यों है, सत्य नहीं।"
 date: 2026-08-01
+updated: 2026-10-20
 lang: hi
 author: "Casimiro Ferreira"
 tags:
@@ -42,7 +43,7 @@ s.score("degraded.wav", ["stoi", "mcd", "si_sdr"], ref="clean.wav")
 
 ## संदर्भ-रहित MOS: संख्याओं को पढ़ना
 
-चार MOS अनुमानक भेजे जाते हैं, हर एक 1–5 स्केल पर मान लौटाता है जहाँ ऊँचा बेहतर है — वही स्केल जो एक मानव पैनल उपयोग करता है:
+पाँच MOS अनुमानक भेजे जाते हैं, हर एक 1–5 स्केल पर मान लौटाता है जहाँ ऊँचा बेहतर है — वही स्केल जो एक मानव पैनल उपयोग करता है:
 
 | मेट्रिक | आयाम | जिस पर प्रशिक्षित | व्यावसायिक उपयोग |
 |---|---|---|---|
@@ -109,7 +110,7 @@ s.score("degraded.wav", ["stoi", "mcd", "si_sdr"], ref="clean.wav")
 | `wil` | 0–1 | कम बेहतर है | word information lost |
 | `wip` | 0–1 | ऊँचा बेहतर है | word information preserved (`1 − wil`) |
 
-एक हल किया उदाहरण: संदर्भ "the quick brown fox jumps over the lazy dog" बनाम hypothesis "the quick brown fox jumped over a lazy dog" (एक प्रतिस्थापन, "jumps" → "jumped", "the" का एक हटाव):
+एक हल किया उदाहरण: संदर्भ "the quick brown fox jumps over the lazy dog" बनाम hypothesis "the quick brown fox jumped over a lazy dog" (दो प्रतिस्थापन, "jumps" → "jumped" और "the" → "a"):
 
 ```python
 >>> from speechonnxmetrics import asr

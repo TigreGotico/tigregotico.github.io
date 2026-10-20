@@ -2,7 +2,7 @@
 title: "Многоязычный датасет типов предложений: вопросы, команды, утверждения"
 description: "Мы опубликовали sentence-types-multilingual — почти 70 000 предложений на семи языках, классифицированных по грамматическому типу (вопрос, команда, утверждение, восклицание). Это обучающий корпус, стоящий за библиотекой маршрутизации little_questions."
 date: 2026-04-01
-updated: 2026-08-01
+updated: 2026-10-20
 lang: ru
 author: "Casimiro Ferreira"
 tags:
@@ -78,19 +78,18 @@ draft: false
 
 Модели, обученные на этих данных, поставляются внутри
 **[little_questions](https://github.com/TigreGotico/little_questions)** —
-офлайн-библиотеки без зависимостей (numpy + onnxruntime) с ONNX-классификаторами
+офлайн-библиотеки, которая зависит только от numpy и onnxruntime, с ONNX-классификаторами
 типа предложения для каждого языка и моделью полярности да/нет для 43 языков.
 Модели включены прямо в wheel для английского и лениво загружаются для других
 языков. Классификаторы типа предложения опубликованы на HuggingFace как
-`TigreGotico/sentence-types`; классификаторы типа ответа EAT обучаются
-внутренне и публично не выпускаются.
+`TigreGotico/sentence-type-classifiers`; англоязычные классификаторы типа ответа EAT входят в состав wheel.
 
 ```python
 from little_questions import Sentence
 
-s = Sentence("What time is it?")
+s = Sentence("When was the telephone invented?")
 print(s.sentence_type)     # "question"
-print(s.classification)    # e.g. "NUM:date"
+print(s.classification)    # "NUM:date"
 ```
 
 `little_questions` — это слой маршрутизации естественного языка для OVOS и

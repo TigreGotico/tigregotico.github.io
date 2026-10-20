@@ -2,7 +2,7 @@
 title: "Um Dataset Multilingue de Tipos de Frase: Perguntas, Comandos, Afirmações"
 description: "Publicámos o sentence-types-multilingual — quase 70.000 frases em sete línguas, classificadas por tipo gramatical (pergunta, comando, afirmação, exclamação). É o corpus de treino por detrás da biblioteca de encaminhamento little_questions."
 date: 2026-04-01
-updated: 2026-08-01
+updated: 2026-10-20
 lang: pt
 author: "Casimiro Ferreira"
 tags:
@@ -50,14 +50,14 @@ Um modelo treinado apenas em inglês erra estes casos em todo o lado. Dados para
 
 ## A stack a jusante
 
-Os modelos treinados com estes dados são distribuídos dentro do **[little_questions](https://github.com/TigreGotico/little_questions)**, uma biblioteca offline sem dependências (numpy + onnxruntime) com classificadores ONNX por língua para o tipo de frase e um modelo de polaridade sim/não para 43 línguas. Os modelos são incluídos na própria wheel para o inglês e descarregados de forma lazy para as outras línguas. Os classificadores de tipo de frase são publicados como `TigreGotico/sentence-types` no HuggingFace. Os classificadores de tipo de resposta EAT são treinados internamente e não são publicados.
+Os modelos treinados com estes dados são distribuídos dentro do **[little_questions](https://github.com/TigreGotico/little_questions)**, uma biblioteca offline que só depende de numpy e onnxruntime, com classificadores ONNX por língua para o tipo de frase e um modelo de polaridade sim/não para 43 línguas. Os modelos são incluídos na própria wheel para o inglês e descarregados de forma lazy para as outras línguas. Os classificadores de tipo de frase são publicados como `TigreGotico/sentence-type-classifiers` no HuggingFace. Os classificadores de tipo de resposta EAT para inglês vêm incluídos na wheel.
 
 ```python
 from little_questions import Sentence
 
-s = Sentence("What time is it?")
+s = Sentence("When was the telephone invented?")
 print(s.sentence_type)     # "question"
-print(s.classification)    # e.g. "NUM:date"
+print(s.classification)    # "NUM:date"
 ```
 
 O `little_questions` é a camada de encaminhamento de linguagem natural para o OVOS e o LILACS: classificar se um enunciado é uma pergunta, um comando ou uma afirmação é a primeira decisão de despacho que uma pipeline de voz toma.

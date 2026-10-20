@@ -2,6 +2,7 @@
 title: "Schriften und phonetische Notationen: Was scriptconv tatsächlich umwandelt"
 description: "Eine Tiefenanalyse von scriptconv, der abhängigkeitsfreien Bibliothek, die Schriftsysteme erkennt und zwischen phonetischen Notationen umwandelt. Behandelt IPA, ARPABET und X-SAMPA; ISO-15924-Schrifterkennung; Buckwalter-Transliteration für Arabisch; Hangul-Zerlegung in Jamo; und Kana-Umwandlung, mit echten, ausgeführten Beispielen und ehrlichen Grenzen."
 date: 2026-08-01
+updated: 2026-10-20
 lang: de
 author: "Casimiro Ferreira"
 tags:
@@ -64,7 +65,7 @@ from scriptconv import DEFAULT_GRAPH
 # ['arpa->ipa', 'ipa->x-sampa']
 ```
 
-Insgesamt werden neun Notationen über diese Drehscheibe transkodiert: ARPABET, X-SAMPA, Kirshenbaum, Lexique, Cotovía, RFE und mantoq, plus Buckwalter, das im Folgenden behandelt wird.
+Insgesamt werden sieben Notationen über diese Drehscheibe transkodiert: ARPABET, X-SAMPA, Kirshenbaum, Lexique, Cotovía, RFE und mantoq. Buckwalter, das im Folgenden behandelt wird, gehört nicht dazu: Es wandelt nur von und nach arabischer Schrift um.
 
 ## Die Schrift erkennen, bevor irgendetwas anderes geschieht
 
@@ -146,7 +147,7 @@ Ein Phonemizer — ein Werkzeug, das errät, wie ein geschriebenes Wort ausgespr
 
 Die Umwandlung zwischen Notationen ist nicht immer verlustfrei, und `scriptconv` erfasst das als abfragbare Daten, statt es als Überraschung zu belassen. Jede Notation hat zwei unabhängig erfasste Eigenschaften: ob die Umwandlung nach IPA und zurück die ursprünglichen Symbole exakt reproduziert, und ob IPA, in sie und zurück umgewandelt, jedes IPA-Symbol reproduziert.
 
-ARPABET scheitert in beiden Richtungen: Es hat ein eingeschränktes, englischspezifisches Phoneminventar, sodass IPA → ARPABET → IPA Unterscheidungen verlieren kann, die IPA treffen kann und für die ARPABETs Tabelle kein Symbol hat. X-SAMPA und Lexique decken das vollständige IPA-Inventar getreu ab, sind aber nicht garantiert sauber hin- und rückumwandelbar, wenn man von ihrer eigenen Seite ausgeht. Kirshenbaum und Buckwalter wandeln sauber von ihrer eigenen Seite nach IPA um, aber nicht umgekehrt. Mantoq, das phonetische Alphabet des halabi-arabischen Phonemizers, wandelt nur in eine Richtung um, nach IPA — es gibt keinen Konverter zurück. Nichts davon ist irgendwo in einem Docstring vergraben; es sind Daten, die die Bibliothek offenlegt, damit jemand vor der Annahme, eine Hin- und Rückumwandlung sei sicher, prüfen kann.
+ARPABET scheitert in beiden Richtungen: Es hat ein eingeschränktes, englischspezifisches Phoneminventar, sodass IPA → ARPABET → IPA Unterscheidungen verlieren kann, die IPA treffen kann und für die ARPABETs Tabelle kein Symbol hat. X-SAMPA und Lexique decken das vollständige IPA-Inventar getreu ab, sind aber nicht garantiert sauber hin- und rückumwandelbar, wenn man von ihrer eigenen Seite ausgeht. Kirshenbaum wandelt sauber von seiner eigenen Seite nach IPA um, aber nicht umgekehrt. Buckwalter hat keinen IPA-Konverter, nur einen von und nach arabischer Schrift. Mantoq, das phonetische Alphabet des halabi-arabischen Phonemizers, wandelt nur in eine Richtung um, nach IPA — es gibt keinen Konverter zurück. Nichts davon ist irgendwo in einem Docstring vergraben; es sind Daten, die die Bibliothek offenlegt, damit jemand vor der Annahme, eine Hin- und Rückumwandlung sei sicher, prüfen kann.
 
 ---
 

@@ -2,6 +2,7 @@
 title: "Porting With Machines, and the Licence Question We Could Not Answer"
 description: "We rewrote several C, C++ and Java programs (espeak-ng's G2P, Cotovia, AhoTTS, HermiT) as pure Python, with an AI reading the original source and a human orchestrating. No human on our side read the originals. That raises two separate questions: can the output be owned at all, and is it a derivative of the input? We kept the upstream licences because that was cheaper than answering. We still think the question is open."
 date: 2026-08-01
+updated: 2026-10-20
 author: "Casimiro Ferreira"
 tags:
   - "FOSS"
@@ -246,13 +247,9 @@ accepted somebody else's copyrighted code on an assurance from a contributor who
 had no way to check, and that lands hardest on the projects with the most careful
 provenance.
 
-Debian is working through this. A
-[general resolution on LLM usage](https://www.debian.org/vote/2026/vote_002) reached
-its discussion period in July 2026, ranging from forbidding LLM-assisted
-contributions outright to permitting them under disclosure and accountability,
-and nothing is decided. An
-[earlier attempt in 2024](https://lwn.net/Articles/972331/) also ended without a
-resolution: the objection was not that the concern was baseless but that a rule
+Debian has worked through this. A
+[general resolution on LLM usage](https://www.debian.org/vote/2026/vote_002) went to a vote from 15 to 28 August 2026, ranging from forbidding LLM-assisted contributions outright to permitting them under disclosure and accountability. Option 5, "Responsible Use of Generative AI", won: Debian neither endorses nor prohibits generative AI tools, and it holds contributors responsible for what they submit. An
+[earlier attempt in 2024](https://lwn.net/Articles/972331/) ended without a resolution: the objection was not that the concern was baseless but that a rule
 nobody can enforce is not worth adopting.
 
 We are poorly placed to be strict: we ship ports written by a model, and a
@@ -264,8 +261,7 @@ post is about. Codeberg adopted two member-approved motions in July 2026 and
 [set out its reasoning](https://blog.codeberg.org/protecting-our-floss-commons-from-llms.html)
 almost without mentioning licences: energy and hardware cost, crawler traffic,
 unmaintained single-use projects, and the review burden low-effort patches put on
-maintainers. That is separate from whether the code can be licensed. Debian is
-voting on the first and has not concluded; Codeberg acted on the second.
+maintainers. That is separate from whether the code can be licensed. Debian settled the first by vote; Codeberg acted on the second.
 
 ## The part we are not going to pretend is settled
 

@@ -1,7 +1,8 @@
 ---
 title: "A Family of Pure-ONNX Speech Libraries"
-description: "TigreGótico maintains a set of speech libraries — bandwidth extension, voice cloning, speaker embeddings, VAD, word stress, phonemization, TTS, and a metrics library to score them all — that share one runtime rule: onnxruntime and numpy only, no PyTorch, no GPU required."
+description: "TigreGótico maintains a set of speech libraries — bandwidth extension, voice cloning, speaker embeddings, VAD, word stress, phonemization, TTS, and a metrics library to score them all — that share one runtime rule: onnxruntime and numpy for inference, no PyTorch, no GPU required."
 date: 2026-08-01
+updated: 2026-10-20
 lang: en
 author: "Casimiro Ferreira"
 tags:
@@ -22,9 +23,7 @@ execute that graph.
 It does not know how the model was trained, does not support training, and does not
 need PyTorch or TensorFlow installed.
 
-Several of our libraries hold to one rule: at runtime, the only dependencies are
-`onnxruntime` and `numpy`. Not "mostly": the import of the package itself never pulls in
-a training framework.
+Several of our libraries hold to one rule: at runtime, inference needs only `onnxruntime` and `numpy`, plus small helpers for audio I/O and model download. Importing the package itself never pulls in a training framework.
 
 `audiosronnx` (bandwidth extension and denoising), `voiceclonnx` (voice cloning),
 `speakeronnx` (speaker embeddings), `speechonnxmetrics` (evaluation), `stressonnx` (word
@@ -126,9 +125,7 @@ out = cloner.clone_voice("source.wav", "reference.wav", "out.wav")
 ```
 
 Ten engines are registered (`facodec`, `openvoice`, `chatterbox`, `triaan`, `cosyvoice`,
-`bicodec`, `knnvc`, `focalcodec`, `lscodec`, `rvc`), spanning six distinct model
-families: kNN feature-swap, factorized codec, flow-matching, tone-color transfer,
-AR codec-LM, and speaker-decoupled codec.
+`bicodec`, `knnvc`, `focalcodec`, `lscodec`, `rvc`), spanning nine distinct model families: kNN feature-swap, factorized codec, flow-matching, tone-color transfer, AR codec-LM, speaker-decoupled codec, Triple-AAN, semantic-plus-global tokens, and ContentVec+VITS.
 
 Each one ships with published intelligibility and speaker-similarity numbers, so picking
 an engine is a comparison, not a coin flip.
@@ -144,8 +141,8 @@ segments = vad.get_speech_segments(audio, sample_rate=16000)
 # -> [SpeechSegment(start=0.32, end=2.27), SpeechSegment(start=3.27, end=4.45), ...]
 ```
 
-Six model families are registered (`silero`, `marblenet`, `pyannote`, `fsmn`,
-`speechbrain`, `ten`), and a declarative `IOSignature` lets a single generic engine
+Seven model families are registered (`silero`, `marblenet`, `pyannote`, `fsmn`,
+`speechbrain`, `ten`, `pulsevad`), and a declarative `IOSignature` lets a single generic engine
 drive most of them, or point at any custom `.onnx` VAD file.
 
 `speakeronnx` extracts a **speaker embedding** — a fixed-length vector that summarizes
@@ -161,8 +158,7 @@ alice2 = embedder.embed("alice_clip2.wav")
 print(cosine(alice1, alice2))   # e.g. 0.82 - same speaker
 ```
 
-It registers nine models across four architecture families (WeSpeaker, CAM++, ERes2Net,
-ReDimNet), with published embedding dimensions and licenses.
+It registers nine models across five architecture families (WeSpeaker, CAM++, ERes2Net, TitaNet, ReDimNet), with published embedding dimensions and licenses.
 
 `stressonnx` picks word stress for text-to-speech front-ends — which syllable of a word
 carries emphasis, information many languages don't spell out (Russian *за́мок*, castle,
@@ -178,7 +174,7 @@ stress("старинный замок стоит на горе", "ru")
 ```
 
 `phoonnx` phonemizes text (turns spelled words into the sound units a TTS model
-consumes) and runs text-to-speech across 17 registered synthesis engines and
+consumes) and runs text-to-speech across 28 registered synthesis engines and
 voices exported from several ecosystems (native phoonnx, Piper, Mimic3, Coqui, MMS,
 Transformers):
 
@@ -197,11 +193,13 @@ extraction plus an ONNX classifier, compatible with Mycroft Precise models) to
 JavaScript, both without a server:
 
 ```ts
+// phoonnx.js is not on npm. Install it from GitHub:
+// npm install github:TigreGotico/phoonnx.js onnxruntime-web
 import { loadVoice, synthesizeWav } from "phoonnx";
 import { getVoice } from "phoonnx/voices";
 
-const voice = await loadVoice(getVoice("phoonnx_eu-ES_dii_unicode")!);
-const blob = await synthesizeWav(voice, "Kaixo mundua!");
+const voice = await loadVoice(getVoice("phoonnx_pt-PT_miro_unicode")!);
+const blob = await synthesizeWav(voice, "Olá, mundo!");
 ```
 
 Weights for `audiosronnx` (18 published models) and `voiceclonnx` (10 published models)

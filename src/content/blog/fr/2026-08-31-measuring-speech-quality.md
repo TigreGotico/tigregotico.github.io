@@ -2,6 +2,7 @@
 title: "Mesurer la qualité de la parole sans panel d'écoute"
 description: "Un guide pratique de speechonnxmetrics : ce que mesurent réellement le MOS, les prédicteurs MOS sans référence, les métriques de signal intrusives et le WER/CER basé sur l'ASR, quand chacun s'applique, de vrais scores sur de vrais audios, et pourquoi un MOS prédit est une preuve, pas une vérité."
 date: 2026-08-01
+updated: 2026-10-20
 lang: fr
 author: "Casimiro Ferreira"
 tags:
@@ -80,7 +81,7 @@ d'onde.
 
 ## MOS sans référence : lire les nombres
 
-Quatre estimateurs MOS sont livrés, chacun retournant des valeurs sur une
+Cinq estimateurs MOS sont livrés, chacun retournant des valeurs sur une
 échelle de 1 à 5 où plus haut est meilleur — la même échelle qu'utilise un
 panel humain :
 
@@ -186,8 +187,7 @@ réellement été transcrit comme étant) :
 | `wip` | 0–1 | plus haut est meilleur | information de mot préservée (`1 − wil`) |
 
 Un exemple travaillé : référence « the quick brown fox jumps over the lazy
-dog » contre hypothèse « the quick brown fox jumped over a lazy dog » (une
-substitution, « jumps » → « jumped », une suppression de « the ») :
+dog » contre hypothèse « the quick brown fox jumped over a lazy dog » (deux substitutions, « jumps » → « jumped » et « the » → « a ») :
 
 ```python
 >>> from speechonnxmetrics import asr

@@ -2,6 +2,7 @@
 title: "OpenVoiceOS and Home Assistant: A Voice Automation Dream Team"
 description: "Home Assistant handles automation. OVOS handles voice. Three integration layers make the combination work: Wyoming bridges for HA's voice pipeline, ovos-persona-server as a conversational agent, and HiveMind for surfacing OVOS devices as native HA entities."
 date: 2025-09-17
+updated: 2026-10-20
 author: "Casimiro Ferreira"
 tags:
   - "OVOS"
@@ -24,11 +25,11 @@ This post covers the three integration layers: Wyoming bridges for HA’s voice 
 The Wyoming protocol is HA's standard interface for external ASR, TTS, and wakeword services. We built Wyoming bridges that expose any OVOS plugin over that protocol, so HA gains access to every plugin in the OVOS ecosystem instead of a curated shortlist.
 
 
-* [Wyoming OVOS ASR](https://github.com/TigreGotico/wyoming-ovos-stt): Convert spoken commands into text for Home Assistant to understand.
-* [Wyoming OVOS TTS](https://github.com/TigreGotico/wyoming-ovos-tts): Enable Home Assistant to speak responses using OVOS's diverse voice options.
-* [Wyoming OVOS Wakeword](https://github.com/TigreGotico/wyoming-ovos-wakeword): Integrate custom wakewords, allowing your Home Assistant setup to respond only when it hears your chosen trigger phrase.
+* [Wyoming OVOS ASR](https://github.com/OpenVoiceOS/wyoming-ovos-stt): Convert spoken commands into text for Home Assistant to understand.
+* [Wyoming OVOS TTS](https://github.com/OpenVoiceOS/wyoming-ovos-tts): Enable Home Assistant to speak responses using OVOS's diverse voice options.
+* [Wyoming OVOS Wakeword](https://github.com/OpenVoiceOS/wyoming-ovos-wakeword): Integrate custom wakewords, allowing your Home Assistant setup to respond only when it hears your chosen trigger phrase.
 
-The [OVOS Wyoming Docker](https://github.com/TigreGotico/ovos-wyoming-docker) project packages these services so they are one `docker compose up` away.
+The [OVOS Wyoming Docker](https://github.com/OpenVoiceOS/ovos-wyoming-docker) project packages these services so they are one `docker compose up` away.
 
 ### Multi-language TTS from publicly funded language projects
 
@@ -70,7 +71,7 @@ If you have dedicated OVOS devices, the [HiveMind HomeAssistant](https://github.
 
 ### **Setting up HiveMind Integration:**
 
-To integrate your OVOS devices via HiveMind, you'll typically add the HiveMind integration in Home Assistant. This involves providing connection details such as a `name` for the integration, an `access_key`, `password`, `site_id`, `host` (IP address or hostname of your HiveMind server), and the `port` (defaulting to 5678). You may also have options to `allow_self_signed` certificates or enable `legacy_audio` depending on your setup.
+To integrate your OVOS devices via HiveMind, you'll typically add the HiveMind integration in Home Assistant. This involves providing connection details such as a `name` for the integration, an `access_key`, `password`, `site_id`, `host` (IP address or hostname of your HiveMind server), and the `port` (defaulting to 5678). You also choose a `device_type` (`agent`, `media_player` or `voice_assistant`), and you can enable `allow_self_signed` to accept self-signed certificates.
 
 ![HiveMind setup in Home Assistant](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/hivemind_setup.png)
 
