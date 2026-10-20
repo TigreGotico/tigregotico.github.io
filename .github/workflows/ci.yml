@@ -34,5 +34,12 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Upload the built site
+        uses: actions/upload-artifact@v7
+        with:
+          name: dist
+          path: dist/
+          retention-days: 7
+
       - name: Check color contrast
         run: node scripts/check-contrast.mjs
