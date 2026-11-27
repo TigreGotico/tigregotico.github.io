@@ -68,8 +68,7 @@ rank-16 LoRA (11.3M trainable parameters) and the Kev pointer head.
 
 As an intent router alone, Jevásio scores 0.657 on Portuguese (Kev: 0.511), and
 Jevhakim scores 0.658 on the Arabic part of MASSIVE (Kev: 0.435). These routing
-scores come from our own audit. An OpenVoiceOS intent plugin that uses the
-models is in development.
+scores come from an internal audit.
 
 ## Licence
 
@@ -82,4 +81,4 @@ The answers to yes/no questions are not always well calibrated. Jevásio gives
 0.514 for "asks for a refund?" on *quero trocar* ("I want an exchange"), and
 Jevhakim gives 0.318 for "is the customer angry?" on a plainly angry text.
 Jevásio gains little on tasks that it did not train on. Jevhakim is
-overconfident on new tasks, and it has no score for each dialect yet.
+overconfident on new tasks, and it has no score for each dialect.
