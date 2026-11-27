@@ -19,36 +19,29 @@ Say these four things to a voice assistant:
 - "Tenho uma reunião às três e meia." ("I have a meeting at half past three.")
 - "Von Juni bis August." ("From June to August.")
 
-Each one names a time on a calendar. The assistant must find it before it can set a
-reminder, answer "what day is that?" or read the weather for that day. Here is what
-`ovos-date-parser` 0.29.0, the date reader of OpenVoiceOS, gives for them. The
-anchor (the time "now") is 27 November 2026, 10:00:
+Each one names a time on a calendar. A voice assistant must find it before it can set
+a reminder, answer "what day is that?" or read the weather for that day. With now at
+27 November 2026, 10:00:
 
-| Sentence | ovos-date-parser 0.29.0 | chronologia |
-| :--- | :--- | :--- |
-| the meeting is on the second of may | 1 May 2027 | 2 May 2027 |
-| daqui a duas semanas | nothing | 11 December 2026, 10:00 |
-| tenho uma reunião às três e meia | nothing | today, 15:30 |
-| von Juni bis August | nothing | 1 June to 1 September 2027 |
+| Sentence | Meaning |
+| :--- | :--- |
+| the meeting is on the second of may | 2 May 2027 |
+| daqui a duas semanas | 11 December 2026, 10:00 |
+| tenho uma reunião às três e meia | today, 15:30 |
+| von Juni bis August | 1 June to 1 September 2027 |
 
-These are not rare forms. They are what people say every day.
+These are not rare forms. They are what people say every day, in every language.
 
-## Why the old parser failed
+## One engine for every language
 
-`ovos-date-parser` had one hand-written function per language: a token loop of 200 to
-1,000 lines that read the words one at a time. Each loop implemented the same rules
-again, with its own control flow. An audit found the cost:
+The usual way to read dates is one hand-written loop of rules per language. That
+works for one language. With many languages, the same rule is written again in each
+loop, and each copy has its own bugs: a fix in Portuguese does nothing for German.
+The date reader that OpenVoiceOS used was built this way, and its defects multiplied
+with each language and each feature.
 
-- The bug that reverses the direction of "N units ago" was in 20 different scanners.
-  Each one needed its own fix.
-- A month with a bare year ("May 2027") failed in most languages.
-- Five scanners returned a different type of result from the others.
-- Two languages could write dates but could not read them.
-
-The defects multiplied: languages × features. A fix in Portuguese did nothing for
-German. We needed one engine that reads data for each language, so that one fix in
-the engine fixes every language. That engine is
-[**chronologia**](https://github.com/TigreGotico/chronologia).
+[**chronologia**](https://github.com/TigreGotico/chronologia) has one engine that
+reads data for each language. One fix in the engine fixes every language.
 
 ```bash
 uv pip install --prerelease=allow chronologia
@@ -67,7 +60,7 @@ All outputs in this post are from chronologia 0.48.2a2, with that anchor.
 
 ## A phrase names a stretch of time
 
-The old parser returned one instant. But "June" is not an instant. It is a month.
+A simple reader returns one instant. But "June" is not an instant. It is a month.
 "3 pm" is a minute. "The 1990s" is ten years. If a reader returns one instant for
 "June", the caller cannot tell whether it means the first second of June or the whole
 month.
@@ -140,13 +133,12 @@ future verbs are data files, not code.
 
 Most languages in chronologia are a JSON file, word lists and a gold test set. A few,
 such as Hindi, also have a small Python hook in the engine for rules that the data
-format cannot express yet. The repo has 62 locale folders, and there is no Python in
+format does not express. The repo has 62 locale folders, and there is no Python in
 them. Numbers inside dates ("duas
 semanas", "vinte e sete") come from [numtag](https://github.com/TigreGotico/numtag),
 which reads numbers in many languages.
 
-Some readings differ from the old parser on purpose. These differences are written
-down as rulings. For example, "in two hours" said at 13:04 is 15:04, and rounding
+The hard cases are written down as rulings. For example, "in two hours" said at 13:04 is 15:04, and rounding
 it to 15:00 is a defect. "Next" means the first occurrence strictly after now. A
 month with no day ("in March") is this month if now is in it, next year's if it has
 ended, and otherwise this year's.
@@ -169,49 +161,17 @@ voice reads a Portuguese date.
 
 - **Voice assistant skills.** The OpenVoiceOS date-time, alerts and weather skills
   use chronologia to read the dates and times in requests.
-- **A drop-in for old code.** The alphas of `ovos-date-parser` (from 0.32.1a1) send
-  every language to chronologia, so old code that calls `extract_datetime` gets the
-  new reader with no code change.
 - **Calendar tools.** Convert a date to the Hebrew or Islamic calendar, find the
   Gregorian date of a feast, or show a date in two calendars side by side.
 - **History and science.** Read "the Jurassic", "44 BC" or "66 million years ago" in
   text, and get a span that you can sort and compare with modern dates.
 - **Spoken output.** Give a Portuguese voice a correct sentence for any date.
 
-## Against ovos-date-parser
-
-The test set has 84,869 LLM-written sentences, with gold by calendar arithmetic.
-It is a regression set, not held-out data. Over all rows, chronologia reads 59,020
-correctly and ovos-date-parser 0.29.0 reads 33,350. The table gives the share of
-correct rows for chronologia (commit `7760ee2d`, numtag 0.49.0a1) and ovos-date-parser
-0.29.0:
-
-| Language | chronologia | ovos-date-parser |
-| :--- | ---: | ---: |
-| pt-PT | 0.90 | 0.39 |
-| pt-BR | 0.90 | 0.39 |
-| es-CO | 0.77 | 0.50 |
-| fr | 0.89 | 0.67 |
-| it | 0.83 | 0.40 |
-| de | 0.85 | 0.49 |
-| nl | 0.89 | 0.36 |
-| da | 0.72 | 0.42 |
-| kab | 0.69 | 0.27 |
-| hi | 0.70 | 0.26 |
-| bn | 0.65 | 0.23 |
-
-chronologia loses 304 of the 1,662 cells of the test set (each cell is one sentence
-class in one language) to ovos-date-parser. The losses include languages without
-locale data (Chinese, Japanese), false dates in text that has no date, and some
-day-part and clock forms. In this run, no language wins every class. Only Russian has the "ready" mark that
-chronologia publishes for each language.
-
 ## Where it fails
 
 The biggest open defect is a false date in text that has no date. A common word can
 also be a time word. "I had a bad fall" gives September to December, because "fall"
-is also autumn. "May I come in" gives May. ovos-date-parser also gets the second one
-wrong. Each known defect is an open issue on GitHub, and questions for native
+is also autumn. "May I come in" gives May. Each known defect is an open issue on GitHub, and questions for native
 speakers are open for Kabyle, Bengali, Marwari and Colombian Spanish.
 
 ## Try it
