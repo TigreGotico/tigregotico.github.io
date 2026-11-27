@@ -1,6 +1,6 @@
 ---
-title: "numtag: Find Every Number in a Text"
-description: "numtag finds each number in a text, written in digits or in words, and gives its exact value, its kind and its position. It spells values back in words. 53 languages read, 29 write, and every language is one cited JSON lexicon."
+title: "numtag: Why “Duas Dúzias” Is 24, Not 2"
+description: "The old OpenVoiceOS number parser read 'o vigésimo terceiro lugar' as 0.05 and 'un milione e duecentomila' as 1000000.2. numtag finds every number in a text, in digits or words, with its exact value as a string, its kind and its position, and spells values back. Why it exists, how it works and what to do with it."
 date: 2026-11-27
 authors: ["Casimiro Ferreira", "Claude"]
 tags:
@@ -9,91 +9,157 @@ tags:
   - "numbers"
   - "OVOS"
   - "TTS"
-draft: true
+draft: false
 ---
 
-"Faltam mil e duzentos metros." A voice assistant must know that this sentence
-holds the value 1200. A TTS voice must go the other way: from `1200` to *mil e
-duzentos*. [**numtag**](https://github.com/TigreGotico/numtag) does both.
+Here are five sentences and what `ovos-number-parser` 0.5.1 made of them. It was the
+number reader of OpenVoiceOS:
+
+| Text | ovos-number-parser 0.5.1 | Correct |
+| :--- | :--- | :--- |
+| o vigésimo terceiro lugar ("twenty-third place") | `0.05` | 23rd |
+| tenho duas dúzias de ovos ("two dozen eggs") | `2` | 24 |
+| dreihundertzweiundvierzig Bücher | `None` | 342 |
+| un milione e duecentomila | `1000000.2` | 1,200,000 |
+
+It also wrote numbers, and the writer had its own defects. In European Portuguese,
+10^30 came out as "um bilião sextiliões". The correct word is "um quintilião". In
+English, 0.1 + 0.2 came out as "zero point three zero zero", because the computer
+added two floats and got 0.30000000000000004.
+
+A random sample of 50 disagreements in Romanian, and 50 in Galician, between the old
+parser and its replacement held 40 and 45 errors by the old parser. Most of them were
+ordinals that lost the hundreds.
+
+## Why the old parser failed
+
+`ovos-number-parser` had one Python module per language. Each module had its own
+reader and its own writer, and each one returned an `int` or a `float`. The same idea
+was written again in each language, so each language had different bugs. A fix in
+Portuguese did nothing for Italian.
+
+The design had two more problems:
+
+- **One value per text.** `extract_number` returned one number for the whole text,
+  with no position. A skill could not replace a number in place, or cut it out of a
+  command. "Set a timer for 5 minutes and call mum at 6" holds two numbers, and the
+  old reader gave one.
+- **Binary floats.** A float cannot hold 0.1 exactly. Each sum adds a small error, and
+  a number writer then reads that error aloud. A float also has a ceiling, so very
+  large numbers lost digits.
+
+[**numtag**](https://github.com/TigreGotico/numtag) replaces it.
 
 ```bash
 uv pip install --prerelease=allow numtag
 ```
 
-```python
-from numtag import tag_numbers, spell
-
-for m in tag_numbers("Il a quatre-vingt-dix-sept ans et vit au XXe siècle.", "fr-FR"):
-    print(m.char_span, m.text, m.value, m.kind.name)
-# (5, 26) quatre-vingt-dix-sept 97 CARDINAL
-# (41, 44) XXe 20 ORDINAL
-```
-
-All outputs are from numtag 0.49.1a1. The
-[numtag Space](https://huggingface.co/spaces/TigreGotico/numtag) runs the newest alpha in the browser and shows its version.
-
-## Value, kind and position
-
-Each mention has its character span, its value, its kind (cardinal, ordinal,
-fraction and more), its written form (words, digits, Roman numerals) and a
-confidence. The span lets a caller replace the number in place, or cut it out of
-a command.
+## Every number, with its place in the text
 
 ```python
-tag_numbers("O comboio parte às vinte e três e quinze, faltam mil e duzentos metros.", "pt-PT")
-# 'vinte e três' 23, 'quinze' 15, 'mil e duzentos' 1200
+from numtag import tag_numbers
 
-tag_numbers("Det koster fireogtyve kroner og en halv.", "da-DK")
-# 'fireogtyve' 24 CARDINAL, 'en halv' 0.5 FRACTION
-
-tag_numbers("Ich habe dreihundertzweiundvierzig Bücher und den dritten Platz.", "de-DE")
-# 342 CARDINAL, 'dritten' 3 ORDINAL
+text = "Chegou em vigésimo terceiro lugar, com 2 milhões e meio de votos e um quarto dos lugares."
+for m in tag_numbers(text, "pt-PT"):
+    print(m.text, m.char_span, m.value, m.kind)
 ```
 
-German and Danish write numbers as one word, with the units before the tens:
-*fireogtyve* is "four and twenty". The reader splits the compound and does the
-arithmetic.
-
-## Spelling values back
-
-`spell` is the writer. It returns the standard form first, then the variants that
-a speaker also uses:
-
-```python
-spell("1234567", "pt-PT")[0].text
-# 'um milhão duzentos e trinta e quatro mil quinhentos e sessenta e sete'
-
-spell("3/4", "fr-FR")[0].text
-# 'trois quarts'
-
-[s.text for s in spell("2.50", "ru")]
-# ['две целых пятьдесят сотых', 'два запятая пять']
+```text
+vigésimo terceiro  (10, 27)  '23'       ORDINAL
+2 milhões e meio   (39, 55)  '2500000'  CARDINAL
+um quarto          (67, 76)  '0.25'     FRACTION
 ```
 
-text2spoken calls `spell` when it reads a number to a voice, and chronologia
-calls the reader for the numbers inside dates.
+Each mention has its text, its character span, its value, its kind (cardinal,
+ordinal or fraction), its form (digits or words) and a confidence. "2 milhões e meio"
+mixes digits and words, and it is still one number. All outputs are from numtag
+0.50.0a1.
+
+The span matters. [chronologia](https://github.com/TigreGotico/chronologia), the date
+reader, uses it to find the numbers inside "daqui a duas semanas" or "vinte e sete de
+novembro". [text2spoken](https://github.com/TigreGotico/text2spoken) uses it to
+replace "2" with "duas" in the correct place.
 
 ## Values are strings
 
-A value is a canonical string: `"1200"`, `"0.5"`, `"3/4"`. It is never an `int`
-or a `float`. So `"0.1"` stays `"0.1"`, with no binary rounding, and a value has
-no size ceiling: the Russian scales go to 10^39. The caller converts the string
-when it needs a number.
+numtag gives each value as a digit string: `"1200000"`, `"0.25"`, `"3/4"`. It never
+converts to a float, so no binary rounding enters. A string also has no ceiling.
 
-## Languages are data
+```python
+from numtag import spell
 
-Each language is one JSON lexicon, and each form in it has a cited source. One
-engine reads all lexicons. No language has its own Python code. A new language is
-a new data file and its tests.
+spell("0.3", "en")[0].text            # 'zero point three'
+spell("1" + "0" * 30, "pt-PT")[0].text  # 'um quintilião'
+spell("1" + "0" * 39, "ru")[0].text     # 'дуодециллион'
+```
 
-The reader has 53 lexicons, from Asturian and Kabyle to Mirandese and Marwari.
-The writer covers 29 languages. The full lists are in the
-[repository](https://github.com/TigreGotico/numtag).
+If a caller needs a number, it converts the string itself: `int(m.value)` or
+`Decimal(m.value)`. That choice belongs to the caller, not to the parser.
 
-## Limits
+## Ambiguity is real
 
-Some languages are much weaker than others. Bengali reads badly. Hindi named
-fractions such as ढाई सौ (250) give no result
-([#430](https://github.com/TigreGotico/numtag/issues/430)). A word that can be a number or
-an ordinary word gets only a low confidence. Each known defect is an open issue
-with a strict `xfail` test.
+Numbers hide in ordinary words. In Portuguese, "segundo" is "second", but it is also
+"according to":
+
+```python
+tag_numbers("segundo o jornal choveu", "pt-PT")
+# []    "according to the newspaper, it rained"
+```
+
+numtag gives nothing here, and that is the correct answer. A number reader that sees
+a number in every "segundo" breaks every sentence that cites a source.
+
+Some rules looked correct and were dropped before they merged. One rule made "só um"
+("just one") a sure count of 1. Then "É só um exemplo" ("it is just an example") became
+a certain 1, so the rule was removed. A Kabyle rule for fractions ("N seg M") also read
+"one of the three" as a fraction, so it was removed too. Both now have tests that
+must stay negative.
+
+## Language is data
+
+In numtag, each language is one JSON lexicon: its number words, its scale words, its
+ordinals and its fractions. One engine reads all of them, and one writer speaks them.
+No language has its own Python code.
+
+Each form in a lexicon cites a source: a grammar, a dictionary or a native speaker.
+The reader accepts every spelling that people write. The writer gives the standard
+spelling first, and the variants after it. Kabyle shows why both matter. A native
+speaker writes 100 as "mya". The 1982 dictionary by Dallet writes "meyya". numtag
+reads both, writes "mya", and lists "meyya" as a variant.
+
+When a defect has no fix yet, it becomes a strict `xfail` test that names it. The
+test starts to fail when somebody fixes the defect, and then the test changes into a
+normal test.
+
+### What we did not do
+
+- **Use the old parser as the truth.** Its output is a regression baseline, not
+  gold. Where it disagrees with a cited source, the source wins.
+- **Test against num2words or babel.** Another library can be wrong in the same way.
+  The tests compare with cited rows, not with other code.
+
+## What you can do with it
+
+- **Read commands.** `ovos-number-parser` itself reads 42 languages through
+  numtag. Every OVOS skill that calls `extract_number` uses numtag with no change.
+- **Speak numbers.** Skills for alerts, counting and diagnostics call `spell`
+  directly. text2spoken uses `spell` to make voices say numbers that agree with their
+  noun.
+- **Read dates.** chronologia finds the numbers in dates with `tag_numbers`.
+- **Extract data.** Pull every quantity out of a document, with its position and an
+  exact value. Prices, counts and percentages keep all their digits.
+- **Clean transcripts.** Turn "twenty-one" and "21" into the same value before you
+  compare two transcripts.
+
+## Where it fails
+
+The reader covers more languages than the writer: `spell` writes 29 languages. Hindi
+named fractions do not read yet. ढाई सौ ("two hundred and fifty", literally "two and a
+half hundred") gives nothing. Each known defect is an open issue on GitHub and a
+strict `xfail` test.
+
+## Try it
+
+The [numtag Space](https://huggingface.co/spaces/TigreGotico/numtag) runs in your
+browser. It installs the newest alpha from PyPI and gives sample sentences for each of
+52 languages.
