@@ -86,6 +86,8 @@ const projects = defineCollection({
     description: z.string(),
     // Optional: "coming soon" entries have no public repo yet.
     url: z.url().optional(),
+    // Live demo, for example a Hugging Face Space.
+    demo: z.url().optional(),
     category: z.union([z.string(), z.array(z.string())]),
     tags: z.array(z.string()).default([]),
     // External logo URL (stable hosts only).
