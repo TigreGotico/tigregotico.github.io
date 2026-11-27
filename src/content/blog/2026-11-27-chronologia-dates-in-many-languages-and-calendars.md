@@ -1,5 +1,5 @@
 ---
-title: "chronologia: Dates in Many Languages and 18 Calendars"
+title: "chronologia: Dates in Many Languages, in 18 Calendars and the Gregorian"
 description: "chronologia reads dates, times, ranges and repeats from text in many languages, and converts between 18 calendars. For Portuguese it also speaks dates and clock times. It runs in the browser in a public demo."
 date: 2026-11-27
 author: "Casimiro Ferreira"
@@ -27,7 +27,7 @@ from chronologia import extract_timespan
 anchor = dt.datetime(2026, 5, 3, 12, 0)   # a Sunday
 r = extract_timespan("na próxima sexta às 15h", lang="pt-PT", anchor=anchor)
 print(r.span.start, r.span.end)
-# 2026-05-08 15:00  2026-05-08 15:01
+# 2026-05-08T15:00:00 2026-05-08T15:01:00
 ```
 
 The outputs in this post come from chronologia 0.47.2a1, with that anchor.
@@ -62,7 +62,7 @@ iCalendar RRULE form:
 
 ```python
 from chronologia import extract_recurrence
-extract_recurrence("every monday at 8", lang="en", anchor=anchor)
+extract_recurrence("every monday at 8", lang="en", anchor=anchor).recurrence.to_string()
 # FREQ=WEEKLY;BYDAY=MO;BYHOUR=8
 ```
 
@@ -91,8 +91,8 @@ spoken_time("pt-BR", 16)   # 'dezesseis horas'
 spoken_time("pt-BR", 0)    # 'zero hora'
 ```
 
-text2spoken uses these writers when a TTS voice reads a date. Writers for
-Spanish, French, Italian, German, Dutch and Danish come next.
+text2spoken uses these writers when a TTS voice reads a date. Only Portuguese
+has writers so far.
 
 ## Try it
 
@@ -102,6 +102,7 @@ runs the package in your browser with Pyodide. No text goes to a server.
 ## Limits
 
 A doubtful reading gets a low confidence value. The reader can find a false date
-in text that has none, and it does not yet read most holiday names. Native
-speakers have open questions in Kabyle, Hindi, Bengali, Marwari and Colombian
-Spanish. Each known defect is an open issue on GitHub.
+in text that has none, It does not read holiday names in some languages yet
+(Hindi, Kabyle), and a holiday name next to another date can confuse it.
+Questions for native speakers are open in Kabyle, Hindi, Bengali, Marwari and
+Colombian Spanish. Each known defect is an open issue on GitHub.
