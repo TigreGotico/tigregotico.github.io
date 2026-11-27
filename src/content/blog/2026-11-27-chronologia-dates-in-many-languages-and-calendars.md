@@ -105,14 +105,14 @@ rows for chronologia (commit `7760ee2d`, numtag 0.49.0a1) and ovos-date-parser
 | :--- | ---: | ---: |
 | pt-PT | 0.90 | 0.39 |
 | pt-BR | 0.90 | 0.39 |
-| es-CO | 0.77 | 0.57 |
+| es-CO | 0.77 | 0.50 |
 | fr | 0.89 | 0.67 |
 | it | 0.83 | 0.40 |
 | de | 0.85 | 0.49 |
 | nl | 0.89 | 0.36 |
 | da | 0.72 | 0.42 |
 | kab | 0.69 | 0.27 |
-| hi | 0.70 | 0.27 |
+| hi | 0.70 | 0.26 |
 | bn | 0.65 | 0.23 |
 
 chronologia loses 304 of the 1,662 cells of the test set (each cell is one sentence
