@@ -102,7 +102,7 @@ runs the package in your browser with Pyodide. No text goes to a server.
 ## Limits
 
 A doubtful reading gets a low confidence value. The reader can find a false date
-in text that has none, It does not read holiday names in some languages yet
+in text that has none. It does not read holiday names in some languages yet
 (Hindi, Kabyle), and a holiday name next to another date can confuse it.
 Questions for native speakers are open in Kabyle, Hindi, Bengali, Marwari and
 Colombian Spanish. Each known defect is an open issue on GitHub.
