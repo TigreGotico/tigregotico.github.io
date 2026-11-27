@@ -81,7 +81,7 @@ En WASABI, este motor RASA se conecta a OVOS como una **skill**, gestionando el 
 Un front-end Android para los trabajadores, que se conecta a OVOS a través de HiveMind.
 
 Versión inicial publicada aquí:
-[https://github.com/BIBA-GmbH/Mycroft-Android](https://github.com/BIBA-GmbH/Mycroft-Android)
+[BIBA-GmbH/Mycroft-Android](https://github.com/BIBA-GmbH/Mycroft-Android)
 
 Las funcionalidades incluyen:
 
@@ -105,12 +105,12 @@ Esto forma el stack estándar de asistente de voz industrial que todos los exper
 ### **4. Un Dataset de Habla Industrial**
 
 COALA publicó un dataset de habla multilingüe grabado en fábricas y talleres:
-[https://zenodo.org/record/8268928](https://zenodo.org/record/8268928)
+[zenodo.org/record/8268928](https://zenodo.org/record/8268928)
 
 ---
 
 ## Por Qué Funciona para la Industria
 
-Los objetivos de diseño que importan en la planta de fábrica —transparencia total para sectores regulados, implementación local/edge sin dependencia de la nube, skills modulares para lógica propietaria y la capacidad de HiveMind de distribuir nodos de voz por una instalación— se incorporaron desde el principio, no se añadieron a posteriori.
+Los objetivos de diseño que importan en la planta de fábrica se incorporaron desde el principio, no se añadieron a posteriori: transparencia total para sectores regulados, implementación local/edge sin dependencia de la nube, skills modulares para lógica propietaria, y la capacidad de HiveMind de distribuir nodos de voz por una instalación.
 
 Código fuente de OVOS y HiveMind: [github.com/OpenVoiceOS](https://github.com/OpenVoiceOS) · [github.com/JarbasHiveMind](https://github.com/JarbasHiveMind)

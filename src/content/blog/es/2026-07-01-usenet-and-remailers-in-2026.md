@@ -1,6 +1,6 @@
 ---
 title: "Usenet en 2026: un corpus de texto limpio y previo a la IA para entrenamiento y evaluación"
-description: "Usenet es un archivo prístino del discurso humano previo a la IA — décadas de publicaciones en grupos de noticias, todas escritas por humanos, ninguna tocada por modelos de lenguaje. Eso lo convierte en datos valiosos de entrenamiento y evaluación para modelos de lenguaje y de voz. Construimos una pequeña herramienta en Python para recolectarlo."
+description: "Usenet es un archivo prístino del discurso humano previo a la IA: décadas de publicaciones en grupos de noticias, todas escritas por humanos, ninguna tocada por modelos de lenguaje. Eso lo convierte en datos valiosos de entrenamiento y evaluación para modelos de lenguaje y de voz. Construimos una pequeña herramienta en Python para recolectarlo."
 date: 2026-07-01
 lang: es
 author: "Casimiro Ferreira"
@@ -17,7 +17,7 @@ La mayoría de los corpus de texto de la web abierta están contaminados: el tex
 
 ## Usenet como corpus previo a la IA
 
-Usenet recibe miles de publicaciones al día a lo largo de cientos de grupos activos. Retrocede en el archivo hasta los años 80 y tendrás **millones de artículos** — cada uno una señal de lo que a los humanos realmente les importaba, sobre lo que discutían, lo que querían saber — con una procedencia lo bastante limpia como para citarla.
+Usenet recibe miles de publicaciones al día a lo largo de cientos de grupos activos. Retrocede en el archivo hasta los años 80 y tendrás **millones de artículos**, cada uno una señal de lo que a los humanos realmente les importaba, sobre lo que discutían, lo que querían saber, con una procedencia lo bastante limpia como para citarla.
 
 Construimos una herramienta llamada **usenet** que hace que recolectar esto sea sencillo:
 
@@ -32,7 +32,7 @@ with UsenetServer("news.neodome.net") as server:
         print(f"{article.subject} by {article.author}")
 ```
 
-La mayoría de los servidores públicos ya no soportan `NEWNEWS` (consulta por fecha), por lo que **la navegación por grupos es el enfoque estándar.** Extraes un grupo cada vez — no es una barrera, es solo la realidad del protocolo.
+La mayoría de los servidores públicos ya no soportan `NEWNEWS` (consulta por fecha), por lo que **la navegación por grupos es el enfoque estándar.** Extraes un grupo cada vez. Eso no es una barrera, es solo la realidad del protocolo.
 
 Para convertir un grupo de noticias en un conjunto de datos de entrenamiento, `dataset.py` recolecta artículos en JSONL:
 
@@ -81,6 +81,6 @@ for server in servers:
 
 ## Por qué esto importa
 
-Usenet es un archivo con procedencia limpia de texto escrito por humanos a escala, anterior a la era del contenido generado por máquinas. Ya sea que estés entrenando modelos, construyendo conjuntos de datos o estudiando el discurso de internet antes de que se diluyera con texto generado por IA, ese archivo sigue ahí y sigue creciendo.
+Usenet es un archivo con procedencia limpia de texto escrito por humanos a escala, anterior a la era del contenido generado por máquinas. Si estás entrenando modelos, construyendo conjuntos de datos o estudiando el discurso de internet antes de que se diluyera con texto generado por IA, ese archivo sigue ahí y sigue creciendo.
 
-**Repositorio:** [**github.com/TigreGotico/usenet**](https://github.com/TigreGotico/usenet) — recolecta Usenet en conjuntos de datos de entrenamiento; lee públicamente sin cuenta.
+**Repositorio:** [**github.com/TigreGotico/usenet**](https://github.com/TigreGotico/usenet): recolecta Usenet en conjuntos de datos de entrenamiento, lee públicamente sin cuenta.

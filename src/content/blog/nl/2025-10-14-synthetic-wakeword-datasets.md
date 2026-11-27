@@ -1,6 +1,6 @@
 ---
 title: "Synthetische Wakeword-datasets: Zeven Assistentnamen, Eén Detector"
-description: "We publiceerden zeven synthetische wakeword-datasets voor gangbare namen van spraakassistenten — hey_computer, hey_mycroft, hey_siri, alexa, home_assistant, voice_assistant, wake_up. Train een detector die overal werkt."
+description: "We publiceerden zeven synthetische wakeword-datasets voor gangbare namen van spraakassistenten: hey_computer, hey_mycroft, hey_siri, alexa, home_assistant, voice_assistant, wake_up. Train een detector die overal werkt."
 date: 2025-10-14
 lang: nl
 author: "Casimiro Ferreira"
@@ -14,7 +14,7 @@ tags:
 draft: false
 ---
 
-Zeven assistentnamen. Zeven datasets. Alle audio is volledig gegenereerd met het TTS-framework **[phoonnx](https://github.com/TigreGotico/phoonnx)** met behulp van de stemmen Miro en Dii — geen menselijke opnames, geen toestemmingsformulieren, geen blootstelling van privacy.
+Zeven assistentnamen. Zeven datasets. Alle audio is volledig gegenereerd met het TTS-framework **[phoonnx](https://github.com/TigreGotico/phoonnx)** met behulp van de stemmen Miro en Dii. Geen menselijke opnames. Geen toestemmingsformulieren. Geen blootstelling van privacy.
 
 - **[hey_computer](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-hey_computer)**
 - **[hey_mycroft](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-hey_mycroft)**
@@ -24,17 +24,17 @@ Zeven assistentnamen. Zeven datasets. Alle audio is volledig gegenereerd met het
 - **[voice_assistant](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-voice_assistant)**
 - **[wake_up](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-wake_up)**
 
-Elke dataset is een platte verzameling van ongeveer duizend positieve clips — het wakeword uitgesproken met gevarieerde sprekers, snelheden en prosodie. Harde negatieven en achtergrondruis worden geleverd als aparte begeleidende datasets die u tijdens het trainen bijmengt: [not-wake-words-speech-en](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-en), [not-wake-words-speech-pt](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-pt), en [ambient_noises](https://huggingface.co/datasets/TigreGotico/ambient_noises).
+Elke dataset is een platte verzameling van ongeveer duizend positieve clips: het wakeword uitgesproken met gevarieerde sprekers, snelheden en prosodie. Harde negatieven en achtergrondruis worden geleverd als aparte begeleidende datasets die u tijdens het trainen bijmengt: [not-wake-words-speech-en](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-en), [not-wake-words-speech-pt](https://huggingface.co/datasets/TigreGotico/not-wake-words-speech-pt), en [ambient_noises](https://huggingface.co/datasets/TigreGotico/ambient_noises).
 
 ## Waarom synthetisch
 
-Echte opnames vereisen maanden van verzameling, toestemmingsformulieren voor elke spreker, en laten toch accentlacunes achter die u niet had voorzien. Synthetische generatie keert dat om:
+Echte opnames kosten maanden om te verzamelen. Elke spreker heeft een toestemmingsformulier nodig, en het resultaat laat toch accentlacunes achter die u niet had voorzien. Synthetische generatie vermijdt dat allemaal.
 
-- **Reproduceerbaar**: dezelfde generatie-instellingen, dezelfde stemmen → dezelfde audio. Volledig auditspoor, geen archeologie van toestemmingsformulieren.
+- **Reproduceerbaar**: dezelfde generatie-instellingen en stemmen leveren dezelfde audio op, met een volledig auditspoor en geen archeologie van toestemmingsformulieren.
 - **Controleerbaar**: de generatiepipeline is de documentatie.
 - **Schaalbaar**: het variëren van de spreeksnelheid en de kenmerken van de spreker is een parameterwijziging, geen studiosessie.
 
-Voor wakeword-detectie is de relevante eigenschap akoestische onderscheidbaarheid, niet natuurlijkheid. Synthetische data past goed bij die eis.
+Voor wakeword-detectie gaat het om akoestische onderscheidbaarheid, niet natuurlijkheid. Synthetische data past bij die eis.
 
 ## Gebruik deze
 

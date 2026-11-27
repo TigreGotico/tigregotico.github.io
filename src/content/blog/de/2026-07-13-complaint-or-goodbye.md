@@ -127,12 +127,12 @@ lesen, und es waren kein angenehme Tage.
 Plutchiks Struktur der Gegensatzpaare wurde getestet. 2009 ließen Smith &
 Schneider sie durch mehr als zweitausend statistische Tests laufen und schlossen,
 dass die Theorie des Emotionsrads "keine empirische Stütze" findet. Die
-Gegensatzpaare sind eine elegante Metapher aus der Farbtheorie. Sie sind keine
+Gegensatzpaare sind eine Metapher aus der Farbtheorie. Sie sind keine
 Erkenntnis über Menschen.
 
-Währenddessen sind genau die Sachen, die sich *tatsächlich* replizieren – Russells
-Valenz-Arousal-Komplex und die Kontroll-Dimension, die Wut von Angst trennt –,
-genau die Bausteine, die es selten in funktionierende Software schaffen.
+Die Dinge, die sich *tatsächlich* replizieren, Russells Valenz-Arousal-Komplex
+und die Kontroll-Dimension, die Wut von Angst trennt, sind genau die Bausteine,
+die es selten in funktionierende Software schaffen.
 
 Es gibt hier ein Problem zweiter Ordnung, und das ist das, das uns tatsächlich
 gestört hat. All diese Modelle sind *benutzbar*. Sie sind lebendig, sie lassen sich
@@ -176,7 +176,7 @@ angry, afraid = affect_from_texts([
 ])
 
 angry.valence,  angry.potency    # -0.43, +0.16   -> 'disgust'
-afraid.valence, afraid.potency   # -0.47, -0.43   -> 'apprehension'
+afraid.valence, afraid.potency   # -0.47, -0.42   -> 'apprehension'
 ```
 
 Schau dir die Zahlen an. **Die Valenz ist nahezu identisch** – beide Nachrichten

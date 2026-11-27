@@ -1,6 +1,6 @@
 ---
 title: "Usenet im Jahr 2026: ein sauberer Textkorpus aus der Zeit vor der KI für Training und Evaluierung"
-description: "Usenet ist ein unberührtes Archiv des menschlichen Diskurses aus der Zeit vor der KI — Jahrzehnte an Newsgroup-Beiträgen, alles von Menschen geschrieben, nichts davon von Sprachmodellen berührt. Das macht es zu wertvollen Trainings- und Evaluierungsdaten für Sprach- und Sprachmodelle. Wir haben ein kleines Python-Werkzeug gebaut, um es zu ernten."
+description: "Usenet ist ein unberührtes Archiv des menschlichen Diskurses aus der Zeit vor der KI: Jahrzehnte an Newsgroup-Beiträgen, alles von Menschen geschrieben, nichts davon von Sprachmodellen berührt. Das macht es zu wertvollen Trainings- und Evaluierungsdaten für Sprach- und Sprachmodelle. Wir haben ein kleines Python-Werkzeug gebaut, um es zu ernten."
 date: 2026-07-01
 lang: de
 author: "Casimiro Ferreira"
@@ -17,7 +17,7 @@ Die meisten Textkorpora des offenen Webs sind kontaminiert: von LLM erzeugter Te
 
 ## Usenet als Korpus aus der Zeit vor der KI
 
-Usenet erhält täglich Tausende von Beiträgen in Hunderten aktiver Gruppen. Reichen Sie im Archiv bis in die 1980er-Jahre zurück, und Sie haben **Millionen von Artikeln** — jeder ein Signal dafür, was den Menschen tatsächlich am Herzen lag, worüber sie stritten, was sie wissen wollten — mit einer Herkunft, die sauber genug ist, um zitiert zu werden.
+Usenet erhält täglich Tausende von Beiträgen in Hunderten aktiver Gruppen. Reichen Sie im Archiv bis in die 1980er-Jahre zurück, und Sie haben **Millionen von Artikeln**, jeder ein Signal dafür, was den Menschen tatsächlich am Herzen lag, worüber sie stritten, was sie wissen wollten, mit einer Herkunft, die sauber genug ist, um zitiert zu werden.
 
 Wir haben ein Werkzeug namens **usenet** gebaut, das diese Ernte unkompliziert macht:
 
@@ -32,7 +32,7 @@ with UsenetServer("news.neodome.net") as server:
         print(f"{article.subject} by {article.author}")
 ```
 
-Die meisten öffentlichen Server unterstützen `NEWNEWS` (Abfrage nach Datum) nicht mehr, weshalb **das gruppenbasierte Durchstöbern der Standardansatz ist.** Sie scrapen eine Gruppe nach der anderen — keine Hürde, nur die Realität des Protokolls.
+Die meisten öffentlichen Server unterstützen `NEWNEWS` (Abfrage nach Datum) nicht mehr, weshalb **das gruppenbasierte Durchstöbern der Standardansatz ist.** Sie scrapen eine Gruppe nach der anderen. Das ist keine Hürde, nur die Realität des Protokolls.
 
 Um eine Newsgroup in einen Trainingsdatensatz zu verwandeln, sammelt `dataset.py` Artikel in JSONL:
 
@@ -81,6 +81,6 @@ for server in servers:
 
 ## Warum das wichtig ist
 
-Usenet ist ein Archiv mit sauberer Herkunft von in großem Umfang von Menschen verfasstem Text, aus der Zeit vor der Ära maschinengenerierter Inhalte. Ob Sie Modelle trainieren, Datensätze aufbauen oder den Internetdiskurs studieren, bevor er von KI-generiertem Text verwässert wurde — dieses Archiv ist noch immer da und wächst weiter.
+Usenet ist ein Archiv mit sauberer Herkunft von in großem Umfang von Menschen verfasstem Text, aus der Zeit vor der Ära maschinengenerierter Inhalte. Ob Sie Modelle trainieren, Datensätze aufbauen oder den Internetdiskurs studieren, bevor er von KI-generiertem Text verwässert wurde: Dieses Archiv ist noch immer da und wächst weiter.
 
-**Repository:** [**github.com/TigreGotico/usenet**](https://github.com/TigreGotico/usenet) — Ernten Sie Usenet in Trainingsdatensätze; lesen Sie öffentlich ohne Konto.
+**Repository:** [**github.com/TigreGotico/usenet**](https://github.com/TigreGotico/usenet): Ernten Sie Usenet in Trainingsdatensätze, lesen Sie öffentlich ohne Konto.

@@ -49,7 +49,7 @@ Projecten zoals **[WALLABI](https://wasabiproject.eu/wallabi)** en **[HUMANENERD
 
 ### **3. Ondersteuning bij voorspellend onderhoud**
 
-Experimenten zoals **[GENIUS-PM](https://wasabiproject.eu/genius-pm)** gebruiken de assistent om onderhoudstechnici snel toegang te geven tot gegevens over de gezondheid van machines, uitleg over storingen en reparatiestappen — vooral wanneer hun handen bezet zijn.
+Experimenten zoals **[GENIUS-PM](https://wasabiproject.eu/genius-pm)** gebruiken de assistent om onderhoudstechnici snel toegang te geven tot gegevens over de gezondheid van machines, uitleg over storingen en reparatiestappen, vooral wanneer hun handen bezet zijn.
 
 ### **4. Logistiek, materiaalafhandeling en magazijnondersteuning**
 
@@ -61,7 +61,7 @@ Experimenten zoals **[GENIUS-PM](https://wasabiproject.eu/genius-pm)** gebruiken
 
 ### **6. Duurzaamheid, afvalregistratie en hulpbronefficiëntie**
 
-**[VAFER](https://wasabiproject.eu/vafer)** integreert spraakinterfaces met systemen die recycling, hergebruik van materialen en hulpbronstromen monitoren — handsfree rapportage in fabrieksomgevingen.
+**[VAFER](https://wasabiproject.eu/vafer)** integreert spraakinterfaces met systemen die recycling, hergebruik van materialen en hulpbronstromen monitoren, met handsfree rapportage in fabrieksomgevingen.
 
 Dit alles is afhankelijk van OVOS en van HiveMind voor het routeren van communicatie tussen apparaten, de Android-UI en backendsystemen.
 
@@ -81,7 +81,7 @@ In WASABI is deze RASA-engine als een **skill** aan OVOS gekoppeld en behandelt 
 Een Android-frontend voor werknemers, die via HiveMind verbinding maakt met OVOS.
 
 Vroege versie hier uitgebracht:
-[https://github.com/BIBA-GmbH/Mycroft-Android](https://github.com/BIBA-GmbH/Mycroft-Android)
+[BIBA-GmbH/Mycroft-Android](https://github.com/BIBA-GmbH/Mycroft-Android)
 
 De functies omvatten:
 
@@ -105,12 +105,12 @@ Dit vormt de standaard industriële spraakassistent-stack die alle WASABI-experi
 ### **4. Een industriële spraakdataset**
 
 COALA publiceerde een meertalige spraakdataset die in fabrieken en werkplaatsen is opgenomen:
-[https://zenodo.org/record/8268928](https://zenodo.org/record/8268928)
+[zenodo.org/record/8268928](https://zenodo.org/record/8268928)
 
 ---
 
 ## Waarom het werkt voor de industrie
 
-De ontwerpdoelen die er op de werkvloer toe doen — volledige transparantie voor gereguleerde sectoren, lokale/edge-implementatie zonder cloudafhankelijkheid, modulaire skills voor propriëtaire logica en het vermogen van HiveMind om spraaknodes over een faciliteit te verdelen — waren vanaf het begin ingebouwd, niet achteraf toegevoegd.
+De ontwerpdoelen die er op de werkvloer toe doen, waren vanaf het begin ingebouwd, niet achteraf toegevoegd: volledige transparantie voor gereguleerde sectoren, lokale/edge-implementatie zonder cloudafhankelijkheid, modulaire skills voor propriëtaire logica en het vermogen van HiveMind om spraaknodes over een faciliteit te verdelen.
 
 Broncode van OVOS en HiveMind: [github.com/OpenVoiceOS](https://github.com/OpenVoiceOS) · [github.com/JarbasHiveMind](https://github.com/JarbasHiveMind)

@@ -36,7 +36,9 @@ Zwei Zahlen beschreiben, wie gut eine Konversion funktioniert hat, und sie beweg
 
 **Word Error Rate (WER)** misst die Verständlichkeit: wie viel des ursprünglichen Satzes überlebt hat, beurteilt, indem die Ausgabe wieder durch einen Spracherkenner geschickt und mit dem Quelltranskript verglichen wird. 0 % WER bedeutet, dass jedes Wort korrekt durchkam.
 
-**Sprecherähnlichkeit** misst die Identität: ob die Ausgabe tatsächlich wie die Zielsprecherin oder der Zielsprecher klingt, nicht wie die ursprüngliche Stimme. Sie wird berechnet, indem ein Sprecher-Embedding extrahiert wird — ein kompakter numerischer Fingerabdruck des Klangfarbe-Timbres einer Stimme, die Klangfarbe, die eine Stimme bei gleicher Tonhöhe und Lautstärke von einer anderen unterscheidet — aus der Ausgabe und aus dem Referenzclip, und diese dann per Kosinus-Ähnlichkeit vergleicht. Ein Wert von 1,0 bedeutet identisches Timbre; die eigene Basislinie von `voiceclonnx` — eine unkonvertierte Kopie der Quelle, gegen das Ziel bewertet — liegt bei 0,09, sodass alles deutlich darüber echte Konversionsarbeit leistet.
+**Sprecherähnlichkeit** misst die Identität: ob die Ausgabe tatsächlich wie die Zielsprecherin oder der Zielsprecher klingt, nicht wie die ursprüngliche Stimme. Sie wird berechnet, indem ein Sprecher-Embedding extrahiert wird (ein kompakter numerischer Fingerabdruck des Timbres einer Stimme, die Klangfarbe, die eine Stimme bei gleicher Tonhöhe und Lautstärke von einer anderen unterscheidet) aus der Ausgabe und aus dem Referenzclip, und diese dann per Kosinus-Ähnlichkeit vergleicht.
+
+Ein Wert von 1,0 bedeutet identisches Timbre. Die eigene Basislinie von `voiceclonnx`, eine unkonvertierte Kopie der Quelle, gegen das Ziel bewertet, liegt bei 0,09, sodass alles deutlich darüber echte Konversionsarbeit leistet.
 
 `voiceclonnx` veröffentlicht beide Zahlen für jede Engine, gemessen an demselben Satz, konvertiert zu zwei Referenzstimmen. Der WER stammt von `faster-whisper`; die Sprecherähnlichkeit stammt von einem `wespeaker-resnet34`-Embedding-Modell (gegen zwei weitere gegengeprüft). Nebeneinandergestellt zeigt sich ein Muster: Keine Engine führt in beiden Spalten.
 
@@ -60,21 +62,37 @@ Lesen Sie die Tabelle zeilenweise, nicht auf der Suche nach einer einzigen beste
 
 Die Engines teilen sich in unterschiedliche Ansätze auf, und der Ansatz sagt voraus, wo eine Engine in der obigen Tabelle landet.
 
-**kNN-Feature-Swap** (`knnvc`, `focalcodec`). Das Quellaudio wird in kurze Frames zerlegt, jeder von einem vortrainierten selbstüberwachten Encoder in einen Merkmalsvektor verwandelt. Für jeden Quellframe findet der Algorithmus die *k* nächsten Frames in einem Pool der Merkmale der Zielsprecherin oder des Zielsprechers und mittelt sie ein, wobei das Timbre-Frame der Quelle Frame für Frame ersetzt wird, während der zugrundeliegende phonetische Inhalt dort bleibt, wo er aus der eigenen Repräsentation des Encoders extrahiert wurde. Es gibt keinen gelernten Decoder, der eine Stimme auf eine andere abbildet — der Austausch ist eine Nächste-Nachbarn-Suche —, weshalb die Klangfarbenübertragung aggressiv sein kann (`focalcodec` erreicht 0,61 Ähnlichkeit) auf Kosten gelegentlicher Verunstaltung von Frames, die im Zielpool eine schlechte Übereinstimmung hatten, was sich im WER zeigt.
+### kNN-Feature-Swap (`knnvc`, `focalcodec`)
 
-**Faktorisierter Codec** (`facodec`). Ein neuronaler Audiocodec — ein Modell, das Sprache in eine kompakte Token-Sequenz komprimiert und rekonstruiert — trainiert, um diese Tokens explizit in getrennte Inhalts- und Timbre-Streams aufzuteilen. Da Inhalt ein eigener Stream ist, rekonstruiert der Decoder die Wörter mit hoher Genauigkeit; nur der Timbre-Stream wird gegen den der Zielsprecherin oder des Zielsprechers getauscht. Diese explizite Trennung ist, warum `facodec` 0 % WER erreicht: Die Inhaltsbewahrung konkurriert mit nichts.
+Das Quellaudio wird in kurze Frames zerlegt, jeder von einem vortrainierten selbstüberwachten Encoder in einen Merkmalsvektor verwandelt. Für jeden Quellframe findet der Algorithmus die *k* nächsten Frames in einem Pool der Merkmale der Zielsprecherin oder des Zielsprechers und mittelt sie ein, wobei das Timbre-Frame der Quelle Frame für Frame ersetzt wird, während der zugrundeliegende phonetische Inhalt dort bleibt, wo er aus der eigenen Repräsentation des Encoders extrahiert wurde. Es gibt keinen gelernten Decoder, der eine Stimme auf eine andere abbildet. Der Austausch ist eine Nächste-Nachbarn-Suche, weshalb die Klangfarbenübertragung aggressiv sein kann (`focalcodec` erreicht 0,61 Ähnlichkeit) auf Kosten gelegentlicher Verunstaltung von Frames, die im Zielpool eine schlechte Übereinstimmung hatten, was sich im WER zeigt.
 
-**Klangfarbenübertragung** (`openvoice`). Ein Konversionsmodul ändert die Klangfarbe — Tonhöhenverlauf und Timbre — nachdem ein separater Encoder den linguistischen Inhalt fixiert hat, ähnlich im Geist dem Ansatz des faktorisierten Codecs, aber implementiert als Farbübertragungsschritt über ein Mel-Spektrogramm statt diskrete Tokens. Es erreicht ebenfalls 0 % WER, mit etwas geringerer Ähnlichkeit als `facodec`.
+### Faktorisierter Codec (`facodec`)
 
-**AR-Codec-LM** (`chatterbox`). Ein autoregressives Sprachmodell, das Codec-Tokens nacheinander vorhersagt, konditioniert auf das Embedding der Zielsprecherin oder des Zielsprechers, ganz ähnlich einem Text-zu-Sprache-Sprachmodell, aber konditioniert auf die Inhalts-Tokens der Quellaufnahme statt auf Text. Da es Prosodie (Rhythmus, Betonung, Intonation) als Teil desselben autoregressiven Prozesses erzeugt statt sie direkt aus der Quelle zu kopieren, kann es den Sprechstil zusammen mit dem Timbre mitführen — weshalb die Dokumentation anmerkt, dass es die „stärkste Quelle-zu-Ziel-Verschiebung" bietet — und es ist die einzige Engine, die gleichzeitig bei Verständlichkeit und Ähnlichkeit gut abschneidet.
+Ein neuronaler Audiocodec (ein Modell, das Sprache in eine kompakte Token-Sequenz komprimiert und rekonstruiert), trainiert, um diese Tokens explizit in getrennte Inhalts- und Timbre-Streams aufzuteilen. Da Inhalt ein eigener Stream ist, rekonstruiert der Decoder die Wörter mit hoher Genauigkeit; nur der Timbre-Stream wird gegen den der Zielsprecherin oder des Zielsprechers getauscht. Diese explizite Trennung ist, warum `facodec` 0 % WER erreicht: Die Inhaltsbewahrung konkurriert mit nichts.
 
-**Flow-Matching** (`cosyvoice`). Ein kontinuierlicher generativer Prozess, der Rauschen iterativ zum Ziel-Mel-Spektrogramm verfeinert, unter Verwendung eines EDO-Lösers (gewöhnliche Differentialgleichung), der eine konfigurierbare Anzahl an Schritten durchläuft (`ode_steps`, Standard 10). Sein Inhaltsencoder ist für sprachübergreifende Übertragung ausgelegt, und diese Allgemeinheit ist wahrscheinlich der Grund, warum sein Zielähnlichkeitswert der niedrigste im Satz ist: Die Repräsentation optimiert auf Sprachunabhängigkeit, nicht auf die engste Sprecherübereinstimmung.
+### Klangfarbenübertragung (`openvoice`)
 
-**Sprecherentkoppelter Codec** (`lscodec`). Wie `facodec` ein Codec, der trainiert wurde, Inhalt von Sprecheridentität zu trennen, aber darauf abgestimmt, die Ähnlichkeit weiter zu treiben, auf direkte Kosten der Präzision des Inhaltsstreams, was bei ~35 % WER mit der zweithöchsten Ähnlichkeit im Satz landet.
+Ein Konversionsmodul ändert die Klangfarbe (Tonhöhenverlauf und Timbre) nachdem ein separater Encoder den linguistischen Inhalt fixiert hat, ähnlich im Geist dem Ansatz des faktorisierten Codecs, aber implementiert als Farbübertragungsschritt über ein Mel-Spektrogramm statt diskrete Tokens. Es erreicht ebenfalls 0 % WER, mit etwas geringerer Ähnlichkeit als `facodec`.
 
-**Triple-AAN- und Semantische-plus-globale-Tokens-Codecs** (`triaan`, `bicodec`) liegen bei beiden Achsen in der Mitte: moderater WER, moderate Ähnlichkeit, keine starke Verzerrung in eine Richtung.
+### AR-Codec-LM (`chatterbox`)
 
-**Beliebig-zu-EINEM-Codec plus Vocoder** (`rvc`). Aufgebaut auf ContentVec (einem Inhaltsencoder), der einen VITS-Vocoder speist, pro Zielstimme trainiert statt einen beliebigen Referenzclip zu akzeptieren. `reference_voice` ist bei dieser Engine ein Pfad zu einer `.onnx`-RVC-Modelldatei oder eine Hugging-Face-Repo-ID, keine Audiodatei:
+Ein autoregressives Sprachmodell, das Codec-Tokens nacheinander vorhersagt, konditioniert auf das Embedding der Zielsprecherin oder des Zielsprechers, ganz ähnlich einem Text-zu-Sprache-Sprachmodell, aber konditioniert auf die Inhalts-Tokens der Quellaufnahme statt auf Text. Da es Prosodie (Rhythmus, Betonung, Intonation) als Teil desselben autoregressiven Prozesses erzeugt statt sie direkt aus der Quelle zu kopieren, kann es den Sprechstil zusammen mit dem Timbre mitführen. Deshalb merkt die Dokumentation an, dass es die „stärkste Quelle-zu-Ziel-Verschiebung" bietet, und es ist die einzige Engine, die gleichzeitig bei Verständlichkeit und Ähnlichkeit gut abschneidet.
+
+### Flow-Matching (`cosyvoice`)
+
+Ein kontinuierlicher generativer Prozess, der Rauschen iterativ zum Ziel-Mel-Spektrogramm verfeinert, unter Verwendung eines EDO-Lösers (gewöhnliche Differentialgleichung), der eine konfigurierbare Anzahl an Schritten durchläuft (`ode_steps`, Standard 10). Sein Inhaltsencoder ist für sprachübergreifende Übertragung ausgelegt, und diese Allgemeinheit ist wahrscheinlich der Grund, warum sein Zielähnlichkeitswert der niedrigste im Satz ist: Die Repräsentation optimiert auf Sprachunabhängigkeit, nicht auf die engste Sprecherübereinstimmung.
+
+### Sprecherentkoppelter Codec (`lscodec`)
+
+Wie `facodec` ein Codec, der trainiert wurde, Inhalt von Sprecheridentität zu trennen, aber darauf abgestimmt, die Ähnlichkeit weiter zu treiben, auf direkte Kosten der Präzision des Inhaltsstreams, was bei ~35 % WER mit der zweithöchsten Ähnlichkeit im Satz landet.
+
+### Triple-AAN- und Semantische-plus-globale-Tokens-Codecs (`triaan`, `bicodec`)
+
+Diese liegen bei beiden Achsen in der Mitte: moderater WER, moderate Ähnlichkeit, keine starke Verzerrung in eine Richtung.
+
+### Beliebig-zu-EINEM-Codec plus Vocoder (`rvc`)
+
+Aufgebaut auf ContentVec (einem Inhaltsencoder), der einen VITS-Vocoder speist, pro Zielstimme trainiert statt einen beliebigen Referenzclip zu akzeptieren. `reference_voice` ist bei dieser Engine ein Pfad zu einer `.onnx`-RVC-Modelldatei oder eine Hugging-Face-Repo-ID, keine Audiodatei:
 
 ```python
 cloner = VoiceCloner(engine="rvc")
@@ -85,19 +103,19 @@ Da jedes RVC-Modell auf einer einzigen Zielstimme trainiert wird, nimmt es zur I
 
 ## Entscheiden, welche man ausführt
 
-**Schnelle Allzweck-Pipeline.** Beginnen Sie mit `facodec` oder `openvoice`. Beide erreichen 0 % gemessenen WER bei moderater Ähnlichkeit (0,44 und 0,37), und beide liefern eine INT8-quantisierte Variante ohne dokumentierte Qualitätsregression — übergeben Sie `quantized=True` für ein kleineres, schnelleres Modell.
+Für eine schnelle Allzweck-Pipeline beginnen Sie mit `facodec` oder `openvoice`. Beide erreichen 0 % gemessenen WER bei moderater Ähnlichkeit (0,44 und 0,37), und beide liefern eine INT8-quantisierte Variante ohne dokumentierte Qualitätsregression. Übergeben Sie `quantized=True` für ein kleineres, schnelleres Modell.
 
-**Maximale Sprecherähnlichkeit.** Verwenden Sie `focalcodec` (0,61 Ähnlichkeit, die höchste gemessene), wenn die 15–19 % WER für den Anwendungsfall akzeptabel sind, oder `chatterbox` (0,54 Ähnlichkeit, 4–8 % WER), wenn nicht. `chatterbox` läuft außerdem bei 24 kHz, der höchsten Ausgaberate für Beliebig-zu-beliebig-Konversion im Satz — `rvc` erreicht bis zu 48 kHz, aber nur im oben genannten Beliebig-zu-EINEM-Modus.
+Für maximale Sprecherähnlichkeit verwenden Sie `focalcodec` (0,61 Ähnlichkeit, die höchste gemessene), wenn die 15–19 % WER für den Anwendungsfall akzeptabel sind, oder `chatterbox` (0,54 Ähnlichkeit, 4–8 % WER), wenn nicht. `chatterbox` läuft außerdem bei 24 kHz, der höchsten Ausgaberate für Beliebig-zu-beliebig-Konversion im Satz. `rvc` erreicht bis zu 48 kHz, aber nur im oben genannten Beliebig-zu-EINEM-Modus.
 
-**Ressourcenarme Hardware.** `knnvc` in INT8 belegt etwa 123 MB auf der Festplatte, den kleinsten Fußabdruck im Satz, mit 0,49 Ähnlichkeit und 12–15 % WER — ein vernünftiger Kompromiss für beschränkten Speicher. Nicht jede Engine lässt sich sauber quantisieren: `focalcodec` und `cosyvoice` sind dokumentiert als in INT8 degradierend, also belassen Sie diese beiden bei fp32.
+Für ressourcenarme Hardware belegt `knnvc` in INT8 etwa 123 MB auf der Festplatte, den kleinsten Fußabdruck im Satz, mit 0,49 Ähnlichkeit und 12–15 % WER: ein vernünftiger Kompromiss für beschränkten Speicher. Nicht jede Engine lässt sich sauber quantisieren. `focalcodec` und `cosyvoice` sind dokumentiert als in INT8 degradierend, also belassen Sie diese beiden bei fp32.
 
-**Eine Sprache, mit der die Engine nicht trainiert wurde.** Der Inhaltsencoder von `cosyvoice` ist für sprachübergreifende Übertragung gebaut, was der dokumentierte Grund ist, zu ihr zu greifen statt zu einer für gleichsprachige Konversion abgestimmten Engine, auch wenn ihre gemessene Ähnlichkeit (0,21) die niedrigste der neun direkt vergleichbaren Engines ist.
+Für eine Sprache, mit der die Engine nicht trainiert wurde, ist der Inhaltsencoder von `cosyvoice` für sprachübergreifende Übertragung gebaut, was der dokumentierte Grund ist, zu ihr zu greifen statt zu einer für gleichsprachige Konversion abgestimmten Engine, auch wenn ihre gemessene Ähnlichkeit (0,21) die niedrigste der neun direkt vergleichbaren Engines ist.
 
-**Stimmidentität über exakte Wortlautgenauigkeit.** `lscodec` gibt die stärkste Timbre-Übertragung unter den Codec-Familien-Engines (0,54, gleichauf mit `chatterbox`) auf Kosten des höchsten WER im vergleichbaren Satz (~35 %). Wählen Sie sie, wenn das Ziel „klingt das wie die Zielsprecherin oder der Zielsprecher" ist und gelegentliche Wortfehler in der Ausgabe tolerierbar sind.
+Wenn Stimmidentität wichtiger ist als exakte Wortlautgenauigkeit, gibt `lscodec` die stärkste Timbre-Übertragung unter den Codec-Familien-Engines (0,54, gleichauf mit `chatterbox`) auf Kosten des höchsten WER im vergleichbaren Satz (~35 %). Wählen Sie sie, wenn das Ziel „klingt das wie die Zielsprecherin oder der Zielsprecher" ist und gelegentliche Wortfehler in der Ausgabe tolerierbar sind.
 
-**Eine einzige feste Community-Stimme statt eines beliebigen Clips.** `rvc`, unter Verwendung eines vortrainierten `.onnx`-Stimmmodells statt einer Referenzaufnahme.
+Für eine einzige feste Community-Stimme statt eines beliebigen Clips verwenden Sie `rvc` mit einem vortrainierten `.onnx`-Stimmmodell statt einer Referenzaufnahme.
 
-**Nicht-kommerzielle Einschränkung zuerst prüfen.** Die Gewichte von `bicodec` sind unter CC BY-NC-SA 4.0 lizenziert. Die Gewichte jeder anderen Engine sind MIT, Apache-2.0 oder CC BY 4.0. Prüfen Sie die Lizenz des konkret eingesetzten Gewichts, bevor Sie es kommerziell ausliefern.
+Eine Lizenzeinschränkung, die Sie zuerst prüfen sollten: Die Gewichte von `bicodec` sind unter CC BY-NC-SA 4.0 lizenziert. Die Gewichte jeder anderen Engine sind MIT, Apache-2.0 oder CC BY 4.0. Prüfen Sie die Lizenz des konkret eingesetzten Gewichts, bevor Sie es kommerziell ausliefern.
 
 ## Was es nicht gut kann, und bei wem es nicht verwendet werden sollte
 
