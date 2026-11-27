@@ -132,13 +132,16 @@ extract_timespan("कल की दावत में आना ज़रूर
 In the first sentence the verb थी is a past form of होना ("to be"), so कल is
 yesterday. In the second, आना is an imperative, so कल is tomorrow. If there is no
 verb, or if there are verbs in both tenses, chronologia does not guess, and it
-returns no date, as a native speaker of Hindi advised. The lists of past and
+returns no date, because a native speaker of Hindi said the bare word depends on
+context. The lists of past and
 future verbs are data files, not code.
 
 ## Language is data
 
-A new language in chronologia is a JSON file, word lists and a gold test set. The repo
-has 62 locale folders, and there is no Python in them. Numbers inside dates ("duas
+Most languages in chronologia are a JSON file, word lists and a gold test set. A few,
+such as Hindi, also have a small Python hook in the engine for rules that the data
+format cannot express yet. The repo has 62 locale folders, and there is no Python in
+them. Numbers inside dates ("duas
 semanas", "vinte e sete") come from [numtag](https://github.com/TigreGotico/numtag),
 which reads numbers in many languages.
 
@@ -165,9 +168,9 @@ voice reads a Portuguese date.
 
 - **Voice assistant skills.** The OpenVoiceOS date-time, alerts and weather skills
   use chronologia to read the dates and times in requests.
-- **A drop-in for old code.** `ovos-date-parser` itself sends every language to
-  chronologia. Old code that calls `extract_datetime` gets the new reader with no
-  change.
+- **A drop-in for old code.** The alphas of `ovos-date-parser` (from 0.32.1a1) send
+  every language to chronologia, so old code that calls `extract_datetime` gets the
+  new reader with no code change.
 - **Calendar tools.** Convert a date to the Hebrew or Islamic calendar, find the
   Gregorian date of a feast, or show a date in two calendars side by side.
 - **History and science.** Read "the Jurassic", "44 BC" or "66 million years ago" in
