@@ -90,7 +90,8 @@ A form that text2spoken cannot read stays as written. It never guesses.
 ## Where it runs
 
 [phoonnx](https://github.com/TigreGotico/phoonnx) voices and the scriptconv
-phonemizers call it before phonemization. It can also normalise
+phonemizers call it before phonemization. OpenVoiceOS uses it through
+`ovos-dialog-normalizer-plugin` (from 0.1.0a1). It can also normalise
 reference text before WER scoring, so that "21" and "twenty-one" count as the same
 word. It replaces the older normaliser inside phoonnx. When phoonnx switched, the
 two gave equal output on 8,336 inputs.
