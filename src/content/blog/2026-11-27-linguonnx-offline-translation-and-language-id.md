@@ -47,8 +47,9 @@ over. Every one of them is an ONNX conversion published under
 
 Over the default graph, 592 languages are routable.
 
-The classifiers are ONNX exports of four fastText models: GlotLID, fastText's
-`lid.176`, OpenLID and OpenLID-v2. GlotLID labels 2102 *varieties*, so colloquial
+The six classifiers are ONNX exports of five fastText models (GlotLID, fastText's
+`lid.176`, OpenLID, OpenLID-v2 and NLLB's `lid218e`) and of AfroLID, an XLM-R
+transformer. GlotLID labels 2102 *varieties*, so colloquial
 Arabic comes back as Najdi (`ars`) and Chinese may come back as Cantonese. That is
 dialect identification when you want it, and `collapse_varieties=True` when you
 do not.
