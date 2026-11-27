@@ -3,7 +3,7 @@ title: "Pourquoi nous accumulons les données : des catalogues extraits aux mod�
 description: "Des données propres, typées et à la provenance bien établie sont la matière première de chaque modèle que nous livrons. Comment les catalogues que construisent nos scrapers deviennent des vocabulaires de biasing pour l'ASR, des classificateurs d'intention, des corpus NER synthétiques, des lexiques G2P, des voix TTS, et un carburant honnête pour les LLM."
 date: 2026-07-04
 lang: fr
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Datasets"
   - "Data Collection"

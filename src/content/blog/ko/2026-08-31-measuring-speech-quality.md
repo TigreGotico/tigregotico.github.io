@@ -3,7 +3,7 @@ title: "청취 패널 없이 음성 품질 측정하기"
 description: "speechonnxmetrics 실무 안내서: MOS, 참조 없는 MOS 예측기, 침습적 신호 지표, ASR 기반 WER/CER이 실제로 무엇을 측정하는지, 각각을 언제 적용하는지, 실제 오디오의 실제 점수, 그리고 예측된 MOS가 진실이 아니라 증거인 이유."
 date: 2026-08-01
 lang: ko
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "speechonnxmetrics"
   - "TTS"

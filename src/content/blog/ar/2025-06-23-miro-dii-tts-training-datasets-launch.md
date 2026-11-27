@@ -3,7 +3,7 @@ title: "بيانات تدريب TTS لصوتَي Miro و Dii: 40 مجموعة ب
 description: "نشرنا 40 مجموعة بيانات تدريب اصطناعية لصوتَي Miro و Dii عبر البرتغالية والهولندية والألمانية والفرنسية والإيطالية واليابانية والإسبانية والمزيد. استنساخ الصوت على نطاق واسع: كل لغة تحصل على هويتين متسقتين."
 date: 2025-06-23
 lang: ar
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "TTS"
   - "Voice"

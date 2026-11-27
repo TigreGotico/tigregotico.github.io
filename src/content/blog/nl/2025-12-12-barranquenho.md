@@ -4,7 +4,7 @@ description: "g2p_barranquenho is de eerste open grafeem-naar-foneem-omzetter vo
 date: 2025-12-12
 lang: nl
 updated: 2026-08-01
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Phonemization"
   - "Barranquenho"

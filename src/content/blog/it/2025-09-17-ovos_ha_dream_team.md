@@ -3,7 +3,7 @@ title: "OpenVoiceOS e Home Assistant: la Dream Team dell'automazione vocale"
 description: "Home Assistant si occupa dell'automazione; OVOS si occupa della voce. Tre livelli di integrazione fanno funzionare la combinazione: i ponti Wyoming per la pipeline vocale di HA, ovos-persona-server come agente conversazionale e HiveMind per esporre i dispositivi OVOS come entità native di HA."
 date: 2025-09-17
 lang: it
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "OVOS"
   - "Home Assistant"

@@ -3,7 +3,7 @@ title: "Robots.txt, Sitemaps, and Ethical Web Scraping"
 description: "Before you build a scraper, scout the site. sitemapper reads robots.txt, fetches every sitemap, and optionally crawls the link graph, so your scraper starts from the site's own contract instead of brute force."
 date: 2026-03-01
 updated: 2026-08-01
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Web Scraping"
   - "Sitemaps"

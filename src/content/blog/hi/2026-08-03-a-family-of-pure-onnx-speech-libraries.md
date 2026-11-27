@@ -3,7 +3,7 @@ title: "शुद्ध-ONNX स्पीच लाइब्रेरियो�
 description: "TigreGótico स्पीच लाइब्रेरियों का एक समूह बनाए रखता है — बैंडविड्थ विस्तार, वॉयस क्लोनिंग, स्पीकर एम्बेडिंग, VAD, शब्द बल, फ़ोनेमाइज़ेशन, TTS, और उन सभी को स्कोर करने के लिए एक मेट्रिक्स लाइब्रेरी — जो एक रनटाइम नियम साझा करते हैं: केवल onnxruntime और numpy, कोई PyTorch नहीं, कोई GPU आवश्यक नहीं।"
 date: 2026-08-01
 lang: hi
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "ONNX"
   - "TTS"

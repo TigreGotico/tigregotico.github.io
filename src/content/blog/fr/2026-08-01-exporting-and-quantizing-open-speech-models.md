@@ -3,7 +3,7 @@ title: "Exporter et quantifier des modèles de parole ouverts pour qu'ils tourne
 description: "Un modèle de parole entraîné sur une page GitHub de recherche n'est pas un assistant vocal. Nous convertissons des checkpoints ASR et TTS ouverts vers ONNX, CoreML et GGUF, nous les quantifions et validons la sortie. Puis nous publions les résultats sous OpenVoiceOS afin que chaque langue couverte s'exécute dans un véritable assistant hors ligne."
 date: 2026-08-01
 lang: fr
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "ONNX"
   - "CoreML"

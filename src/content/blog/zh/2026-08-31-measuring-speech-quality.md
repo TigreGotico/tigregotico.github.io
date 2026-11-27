@@ -3,7 +3,7 @@ title: "不靠听审团衡量语音质量"
 description: "一份 speechonnxmetrics 实战指南：MOS、无参考 MOS 预测器、侵入式信号指标，以及基于 ASR 的 WER/CER 究竟衡量什么，各自适用于何时，来自真实音频的真实分数，以及为什么一个预测出来的 MOS 是证据，而非真相。"
 date: 2026-08-01
 lang: zh
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "speechonnxmetrics"
   - "TTS"

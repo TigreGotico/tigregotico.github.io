@@ -4,7 +4,7 @@ description: "Bevor Sie einen Scraper bauen, erkunden Sie die Website. sitemappe
 date: 2026-03-01
 lang: de
 updated: 2026-08-01
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Web Scraping"
   - "Sitemaps"

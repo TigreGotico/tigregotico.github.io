@@ -3,7 +3,7 @@ title: "Se Toda a Gente Lança uma App, Nós Lançamos Voz: Transformar Websites
 description: "Todos os sites que importam acabaram embrulhados numa app móvel. Propomos o movimento inverso para a era da voz e da linha de comandos: uma API limpa mais uma skill de voz por site, para que a web se torne navegável de ouvido e por teclado. Um site de cada vez, tudo somado dá um navegador de voz."
 date: 2026-07-04
 lang: pt
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Voice"
   - "Accessibility"

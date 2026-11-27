@@ -3,7 +3,7 @@ title: "خانواده‌ای از کتابخانه‌های گفتاریِ خا
 description: "‏TigreGótico مجموعه‌ای از کتابخانه‌های گفتاری را نگهداری می‌کند — بسط پهنای‌باند، شبیه‌سازی صدا، جاسازی‌های گوینده، VAD، تکیهٔ واژه، واج‌سازی، TTS، و یک کتابخانهٔ سنجه برای امتیازدهی به همه‌ی آن‌ها — که یک قاعدهٔ زمان‌اجرا را مشترک دارند: تنها onnxruntime و numpy، بدون PyTorch، بدون نیاز به GPU."
 date: 2026-08-01
 lang: fa
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "ONNX"
   - "TTS"

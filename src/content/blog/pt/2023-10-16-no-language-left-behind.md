@@ -4,7 +4,7 @@ description: "Eliminar barreiras linguísticas no OpenVoiceOS através de deteç
 date: 2023-10-16
 updated: 2026-08-01
 lang: pt
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "OVOS"
   - "multilingual"

@@ -3,7 +3,7 @@ title: "Classical NLP for Portuguese: Syllabification and Grapheme-to-Phoneme"
 description: "A look at our rule-based, fully offline Portuguese NLP stack: silabificador for syllabification and TugaPhone for dialect-aware grapheme-to-phoneme, and how they connect to the broader orthography2ipa work for Lusophone varieties. No deep-learning black boxes: deterministic, fast, and dependency-light."
 date: 2026-02-28
 updated: 2026-08-01
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "NLP"
   - "Portuguese"

@@ -3,7 +3,7 @@ title: "Portar con Máquinas, y la Pregunta de Licencia que No Pudimos Responder
 description: "Reescribimos varios programas en C, C++ y Java — el G2P de espeak-ng, Cotovía, AhoTTS, HermiT — como Python puro, con una IA leyendo el código fuente original y un humano orquestando el trabajo. Nadie de nuestro lado leyó los originales. Eso plantea dos preguntas separadas: ¿puede el resultado ser propiedad de alguien siquiera, y es una obra derivada de la entrada? Mantuvimos las licencias originales porque era más barato que responder. Seguimos pensando que la pregunta está abierta."
 date: 2026-08-01
 lang: es
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "FOSS"
   - "Licensing"

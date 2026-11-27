@@ -3,7 +3,7 @@ title: "ジャガイモの上でも動く TTS モデル"
 description: "phoonnx は、低スペックのハードウェアでも快適に動作するように作られた、VITS ベースのテキスト読み上げのための研究フレームワークです。GPU なし、クラウドなし、API キーなし — 約 1,565 万パラメータの ONNX 音声と CPU だけ。良質な音声がどれほど小さくできるか、そして私たちがどう学習させるかをご紹介します。"
 date: 2026-05-10
 lang: ja
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "phoonnx"
   - "TTS"

@@ -4,7 +4,7 @@ description: "Twee boos ogende supportberichten. De ene klant staat op escaleren
 date: 2026-07-13
 lang: nl
 updated: 2026-08-01
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Affective Computing"
   - "Emotion"

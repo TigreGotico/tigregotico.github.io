@@ -3,7 +3,7 @@ title: "Measuring Speech Quality Without a Listening Panel"
 description: "A working guide to speechonnxmetrics: what MOS, no-reference MOS predictors, intrusive signal metrics and ASR-based WER/CER actually measure, when each applies, real scores from real audio, and why a predicted MOS is evidence, not truth."
 date: 2026-08-01
 lang: en
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "speechonnxmetrics"
   - "TTS"

@@ -3,7 +3,7 @@ title: "Modelos de TTS Que Correm numa Batata"
 description: "O phoonnx é um framework de investigação para síntese de fala baseada em VITS, construído para correr confortavelmente em hardware modesto. Sem GPU, sem nuvem, sem chave de API: apenas uma voz ONNX de ~15,65 milhões de parâmetros e um CPU. Aqui fica quão pequena pode ser uma boa voz, e como as treinamos."
 date: 2026-05-10
 lang: pt
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "phoonnx"
   - "TTS"

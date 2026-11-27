@@ -3,7 +3,7 @@ title: "Open spraakmodellen exporteren en kwantiseren zodat ze echt draaien"
 description: "Een getraind spraakmodel op een onderzoeks-GitHub-pagina is geen spraakassistent. Wij zetten open ASR- en TTS-checkpoints om naar ONNX, CoreML en GGUF, kwantiseren ze en valideren de uitvoer. Vervolgens publiceren we de resultaten onder OpenVoiceOS, zodat elke taal die ze dekken terechtkomt in een echte, offline assistent."
 date: 2026-08-01
 lang: nl
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "ONNX"
   - "CoreML"

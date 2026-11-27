@@ -3,7 +3,7 @@ title: "स्क्रिप्ट और ध्वन्यात्मक न
 description: "scriptconv पर एक गहरी झाँक, वह शून्य-निर्भरता वाली लाइब्रेरी जो लेखन प्रणालियों का पता लगाती है और ध्वन्यात्मक नोटेशनों के बीच रूपांतरित करती है। IPA, ARPABET, और X-SAMPA को कवर करती है; ISO-15924 स्क्रिप्ट पहचान; अरबी के लिए Buckwalter लिप्यंतरण; jamo में Hangul विघटन; और kana रूपांतरण, असली, निष्पादित उदाहरणों और ईमानदार सीमाओं के साथ।"
 date: 2026-08-01
 lang: hi
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "IPA"
   - "Phonetics"

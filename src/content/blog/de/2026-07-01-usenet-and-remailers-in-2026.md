@@ -3,7 +3,7 @@ title: "Usenet im Jahr 2026: ein sauberer Textkorpus aus der Zeit vor der KI fü
 description: "Usenet ist ein unberührtes Archiv des menschlichen Diskurses aus der Zeit vor der KI: Jahrzehnte an Newsgroup-Beiträgen, alles von Menschen geschrieben, nichts davon von Sprachmodellen berührt. Das macht es zu wertvollen Trainings- und Evaluierungsdaten für Sprach- und Sprachmodelle. Wir haben ein kleines Python-Werkzeug gebaut, um es zu ernten."
 date: 2026-07-01
 lang: de
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Usenet"
   - "Datasets"

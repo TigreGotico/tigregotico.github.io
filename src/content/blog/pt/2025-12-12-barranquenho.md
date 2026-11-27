@@ -4,7 +4,7 @@ description: "O g2p_barranquenho é o primeiro conversor aberto de grafema-para-
 date: 2025-12-12
 updated: 2026-08-01
 lang: pt
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Phonemization"
   - "Barranquenho"

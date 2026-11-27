@@ -3,7 +3,7 @@ title: "OpenVoiceOS と Home Assistant: 音声オートメーションのドリ�
 description: "Home Assistant はオートメーションを担い、OVOS は音声を担います。この組み合わせを機能させるのは 3 つの統合レイヤーです。HA の音声パイプライン向けの Wyoming ブリッジ、会話エージェントとしての ovos-persona-server、そして OVOS デバイスを HA のネイティブエンティティとして表示する HiveMind です。"
 date: 2025-09-17
 lang: ja
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "OVOS"
   - "Home Assistant"

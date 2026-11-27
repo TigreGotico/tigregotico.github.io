@@ -3,7 +3,7 @@ title: "बिना किसी सुनने वाले पैनल क�
 description: "speechonnxmetrics के लिए एक कार्यशील गाइड: MOS, संदर्भ-रहित MOS अनुमानक, intrusive सिग्नल मेट्रिक्स, और ASR-आधारित WER/CER असल में क्या मापते हैं, हर एक कब लागू होता है, असली ऑडियो से असली स्कोर, और एक पूर्वानुमानित MOS प्रमाण क्यों है, सत्य नहीं।"
 date: 2026-08-01
 lang: hi
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "speechonnxmetrics"
   - "TTS"

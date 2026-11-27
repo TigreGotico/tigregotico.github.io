@@ -3,7 +3,7 @@ title: "عائلة من مكتبات الكلام القائمة على ONNX ا�
 description: "تصون TigreGótico مجموعة من مكتبات الكلام — توسيع النطاق الترددي، واستنساخ الصوت، وتضمينات المتحدث، وكشف النشاط الصوتي، ونبر الكلمات، والتصويت، و TTS، ومكتبة مقاييس لتقييمها جميعًا — تتشارك قاعدة تشغيل واحدة: فقط onnxruntime و numpy، دون PyTorch، ودون حاجة إلى وحدة معالجة رسومات."
 date: 2026-08-01
 lang: ar
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "ONNX"
   - "TTS"

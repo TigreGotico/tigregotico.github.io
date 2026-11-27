@@ -3,7 +3,7 @@ title: "Misurare la Qualità del Parlato Senza un Panel di Ascolto"
 description: "Una guida pratica a speechonnxmetrics: cosa misurano davvero MOS, predittori MOS senza riferimento, metriche di segnale intrusive e WER/CER basati su ASR, quando ciascuno si applica, punteggi reali su audio reale, e perché un MOS predetto è evidenza, non verità."
 date: 2026-08-01
 lang: it
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "speechonnxmetrics"
   - "TTS"

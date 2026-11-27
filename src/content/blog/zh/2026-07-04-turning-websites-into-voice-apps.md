@@ -3,7 +3,7 @@ title: "如果人人都发布 App，那我们就发布语音：把网站变成�
 description: "每一个重要的网站都被包进了移动 App。我们为语音与命令行时代提出相反的做法：一套干净的 API 加上每个网站一个语音 skill，让网络能够用耳朵、用键盘来浏览。一个网站接一个网站地做，累积起来就是一个语音浏览器。"
 date: 2026-07-04
 lang: zh
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Voice"
   - "Accessibility"

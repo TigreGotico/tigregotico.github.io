@@ -4,7 +4,7 @@ description: "Een rondleiding langs de familie getypeerde Python-clients die we 
 date: 2026-04-20
 lang: nl
 updated: 2026-08-01
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Scrapers"
   - "Media Metadata"

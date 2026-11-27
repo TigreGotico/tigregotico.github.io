@@ -4,7 +4,7 @@ description: "Due messaggi di supporto che sembrano arrabbiati. Uno sta per scal
 date: 2026-07-13
 lang: it
 updated: 2026-08-01
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Affective Computing"
   - "Emotion"

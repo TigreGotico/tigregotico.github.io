@@ -3,7 +3,7 @@ title: "OpenVoiceOS et Home Assistant : l'équipe de rêve de l'automatisation v
 description: "Home Assistant gère l'automatisation. OVOS gère la voix. Trois couches d'intégration font fonctionner la combinaison : les ponts Wyoming pour le pipeline vocal de HA, ovos-persona-server comme agent conversationnel, et HiveMind pour exposer les appareils OVOS en tant qu'entités natives de HA."
 date: 2025-09-17
 lang: fr
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "OVOS"
   - "Home Assistant"

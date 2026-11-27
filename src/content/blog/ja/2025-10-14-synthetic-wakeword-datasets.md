@@ -3,7 +3,7 @@ title: "合成ウェイクワードデータセット: 7 つのアシスタン�
 description: "一般的な音声アシスタント名（hey_computer、hey_mycroft、hey_siri、alexa、home_assistant、voice_assistant、wake_up）向けに 7 つの合成ウェイクワードデータセットを公開しました。どこでも動作する検出器を学習しましょう。"
 date: 2025-10-14
 lang: ja
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Datasets"
   - "Wakewords"

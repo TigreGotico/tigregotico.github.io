@@ -3,7 +3,7 @@ title: "صادرات و کوانتیزهٔ مدل‌های باز گفتار ت�
 description: "یک مدل گفتاریِ آموزش‌دیده روی یک صفحهٔ پژوهشیِ GitHub یک دستیار صوتی نیست. ما checkpoint های باز ASR و TTS را به ONNX، CoreML و GGUF تبدیل می‌کنیم، کوانتیزه می‌کنیم و خروجی را اعتبارسنجی می‌کنیم — سپس نتایج را زیر OpenVoiceOS منتشر می‌کنیم تا هر زبانی که پوشش می‌دهند در یک دستیار واقعی و آفلاین عرضه شود."
 date: 2026-08-01
 lang: fa
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "ONNX"
   - "CoreML"

@@ -3,7 +3,7 @@ title: "TTS-Modelle, die auf einer Kartoffel laufen"
 description: "phoonnx ist ein Forschungs-Framework für VITS-basierte Sprachsynthese, gebaut, um bequem auf schwacher Hardware zu laufen. Keine GPU, keine Cloud, kein API-Schlüssel: nur eine ONNX-Stimme mit rund 15,65 Millionen Parametern und eine CPU. Hier erfahren Sie, wie klein eine gute Stimme sein kann und wie wir sie trainieren."
 date: 2026-05-10
 lang: de
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "phoonnx"
   - "TTS"

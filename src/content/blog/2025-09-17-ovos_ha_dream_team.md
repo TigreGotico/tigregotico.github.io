@@ -2,7 +2,7 @@
 title: "OpenVoiceOS and Home Assistant: A Voice Automation Dream Team"
 description: "Home Assistant handles automation. OVOS handles voice. Three integration layers make the combination work: Wyoming bridges for HA's voice pipeline, ovos-persona-server as a conversational agent, and HiveMind for surfacing OVOS devices as native HA entities."
 date: 2025-09-17
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "OVOS"
   - "Home Assistant"

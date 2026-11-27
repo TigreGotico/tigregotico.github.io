@@ -3,7 +3,7 @@ title: "جلسات requests قابلة للتركيب وجاهزة للاستخ�
 description: "فئتان فرعيتان قابلتان للتركيب من requests.Session لقراءة صفحات الويب العامة بشكل موثوق دون متصفح بلا واجهة في المسار الحرج: نقل متوافق مع TLS، ووكيل FlareSolverr لتحديات JavaScript، والرجوع إلى Wayback Machine، وطلبات مُنوَّعة عبر عناوين IP — هما unblock_requests و anon_requests."
 date: 2026-03-15
 lang: ar
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "HTTP"
   - "Scraping"

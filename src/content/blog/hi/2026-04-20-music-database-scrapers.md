@@ -4,7 +4,7 @@ description: "म्यूज़िक स्रोतों के लिए �
 date: 2026-04-20
 updated: 2026-08-01
 lang: hi
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Scrapers"
   - "Media Metadata"

@@ -4,7 +4,7 @@ description: "हमारे नियम-आधारित, पूरी त�
 date: 2026-02-28
 updated: 2026-08-01
 lang: hi
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "NLP"
   - "Portuguese"

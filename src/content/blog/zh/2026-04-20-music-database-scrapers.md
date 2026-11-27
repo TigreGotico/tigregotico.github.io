@@ -4,7 +4,7 @@ description: "带你了解我们维护的一系列类型化 Python 客户端，�
 date: 2026-04-20
 lang: zh
 updated: 2026-08-01
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Scrapers"
   - "Media Metadata"

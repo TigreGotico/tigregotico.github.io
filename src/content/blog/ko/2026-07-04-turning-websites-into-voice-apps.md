@@ -3,7 +3,7 @@ title: "모두가 앱을 출시한다면, 우리는 음성을 출시하겠다: �
 description: "중요한 모든 사이트는 모바일 앱으로 감싸졌습니다. 우리는 음성과 CLI 시대를 위한 반대 방향의 움직임을 제안합니다: 사이트마다 깨끗한 API 하나와 음성 스킬 하나를 두어, 웹이 귀와 키보드로 탐색될 수 있게 하는 것입니다. 한 번에 한 사이트씩, 모두 더하면 음성 브라우저가 됩니다."
 date: 2026-07-04
 lang: ko
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Voice"
   - "Accessibility"

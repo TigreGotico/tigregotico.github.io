@@ -3,7 +3,7 @@ title: "文字体系と音声表記法: scriptconv が実際に変換してい�
 description: "文字体系を検出し音声表記法の間を変換する、依存関係のないライブラリ scriptconv への深掘り。IPA、ARPABET、X-SAMPA、ISO-15924 文字体系検出、アラビア語のための Buckwalter 音訳、字母へのハングル分解、かなの変換を、実際に実行された例と正直な限界とともに扱います。"
 date: 2026-08-01
 lang: ja
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "IPA"
   - "Phonetics"

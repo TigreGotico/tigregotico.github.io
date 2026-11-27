@@ -3,7 +3,7 @@ title: "OpenVoiceOS и Home Assistant: идеальная команда гол�
 description: "Home Assistant отвечает за автоматизацию; OVOS отвечает за голос. Три слоя интеграции заставляют эту связку работать: мосты Wyoming для голосового конвейера HA, ovos-persona-server в роли разговорного агента и HiveMind для отображения устройств OVOS как нативных сущностей HA."
 date: 2025-09-17
 lang: ru
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "OVOS"
   - "Home Assistant"

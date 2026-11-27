@@ -3,7 +3,7 @@ title: "Kombinierbare, direkt einsetzbare requests-Sessions für widerstandsfäh
 description: "Zwei kombinierbare requests.Session-Subklassen, um öffentliche Webseiten zuverlässig zu lesen, ohne im heißen Pfad einen Headless-Browser zu starten: TLS-kompatibler Transport, ein FlareSolverr-Proxy für JS-Challenges, ein Wayback-Machine-Fallback und IP-diversifizierte Anfragen: unblock_requests und anon_requests."
 date: 2026-03-15
 lang: de
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "HTTP"
   - "Scraping"

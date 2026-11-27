@@ -3,7 +3,7 @@ title: "Limpiando Audio Deficiente: Eliminación de Ruido y Extensión de Ancho 
 description: "audiosronnx trata la eliminación de ruido y la extensión de ancho de banda como dos tareas independientes: el registro real de motores, tamaños y licencias de los modelos, la lista de modelos rechazados, y cómo comprobar si la salida realmente mejoró."
 date: 2026-08-01
 lang: es
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "ONNX"
   - "denoising"

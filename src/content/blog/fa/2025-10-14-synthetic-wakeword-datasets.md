@@ -3,7 +3,7 @@ title: "مجموعه‌داده‌های مصنوعی Wakeword: هفت نام د
 description: "ما هفت مجموعه‌دادهٔ مصنوعی wakeword برای نام‌های رایج دستیارهای صوتی منتشر کردیم — hey_computer، hey_mycroft، hey_siri، alexa، home_assistant، voice_assistant، wake_up. یک آشکارساز آموزش دهید که همه‌جا کار کند."
 date: 2025-10-14
 lang: fa
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Datasets"
   - "Wakewords"

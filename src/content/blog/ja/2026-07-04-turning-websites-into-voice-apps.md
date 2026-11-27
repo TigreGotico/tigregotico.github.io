@@ -3,7 +3,7 @@ title: "みんながアプリを出すなら、私たちは音声を出す：ウ
 description: "重要なサイトはどれもモバイルアプリに包まれてしまいました。私たちは音声と CLI の時代のために、その逆の動きを提案します。すなわち、サイトごとにきれいな API と音声スキルを用意し、ウェブが耳とキーボードで閲覧できるようにするのです。一度に 1 サイトずつ、それが積み重なって音声ブラウザになります。"
 date: 2026-07-04
 lang: ja
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Voice"
   - "Accessibility"

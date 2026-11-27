@@ -3,7 +3,7 @@ title: "2026 年の Usenet：学習と評価のためのきれいな AI 以前�
 description: "Usenet は AI 以前の人間の言説の手つかずのアーカイブです — 数十年にわたるニュースグループの投稿はすべて人間によって書かれ、言語モデルには一切触れられていません。それが言語モデルおよび音声モデルの学習と評価にとって価値あるデータとなります。私たちはそれを収集する小さな Python ツールを作りました。"
 date: 2026-07-01
 lang: ja
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Usenet"
   - "Datasets"

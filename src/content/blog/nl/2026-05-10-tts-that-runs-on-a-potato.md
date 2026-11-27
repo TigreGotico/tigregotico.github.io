@@ -3,7 +3,7 @@ title: "TTS-modellen die op een aardappel draaien"
 description: "phoonnx is een onderzoeksframework voor VITS-gebaseerde tekst-naar-spraak, gebouwd om comfortabel op zwakke hardware te draaien. Geen GPU, geen cloud, geen API-sleutel: alleen een ONNX-stem van ~15,65 miljoen parameters en een CPU. Zo klein kan een goede stem zijn, en zo trainen we ze."
 date: 2026-05-10
 lang: nl
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "phoonnx"
   - "TTS"

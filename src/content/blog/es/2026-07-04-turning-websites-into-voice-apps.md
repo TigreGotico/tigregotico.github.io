@@ -3,7 +3,7 @@ title: "Si Todos Publican una App, Nosotros Publicaremos Voz: Convertir Sitios W
 description: "Todo sitio que importa acabó envuelto en una app móvil. Proponemos el movimiento opuesto para la era de la voz y la CLI: una API limpia más una skill de voz por sitio, para que la web se pueda navegar de oído y con el teclado. Un sitio cada vez, suma hasta un navegador de voz."
 date: 2026-07-04
 lang: es
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Voice"
   - "Accessibility"

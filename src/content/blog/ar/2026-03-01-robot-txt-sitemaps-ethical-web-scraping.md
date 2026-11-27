@@ -4,7 +4,7 @@ description: "قبل أن تبني أداة كشط، استكشف الموقع. 
 date: 2026-03-01
 updated: 2026-08-01
 lang: ar
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Web Scraping"
   - "Sitemaps"

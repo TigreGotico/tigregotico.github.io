@@ -4,7 +4,7 @@ description: "Antes de construir un scraper, explora el sitio. sitemapper lee ro
 date: 2026-03-01
 lang: es
 updated: 2026-08-01
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Web Scraping"
   - "Sitemaps"

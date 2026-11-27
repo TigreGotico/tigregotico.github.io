@@ -3,7 +3,7 @@ title: "OVOS و HiveMind في الصناعة التحويلية"
 description: "بنى المشروعان الأوروبيان COALA و WASABI إطار عمل كاملًا لمساعد صوتي صناعي حول OVOS + HiveMind، مُدمِجَين إياهما مع أدواتهما وواجهتهما ومحركات المحادثة الخاصة بهما."
 date: 2025-11-26
 lang: ar
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "OVOS"
   - "HiveMind"

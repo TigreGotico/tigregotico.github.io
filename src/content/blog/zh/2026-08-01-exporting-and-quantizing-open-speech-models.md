@@ -3,7 +3,7 @@ title: "导出并量化开放语音模型，让它们真正能运行起来"
 description: "一个躺在研究项目 GitHub 页面上的训练好的语音模型，还不是一个语音助手。我们把开放的 ASR 和 TTS 检查点转换为 ONNX、CoreML 和 GGUF，量化它们，并验证输出结果——然后在 OpenVoiceOS 名下发布结果，让它们覆盖的每一种语言都能在一个真实的、离线的助手中使用。"
 date: 2026-08-01
 lang: zh
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "ONNX"
   - "CoreML"

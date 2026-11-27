@@ -3,7 +3,7 @@ title: "Modelos de TTS que Funcionan en una Patata"
 description: "phoonnx es un framework de investigación para síntesis de voz basada en VITS, construido para funcionar cómodamente en hardware modesto. Sin GPU, sin nube, sin clave de API: solo una voz ONNX de ~15,65 millones de parámetros y una CPU. Aquí explicamos lo pequeña que puede ser una buena voz, y cómo las entrenamos."
 date: 2026-05-10
 lang: es
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "phoonnx"
   - "TTS"

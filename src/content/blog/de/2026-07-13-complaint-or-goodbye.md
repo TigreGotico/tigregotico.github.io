@@ -4,7 +4,7 @@ description: "Zwei wütend wirkende Support-Nachrichten. Ein Kunde will eskalier
 date: 2026-07-13
 lang: de
 updated: 2026-08-01
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Affective Computing"
   - "Emotion"

@@ -4,7 +4,7 @@ description: "Прежде чем строить скрапер, проведи�
 date: 2026-03-01
 updated: 2026-08-01
 lang: ru
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Web Scraping"
   - "Sitemaps"

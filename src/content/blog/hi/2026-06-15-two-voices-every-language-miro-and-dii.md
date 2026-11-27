@@ -3,7 +3,7 @@ title: "दो आवाज़ें, हर भाषा: Miro और Dii"
 description: "TigreGótico, OpenVoiceOS के साथ साझेदारी कर रहा है ताकि असिस्टेंट को दो सुसंगत वॉयस पहचानें दी जा सकें — Miro और Dii — जो हर भाषा में एक जैसी सुनाई दें, हमारी वॉयस-क्लोनिंग तकनीक और phoonnx इंजन से बनी। जिस भी भाषा की माँग हो उसके लिए दो TTS मॉडल, लुप्तप्राय भाषाएँ भी शामिल।"
 date: 2026-06-15
 lang: hi
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "phoonnx"
   - "TTS"

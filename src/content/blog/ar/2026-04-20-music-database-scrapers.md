@@ -4,7 +4,7 @@ description: "جولة في عائلة عملاء بايثون المُصنَّ�
 date: 2026-04-20
 updated: 2026-08-01
 lang: ar
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Scrapers"
   - "Media Metadata"

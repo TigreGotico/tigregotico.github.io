@@ -3,7 +3,7 @@ title: "처음부터 합성 음성 만들기"
 description: "음성 합성 시스템을 위한 음성을 만들려면 보통 실제 사람이 몇 시간 동안 오디오를 녹음해야 합니다. 이는 비용이 많이 들고 시간이 오래 걸리며, 많은 언어나 억양에서는 음성 자체가 아예 존재하지 않습니다"
 date: 2025-06-26
 lang: ko
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "TTS"
   - "Synthetic Data"

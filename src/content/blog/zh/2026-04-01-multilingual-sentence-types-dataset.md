@@ -4,7 +4,7 @@ description: "我们发布了 sentence-types-multilingual —— 涵盖七种语
 date: 2026-04-01
 lang: zh
 updated: 2026-08-01
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Datasets"
   - "Multilingual"

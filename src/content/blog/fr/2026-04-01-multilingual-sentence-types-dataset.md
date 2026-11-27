@@ -4,7 +4,7 @@ description: "Nous avons publié sentence-types-multilingual — près de 70 000
 date: 2026-04-01
 updated: 2026-08-01
 lang: fr
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Datasets"
   - "Multilingual"

@@ -4,7 +4,7 @@ description: "Voordat u een scraper bouwt, verken eerst de site. sitemapper lees
 date: 2026-03-01
 lang: nl
 updated: 2026-08-01
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Web Scraping"
   - "Sitemaps"

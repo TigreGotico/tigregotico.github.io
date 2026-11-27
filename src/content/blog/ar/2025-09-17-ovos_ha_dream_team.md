@@ -3,7 +3,7 @@ title: "OpenVoiceOS و Home Assistant: فريق الأحلام لأتمتة ال
 description: "يتولى Home Assistant الأتمتة، ويتولى OVOS الصوت. ثلاث طبقات للتكامل تجعل هذا الاقتران ناجحًا: جسور Wyoming لخط أنابيب الصوت في HA، و ovos-persona-server كوكيل محادثة، و HiveMind لإظهار أجهزة OVOS ككيانات أصلية في HA."
 date: 2025-09-17
 lang: ar
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "OVOS"
   - "Home Assistant"

@@ -2,7 +2,7 @@
 title: "Why We Hoard Data: From Scraped Catalogues to Smarter Speech and Language Models"
 description: "Clean, typed, well-provenanced data is the raw material of every model we ship. How the catalogues our scrapers build become ASR biasing vocabularies, intent classifiers, synthetic NER corpora, G2P lexicons, TTS voices, and honest fuel for LLMs."
 date: 2026-07-04
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Datasets"
   - "Data Collection"

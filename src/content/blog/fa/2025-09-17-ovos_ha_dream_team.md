@@ -3,7 +3,7 @@ title: "OpenVoiceOS و Home Assistant: تیم رؤیایی خودکارسازی 
 description: "‏Home Assistant خودکارسازی را به عهده می‌گیرد؛ OVOS صدا را. سه لایهٔ یکپارچه‌سازی این ترکیب را کارآمد می‌کنند: پل‌های Wyoming برای خط‌لولهٔ صوتی HA، ovos-persona-server به‌عنوان یک عامل گفت‌وگویی، و HiveMind برای نمایش دستگاه‌های OVOS به‌عنوان موجودیت‌های بومی HA."
 date: 2025-09-17
 lang: fa
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "OVOS"
   - "Home Assistant"

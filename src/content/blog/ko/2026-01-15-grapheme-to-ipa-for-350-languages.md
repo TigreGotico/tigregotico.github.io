@@ -4,7 +4,7 @@ description: "orthography2ipa는 철자를 IPA에 매핑하고, 909개의 언어
 date: 2026-01-15
 updated: 2026-08-01
 lang: ko
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "G2P"
   - "IPA"

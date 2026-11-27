@@ -3,7 +3,7 @@ title: "Sprachqualität messen ohne Hörer-Panel"
 description: "Ein praxisnaher Leitfaden zu speechonnxmetrics: was MOS, referenzlose MOS-Schätzer, intrusive Signalmetriken und ASR-basierte WER/CER tatsächlich messen, wann welche gilt, echte Werte von echtem Audio, und warum ein vorhergesagter MOS Beweis ist, nicht Wahrheit."
 date: 2026-08-01
 lang: de
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "speechonnxmetrics"
   - "TTS"

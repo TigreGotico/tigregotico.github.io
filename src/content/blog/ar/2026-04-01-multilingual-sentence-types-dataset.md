@@ -4,7 +4,7 @@ description: "نشرنا sentence-types-multilingual — ما يقارب 70,000 
 date: 2026-04-01
 updated: 2026-08-01
 lang: ar
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Datasets"
   - "Multilingual"

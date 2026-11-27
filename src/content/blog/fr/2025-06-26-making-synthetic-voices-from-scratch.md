@@ -3,7 +3,7 @@ title: "Créer des voix synthétiques de toutes pièces"
 description: "Créer une voix pour un système de synthèse vocale exige normalement qu'une personne réelle passe des heures à enregistrer de l'audio. C'est coûteux, long, et dans de nombreuses langues ou accents les voix n'existent tout simplement pas"
 date: 2025-06-26
 lang: fr
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "TTS"
   - "Synthetic Data"

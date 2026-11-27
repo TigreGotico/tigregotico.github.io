@@ -2,7 +2,7 @@
 title: "If Everyone Ships an App, We'll Ship Voice: Turning Websites Into Voice Apps"
 description: "Every site that matters got wrapped in a mobile app. We propose the opposite move for the voice and CLI era: a clean API plus a voice skill per site, so the web becomes browsable by ear and by keyboard. One site at a time, it adds up to a voice browser."
 date: 2026-07-04
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Voice"
   - "Accessibility"

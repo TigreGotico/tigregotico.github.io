@@ -3,7 +3,7 @@ title: "Offene Sprachmodelle exportieren und quantisieren, damit sie wirklich la
 description: "Ein trainiertes Sprachmodell auf einer Forschungs-GitHub-Seite ist kein Sprachassistent. Wir konvertieren offene ASR- und TTS-Checkpoints nach ONNX, CoreML und GGUF, quantisieren sie und validieren die Ausgabe. Dann veröffentlichen wir die Ergebnisse unter OpenVoiceOS, sodass jede von ihnen abgedeckte Sprache in einem echten, offline arbeitenden Assistenten landet."
 date: 2026-08-01
 lang: de
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "ONNX"
   - "CoreML"

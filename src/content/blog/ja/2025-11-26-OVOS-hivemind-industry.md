@@ -3,7 +3,7 @@ title: "製造業における OVOS と HiveMind"
 description: "EU プロジェクト COALA と WASABI は、OVOS + HiveMind を中心に産業用音声アシスタントのフレームワーク全体を構築し、独自のツール、UI、対話エンジンと統合しました。"
 date: 2025-11-26
 lang: ja
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "OVOS"
   - "HiveMind"

@@ -4,7 +4,7 @@ description: "دو پیام حمایتی که عصبانی به نظر می‌ر
 date: 2026-07-13
 updated: 2026-08-01
 lang: fa
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Affective Computing"
   - "Emotion"

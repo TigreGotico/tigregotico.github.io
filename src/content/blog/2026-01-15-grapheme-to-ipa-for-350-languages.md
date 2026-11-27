@@ -3,7 +3,7 @@ title: "Grapheme-to-IPA for 820 Languages"
 description: "orthography2ipa is a pure-data, linguistically grounded resource that maps spelling to IPA and models how phonemes surface as allophones across 909 language specs, 820 languages, and 20+ language families. A candidate lattice, a maximal-munch tokenizer, phonological and script distance metrics, dialect lineage, and a schema-validated spec set cited to the dialectological literature — no trained weights, fully self-hostable."
 date: 2026-01-15
 updated: 2026-08-01
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "G2P"
   - "IPA"

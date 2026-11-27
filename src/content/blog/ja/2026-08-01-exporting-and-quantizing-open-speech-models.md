@@ -3,7 +3,7 @@ title: "オープン音声モデルを実際に動かす: エクスポートと�
 description: "研究用の GitHub ページに載っている学習済み音声モデルは、それだけでは音声アシスタントではありません。私たちはオープンな ASR と TTS のチェックポイントを ONNX、CoreML、GGUF に変換し、量子化し、出力を検証したうえで — OpenVoiceOS の下に結果を公開し、それがカバーするすべての言語が実際のオフラインアシスタントとして出荷されるようにします。"
 date: 2026-08-01
 lang: ja
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "ONNX"
   - "CoreML"

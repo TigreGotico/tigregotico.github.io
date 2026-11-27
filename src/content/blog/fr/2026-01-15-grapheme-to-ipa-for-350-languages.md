@@ -4,7 +4,7 @@ description: "orthography2ipa est une ressource en données pures, ancrée lingu
 date: 2026-01-15
 updated: 2026-08-01
 lang: fr
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "G2P"
   - "IPA"

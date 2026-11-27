@@ -3,7 +3,7 @@ title: "2026 年的 Usenet：一份用于训练与评估的干净、前 AI 文�
 description: "Usenet 是前 AI 时代人类话语的一份原始档案——数十年的新闻组帖子，全部由人类撰写，无一被语言模型触碰过。这让它成为语言与语音模型训练和评估中很有价值的数据。我们构建了一个小巧的 Python 工具来采集它。"
 date: 2026-07-01
 lang: zh
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Usenet"
   - "Datasets"

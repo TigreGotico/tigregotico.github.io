@@ -4,7 +4,7 @@ description: "نگاهی به پشته‌ی NLP پرتغالی ما که مبت�
 date: 2026-02-28
 updated: 2026-08-01
 lang: fa
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "NLP"
   - "Portuguese"

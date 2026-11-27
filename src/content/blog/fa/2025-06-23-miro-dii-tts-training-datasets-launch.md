@@ -3,7 +3,7 @@ title: "دادهٔ آموزشی TTS برای Miro و Dii: ۴۰ مجموعه‌د
 description: "ما ۴۰ مجموعه‌دادهٔ آموزشی مصنوعی برای صداهای Miro و Dii در زبان‌های پرتغالی، هلندی، آلمانی، فرانسوی، ایتالیایی، ژاپنی، اسپانیایی و بیشتر منتشر کردیم. شبیه‌سازی صدا در مقیاس: هر زبان دو هویت یکدست می‌گیرد."
 date: 2025-06-23
 lang: fa
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "TTS"
   - "Voice"

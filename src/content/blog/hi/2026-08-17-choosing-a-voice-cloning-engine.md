@@ -3,7 +3,7 @@ title: "एक वॉयस-क्लोनिंग इंजन चुनन�
 description: "voiceclonnx एक API के पीछे 10 वॉयस-कन्वर्शन इंजन चलाता है, kNN फ़ीचर-स्वैप से लेकर AR कोडेक-LM तक। यह उनके पीछे के मॉडल परिवारों, सुबोधता और स्पीकर समानता के बीच असली मापे गए समझौते, और किसी विशेष काम के लिए इंजन चुनने के तरीक़े की एक गाइड है।"
 date: 2026-08-01
 lang: hi
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "ONNX"
   - "voice cloning"

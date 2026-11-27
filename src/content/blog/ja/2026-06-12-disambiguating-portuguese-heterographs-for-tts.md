@@ -3,7 +3,7 @@ title: "正しく発音する:TTS のためのポルトガル語異音同綴語�
 description: "多くのヨーロッパポルトガル語の単語は、綴りは同じでも意味によって発音が異なります — そして母音を間違えると、TTS 音声は別の単語を口にしてしまいます。私たちは 27 語にわたる 56,891 文からなる、意味ラベル付きのオープンなデータセット bifonia-pt-homographs と、重量級の POS タガーが約 75% で頭打ちになるところで約 94% に達する、依存関係ゼロの小さなリゾルバを構築しました。"
 date: 2026-06-12
 lang: ja
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Datasets"
   - "Portuguese"

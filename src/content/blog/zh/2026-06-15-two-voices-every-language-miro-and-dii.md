@@ -3,7 +3,7 @@ title: "两个声音，所有语言：Miro 与 Dii"
 description: "TigreGótico 正与 OpenVoiceOS 合作，为助手赋予两个一致的声音身份——Miro 和 Dii——它们在每一种语言中都听起来一样，由我们的声音克隆技术和 phoonnx 引擎构建。为每一种有人请求的语言提供两个 TTS 模型，濒危语言也不例外。"
 date: 2026-06-15
 lang: zh
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "phoonnx"
   - "TTS"

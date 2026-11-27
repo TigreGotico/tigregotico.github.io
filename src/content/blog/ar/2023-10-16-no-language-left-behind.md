@@ -4,7 +4,7 @@ description: "إزالة الحواجز اللغوية في OpenVoiceOS من خ�
 date: 2023-10-16
 updated: 2026-08-01
 lang: ar
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "OVOS"
   - "multilingual"

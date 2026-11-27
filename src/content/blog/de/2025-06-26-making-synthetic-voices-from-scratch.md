@@ -3,7 +3,7 @@ title: "Synthetische Stimmen von Grund auf erstellen"
 description: "Eine Stimme für ein Text-to-Speech-System zu erstellen erfordert normalerweise, dass eine reale Person stundenlang Audio aufnimmt. Das ist teuer, zeitaufwendig, und in vielen Sprachen oder Akzenten existieren die Stimmen schlicht gar nicht"
 date: 2025-06-26
 lang: de
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "TTS"
   - "Synthetic Data"
