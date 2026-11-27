@@ -30,7 +30,7 @@ print(r.span.start, r.span.end)
 # 2026-05-08T15:00:00 2026-05-08T15:01:00
 ```
 
-The outputs in this post come from chronologia 0.47.2a1, with that anchor.
+All outputs are from chronologia 0.47.2a1, with that anchor.
 
 ## A span, not a point
 
@@ -92,9 +92,9 @@ spoken_time("pt-BR", 0)    # 'zero hora'
 ```
 
 text2spoken uses these writers when a TTS voice reads a date. Only Portuguese
-has writers so far.
+has writers.
 
-## Try it
+## Browser demo
 
 The [chronologia Space](https://huggingface.co/spaces/TigreGotico/chronologia)
 runs the package in your browser with Pyodide. No text goes to a server.
@@ -102,7 +102,7 @@ runs the package in your browser with Pyodide. No text goes to a server.
 ## Limits
 
 A doubtful reading gets a low confidence value. The reader can find a false date
-in text that has none. It does not read holiday names in some languages yet
+in text that has none. It does not read holiday names in some languages
 (Hindi, Kabyle), and a holiday name next to another date can confuse it.
 Questions for native speakers are open in Kabyle, Hindi, Bengali, Marwari and
 Colombian Spanish. Each known defect is an open issue on GitHub.
