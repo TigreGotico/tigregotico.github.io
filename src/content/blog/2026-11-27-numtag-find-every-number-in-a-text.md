@@ -26,6 +26,69 @@ A voice assistant must read these in commands. A speech synthesiser must say the
 back. A script that extracts data must find them in documents. Each job needs the
 exact value, and most of them need to know where the number is in the text.
 
+## A billion is not always a billion
+
+A news story in Lisbon says "um bilião de euros". A story in São Paulo says "um
+bilhão de reais". The two words look like the same word, and both look like the
+English "billion". They are not the same number:
+
+| Text | Language | Value |
+| :--- | :--- | ---: |
+| one billion dollars | en | 1,000,000,000 |
+| um bilhão de reais | pt-BR | 1,000,000,000 |
+| um bilião de euros | pt-PT | 1,000,000,000,000 |
+| un milliard d'euros | fr-FR | 1,000,000,000 |
+| un billion | fr-FR | 1,000,000,000,000 |
+| eine Billion | de-DE | 1,000,000,000,000 |
+| un billón | es-ES | 1,000,000,000,000 |
+
+English and Brazilian Portuguese use the **short scale**: each new word
+(billion, trillion) is a thousand times the one before it. European Portuguese,
+French, German and Spanish use the **long scale**: each new word is a *million*
+times the one before it, and the steps between have their own names (milliard,
+Milliarde) or a phrase ("mil milhões", "mil millones"). A translator who maps
+"bilião" to "billion" makes an error of a factor of 1,000.
+
+numtag reads the word in the scale of the language tag that you give it, and it
+writes values the same way:
+
+```python
+from numtag import spell
+
+for lang in ["en", "pt-BR", "pt-PT", "fr-FR", "de-DE", "es-ES", "it-IT"]:
+    print(lang, spell("1" + "0" * 9, lang)[0].text, "|", spell("1" + "0" * 12, lang)[0].text)
+```
+
+```text
+en     one billion   | one trillion
+pt-BR  um bilhão     | um trilhão
+pt-PT  mil milhões   | um bilião
+fr-FR  un milliard   | un billion
+de-DE  eine Milliarde | eine Billion
+es-ES  mil millones  | un billón
+it-IT  un miliardo   | un bilione
+```
+
+Portugal and Brazil show the problem inside one language. They do not only count
+the large numbers differently, they also spell small ones differently:
+
+| Value | pt-PT | pt-BR |
+| ---: | :--- | :--- |
+| 14 | catorze | quatorze |
+| 16 | dezasseis | dezesseis |
+| 19 | dezanove | dezenove |
+| 10^9 | mil milhões | um bilhão |
+| 10^12 | um bilião | um trilhão |
+| 10^30 | um quintilião | um nonilhão |
+
+The reader accepts every spelling in both varieties: "dezesseis" in a European text
+is still 16. The writer gives the form of the variety that you ask for. A Brazilian
+voice says "dezesseis" and a European voice says "dezasseis".
+
+The difference grows with the size of the number. 10^30 is "one nonillion" in
+English and "um quintilião" in European Portuguese. Because numtag keeps values as
+digit strings, it has no upper limit: 10^39 in Russian is "дуодециллион".
+
 ## Why we wrote our own
 
 The usual design has one module per language, with its own reader and writer, and it
