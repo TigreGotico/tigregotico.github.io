@@ -60,13 +60,13 @@ for lang in ["en", "pt-BR", "pt-PT", "fr-FR", "de-DE", "es-ES", "it-IT"]:
 ```
 
 ```text
-en     one billion   | one trillion
-pt-BR  um bilhão     | um trilhão
-pt-PT  mil milhões   | um bilião
-fr-FR  un milliard   | un billion
-de-DE  eine Milliarde | eine Billion
-es-ES  mil millones  | un billón
-it-IT  un miliardo   | un bilione
+en one billion | one trillion
+pt-BR um bilhão | um trilhão
+pt-PT mil milhões | um bilião
+fr-FR un milliard | un billion
+de-DE eine Milliarde | eine Billion
+es-ES mil millones | un billón
+it-IT un miliardo | un bilione
 ```
 
 Portugal and Brazil show the problem inside one language. They do not only count
