@@ -31,7 +31,7 @@ const blogPostingLd = {
   description: post.data.description,
   datePublished: post.data.date.toISOString(),
   ...(post.data.updated ? { dateModified: post.data.updated.toISOString() } : {}),
-  author: post.data.authors.map((name) => ({ '@type': 'Person', name })),
+  author: post.data.authors.map((name: string) => ({ '@type': 'Person', name })),
   publisher: { '@type': 'Organization', name: site.name },
   keywords: post.data.tags.join(', '),
 };
