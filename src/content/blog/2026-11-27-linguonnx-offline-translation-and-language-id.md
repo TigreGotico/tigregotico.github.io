@@ -1,7 +1,7 @@
 ---
 title: "linguonnx: Offline Translation and Language ID on ONNX"
-description: "linguonnx translates text and identifies languages on the CPU, with no torch and no cloud. 184 int8 translation models and 5 language-ID models, 586 routable languages, and a router that chains small models when no single model covers a pair."
-date: 2026-08-10
+description: "linguonnx translates text and identifies languages on the CPU, with no torch and no cloud. 225 int8 translation models and 6 language-ID models, 592 routable languages, and a router that chains small models when no single model covers a pair."
+date: 2026-11-27
 author: "Casimiro Ferreira"
 tags:
   - "linguonnx"
@@ -19,8 +19,10 @@ CPU, offline. It does not use torch at any point — the encoder-decoder generat
 loop, beam search and KV cache included, is written against the raw ONNX graphs.
 
 ```bash
-pip install linguonnx
+uv pip install --prerelease=allow linguonnx
 ```
+
+The numbers and outputs in this post come from linguonnx 0.26.5a2.
 
 ```python
 from linguonnx import load_translator, load_detector
@@ -37,14 +39,13 @@ It is Apache-2.0, and it downloads no model you did not ask for.
 
 ## What ships
 
-The registry holds 369 translation entries — fp32 and int8 of every model — and 10
-language-ID entries. `load_translator()` defaults to int8, so 184 quantised
-translation models and 5 quantised classifiers are what a default install routes
+The registry holds 453 translation entries — fp32 and int8 of most models — and 12
+language-ID entries. `load_translator()` defaults to int8, so 225 quantised
+translation models and 6 quantised classifiers are what a default install routes
 over. Every one of them is an ONNX conversion published under
 [`TigreGotico/`](https://huggingface.co/TigreGotico) on HuggingFace.
 
-Over the default graph, 586 languages are routable. That number is pinned in the
-test suite, so it stays true or the build says so.
+Over the default graph, 592 languages are routable.
 
 The classifiers are ONNX exports of four fastText models: GlotLID, fastText's
 `lid.176`, OpenLID and OpenLID-v2. GlotLID labels 2102 *varieties*, so colloquial
@@ -61,12 +62,12 @@ capabilities rather than a fixed edge, and chains hops when it has to:
 tx = load_translator(prefer="dedicated", max_model_mb=500, oversize_fallback=True)
 
 route = tx.route("pt", "eu")
-print(route.model_ids)   # ('opus-mt-pt-gl-int8', 'mt-hitz-gl-eu-int8')
-print(route.pivots)      # ('gl',) — it went through Galician
+print(route.model_ids)   # ('opus-mt-pt-en-int8', 'mt-hitz-en-eu-int8')
+print(route.pivots)      # ('en',) — it went through English
 ```
 
-Under that policy Portuguese to Basque goes through Galician, over two Marian
-models of 84 MB and 153 MB. The pivot is never silent: the `Route` comes back with
+Under that policy Portuguese to Basque goes through English, over two small
+models: an OPUS-MT model and a HiTZ model. The pivot is never silent: the `Route` comes back with
 the translation and says which models it used and which languages it passed
 through.
 
@@ -96,8 +97,8 @@ overrides per call.
 ## A size cap prefers small models, it does not delete languages
 
 A size budget is the obvious knob for a small host, and the obvious implementation
-of it is wrong. Used as a filter, `max_model_mb=500` cuts 586 routable languages
-down to 249, because the long tail lives inside the big multilingual models and no
+of it is wrong. Used as a filter, `max_model_mb=500` cuts 592 routable languages
+down to 275, because the long tail lives inside the big multilingual models and no
 chain of small models replaces them.
 
 `oversize_fallback=True` makes the budget a preference instead:
@@ -106,14 +107,14 @@ chain of small models replaces them.
 tx = load_translator(max_model_mb=500, oversize_fallback=True)
 
 print(tx.route("en", "ca").model_ids)        # ('opus-mt-en-ca-int8',)    157 MB
-print(tx.route("en", "cv").model_ids)        # ('madlad400-3b-mt-int8',) 4945 MB
-print(tx.route("en", "cv").waived_size_cap)  # 500
-print(len(tx.available_languages))           # 586, not 249
+print(tx.route("en", "tt").model_ids)        # ('madlad400-3b-mt-int8',) 4945 MB
+print(tx.route("en", "tt").waived_size_cap)  # 500
+print(len(tx.available_languages))           # 592, not 275
 ```
 
 English to Catalan stays on the small model, because a small model exists. English
-to Chuvash escalates to MADLAD, because MADLAD is the only model in the registry
-with Chuvash, and the alternative is not a cheaper route but no route.
+to Tatar escalates to MADLAD, because no small model or chain of small models
+reaches Tatar, and the alternative is not a cheaper route but no route.
 `waived_size_cap` reports which cap the route was allowed past, so a host that
 budgeted 500 MB finds out it fetched 4945 MB.
 
@@ -133,7 +134,9 @@ writes the wrong language.
 So a registry entry carries `language_flags`, one language at a time, with the
 observation behind it: the input, the output, the detector verdict (`glotlid=ru`),
 the date and the method. Chuvash is routable and it is not usable, and the
-registry says both.
+registry says both. The router acts on the flag: `route("en", "cv")` raises
+`NoRouteError`, and the message names the flag: `madlad400-3b-mt-int8 covers cv
+but is flagged: answers in ru`.
 
 Whole-model quality is recorded the same way. A `quality` field carries a chrF
 score against the **human** FLORES-200 devtest reference, with the corpus, the
