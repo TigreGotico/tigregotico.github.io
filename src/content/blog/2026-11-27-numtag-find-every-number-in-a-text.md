@@ -12,7 +12,7 @@ tags:
 draft: false
 ---
 
-Here are five sentences and what `ovos-number-parser` 0.5.1 made of them. It was the
+Here are four sentences and what `ovos-number-parser` 0.5.1 made of them. It was the
 number reader of OpenVoiceOS:
 
 | Text | ovos-number-parser 0.5.1 | Correct |
@@ -27,9 +27,9 @@ It also wrote numbers, and the writer had its own defects. In European Portugues
 English, 0.1 + 0.2 came out as "zero point three zero zero", because the computer
 added two floats and got 0.30000000000000004.
 
-A random sample of 50 disagreements in Romanian, and 50 in Galician, between the old
-parser and its replacement held 40 and 45 errors by the old parser. Most of them were
-ordinals that lost the hundreds.
+In a random sample of 50 cases per language where the old parser's number writer and
+numtag disagreed, the old writer was wrong in 40 Romanian and 45 Galician cases, and
+numtag in none. Most were ordinals that lost the hundreds.
 
 ## Why the old parser failed
 
@@ -45,8 +45,8 @@ The design had two more problems:
   command. "Set a timer for 5 minutes and call mum at 6" holds two numbers, and the
   old reader gave one.
 - **Binary floats.** A float cannot hold 0.1 exactly. Each sum adds a small error, and
-  a number writer then reads that error aloud. A float also has a ceiling, so very
-  large numbers lost digits.
+  a number writer then reads that error aloud. A float keeps only about 16
+  significant digits, so very large numbers lost digits.
 
 [**numtag**](https://github.com/TigreGotico/numtag) replaces it.
 
@@ -77,8 +77,8 @@ mixes digits and words, and it is still one number. All outputs are from numtag
 
 The span matters. [chronologia](https://github.com/TigreGotico/chronologia), the date
 reader, uses it to find the numbers inside "daqui a duas semanas" or "vinte e sete de
-novembro". [text2spoken](https://github.com/TigreGotico/text2spoken) uses it to
-replace "2" with "duas" in the correct place.
+novembro". [text2spoken](https://github.com/TigreGotico/text2spoken) calls `spell` to say
+each number in words.
 
 ## Values are strings
 
@@ -122,6 +122,7 @@ ordinals and its fractions. One engine reads all of them, and one writer speaks 
 No language has its own Python code.
 
 Each form in a lexicon cites a source: a grammar, a dictionary or a native speaker.
+A form that only follows a pattern, with no source that shows it, is marked SILVER.
 The reader accepts every spelling that people write. The writer gives the standard
 spelling first, and the variants after it. Kabyle shows why both matter. A native
 speaker writes 100 as "mya". The 1982 dictionary by Dallet writes "meyya". numtag
@@ -143,8 +144,7 @@ normal test.
 - **Read commands.** `ovos-number-parser` itself reads 42 languages through
   numtag. Every OVOS skill that calls `extract_number` uses numtag with no change.
 - **Speak numbers.** Skills for alerts, counting and diagnostics call `spell`
-  directly. text2spoken uses `spell` to make voices say numbers that agree with their
-  noun.
+  directly. text2spoken uses `spell` to speak numbers.
 - **Read dates.** chronologia finds the numbers in dates with `tag_numbers`.
 - **Extract data.** Pull every quantity out of a document, with its position and an
   exact value. Prices, counts and percentages keep all their digits.
