@@ -33,7 +33,7 @@ normalize("Dr Smith paid £3.50 for 2 tickets on 21 May.", "en-GB")
 #  twenty-first of May.'
 ```
 
-The outputs in this post come from text2spoken 0.0.2a169.
+All outputs are from text2spoken 0.0.2a169.
 
 ## Grammar, not only digits
 
@@ -64,7 +64,7 @@ from the CLDR rules.
 
 Each rule in a language file names its source: a grammar, a dictionary or a
 style guide. The test set has more than 4,000 rows, and almost all of them cite a source.
-The rest are marked *silver*, because no source we found states them.
+The rest are marked *silver*, because no known source states them.
 
 ## One engine for reading and speaking
 
@@ -90,8 +90,7 @@ A form that text2spoken cannot read stays as written. It never guesses.
 ## Where it runs
 
 [phoonnx](https://github.com/TigreGotico/phoonnx) voices and the scriptconv
-phonemizers call it before phonemization. The OpenVoiceOS plugin
-`ovos-dialog-normalizer-plugin` is moving to it. It can also normalise
+phonemizers call it before phonemization. It can also normalise
 reference text before WER scoring, so that "21" and "twenty-one" count as the same
 word. It replaces the older normaliser inside phoonnx. When phoonnx switched, the
 two gave equal output on 8,336 inputs.
@@ -100,5 +99,5 @@ two gave equal output on 8,336 inputs.
 
 The package is an alpha. On 0.0.2a169, Bengali digits with a classifier (`3টি`)
 are not read. Russian ordinals above 10^15 stay as digits. Greek, Chinese, Korean,
-Japanese, Basque and Arabic read their numbers through CLDR rules, not yet through
+Japanese, Basque and Arabic read their numbers through CLDR rules, not through
 numtag.
