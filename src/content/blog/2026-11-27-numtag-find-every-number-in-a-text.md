@@ -40,13 +40,12 @@ English "billion". They are not the same number:
 | un milliard d'euros | fr-FR | 1,000,000,000 |
 | un billion | fr-FR | 1,000,000,000,000 |
 | eine Billion | de-DE | 1,000,000,000,000 |
-| un billón | es-ES | 1,000,000,000,000 |
 
 English and Brazilian Portuguese use the **short scale**: each new word
 (billion, trillion) is a thousand times the one before it. European Portuguese,
-French, German and Spanish use the **long scale**: each new word is a *million*
+French and German use the **long scale**: each new word is a *million*
 times the one before it, and the steps between have their own names (milliard,
-Milliarde) or a phrase ("mil milhões", "mil millones"). A translator who maps
+Milliarde) or a phrase ("mil milhões"). A translator who maps
 "bilião" to "billion" makes an error of a factor of 1,000.
 
 numtag reads the word in the scale of the language tag that you give it, and it
@@ -191,6 +190,76 @@ normal test.
 
 - **Test against num2words or babel.** Another library can be wrong in the same way.
   The tests compare with cited rows, not with other code.
+
+## Against other number libraries
+
+How does numtag compare with the number packages that people already use? We tested it
+against [text2num](https://pypi.org/project/text2num/) 3.1.0 and
+[number-parser](https://pypi.org/project/number-parser/) 0.3.2 on 3,555 sentences in
+12 languages, about 300 per language. A model wrote each sentence around one number
+(cardinals, ordinals, decimals and fractions), and a second model checked it. It is a
+regression set, not held-out data.
+
+The packages do different jobs, so we compared like with like:
+
+| Package | Input | Output | Positions |
+| :--- | :--- | :--- | :--- |
+| numtag `tag_numbers` | a sentence | every number, with its kind | yes |
+| text2num `text2num` | the number words only | one value | no |
+| text2num `alpha2digit` | a sentence | the sentence, with digits | no |
+| number-parser `parse` | a sentence | the sentence, with digits | no |
+
+The test gives each package the whole sentence and checks the value it finds:
+
+<picture>
+  <source srcset="/blog/numtag/thirdparty-sentence-dark.svg" media="(prefers-color-scheme: dark)">
+  <img src="/blog/numtag/thirdparty-sentence-light.svg" alt="Bar chart of the share of sentences read correctly per language. numtag: pt-PT 0.96, pt-BR 0.98, es-CO 0.95, fr 0.94, it 0.93, de 0.98, nl 0.89, da 1.00, hi 0.86, kab 0.60, bn 0.46, mwr 0.73. text2num: 0.75 to 0.84 in the eight European languages, no support for hi, kab, bn and mwr. number-parser: es-CO 0.34, hi 0.36." width="900" loading="lazy">
+</picture>
+
+numtag reads 93 to 100 % of the sentences in seven European languages, and 89 % in
+Dutch. text2num reads 75 to 84 % in the same languages. number-parser supports two of
+the twelve languages, and reads about a third of them. For Kabyle, Bengali and
+Marwari, numtag is the only package that reads them at all. Its weakest languages are
+Bengali (0.46) and Kabyle (0.60).
+
+Only numtag gives the position of each number. The other packages rewrite the
+sentence with digits, so the caller must find the number again.
+
+The scale test shows the difference most clearly:
+
+| Text | Correct value | numtag | text2num |
+| :--- | ---: | :--- | :--- |
+| um bilião (pt-PT) | 10^12 | 10^12 | 10^9, wrong |
+| um bilhão (pt-BR) | 10^9 | 10^9 | 10^9 |
+| un billion (fr) | 10^12 | 10^12 | error |
+| eine Milliarde (de) | 10^9 | 10^9 | error |
+| eine Billion (de) | 10^12 | 10^12 | error |
+
+numtag reads all 27 scale and spelling cases correctly, and writes them correctly. For
+writing, [num2words](https://pypi.org/project/num2words/) is also correct on all the
+cases that it supports.
+
+There is a cost. numtag takes about 2.1 ms per sentence on one laptop core, and
+text2num about 0.02 ms. numtag looks for every kind of number with its position and
+its kind, and it reads languages that the others do not support. For a voice command
+or a document, 2 ms is small. For a batch of millions of sentences in English or
+French only, text2num is faster.
+
+### Against the standard library
+
+Python reads digit strings with `float` and `Decimal`. A float is binary, so it cannot
+hold most decimal values exactly:
+
+| Input | float | numtag value |
+| :--- | :--- | :--- |
+| "zero vírgula um", then add 0.2 | `0.1 + 0.2` = 0.30000000000000004 | "0.1", exact |
+| 2.675, rounded to 2 places | `round(2.675, 2)` = 2.67 | "2.675", exact |
+| a number with 17 significant digits | the 17th digit is lost | all 17 digits kept |
+| one nonillion (10^30) | `int(float(10**30))` = 1000000000000000019884624838656 | "1" followed by 30 zeros |
+| 10^309 | `float("1e309")` = inf | a digit string, no limit |
+
+`Decimal` is exact too, but it reads digits only. It cannot read "dois milhões e
+meio".
 
 ## What you can do with it
 
