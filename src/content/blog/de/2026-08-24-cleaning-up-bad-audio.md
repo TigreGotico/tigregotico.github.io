@@ -1,6 +1,6 @@
 ---
 title: "Schlechtes Audio bereinigen: Entrauschung und Bandbreitenerweiterung in audiosronnx"
-description: "Eine Tiefenanalyse der zwei getrennten Aufgaben von audiosronnx — Rauschen entfernen und fehlende hohe Frequenzen wieder aufbauen — mit der tatsächlichen Engine-Registry, Modellgrößen und Lizenzen, der Liste abgelehnter Modelle und wie man prüft, ob sich die Ausgabe tatsächlich verbessert hat."
+description: "audiosronnx behandelt Entrauschung und Bandbreitenerweiterung als zwei getrennte Aufgaben: die tatsächliche Engine-Registry, Modellgrößen und Lizenzen, die Liste abgelehnter Modelle und wie man prüft, ob sich die Ausgabe tatsächlich verbessert hat."
 date: 2026-08-01
 lang: de
 author: "Casimiro Ferreira"
@@ -29,11 +29,17 @@ wide, _     = load_sr("lavasr").upscale(clean, rate)              # extend to 48
 
 `load_denoise()` und `load_sr()` lehnen die jeweils andere Engine ab — `load_denoise` nach einem Bandbreitenerweiterer zu fragen, löst einen Fehler aus, statt still das Falsche zu tun.
 
-## Warum das vor der Erkennung kommt
+## Wo das tatsächlich hilft
 
-Spracherkennung und Sprecheridentifikation werden meist mit vergleichsweise sauberem Audio trainiert. Geben Sie einem Erkenner 8-kHz-Telefonsprache oder Sprache mit einem laufenden Lüfter darunter, und die Wortfehlerrate steigt — nicht weil das Modell schlecht ist, sondern weil die Eingabe nicht mehr aussieht wie das, worauf es trainiert wurde. Dasselbe gilt für Sprecher-Embeddings, die für Identifikation oder Diarisierung verwendet werden: Rauschen und fehlende Bandbreite verzerren genau die akustischen Details, auf die sich diese Embeddings verlassen.
+Die naheliegende Vermutung ist, dass das Bereinigen von Audio vor der Spracherkennung die Transkription verbessern muss. In der Praxis ist das nicht verlässlich. Moderne Erkenner werden mit großen Mengen an verrauschter, schmalbandiger Sprache aus der echten Welt trainiert, sodass ein Erkenner eine verrauschte Aufnahme oft besser verarbeitet als dieselbe Aufnahme, nachdem ein Enhancer sie durchlaufen hat. Verbesserung ist verlustbehaftet: Sie entfernt, was sie als Rauschen einstuft, und kann dabei akustische Details mitnehmen, auf die sich der Erkenner verlassen hat, oder Artefakte hinterlassen, die der Erkenner im Training nie gehört hat. Ob es hilft oder schadet, hängt vom konkreten Modell ab, wovon es trainiert wurde, und was mit der Aufnahme nicht stimmt. Das muss pro Modell gemessen werden, nicht angenommen.
 
-Das macht die Bereinigung zu einer Pipeline-Stufe, die *vor* der Erkennung steht, nicht zu einer Alternative dazu. Eine echte Pipeline für einen verrauschten 8-kHz-Telefonanruf sieht so aus: entrauschen, dann auf 48 kHz erweitern, dann Erkennung oder Sprecher-ID auf dem Ergebnis ausführen. Auf einen besseren Erkenner umzusteigen, ohne vorher die Eingabe zu reparieren, verschwendet Aufwand am falschen Ort — das Modell verschlechtert sich am selben beschädigten Signal, egal wie gut es ist.
+Die beiden Stellen, an denen sich diese Werkzeuge verlässlich auszahlen, liegen beide auf der Synthese-Seite.
+
+Die erste ist die **Vorbereitung von Trainingsdaten**. Eine Text-zu-Sprache-Stimme erbt den Charakter ihres Trainingsaudios, einschließlich des Raums, in dem es aufgenommen wurde. Rauschen, Brummen und eine niedrige Abtastrate im Korpus werden zu Rauschen, Brummen und einer gedämpften Qualität in jedem Satz, den die fertige Stimme je spricht. Einen Korpus vor dem Training zu bereinigen und auf ein konsistentes 48 kHz anzuheben, ist Arbeit, die einmal geleistet wird und danach jede Ausgabe verbessert. Das zählt am meisten für Sprachen ohne verfügbaren Studiokorpus, wo die einzigen existierenden Aufnahmen nie für Sprachsynthese gemacht wurden.
+
+Die zweite ist die **Nachbearbeitung synthetisierter Sprache**. Ein Vocoder kann einen metallischen Rand oder eine bandbegrenzte Qualität hinterlassen, besonders bei einem Modell, das auf einem kleinen oder niedrigratigen Datensatz trainiert wurde. Die Ausgabe durch einen Bandbreitenerweiterer laufen zu lassen, hebt sie an, ohne irgendetwas neu zu trainieren.
+
+Eine menschliche Zuhörerschaft ist der dritte Fall, und der einfachste: Eine Aufnahme, die sich eine Person anhören muss, profitiert davon, sauberer zu sein, was auch immer ein Erkenner daraus gemacht hätte.
 
 ## Die Engine-Registry
 
@@ -82,25 +88,37 @@ Auf der Seite der Bandbreitenerweiterung erledigen `sidon` und `callenhancer` ei
 
 Die Datei `docs/not-shipped.md` des Projekts dokumentiert jeden Kandidaten, den es evaluiert und abgelehnt hat, mit dem spezifischen Grund, was sie zu einem der nützlichsten Dokumente im Repository macht, weil sie die tatsächlichen Grenzen dessen zeigt, was "reines ONNX, nur CPU" heute leisten kann, statt sie nur zu behaupten.
 
-**Iterative Sampler haben keinen statischen Graphen zu exportieren.** Diffusions- und Flow-Matching-Modelle führen ein Netzwerk mehrfach pro Äußerung aus, mit einer Schleife, deren Länge zur Exportzeit nicht feststeht. AudioSR (eine etwa 6 GB große latente Diffusionspipeline mit separatem VAE, LDM und Vocoder) und SGMSE fallen beide hierunter — SGMSEs eigener Streaming-Nachfolger von 2025 erreicht Echtzeit erst auf einer Consumer-GPU, von CPU ganz zu schweigen.
+### Iterative Sampler haben keinen statischen Graphen zu exportieren
 
-**Positionsabhängige Faltungen sehen disqualifizierend aus und sind es größtenteils nicht.** `resemble-enhance` wurde in diesem Dokument lange wegen LVCNet abgelehnt, der positionsabhängigen Faltung des Vocoders, mit der Theorie, dass Kernel, die pro Position über `unfold` und `einsum` vorhergesagt werden, sich nicht in einen statischen Graphen einfügen lassen. Direkt getestet, stellte sich das als falsch heraus — beide Operationen haben ONNX-Äquivalente. Der tatsächliche Fehler ist ein separater, bereits gut verstandener Trace-Fehler ("ONNX-Export einer Faltung für einen Kernel unbekannter Form"), der andernorts im Code für BigVGANs Resampler bereits gelöst ist. Was `resemble-enhance` weiterhin draußen hält, ist der Umfang: vier Netzwerke einschließlich eines CFM-EDO-Samplers und eines Autoencoders bei 44,1 kHz — eine Umfangsentscheidung, keine Unmöglichkeit.
+Diffusions- und Flow-Matching-Modelle führen ein Netzwerk mehrfach pro Äußerung aus, mit einer Schleife, deren Länge zur Exportzeit nicht feststeht. AudioSR (eine etwa 6 GB große latente Diffusionspipeline mit separatem VAE, LDM und Vocoder) und SGMSE fallen beide hierunter. SGMSEs eigener Streaming-Nachfolger von 2025 erreicht Echtzeit erst auf einer Consumer-GPU, von CPU ganz zu schweigen.
 
-**Manche Modelle haben nichts Trainiertes zum Exportieren.** RNNoise wird als handgeschriebenes C ausgeliefert, kein Graph in einem trainierbaren Framework — es zu portieren würde bedeuten, ein äquivalentes Netzwerk von Grund auf neu zu trainieren. Fast-ULCNet veröffentlicht nur Architektur-Code, überhaupt keinen Checkpoint.
+### Positionsabhängige Faltungen sehen disqualifizierend aus und sind es größtenteils nicht
 
-**Eine restriktive Lizenz ist eine Kennzeichnungsentscheidung, keine automatische Disqualifikation** — genau deshalb werden `callenhancer` und `metadenoiser` ausgeliefert. Was disqualifiziert, sind Gewichte, die ganz ohne Lizenz veröffentlicht wurden: mdctGAN wurde genau deswegen abgelehnt, zusätzlich zu einem `torch.fft`-basierten Frontend, das sich nicht zuverlässig exportieren lässt.
+`resemble-enhance` wurde in diesem Dokument lange wegen LVCNet abgelehnt, der positionsabhängigen Faltung des Vocoders, mit der Theorie, dass Kernel, die pro Position über `unfold` und `einsum` vorhergesagt werden, sich nicht in einen statischen Graphen einfügen lassen. Direkt getestet, stellte sich das als falsch heraus: beide Operationen haben ONNX-Äquivalente. Der tatsächliche Fehler ist ein separater, bereits gut verstandener Trace-Fehler ("ONNX-Export einer Faltung für einen Kernel unbekannter Form"), der andernorts im Code für BigVGANs Resampler bereits gelöst ist. Was `resemble-enhance` weiterhin draußen hält, ist der Umfang: vier Netzwerke einschließlich eines CFM-EDO-Samplers und eines Autoencoders bei 44,1 kHz. Das ist eine Umfangsentscheidung, keine Unmöglichkeit.
 
-**Dass `torch.stft` innerhalb des Modells aufgerufen wird, ist ein echter struktureller Blocker.** Die Sampler-Schleife von NU-Wave2 ist nicht das Problem — das könnte in numpy außerhalb des Graphen laufen, genau wie das STFT jeder anderen Engine. Was es blockiert, ist, dass seine `forward`-Methode intern `torch.stft` und `torch.istft` aufruft, was die Bibliothek absichtlich aus jedem von ihr ausgelieferten Graphen heraushält, und das zudem der Operator ist, der sich generell am unzuverlässigsten exportieren lässt. Das zu beheben würde bedeuten, das Modell an der Transformationsgrenze aufzuteilen — echte Umstrukturierung statt eines einfachen Operatortauschs.
+### Manche Modelle haben nichts Trainiertes zum Exportieren
 
-**Die Architektur eines Modells zu reproduzieren ist nicht dasselbe wie seine Ausgabe zu reproduzieren.** LiSenNet hat 56 K Parameter, unter 300 KB — es wäre die kleinste Engine in der Bibliothek. Sein öffentlich verfügbarer ONNX-Port läuft und produziert plausibel aussehendes, gedämpftes Audio, aber Ende-zu-Ende gemessen zerstört er das Signal: −10,8 dB SNR bei 11 dB Eingang. Die eigene Referenzimplementierung des Ports exakt zu reproduzieren, liefert dasselbe negative Ergebnis, was bedeutet, dass die Referenzimplementierung selbst nicht zum Frontend passt, das ihre eigene Dokumentation beschreibt — es gibt noch kein korrektes Ziel, gegen das validiert werden könnte.
+RNNoise wird als handgeschriebenes C ausgeliefert, kein Graph in einem trainierbaren Framework, sodass es zu portieren bedeuten würde, ein äquivalentes Netzwerk von Grund auf neu zu trainieren. Fast-ULCNet veröffentlicht nur Architektur-Code, überhaupt keinen Checkpoint.
 
-Das Muster über all diese Fälle hinweg ist, dass die interessanten Fehler selten "das Modell ist zu groß" oder "Diffusion ist langsam" sind. Sie sind spezifisch: ein nicht unterstützter Operator mit einem exakten Ersatz (`torch.complex` hat keinen ONNX-Operator, aber `atan2(im, re)` berechnet denselben Phasenwinkel), ein aus der Laufzeitform einer Eingabe gebauter Tensor, den ein Tracer nicht festlegen kann, oder eine Transformation auf der falschen Seite einer Graphengrenze.
+### Eine restriktive Lizenz ist eine Kennzeichnungsentscheidung, keine automatische Disqualifikation
+
+Genau deshalb werden `callenhancer` und `metadenoiser` ausgeliefert. Was disqualifiziert, sind Gewichte, die ganz ohne Lizenz veröffentlicht wurden: mdctGAN wurde genau deswegen abgelehnt, zusätzlich zu einem `torch.fft`-basierten Frontend, das sich nicht zuverlässig exportieren lässt.
+
+### `torch.stft` innerhalb des Modells aufzurufen ist ein echter struktureller Blocker
+
+Die Sampler-Schleife von NU-Wave2 ist nicht das Problem; das könnte in numpy außerhalb des Graphen laufen, genau wie das STFT jeder anderen Engine. Was es blockiert, ist, dass seine `forward`-Methode intern `torch.stft` und `torch.istft` aufruft, was die Bibliothek absichtlich aus jedem von ihr ausgelieferten Graphen heraushält, und das zudem der Operator ist, der sich generell am unzuverlässigsten exportieren lässt. Das zu beheben würde bedeuten, das Modell an der Transformationsgrenze aufzuteilen, echte Umstrukturierung statt eines einfachen Operatortauschs.
+
+### Die Architektur eines Modells zu reproduzieren ist nicht dasselbe wie seine Ausgabe zu reproduzieren
+
+LiSenNet hat 56 K Parameter, unter 300 KB, was es zur kleinsten Engine in der Bibliothek machen würde. Sein öffentlich verfügbarer ONNX-Port läuft und produziert plausibel aussehendes, gedämpftes Audio, aber Ende-zu-Ende gemessen zerstört er das Signal: −10,8 dB SNR bei 11 dB Eingang. Die eigene Referenzimplementierung des Ports exakt zu reproduzieren, liefert dasselbe negative Ergebnis, was bedeutet, dass die Referenzimplementierung selbst nicht zum Frontend passt, das ihre eigene Dokumentation beschreibt. Es gibt noch kein korrektes Ziel, gegen das validiert werden könnte.
+
+Diese Ablehnungen drehen sich selten um Größe oder Geschwindigkeit. Jede hat eine spezifische, eng umgrenzte Ursache: ein nicht unterstützter Operator mit einem exakten Ersatz (`torch.complex` hat keinen ONNX-Operator, aber `atan2(im, re)` berechnet denselben Phasenwinkel), ein aus der Laufzeitform einer Eingabe gebauter Tensor, den ein Tracer nicht festlegen kann, oder eine Transformation auf der falschen Seite einer Graphengrenze.
 
 ## Bestätigen, dass sich die Ausgabe tatsächlich verbessert hat
 
 Eine ausführbare ONNX-Datei ist kein Beweis dafür, dass sich eine Aufnahme verbessert hat. Zwei unterschiedliche Fehlermodi sehen von außen identisch aus: ein Entrauscher, der Sprache zusammen mit dem Rauschen stummschaltet, und ein Bandbreitenerweiterer, der ein Hochband mit falschem harmonischem Inhalt hinzufügt, erzeugen beide Audio, das ohne Fehler abgespielt wird und bei flüchtigem Hinhören sogar sauberer klingen kann.
 
-Die Schwesterbibliothek `speechonnxmetrics` existiert, um dieses Urteil messbar statt impressionistisch zu machen. Sie bewertet Audio nach **MOS** (Mean Opinion Score, eine 1–5-Bewertung der wahrgenommenen Qualität) auf zwei Arten: referenzlose neuronale Prädiktoren wie DNSMOS und UTMOS, die eine Aufnahme ohne sauberes Original zum Vergleich bewerten, und intrusive Metriken wie STOI und SI-SDR, die die saubere Referenz brauchen und messen, wie nah die Ausgabe tatsächlich daran liegt.
+Die Schwesterbibliothek `speechonnxmetrics` verwandelt dieses Urteil in eine Zahl statt einen Eindruck. Sie bewertet Audio nach **MOS** (Mean Opinion Score, eine 1–5-Bewertung der wahrgenommenen Qualität) auf zwei Arten: referenzlose neuronale Prädiktoren wie DNSMOS und UTMOS, die eine Aufnahme ohne sauberes Original zum Vergleich bewerten, und intrusive Metriken wie STOI und SI-SDR, die die saubere Referenz brauchen und messen, wie nah die Ausgabe tatsächlich daran liegt.
 
 ```python
 import speechonnxmetrics as s
@@ -115,6 +133,6 @@ s.score("denoised.wav", ["stoi", "si_sdr"], ref="clean.wav")
 Führt man das vor und nach einem Entrauscher oder Erweiterer aus, ergibt sich die Form eines echten Vergleichs: DNSMOS oder UTMOS auf dem rohen und verarbeiteten Audio, um zu sehen, ob sich die wahrgenommene Qualität überhaupt bewegt hat, und — wenn eine saubere Referenz existiert, was bei synthetischen Rauschtests der Fall ist, aber selten bei einem echten Telefonanruf — SI-SDR oder STOI, um zu sehen, ob das verarbeitete Signal tatsächlich darauf zukonvergiert ist, statt nur anders zu klingen. Das ist dieselbe Disziplin hinter den SNR-Zahlen in der Entrauscher-Tabelle oben: eine Zahl, die an eine bestimmte Rauschbedingung gebunden ist, kein Adjektiv. Die breitere Familie reiner ONNX-Bibliotheken, in die dies passt, einschließlich `speechonnxmetrics` selbst, wird behandelt in
 [Eine Familie reiner ONNX-Sprachbibliotheken](/de/blog/2026-08-03-a-family-of-pure-onnx-speech-libraries).
 
-Audio zu bereinigen, bevor es einen Erkenner, ein Sprecher-ID-System oder eine menschliche Zuhörerschaft erreicht, ist eine eigene Ingenieursaufgabe, mit ihrer eigenen Registry an Kompromissen und ihrer eigenen Liste an Ansätzen, die probiert wurden und den Kontakt mit einem echten Signal nicht überlebt haben.
+Audio für einen Trainingskorpus, für eine synthetisierte Stimme oder für eine Person, die es sich anhören muss, zu bereinigen, ist ein eigenständiges Ingenieurproblem, mit eigenen Kompromissen zwischen Modellen und einer eigenen Liste an Ansätzen, die den Kontakt mit einem echten Signal nicht überlebt haben.
 
 Fragen zur Anwendung darauf in einer bestimmten Pipeline: [nehmen Sie Kontakt auf](/de/contact).

@@ -1,6 +1,6 @@
 ---
 title: "Robots.txt, Sitemaps und ethisches Web-Scraping"
-description: "Bevor Sie einen Scraper bauen, erkunden Sie die Website. sitemapper liest robots.txt, ruft jede Sitemap ab und crawlt optional den Linkgraphen — sodass Ihr Scraper vom eigenen Vertrag der Website ausgeht statt von roher Gewalt."
+description: "Bevor Sie einen Scraper bauen, erkunden Sie die Website. sitemapper liest robots.txt, ruft jede Sitemap ab und crawlt optional den Linkgraphen, sodass Ihr Scraper vom eigenen Vertrag der Website ausgeht statt von roher Gewalt."
 date: 2026-03-01
 lang: de
 updated: 2026-08-01
@@ -36,9 +36,9 @@ Genau das tut **[sitemapper](https://github.com/TigreGotico/sitemapper)**.
 
 ## Passive Erkennung: robots.txt + Sitemaps
 
-`discover()` ruft robots.txt und jede Sitemap ab, die es finden kann — einschließlich
+`discover()` ruft robots.txt und jede Sitemap ab, die es finden kann, einschließlich
 `Sitemap:`-Direktiven, Sitemap-Indizes, die auf Unter-Sitemaps verweisen, und
-gzip-komprimierter Dateien — ohne eine einzige HTML-Seite zu crawlen:
+gzip-komprimierter Dateien, ohne eine einzige HTML-Seite zu crawlen:
 
 ```python
 from sitemapper import discover
@@ -68,11 +68,11 @@ for url in info.urls:
 Das Detail je Agent ist da, wenn Sie es brauchen: `info.robots.groups` enthält jeden
 `User-agent`-Block mit seinen `allows`, `disallows` und `crawl_delay`, in der
 Reihenfolge des Dokuments. Wenn eine Website überhaupt keine robots.txt hat, gibt
-`is_allowed()` für alles `True` zurück — das Fehlen einer Richtlinie ist selbst die
+`is_allowed()` für alles `True` zurück. Das Fehlen einer Richtlinie ist selbst die
 Richtlinie.
 
-Der Vorteil von Sitemap-First-Scraping: Statt URLs durch Crawlen zu entdecken
-(langsam, laut, unvollständig), gehen Sie von der eigenen Liste der Betreiber aus.
+Sitemap-First-Scraping lohnt sich, weil Sie sich das Entdecken von URLs durch Crawlen
+(langsam, laut, unvollständig) sparen und von der eigenen Liste der Betreiber ausgehen.
 Sie scrapen, was die Website für wichtig erklärt, in dem Tempo, das sie für
 akzeptabel erklärt, mit einem Bruchteil der Anfragen.
 
@@ -92,7 +92,7 @@ print(graph.summary())
 # Top external domains: ...
 ```
 
-Das verrät Ihnen die tatsächliche Topologie — welche Seiten auf was verlinken —,
+Das verrät Ihnen die tatsächliche Topologie, welche Seiten auf was verlinken,
 sodass Sie entscheiden können, ob die Website überhaupt einen strukturierten Scraper
 wert ist. Erkennung und Crawling sind bewusst getrennte Aufrufe: Der passive Schritt
 ruft niemals HTML ab, sodass Sie immer höflich vorausspähen können, bevor Sie sich
@@ -102,9 +102,9 @@ zum Crawlen entscheiden.
 
 Website-Aufklärung ist sinnlos, wenn die Aufklärung selbst von einer Bot-Wand
 blockiert wird. Der gesamte HTTP-Verkehr von sitemapper läuft über
-[`unblock_requests`](https://github.com/TigreGotico/unblock_requests) — den
-TLS-imitierenden Transport aus unserem
-**[Anti-Bot-Transport-Beitrag](/de/blog/2026-03-15-beating-bot-walls-with-drop-in-requests-sessions)** —,
+[`unblock_requests`](https://github.com/TigreGotico/unblock_requests), den
+TLS-imitierenden Transport (er imitiert den TLS-Fingerabdruck eines echten Browsers) aus unserem
+**[Anti-Bot-Transport-Beitrag](/de/blog/2026-03-15-beating-bot-walls-with-drop-in-requests-sessions)**,
 sodass robots.txt und Sitemaps auch auf Cloudflare-geschützten Websites
 zurückkommen. Eine FlareSolverr-Instanz oder ein Wayback-Machine-Fallback kann über
 Umgebungsvariablen (`SITEMAPPER_FLARESOLVERR_URL`,
@@ -112,20 +112,20 @@ Umgebungsvariablen (`SITEMAPPER_FLARESOLVERR_URL`,
 
 ## Warum das wichtig ist
 
-**Crawl-Delay**: Eine Website, die `Crawl-delay: 2` deklariert, sagt Ihnen, wie
-schnell sie angefragt werden möchte. Ignorieren Sie es, werden Sie blockiert — oder
+Eine Website, die `Crawl-delay: 2` deklariert, sagt Ihnen, wie schnell sie
+angefragt werden möchte. Ignorieren Sie es, riskieren Sie eine Blockierung, oder
 Sie beeinträchtigen die Website für alle. Respektieren Sie es, spielt Ihr Scraper
 fair.
 
-**Sitemaps statt Crawling**: Eine Sitemap listet auf, was die Website indexiert haben
-möchte. Blindes Link-Crawling kann fünfmal so viele URLs berühren, um denselben
-Inhalt zu finden. Beginnen Sie mit der Sitemap, wenn eine existiert; das ist
-schneller für Sie und schonender für den Server.
+Eine Sitemap listet auf, was die Website indexiert haben möchte. Blindes
+Link-Crawling kann fünfmal so viele URLs berühren, um denselben Inhalt zu finden,
+beginnen Sie also mit der Sitemap, wenn eine existiert. Das ist schneller für Sie
+und schonender für den Server.
 
-**Umfang vor Code**: Manche Websites verbieten das Scraping in robots.txt ganz;
-manche haben Sitemaps, die bereits alles enthalten, was Sie brauchen. Zehn Sekunden
-`discover()` sagen Ihnen, in welcher Situation Sie sich befinden, bevor Sie in einen
-Parser investieren.
+Der Umfang zählt, bevor Sie Code schreiben. Manche Websites verbieten das Scraping
+in robots.txt ganz. Andere haben Sitemaps, die bereits alles enthalten, was Sie
+brauchen. Zehn Sekunden `discover()` sagen Ihnen, in welcher Situation Sie sich
+befinden, bevor Sie in einen Parser investieren.
 
 ## Das Werkzeug
 
@@ -134,7 +134,7 @@ pip install sitemapper
 pip install sitemapper[stealth]   # adds curl_cffi TLS impersonation
 ```
 
-Nutzen Sie es als Bibliothek oder über die Kommandozeile — `--json DATEI` schreibt die
+Nutzen Sie es als Bibliothek oder über die Kommandozeile: `--json DATEI` schreibt die
 vollständige Erkennung in eine Datei zur Weiterverarbeitung durch andere Werkzeuge, `--crawl` fügt den
 Linkgraph-Schritt hinzu:
 

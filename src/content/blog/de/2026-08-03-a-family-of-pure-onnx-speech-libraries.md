@@ -17,13 +17,17 @@ draft: false
 ONNX ist ein Dateiformat für ein trainiertes neuronales Netz: die Gewichte und der
 Berechnungsgraph, eingefroren, ohne Abhängigkeit von dem Framework, das es trainiert
 hat. Ein nach ONNX exportiertes Modell kann über **ONNX Runtime** laufen, eine kleine
-Inferenz-Engine, die nichts anderes tut, als diesen Graphen auszuführen. Sie weiß
+Inferenz-Engine, die nichts anderes tut, als diesen Graphen auszuführen.
+
+Sie weiß
 nicht, wie das Modell trainiert wurde, unterstützt kein Training und braucht kein
 installiertes PyTorch oder TensorFlow.
 
 Mehrere unserer Bibliotheken halten sich an eine Regel: Zur Laufzeit sind die
-einzigen Abhängigkeiten `onnxruntime` und `numpy`. Nicht "meistens" — der Import
-des Pakets selbst zieht niemals ein Trainings-Framework nach. `audiosronnx`
+einzigen Abhängigkeiten `onnxruntime` und `numpy`. Nicht "meistens": der Import
+des Pakets selbst zieht niemals ein Trainings-Framework nach.
+
+`audiosronnx`
 (Bandbreitenerweiterung und Entrauschung), `voiceclonnx` (Voice Cloning),
 `speakeronnx` (Sprecher-Embeddings), `speechonnxmetrics` (Evaluierung), `stressonnx`
 (Wortbetonung), `vadonnx` (Sprachaktivitätserkennung) und `phoonnx` (Phonemisierung
@@ -60,26 +64,34 @@ Entwicklung bequem. In der Produktion ist es eine Belastung.
 
 Die Einschränkung ist real, und sie ist nicht umsonst.
 
-**Sie können nicht In-Process feinabstimmen.** Ein ONNX-Graph hat keinen
+### Sie können nicht In-Process feinabstimmen
+
+Ein ONNX-Graph hat keinen
 Optimizer, keinen Backward-Pass. Jede dieser Bibliotheken behandelt Modelle als
 feste Artefakte: Sie laden sie und führen sie aus. Training oder Fine-Tuning
 geschieht separat, mit dem ursprünglichen Framework, und das Ergebnis wird
 anschließend nach ONNX exportiert. `stressonnx` und `speechonnxmetrics` behalten
 beide ein optionales `export`-Extra, das `torch` ausschließlich für diesen
-Offline-Konvertierungsschritt zieht — niemals für die Inferenz.
+Offline-Konvertierungsschritt zieht, niemals für die Inferenz.
 
-**Nicht jede Architektur exportiert sauber.** Dynamischer Kontrollfluss,
+### Nicht jede Architektur exportiert sauber
+
+Dynamischer Kontrollfluss,
 benutzerdefinierte CUDA-Kernel oder Operationen ohne ONNX-Äquivalent können einen
 geradlinigen Export blockieren. Das README von `audiosronnx` dokumentiert das
 direkt: Es führt eine [Liste nicht ausgelieferter Modelle](https://github.com/TigreGotico/audiosronnx),
 die evaluiert und abgelehnt wurden, samt Gründen, statt so zu tun, als würde
 jedes Forschungsmodell sich problemlos portieren lassen.
 
-**Vorverarbeitung muss von Hand neu implementiert werden.** Ein Framework wie
+### Vorverarbeitung muss von Hand neu implementiert werden
+
+Ein Framework wie
 PyTorch oder Kaldi liefert schnelle, getestete Implementierungen von STFT
 (Umwandlung einer Wellenform in ein Spektrogramm), Mel-Filterbank-Merkmalen und
 Resampling. Sobald das Modell selbst nicht mehr von diesem Framework abhängt,
-kann seine Vorverarbeitung das auch nicht mehr — `speakeronnx` implementiert aus
+kann seine Vorverarbeitung das auch nicht mehr.
+
+`speakeronnx` implementiert aus
 genau diesem Grund eine 80-Band-Log-Mel-Filterbank in reinem NumPy neu, und
 `audiosronnx` tut dasselbe für STFT und Resampling. Es ist mehr Code, den man
 richtig hinbekommen muss, und er braucht eigene Paritätstests gegen das Original.
@@ -90,7 +102,9 @@ Trainierte Sprachmodelle variieren enorm nach Sprache, Aufnahmebedingung und
 Zieldomäne. Ein auf sauberer Lesesprache trainiertes
 Sprecherverifikationsmodell kann bei Telefonaudio versagen. Ein für englische
 Klangfarbenübertragung abgestimmtes Voice-Cloning-Modell kann bei Tonsprachen
-an Verständlichkeit verlieren. Es gibt kein einziges Modell, das überall
+an Verständlichkeit verlieren.
+
+Es gibt kein einziges Modell, das überall
 gewinnt, sodass eine Festlegung im Voraus eine Vermutung ist.
 
 Jede Bibliothek in dieser Familie wählt eine einzelne Aufgabe und umschließt
@@ -114,8 +128,10 @@ wide, _ = load_sr("lavasr").upscale(clean, rate)                  # extend to 48
 `voicefixer`, `deepfilternet`), von einem 0,54-MB-Modell bis zu einem
 415-MB-Modell, unter unterschiedlichen Lizenzen. `load_sr` registriert sieben
 Bandbreitenerweiterer (`lavasr`, `novasr`, `flowhigh`, `hifiganbwe`, `apbwe`,
-`sidon`, `callenhancer`). Dominierte Modelle — solche, die eine andere Engine
-auf jeder gemessenen Achse schlägt — bleiben trotzdem in der Registry, sodass
+`sidon`, `callenhancer`).
+
+Dominierte Modelle, solche, die eine andere Engine
+auf jeder gemessenen Achse schlägt, bleiben trotzdem in der Registry, sodass
 ein veröffentlichtes Benchmark-Ergebnis auf Abruf reproduzierbar bleibt.
 
 `voiceclonnx` verfolgt denselben Ansatz für Voice Cloning — die Umwandlung der
@@ -131,9 +147,11 @@ out = cloner.clone_voice("source.wav", "reference.wav", "out.wav")
 
 Zehn Engines sind registriert (`facodec`, `openvoice`, `chatterbox`, `triaan`,
 `cosyvoice`, `bicodec`, `knnvc`, `focalcodec`, `lscodec`, `rvc`), die sechs
-unterschiedliche Modellfamilien umfassen — kNN-Feature-Swap, faktorisierter
+unterschiedliche Modellfamilien umfassen: kNN-Feature-Swap, faktorisierter
 Codec, Flow-Matching, Klangfarbenübertragung, AR-Codec-LM und
-sprecherentkoppelter Codec. Im Hintergrund liefert jede davon veröffentlichte
+sprecherentkoppelter Codec.
+
+Jede davon liefert veröffentlichte
 Verständlichkeits- und Sprecherähnlichkeitswerte, sodass die Wahl einer Engine
 ein Vergleich ist, kein Münzwurf.
 
@@ -219,7 +237,7 @@ werden bei der ersten Nutzung geholt und lokal zwischengespeichert, sodass die
 Wahl einer anderen Engine eine Konfigurationsänderung ist, keine
 Neubereitstellung.
 
-## Den Kreis schließen: Engines bewerten statt raten
+## Messen, welche Engine tatsächlich gewinnt
 
 Viele Engines hinter einer API zu registrieren, zahlt sich nur aus, wenn Sie
 erkennen können, welche für Ihre Eingabe tatsächlich besser ist. Dafür ist
@@ -227,15 +245,16 @@ erkennen können, welche für Ihre Eingabe tatsächlich besser ist. Dafür ist
 `numpy`-+-`onnxruntime`-Beschränkung aufbaut, sodass die Bewertung eines
 Modells keine zusätzlichen Installationskosten verursacht.
 
-Sie gruppiert Metriken in drei Arten. **Referenzlose MOS**-Schätzer — UTMOS,
-DNSMOS, NISQA, SIGMOS — sagen einen **Mean Opinion Score** vorher, die
+Sie gruppiert Metriken in drei Arten. **Referenzlose MOS**-Schätzer (UTMOS,
+DNSMOS, NISQA, SIGMOS) sagen einen **Mean Opinion Score** vorher, die
 1-bis-5-Natürlichkeitsbewertung, die ein menschliches Hörer-Panel einem Clip
 geben würde, ohne eine saubere Referenz zum Vergleich zu brauchen.
-**Intrusive Metriken** — STOI (Short-Time Objective Intelligibility), SI-SDR
-(skaleninvariantes Signal-zu-Verzerrungs-Verhältnis), MCD
-(Mel-Cepstral-Distortion) — brauchen eine passende saubere Referenz und messen,
-wie nah die Ausgabe daran liegt. **ASR-basierte Textmetriken** — WER (Word
-Error Rate) und CER (Character Error Rate) — führen einen Spracherkenner über
+
+**Intrusive Metriken** (STOI, Short-Time Objective Intelligibility; SI-SDR,
+skaleninvariantes Signal-zu-Verzerrungs-Verhältnis; MCD,
+Mel-Cepstral-Distortion) brauchen eine passende saubere Referenz und messen,
+wie nah die Ausgabe daran liegt. **ASR-basierte Textmetriken**, WER (Word
+Error Rate) und CER (Character Error Rate), führen einen Spracherkenner über
 die Ausgabe und vergleichen die Transkription mit dem erwarteten Text, wobei
 sie Fälle erfassen, in denen ein Modell Audio produziert, das gut klingt, aber
 die falschen Wörter sagt.
@@ -252,22 +271,25 @@ print(s.score("clone_output.wav", ["stoi", "mcd", "si_sdr"], ref="source.wav"))
 
 Das verwandelt die Wahl der Engine von einem Hörtest in eine Tabelle.
 `voiceclonnx` veröffentlicht genau diesen Vergleich für seine zehn
-Cloning-Engines — WER gegen die Quelltranskription plus einen separaten
+Cloning-Engines: WER gegen die Quelltranskription plus einen separaten
 Sprecherähnlichkeitswert für jede, sodass „facodec liefert 0 % WER" oder
 „lscodec tauscht WER gegen stärkere Klangfarbenübertragung" gemessene
-Aussagen sind, keine Eindrücke. Multipliziert man das über Sprachen und
-Aufnahmebedingungen, hört manueller Vergleich auf, realistisch zu sein; eine
-objektive Metrik ist das, was eine Zehn-Engine-Registry benutzbar macht statt
-überwältigend.
+Aussagen sind, keine Eindrücke.
+
+Multipliziert man das über Sprachen und
+Aufnahmebedingungen, hört manueller Vergleich auf, realistisch zu sein. Eine
+objektive Metrik ist das, was eine Zehn-Engine-Registry handhabbar hält.
 
 ## Wo das nützlich ist
 
-Wenn Sie Offline-Sprachverarbeitung brauchen — eine Aufnahme säubern, eine
-Stimme klonen, erkennen, wer spricht, oder eine synthetisieren — auf Hardware,
+Wenn Sie Offline-Sprachverarbeitung brauchen (eine Aufnahme säubern, eine
+Stimme klonen, erkennen, wer spricht, oder eine synthetisieren) auf Hardware,
 die nie eine GPU sehen wird, ist das die Form, nach der Sie suchen sollten:
 eine kleine Laufzeitabhängigkeit, eine Wahl unter veröffentlichten Modellen
 statt eines einzigen festen Standards, und eine Möglichkeit zu messen, welches
-für Ihren Fall tatsächlich funktioniert. Jede der oben genannten Bibliotheken
+für Ihren Fall tatsächlich funktioniert.
+
+Jede der oben genannten Bibliotheken
 ist ein `pip install` entfernt, auf Code-Ebene MIT- oder Apache-lizenziert
 (einzelne Modellgewichte tragen ihre eigenen Upstream-Lizenzen, pro Engine
 dokumentiert), und läuft gleich auf einem Laptop, einem Server oder einem

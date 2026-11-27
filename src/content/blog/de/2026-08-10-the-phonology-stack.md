@@ -17,14 +17,14 @@ draft: false
 
 Nehmen Sie das englische Wort "read". Geschrieben verrät es nicht, wie man es
 ausspricht. "I read the book yesterday" und "I read the book every day"
-verwenden dieselben fünf Buchstaben für zwei unterschiedliche Laute — der eine
+verwenden dieselben fünf Buchstaben für zwei unterschiedliche Laute: der eine
 reimt sich auf "red", der andere auf "reed". Ein Screenreader, ein
 Sprachassistent oder eine Suchbox, die nur auf die Schreibweise schaut, kann
 das nicht richtig hinbekommen. Es muss über Aussprache nachdenken, nicht nur
 über Text.
 
-Dieses Denkproblem — geschriebene Wörter in die Laute zu verwandeln, die sie
-darstellen — ist das, was unser Phonologie-Stack löst. Dieser Beitrag ist eine
+Dieses Denkproblem, geschriebene Wörter in die Laute zu verwandeln, die sie
+darstellen, ist das, was unser Phonologie-Stack löst. Dieser Beitrag ist eine
 Landkarte davon, wie seine Teile zusammenpassen, von der rohen Notation bis
 hinauf zu sprachspezifischen Aussprache-Engines und klangbasierter Suche.
 
@@ -32,7 +32,7 @@ hinauf zu sprachspezifischen Aussprache-Engines und klangbasierter Suche.
 
 Ein paar Wörter, die im Folgenden immer wieder auftauchen:
 
-- **Graphem**: ein geschriebenes Symbol — ein Buchstabe oder eine
+- **Graphem**: ein geschriebenes Symbol, ein Buchstabe oder eine
   Buchstabenkombination wie "ch".
 - **Phonem**: eine unterscheidbare Lauteinheit einer Sprache, etwa der
   "k"-Laut in "cat".
@@ -42,15 +42,15 @@ Ein paar Wörter, die im Folgenden immer wieder auftauchen:
 - **G2P** (Graphem-zu-Phonem): das allgemeine Problem, Schreibweise in Klang
   zu übersetzen.
 - **Allophon**: eine kontextabhängige Realisierungsvariante desselben
-  Phonems — das "t" in "top" und das "t" in "stop" sind im Englischen dasselbe
+  Phonems. Das "t" in "top" und das "t" in "stop" sind im Englischen dasselbe
   Phonem, werden aber leicht unterschiedlich ausgesprochen.
 - **Silbentrennung**: die Aufteilung eines Wortes in Silben, z. B.
   "extraordinário" in `ex-tra-or-di-ná-ri-o`.
 - **Homograph**: zwei Wörter, die gleich geschrieben werden, aber
-  unterschiedliche Bedeutungen haben; ein **heterophones Homograph** (oder
+  unterschiedliche Bedeutungen haben. Ein **heterophones Homograph** (oder
   Heterophon) ist ein Homograph, das je nach gemeinter Bedeutung
   unterschiedlich ausgesprochen wird, wie "read"/"read" oben.
-- **Morphologie**: die innere Struktur von Wörtern — Präfixe, Wurzeln,
+- **Morphologie**: die innere Struktur von Wörtern, Präfixe, Wurzeln,
   Suffixe, Flexionen.
 - **Part-of-Speech-(POS)-Tagging**: jedes Wort in einem Satz als Nomen, Verb,
   Adjektiv und so weiter zu kennzeichnen.
@@ -62,7 +62,7 @@ Dinge machen sie schwer umzukehren:
 
 1. **Mehrdeutigkeit.** Dieselben Buchstaben können je nach Bedeutung,
    Grammatik oder schlichter Unregelmäßigkeit auf unterschiedliche Laute
-   abbilden ("read" oben; das Englische ist voll davon).
+   abbilden ("read" oben; das Englische hat viele davon).
 2. **Dialekt.** Dasselbe Wort, in derselben Sprache, wird je nach Herkunft
    des Sprechers unterschiedlich ausgesprochen. Europäisches und
    brasilianisches Portugiesisch teilen die Schreibweise, aber nicht die
@@ -81,12 +81,12 @@ auseinandersetzen.
 Der Stack teilt das Problem in Schichten auf, die nichts voneinander wissen
 müssen:
 
-- **Notation** — Umwandlung zwischen phonetischen Alphabeten und Schriften.
-  Das hat nichts mit der Phonologie einer bestimmten Sprache zu tun; es ist
+- **Notation**: Umwandlung zwischen phonetischen Alphabeten und Schriften.
+  Das hat nichts mit der Phonologie einer bestimmten Sprache zu tun. Es ist
   Symbolübersetzung.
-- **Phonologie** — Abbildung von Schreibweise auf IPA für eine gegebene
+- **Phonologie**: Abbildung von Schreibweise auf IPA für eine gegebene
   Sprache, mithilfe einer Spezifikation ihres Lautsystems.
-- **Sprachspezifische Ausnahmebehandlung** — die unregelmäßigen Wörter,
+- **Sprachspezifische Ausnahmebehandlung**: die unregelmäßigen Wörter,
   Dialekteigenheiten, Homographe und morphologischen Strukturen, die eine
   allgemeine Engine nicht allein aus Rechtschreibregeln ableiten kann.
 
@@ -94,7 +94,7 @@ Diese getrennt zu halten ist eine Designentscheidung, kein Zufall, und sie
 hat einen direkten Gewinn: Eine neue Sprache hinzuzufügen bedeutet, eine
 **Spezifikation** zu schreiben (Daten, die ihr Lautsystem beschreiben), nicht
 ein neues Programm. Die Engine, die die Spezifikation konsumiert, die
-Gittersuche, der Tokenizer, die Distanzmetriken — nichts davon wird neu
+Gittersuche, der Tokenizer, die Distanzmetriken: nichts davon wird neu
 geschrieben. Die darunterliegende Notationsschicht wird von jeder Sprache
 geteilt, auch von solchen, von denen die Phonologie-Engine noch nie gehört
 hat.
@@ -106,7 +106,7 @@ abhängigkeitsfreier Kern für phonetische Notation und Schriftbehandlung:
 ISO-15924-Schrifterkennung, IPA-Umwandlungen zu und von ARPABET, X-SAMPA,
 Lexique, Kirshenbaum, Cotovía und RFE-Notation, Buckwalter-Transliteration
 für Arabisch, Hangul-Zerlegung in Jamo und Kana-Behandlung. Nichts davon
-erfordert zu wissen, zu welcher Sprache ein Wort gehört — eine IPA-Phonemkette
+erfordert zu wissen, zu welcher Sprache ein Wort gehört. Eine IPA-Phonemkette
 wird unabhängig von der Ausgangssprache genauso in ARPABET umgewandelt:
 
 ```python
@@ -123,8 +123,8 @@ gelöst ist.
 ### Die Engine: orthography2ipa
 
 [orthography2ipa](https://github.com/TigreGotico/orthography2ipa) ist die
-sprachübergreifende Engine. Sie nimmt eine Sprachspezifikation — eine
-deklarative Beschreibung der Graphem-zu-Phonem-Regeln dieser Sprache — und ein
+sprachübergreifende Engine. Sie nimmt eine Sprachspezifikation, eine
+deklarative Beschreibung der Graphem-zu-Phonem-Regeln dieser Sprache, und ein
 Stück Text und erzeugt IPA. Zum Zeitpunkt dieses Beitrags liefert sie
 Spezifikationen für **820 Sprachen** aus (`available_codes()` am
 installierten Paket gibt eine Liste dieser Länge zurück; betrachten Sie die
@@ -144,7 +144,7 @@ Schema wie jede andere Spezifikation.
 
 Angesichts des oben genannten Mehrdeutigkeitsproblems ist die Festlegung auf
 eine einzige Ausgabe pro Wort oft falsch. orthography2ipa erzeugt stattdessen
-ein **Gitter** — eine Menge bewerteter Kandidatenaussprachen — und überlässt
+ein **Gitter**, eine Menge bewerteter Kandidatenaussprachen, und überlässt
 es höheren Schichten, diese mithilfe von Kontext einzugrenzen, den die Engine
 selbst nicht hat (Bedeutung, Wortart, ein Lexikoneintrag).
 
@@ -168,14 +168,14 @@ Kandidatin wählen. Das ist dieselbe Idee, die, in größerem Maßstab, bifonia
 Gitter-Engine liefert Kandidaten, eine engere, besser informierte Schicht
 wählt unter ihnen aus.
 
-## Dialekte sind erstklassig
+## Dialekte bekommen eigene Regeln, nicht nur eine Randnotiz
 
 Zwei Sprecher derselben Sprache können denselben Satz unterschiedlich
 aussprechen, und ein Phonologie-Stack, der "Portugiesisch" als ein einziges
 festes Lautsystem behandelt, wird jeden Dialekt bis auf einen falsch
-bekommen. orthography2ipa legt die Dialektbehandlung offen —
+bekommen. orthography2ipa legt die Dialektbehandlung offen.
 `available_profiles()` am installierten Paket listet Dialekt- und
-Lekt-Profile wie `lisbon`, `porto`, `estremenho`, `galician` und andere auf —
+Lekt-Profile wie `lisbon`, `porto`, `estremenho`, `galician` und andere auf,
 und [tugaphone](https://github.com/TigreGotico/tugaphone), das darauf
 aufbauende portugiesische Frontend, phonemisiert denselben Satz über
 lusophone Varietäten hinweg. Hier ist ein Satz, durch alle fünf
@@ -189,11 +189,11 @@ unterstützten Dialekte geführt:
 | pt-MZ (Mosambik) | `ˈbõ ˈdiɐ ˈkomu eˈsta vɔˈse` |
 | pt-TL (Timor-Leste) | `ˈbõ ˈdiə ˈkoɔmʊ eˈsta vɔˈse` |
 
-("Bom dia, como está você?" — "Guten Morgen, wie geht es Ihnen?") Das
+("Bom dia, como está você?", "Guten Morgen, wie geht es Ihnen?") Das
 Konsonantengerüst bleibt über alle fünf hinweg erkennbar, aber zwei bekannte
 Marker unterscheiden sie sofort. In "dia" verwandelt das brasilianische
 Portugiesisch das `d` vor einem `i` in `dʒ`, den Laut am Anfang des
-englischen "jam" — die anderen behalten ein einfaches `d`. In "está" spricht
+englischen "jam"; die anderen behalten ein einfaches `d`. In "está" spricht
 das europäische Portugiesisch das `s` am Silbenende als `ʃ` aus, das "sch"
 von "Schuh", während jede andere Varietät `s` behält. Ein aus den Regeln
 eines Dialekts gebautes Ausspracheverzeichnis bekommt beides für die
@@ -216,12 +216,12 @@ allgemeine Spezifikation nicht kann: unregelmäßige Wörter, ein kuratiertes
 Lexikon, Sandhi (Lautveränderungen an Wortgrenzen) und dialektspezifische
 Überschreibungen.
 
-- **[tugaphone](https://github.com/TigreGotico/tugaphone)** — Portugiesisch,
+- **[tugaphone](https://github.com/TigreGotico/tugaphone)**: Portugiesisch,
   über pt-PT, pt-BR, pt-AO, pt-MZ und pt-TL hinweg, das ein kuratiertes
   Lexikon mit regelbasiertem Rückgriff kombiniert (oben gezeigt).
-- **[euskaphone](https://github.com/TigreGotico/euskaphone)** — Baskisch,
+- **[euskaphone](https://github.com/TigreGotico/euskaphone)**: Baskisch,
   dialektbewusst, auf demselben Gitter aufgebaut (oben gezeigt).
-- **[mwl_phonemizer](https://github.com/TigreGotico/mwl_phonemizer)** —
+- **[mwl_phonemizer](https://github.com/TigreGotico/mwl_phonemizer)**:
   Mirandesisch, die asturleonesische Sprache der Terra de Miranda, Portugal,
   mit wortübergreifender Sandhi, Allophonie und Betonung:
 
@@ -231,13 +231,13 @@ Lexikon, Sandhi (Lautveränderungen an Wortgrenzen) und dialektspezifische
   'ˈfalu lɐ ˈʎɛŋɡwa miɾɐˈndez̺ɐ.'
   ```
 
-- **[g2p_barranquenho](https://github.com/TigreGotico/g2p_barranquenho)** —
+- **[g2p_barranquenho](https://github.com/TigreGotico/g2p_barranquenho)**:
   das erste offene G2P für Barranquenho, die iberoromanische Kontaktsprache
   von Barrancos, an der Grenze zwischen Portugal und Spanien. Siehe
   **[Der erste Phonemizer für Barranquenho](/de/blog/2025-12-12-barranquenho)**
   dazu, wie seine Regeln aus der eigenen orthografischen Konvention der
   Gemeinde abgeleitet wurden.
-- **[arbtok](https://github.com/TigreGotico/arbtok)** — Arabisch, aufgebaut
+- **[arbtok](https://github.com/TigreGotico/arbtok)**: Arabisch, aufgebaut
   auf dem Gitter von orthography2ipa, ergänzt um dialektbewusste
   Diakritisierung und deckt Hocharabisch, Klassisches Arabisch und eine
   Reihe regionaler Varietäten ab. Arabische Schrift lässt normalerweise die
@@ -245,7 +245,7 @@ Lexikon, Sandhi (Lautveränderungen an Wortgrenzen) und dialektspezifische
   von arbtok darin besteht, sie wiederherzustellen, bevor das Ergebnis an
   die gemeinsame Engine übergeben wird. Es wird von jemandem gepflegt, der
   kein arabischer Muttersprachler ist, behandeln Sie es also als aktiv in
-  Entwicklung statt als fertige, muttersprachlich geprüfte Referenz —
+  Entwicklung statt als fertige, muttersprachlich geprüfte Referenz:
   nützlich, aber die Stelle, an der Sie die Ausgabe gegen einen
   Muttersprachler gegenprüfen sollten, bevor Sie es in etwas
   Nutzerorientiertes ausliefern.
@@ -285,7 +285,7 @@ manchmal schlicht Bedeutung.
   Verwendung der Python-Standardbibliothek, optional geschärft durch
   silabificador und tugatagger.
 - **[bifonia](https://github.com/TigreGotico/bifonia)** löst europäische
-  portugiesische heterophone Homographe auf — Wörter wie "sede" (Durst,
+  portugiesische heterophone Homographe auf: Wörter wie "sede" (Durst,
   `ˈsedɨ`, gegenüber Hauptsitz, `ˈsɛdɨ`), bei denen die richtige Aussprache
   von der Bedeutung abhängt, nicht von der Grammatik. Siehe
   **[Richtig ausgesprochen: Portugiesische Heterophone für TTS disambiguieren](/de/blog/2026-06-12-disambiguating-portuguese-heterographs-for-tts)**
@@ -323,9 +323,9 @@ in einem Katalog von Wörtern oder Namen danach, wie etwas klingt, statt nach
 seiner exakten Schreibweise (nützlich für tippfehlertolerante
 Sprachschnittstellen und für den Abgleich von Lehnwörtern über
 Schriftsysteme hinweg), und beim Vergleich, wie phonologisch nah zwei
-verwandte Lekte beieinanderliegen — dieselbe Art von Vergleich, die die
+verwandte Lekte beieinanderliegen, dieselbe Art von Vergleich, die die
 Dialekttabelle oben mit dem Auge anstellt, aber berechnet statt geschätzt.
-phonematcher ist nicht auf PyPI; es installiert sich aus dem Quellcode
+phonematcher ist nicht auf PyPI. Es installiert sich aus dem Quellcode
 (`pip install -e .` gegen das GitHub-Checkout, plus `rapidfuzz`).
 
 ## Ehrliche Grenzen
@@ -335,15 +335,15 @@ ungleichmäßig: Sprachen mit einer etablierten phonologischen Literatur und
 einem Lexikon liefern bessere Ausgaben als Sprachen mit einer dünnen
 Spezifikation, die größtenteils aus allgemeinen orthografischen Konventionen
 abgeleitet wurde. Die Qualität ist durchgängig am besten, wo ein kuratiertes
-Lexikon existiert — Portugiesisch, gestützt durch tugalex, ist der stärkste
-Fall im Stack; Sprachen, die sich rein auf Spezifikationsregeln ohne Lexikon
+Lexikon existiert: Portugiesisch, gestützt durch tugalex, ist der stärkste
+Fall im Stack. Sprachen, die sich rein auf Spezifikationsregeln ohne Lexikon
 verlassen, behandeln unregelmäßiges und entlehntes Vokabular falsch.
 
 Einige Komponenten sind ausdrücklich keine fertigen, muttersprachlich
 geprüften Referenzen: arbtok wird von einem nicht-arabischen Muttersprachler
 gepflegt und sollte vor der Verwendung in etwas Nutzerorientiertem gegen
 muttersprachliches Urteil geprüft werden. Frontends, die auf dünnen
-Spezifikationen aufbauen, erben diese Dünnheit — ein Frontend ist nur so gut
+Spezifikationen aufbauen, erben diese Dünnheit. Ein Frontend ist nur so gut
 wie die Spezifikation und das Lexikon darunter.
 
 ## Warum das wichtig ist, wenn Ihre Sprache keine Sprachwerkzeuge hat
@@ -357,6 +357,6 @@ zu schreiben und, wo möglich, ein Lexikon ihrer unregelmäßigen Wörter zu
 erstellen. Die Gitter-Engine, die Notationsumwandlungen und die
 Suchwerkzeuge sind bereits vorhanden. Wenn Ihre Sprache, Ihr Dialekt oder Ihr
 Produkt Ausspracheunterstützung braucht, die es noch nicht gibt, ist das die
-Art von Arbeit, die wir übernehmen — siehe
+Art von Arbeit, die wir übernehmen. Siehe
 **[unsere Leistungen](/de/services)** oder
 **[nehmen Sie Kontakt auf](/de/contact)**.
