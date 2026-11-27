@@ -24,10 +24,11 @@ Portuguese in its region.
 
 A translation model learns from parallel text: many sentences together with their
 translations. For Barranquenho, no parallel corpus exists. For Mirandese, there is some
-Wikipedia text, and one neural system: MADLAD-400 3B, a 3-billion-parameter Google
-model that the Wikimedia translation service uses. Apertium, the usual rule-based
-platform for small languages, has no pair for either language. To our knowledge,
-`pt2barranquenho` is the first translator into Barranquenho.
+Wikipedia text, a neural system (MADLAD-400 3B, a 3-billion-parameter Google model
+that the Wikimedia translation service uses) and an older rule-based tool in
+JavaScript. Apertium, the usual rule-based
+platform for small languages, has no pair for either language. We searched GitHub, Hugging Face and the web and found no other translator into
+Barranquenho, so `pt2barranquenho` is, as far as we know, the first.
 
 We wrote [g2p_barranquenho](https://github.com/TigreGotico/g2p_barranquenho), a
 pronunciation model for the language, earlier. These two translators are the next step:
