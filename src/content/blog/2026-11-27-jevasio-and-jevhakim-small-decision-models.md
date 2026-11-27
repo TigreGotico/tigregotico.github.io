@@ -117,10 +117,17 @@ higher) about one question in three, and when it is sure it is right 94 % of the
 time. Kev is sure about one question in twenty. Thus you can send the sure answers
 straight through and send only the rest to a person.
 
+<picture>
+  <source srcset="/blog/jevasio/jevhakim-per-source-dark.svg" media="(prefers-color-scheme: dark)">
+  <img src="/blog/jevasio/jevhakim-per-source-light.svg" alt="Dot plot of accuracy per Arabic test source for Kev-0.8B and Jevhakim-0.8B. Jevhakim is higher on every trained source, for example arafacts 0.097 to 0.763, and slightly lower on the unseen belebele_ar and arabic_mmlu." width="800" loading="lazy">
+</picture>
+
 Some tasks changed a lot. Some sources check whether an Arabic claim is true:
 Kev scored 0.097 on arafacts and Jevhakim scores 0.763. Detection of unsafe
 prompts (guardrail) went from 0.392 to 0.894. Translation pairs in Egyptian Arabic
-went from 0.614 to 0.980.
+went from 0.614 to 0.980. On two sources that it never saw in training, belebele_ar and
+arabic_mmlu (reading comprehension and exam questions), Jevhakim is slightly below
+Kev.
 
 ## What you can do with them
 
@@ -149,35 +156,6 @@ print(response.choices["team"].choice, response.nouls["urgent"].noul)
 Write the keys in English and the values in Portuguese, as in the training data.
 The [model card](https://huggingface.co/TigreGotico/jevasio-0.8b-v2) shows how to
 start the server.
-
-### Route the intents of a voice assistant
-
-In OpenVoiceOS, an intent pipeline turns an
-utterance into the skill and intent that must answer it. Template matchers are fast
-and precise, but they fail when the user says something that the template does not
-cover. A decision model can run after them: each registered intent becomes one
-option of a `choice` question.
-
-We measured this on the OVOS intent evaluation set. That set has 50 intents and 50
-far out-of-domain requests:
-
-| Portuguese pipeline | Accuracy | Far out-of-domain rejected |
-| :--- | ---: | ---: |
-| Template matcher (`tmpl-slot-jurebes`) | 0.736 | 29 of 50 |
-| Template matcher, then Jevásio | 0.820 | 11 of 50 |
-| Stock OVOS pipeline | 0.213 | |
-| Stock OVOS pipeline, then Jevásio | 0.657 | |
-
-Jevásio adds 8 points of accuracy after a good template matcher. After the stock
-pipeline, the accuracy goes from 21 % to 66 %. There is a cost: each tier that you
-add to the pipeline also claims more requests that it must refuse. It is a good
-second stage, not a replacement for the matchers.
-
-Two measured details save time. First, give each option the intent name only.
-Four example sentences per option made Kev less accurate in English (0.689 to 0.635) and 5.5
-times slower. Second, ask one question, not two. A question in two steps (the
-skill first, then the intent in the skill) loses accuracy when the options have
-names only.
 
 ### Moderate and check Arabic text
 
