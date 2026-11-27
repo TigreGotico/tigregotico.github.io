@@ -182,10 +182,6 @@ spelling first, and the variants after it. Kabyle shows why both matter. A nativ
 speaker writes 100 as "mya". The 1982 dictionary by Dallet writes "meyya". numtag
 reads both, writes "mya", and lists "meyya" as a variant.
 
-When a defect has no fix yet, it becomes a strict `xfail` test that names it. The
-test starts to fail when somebody fixes the defect, and then the test changes into a
-normal test.
-
 ### What we did not do
 
 - **Test against num2words or babel.** Another library can be wrong in the same way.
@@ -277,8 +273,7 @@ meio".
 
 The reader covers more languages than the writer: `spell` writes 29 lexicons (24 languages). Hindi
 named fractions do not read yet. ढाई सौ ("two hundred and fifty", literally "two and a
-half hundred") gives nothing. Each known defect is an open issue on GitHub and a
-strict `xfail` test.
+half hundred") gives nothing.
 
 ## Try it
 

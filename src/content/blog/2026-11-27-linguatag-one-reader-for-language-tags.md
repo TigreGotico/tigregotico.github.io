@@ -90,5 +90,4 @@ linguonnx read their tags through it.
 ## Limits
 
 Only a small part of the start years in the family tree have a source. Some
-regional tags, such as `ar-EG`, match the macrolanguage, not the variety. Each
-known defect is an open issue on GitHub.
+regional tags, such as `ar-EG`, match the macrolanguage, not the variety.
