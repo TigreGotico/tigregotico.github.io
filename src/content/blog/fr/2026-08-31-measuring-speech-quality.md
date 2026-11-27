@@ -1,7 +1,7 @@
 ---
 title: "Mesurer la qualité de la parole sans panel d'écoute"
 description: "Un guide pratique de speechonnxmetrics : ce que mesurent réellement le MOS, les prédicteurs MOS sans référence, les métriques de signal intrusives et le WER/CER basé sur l'ASR, quand chacun s'applique, de vrais scores sur de vrais audios, et pourquoi un MOS prédit est une preuve, pas une vérité."
-date: 2026-08-01
+date: 2026-08-31
 lang: fr
 author: "Casimiro Ferreira"
 tags:
@@ -149,7 +149,7 @@ propre. Celles à connaître en premier :
 
 | métrique | plage | direction | mesure |
 |---|---|---|---|
-| `stoi` / `estoi` | 0–1 | plus haut est meilleur | intelligibilité objective à court terme — quelle proportion du *contenu* survit, indépendamment du naturel |
+| `stoi` / `estoi` | 0–1 (`estoi`: −1–1) | plus haut est meilleur | intelligibilité objective à court terme — quelle proportion du *contenu* survit, indépendamment du naturel |
 | `si_sdr` / `sdr` / `snr` | dB, non borné | plus haut est meilleur | rapport signal-distorsion / signal-bruit |
 | `mcd` | dB, non borné | plus bas est meilleur | distorsion mel-cepstrale — distance de l'enveloppe spectrale, une métrique classique de qualité TTS/VC |
 | `log_f0_rmse` | non borné | plus bas est meilleur | erreur du contour de hauteur |
@@ -188,7 +188,7 @@ réellement été transcrit comme étant) :
 | métrique | plage | direction | signification |
 |---|---|---|---|
 | `wer` | ≥ 0 (généralement 0–1, peut dépasser 1) | plus bas est meilleur | taux d'erreur au mot : substitutions + suppressions + insertions, divisé par le nombre de mots de référence |
-| `cer` | 0–1 | plus bas est meilleur | la même idée au niveau du caractère — plus indulgent face aux petits désaccords d'orthographe/tokenisation |
+| `cer` | ≥ 0 | plus bas est meilleur | la même idée au niveau du caractère — plus indulgent face aux petits désaccords d'orthographe/tokenisation |
 | `mer` | 0–1 | plus bas est meilleur | taux d'erreur de correspondance |
 | `wil` | 0–1 | plus bas est meilleur | information de mot perdue |
 | `wip` | 0–1 | plus haut est meilleur | information de mot préservée (`1 − wil`) |

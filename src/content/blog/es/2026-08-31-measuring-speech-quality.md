@@ -1,7 +1,7 @@
 ---
 title: "Medir la Calidad del Habla Sin un Panel de Escucha"
 description: "Una guía práctica de speechonnxmetrics: qué miden realmente el MOS, los predictores de MOS sin referencia, las métricas intrusivas de señal y el WER/CER basado en ASR, cuándo aplica cada uno, puntuaciones reales de audio real, y por qué un MOS predicho es evidencia, no verdad."
-date: 2026-08-01
+date: 2026-08-31
 lang: es
 author: "Casimiro Ferreira"
 tags:
@@ -84,7 +84,7 @@ Se incluyen once métricas basadas en referencia que miden la distancia respecto
 
 | métrica | rango | dirección | mide |
 |---|---|---|---|
-| `stoi` / `estoi` | 0–1 | más alto es mejor | inteligibilidad objetiva a corto plazo — cuánto del *contenido* sobrevive, independientemente de lo natural que suene |
+| `stoi` / `estoi` | 0–1 (`estoi`: −1–1) | más alto es mejor | inteligibilidad objetiva a corto plazo — cuánto del *contenido* sobrevive, independientemente de lo natural que suene |
 | `si_sdr` / `sdr` / `snr` | dB, sin límite | más alto es mejor | relación señal-distorsión / señal-ruido |
 | `mcd` | dB, sin límite | más bajo es mejor | distorsión mel-cepstral — distancia de la envolvente espectral, una métrica clásica de calidad para TTS/VC |
 | `log_f0_rmse` | sin límite | más bajo es mejor | error de contorno de tono |
@@ -110,7 +110,7 @@ Cinco métricas de texto proceden de una única alineación de Levenshtein entre
 | métrica | rango | dirección | significado |
 |---|---|---|---|
 | `wer` | ≥ 0 (normalmente 0–1, puede superar 1) | más bajo es mejor | tasa de error de palabras: sustituciones + eliminaciones + inserciones, dividido entre el número de palabras de referencia |
-| `cer` | 0–1 | más bajo es mejor | la misma idea a nivel de carácter — más permisiva con pequeñas discrepancias de ortografía/tokenización |
+| `cer` | ≥ 0 | más bajo es mejor | la misma idea a nivel de carácter — más permisiva con pequeñas discrepancias de ortografía/tokenización |
 | `mer` | 0–1 | más bajo es mejor | tasa de error de coincidencia |
 | `wil` | 0–1 | más bajo es mejor | información de palabras perdida |
 | `wip` | 0–1 | más alto es mejor | información de palabras preservada (`1 − wil`) |

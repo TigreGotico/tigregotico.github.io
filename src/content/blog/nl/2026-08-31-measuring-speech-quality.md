@@ -1,7 +1,7 @@
 ---
 title: "Spraakkwaliteit meten zonder luisterpanel"
 description: "Een praktische gids voor speechonnxmetrics: wat MOS, no-reference MOS-voorspellers, intrusieve signaalmetrieken en ASR-gebaseerde WER/CER daadwerkelijk meten, wanneer elk van toepassing is, echte scores op echte audio, en waarom een voorspelde MOS bewijs is, geen waarheid."
-date: 2026-08-01
+date: 2026-08-31
 lang: nl
 author: "Casimiro Ferreira"
 tags:
@@ -145,7 +145,7 @@ Degene die het eerst het kennen waard zijn:
 
 | metriek | bereik | richting | meet |
 |---|---|---|---|
-| `stoi` / `estoi` | 0–1 | hoger is beter | short-time objective intelligibility — hoeveel van de *inhoud* overleeft, onafhankelijk van hoe natuurlijk het klinkt |
+| `stoi` / `estoi` | 0–1 (`estoi`: −1–1) | hoger is beter | short-time objective intelligibility — hoeveel van de *inhoud* overleeft, onafhankelijk van hoe natuurlijk het klinkt |
 | `si_sdr` / `sdr` / `snr` | dB, onbegrensd | hoger is beter | signaal-tot-vervorming / signaal-tot-ruis-verhouding |
 | `mcd` | dB, onbegrensd | lager is beter | mel-cepstrale vervorming — afstand van de spectrale envelope, een klassieke TTS/VC-kwaliteitsmetriek |
 | `log_f0_rmse` | onbegrensd | lager is beter | toonhoogtecontourfout |
@@ -184,7 +184,7 @@ getranscribeerd werd):
 | metriek | bereik | richting | betekenis |
 |---|---|---|---|
 | `wer` | ≥ 0 (meestal 0–1, kan 1 overschrijden) | lager is beter | word error rate: substituties + verwijderingen + invoegingen, gedeeld door het aantal referentiewoorden |
-| `cer` | 0–1 | lager is beter | hetzelfde idee op tekenniveau — vergevingsgezinder voor kleine spellings-/tokenisatie-mismatches |
+| `cer` | ≥ 0 | lager is beter | hetzelfde idee op tekenniveau — vergevingsgezinder voor kleine spellings-/tokenisatie-mismatches |
 | `mer` | 0–1 | lager is beter | match error rate |
 | `wil` | 0–1 | lager is beter | verloren woordinformatie |
 | `wip` | 0–1 | hoger is beter | behouden woordinformatie (`1 − wil`) |
