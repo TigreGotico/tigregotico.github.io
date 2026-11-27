@@ -38,7 +38,7 @@ text, before the voice starts. The fix is called **text normalisation**: rewrite
 each written form as the words that a speaker says. That is the job of
 [**text2spoken**](https://github.com/TigreGotico/text2spoken). It builds on the
 two previous posts: [numtag](/blog/2026-11-16-numtag-find-every-number-in-a-text) spells the numbers, and
-[chronologia](/blog/2026-11-19-chronologia-dates-in-many-languages-and-calendars) writes the dates.
+[chronologia](/blog/2026-11-19-chronologia-dates-in-many-languages-and-calendars) writes the dates in a growing set of languages.
 
 ```bash
 uv pip install --prerelease=allow "text2spoken[pt]"

@@ -1,6 +1,6 @@
 ---
 title: "chronologia: From “Next Friday at 3” to 66 Million Years Ago"
-description: "A voice assistant must turn 'daqui a duas semanas' or 'von Juni bis August' into a span on a calendar. chronologia replaces it with one engine, language data, 18 calendars and dates with no year limit. Why, how and what you can build with it."
+description: "A voice assistant must turn 'daqui a duas semanas' or 'von Juni bis August' into a span on a calendar. chronologia does this with one engine, language data, 18 calendars and dates with no year limit. Why, how and what you can build with it."
 date: 2026-11-19
 authors: ["Casimiro Ferreira", "Claude"]
 tags:
