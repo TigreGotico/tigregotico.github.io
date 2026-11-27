@@ -115,11 +115,10 @@ same libraries also *read* numbers and dates in voice commands. Thus a fix to
 every form that people write and speaks the standard one.
 
 Each language is one data file: its abbreviations, its units, the gender and case
-of its nouns, and the libraries that write it. The test suite has 4,484 rows. Each
-row cites a grammar, a dictionary or a style guide. 139 rows have no source that
-states the rule. They are marked *silver*, so nobody mistakes them for checked facts.
-Native speakers review languages that we do not speak, for example Danish and
-Kabyle.
+of its nouns, and the libraries that write it. The test suite has more than 4,400 rows. Each row cites a grammar, a dictionary or a
+style guide, or it is marked *silver* when no source states the rule, so nobody
+mistakes it for a checked fact. Native speakers review languages that we do not
+speak, for example Danish.
 
 A form that text2spoken cannot read stays as written. It does not guess. For
 example, `1/2` in British English and the Bengali counted form `3টি` stay as
@@ -128,9 +127,9 @@ tell that it is wrong.
 
 ### What we did not build
 
-The big normalisers for speech, for example the FST grammars of
-[NeMo](https://github.com/NVIDIA/NeMo-text-processing) and Sparrowhawk, compile
-their rules with Pynini. That is a heavy build. A language file in plain Python data
+The big normalisers for speech are FST grammars.
+[NeMo](https://github.com/NVIDIA/NeMo-text-processing) builds its grammars with
+Pynini, and they run in C++ through Sparrowhawk. That is a heavy build. A language file in plain Python data
 is easier to extend, and the library installs with `uv pip` and nothing else. We
 also did not build on `ovos-number-parser` and `ovos-date-parser`, for the reasons
 above.
@@ -142,7 +141,7 @@ the cache plays the same audio today. But if a new version of numtag changes how
 "3,50 €" is spoken, the old audio is wrong.
 
 text2spoken gives each language a **revision**: the exact versions of the libraries
-that speak it. phoonnx and scriptconv put this revision in their cache keys. When a
+behind it. phoonnx and scriptconv put this revision in their cache keys. When a
 writer changes, the key changes, and the old audio is not used.
 
 ## What you can do with it
@@ -182,7 +181,7 @@ normalize("Comprei 2 maçãs e 1 laranja.", "pt-PT")
 # 'Comprei duas maçãs e uma laranja.'
 ```
 
-text2spoken has 18 language files. The rules for each language, the sources and
+text2spoken has 19 language files. The rules for each language, the sources and
 the known gaps are in the
 [documentation](https://github.com/TigreGotico/text2spoken/tree/dev/docs). Each
 known defect is an open issue on GitHub.
