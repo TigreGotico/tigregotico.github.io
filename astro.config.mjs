@@ -52,6 +52,22 @@ export default defineConfig({
   site: 'https://tigregotico.pt',
   base: BASE,
   trailingSlash: 'ignore',
+  redirects: {
+    '/games': '/projects',
+    '/pt/games': '/pt/projects',
+    '/es/games': '/es/projects',
+    '/de/games': '/de/projects',
+    '/nl/games': '/nl/projects',
+    '/fr/games': '/fr/projects',
+    '/it/games': '/it/projects',
+    '/ru/games': '/ru/projects',
+    '/ar/games': '/ar/projects',
+    '/fa/games': '/fa/projects',
+    '/hi/games': '/hi/projects',
+    '/zh/games': '/zh/projects',
+    '/ko/games': '/ko/projects',
+    '/ja/games': '/ja/projects',
+  },
   markdown: {
     processor: unified({
       remarkPlugins: [remarkReadingTime, remarkBaseLinks],
