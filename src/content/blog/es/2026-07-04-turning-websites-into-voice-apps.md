@@ -123,7 +123,7 @@ la página por completo: va a los datos estructurados y habla *eso*, en un flujo
 para escucharse desde la primera línea de código.
 
 Es el mismo principio detrás de nuestros
-[juegos de audio](/es/games), construidos para los oídos, no para los ojos, con los
+[juegos de audio](https://github.com/HelloChatterbox/pyFrotz), construidos para los oídos, no para los ojos, con los
 jugadores ciegos como audiencia principal en lugar de una ocurrencia tardía. Las apps de
 voz para sitios web extienden ese principio de los juegos al resto de la web.
 

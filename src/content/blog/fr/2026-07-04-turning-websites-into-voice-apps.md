@@ -131,7 +131,7 @@ données structurées et parle *cela*, dans un flux conçu pour l'écoute dès l
 première ligne de code.
 
 C'est le même principe qui sous-tend nos
-[jeux audio-first](/fr/games), construits pour les oreilles, pas pour les yeux,
+[jeux audio-first](https://github.com/HelloChatterbox/pyFrotz), construits pour les oreilles, pas pour les yeux,
 avec les joueurs aveugles comme public principal plutôt que comme une réflexion
 après coup. Les applications vocales pour sites web étendent ce principe des jeux
 au reste du web.

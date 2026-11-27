@@ -124,7 +124,7 @@ vocale dedicata salta la pagina del tutto: va ai dati strutturati e pronuncia
 *quelli*, in un flusso progettato per l'ascolto fin dalla prima riga di codice.
 
 È lo stesso principio dietro i nostri
-[giochi audio-first](/it/games) — costruiti per le orecchie, non per gli occhi, con i
+[giochi audio-first](https://github.com/HelloChatterbox/pyFrotz) — costruiti per le orecchie, non per gli occhi, con i
 giocatori ciechi come pubblico principale anziché come ripensamento. Le app vocali
 per i siti web estendono quel principio dai giochi al resto del web.
 
