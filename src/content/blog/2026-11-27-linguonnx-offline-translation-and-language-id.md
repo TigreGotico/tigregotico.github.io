@@ -10,13 +10,27 @@ tags:
   - "ONNX"
   - "self-hosted"
   - "OVOS"
-draft: true
+draft: false
 ---
 
-[**linguonnx**](https://github.com/TigreGotico/linguonnx) is a Python library for
-machine translation and language identification. It runs on `onnxruntime`, on the
-CPU, offline. It does not use torch at any point — the encoder-decoder generation
-loop, beam search and KV cache included, is written against the raw ONNX graphs.
+A voice assistant in Bilbao gets a question in Portuguese, and the answer must be in
+Basque. A researcher must translate a corpus of Kabyle text on a laptop with no GPU.
+A hospital cannot send patient notes to a cloud translation service. In each case the
+same three questions come first: which language is this text, which model translates
+it, and can it run here, offline, on the CPU?
+
+Most language pairs have no model of their own. There are good models for English
+and Portuguese, and for English and Basque, but few for Portuguese and Basque. The
+big multilingual models (NLLB-200, MADLAD-400) cover hundreds of languages, but they
+are gigabytes in size, and some have licences that forbid commercial use. A small
+host needs a way to choose: the smallest model that does the job, a chain of small
+models when there is no direct one, and a clear refusal when nothing is good enough.
+
+[**linguonnx**](https://github.com/TigreGotico/linguonnx) makes that choice. It is a
+Python library for machine translation and language identification on
+`onnxruntime`, on the CPU, offline. It does not use torch at any point: the
+encoder-decoder generation loop, beam search and KV cache are written against the
+raw ONNX graphs.
 
 ```bash
 uv pip install --prerelease=allow linguonnx
@@ -164,6 +178,30 @@ A registry-wide sweep runs one real sentence through every registered model and
 fails on empty output, whitespace-only output, or output identical to the input.
 The sample sentences are per source language and hand-checked; a language with no
 sample is skipped rather than tested with text from another language.
+
+## What you can do with it
+
+- **Translate offline.** Install the library, pick a size budget, and translate on a
+  laptop or on a server with no network access. The models
+  download once and then run from the local cache.
+- **Find the language first.** Run `detect` before you route a text, a voice command
+  or a document to a language-specific tool. With GlotLID, the answer can be a
+  dialect: Najdi Arabic, not only "Arabic".
+- **Show the user how the answer was made.** `translate(..., return_route=True)` gives
+  each hop, its model and its licence. An assistant can say that a Portuguese to Basque
+  answer went through Catalan.
+- **Refuse in place of guessing.** When the only models for a pair are
+  non-commercial, the default router raises `NoRouteError` and names them:
+
+  ```python
+  tx.route("en", "kab")
+  # NoRouteError: ... excluded non-commercial model(s) cover this pair:
+  #   nllb-600M, nllb-600M-int8; pass include_noncommercial
+  ```
+
+  The caller decides, with the licence in front of them.
+- **Translate a dataset.** Batch a corpus through the same router, and keep the route
+  of each row, so that you know which rows went through a pivot language.
 
 ## From OpenVoiceOS
 
