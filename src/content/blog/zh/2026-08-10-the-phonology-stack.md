@@ -1,7 +1,7 @@
 ---
 title: "音系技术栈是如何拼接在一起的"
 description: "一次架构导览，带你了解我们的文本转发音技术栈：负责记音的 scriptconv，作为跨语言字素转 IPA 引擎的 orthography2ipa，构建在其上、面向葡萄牙语、巴斯克语、米兰达语、巴兰克诺语和阿拉伯语的语言专属前端，以及用于按发音检索的 phonematcher。展示这些层级为何存在、什么是候选词格，以及真实的方言输出。"
-date: 2026-08-01
+date: 2026-08-10
 lang: zh
 authors: ["Casimiro Ferreira", "Claude"]
 tags:

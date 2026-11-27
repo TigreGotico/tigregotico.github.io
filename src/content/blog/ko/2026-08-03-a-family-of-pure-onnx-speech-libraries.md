@@ -1,7 +1,7 @@
 ---
 title: "순수 ONNX 음성 라이브러리 제품군"
 description: "TigreGótico는 대역폭 확장, 음성 복제, 화자 임베딩, VAD, 단어 강세, 음소화, TTS, 그리고 이들 모두를 채점하는 지표 라이브러리로 이루어진 음성 라이브러리 세트를 유지 관리합니다 — 이들은 하나의 런타임 규칙을 공유합니다: onnxruntime과 numpy만 사용하며, PyTorch도 GPU도 필요 없습니다."
-date: 2026-08-01
+date: 2026-08-03
 lang: ko
 authors: ["Casimiro Ferreira", "Claude"]
 tags:

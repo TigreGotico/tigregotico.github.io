@@ -1,7 +1,7 @@
 ---
 title: "Portare Codice con le Macchine, e la Domanda sulla Licenza a Cui Non Abbiamo Saputo Rispondere"
 description: "Abbiamo riscritto diversi programmi in C, C++ e Java — il G2P di espeak-ng, Cotovia, AhoTTS, HermiT — come puro Python, con un'IA che leggeva il codice sorgente originale e un essere umano a orchestrare il lavoro. Nessuno di noi ha letto gli originali. Questo solleva due domande distinte: il risultato può essere posseduto da qualcuno, ed è un'opera derivata dell'originale? Abbiamo mantenuto le licenze originali perché era più economico che rispondere. Pensiamo ancora che la domanda resti aperta."
-date: 2026-08-01
+date: 2026-08-02
 lang: it
 authors: ["Casimiro Ferreira", "Claude"]
 tags:

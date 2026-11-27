@@ -1,7 +1,7 @@
 ---
 title: "Nettoyer un audio dégradé : débruitage et extension de bande passante dans audiosronnx"
 description: "audiosronnx traite le débruitage et l'extension de bande passante comme deux tâches distinctes : le vrai registre de moteurs, les tailles de modèles et licences, la liste des modèles rejetés, et comment vérifier si la sortie s'est réellement améliorée."
-date: 2026-08-01
+date: 2026-08-24
 lang: fr
 authors: ["Casimiro Ferreira", "Claude"]
 tags:

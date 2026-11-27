@@ -1,7 +1,7 @@
 ---
 title: "chronologia: From “Next Friday at 3” to 66 Million Years Ago"
-description: "A voice assistant must turn 'daqui a duas semanas' or 'von Juni bis August' into a span on a calendar. The old OpenVoiceOS date parser did this with one hand-written loop per language. chronologia replaces it with one engine, language data, 18 calendars and dates with no year limit. Why, how and what you can build with it."
-date: 2026-11-27
+description: "A voice assistant must turn 'daqui a duas semanas' or 'von Juni bis August' into a span on a calendar. chronologia does this with one engine, language data, 18 calendars and dates with no year limit. Why, how and what you can build with it."
+date: 2026-11-19
 authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "chronologia"
@@ -37,11 +37,11 @@ These are not rare forms. They are what people say every day, in every language.
 The usual way to read dates is one hand-written loop of rules per language. That
 works for one language. With many languages, the same rule is written again in each
 loop, and each copy has its own bugs: a fix in Portuguese does nothing for German.
-The date reader that OpenVoiceOS used was built this way, and its defects multiplied
-with each language and each feature.
 
 [**chronologia**](https://github.com/TigreGotico/chronologia) has one engine that
-reads data for each language. One fix in the engine fixes every language.
+reads data for each language. One fix in the engine fixes every language. The
+numbers inside a date, such as "duas" in "daqui a duas semanas", come from
+[numtag](/blog/2026-11-16-numtag-find-every-number-in-a-text), the number reader of the previous post.
 
 ```bash
 uv pip install --prerelease=allow chronologia

@@ -1,7 +1,7 @@
 ---
 title: "Porten met machines, en de licentievraag die we niet konden beantwoorden"
 description: "We herschreven meerdere C-, C++- en Java-programma's (de G2P van espeak-ng, Cotovia, AhoTTS, HermiT) als puur Python, met een AI die de originele bron las en een mens die orkestreerde. Niemand aan onze kant las de originelen. Dat roept twee aparte vragen op: kan de output überhaupt bezit zijn, en is het een afgeleid werk van de invoer? We behielden de upstream-licenties omdat dat goedkoper was dan antwoorden. We denken nog steeds dat de vraag open is."
-date: 2026-08-01
+date: 2026-08-02
 lang: nl
 authors: ["Casimiro Ferreira", "Claude"]
 tags:

@@ -1,7 +1,7 @@
 ---
 title: "悪い音声をクリーンにする: audiosronnx におけるノイズ除去と帯域拡張"
 description: "audiosronnx の二つの別個の仕事 — ノイズの除去と失われた高周波の再構築 — への深掘り。実際のエンジンレジストリ、モデルサイズとライセンス、不採用モデルのリスト、そして出力が実際に改善したかどうかを確認する方法を扱います。"
-date: 2026-08-01
+date: 2026-08-24
 lang: ja
 authors: ["Casimiro Ferreira", "Claude"]
 tags:

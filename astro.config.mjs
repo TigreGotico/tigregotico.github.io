@@ -53,6 +53,11 @@ export default defineConfig({
   base: BASE,
   trailingSlash: 'ignore',
   redirects: {
+    '/blog/2026-11-27-linguonnx-offline-translation-and-language-id': '/blog/2026-08-21-linguonnx-offline-translation-and-language-id',
+    '/blog/2026-11-27-jevasio-and-jevhakim-small-decision-models': '/blog/2026-10-26-jevasio-and-jevhakim-small-decision-models',
+    '/blog/2026-11-27-numtag-find-every-number-in-a-text': '/blog/2026-11-16-numtag-find-every-number-in-a-text',
+    '/blog/2026-11-27-chronologia-dates-in-many-languages-and-calendars': '/blog/2026-11-19-chronologia-dates-in-many-languages-and-calendars',
+    '/blog/2026-11-27-text2spoken-written-forms-to-spoken-words': '/blog/2026-11-22-text2spoken-written-forms-to-spoken-words',
     '/games': '/projects',
     '/pt/games': '/pt/projects',
     '/es/games': '/es/projects',

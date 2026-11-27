@@ -1,7 +1,7 @@
 ---
 title: "Jevásio and Jevhakim: Ask a Small Model a Question, Get a Probability"
 description: "Most questions a voice assistant or a support desk asks are multiple choice. Jevásio (European Portuguese) and Jevhakim (Arabic) answer them in one forward pass, with a calibrated probability per option and no text to parse. Why we trained them, how, and what they are good for."
-date: 2026-11-27
+date: 2026-10-26
 authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Jevásio"

@@ -1,7 +1,7 @@
 ---
 title: "Slechte audio opschonen: ruisonderdrukking en bandbreedte-extensie in audiosronnx"
 description: "audiosronnx behandelt ruisonderdrukking en bandbreedte-extensie als twee aparte taken: het echte engine-register, modelgroottes en licenties, de lijst met afgewezen modellen, en hoe u controleert of de output daadwerkelijk is verbeterd."
-date: 2026-08-01
+date: 2026-08-24
 lang: nl
 authors: ["Casimiro Ferreira", "Claude"]
 tags:

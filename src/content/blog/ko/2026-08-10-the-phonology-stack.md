@@ -1,7 +1,7 @@
 ---
 title: "음운론 스택이 어떻게 맞물리는가"
 description: "우리의 텍스트-발음 스택 아키텍처 안내: 표기법을 위한 scriptconv, 언어 간 자소-IPA 엔진인 orthography2ipa, 포르투갈어·바스크어·미란다어·바랑케뉴어·아랍어를 위해 그 위에 구축된 언어별 프론트엔드, 그리고 소리 기반 검색을 위한 phonematcher. 각 계층이 왜 존재하는지, 후보 격자란 무엇인지, 그리고 실제 방언 출력을 보여줍니다."
-date: 2026-08-01
+date: 2026-08-10
 lang: ko
 authors: ["Casimiro Ferreira", "Claude"]
 tags:

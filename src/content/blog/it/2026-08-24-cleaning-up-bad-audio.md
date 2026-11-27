@@ -1,7 +1,7 @@
 ---
 title: "Ripulire l'Audio Difettoso: Denoising ed Estensione della Banda in audiosronnx"
 description: "Un approfondimento sui due compiti separati di audiosronnx — rimuovere il rumore e ricostruire le alte frequenze mancanti — con il registro reale dei motori, dimensioni dei modelli e licenze, l'elenco dei modelli scartati, e come verificare se l'output è davvero migliorato."
-date: 2026-08-01
+date: 2026-08-24
 lang: it
 authors: ["Casimiro Ferreira", "Claude"]
 tags:

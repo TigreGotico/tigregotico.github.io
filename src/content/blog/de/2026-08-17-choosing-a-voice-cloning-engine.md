@@ -1,7 +1,7 @@
 ---
 title: "Eine Voice-Cloning-Engine wählen"
 description: "voiceclonnx betreibt 10 Voice-Conversion-Engines hinter einer API, vom kNN-Feature-Swap bis zum AR-Codec-LM. Dies ist ein Leitfaden zu den dahinterstehenden Modellfamilien, dem real gemessenen Kompromiss zwischen Verständlichkeit und Sprecherähnlichkeit, und wie man eine Engine für eine bestimmte Aufgabe auswählt."
-date: 2026-08-01
+date: 2026-08-17
 lang: de
 authors: ["Casimiro Ferreira", "Claude"]
 tags:

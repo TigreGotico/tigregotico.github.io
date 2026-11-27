@@ -1,7 +1,7 @@
 ---
 title: "Écritures et notations phonétiques : ce que convertit réellement scriptconv"
 description: "Une visite guidée de scriptconv, la bibliothèque sans dépendance qui détecte les systèmes d'écriture et convertit entre notations phonétiques. Couvre l'IPA, l'ARPABET et le X-SAMPA, la détection de script ISO-15924, la translittération Buckwalter pour l'arabe, la décomposition du hangeul en jamo, et la conversion des kana, avec de vrais exemples exécutés et des limites honnêtes."
-date: 2026-08-01
+date: 2026-09-07
 lang: fr
 authors: ["Casimiro Ferreira", "Claude"]
 tags:

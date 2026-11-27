@@ -1,7 +1,7 @@
 ---
 title: "numtag: Why “Duas Dúzias” Is 24, Not 2"
 description: "Numbers hide in text as digits, words, ordinals, fractions and mixes such as '2 milhões e meio'. numtag finds every one, gives its exact value as a string, its kind and its position, and spells values back in words. Why it exists, how it works and what to do with it."
-date: 2026-11-27
+date: 2026-11-16
 authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "numtag"
@@ -91,8 +91,7 @@ digit strings, it has no upper limit: 10^39 in Russian is "дуодецилли�
 ## Why we wrote our own
 
 The usual design has one module per language, with its own reader and writer, and it
-returns an `int` or a `float`. The number parser that OpenVoiceOS used was built this
-way. It had three limits that we could not fix inside that design:
+returns an `int` or a `float`. That design has three limits:
 
 - **Each language had its own bugs.** The same idea was written again in each
   language, so a fix in Portuguese did nothing for Italian.

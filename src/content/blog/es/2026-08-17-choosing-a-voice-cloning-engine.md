@@ -1,7 +1,7 @@
 ---
 title: "Eligiendo un Motor de Clonación de Voz"
 description: "voiceclonnx ejecuta 10 motores de conversión de voz tras una sola API, desde el intercambio de características kNN hasta el codec-LM autorregresivo. Esta es una guía de las familias de modelos que hay detrás, el compromiso real medido entre inteligibilidad y similitud de hablante, y cómo elegir un motor para un trabajo concreto."
-date: 2026-08-01
+date: 2026-08-17
 lang: es
 authors: ["Casimiro Ferreira", "Claude"]
 tags:

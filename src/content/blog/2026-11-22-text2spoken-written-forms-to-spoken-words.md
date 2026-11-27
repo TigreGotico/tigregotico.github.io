@@ -1,7 +1,7 @@
 ---
 title: "text2spoken: Why a Voice Says “Pound Three Point Five Zero”"
 description: "A text-to-speech voice reads characters, so '£3.50' and '12/03/2024' come out as nonsense. text2spoken finds numbers, dates, money, units and abbreviations and writes them as a speaker says them, with the correct gender and case. Why it exists, how it works and where you can use it."
-date: 2026-11-27
+date: 2026-11-22
 authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "text2spoken"
@@ -36,7 +36,9 @@ decimal number. "21 May" loses its ordinal. It is worse with dates:
 The voice model can be perfect and still say the wrong words. The defect is in the
 text, before the voice starts. The fix is called **text normalisation**: rewrite
 each written form as the words that a speaker says. That is the job of
-[**text2spoken**](https://github.com/TigreGotico/text2spoken).
+[**text2spoken**](https://github.com/TigreGotico/text2spoken). It builds on the
+two previous posts: [numtag](/blog/2026-11-16-numtag-find-every-number-in-a-text) spells the numbers, and
+[chronologia](/blog/2026-11-19-chronologia-dates-in-many-languages-and-calendars) writes the dates in a growing set of languages.
 
 ```bash
 uv pip install --prerelease=allow "text2spoken[pt]"
@@ -89,9 +91,6 @@ phonemizer that reads the raw digit gets each of these wrong.
 So text2spoken does not convert a number alone. It reads the word after the number,
 looks up its gender and case in the language file, and asks the number writer for
 the form that agrees with it.
-
-The number and date writers that OpenVoiceOS used could not make a number agree with
-its noun in gender or case, so we did not build on them.
 
 ## How it works
 
