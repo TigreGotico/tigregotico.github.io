@@ -83,7 +83,7 @@ die een golfvorm nemen.
 
 ## No-reference MOS: de getallen lezen
 
-Vier MOS-schatters worden geleverd, elk met waarden op een schaal van 1-5
+Vijf MOS-schatters worden geleverd, elk met waarden op een schaal van 1-5
 waar hoger beter is, dezelfde schaal die een menselijk panel gebruikt:
 
 | metriek | dimensies | getraind op | commercieel gebruik |

@@ -84,7 +84,7 @@ que recebem uma forma de onda.
 
 ## MOS sem referência: lendo os números
 
-Distribuem-se quatro estimadores de MOS, cada um devolvendo valores numa
+Distribuem-se cinco estimadores de MOS, cada um devolvendo valores numa
 escala de 1–5 em que mais alto é melhor, a mesma escala que um painel
 humano usa:
 

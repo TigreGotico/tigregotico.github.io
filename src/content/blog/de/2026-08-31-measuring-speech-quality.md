@@ -46,7 +46,7 @@ Textmetriken leben in einem separaten Modul, `speechonnxmetrics.asr`, weil sie Z
 
 ## Referenzloses MOS: die Zahlen lesen
 
-Vier MOS-Schätzer werden ausgeliefert, jeder gibt Werte auf einer Skala von 1 bis 5 zurück, wobei höher besser ist, dieselbe Skala, die ein menschliches Panel verwendet:
+Fünf MOS-Schätzer werden ausgeliefert, jeder gibt Werte auf einer Skala von 1 bis 5 zurück, wobei höher besser ist, dieselbe Skala, die ein menschliches Panel verwendet:
 
 | Metrik | Dimensionen | trainiert auf | kommerzielle Nutzung |
 |---|---|---|---|

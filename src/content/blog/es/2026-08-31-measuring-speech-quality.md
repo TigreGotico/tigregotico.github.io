@@ -46,7 +46,7 @@ Las métricas de texto viven en un módulo separado, `speechonnxmetrics.asr`, po
 
 ## MOS sin referencia: leyendo los números
 
-Se incluyen cuatro estimadores de MOS, cada uno devolviendo valores en una escala de 1 a 5 donde más alto es mejor, la misma escala que usa un panel humano:
+Se incluyen cinco estimadores de MOS, cada uno devolviendo valores en una escala de 1 a 5 donde más alto es mejor, la misma escala que usa un panel humano:
 
 | métrica | dimensiones | entrenada con | uso comercial |
 |---|---|---|---|

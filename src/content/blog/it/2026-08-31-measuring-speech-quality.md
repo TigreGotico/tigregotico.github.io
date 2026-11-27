@@ -79,7 +79,7 @@ metriche che prendono una forma d'onda.
 
 ## MOS senza riferimento: leggere i numeri
 
-Vengono distribuiti quattro stimatori MOS, ciascuno restituisce valori su
+Vengono distribuiti cinque stimatori MOS, ciascuno restituisce valori su
 una scala 1–5 dove più alto è meglio — la stessa scala usata da un panel
 umano:
 

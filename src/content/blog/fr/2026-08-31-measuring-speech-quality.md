@@ -84,7 +84,7 @@ d'onde.
 
 ## MOS sans référence : lire les nombres
 
-Quatre estimateurs MOS sont livrés, chacun retournant des valeurs sur une
+Cinq estimateurs MOS sont livrés, chacun retournant des valeurs sur une
 échelle de 1 à 5 où plus haut est meilleur, la même échelle qu'utilise un
 panel humain :
 
