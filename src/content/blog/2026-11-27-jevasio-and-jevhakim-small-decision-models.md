@@ -53,7 +53,7 @@ rank-16 LoRA (11.3M trainable parameters) and the Kev pointer head.
 - **Jevásio-0.8B-V2** starts from Jevásio-0.8B and trained on 267,950 European Portuguese requests and 12,576
   English replay records, for one epoch, in 4.3 hours on one RTX 4090. Most
   labels come from the source data. One part of the data has labels from the
-  AMALIA-9B model.
+  AMALIA-9B-1225-DPO model.
 - **Jevhakim-0.8B** starts from Kev-0.8B and trained on 442,627 requests from 58
   sources and 12,576 English replay records, for two epochs, in 14.2 hours on one RTX 5090. No model wrote a
   label, but 62,005 requests are machine-translated and 60,000 come from
@@ -63,8 +63,8 @@ rank-16 LoRA (11.3M trainable parameters) and the Kev pointer head.
 
 | Model | Test set | Accuracy | Baseline |
 | :--- | :--- | :--- | :--- |
-| Jevásio-0.8B-V2 | pt-PT, 37,972 questions | 0.775 | 0.660 (Jevásio V1) |
-| Jevhakim-0.8B | Arabic, 141,217 questions | 0.661 | 0.503 (Kev-0.8B) |
+| Jevásio-0.8B-V2 | pt-PT, 37,972 requests (46,661 questions) | 0.775 | 0.660 (Jevásio V1) |
+| Jevhakim-0.8B | Arabic, 119,903 requests (141,217 questions) | 0.661 | 0.503 (Kev-0.8B) |
 
 As an intent router alone, Jevásio scores 0.657 on Portuguese (Kev: 0.511), and
 Jevhakim scores 0.658 on the Arabic part of MASSIVE (Kev: 0.435). These routing
