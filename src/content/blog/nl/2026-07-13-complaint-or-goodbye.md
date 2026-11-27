@@ -123,12 +123,12 @@ en het waren geen comfortabele dagen.
 Plutchiks structuur van tegenovergestelde paren is getest. In 2009 lieten Smith &
 Schneider het door meer dan tweeduizend statistische tests lopen en concludeerden dat
 de theorie van het emotiewiel "geen empirische steun ontvangt." De tegenovergestelde
-paren zijn een elegante metafoor ontleend aan de kleurentheorie. Het zijn geen
+paren zijn een metafoor ontleend aan de kleurentheorie. Het zijn geen
 bevindingen over mensen.
 
-Ondertussen repliseren de dingen die *wel* repliseren — Russells valentie–arousal
-circumplex, en de controledimensie die woede van angst scheidt — precies die stukken
-die zelden in werkende software belanden.
+Ondertussen zijn de dingen die *wel* repliceren, Russells valentie–arousal
+circumplex en de controledimensie die woede van angst scheidt, de stukken die zelden
+in werkende software belanden.
 
 Er is hier een probleem van de tweede orde, en het is datgene dat ons daadwerkelijk
 verontrustte. Elk van deze modellen is *bruikbaar*. Ze zijn levendig, ze zijn
@@ -171,7 +171,7 @@ angry, afraid = affect_from_texts([
 ])
 
 angry.valence,  angry.potency    # -0.43, +0.16   -> 'disgust'
-afraid.valence, afraid.potency   # -0.47, -0.43   -> 'apprehension'
+afraid.valence, afraid.potency   # -0.47, -0.42   -> 'apprehension'
 ```
 
 Kijk naar die getallen. **De valentie is nagenoeg identiek** — beide berichten zijn
