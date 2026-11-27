@@ -1,6 +1,6 @@
 ---
 title: "text2spoken: Written Forms to Spoken Words"
-description: "A TTS voice reads letters, not '12/03/2024' or '3,50 €'. text2spoken rewrites numbers, dates, times, money, units and abbreviations into the words a speaker says, in 19 languages, with cited sources for the rules."
+description: "A TTS voice reads letters, not '12/03/2024' or '3,50 €'. text2spoken rewrites numbers, dates, times, money, units and abbreviations into the words a speaker says, in 18 languages, with cited sources for the rules."
 date: 2026-11-27
 author: "Casimiro Ferreira"
 tags:
@@ -56,15 +56,15 @@ dative ordinal *dritten*. "3" before a prepositional plural is *трёх*.
 
 ## Every rule has a source
 
-Nineteen languages have their own language file: Arabic, Bengali, Catalan,
-Danish, German, Greek, English, Spanish, Basque, French, Hindi, Italian,
+Eighteen languages have their own language file: Arabic, Bengali, Catalan,
+German, Greek, English, Spanish, Basque, French, Hindi, Italian,
 Japanese, Korean, Dutch, Portuguese (pt-PT and pt-BR), Russian, Tetun Dili and
 Chinese. Any other BCP 47 tag still gets cardinals, decimals and the minus sign
 from the CLDR rules.
 
 Each rule in a language file names its source: a grammar, a dictionary or a
-style guide. The test set has 4,286 rows. 4,149 of them cite a source. The other
-137 are marked *silver*, because no source we found states them.
+style guide. The test set has more than 4,000 rows, and almost all of them cite a source.
+The rest are marked *silver*, because no source we found states them.
 
 ## One engine for reading and speaking
 
