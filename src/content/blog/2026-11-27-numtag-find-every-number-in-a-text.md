@@ -2,7 +2,7 @@
 title: "numtag: Find Every Number in a Text"
 description: "numtag finds each number in a text, written in digits or in words, and gives its exact value, its kind and its position. It spells values back in words. 53 languages read, 29 write, and every language is one cited JSON lexicon."
 date: 2026-11-27
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "numtag"
   - "NLP"

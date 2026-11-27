@@ -2,7 +2,7 @@
 title: "chronologia: Dates in Many Languages, in 18 Calendars and the Gregorian"
 description: "chronologia reads dates, times, ranges and repeats from text in many languages, and converts between 18 calendars. For Portuguese it also speaks dates and clock times. It runs in the browser in a public demo."
 date: 2026-11-27
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "chronologia"
   - "NLP"

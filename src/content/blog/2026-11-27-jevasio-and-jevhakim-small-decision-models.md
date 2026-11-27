@@ -2,7 +2,7 @@
 title: "Jevásio and Jevhakim: Small Decision Models for Portuguese and Arabic"
 description: "Jevásio (European Portuguese) and Jevhakim (Arabic) are small decision models, published in 0.8B and 4B sizes. They read a state and a typed question, and give a probability for each option in one forward pass, with no generated text."
 date: 2026-11-27
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Jevásio"
   - "Jevhakim"
