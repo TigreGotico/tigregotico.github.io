@@ -178,8 +178,7 @@ output on all 5,000 words.
 - **Most language specs are stubs.** o2i has 7,678 spec files. Eight are production
   quality, and 6,571 are stubs.
 - **The rules still have defects.** On 7.133.1a3, en-GB "water" gives ˈwætə, not
-  ˈwɔːtə. fr-FR "les amis" has no liaison yet. Each defect is an open issue on
-  GitHub, and a fix to the data fixes it in Python and in every GGUF at once.
+  ˈwɔːtə. fr-FR "les amis" has no liaison yet. A fix to the data fixes it in Python and in every GGUF at once.
 
 ## Credits
 
