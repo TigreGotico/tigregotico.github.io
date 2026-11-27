@@ -3,7 +3,7 @@ title: "如何选择一个声音克隆引擎"
 description: "voiceclonnx 在同一套 API 背后运行着 10 个语音转换引擎，从 kNN 特征替换到自回归编解码语言模型。这是一份指南，介绍它们背后的模型家族、可懂度与说话人相似度之间真实测得的权衡，以及如何为特定任务挑选一个引擎。"
 date: 2026-08-01
 lang: zh
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "ONNX"
   - "voice cloning"

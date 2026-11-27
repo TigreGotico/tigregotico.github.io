@@ -3,7 +3,7 @@ title: "مجموعات بيانات كلمات الإيقاظ الاصطناعي
 description: "نشرنا سبع مجموعات بيانات اصطناعية لكلمات الإيقاظ لأسماء شائعة للمساعدين الصوتيين — hey_computer و hey_mycroft و hey_siri و alexa و home_assistant و voice_assistant و wake_up. درِّب كاشفًا يعمل في كل مكان."
 date: 2025-10-14
 lang: ar
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Datasets"
   - "Wakewords"

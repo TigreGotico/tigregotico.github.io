@@ -3,7 +3,7 @@ title: "从零开始制作合成语音"
 description: "为文本转语音系统创建一个语音通常需要一个真人花费数小时来录制音频。这既昂贵又耗时，而且在许多语言或口音中，这些语音根本就不存在"
 date: 2025-06-26
 lang: zh
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "TTS"
   - "Synthetic Data"

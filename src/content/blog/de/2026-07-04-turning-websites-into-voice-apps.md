@@ -3,7 +3,7 @@ title: "Wenn alle eine App veröffentlichen, veröffentlichen wir Stimme: Websit
 description: "Jede Website, die zählt, wurde in eine mobile App verpackt. Wir schlagen den umgekehrten Schritt für das Zeitalter der Stimme und der Kommandozeile vor: eine saubere API plus eine Sprach-Skill pro Website, damit das Web per Ohr und per Tastatur durchsuchbar wird. Eine Website nach der anderen ergibt in der Summe einen Sprach-Browser."
 date: 2026-07-04
 lang: de
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Voice"
   - "Accessibility"

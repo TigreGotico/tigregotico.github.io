@@ -3,7 +3,7 @@ title: "Miro & Dii TTS 学習データ: 20 ロケールにわたる 40 のオー
 description: "ポルトガル語、オランダ語、ドイツ語、フランス語、イタリア語、日本語、スペイン語などにわたる Miro と Dii のための 40 の合成学習データセットを公開しました。大規模な音声クローニングにより、すべての言語に一貫した 2 つのアイデンティティを提供します。"
 date: 2025-06-23
 lang: ja
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "TTS"
   - "Voice"

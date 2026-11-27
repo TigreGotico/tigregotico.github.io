@@ -4,7 +4,7 @@ description: "نظرة على حزمة معالجة اللغة الطبيعية 
 date: 2026-02-28
 updated: 2026-08-01
 lang: ar
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "NLP"
   - "Portuguese"

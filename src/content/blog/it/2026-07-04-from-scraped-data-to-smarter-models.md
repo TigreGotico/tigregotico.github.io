@@ -3,7 +3,7 @@ title: "Perché Accumuliamo Dati: Dai Cataloghi Scrapati a Modelli Vocali e Ling
 description: "Dati puliti, tipizzati e con buona provenienza sono la materia prima di ogni modello che spediamo. Come i cataloghi costruiti dai nostri scraper diventano vocabolari di biasing per ASR, classificatori di intenti, corpora NER sintetici, lessici G2P, voci TTS — e carburante onesto per gli LLM."
 date: 2026-07-04
 lang: it
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Datasets"
   - "Data Collection"

@@ -2,7 +2,7 @@
 title: "Saying It Right: Disambiguating Portuguese Heterophones for TTS"
 description: "Many European Portuguese words are spelled the same but pronounced differently depending on meaning, and getting the vowel wrong makes a TTS voice say the wrong word. We built bifonia-pt-homographs, an open meaning-labelled dataset of 56,891 sentences over 27 words, and a tiny zero-dependency resolver that hits ≈94% where heavyweight POS taggers plateau at ≈75%."
 date: 2026-06-12
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Datasets"
   - "Portuguese"

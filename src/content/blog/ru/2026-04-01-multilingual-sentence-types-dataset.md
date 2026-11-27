@@ -4,7 +4,7 @@ description: "Мы опубликовали sentence-types-multilingual — по
 date: 2026-04-01
 updated: 2026-08-01
 lang: ru
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Datasets"
   - "Multilingual"

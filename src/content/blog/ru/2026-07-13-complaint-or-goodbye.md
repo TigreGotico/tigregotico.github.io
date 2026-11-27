@@ -4,7 +4,7 @@ description: "Два гневных сообщения в поддержку. О
 date: 2026-07-13
 updated: 2026-08-01
 lang: ru
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Affective Computing"
   - "Emotion"

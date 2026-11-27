@@ -3,7 +3,7 @@ title: "OpenVoiceOS und Home Assistant: Ein Traumteam der Sprachautomatisierung"
 description: "Home Assistant übernimmt die Automatisierung. OVOS übernimmt die Sprache. Drei Integrationsebenen lassen die Kombination funktionieren: Wyoming-Brücken für die Sprachpipeline von HA, ovos-persona-server als Konversationsagent und HiveMind, um OVOS-Geräte als native HA-Entitäten sichtbar zu machen."
 date: 2025-09-17
 lang: de
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "OVOS"
   - "Home Assistant"

@@ -4,7 +4,7 @@ description: "orthography2ipa is een taalkundig gefundeerde bron van pure data d
 date: 2026-01-15
 lang: nl
 updated: 2026-08-01
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "G2P"
   - "IPA"

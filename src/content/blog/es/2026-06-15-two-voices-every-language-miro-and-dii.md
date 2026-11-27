@@ -3,7 +3,7 @@ title: "Dos Voces, Todas las Lenguas: Miro y Dii"
 description: "TigreGótico se asocia con OpenVoiceOS para dar al asistente dos identidades de voz consistentes, Miro y Dii, que suenan igual en todas las lenguas, construidas con nuestra tecnología de clonación de voz y el motor phoonnx. Dos modelos de TTS para cada lengua que alguien solicite, lenguas en peligro incluidas."
 date: 2026-06-15
 lang: es
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "phoonnx"
   - "TTS"

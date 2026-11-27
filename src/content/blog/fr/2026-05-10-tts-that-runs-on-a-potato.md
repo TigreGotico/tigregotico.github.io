@@ -3,7 +3,7 @@ title: "Des modèles de TTS qui tournent sur une patate"
 description: "phoonnx est un cadriciel de recherche pour la synthèse vocale basée sur VITS, conçu pour tourner confortablement sur du matériel bas de gamme. Pas de GPU, pas de cloud, pas de clé d'API : juste une voix ONNX d'environ 15,65 millions de paramètres et un CPU. Voici à quel point une bonne voix peut être petite, et comment nous les entraînons."
 date: 2026-05-10
 lang: fr
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "phoonnx"
   - "TTS"

@@ -3,7 +3,7 @@ title: "Your sentiment model can't tell a complaint from a goodbye"
 description: "Two angry-looking support messages. One customer is about to escalate; the other is about to leave without a word. Almost no emotion model can tell them apart — because they're all missing the same axis. Introducing emotion-algebra."
 date: 2026-07-13
 updated: 2026-08-01
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Affective Computing"
   - "Emotion"

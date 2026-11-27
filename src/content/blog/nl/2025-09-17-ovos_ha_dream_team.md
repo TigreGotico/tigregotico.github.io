@@ -3,7 +3,7 @@ title: "OpenVoiceOS en Home Assistant: een droomteam voor spraakautomatisering"
 description: "Home Assistant verzorgt de automatisering. OVOS verzorgt de spraak. Drie integratielagen maken de combinatie mogelijk: Wyoming-bruggen voor de spraakpijplijn van HA, ovos-persona-server als conversationele agent, en HiveMind om OVOS-apparaten als native HA-entiteiten weer te geven."
 date: 2025-09-17
 lang: nl
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "OVOS"
   - "Home Assistant"

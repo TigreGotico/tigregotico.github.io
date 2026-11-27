@@ -2,7 +2,7 @@
 title: "linguatag: One Reader for Language Tags"
 description: "Every voice, model and lexicon must match the language tag of a user. linguatag reads, standardizes and matches BCP 47 tags, with regional varieties as private-use tags and a cited family tree of languages. No network, about 2 MB."
 date: 2026-11-27
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "linguatag"
   - "BCP 47"

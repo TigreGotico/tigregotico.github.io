@@ -11,7 +11,7 @@ const blog = defineCollection({
       description: z.string().max(500),
       date: z.coerce.date(),
       updated: z.coerce.date().optional(),
-      author: z.string().default('Casimiro Ferreira'),
+      authors: z.array(z.string()).default(['Casimiro Ferreira', 'Claude']),
       tags: z.array(z.string()).default([]),
       cover: image().optional(),
       coverExternal: z.url().optional(),

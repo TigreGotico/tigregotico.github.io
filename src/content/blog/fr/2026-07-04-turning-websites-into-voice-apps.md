@@ -3,7 +3,7 @@ title: "Si tout le monde lance une app, nous lancerons la voix : transformer les
 description: "Chaque site qui compte a fini enveloppé dans une app mobile. Nous proposons le mouvement inverse pour l'ère de la voix et de la ligne de commande : une API propre plus une skill vocale par site, pour que le web devienne navigable à l'oreille et au clavier. Un site à la fois, tout cela finit par former un navigateur vocal."
 date: 2026-07-04
 lang: fr
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Voice"
   - "Accessibility"

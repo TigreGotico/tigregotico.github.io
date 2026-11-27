@@ -3,7 +3,7 @@ title: "Miro & Dii TTS 학습 데이터: 20개 로케일에 걸친 40개 오픈 
 description: "포르투갈어, 네덜란드어, 독일어, 프랑스어, 이탈리아어, 일본어, 스페인어 등에 걸쳐 Miro와 Dii 음성을 위한 40개의 합성 학습 데이터셋을 공개했습니다. 대규모 음성 복제: 모든 언어가 일관된 두 개의 정체성을 갖습니다."
 date: 2025-06-23
 lang: ko
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "TTS"
   - "Voice"

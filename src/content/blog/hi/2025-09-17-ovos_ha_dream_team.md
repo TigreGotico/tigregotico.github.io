@@ -3,7 +3,7 @@ title: "OpenVoiceOS और Home Assistant: वॉइस ऑटोमेशन �
 description: "Home Assistant ऑटोमेशन संभालता है; OVOS आवाज़ संभालता है। तीन एकीकरण परतें इस संयोजन को कारगर बनाती हैं: HA की वॉइस पाइपलाइन के लिए Wyoming ब्रिज, संवादात्मक एजेंट के रूप में ovos-persona-server, और OVOS उपकरणों को HA की नेटिव एंटिटी के रूप में प्रस्तुत करने के लिए HiveMind।"
 date: 2025-09-17
 lang: hi
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "OVOS"
   - "Home Assistant"

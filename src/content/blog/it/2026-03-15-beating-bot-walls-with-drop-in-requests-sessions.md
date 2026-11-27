@@ -3,7 +3,7 @@ title: "Sessioni requests Componibili e Pronte all'Uso per un Accesso Resiliente
 description: "Due sottoclassi componibili di requests.Session per leggere pagine web pubbliche in modo affidabile senza un browser headless nel percorso critico: trasporto compatibile con TLS, un proxy FlareSolverr per le sfide JS, un ripiego sulla Wayback Machine e richieste diversificate per IP — unblock_requests e anon_requests."
 date: 2026-03-15
 lang: it
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "HTTP"
   - "Scraping"

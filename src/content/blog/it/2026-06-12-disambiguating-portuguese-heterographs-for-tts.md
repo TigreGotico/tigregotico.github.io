@@ -3,7 +3,7 @@ title: "Pronunciarlo Bene: Disambiguare gli Eterofoni Portoghesi per il TTS"
 description: "Molte parole del portoghese europeo si scrivono allo stesso modo ma si pronunciano diversamente a seconda del significato — e sbagliare la vocale fa dire alla voce TTS la parola sbagliata. Abbiamo costruito bifonia-pt-homographs, un dataset aperto etichettato per significato di 56.891 frasi su 27 parole, e un minuscolo risolutore a zero dipendenze che raggiunge ≈94% dove i pesanti tagger POS si fermano a ≈75%."
 date: 2026-06-12
 lang: it
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Datasets"
   - "Portuguese"

@@ -3,7 +3,7 @@ title: "Измерение качества речи без панели слу�
 description: "Рабочее руководство по speechonnxmetrics: что на самом деле измеряют MOS, безреференсные предикторы MOS, интрузивные сигнальные метрики и WER/CER на основе ASR, когда каждая применима, реальные оценки на реальном аудио, и почему предсказанный MOS — это свидетельство, а не истина."
 date: 2026-08-31
 lang: ru
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "speechonnxmetrics"
   - "TTS"

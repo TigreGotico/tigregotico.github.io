@@ -3,7 +3,7 @@ title: "回復力ある公開データアクセスのための、組み合わせ
 description: "ホットパスでヘッドレスブラウザを使わずに公開 Web ページを確実に読み取るための、組み合わせ可能な 2 つの requests.Session サブクラス: TLS 互換のトランスポート、JS チャレンジ向けの FlareSolverr プロキシ、Wayback Machine へのフォールバック、そして IP を分散させるリクエスト — unblock_requests と anon_requests。"
 date: 2026-03-15
 lang: ja
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "HTTP"
   - "Scraping"

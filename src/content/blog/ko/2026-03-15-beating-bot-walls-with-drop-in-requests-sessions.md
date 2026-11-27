@@ -3,7 +3,7 @@ title: "회복력 있는 공개 데이터 접근을 위한 조합 가능하고 �
 description: "핫 패스에서 헤드리스 브라우저 없이 공개 웹 페이지를 안정적으로 읽기 위한 조합 가능한 두 개의 requests.Session 서브클래스: TLS 호환 전송, JS 챌린지를 위한 FlareSolverr 프록시, Wayback Machine 대체 수단, 그리고 IP를 분산하는 요청 — unblock_requests와 anon_requests."
 date: 2026-03-15
 lang: ko
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "HTTP"
   - "Scraping"

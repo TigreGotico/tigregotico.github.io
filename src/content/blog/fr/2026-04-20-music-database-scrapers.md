@@ -4,7 +4,7 @@ description: "Une visite guidée de la famille de clients Python typés que nous
 date: 2026-04-20
 updated: 2026-08-01
 lang: fr
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Scrapers"
   - "Media Metadata"

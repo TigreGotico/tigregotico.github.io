@@ -4,7 +4,7 @@ description: "g2p_barranquenho هو أول محوّل مفتوح من الحرو
 date: 2025-12-12
 updated: 2026-08-01
 lang: ar
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Phonemization"
   - "Barranquenho"

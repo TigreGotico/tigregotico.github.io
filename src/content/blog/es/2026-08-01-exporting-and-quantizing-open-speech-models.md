@@ -3,7 +3,7 @@ title: "Exportar y Cuantizar Modelos de Voz Abiertos para que Realmente Funcione
 description: "Un modelo de voz entrenado en una página de investigación de GitHub no es un asistente de voz. Convertimos checkpoints abiertos de ASR y TTS a ONNX, CoreML y GGUF, los cuantizamos y validamos la salida. Luego publicamos los resultados bajo OpenVoiceOS para que cada lengua que cubren llegue a un asistente real y sin conexión."
 date: 2026-08-01
 lang: es
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "ONNX"
   - "CoreML"

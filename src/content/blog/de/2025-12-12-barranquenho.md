@@ -4,7 +4,7 @@ description: "g2p_barranquenho ist der erste offene Graphem-zu-Phonem-Konverter 
 date: 2025-12-12
 lang: de
 updated: 2026-08-01
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Phonemization"
   - "Barranquenho"

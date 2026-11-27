@@ -3,7 +3,7 @@ title: "Richtig ausgesprochen: Portugiesische Heterophone für TTS disambiguiere
 description: "Viele europäisch-portugiesische Wörter werden gleich geschrieben, aber je nach Bedeutung unterschiedlich ausgesprochen, und ein falscher Vokal lässt eine TTS-Stimme das falsche Wort sagen. Wir haben bifonia-pt-homographs erstellt, einen offenen, nach Bedeutung annotierten Datensatz mit 56.891 Sätzen über 27 Wörter, sowie einen winzigen, abhängigkeitsfreien Resolver, der ≈94 % erreicht, wo schwergewichtige POS-Tagger bei ≈75 % stagnieren."
 date: 2026-06-12
 lang: de
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Datasets"
   - "Portuguese"

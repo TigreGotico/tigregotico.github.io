@@ -4,7 +4,7 @@ description: "Eine Führung durch die Familie typisierter Python-Clients, die wi
 date: 2026-04-20
 lang: de
 updated: 2026-08-01
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Scrapers"
   - "Media Metadata"

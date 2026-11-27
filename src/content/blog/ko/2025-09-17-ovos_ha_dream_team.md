@@ -3,7 +3,7 @@ title: "OpenVoiceOS와 Home Assistant: 음성 자동화 드림팀"
 description: "Home Assistant는 자동화를 담당하고, OVOS는 음성을 담당합니다. 세 가지 통합 계층이 이 조합을 작동하게 합니다: HA의 음성 파이프라인을 위한 Wyoming 브리지, 대화형 에이전트로서의 ovos-persona-server, 그리고 OVOS 기기를 네이티브 HA 엔티티로 노출하는 HiveMind."
 date: 2025-09-17
 lang: ko
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "OVOS"
   - "Home Assistant"

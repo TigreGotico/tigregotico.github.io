@@ -3,7 +3,7 @@ title: "合成唤醒词数据集：七个助手名字，一个检测器"
 description: "我们为常见的语音助手名字发布了七个合成唤醒词数据集——hey_computer、hey_mycroft、hey_siri、alexa、home_assistant、voice_assistant、wake_up。训练一个到处都能用的检测器。"
 date: 2025-10-14
 lang: zh
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Datasets"
   - "Wakewords"

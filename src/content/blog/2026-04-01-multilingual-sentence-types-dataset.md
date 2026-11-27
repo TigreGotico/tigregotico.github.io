@@ -3,7 +3,7 @@ title: "A Multilingual Sentence-Types Dataset: Questions, Commands, Statements"
 description: "We published sentence-types-multilingual — nearly 70,000 sentences across seven languages, classified by grammatical type (question, command, statement, exclamation). It is the training corpus behind the little_questions routing library."
 date: 2026-04-01
 updated: 2026-08-01
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Datasets"
   - "Multilingual"

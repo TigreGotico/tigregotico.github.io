@@ -4,7 +4,7 @@ description: "Um olhar sobre a nossa stack de NLP para português, baseada em re
 date: 2026-02-28
 updated: 2026-08-01
 lang: pt
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "NLP"
   - "Portuguese"

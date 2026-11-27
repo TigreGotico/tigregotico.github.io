@@ -3,7 +3,7 @@ title: "सिंथेटिक वेकवर्ड डेटासेट: �
 description: "हमने सामान्य वॉइस असिस्टेंट नामों के लिए सात सिंथेटिक वेकवर्ड डेटासेट प्रकाशित किए हैं — hey_computer, hey_mycroft, hey_siri, alexa, home_assistant, voice_assistant, wake_up। एक ऐसा डिटेक्टर प्रशिक्षित करें जो हर जगह काम करे।"
 date: 2025-10-14
 lang: hi
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Datasets"
   - "Wakewords"

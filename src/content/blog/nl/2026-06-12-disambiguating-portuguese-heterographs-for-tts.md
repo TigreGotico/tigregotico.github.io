@@ -3,7 +3,7 @@ title: "Het goed uitspreken: Portugese heterofonen desambigueren voor TTS"
 description: "Veel Europees-Portugese woorden worden hetzelfde gespeld maar afhankelijk van de betekenis anders uitgesproken, en de verkeerde klinker laat een TTS-stem het verkeerde woord zeggen. We bouwden bifonia-pt-homographs, een open betekenislabelede dataset van 56.891 zinnen over 27 woorden, en een piepkleine resolver zonder afhankelijkheden die ≈94% haalt waar zware POS-taggers blijven steken op ≈75%."
 date: 2026-06-12
 lang: nl
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Datasets"
   - "Portuguese"

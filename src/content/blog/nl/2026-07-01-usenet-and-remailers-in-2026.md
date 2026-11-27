@@ -3,7 +3,7 @@ title: "Usenet in 2026: een schoon, pre-AI-tekstcorpus voor training en evaluati
 description: "Usenet is een ongerept archief van menselijke discussie van vóór de AI: decennia aan nieuwsgroepposts, allemaal door mensen geschreven, niets ervan aangeraakt door taalmodellen. Dat maakt het waardevolle trainings- en evaluatiedata voor taal- en spraakmodellen. We bouwden een kleine Python-tool om het te oogsten."
 date: 2026-07-01
 lang: nl
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Usenet"
   - "Datasets"

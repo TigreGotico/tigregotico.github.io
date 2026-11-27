@@ -3,7 +3,7 @@ title: "우리가 데이터를 축적하는 이유: 스크래핑한 카탈로그
 description: "깨끗하고, 타입이 정의되어 있으며, 출처가 명확한 데이터는 우리가 출시하는 모든 모델의 원재료입니다. 우리의 스크래퍼가 구축한 카탈로그가 어떻게 ASR 바이어싱 어휘, 의도 분류기, 합성 NER 코퍼스, G2P 사전, TTS 음성 — 그리고 LLM을 위한 정직한 연료가 되는지 살펴봅니다."
 date: 2026-07-04
 lang: ko
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Datasets"
   - "Data Collection"

@@ -2,7 +2,7 @@
 title: "Making Synthetic Voices From Scratch"
 description: "Creating a voice for a text-to-speech system usually requires a real person to spend hours recording audio. That’s expensive, time-consuming, and in many languages or accents, the voices just don’t exist at all"
 date: 2025-06-26
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "TTS"
   - "Synthetic Data"

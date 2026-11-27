@@ -3,7 +3,7 @@ title: "ख़राब ऑडियो साफ़ करना: audiosronnx �
 description: "audiosronnx के दो अलग-अलग कामों — शोर हटाना और लापता उच्च फ़्रीक्वेंसियों का पुनर्निर्माण — में एक गहरी झाँक, असली इंजन रजिस्ट्री, मॉडल आकार और लाइसेंसों के साथ, अस्वीकृत-मॉडलों की सूची, और यह जाँचने का तरीक़ा कि आउटपुट असल में बेहतर हुआ या नहीं।"
 date: 2026-08-01
 lang: hi
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "ONNX"
   - "denoising"

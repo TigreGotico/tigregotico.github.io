@@ -3,7 +3,7 @@ title: "Waarom we data hamsteren: van gescrapete catalogi naar slimmere spraak- 
 description: "Schone, getypeerde, goed van herkomst voorziene data is de grondstof van elk model dat we uitbrengen. Hoe de catalogi die onze scrapers bouwen ASR-bias-vocabulaires, intent-classificatoren, synthetische NER-corpora, G2P-lexicons, TTS-stemmen, en eerlijke brandstof voor LLM's worden."
 date: 2026-07-04
 lang: nl
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Datasets"
   - "Data Collection"

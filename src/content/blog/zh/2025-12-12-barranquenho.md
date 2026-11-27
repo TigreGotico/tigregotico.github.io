@@ -4,7 +4,7 @@ description: "g2p_barranquenho 是首个面向巴兰克诺语的开放字素转�
 date: 2025-12-12
 lang: zh
 updated: 2026-08-01
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Phonemization"
   - "Barranquenho"

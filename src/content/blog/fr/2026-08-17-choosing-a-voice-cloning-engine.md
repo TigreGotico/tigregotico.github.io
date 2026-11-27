@@ -3,7 +3,7 @@ title: "Choisir un moteur de clonage vocal"
 description: "voiceclonnx fait tourner 10 moteurs de conversion vocale derrière une seule API, du feature-swap kNN au codec-LM autorégressif. Voici un guide des familles de modèles derrière eux, le vrai compromis mesuré entre intelligibilité et similarité de locuteur, et comment choisir un moteur pour une tâche précise."
 date: 2026-08-01
 lang: fr
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "ONNX"
   - "voice cloning"

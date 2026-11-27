@@ -3,7 +3,7 @@ title: "OpenVoiceOS 与 Home Assistant：语音自动化梦之队"
 description: "Home Assistant 负责自动化，OVOS 负责语音。三个集成层让这一组合得以运转：面向 HA 语音流水线的 Wyoming 桥接、作为对话代理的 ovos-persona-server，以及将 OVOS 设备呈现为原生 HA 实体的 HiveMind。"
 date: 2025-09-17
 lang: zh
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "OVOS"
   - "Home Assistant"

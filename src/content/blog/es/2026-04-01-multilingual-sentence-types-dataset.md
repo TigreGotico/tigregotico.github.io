@@ -4,7 +4,7 @@ description: "Publicamos sentence-types-multilingual — casi 70.000 oraciones e
 date: 2026-04-01
 lang: es
 updated: 2026-08-01
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Datasets"
   - "Multilingual"

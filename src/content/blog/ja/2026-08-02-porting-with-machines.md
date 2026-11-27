@@ -3,7 +3,7 @@ title: "機械とともに移植する、そして私たちが答えられなか
 description: "私たちは espeak-ng の G2P、Cotovia、AhoTTS、HermiT を含むいくつかの C、C++、Java のプログラムを純粋な Python として書き直しました。AI が元のソースを読み、人間が作業を指揮しました。私たちの側の人間は誰も元のソースを読んでいません。これは二つの別個の問いを提起します。その結果物はそもそも所有され得るのか、そしてそれは入力の派生物なのか? 私たちは答えるよりも安上がりだったので upstream のライセンスを維持しました。私たちはこの問いが今も未解決だと考えています。"
 date: 2026-08-01
 lang: ja
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "FOSS"
   - "Licensing"

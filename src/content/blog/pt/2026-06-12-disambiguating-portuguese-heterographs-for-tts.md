@@ -3,7 +3,7 @@ title: "Dizê-lo Corretamente: Desambiguar Heterófonos do Português para TTS"
 description: "Muitas palavras do português europeu escrevem-se da mesma forma mas pronunciam-se de modo diferente consoante o significado, e errar a vogal faz uma voz de TTS dizer a palavra errada. Construímos o bifonia-pt-homographs, um dataset aberto e anotado por significado com 56.891 frases sobre 27 palavras, e um resolvedor minúsculo e sem dependências que atinge ≈94% onde etiquetadores morfossintáticos pesados estagnam nos ≈75%."
 date: 2026-06-12
 lang: pt
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Datasets"
   - "Portuguese"

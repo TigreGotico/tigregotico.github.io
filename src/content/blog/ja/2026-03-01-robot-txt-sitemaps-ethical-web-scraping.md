@@ -4,7 +4,7 @@ description: "スクレイパーを構築する前に、まずサイトを偵察
 date: 2026-03-01
 updated: 2026-08-01
 lang: ja
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Web Scraping"
   - "Sitemaps"

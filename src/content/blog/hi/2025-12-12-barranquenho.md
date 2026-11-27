@@ -4,7 +4,7 @@ description: "g2p_barranquenho बारांकेन्यो के लि�
 date: 2025-12-12
 updated: 2026-08-01
 lang: hi
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Phonemization"
   - "Barranquenho"

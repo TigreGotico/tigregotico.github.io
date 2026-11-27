@@ -3,7 +3,7 @@ title: "文字与音标记法：scriptconv 到底在转换什么"
 description: "深入剖析 scriptconv——这个零依赖库，负责检测文字系统并在各种音标记法之间转换。涵盖 IPA、ARPABET 和 X-SAMPA；ISO-15924 文字检测；阿拉伯语的 Buckwalter 转写；谚文分解为字母（jamo）；以及假名转换，配有真实、实际执行过的示例和坦诚的局限说明。"
 date: 2026-08-01
 lang: zh
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "IPA"
   - "Phonetics"

@@ -4,7 +4,7 @@ description: "Publicámos o sentence-types-multilingual — quase 70.000 frases 
 date: 2026-04-01
 updated: 2026-08-01
 lang: pt
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Datasets"
   - "Multilingual"

@@ -3,7 +3,7 @@ title: "Warum wir Daten horten: Von gescrapten Katalogen zu intelligenteren Spra
 description: "Saubere, typisierte Daten mit guter Provenienz sind das Rohmaterial jedes Modells, das wir ausliefern. Wie die Kataloge, die unsere Scraper aufbauen, zu Biasing-Vokabularen für ASR, Intent-Klassifikatoren, synthetischen NER-Korpora, G2P-Lexika, TTS-Stimmen und zu ehrlichem Treibstoff für LLMs werden."
 date: 2026-07-04
 lang: de
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Datasets"
   - "Data Collection"

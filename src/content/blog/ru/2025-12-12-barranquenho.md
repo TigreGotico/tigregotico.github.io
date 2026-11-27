@@ -4,7 +4,7 @@ description: "g2p_barranquenho — первый открытый конверт�
 date: 2025-12-12
 updated: 2026-08-01
 lang: ru
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Phonemization"
   - "Barranquenho"

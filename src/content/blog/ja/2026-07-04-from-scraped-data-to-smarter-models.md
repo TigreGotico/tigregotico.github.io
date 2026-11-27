@@ -3,7 +3,7 @@ title: "なぜ私たちはデータを蓄えるのか：スクレイピングし
 description: "きれいで、型付けされ、出所のしっかりしたデータは、私たちが提供するすべてのモデルの原材料です。当社のスクレイパーが構築するカタログが、いかにして ASR のバイアシング用語彙、意図分類器、合成 NER コーパス、G2P 辞書、TTS 音声 — そして LLM のための誠実な燃料 — になるのか。"
 date: 2026-07-04
 lang: ja
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Datasets"
   - "Data Collection"

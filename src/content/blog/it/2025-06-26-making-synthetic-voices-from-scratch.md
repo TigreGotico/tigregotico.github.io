@@ -3,7 +3,7 @@ title: "Creare Voci Sintetiche da Zero"
 description: "Creare una voce per un sistema di sintesi vocale richiede di solito che una persona reale trascorra ore a registrare audio. È costoso, richiede tempo e, in molte lingue o accenti, le voci semplicemente non esistono affatto"
 date: 2025-06-26
 lang: it
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "TTS"
   - "Synthetic Data"

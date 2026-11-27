@@ -3,7 +3,7 @@ title: "聴取パネルなしで音声品質を測定する"
 description: "speechonnxmetrics の実践ガイド: MOS、参照なし MOS 予測器、侵襲的信号指標、ASR ベースの WER/CER が実際に何を測っているか、それぞれをいつ適用するか、実際の音声からの実際のスコア、そしてなぜ予測された MOS が真実ではなく証拠なのか。"
 date: 2026-08-31
 lang: ja
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "speechonnxmetrics"
   - "TTS"

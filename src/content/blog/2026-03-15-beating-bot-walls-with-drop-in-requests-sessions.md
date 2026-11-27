@@ -2,7 +2,7 @@
 title: "Composable, Drop-In requests Sessions for Resilient Public-Data Access"
 description: "Two composable requests.Session subclasses for reading public web pages reliably without a headless browser in the hot path: TLS-compatible transport, a FlareSolverr proxy for JS challenges, a Wayback Machine fallback, and IP-diversified requests: unblock_requests and anon_requests."
 date: 2026-03-15
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "HTTP"
   - "Scraping"

@@ -3,7 +3,7 @@ title: "Miro-&-Dii-TTS-Trainingsdaten: 40 offene Datensätze in 20 Locales"
 description: "Wir haben 40 synthetische Trainingsdatensätze für die Stimmen Miro und Dii in Portugiesisch, Niederländisch, Deutsch, Französisch, Italienisch, Japanisch, Spanisch und mehr veröffentlicht. Jede Sprache erhält zwei konsistente Stimmidentitäten, erstellt mittels Voice Cloning."
 date: 2025-06-23
 lang: de
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "TTS"
   - "Voice"

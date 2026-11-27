@@ -3,7 +3,7 @@ title: "OVOS و HiveMind در صنعت تولید"
 description: "پروژه‌های اروپایی COALA و WASABI یک چارچوب کامل دستیار صوتی صنعتی را حول OVOS + HiveMind ساخته‌اند و آن‌ها را با ابزارها، واسط کاربری و موتورهای گفت‌وگوی خود یکپارچه کرده‌اند."
 date: 2025-11-26
 lang: fa
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "OVOS"
   - "HiveMind"

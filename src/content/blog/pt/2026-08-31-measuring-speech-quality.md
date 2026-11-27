@@ -3,7 +3,7 @@ title: "Medir a Qualidade da Fala Sem um Painel de Audição"
 description: "Um guia prático ao speechonnxmetrics: o que o MOS, os preditores de MOS sem referência, as métricas intrusivas de sinal e o WER/CER baseado em ASR realmente medem, quando cada um se aplica, pontuações reais de áudio real, e porque um MOS previsto é evidência, não verdade."
 date: 2026-08-31
 lang: pt
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "speechonnxmetrics"
   - "TTS"

@@ -3,7 +3,7 @@ title: "Una Familia de Bibliotecas de Voz en ONNX Puro"
 description: "TigreGótico mantiene un conjunto de bibliotecas de voz — extensión de ancho de banda, clonación de voz, embeddings de hablante, VAD, acentuación de palabras, fonemización, TTS y una biblioteca de métricas para puntuarlas todas — que comparten una regla en tiempo de ejecución: solo onnxruntime y numpy, sin PyTorch, sin GPU necesaria."
 date: 2026-08-01
 lang: es
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "ONNX"
   - "TTS"

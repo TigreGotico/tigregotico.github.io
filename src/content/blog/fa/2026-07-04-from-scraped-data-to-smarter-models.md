@@ -3,7 +3,7 @@ title: "چرا داده انبار می‌کنیم: از کاتالوگ‌های
 description: "داده‌های تمیز، تایپ‌شده و با منشأ روشن، ماده خام هر مدلی است که عرضه می‌کنیم. چگونه کاتالوگ‌هایی که scraper های ما می‌سازند به واژگان biasing برای ASR، طبقه‌بندهای intent، پیکره‌های مصنوعی NER، واژه‌نامه‌های G2P و صداهای TTS تبدیل می‌شوند — و به سوختی صادقانه برای LLM ها."
 date: 2026-07-04
 lang: fa
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Datasets"
   - "Data Collection"

@@ -3,7 +3,7 @@ title: "تصدير وتكميم نماذج الكلام المفتوحة كي ت
 description: "النموذج الصوتي المدرَّب على صفحة بحثية في GitHub ليس مساعدًا صوتيًا. نحوّل نقاط تفتيش ASR و TTS المفتوحة إلى ONNX و CoreML و GGUF، ونكمِّمها، ونتحقق من المخرجات — ثم ننشر النتائج تحت OpenVoiceOS كي تصل كل لغة تغطيها إلى مساعد حقيقي يعمل دون اتصال."
 date: 2026-08-01
 lang: ar
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "ONNX"
   - "CoreML"

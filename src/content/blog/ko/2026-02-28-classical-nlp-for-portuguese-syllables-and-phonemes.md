@@ -4,7 +4,7 @@ description: "규칙 기반이며 완전히 오프라인으로 동작하는 우�
 date: 2026-02-28
 updated: 2026-08-01
 lang: ko
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "NLP"
   - "Portuguese"

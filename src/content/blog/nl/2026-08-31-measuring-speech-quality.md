@@ -3,7 +3,7 @@ title: "Spraakkwaliteit meten zonder luisterpanel"
 description: "Een praktische gids voor speechonnxmetrics: wat MOS, no-reference MOS-voorspellers, intrusieve signaalmetrieken en ASR-gebaseerde WER/CER daadwerkelijk meten, wanneer elk van toepassing is, echte scores op echte audio, en waarom een voorspelde MOS bewijs is, geen waarheid."
 date: 2026-08-31
 lang: nl
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "speechonnxmetrics"
   - "TTS"

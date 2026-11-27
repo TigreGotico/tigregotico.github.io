@@ -4,7 +4,7 @@ description: "Una panoramica della famiglia di client Python tipizzati che mante
 date: 2026-04-20
 lang: it
 updated: 2026-08-01
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Scrapers"
   - "Media Metadata"

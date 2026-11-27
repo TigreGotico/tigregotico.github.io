@@ -3,7 +3,7 @@ title: "सुदृढ़ सार्वजनिक-डेटा पहुँ
 description: "सार्वजनिक वेब पेज भरोसेमंद ढंग से पढ़ने के लिए दो कंपोज़ेबल requests.Session सबक्लासेस, हॉट पाथ में हेडलेस ब्राउज़र के बिना: TLS-संगत ट्रांसपोर्ट, JS चैलेंज के लिए एक FlareSolverr प्रॉक्सी, एक Wayback Machine फ़ॉलबैक, और IP-विविधीकृत अनुरोध — unblock_requests और anon_requests।"
 date: 2026-03-15
 lang: hi
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "HTTP"
   - "Scraping"

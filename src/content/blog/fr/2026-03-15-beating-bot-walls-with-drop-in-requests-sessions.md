@@ -3,7 +3,7 @@ title: "Des sessions requests composables et prêtes à l'emploi pour un accès 
 description: "Deux sous-classes composables de requests.Session pour lire de façon fiable des pages web publiques sans navigateur headless dans le chemin critique : un transport compatible TLS, un proxy FlareSolverr pour les défis JS, un repli sur la Wayback Machine et des requêtes à IP diversifiées : unblock_requests et anon_requests."
 date: 2026-03-15
 lang: fr
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "HTTP"
   - "Scraping"

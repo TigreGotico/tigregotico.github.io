@@ -2,7 +2,7 @@
 title: "OVOS & HiveMind in the Manufacturing Industry"
 description: "The COALA and WASABI EU projects have built an entire industrial voice-assistant framework around OVOS + HiveMind, integrating them with their own tools, UI, and conversation engines."
 date: 2025-11-26
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "OVOS"
   - "HiveMind"

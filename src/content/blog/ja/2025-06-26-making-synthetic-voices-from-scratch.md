@@ -3,7 +3,7 @@ title: "合成音声をゼロから作る"
 description: "テキスト読み上げシステムの音声を作成するには通常、実在の人物が何時間もかけて音声を収録する必要があります。これはコストがかかり、時間を要し、多くの言語やアクセントではそもそも音声がまったく存在しません。"
 date: 2025-06-26
 lang: ja
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "TTS"
   - "Synthetic Data"

@@ -4,7 +4,7 @@ description: "g2p_barranquenho è il primo convertitore aperto grafema-fonema pe
 date: 2025-12-12
 lang: it
 updated: 2026-08-01
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Phonemization"
   - "Barranquenho"

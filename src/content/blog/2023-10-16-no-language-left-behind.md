@@ -3,7 +3,7 @@ title: "No Language Left Behind"
 description: "Eliminating language barriers in OpenVoiceOS through language detection, translation plugins, and bidirectional translation capabilities."
 date: 2023-10-16
 updated: 2026-08-01
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "OVOS"
   - "multilingual"

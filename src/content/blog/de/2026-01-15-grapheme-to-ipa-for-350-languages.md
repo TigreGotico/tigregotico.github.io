@@ -4,7 +4,7 @@ description: "orthography2ipa ist eine rein datenbasierte, linguistisch fundiert
 date: 2026-01-15
 lang: de
 updated: 2026-08-01
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "G2P"
   - "IPA"

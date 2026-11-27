@@ -4,7 +4,7 @@ description: "orthography2ipa — это ресурс на чистых данн
 date: 2026-01-15
 updated: 2026-08-01
 lang: ru
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "G2P"
   - "IPA"
