@@ -82,7 +82,7 @@ But there are many labelled datasets that we can turn into questions:
 
 Jevásio-0.8B-V2 reads 267,950 Portuguese requests made in this way, plus 12,576
 English records. The English records keep the model from forgetting what Kev
-already knew. 63 of the sources carry their own labels. A third model,
+already knew. 63 of the sources carry their own labels. A teacher model,
 AMALIA-9B, labelled the rest.
 
 For Jevhakim we set a stricter rule: **no model writes a label**. The 442,627
@@ -94,7 +94,7 @@ routing.
 
 Some sources share rows. Several Arabic Twitter datasets contain the same tweets
 under different labels. If a tweet is in the training data of one source and in
-the test data of another, the test score is false. The build found 9,800
+the held-out data of another, the test score is false. The build found 9,800
 such rows and removed them from the training split.
 
 ## Does it work?
@@ -174,7 +174,7 @@ add to the pipeline also claims more requests that it must refuse. It is a good
 second stage, not a replacement for the matchers.
 
 Two measured details save time. First, give each option the intent name only.
-Four example sentences per option made Kev less accurate (0.689 to 0.635) and 5.5
+Four example sentences per option made Kev less accurate in English (0.689 to 0.635) and 5.5
 times slower. Second, ask one question, not two. A question in two steps (the
 skill first, then the intent in the skill) loses accuracy when the options have
 names only.
