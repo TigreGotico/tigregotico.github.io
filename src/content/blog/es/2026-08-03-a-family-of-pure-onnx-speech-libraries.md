@@ -16,7 +16,7 @@ draft: false
 
 ONNX es un formato de archivo para una red neuronal entrenada: los pesos y el grafo de cómputo, congelados, sin dependencia del framework que la entrenó. Un modelo exportado a ONNX puede ejecutarse a través de **ONNX Runtime**, un pequeño motor de inferencia que no hace nada más que ejecutar ese grafo. No sabe cómo se entrenó el modelo, no soporta entrenamiento, y no necesita PyTorch ni TensorFlow instalados.
 
-Varias de nuestras bibliotecas se ciñen a una regla: en tiempo de ejecución, las únicas dependencias son `onnxruntime` y `numpy`. No «casi siempre» — el propio import del paquete nunca trae consigo un framework de entrenamiento. `audiosronnx` (extensión de ancho de banda y eliminación de ruido), `voiceclonnx` (clonación de voz), `speakeronnx` (embeddings de hablante), `speechonnxmetrics` (evaluación), `stressonnx` (acentuación de palabras), `vadonnx` (detección de actividad de voz) y `phoonnx` (fonemización y texto a voz) siguen todas esta regla, cada una en su propio paquete de PyPI. Otras dos, `phoonnx.js` y `precise-onnx-js`, aplican la misma idea en el navegador con `onnxruntime-web` en su lugar.
+Varias de nuestras bibliotecas se ciñen a una regla: en tiempo de ejecución, las únicas dependencias son `onnxruntime` y `numpy`. No «casi siempre»: el propio import del paquete nunca trae consigo un framework de entrenamiento. `audiosronnx` (extensión de ancho de banda y eliminación de ruido), `voiceclonnx` (clonación de voz), `speakeronnx` (embeddings de hablante), `speechonnxmetrics` (evaluación), `stressonnx` (acentuación de palabras), `vadonnx` (detección de actividad de voz) y `phoonnx` (fonemización y texto a voz) siguen todas esta regla, cada una en su propio paquete de PyPI. Otras dos, `phoonnx.js` y `precise-onnx-js`, aplican la misma idea en el navegador con `onnxruntime-web` en su lugar.
 
 ## Por qué molestarse
 
@@ -32,19 +32,29 @@ La forma obvia de distribuir un modelo de voz es mantener también el framework 
 
 La restricción es real, y no es gratis.
 
-**No puedes hacer fine-tuning en el propio proceso.** Un grafo ONNX no tiene optimizador, no tiene pasada hacia atrás. Cada una de estas bibliotecas trata los modelos como artefactos fijos: los cargas y los ejecutas. El entrenamiento o el ajuste fino ocurre por separado, con el framework original, y el resultado se exporta a ONNX después. `stressonnx` y `speechonnxmetrics` mantienen ambos un extra opcional `export` que trae `torch` únicamente para ese paso de conversión sin conexión — nunca para inferencia.
+### No puedes hacer fine-tuning en el propio proceso
 
-**No todas las arquitecturas se exportan limpiamente.** El flujo de control dinámico, los kernels CUDA personalizados o las operaciones sin equivalente ONNX pueden bloquear una exportación directa. El README de `audiosronnx` lo documenta directamente: mantiene una [lista de no publicados](https://github.com/TigreGotico/audiosronnx) de modelos que evaluó y rechazó, con motivos, en lugar de fingir que todo modelo de investigación se porta sin problemas.
+Un grafo ONNX no tiene optimizador, no tiene pasada hacia atrás. Cada una de estas bibliotecas trata los modelos como artefactos fijos: los cargas y los ejecutas. El entrenamiento o el ajuste fino ocurre por separado, con el framework original, y el resultado se exporta a ONNX después. `stressonnx` y `speechonnxmetrics` mantienen ambos un extra opcional `export` que trae `torch` únicamente para ese paso de conversión sin conexión, nunca para inferencia.
 
-**El preprocesamiento hay que reimplementarlo a mano.** Un framework como PyTorch o Kaldi incluye implementaciones rápidas y probadas de STFT (convertir una forma de onda en un espectrograma), características de banco de filtros mel y remuestreo. Una vez que el propio modelo ya no depende de ese framework, su preprocesamiento tampoco puede depender de él — `speakeronnx` reimplementa un banco de filtros log-mel de 80 bandas en NumPy puro exactamente por esta razón, y `audiosronnx` hace lo mismo para STFT y remuestreo. Es más código que hay que hacer bien, y necesita sus propias pruebas de paridad frente al original.
+### No todas las arquitecturas se exportan limpiamente
+
+El flujo de control dinámico, los kernels CUDA personalizados o las operaciones sin equivalente ONNX pueden bloquear una exportación directa. El README de `audiosronnx` lo documenta directamente: mantiene una [lista de no publicados](https://github.com/TigreGotico/audiosronnx) de modelos que evaluó y rechazó, con motivos, en lugar de fingir que todo modelo de investigación se porta sin problemas.
+
+### El preprocesamiento hay que reimplementarlo a mano
+
+Un framework como PyTorch o Kaldi incluye implementaciones rápidas y probadas de STFT (convertir una forma de onda en un espectrograma), características de banco de filtros mel y remuestreo. Una vez que el propio modelo ya no depende de ese framework, su preprocesamiento tampoco puede depender de él.
+
+`speakeronnx` reimplementa un banco de filtros log-mel de 80 bandas en NumPy puro exactamente por esta razón, y `audiosronnx` hace lo mismo para STFT y remuestreo. Es más código que hay que hacer bien, y necesita sus propias pruebas de paridad frente al original.
 
 ## Una tarea, varios motores, una API
 
-Los modelos de voz entrenados varían enormemente según la lengua, la condición de grabación y el dominio objetivo. Un modelo de verificación de hablante entrenado con habla leída limpia puede fallar en audio telefónico. Un modelo de clonación de voz ajustado para transferencia de timbre en inglés puede perder inteligibilidad en lenguas tonales. No hay un único modelo que gane en todo, así que comprometerse con uno de antemano es una apuesta.
+Los modelos de voz entrenados varían enormemente según la lengua, la condición de grabación y el dominio objetivo. Un modelo de verificación de hablante entrenado con habla leída limpia puede fallar en audio telefónico. Un modelo de clonación de voz ajustado para transferencia de timbre en inglés puede perder inteligibilidad en lenguas tonales.
+
+No hay un único modelo que gane en todo, así que comprometerse con uno de antemano es una apuesta.
 
 Cada biblioteca de esta familia elige una única tarea y envuelve varios modelos publicados de forma independiente tras una sola interfaz, de modo que cambiar de motor es un cambio de una línea en lugar de una reescritura.
 
-`audiosronnx` separa sus dos funciones — eliminación de ruido y extensión de ancho de banda (convertir una grabación de banda estrecha, como audio telefónico de 8 kHz, en una señal de sonido más pleno y tasa de muestreo más alta) — tras dos cargadores, cada uno respaldado por varios motores:
+`audiosronnx` separa sus dos funciones, eliminación de ruido y extensión de ancho de banda (convertir una grabación de banda estrecha, como audio telefónico de 8 kHz, en una señal de sonido más pleno y tasa de muestreo más alta), tras dos cargadores, cada uno respaldado por varios motores:
 
 ```python
 from audiosronnx import load_denoise, load_sr
@@ -53,9 +63,9 @@ clean, rate = load_denoise("dpdfnet").denoise("noisy_call.wav")   # remove noise
 wide, _ = load_sr("lavasr").upscale(clean, rate)                  # extend to 48 kHz
 ```
 
-`load_denoise` registra actualmente diez eliminadores de ruido (`dpdfnet`, `mossformer2`, `frcrn`, `mpsenet`, `gtcrn`, `cmgan`, `metadenoiser`, `mossformergan`, `voicefixer`, `deepfilternet`), desde un modelo de 0,54 MB hasta uno de 415 MB, bajo licencias distintas. `load_sr` registra siete extensores de ancho de banda (`lavasr`, `novasr`, `flowhigh`, `hifiganbwe`, `apbwe`, `sidon`, `callenhancer`). Los modelos dominados — aquellos a los que otro motor supera en todos los ejes medidos — se quedan igualmente en el registro, para que un resultado de benchmark publicado siga siendo reproducible bajo demanda.
+`load_denoise` registra actualmente diez eliminadores de ruido (`dpdfnet`, `mossformer2`, `frcrn`, `mpsenet`, `gtcrn`, `cmgan`, `metadenoiser`, `mossformergan`, `voicefixer`, `deepfilternet`), desde un modelo de 0,54 MB hasta uno de 415 MB, bajo licencias distintas. `load_sr` registra siete extensores de ancho de banda (`lavasr`, `novasr`, `flowhigh`, `hifiganbwe`, `apbwe`, `sidon`, `callenhancer`). Los modelos dominados, aquellos a los que otro motor supera en todos los ejes medidos, se quedan igualmente en el registro, para que un resultado de benchmark publicado siga siendo reproducible bajo demanda.
 
-`voiceclonnx` adopta el mismo enfoque para la clonación de voz — convertir la voz de una grabación existente para que suene como un hablante de referencia distinto, sin pasar por el texto:
+`voiceclonnx` adopta el mismo enfoque para la clonación de voz: convertir la voz de una grabación existente para que suene como un hablante de referencia distinto, sin pasar por el texto:
 
 ```python
 from voiceclonnx import VoiceCloner
@@ -64,9 +74,11 @@ cloner = VoiceCloner(engine="facodec")
 out = cloner.clone_voice("source.wav", "reference.wav", "out.wav")
 ```
 
-Hay diez motores registrados (`facodec`, `openvoice`, `chatterbox`, `triaan`, `cosyvoice`, `bicodec`, `knnvc`, `focalcodec`, `lscodec`, `rvc`), que abarcan seis familias de modelos distintas — intercambio de características kNN, codec factorizado, flow-matching, transferencia de tono de color, AR codec-LM y codec desacoplado de hablante. Detrás de cada uno hay cifras publicadas de inteligibilidad y similitud de hablante, de modo que elegir un motor es una comparación, no una moneda al aire.
+Hay diez motores registrados (`facodec`, `openvoice`, `chatterbox`, `triaan`, `cosyvoice`, `bicodec`, `knnvc`, `focalcodec`, `lscodec`, `rvc`), que abarcan seis familias de modelos distintas: intercambio de características kNN, codec factorizado, flow-matching, transferencia de tono de color, AR codec-LM y codec desacoplado de hablante.
 
-`vadonnx` aplica el patrón a la detección de actividad de voz — decidir qué partes de un flujo de audio contienen habla siquiera:
+Detrás de cada uno hay cifras publicadas de inteligibilidad y similitud de hablante, de modo que elegir un motor es una comparación, no una moneda al aire.
+
+`vadonnx` aplica el patrón a la detección de actividad de voz: decidir qué partes de un flujo de audio contienen habla siquiera:
 
 ```python
 from vadonnx import load_vad
@@ -78,7 +90,7 @@ segments = vad.get_speech_segments(audio, sample_rate=16000)
 
 Hay seis familias de modelos registradas (`silero`, `marblenet`, `pyannote`, `fsmn`, `speechbrain`, `ten`), y una `IOSignature` declarativa permite que un único motor genérico impulse la mayoría de ellas, o apunte a cualquier archivo `.onnx` de VAD personalizado.
 
-`speakeronnx` extrae un **embedding de hablante** — un vector de longitud fija que resume quién habla, independientemente de lo que dijo — y compara dos embeddings por similitud coseno para comprobar si dos clips son del mismo hablante:
+`speakeronnx` extrae un **embedding de hablante** (un vector de longitud fija que resume quién habla, independientemente de lo que dijo) y compara dos embeddings por similitud coseno para comprobar si dos clips son del mismo hablante:
 
 ```python
 from speakeronnx import SpeakerEmbedder, cosine
@@ -123,11 +135,13 @@ const blob = await synthesizeWav(voice, "Kaixo mundua!");
 
 Los pesos de `audiosronnx` (18 modelos publicados) y `voiceclonnx` (10 modelos publicados) viven como descargas separadas en la [organización de Hugging Face de TigreGótico](https://huggingface.co/TigreGotico), obtenidos en el primer uso y guardados en caché localmente, de modo que elegir un motor distinto es un cambio de configuración, no un nuevo despliegue.
 
-## Cerrando el círculo: juzgar motores en lugar de adivinar
+## Medir qué motor gana de verdad
 
 Registrar muchos motores tras una sola API solo compensa si puedes saber cuál es realmente mejor para tu entrada. Para eso está `speechonnxmetrics`: una biblioteca de métricas construida sobre la misma restricción `numpy` + `onnxruntime`, de modo que puntuar un modelo no cuesta nada adicional instalar.
 
-Agrupa las métricas en tres tipos. Los estimadores de **MOS sin referencia** — UTMOS, DNSMOS, NISQA, SIGMOS — predicen una **Mean Opinion Score**, la valoración de naturalidad de 1 a 5 que daría un panel de oyentes humanos a un clip, sin necesitar una referencia limpia con la que comparar. Las **métricas intrusivas** — STOI (inteligibilidad objetiva a corto plazo), SI-SDR (relación señal-distorsión invariante a escala), MCD (distorsión mel-cepstral) — necesitan una referencia limpia correspondiente y miden cuán cerca está la salida de ella. Las **métricas de texto basadas en ASR** — WER (tasa de error de palabras) y CER (tasa de error de caracteres) — ejecutan un reconocedor de voz sobre la salida y comparan la transcripción con el texto esperado, detectando casos en los que un modelo produce un audio que suena bien pero dice las palabras equivocadas.
+Agrupa las métricas en tres tipos. Los estimadores de **MOS sin referencia** (UTMOS, DNSMOS, NISQA, SIGMOS) predicen una **Mean Opinion Score**, la valoración de naturalidad de 1 a 5 que daría un panel de oyentes humanos a un clip, sin necesitar una referencia limpia con la que comparar.
+
+Las **métricas intrusivas** (STOI, inteligibilidad objetiva a corto plazo; SI-SDR, relación señal-distorsión invariante a escala; MCD, distorsión mel-cepstral) necesitan una referencia limpia correspondiente y miden cuán cerca está la salida de ella. Las **métricas de texto basadas en ASR**, WER (tasa de error de palabras) y CER (tasa de error de caracteres), ejecutan un reconocedor de voz sobre la salida y comparan la transcripción con el texto esperado, detectando casos en los que un modelo produce un audio que suena bien pero dice las palabras equivocadas.
 
 ```python
 import speechonnxmetrics as s
@@ -139,11 +153,15 @@ print(s.score("clone_output.wav", ["stoi", "mcd", "si_sdr"], ref="source.wav"))
 # -> {'stoi': 0.662..., 'mcd': 10.459..., 'si_sdr': -26.937...}
 ```
 
-Esto convierte la elección de motor de una prueba de escucha en una tabla. `voiceclonnx` publica exactamente esa comparación para sus diez motores de clonación — WER frente a la transcripción de origen más una puntuación de similitud de hablante independiente para cada uno, de modo que «facodec da 0% de WER» o «lscodec cambia WER por una transferencia de timbre más fuerte» son afirmaciones medidas, no impresiones. Multiplica eso por lenguas y condiciones de grabación y la comparación manual deja de ser realista; una métrica objetiva es lo que hace que un registro de diez motores sea utilizable en lugar de abrumador.
+Esto convierte la elección de motor de una prueba de escucha en una tabla. `voiceclonnx` publica exactamente esa comparación para sus diez motores de clonación: WER frente a la transcripción de origen más una puntuación de similitud de hablante independiente para cada uno, de modo que «facodec da 0% de WER» o «lscodec cambia WER por una transferencia de timbre más fuerte» son afirmaciones medidas, no impresiones.
+
+Multiplica eso por lenguas y condiciones de grabación y la comparación manual deja de ser realista. Una métrica objetiva es lo que mantiene manejable un registro de diez motores.
 
 ## Dónde resulta útil
 
-Si necesitas procesamiento de voz sin conexión — limpiar una grabación, clonar una voz, detectar quién habla o sintetizar una — en hardware que nunca verá una GPU, esta es la forma que hay que buscar: una dependencia de runtime pequeña, una elección entre modelos publicados en lugar de un único valor por defecto fijo, y una forma de medir cuál funciona realmente para tu caso. Cada biblioteca anterior está a un `pip install` de distancia, con licencia MIT o Apache a nivel de código (los pesos de cada modelo individual llevan sus propias licencias de origen, documentadas por motor), y funciona igual en un portátil, un servidor o una Raspberry Pi.
+Si necesitas procesamiento de voz sin conexión (limpiar una grabación, clonar una voz, detectar quién habla o sintetizar una) en hardware que nunca verá una GPU, esta es la forma que hay que buscar: una dependencia de runtime pequeña, una elección entre modelos publicados en lugar de un único valor por defecto fijo, y una forma de medir cuál funciona realmente para tu caso.
+
+Cada biblioteca anterior está a un `pip install` de distancia, con licencia MIT o Apache a nivel de código (los pesos de cada modelo individual llevan sus propias licencias de origen, documentadas por motor), y funciona igual en un portátil, un servidor o una Raspberry Pi.
 
 Ponte en contacto a través de [/contact](/es/contact) o mira qué más construimos en
 [/services](/es/services).

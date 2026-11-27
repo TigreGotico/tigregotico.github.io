@@ -1,6 +1,6 @@
 ---
 title: "OpenVoiceOS y Home Assistant: El Equipo de Ensueño de la Automatización por Voz"
-description: "Home Assistant se encarga de la automatización; OVOS se encarga de la voz. Tres capas de integración hacen que la combinación funcione: puentes Wyoming para la canalización de voz de HA, ovos-persona-server como agente conversacional y HiveMind para exponer los dispositivos OVOS como entidades nativas de HA."
+description: "Home Assistant se encarga de la automatización. OVOS se encarga de la voz. Tres capas de integración hacen que la combinación funcione: puentes Wyoming para la canalización de voz de HA, ovos-persona-server como agente conversacional y HiveMind para exponer los dispositivos OVOS como entidades nativas de HA."
 date: 2025-09-17
 lang: es
 author: "Casimiro Ferreira"
@@ -14,7 +14,7 @@ draft: false
 
 > Este artículo se publicó originalmente en el [blog de OpenVoiceOS](https://blog.openvoiceos.org/posts/2025-09-17-ovos_ha_dream_team)
 
-Home Assistant se encarga de la automatización; OVOS se encarga de la voz. Ninguno intenta ser el otro. Es esa división de responsabilidades la que hace que la combinación funcione: las integraciones de dispositivos y el motor de automatización de HA junto con la pila de voz flexible y totalmente local de OVOS.
+Home Assistant se encarga de la automatización. OVOS se encarga de la voz. Ninguno intenta ser el otro. Es esa división de responsabilidades la que hace que la combinación funcione: las integraciones de dispositivos y el motor de automatización de HA junto con la pila de voz flexible y totalmente local de OVOS.
 
 Este artículo cubre las tres capas de integración: puentes Wyoming para la canalización de voz de HA, ovos-persona-server como agente conversacional y HiveMind para exponer los dispositivos OVOS como entidades nativas de HA.
 
@@ -36,7 +36,7 @@ El proyecto [OVOS Wyoming Docker](https://github.com/TigreGotico/ovos-wyoming-do
 La accesibilidad lingüística también es accesibilidad. Esta integración lleva voces de alta calidad, financiadas con fondos públicos, de proyectos como **[ILENIA](https://proyectoilenia.es/demostradores-2025/prototipo-ovos/)**, a un público más amplio. Los usuarios de Home Assistant obtienen voces de sonido natural para lenguas como el catalán y el gallego, directamente de los proyectos que las construyeron.
 
 * **Matxa TTS para catalán:** El [`ovos-tts-plugin-matxa-multispeaker-cat`](https://github.com/OpenVoiceOS/ovos-tts-plugin-matxa-multispeaker-cat) proporciona capacidades de síntesis de voz multilocutor para la lengua catalana.
-* **NosTTS para gallego:** El [`ovos-tts-plugin-nos`](https://github.com/OpenVoiceOS/ovos-tts-plugin-nos) ofrece una síntesis de voz robusta en gallego.
+* **NosTTS para gallego:** El [`ovos-tts-plugin-nos`](https://github.com/OpenVoiceOS/ovos-tts-plugin-nos) ofrece síntesis de voz en gallego.
 
 ![logotipo de ILENIA](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/ilenia.png)
 
@@ -49,7 +49,7 @@ La accesibilidad lingüística también es accesibilidad. Esta integración llev
 ![configuración de ollama en Home Assistant](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/ollama_setup.png)
 
 
-En esta configuración, Home Assistant pasa el texto del usuario al [ovos-persona-server](https://openvoiceos.github.io/ovos-technical-manual/150-personas/); OVOS determina la intención y devuelve la respuesta para que Home Assistant la hable. Y como el [ovos-persona-server](https://github.com/OpenVoiceOS/ovos-persona-server) expone endpoints compatibles con Ollama, el mismo servidor se conecta a cualquier aplicación que hable las APIs de Ollama o de OpenAI, y no solo a Home Assistant.
+En esta configuración, Home Assistant pasa el texto del usuario al [ovos-persona-server](https://openvoiceos.github.io/ovos-technical-manual/150-personas/). OVOS determina la intención y devuelve la respuesta para que Home Assistant la hable. Y como el [ovos-persona-server](https://github.com/OpenVoiceOS/ovos-persona-server) expone endpoints compatibles con Ollama, el mismo servidor se conecta a cualquier aplicación que hable las APIs de Ollama o de OpenAI, y no solo a Home Assistant.
 
 ![conversar con OVOS en Home Assistant](https://blog.openvoiceos.org/assets/blog/OpenVoiceOS-and-Home-Assistant-a-voice-automation-dream-team/agent_chat.png)
 
@@ -114,7 +114,7 @@ La skill [skill-homeassistant](https://github.com/OscillateLabsLLC/skill-homeass
 
 ## Lo Que Aún Está en Desarrollo
 
-Los puentes Wyoming y la integración con HiveMind son las piezas más maduras aquí; el camino de persona-server como agente conversacional es más nuevo y merece la pena probarlo primero si quieres ver el techo de lo que OVOS y HA pueden hacer juntos. Los informes de errores y los PR son bienvenidos en todos los repositorios enlazados anteriormente.
+Los puentes Wyoming y la integración con HiveMind son las piezas más maduras aquí. El camino de persona-server como agente conversacional es más nuevo; pruébalo primero si quieres ver el techo de lo que OVOS y HA pueden hacer juntos. Los informes de errores y los PR son bienvenidos en todos los repositorios enlazados anteriormente.
 
 ---
 
