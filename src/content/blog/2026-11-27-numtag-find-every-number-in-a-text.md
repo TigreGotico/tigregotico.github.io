@@ -9,7 +9,7 @@ tags:
   - "numbers"
   - "OVOS"
   - "TTS"
-draft: false
+draft: true
 ---
 
 "Faltam mil e duzentos metros." A voice assistant must know that this sentence

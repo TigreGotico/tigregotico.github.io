@@ -10,7 +10,7 @@ tags:
   - "Portuguese"
   - "Arabic"
   - "OVOS"
-draft: false
+draft: true
 ---
 
 Many questions inside a voice assistant are not open questions. "Which of these
