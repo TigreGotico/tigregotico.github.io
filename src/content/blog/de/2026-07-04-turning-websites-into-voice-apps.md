@@ -133,7 +133,7 @@ strukturierten Daten und spricht *diese* aus, in einem Ablauf, der von der erste
 Codezeile an fürs Zuhören konzipiert ist.
 
 Es ist dasselbe Prinzip, das hinter unseren
-[Audio-first-Spielen](/de/games) steht, für die Ohren gebaut, nicht für die Augen,
+[Audio-first-Spielen](https://github.com/HelloChatterbox/pyFrotz) steht, für die Ohren gebaut, nicht für die Augen,
 mit blinden Spielern als Hauptzielgruppe statt als nachträglichem Gedanken.
 Sprach-Apps für Websites weiten dieses Prinzip von den Spielen auf den Rest des Webs
 aus.

@@ -30,7 +30,6 @@ export const site = {
     { label: 'Blog', href: '/blog' },
     { label: 'Open Source', href: '/projects' },
     { label: 'Services', href: '/services' },
-    { label: 'Games', href: '/games' },
     { label: 'Contact', href: '/contact' },
   ],
 } as const;

@@ -127,7 +127,7 @@ dados estruturados e fala *isso*, num fluxo concebido para se ouvir desde a
 primeira linha de código.
 
 É o mesmo princípio por trás dos nossos
-[jogos audio-first](/pt/games), construídos para os ouvidos, não para os olhos,
+[jogos audio-first](https://github.com/HelloChatterbox/pyFrotz), construídos para os ouvidos, não para os olhos,
 com jogadores cegos como público principal em vez de uma reflexão tardia. As
 aplicações de voz para websites estendem esse princípio dos jogos ao resto da web.
 

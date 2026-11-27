@@ -116,7 +116,7 @@ entirely: it goes to the structured data and speaks *that*, in a flow designed
 for listening from the first line of code.
 
 It is the same principle behind our
-[audio-first games](/games), built for ears, not eyes, with blind players as
+[audio-first games](https://github.com/HelloChatterbox/pyFrotz), built for ears, not eyes, with blind players as
 the primary audience rather than an afterthought. Voice apps for websites extend
 that principle from games to the rest of the web.
 
