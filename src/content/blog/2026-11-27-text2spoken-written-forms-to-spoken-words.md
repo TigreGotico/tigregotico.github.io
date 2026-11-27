@@ -90,13 +90,8 @@ So text2spoken does not convert a number alone. It reads the word after the numb
 looks up its gender and case in the language file, and asks the number writer for
 the form that agrees with it.
 
-The older tools in OpenVoiceOS did not do this correctly. With the same inputs,
-`ovos-number-parser` returned *один* for a feminine 1 in Russian (correct: *одна*)
-and *un* in French (correct: *une*). In Hindi, it picked the gender of an ordinal
-from the length of an internal rule name, so a masculine "second" came out
-feminine. `pronounce_number(1.2345, "en")` rounded the number to "one point two
-three five". `ovos-date-parser` wrote the German year 2024 as "zwei tausend vier und
-zwanzig", in four words.
+The number and date writers that OpenVoiceOS used could not make a number agree with
+its noun in gender or case, so we did not build on them.
 
 ## How it works
 
@@ -130,9 +125,7 @@ tell that it is wrong.
 The big normalisers for speech are FST grammars.
 [NeMo](https://github.com/NVIDIA/NeMo-text-processing) builds its grammars with
 Pynini, and they run in C++ through Sparrowhawk. That is a heavy build. A language file in plain Python data
-is easier to extend, and the library installs with `uv pip` and nothing else. We
-also did not build on `ovos-number-parser` and `ovos-date-parser`, for the reasons
-above.
+is easier to extend, and the library installs with `uv pip` and nothing else.
 
 ## Keep the cache honest
 
