@@ -1,6 +1,6 @@
 ---
-title: "text2spoken: Written Forms to Spoken Words"
-description: "A TTS voice reads letters, not '12/03/2024' or '3,50 €'. text2spoken rewrites numbers, dates, times, money, units and abbreviations into the words a speaker says, in 18 languages, with cited sources for the rules."
+title: "text2spoken: Why a Voice Says “Pound Three Point Five Zero”"
+description: "A text-to-speech voice reads characters, so '£3.50' and '12/03/2024' come out as nonsense. text2spoken finds numbers, dates, money, units and abbreviations and writes them as a speaker says them, with the correct gender and case. Why it exists, how it works and where you can use it."
 date: 2026-11-27
 authors: ["Casimiro Ferreira", "Claude"]
 tags:
@@ -12,93 +12,169 @@ tags:
 draft: false
 ---
 
-A phonemizer reads letters. Give it `12/03/2024` or `3,50 €` and it reads
-slashes and digits, or it reads nothing. A person reads "the twelfth of March"
-and "three euros fifty". The step between the two is text normalisation, and
-[**text2spoken**](https://github.com/TigreGotico/text2spoken) does that step.
+Give a text-to-speech voice this sentence:
+
+> Dr Smith paid £3.50 on 21 May.
+
+A person reads "Doctor Smith paid three pounds and fifty pence on the twenty-first of
+May". The voice says something different. Before a neural voice makes a sound, a
+**phonemizer** turns the text into phonemes. A phonemizer such as espeak-ng reads the
+characters that it gets, in the order that it gets them. Here is what espeak-ng makes
+of the raw text, glossed back into English:
+
+> doctor Smith paid **pound three point five zero** on **twenty one** May
+
+The currency symbol comes first because it is first on the page. "3.50" becomes a
+decimal number. "21 May" loses its ordinal. It is worse with dates:
+
+| Written | What the voice says without help |
+| :--- | :--- |
+| `12/03/2024` | "twelve slash zero three slash two thousand and twenty four" |
+| `1/2 kg` | "one slash two K G" |
+| `3,50 € 12/03/2024` (Portuguese) | "três vírgula cinquenta euro doze zero três dois mil e vinte e quatro" |
+
+The voice model can be perfect and still say the wrong words. The defect is in the
+text, before the voice starts. The fix is called **text normalisation**: rewrite
+each written form as the words that a speaker says. That is the job of
+[**text2spoken**](https://github.com/TigreGotico/text2spoken).
 
 ```bash
-uv pip install --prerelease=allow text2spoken
+uv pip install --prerelease=allow "text2spoken[pt]"
 ```
+
+The `pt` extra installs [tugalex](https://github.com/TigreGotico/tugalex), the
+Portuguese lexicon that gives the gender of each noun. Without it, Portuguese numbers
+do not agree with the noun: "Comprei 2 maçãs" becomes "Comprei dois maçãs".
+
+## The same sentences, after text2spoken
+
+```text
+en-GB  Dr Smith paid £3.50 for 2 tickets on 21 May.
+       Doctor Smith paid three pounds and fifty pence for two tickets on the twenty-first of May.
+
+pt-PT  A reunião é a 12/03/2024 às 14h30 e custa 3,50 €.
+       A reunião é a doze de março de dois mil e vinte e quatro às catorze horas
+       e trinta minutos e custa três euros e cinquenta cêntimos.
+
+de-DE  Am 3. Mai kostet es 25 €.
+       Am dritten Mai kostet es fünfundzwanzig Euro.
+
+en-GB  St. Patrick's Day, 3rd floor, 5km
+       St. Patrick's Day, third floor, five kilometres
+```
+
+In the last line, "5km" has no space, but it is still five kilometres, and "3rd"
+is "third". All outputs are from text2spoken 0.0.2a172.
+
+## The hard part: a number is not one word
+
+In English, "2" is "two" before any noun. In most other languages it is not.
+
+```text
+pt-PT  Comprei 2 maçãs e 1 laranja.
+       Comprei duas maçãs e uma laranja.
+
+fr-FR  Il a 21 pages et 1 minute de retard.
+       Il a vingt et une pages et une minute de retard.
+
+ru-RU  о 3 квинтиллионах книг
+       о трёх квинтиллионах книг
+```
+
+"Maçã" (apple) is feminine, so 2 is *duas*, not *dois*. "Page" is feminine in
+French, so 21 is *vingt et une*. In Russian, the preposition *о* ("about") puts the
+noun in the prepositional case, and the number must follow: *трёх*, not *три*. A
+phonemizer that reads the raw digit gets each of these wrong.
+
+So text2spoken does not convert a number alone. It reads the word after the number,
+looks up its gender and case in the language file, and asks the number writer for
+the form that agrees with it.
+
+The number and date writers that OpenVoiceOS used could not make a number agree with
+its noun in gender or case, so we did not build on them.
+
+## How it works
+
+text2spoken works in two steps: **find**, then **speak**.
+
+1. **Find.** Recognizers mark the spans in the text that are not words: numbers,
+   dates, clock times, money, units, abbreviations and emoji.
+2. **Speak.** A speller writes each span in words, with the gender and case of the
+   noun beside it.
+
+text2spoken does not contain its own number or date writers. Numbers come from
+[numtag](https://github.com/TigreGotico/numtag), and Portuguese dates and clock
+times come from [chronologia](https://github.com/TigreGotico/chronologia). The
+same libraries also *read* numbers and dates in voice commands. Thus a fix to
+"doze de março" in the reader is also the fix for the voice. Each engine reads
+every form that people write and speaks the standard one.
+
+Each language is one data file: its abbreviations, its units, the gender and case
+of its nouns, and the libraries that write it. The test suite has more than 4,400 rows. Each row cites a grammar, a dictionary or a
+style guide, or it is marked *silver* when no source states the rule, so nobody
+mistakes it for a checked fact. Native speakers review languages that we do not
+speak, for example Danish.
+
+A form that text2spoken cannot read stays as written. It does not guess. For
+example, `1/2` in British English and the Bengali counted form `3টি` stay as
+written. A wrong word is worse than a raw character, because the listener cannot
+tell that it is wrong.
+
+### What we did not build
+
+The big normalisers for speech are FST grammars.
+[NeMo](https://github.com/NVIDIA/NeMo-text-processing) builds its grammars with
+Pynini, and they run in C++ through Sparrowhawk. That is a heavy build. A language file in plain Python data
+is easier to extend, and the library installs with `uv pip` and nothing else.
+
+## Keep the cache honest
+
+A voice system caches audio. If the sentence "3,50 €" was synthesised yesterday,
+the cache plays the same audio today. But if a new version of numtag changes how
+"3,50 €" is spoken, the old audio is wrong.
+
+text2spoken gives each language a **revision**: the exact versions of the libraries
+behind it. phoonnx and scriptconv put this revision in their cache keys. When a
+writer changes, the key changes, and the old audio is not used.
+
+## What you can do with it
+
+### Give a voice correct input
+
+[phoonnx](https://github.com/TigreGotico/phoonnx) sends every input through
+text2spoken before the phonemizer. When the switch was made, 8,336 test inputs
+gave the same output as the old phoonnx normaliser. The old normaliser was then
+deprecated. If you train or run a phoonnx voice, text2spoken is already in front of
+it.
+
+### Make an assistant say its replies correctly
+
+In OpenVoiceOS, a skill writes a reply such as "O alarme toca às 7h30". The
+`ovos-dialog-normalizer-plugin` (from 0.1.0a1) sends each reply through
+text2spoken before the TTS, so the assistant says "às sete horas e trinta minutos".
+
+### Clean data for TTS and ASR
+
+To train a voice, the transcripts must hold the words that the speaker said. To
+score a speech recogniser, "21" and "twenty-one" must count as the same word. Send
+both sides through text2spoken and compare words with words.
+
+### Put it in front of a phonemizer
+
+The `normalize` extra of
+[scriptconv](https://github.com/TigreGotico/scriptconv) runs text2spoken before
+each phonemizer, with the revision in the cache key.
+
+## Use it
 
 ```python
 from text2spoken import normalize
 
-normalize("A reunião é a 12/03/2024 às 14h30 e custa 3,50 €.", "pt-PT")
-# 'A reunião é a doze de março de dois mil e vinte e quatro às catorze horas
-#  e trinta minutos e custa três euros e cinquenta cêntimos.'
-
-normalize("Dr Smith paid £3.50 for 2 tickets on 21 May.", "en-GB")
-# 'Doctor Smith paid three pounds and fifty pence for two tickets on the
-#  twenty-first of May.'
+normalize("Comprei 2 maçãs e 1 laranja.", "pt-PT")
+# 'Comprei duas maçãs e uma laranja.'
 ```
 
-All outputs are from text2spoken 0.0.2a169.
-
-## Grammar, not only digits
-
-A number in words must agree with the words around it. French counts pages in
-the feminine and Russian puts the number in the case of its noun:
-
-```python
-normalize("Il a 21 pages et 1 minute de retard.", "fr-FR")
-# 'Il a vingt et une pages et une minute de retard.'
-
-normalize("Am 3. Mai kostet es 25 €.", "de-DE")
-# 'Am dritten Mai kostet es fünfundzwanzig Euro.'
-
-normalize("о 3 квинтиллионах книг", "ru-RU")
-# 'о трёх квинтиллионах книг'
-```
-
-"21 pages" is *vingt et une*, not *vingt et un*. "3. Mai" after *am* is the
-dative ordinal *dritten*. "3" before a prepositional plural is *трёх*.
-
-## Every rule has a source
-
-Eighteen languages have their own language file: Arabic, Bengali, Catalan,
-German, Greek, English, Spanish, Basque, French, Hindi, Italian,
-Japanese, Korean, Dutch, Portuguese (pt-PT and pt-BR), Russian, Tetun Dili and
-Chinese. Any other BCP 47 tag still gets cardinals, decimals and the minus sign
-from the CLDR rules.
-
-Each rule in a language file names its source: a grammar, a dictionary or a
-style guide. The test set has more than 4,000 rows, and almost all of them cite a source.
-The rest are marked *silver*, because no known source states them.
-
-## One engine for reading and speaking
-
-text2spoken finds the written forms with its own recognizers. For most
-languages, [numtag](https://github.com/TigreGotico/numtag) spells the numbers. For
-Portuguese, [chronologia](https://github.com/TigreGotico/chronologia) speaks the
-dates and clock times, and more languages follow. numtag and chronologia also
-parse voice commands, so the forms that a parser reads and the forms that the
-writer speaks come from one library. A fix in one place fixes both directions.
-
-The rule is "parse every form, speak the canonical one". The reader accepts every
-spelling that a speaker uses. The writer gives the one preferred form.
-
-## Safe to cache
-
-TTS output is often cached. A cache key needs to change when the text that the
-voice reads changes. `revision(lang)` returns the exact versions of the libraries
-behind the output of a language, so an upgrade invalidates the cache, and nothing
-else does.
-
-A form that text2spoken cannot read stays as written. It never guesses.
-
-## Where it runs
-
-[phoonnx](https://github.com/TigreGotico/phoonnx) voices and the scriptconv
-phonemizers call it before phonemization. OpenVoiceOS uses it through
-`ovos-dialog-normalizer-plugin` (from 0.1.0a1). It can also normalise
-reference text before WER scoring, so that "21" and "twenty-one" count as the same
-word. It replaces the older normaliser inside phoonnx. When phoonnx switched, the
-two gave equal output on 8,336 inputs.
-
-## Limits
-
-The package is an alpha. On 0.0.2a169, Bengali digits with a classifier (`3টি`)
-are not read. Russian ordinals above 10^15 stay as digits. Greek, Chinese, Korean,
-Japanese, Basque and Arabic read their numbers through CLDR rules, not through
-numtag.
+text2spoken has 19 language files. The rules for each language, the sources and
+the known gaps are in the
+[documentation](https://github.com/TigreGotico/text2spoken/tree/dev/docs). Each
+known defect is an open issue on GitHub.
