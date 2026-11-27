@@ -1,7 +1,7 @@
 ---
 title: "문자 체계와 음성 표기법: scriptconv가 실제로 변환하는 것"
 description: "문자 체계를 감지하고 음성 표기법 사이를 변환하는 의존성 없는 라이브러리 scriptconv에 대한 심층 분석. IPA, ARPABET, X-SAMPA; ISO-15924 문자 체계 감지; 아랍어를 위한 Buckwalter 음역; 자모로의 한글 분해; 가나 변환을 실제로 실행된 예제와 정직한 한계와 함께 다룹니다."
-date: 2026-08-01
+date: 2026-09-07
 lang: ko
 authors: ["Casimiro Ferreira", "Claude"]
 tags:

@@ -1,7 +1,7 @@
 ---
 title: "A Family of Pure-ONNX Speech Libraries"
 description: "TigreGótico maintains a set of speech libraries — bandwidth extension, voice cloning, speaker embeddings, VAD, word stress, phonemization, TTS, and a metrics library to score them all — that share one runtime rule: onnxruntime and numpy only, no PyTorch, no GPU required."
-date: 2026-08-01
+date: 2026-08-03
 lang: en
 authors: ["Casimiro Ferreira", "Claude"]
 tags:

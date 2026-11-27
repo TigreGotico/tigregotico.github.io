@@ -1,7 +1,7 @@
 ---
 title: "用机器移植代码，以及我们无法回答的许可证问题"
 description: "我们把几个 C、C++ 和 Java 程序——espeak-ng 的 G2P、Cotovia、AhoTTS、HermiT——重写成了纯 Python，由 AI 阅读原始源码，由人类主导整个过程。我们这边没有人读过原始代码。这引出了两个独立的问题：产出物究竟能不能被拥有，以及它是不是输入内容的衍生作品。我们保留了上游的许可证，因为这比回答这个问题更划算。我们仍然认为这个问题是开放的。"
-date: 2026-08-01
+date: 2026-08-02
 lang: zh
 authors: ["Casimiro Ferreira", "Claude"]
 tags:

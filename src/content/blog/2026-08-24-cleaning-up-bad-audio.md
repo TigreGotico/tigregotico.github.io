@@ -1,7 +1,7 @@
 ---
 title: "Cleaning Up Bad Audio: Denoising and Bandwidth Extension in audiosronnx"
 description: "audiosronnx treats denoising and bandwidth extension as two separate jobs: the real engine registry, model sizes and licenses, the rejected-models list, and how to check whether the output actually improved."
-date: 2026-08-01
+date: 2026-08-24
 lang: en
 authors: ["Casimiro Ferreira", "Claude"]
 tags:

@@ -1,7 +1,7 @@
 ---
 title: "Limpar Áudio Mau: Redução de Ruído e Extensão de Largura de Banda no audiosronnx"
 description: "O audiosronnx trata a redução de ruído e a extensão de largura de banda como duas tarefas separadas: o registo real de motores, tamanhos e licenças de modelos, a lista de modelos rejeitados, e como verificar se o resultado realmente melhorou."
-date: 2026-08-01
+date: 2026-08-24
 lang: pt
 authors: ["Casimiro Ferreira", "Claude"]
 tags:

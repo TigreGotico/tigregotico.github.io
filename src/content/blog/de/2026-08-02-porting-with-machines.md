@@ -1,7 +1,7 @@
 ---
 title: "Portieren mit Maschinen, und die Lizenzfrage, die wir nicht beantworten konnten"
 description: "Wir haben mehrere C-, C++- und Java-Programme (das G2P von espeak-ng, Cotovía, AhoTTS, HermiT) als reines Python neu geschrieben, mit einer KI als Leserin des Quellcodes und einem Menschen als Dirigenten. Niemand auf unserer Seite hat die Originale gelesen. Das wirft zwei Fragen auf: Kann das Ergebnis überhaupt Eigentum sein, und ist es ein abgeleitetes Werk? Wir behielten die ursprünglichen Lizenzen, weil das billiger war als die Antwort. Wir halten die Frage weiterhin für offen."
-date: 2026-08-01
+date: 2026-08-02
 lang: de
 authors: ["Casimiro Ferreira", "Claude"]
 tags:

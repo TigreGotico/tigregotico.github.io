@@ -1,7 +1,7 @@
 ---
 title: "Limpiando Audio Deficiente: Eliminación de Ruido y Extensión de Ancho de Banda en audiosronnx"
 description: "audiosronnx trata la eliminación de ruido y la extensión de ancho de banda como dos tareas independientes: el registro real de motores, tamaños y licencias de los modelos, la lista de modelos rechazados, y cómo comprobar si la salida realmente mejoró."
-date: 2026-08-01
+date: 2026-08-24
 lang: es
 authors: ["Casimiro Ferreira", "Claude"]
 tags:

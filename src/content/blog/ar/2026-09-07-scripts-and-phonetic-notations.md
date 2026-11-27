@@ -1,7 +1,7 @@
 ---
 title: "الكتابات والترميزات الصوتية: ما الذي يحوّله scriptconv فعلًا"
 description: "غوص عميق في scriptconv، المكتبة بلا اعتماديات التي تكشف أنظمة الكتابة وتحوّل بين الترميزات الصوتية. يغطي IPA وARPABET وX-SAMPA؛ وكشف الكتابة وفق ISO-15924؛ وترجمة Buckwalter الصوتية للعربية؛ وتفكيك Hangul إلى jamo؛ وتحويل الكانا، بأمثلة حقيقية مُنفَّذة وحدود صادقة."
-date: 2026-08-01
+date: 2026-09-07
 lang: ar
 authors: ["Casimiro Ferreira", "Claude"]
 tags:

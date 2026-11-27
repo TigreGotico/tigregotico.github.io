@@ -1,7 +1,7 @@
 ---
 title: "Schriften und phonetische Notationen: Was scriptconv tatsächlich umwandelt"
 description: "Eine Führung durch scriptconv, der abhängigkeitsfreien Bibliothek, die Schriftsysteme erkennt und zwischen phonetischen Notationen umwandelt. Behandelt IPA, ARPABET und X-SAMPA, ISO-15924-Schrifterkennung, Buckwalter-Transliteration für Arabisch, Hangul-Zerlegung in Jamo und Kana-Umwandlung, mit echten, ausgeführten Beispielen und ehrlichen Grenzen."
-date: 2026-08-01
+date: 2026-09-07
 lang: de
 authors: ["Casimiro Ferreira", "Claude"]
 tags:

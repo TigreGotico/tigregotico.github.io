@@ -1,7 +1,7 @@
 ---
 title: "Een stemklonings-engine kiezen"
 description: "voiceclonnx draait 10 stemconversie-engines achter één API, van kNN-feature-swap tot AR codec-LM. Dit is een gids voor de modelfamilies erachter, de echte gemeten afweging tussen verstaanbaarheid en sprekergelijkenis, en hoe u een engine kiest voor een specifieke taak."
-date: 2026-08-01
+date: 2026-08-17
 lang: nl
 authors: ["Casimiro Ferreira", "Claude"]
 tags:

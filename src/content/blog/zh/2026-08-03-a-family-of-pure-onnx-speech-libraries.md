@@ -1,7 +1,7 @@
 ---
 title: "一族纯 ONNX 语音库"
 description: "TigreGótico 维护着一组语音库——带宽扩展、声音克隆、说话人嵌入、VAD、词重音、音素化、TTS，以及一个为它们全部打分的指标库——它们共用同一条运行时规则：只依赖 onnxruntime 和 numpy，不需要 PyTorch，也不需要 GPU。"
-date: 2026-08-01
+date: 2026-08-03
 lang: zh
 authors: ["Casimiro Ferreira", "Claude"]
 tags:

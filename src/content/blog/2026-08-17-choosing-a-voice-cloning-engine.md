@@ -1,7 +1,7 @@
 ---
 title: "Choosing a Voice-Cloning Engine"
 description: "voiceclonnx runs 10 voice-conversion engines behind one API, from kNN feature-swap to AR codec-LM. This is a guide to the model families behind them, the real measured trade-off between intelligibility and speaker similarity, and how to pick an engine for a specific job."
-date: 2026-08-01
+date: 2026-08-17
 lang: en
 authors: ["Casimiro Ferreira", "Claude"]
 tags:
