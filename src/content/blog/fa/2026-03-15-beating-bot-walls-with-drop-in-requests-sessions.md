@@ -3,7 +3,7 @@ title: "نشست‌های ترکیب‌پذیر و جایگزینِ مستقیم
 description: "دو زیرکلاسِ ترکیب‌پذیرِ requests.Session برای خواندن قابل‌اتکای صفحه‌های عمومی وب بدون مرورگر بدون‌سر در مسیر داغ: انتقالی سازگار با TLS، یک پروکسی FlareSolverr برای چالش‌های JS، سازوکار پشتیبانِ Wayback Machine و درخواست‌های متنوع از نظر IP — یعنی unblock_requests و anon_requests."
 date: 2026-03-15
 lang: fa
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "HTTP"
   - "Scraping"

@@ -4,7 +4,7 @@ description: "Prima di costruire uno scraper, esplora il sito. sitemapper legge 
 date: 2026-03-01
 lang: it
 updated: 2026-08-01
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Web Scraping"
   - "Sitemaps"

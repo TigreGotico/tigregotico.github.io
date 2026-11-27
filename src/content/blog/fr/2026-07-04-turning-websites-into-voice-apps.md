@@ -3,7 +3,7 @@ title: "Si tout le monde lance une app, nous lancerons la voix : transformer les
 description: "Chaque site qui compte a fini enveloppé dans une app mobile. Nous proposons le mouvement inverse pour l'ère de la voix et de la ligne de commande : une API propre plus une skill vocale par site, pour que le web devienne navigable à l'oreille et au clavier. Un site à la fois, tout cela finit par former un navigateur vocal."
 date: 2026-07-04
 lang: fr
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Voice"
   - "Accessibility"
@@ -131,7 +131,7 @@ données structurées et parle *cela*, dans un flux conçu pour l'écoute dès l
 première ligne de code.
 
 C'est le même principe qui sous-tend nos
-[jeux audio-first](/fr/games), construits pour les oreilles, pas pour les yeux,
+[jeux audio-first](https://github.com/HelloChatterbox/pyFrotz), construits pour les oreilles, pas pour les yeux,
 avec les joueurs aveugles comme public principal plutôt que comme une réflexion
 après coup. Les applications vocales pour sites web étendent ce principe des jeux
 au reste du web.

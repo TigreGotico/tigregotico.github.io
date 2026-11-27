@@ -3,7 +3,7 @@ title: "純粋な ONNX 音声ライブラリ群"
 description: "TigreGótico は、帯域拡張、音声クローニング、話者埋め込み、VAD、単語アクセント、音素化、TTS、そしてそれらすべてを採点する指標ライブラリからなる音声ライブラリ群を維持しています — これらは一つのランタイムルールを共有します。onnxruntime と numpy だけを使い、PyTorch も GPU も不要です。"
 date: 2026-08-01
 lang: ja
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "ONNX"
   - "TTS"

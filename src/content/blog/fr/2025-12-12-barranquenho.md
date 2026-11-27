@@ -4,7 +4,7 @@ description: "g2p_barranquenho est le premier convertisseur graphème-phonème o
 date: 2025-12-12
 updated: 2026-08-01
 lang: fr
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Phonemization"
   - "Barranquenho"

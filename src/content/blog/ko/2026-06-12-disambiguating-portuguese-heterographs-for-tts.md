@@ -3,7 +3,7 @@ title: "제대로 말하기: TTS를 위한 포르투갈어 이음동철어 중�
 description: "많은 유럽 포르투갈어 단어는 철자가 같지만 의미에 따라 다르게 발음됩니다 — 그리고 모음을 틀리면 TTS 음성이 다른 단어를 말하게 됩니다. 우리는 27개 단어에 걸친 56,891개 문장의, 의미가 라벨링된 개방형 데이터셋 bifonia-pt-homographs를, 그리고 무거운 POS 태거가 약 75%에서 정체되는 곳에서 약 94%에 도달하는 작고 의존성 없는 해석기를 만들었습니다."
 date: 2026-06-12
 lang: ko
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Datasets"
   - "Portuguese"

@@ -4,7 +4,7 @@ description: "भाषा पहचान, अनुवाद प्लगइ�
 date: 2023-10-16
 updated: 2026-08-01
 lang: hi
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "OVOS"
   - "multilingual"

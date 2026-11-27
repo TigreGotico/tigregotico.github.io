@@ -3,7 +3,7 @@ title: "اندازه‌گیری کیفیت گفتار بدون یک پانل ش�
 description: "یک راهنمای کاربردی برای speechonnxmetrics: اینکه MOS، پیش‌بین‌های MOS بدون‌مرجع، سنجه‌های سیگنالِ تهاجمی و WER/CER مبتنی بر ASR واقعاً چه چیزی را اندازه می‌گیرند، هر یک کِی به کار می‌آید، امتیازهای واقعی از صدای واقعی، و اینکه چرا یک MOS پیش‌بینی‌شده شواهد است، نه حقیقت."
 date: 2026-08-31
 lang: fa
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "speechonnxmetrics"
   - "TTS"

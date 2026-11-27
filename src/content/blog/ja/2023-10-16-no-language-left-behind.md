@@ -4,7 +4,7 @@ description: "言語検出、翻訳プラグイン、双方向翻訳機能を通
 date: 2023-10-16
 updated: 2026-08-01
 lang: ja
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "OVOS"
   - "multilingual"

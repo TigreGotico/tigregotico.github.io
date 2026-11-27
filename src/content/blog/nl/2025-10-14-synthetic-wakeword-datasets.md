@@ -3,7 +3,7 @@ title: "Synthetische Wakeword-datasets: Zeven Assistentnamen, Eén Detector"
 description: "We publiceerden zeven synthetische wakeword-datasets voor gangbare namen van spraakassistenten: hey_computer, hey_mycroft, hey_siri, alexa, home_assistant, voice_assistant, wake_up. Train een detector die overal werkt."
 date: 2025-10-14
 lang: nl
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Datasets"
   - "Wakewords"

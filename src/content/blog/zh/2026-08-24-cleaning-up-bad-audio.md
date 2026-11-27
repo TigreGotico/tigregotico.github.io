@@ -3,7 +3,7 @@ title: "清理糟糕的音频：audiosronnx 中的降噪与带宽扩展"
 description: "深入剖析 audiosronnx 的两项独立任务——去除噪声与重建缺失的高频——涵盖真实的引擎注册表、模型大小与许可证、被拒收模型清单，以及如何检验输出是否真的变好了。"
 date: 2026-08-01
 lang: zh
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "ONNX"
   - "denoising"

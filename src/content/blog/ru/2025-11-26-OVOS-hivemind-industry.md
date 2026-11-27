@@ -3,7 +3,7 @@ title: "OVOS и HiveMind в обрабатывающей промышленно�
 description: "Проекты ЕС COALA и WASABI построили целый промышленный фреймворк голосового ассистента вокруг OVOS + HiveMind, интегрировав их со своими собственными инструментами, интерфейсом и движками диалога."
 date: 2025-11-26
 lang: ru
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "OVOS"
   - "HiveMind"

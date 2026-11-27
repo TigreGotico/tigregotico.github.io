@@ -3,7 +3,7 @@ title: "나쁜 오디오 정리하기: audiosronnx의 잡음 제거와 대역폭
 description: "audiosronnx의 두 가지 별개 작업 — 잡음 제거와 없어진 고주파 재구성 — 에 대한 심층 분석. 실제 엔진 레지스트리, 모델 크기와 라이선스, 반려된 모델 목록, 그리고 출력이 실제로 개선되었는지 확인하는 방법을 다룹니다."
 date: 2026-08-01
 lang: ko
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "ONNX"
   - "denoising"

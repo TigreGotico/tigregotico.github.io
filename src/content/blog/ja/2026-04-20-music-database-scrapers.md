@@ -4,7 +4,7 @@ description: "音楽ソース向けに私たちが維持している型付き Py
 date: 2026-04-20
 updated: 2026-08-01
 lang: ja
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Scrapers"
   - "Media Metadata"

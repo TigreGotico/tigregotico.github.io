@@ -3,7 +3,7 @@ title: "OpenVoiceOS y Home Assistant: El Equipo de Ensueño de la Automatizació
 description: "Home Assistant se encarga de la automatización. OVOS se encarga de la voz. Tres capas de integración hacen que la combinación funcione: puentes Wyoming para la canalización de voz de HA, ovos-persona-server como agente conversacional y HiveMind para exponer los dispositivos OVOS como entidades nativas de HA."
 date: 2025-09-17
 lang: es
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "OVOS"
   - "Home Assistant"

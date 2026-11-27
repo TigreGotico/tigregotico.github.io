@@ -3,7 +3,7 @@ title: "Introducing the First Phonemizer for Barranquenho"
 description: "g2p_barranquenho is the first open grapheme-to-phoneme converter for Barranquenho, the Ibero-Romance contact language of Barrancos, Portugal — rules derived from the municipality's newly published orthographic convention, auditable against the committed sources."
 date: 2025-12-12
 updated: 2026-08-01
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Phonemization"
   - "Barranquenho"

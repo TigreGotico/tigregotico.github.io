@@ -4,7 +4,7 @@ description: "怒っているように見えるサポートメッセージが二
 date: 2026-07-13
 updated: 2026-08-01
 lang: ja
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Affective Computing"
   - "Emotion"

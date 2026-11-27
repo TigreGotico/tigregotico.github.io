@@ -4,7 +4,7 @@ description: "两条看起来都很愤怒的客服消息。一个客户准备升
 date: 2026-07-13
 lang: zh
 updated: 2026-08-01
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Affective Computing"
   - "Emotion"

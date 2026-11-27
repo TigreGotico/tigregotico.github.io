@@ -4,7 +4,7 @@ description: "Обзор семейства типизированных Python-
 date: 2026-04-20
 updated: 2026-08-01
 lang: ru
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Scrapers"
   - "Media Metadata"

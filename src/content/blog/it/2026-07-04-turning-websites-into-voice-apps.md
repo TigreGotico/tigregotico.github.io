@@ -3,7 +3,7 @@ title: "Se Tutti Lanciano un'App, Noi Lanciamo la Voce: Trasformare i Siti Web i
 description: "Ogni sito che conta è finito avvolto in un'app mobile. Proponiamo la mossa opposta per l'era della voce e della CLI: un'API pulita più una skill vocale per sito, così che il web diventi navigabile con l'orecchio e con la tastiera. Un sito alla volta, tutto sommato dà un browser vocale."
 date: 2026-07-04
 lang: it
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Voice"
   - "Accessibility"
@@ -124,7 +124,7 @@ vocale dedicata salta la pagina del tutto: va ai dati strutturati e pronuncia
 *quelli*, in un flusso progettato per l'ascolto fin dalla prima riga di codice.
 
 È lo stesso principio dietro i nostri
-[giochi audio-first](/it/games) — costruiti per le orecchie, non per gli occhi, con i
+[giochi audio-first](https://github.com/HelloChatterbox/pyFrotz) — costruiti per le orecchie, non per gli occhi, con i
 giocatori ciechi come pubblico principale anziché come ripensamento. Le app vocali
 per i siti web estendono quel principio dai giochi al resto del web.
 

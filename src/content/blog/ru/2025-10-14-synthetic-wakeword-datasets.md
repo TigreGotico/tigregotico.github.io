@@ -3,7 +3,7 @@ title: "Синтетические датасеты слов активации:
 description: "Мы опубликовали семь синтетических датасетов слов активации для распространённых имён голосовых ассистентов — hey_computer, hey_mycroft, hey_siri, alexa, home_assistant, voice_assistant, wake_up. Обучите детектор, который работает везде."
 date: 2025-10-14
 lang: ru
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Datasets"
   - "Wakewords"

@@ -3,7 +3,7 @@ title: "Le dire correctement : désambiguïser les hétérophones portugais pour
 description: "De nombreux mots du portugais européen s'écrivent de la même façon mais se prononcent différemment selon le sens, et se tromper de voyelle fait dire le mauvais mot à une voix de TTS. Nous avons construit bifonia-pt-homographs, un jeu de données ouvert étiqueté par sens de 56 891 phrases sur 27 mots, et un résolveur minuscule et sans aucune dépendance qui atteint ≈94 % là où les étiqueteurs morphosyntaxiques lourds plafonnent à ≈75 %."
 date: 2026-06-12
 lang: fr
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Datasets"
   - "Portuguese"

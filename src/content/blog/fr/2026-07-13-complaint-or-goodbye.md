@@ -4,7 +4,7 @@ description: "Deux messages de support qui ont l'air en colère. L'un est sur le
 date: 2026-07-13
 updated: 2026-08-01
 lang: fr
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Affective Computing"
   - "Emotion"

@@ -3,7 +3,7 @@ title: "Miro 和 Dii 的 TTS 训练数据：覆盖 20 个语区的 40 个开放�
 description: "我们发布了 Miro 和 Dii 语音的 40 个合成训练数据集，涵盖葡萄牙语、荷兰语、德语、法语、意大利语、日语、西班牙语等等。大规模语音克隆：每种语言都有两个一致的身份。"
 date: 2025-06-23
 lang: zh
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "TTS"
   - "Voice"

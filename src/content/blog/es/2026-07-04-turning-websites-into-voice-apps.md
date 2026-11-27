@@ -3,7 +3,7 @@ title: "Si Todos Publican una App, Nosotros Publicaremos Voz: Convertir Sitios W
 description: "Todo sitio que importa acabó envuelto en una app móvil. Proponemos el movimiento opuesto para la era de la voz y la CLI: una API limpia más una skill de voz por sitio, para que la web se pueda navegar de oído y con el teclado. Un sitio cada vez, suma hasta un navegador de voz."
 date: 2026-07-04
 lang: es
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Voice"
   - "Accessibility"
@@ -123,7 +123,7 @@ la página por completo: va a los datos estructurados y habla *eso*, en un flujo
 para escucharse desde la primera línea de código.
 
 Es el mismo principio detrás de nuestros
-[juegos de audio](/es/games), construidos para los oídos, no para los ojos, con los
+[juegos de audio](https://github.com/HelloChatterbox/pyFrotz), construidos para los oídos, no para los ojos, con los
 jugadores ciegos como audiencia principal en lugar de una ocurrencia tardía. Las apps de
 voz para sitios web extienden ese principio de los juegos al resto de la web.
 

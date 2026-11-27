@@ -3,7 +3,7 @@ title: "面向稳健公开数据访问的可组合、即插即用 requests 会�
 description: "两个可组合的 requests.Session 子类，用于在不于关键路径上启动无头浏览器的前提下可靠地读取公开网页：兼容 TLS 的传输、用于 JS 挑战的 FlareSolverr 代理、Wayback Machine 回退，以及分散化的请求——unblock_requests 与 anon_requests。"
 date: 2026-03-15
 lang: zh
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "HTTP"
   - "Scraping"

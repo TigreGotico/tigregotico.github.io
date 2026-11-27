@@ -3,7 +3,7 @@ title: "صوتان، كل اللغات: Miro و Dii"
 description: "تتشارك TigreGótico مع OpenVoiceOS لمنح المساعد هويتين صوتيتين متسقتين — Miro و Dii — تبدوان بالطريقة نفسها في كل لغة، مبنيتين بتقنية استنساخ الصوت خاصتنا ومحرك phoonnx. نموذجا TTS لكل لغة يطلبها أحد، بما في ذلك اللغات المهددة بالانقراض."
 date: 2026-06-15
 lang: ar
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "phoonnx"
   - "TTS"

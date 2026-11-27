@@ -4,7 +4,7 @@ description: "رسالتا دعم غاضبتان. واحدة على وشك ال�
 date: 2026-07-13
 updated: 2026-08-01
 lang: ar
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Affective Computing"
   - "Emotion"

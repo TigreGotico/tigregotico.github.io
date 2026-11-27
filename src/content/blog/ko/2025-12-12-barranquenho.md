@@ -4,7 +4,7 @@ description: "g2p_barranquenho는 포르투갈 바랑코스의 이베로-로망�
 date: 2025-12-12
 updated: 2026-08-01
 lang: ko
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Phonemization"
   - "Barranquenho"

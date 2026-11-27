@@ -3,7 +3,7 @@ title: "합성 웨이크워드 데이터셋: 일곱 개의 비서 이름, 하나
 description: "일반적인 음성 비서 이름을 위한 일곱 개의 합성 웨이크워드 데이터셋을 공개했습니다 — hey_computer, hey_mycroft, hey_siri, alexa, home_assistant, voice_assistant, wake_up. 어디서나 작동하는 감지기를 학습시키세요."
 date: 2025-10-14
 lang: ko
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Datasets"
   - "Wakewords"

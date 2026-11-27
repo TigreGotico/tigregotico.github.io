@@ -3,7 +3,7 @@ title: "Sesiones requests componibles y directas para un acceso resiliente a dat
 description: "Dos subclases componibles de requests.Session para leer páginas web públicas de forma fiable sin un navegador headless en la ruta caliente: transporte compatible con TLS, un proxy FlareSolverr para los desafíos JS, un respaldo a Wayback Machine, y peticiones con IP diversificada: unblock_requests y anon_requests."
 date: 2026-03-15
 lang: es
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "HTTP"
   - "Scraping"

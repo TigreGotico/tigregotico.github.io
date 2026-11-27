@@ -3,7 +3,7 @@ title: "如果人人都发布 App，那我们就发布语音：把网站变成�
 description: "每一个重要的网站都被包进了移动 App。我们为语音与命令行时代提出相反的做法：一套干净的 API 加上每个网站一个语音 skill，让网络能够用耳朵、用键盘来浏览。一个网站接一个网站地做，累积起来就是一个语音浏览器。"
 date: 2026-07-04
 lang: zh
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Voice"
   - "Accessibility"
@@ -98,7 +98,7 @@ for release in BandCamp.search_albums("king gizzard"):
 跳过页面：它直接去到结构化数据，并把*那个*读出来，用一个从第一行代码起就为聆听而
 设计的流程。
 
-这与我们的[音频优先游戏](/zh/games)背后的原则相同——为耳朵而造，而非为眼睛，把盲人
+这与我们的[音频优先游戏](https://github.com/HelloChatterbox/pyFrotz)背后的原则相同——为耳朵而造，而非为眼睛，把盲人
 玩家当作主要受众而不是事后补救。为网站而做的语音应用，把这一原则从游戏延伸到网络的
 其余部分。
 

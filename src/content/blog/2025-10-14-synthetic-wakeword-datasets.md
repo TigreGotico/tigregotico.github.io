@@ -2,7 +2,7 @@
 title: "Synthetic Wakeword Datasets: Seven Assistant Names, One Detector"
 description: "We published seven synthetic wakeword datasets for common voice assistant names: hey_computer, hey_mycroft, hey_siri, alexa, home_assistant, voice_assistant, wake_up. Train a detector that works everywhere."
 date: 2025-10-14
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Datasets"
   - "Wakewords"

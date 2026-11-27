@@ -3,7 +3,7 @@ title: "Datasets Sintéticos de Wakeword: Siete Nombres de Asistente, Un Detecto
 description: "Hemos publicado siete datasets sintéticos de wakeword para nombres comunes de asistentes de voz: hey_computer, hey_mycroft, hey_siri, alexa, home_assistant, voice_assistant, wake_up. Entrena un detector que funciona en todas partes."
 date: 2025-10-14
 lang: es
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Datasets"
   - "Wakewords"

@@ -4,7 +4,7 @@ description: "Taalbarrières in OpenVoiceOS wegnemen via taaldetectie, vertaalpl
 date: 2023-10-16
 lang: nl
 updated: 2026-08-01
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "OVOS"
   - "multilingual"

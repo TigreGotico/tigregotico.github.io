@@ -4,7 +4,7 @@ description: "Éliminer les barrières linguistiques dans OpenVoiceOS grâce à 
 date: 2023-10-16
 updated: 2026-08-01
 lang: fr
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "OVOS"
   - "multilingual"

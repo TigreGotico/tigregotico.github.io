@@ -3,7 +3,7 @@ title: "감자에서도 돌아가는 TTS 모델"
 description: "phoonnx는 저사양 하드웨어에서 편안하게 실행되도록 만들어진, VITS 기반 텍스트 음성 변환을 위한 연구 프레임워크입니다. GPU도, 클라우드도, API 키도 없습니다 — 약 1,565만 개의 파라미터를 가진 ONNX 음성과 CPU 하나면 됩니다. 좋은 음성이 얼마나 작을 수 있는지, 그리고 우리가 그것을 어떻게 훈련하는지 소개합니다."
 date: 2026-05-10
 lang: ko
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "phoonnx"
   - "TTS"

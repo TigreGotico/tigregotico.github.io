@@ -3,7 +3,7 @@ title: "音声クローニングエンジンを選ぶ"
 description: "voiceclonnx は、kNN 特徴交換から AR コーデック LM まで、10 の音声変換エンジンを一つの API の背後で動かします。これは、その背後にあるモデル系統、明瞭度と話者類似度の間の実際に測定されたトレードオフ、そして特定の仕事のためにエンジンを選ぶ方法についての手引きです。"
 date: 2026-08-01
 lang: ja
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "ONNX"
   - "voice cloning"

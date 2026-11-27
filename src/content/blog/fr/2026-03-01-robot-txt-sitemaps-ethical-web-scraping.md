@@ -4,7 +4,7 @@ description: "Avant de construire un scraper, faites la reconnaissance du site. 
 date: 2026-03-01
 updated: 2026-08-01
 lang: fr
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Web Scraping"
   - "Sitemaps"

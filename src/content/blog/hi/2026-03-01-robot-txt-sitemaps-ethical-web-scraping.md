@@ -4,7 +4,7 @@ description: "स्क्रैपर बनाने से पहले, स�
 date: 2026-03-01
 updated: 2026-08-01
 lang: hi
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Web Scraping"
   - "Sitemaps"

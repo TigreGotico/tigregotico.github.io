@@ -3,7 +3,7 @@ title: "Decirlo Bien: Desambiguar Heterófonos del Portugués para TTS"
 description: "Muchas palabras del portugués europeo se escriben igual pero se pronuncian de forma diferente según su significado, y equivocar la vocal hace que una voz TTS diga la palabra equivocada. Construimos bifonia-pt-homographs, un conjunto de datos abierto etiquetado por significado con 56 891 frases sobre 27 palabras, y un resolutor diminuto y sin dependencias que alcanza ≈94 % donde los etiquetadores POS pesados se estancan en ≈75 %."
 date: 2026-06-12
 lang: es
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Datasets"
   - "Portuguese"

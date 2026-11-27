@@ -4,7 +4,7 @@ description: "orthography2ipa 是一个纯数据、以语言学为根基的资�
 date: 2026-01-15
 lang: zh
 updated: 2026-08-01
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "G2P"
   - "IPA"

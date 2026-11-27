@@ -3,7 +3,7 @@ title: "قياس جودة الكلام دون لجنة استماع"
 description: "دليل عملي إلى speechonnxmetrics: ما الذي تقيسه فعلًا MOS، ومُقدِّرات MOS بلا مرجع، والمقاييس الإشارية التدخّلية، ومعدّلا خطأ الكلمات/الأحرف القائمان على ASR، ومتى ينطبق كل منها، ودرجات حقيقية من صوت حقيقي، ولماذا يكون MOS المُتنبَّأ به دليلًا لا حقيقة."
 date: 2026-08-31
 lang: ar
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "speechonnxmetrics"
   - "TTS"

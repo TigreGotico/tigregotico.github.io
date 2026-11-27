@@ -3,7 +3,7 @@ title: "Schriften en fonetische notaties: wat scriptconv daadwerkelijk convertee
 description: "Een rondleiding langs scriptconv, de zero-dependency-bibliotheek die schriftsystemen detecteert en tussen fonetische notaties converteert. Behandelt IPA, ARPABET en X-SAMPA, ISO-15924-schriftdetectie, Buckwalter-transliteratie voor Arabisch, Hangeul-decompositie in jamo, en kana-conversie, met echte, uitgevoerde voorbeelden en eerlijke beperkingen."
 date: 2026-08-01
 lang: nl
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "IPA"
   - "Phonetics"

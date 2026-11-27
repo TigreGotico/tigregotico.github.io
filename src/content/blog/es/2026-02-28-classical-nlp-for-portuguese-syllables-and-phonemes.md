@@ -4,7 +4,7 @@ description: "Un vistazo a nuestra pila de NLP para el portugués, basada en reg
 date: 2026-02-28
 lang: es
 updated: 2026-08-01
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "NLP"
   - "Portuguese"

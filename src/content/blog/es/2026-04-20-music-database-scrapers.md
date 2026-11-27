@@ -4,7 +4,7 @@ description: "Un recorrido por la familia de clientes Python tipados que mantene
 date: 2026-04-20
 lang: es
 updated: 2026-08-01
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Scrapers"
   - "Media Metadata"

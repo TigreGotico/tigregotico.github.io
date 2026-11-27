@@ -3,7 +3,7 @@ title: "Wenn alle eine App veröffentlichen, veröffentlichen wir Stimme: Websit
 description: "Jede Website, die zählt, wurde in eine mobile App verpackt. Wir schlagen den umgekehrten Schritt für das Zeitalter der Stimme und der Kommandozeile vor: eine saubere API plus eine Sprach-Skill pro Website, damit das Web per Ohr und per Tastatur durchsuchbar wird. Eine Website nach der anderen ergibt in der Summe einen Sprach-Browser."
 date: 2026-07-04
 lang: de
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Voice"
   - "Accessibility"
@@ -133,7 +133,7 @@ strukturierten Daten und spricht *diese* aus, in einem Ablauf, der von der erste
 Codezeile an fürs Zuhören konzipiert ist.
 
 Es ist dasselbe Prinzip, das hinter unseren
-[Audio-first-Spielen](/de/games) steht, für die Ohren gebaut, nicht für die Augen,
+[Audio-first-Spielen](https://github.com/HelloChatterbox/pyFrotz) steht, für die Ohren gebaut, nicht für die Augen,
 mit blinden Spielern als Hauptzielgruppe statt als nachträglichem Gedanken.
 Sprach-Apps für Websites weiten dieses Prinzip von den Spielen auf den Rest des Webs
 aus.

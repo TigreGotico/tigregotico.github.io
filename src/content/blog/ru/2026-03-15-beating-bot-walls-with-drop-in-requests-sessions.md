@@ -3,7 +3,7 @@ title: "Компонуемые, готовые к работе сессии requ
 description: "Два компонуемых подкласса requests.Session для надёжного чтения публичных веб-страниц без безголового браузера на критическом пути: TLS-совместимый транспорт, прокси FlareSolverr для JS-испытаний, откат к Wayback Machine и запросы с диверсификацией IP — unblock_requests и anon_requests."
 date: 2026-03-15
 lang: ru
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "HTTP"
   - "Scraping"

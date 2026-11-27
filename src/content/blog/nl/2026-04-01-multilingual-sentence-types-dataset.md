@@ -4,7 +4,7 @@ description: "We hebben sentence-types-multilingual gepubliceerd — bijna 70.00
 date: 2026-04-01
 lang: nl
 updated: 2026-08-01
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Datasets"
   - "Multilingual"

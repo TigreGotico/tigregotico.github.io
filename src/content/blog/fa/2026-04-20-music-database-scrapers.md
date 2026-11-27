@@ -4,7 +4,7 @@ description: "گشتی در خانواده‌ای از کلاینت‌های ت�
 date: 2026-04-20
 updated: 2026-08-01
 lang: fa
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Scrapers"
   - "Media Metadata"

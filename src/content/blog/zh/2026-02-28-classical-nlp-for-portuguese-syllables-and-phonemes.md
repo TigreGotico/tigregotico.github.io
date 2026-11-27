@@ -4,7 +4,7 @@ description: "介绍我们基于规则、完全离线的葡萄牙语 NLP 技术�
 date: 2026-02-28
 lang: zh
 updated: 2026-08-01
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "NLP"
   - "Portuguese"

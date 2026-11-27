@@ -3,7 +3,7 @@ title: "Jeux de données de wakeword synthétiques : sept noms d'assistant, un s
 description: "Nous avons publié sept jeux de données de wakeword synthétiques pour des noms d'assistant vocal courants : hey_computer, hey_mycroft, hey_siri, alexa, home_assistant, voice_assistant, wake_up. Entraînez un détecteur qui fonctionne partout."
 date: 2025-10-14
 lang: fr
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Datasets"
   - "Wakewords"

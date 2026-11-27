@@ -3,7 +3,7 @@ title: "Samenstelbare, kant-en-klare requests-sessies voor veerkrachtige toegang
 description: "Twee samenstelbare subklassen van requests.Session voor het betrouwbaar lezen van publieke webpagina's zonder headless browser in het kritieke pad: TLS-compatibel transport, een FlareSolverr-proxy voor JS-uitdagingen, een terugval op de Wayback Machine en IP-gediversifieerde verzoeken: unblock_requests en anon_requests."
 date: 2026-03-15
 lang: nl
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "HTTP"
   - "Scraping"

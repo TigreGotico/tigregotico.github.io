@@ -3,7 +3,7 @@ title: "能在土豆上运行的 TTS 模型"
 description: "phoonnx 是一个基于 VITS 的文本转语音研究框架，专为在低端硬件上舒适运行而打造。不需要 GPU，不需要云，不需要 API 密钥——只需一个约 1565 万参数的 ONNX 声音和一颗 CPU。这里将展示一个优秀的声音可以有多小，以及我们如何训练它们。"
 date: 2026-05-10
 lang: zh
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "phoonnx"
   - "TTS"

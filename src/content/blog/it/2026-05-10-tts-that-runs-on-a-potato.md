@@ -3,7 +3,7 @@ title: "Modelli di TTS che Girano su una Patata"
 description: "phoonnx è un framework di ricerca per la sintesi vocale basata su VITS, costruito per girare comodamente su hardware di fascia bassa. Nessuna GPU, nessun cloud, nessuna chiave API — solo una voce ONNX da ~15,65 milioni di parametri e una CPU. Ecco quanto può essere piccola una buona voce, e come le addestriamo."
 date: 2026-05-10
 lang: it
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "phoonnx"
   - "TTS"

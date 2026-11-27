@@ -3,7 +3,7 @@ title: "सही बोलना: TTS के लिए पुर्तगाल
 description: "कई यूरोपीय पुर्तगाली शब्दों की वर्तनी एक जैसी है पर अर्थ के अनुसार उच्चारण अलग होता है — और गलत स्वर चुनने से TTS आवाज़ गलत शब्द बोल देती है। हमने bifonia-pt-homographs बनाया, 27 शब्दों पर 56,891 वाक्यों का एक खुला अर्थ-लेबल किया गया डेटासेट, और एक नन्हा निर्भरता-रहित resolver जो ≈94% तक पहुँचता है जबकि भारी-भरकम POS taggers ≈75% पर ठहर जाते हैं।"
 date: 2026-06-12
 lang: hi
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Datasets"
   - "Portuguese"

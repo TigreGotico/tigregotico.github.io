@@ -2,7 +2,7 @@
 title: "Porting With Machines, and the Licence Question We Could Not Answer"
 description: "We rewrote several C, C++ and Java programs (espeak-ng's G2P, Cotovia, AhoTTS, HermiT) as pure Python, with an AI reading the original source and a human orchestrating. No human on our side read the originals. That raises two separate questions: can the output be owned at all, and is it a derivative of the input? We kept the upstream licences because that was cheaper than answering. We still think the question is open."
 date: 2026-08-01
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "FOSS"
   - "Licensing"

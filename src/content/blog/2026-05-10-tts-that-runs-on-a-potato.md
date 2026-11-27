@@ -2,7 +2,7 @@
 title: "TTS Models That Run on a Potato"
 description: "phoonnx is a research framework for VITS-based text-to-speech built to run comfortably on low-end hardware. No GPU, no cloud, no API key: just a ~15.65 million-parameter ONNX voice and a CPU. Here is how small a good voice can be, and how we train them."
 date: 2026-05-10
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "phoonnx"
   - "TTS"

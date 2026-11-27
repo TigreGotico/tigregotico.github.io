@@ -3,7 +3,7 @@ title: "विनिर्माण उद्योग में OVOS और Hiv
 description: "यूरोपीय संघ की COALA और WASABI परियोजनाओं ने OVOS + HiveMind के इर्द-गिर्द एक संपूर्ण औद्योगिक वॉइस-असिस्टेंट फ्रेमवर्क तैयार किया है, जिसे उन्होंने अपने स्वयं के उपकरणों, UI और वार्तालाप इंजनों के साथ एकीकृत किया है।"
 date: 2025-11-26
 lang: hi
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "OVOS"
   - "HiveMind"

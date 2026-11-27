@@ -3,7 +3,7 @@ title: "Schlechtes Audio bereinigen: Entrauschung und Bandbreitenerweiterung in 
 description: "audiosronnx behandelt Entrauschung und Bandbreitenerweiterung als zwei getrennte Aufgaben: die tatsächliche Engine-Registry, Modellgrößen und Lizenzen, die Liste abgelehnter Modelle und wie man prüft, ob sich die Ausgabe tatsächlich verbessert hat."
 date: 2026-08-01
 lang: de
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "ONNX"
   - "denoising"

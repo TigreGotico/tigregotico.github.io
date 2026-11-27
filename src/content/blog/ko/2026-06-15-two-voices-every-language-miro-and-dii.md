@@ -3,7 +3,7 @@ title: "두 개의 목소리, 모든 언어: Miro & Dii"
 description: "TigreGótico는 OpenVoiceOS와 협력하여 비서에게 두 개의 일관된 음성 정체성 — Miro와 Dii — 을 부여합니다. 우리의 음성 복제 기술과 phoonnx 엔진으로 구축되어 모든 언어에서 동일하게 들립니다. 누군가 요청하는 모든 언어를 위한 두 개의 TTS 모델, 소멸 위기 언어까지 포함합니다."
 date: 2026-06-15
 lang: ko
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "phoonnx"
   - "TTS"

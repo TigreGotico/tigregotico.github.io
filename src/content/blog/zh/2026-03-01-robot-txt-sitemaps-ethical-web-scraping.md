@@ -4,7 +4,7 @@ description: "在构建抓取器之前，先侦察目标站点。sitemapper 会�
 date: 2026-03-01
 lang: zh
 updated: 2026-08-01
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Web Scraping"
   - "Sitemaps"

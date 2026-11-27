@@ -3,7 +3,7 @@ title: "Por Qué Acumulamos Datos: De Catálogos Extraídos a Modelos de Voz y L
 description: "Datos limpios, tipados y con procedencia clara son la materia prima de todos los modelos que publicamos. Cómo los catálogos que construyen nuestros scrapers se convierten en vocabularios de sesgo para ASR, clasificadores de intención, corpus sintéticos de NER, léxicos G2P, voces TTS, y combustible honesto para LLM."
 date: 2026-07-04
 lang: es
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Datasets"
   - "Data Collection"

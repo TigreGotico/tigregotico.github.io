@@ -4,7 +4,7 @@ description: "orthography2ipa هو مورد قائم على البيانات ا�
 date: 2026-01-15
 updated: 2026-08-01
 lang: ar
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "G2P"
   - "IPA"

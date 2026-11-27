@@ -3,7 +3,7 @@ title: "Usenet en 2026 : un corpus de texte propre et d'avant l'IA pour l'entra�
 description: "Usenet est une archive intacte du discours humain d'avant l'IA : des décennies de messages de newsgroups, tous écrits par des humains, aucun touché par des modèles de langage. Cela en fait des données précieuses d'entraînement et d'évaluation pour les modèles de langue et de parole. Nous avons construit un petit outil Python pour la collecter."
 date: 2026-07-01
 lang: fr
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Usenet"
   - "Datasets"

@@ -4,7 +4,7 @@ description: "스크래퍼를 만들기 전에 사이트를 정찰하세요. sit
 date: 2026-03-01
 updated: 2026-08-01
 lang: ko
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Web Scraping"
   - "Sitemaps"

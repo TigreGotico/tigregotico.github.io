@@ -3,7 +3,7 @@ title: "음성 복제 엔진 고르기"
 description: "voiceclonnx는 kNN 특징 교체부터 AR 코덱-LM까지, 10개의 음성 변환 엔진을 하나의 API 뒤에서 실행합니다. 이는 그 뒤에 있는 모델 계열들, 명료도와 화자 유사도 사이의 실제로 측정된 트레이드오프, 그리고 특정 작업을 위한 엔진 선택 방법에 대한 안내서입니다."
 date: 2026-08-01
 lang: ko
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "ONNX"
   - "voice cloning"

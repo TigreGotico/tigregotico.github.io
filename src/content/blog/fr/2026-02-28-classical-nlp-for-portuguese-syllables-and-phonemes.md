@@ -4,7 +4,7 @@ description: "Un aperçu de notre stack de NLP portugais fondée sur des règles
 date: 2026-02-28
 updated: 2026-08-01
 lang: fr
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "NLP"
   - "Portuguese"

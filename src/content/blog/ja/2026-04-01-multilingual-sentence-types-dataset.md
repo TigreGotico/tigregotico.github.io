@@ -4,7 +4,7 @@ description: "sentence-types-multilingual を公開しました。7言語にわ�
 date: 2026-04-01
 updated: 2026-08-01
 lang: ja
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Datasets"
   - "Multilingual"

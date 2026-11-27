@@ -3,7 +3,7 @@ title: "我们为何囤积数据：从抓取的目录到更聪明的语音与语
 description: "干净、带类型、来源清晰的数据，是我们交付的每一个模型的原材料。看我们的抓取器构建的目录，如何变成 ASR 偏置词表、意图分类器、合成 NER 语料、G2P 词典、TTS 语音——以及为 LLM 提供的诚实燃料。"
 date: 2026-07-04
 lang: zh
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Datasets"
   - "Data Collection"

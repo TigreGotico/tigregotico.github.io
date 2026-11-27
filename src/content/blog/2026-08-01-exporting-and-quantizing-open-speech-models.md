@@ -2,7 +2,7 @@
 title: "Exporting and Quantizing Open Speech Models So They Actually Run"
 description: "A trained speech model on a research GitHub page is not a voice assistant. We convert open ASR and TTS checkpoints to ONNX, CoreML and GGUF, quantize them, and validate the output. Then we publish the results under OpenVoiceOS so every language they cover ships in a real, offline assistant."
 date: 2026-08-01
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "ONNX"
   - "CoreML"

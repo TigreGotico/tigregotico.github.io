@@ -4,7 +4,7 @@ description: "언어 감지, 번역 플러그인, 양방향 번역 기능을 통
 date: 2023-10-16
 updated: 2026-08-01
 lang: ko
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "OVOS"
   - "multilingual"

@@ -4,7 +4,7 @@ description: "Duas mensagens de apoio ao cliente com ar zangado. Um cliente est√
 date: 2026-07-13
 updated: 2026-08-01
 lang: pt
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Affective Computing"
   - "Emotion"

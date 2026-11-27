@@ -4,7 +4,7 @@ description: "ルールベースで完全にオフラインで動作する当社
 date: 2026-02-28
 updated: 2026-08-01
 lang: ja
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "NLP"
   - "Portuguese"

@@ -4,7 +4,7 @@ description: "پیش از آنکه یک اسکرپر بسازید، سایت ر�
 date: 2026-03-01
 updated: 2026-08-01
 lang: fa
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Web Scraping"
   - "Sitemaps"

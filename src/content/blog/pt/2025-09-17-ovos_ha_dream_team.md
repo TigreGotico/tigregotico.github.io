@@ -3,7 +3,7 @@ title: "OpenVoiceOS e Home Assistant: A Equipa de Sonho da Automação por Voz"
 description: "O Home Assistant trata da automação. O OVOS trata da voz. Três camadas de integração fazem a combinação funcionar: pontes Wyoming para a pipeline de voz do HA, o ovos-persona-server como agente conversacional e o HiveMind para expor dispositivos OVOS como entidades nativas do HA."
 date: 2025-09-17
 lang: pt
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "OVOS"
   - "Home Assistant"

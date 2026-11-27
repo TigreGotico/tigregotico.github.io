@@ -4,7 +4,7 @@ description: "通过语言检测、翻译插件和双向翻译能力，消除 Op
 date: 2023-10-16
 lang: zh
 updated: 2026-08-01
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "OVOS"
   - "multilingual"

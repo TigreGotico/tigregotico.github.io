@@ -613,7 +613,7 @@
     "id": "pyfrotz",
     "name": "pyFrotz",
     "description": "Python wrapper for an interactive fiction engine.",
-    "url": "https://github.com/TigreGotico/pyFrotz",
+    "url": "https://github.com/HelloChatterbox/pyFrotz",
     "category": "Voice Platforms",
     "tags": [
       "Python",
@@ -1575,7 +1575,8 @@
       "zh": "面向米兰德斯语的基于规则的音素化器。",
       "ko": "미란다어를 위한 규칙 기반 음소화기.",
       "ja": "ミランダ語のためのルールベース音素化器。"
-    }
+    },
+    "hidden": true
   },
   {
     "id": "g2p_barranquenho",

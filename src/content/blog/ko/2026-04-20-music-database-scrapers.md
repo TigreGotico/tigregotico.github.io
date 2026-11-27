@@ -4,7 +4,7 @@ description: "우리가 유지 관리하는, 음악 소스를 위한 타입 지�
 date: 2026-04-20
 updated: 2026-08-01
 lang: ko
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Scrapers"
   - "Media Metadata"

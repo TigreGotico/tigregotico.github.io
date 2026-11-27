@@ -3,7 +3,7 @@ title: "رسم‌الخط‌ها و نشانه‌گذاری‌های آوایی:
 description: "کاوشی عمیق در scriptconv، کتابخانهٔ بدون‌وابستگی‌ای که نظام‌های نوشتاری را تشخیص می‌دهد و میان نشانه‌گذاری‌های آوایی تبدیل می‌کند. IPA، ARPABET و X-SAMPA؛ تشخیص رسم‌الخط بر پایهٔ ISO-15924؛ حرف‌نویسی Buckwalter برای عربی؛ تجزیهٔ Hangul به جامو؛ و تبدیل کانا را با نمونه‌های واقعی و اجراشده و محدودیت‌های صادقانه پوشش می‌دهد."
 date: 2026-08-01
 lang: fa
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "IPA"
   - "Phonetics"

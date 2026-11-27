@@ -2,7 +2,7 @@
 title: "text2spoken: Written Forms to Spoken Words"
 description: "A TTS voice reads letters, not '12/03/2024' or '3,50 €'. text2spoken rewrites numbers, dates, times, money, units and abbreviations into the words a speaker says, in 18 languages, with cited sources for the rules."
 date: 2026-11-27
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "text2spoken"
   - "TTS"

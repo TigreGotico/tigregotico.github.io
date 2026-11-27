@@ -3,7 +3,7 @@ title: "Scritture e Notazioni Fonetiche: Cosa Converte Davvero scriptconv"
 description: "Un approfondimento su scriptconv, la libreria a dipendenza zero che rileva i sistemi di scrittura e converte tra notazioni fonetiche. Copre IPA, ARPABET e X-SAMPA; il rilevamento di scrittura ISO-15924; la traslitterazione Buckwalter per l'arabo; la scomposizione dell'Hangul in jamo; e la conversione kana, con esempi reali, eseguiti, e limiti onesti."
 date: 2026-08-01
 lang: it
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "IPA"
   - "Phonetics"

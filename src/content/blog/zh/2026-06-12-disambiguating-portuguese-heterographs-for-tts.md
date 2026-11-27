@@ -3,7 +3,7 @@ title: "说对读音：为 TTS 消歧葡萄牙语异音同形词"
 description: "许多欧洲葡萄牙语单词拼写相同，但发音随含义而异——把元音读错，TTS 声音就会说出另一个词。我们构建了 bifonia-pt-homographs，一个开放的、按含义标注的数据集，涵盖 27 个单词共 56,891 个句子，还构建了一个微小、零依赖的消解器，准确率达约 94%，而重量级的 POS 标注器在约 75% 处便停滞不前。"
 date: 2026-06-12
 lang: zh
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Datasets"
   - "Portuguese"

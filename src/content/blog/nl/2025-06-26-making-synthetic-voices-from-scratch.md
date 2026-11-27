@@ -3,7 +3,7 @@ title: "Synthetische stemmen vanaf nul maken"
 description: "Een stem creëren voor een tekst-naar-spraaksysteem vereist normaal gesproken dat een echte persoon urenlang audio opneemt. Dat is duur, tijdrovend, en in veel talen of accenten bestaan de stemmen simpelweg helemaal niet"
 date: 2025-06-26
 lang: nl
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "TTS"
   - "Synthetic Data"

@@ -3,7 +3,7 @@ title: "Introducing Our Music Database Scrapers"
 description: "A tour of the family of typed Python clients we maintain for music sources — Bandcamp, SoundCloud, SomaFM, TuneIn, iHeartRadio, and the great music encyclopedias — all emitting consistent, typed media metadata behind one clean interface and riding the same compliant, low-volume HTTP transport."
 date: 2026-04-20
 updated: 2026-08-01
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Scrapers"
   - "Media Metadata"

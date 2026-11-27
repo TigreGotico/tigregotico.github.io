@@ -4,7 +4,7 @@ description: "화나 보이는 지원 메시지 두 개. 하나는 고객이 에
 date: 2026-07-13
 updated: 2026-08-01
 lang: ko
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Affective Computing"
   - "Emotion"

@@ -3,7 +3,7 @@ title: "기계와 함께 이식하기, 그리고 우리가 답할 수 없었던 
 description: "우리는 espeak-ng의 G2P, Cotovia, AhoTTS, HermiT을 포함한 여러 C, C++, Java 프로그램을 순수 Python으로 다시 작성했습니다. AI가 원본 소스를 읽고 사람이 작업을 지휘했습니다. 우리 쪽 사람은 아무도 원본을 읽지 않았습니다. 이는 두 개의 별개 질문을 제기합니다: 그 결과물이 애초에 소유될 수 있는가, 그리고 그것이 입력의 파생물인가? 우리는 답하는 것보다 저렴했기 때문에 upstream 라이선스를 유지했습니다. 우리는 여전히 이 질문이 열려 있다고 생각합니다."
 date: 2026-08-01
 lang: ko
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "FOSS"
   - "Licensing"

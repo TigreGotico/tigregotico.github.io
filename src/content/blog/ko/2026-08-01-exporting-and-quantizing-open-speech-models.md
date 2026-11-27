@@ -3,7 +3,7 @@ title: "오픈 음성 모델을 실제로 돌아가게 만들기: 내보내기�
 description: "연구용 GitHub 페이지에 올라온 학습된 음성 모델은 그 자체로 음성 비서가 아닙니다. 우리는 오픈 ASR과 TTS 체크포인트를 ONNX, CoreML, GGUF로 변환하고, 양자화하고, 출력을 검증한 다음 — OpenVoiceOS 아래에 그 결과를 공개하여, 그것이 다루는 모든 언어가 실제 오프라인 비서로 출시되도록 합니다."
 date: 2026-08-01
 lang: ko
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "ONNX"
   - "CoreML"

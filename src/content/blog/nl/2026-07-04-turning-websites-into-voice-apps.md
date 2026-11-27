@@ -3,7 +3,7 @@ title: "Als iedereen een app uitbrengt, brengen wij stem uit: websites verandere
 description: "Elke site die ertoe doet, werd verpakt in een mobiele app. Wij stellen de omgekeerde beweging voor voor het spraak- en CLI-tijdperk: een schone API plus een spraakskill per site, zodat het web doorbladerbaar wordt op het gehoor en met het toetsenbord. Eén site tegelijk telt het op tot een spraakbrowser."
 date: 2026-07-04
 lang: nl
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Voice"
   - "Accessibility"
@@ -120,7 +120,7 @@ pagina volledig over: hij gaat naar de gestructureerde data en spreekt *die* uit
 een flow ontworpen om te beluisteren vanaf de eerste regel code.
 
 Het is hetzelfde principe achter onze
-[audio-first games](/nl/games), gebouwd voor oren, niet ogen, met blinde spelers als
+[audio-first games](https://github.com/HelloChatterbox/pyFrotz), gebouwd voor oren, niet ogen, met blinde spelers als
 het primaire publiek in plaats van een bijzaak. Spraakapps voor websites breiden dat
 principe uit van games naar de rest van het web.
 

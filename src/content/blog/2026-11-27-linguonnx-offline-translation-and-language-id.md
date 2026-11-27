@@ -2,7 +2,7 @@
 title: "linguonnx: Offline Translation and Language ID on ONNX"
 description: "linguonnx translates text and identifies languages on the CPU, with no torch and no cloud. 225 int8 translation models and 6 language-ID models, 592 routable languages, and a router that chains small models when no single model covers a pair."
 date: 2026-11-27
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "linguonnx"
   - "translation"

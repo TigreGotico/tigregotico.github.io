@@ -4,7 +4,7 @@ description: "Eliminare le barriere linguistiche in OpenVoiceOS tramite rilevame
 date: 2023-10-16
 lang: it
 updated: 2026-08-01
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "OVOS"
   - "multilingual"

@@ -4,7 +4,7 @@ description: "sentence-types-multilingual을 공개했습니다 — 일곱 개 �
 date: 2026-04-01
 updated: 2026-08-01
 lang: ko
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Datasets"
   - "Multilingual"

@@ -3,7 +3,7 @@ title: "صناعة أصوات اصطناعية من الصفر"
 description: "إنشاء صوت لنظام تحويل النص إلى كلام يتطلب عادةً أن يقضي شخص حقيقي ساعات في تسجيل الصوت. وهذا مكلف ويستغرق وقتًا طويلًا، وفي كثير من اللغات أو اللهجات لا وجود لهذه الأصوات على الإطلاق"
 date: 2025-06-26
 lang: ar
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "TTS"
   - "Synthetic Data"

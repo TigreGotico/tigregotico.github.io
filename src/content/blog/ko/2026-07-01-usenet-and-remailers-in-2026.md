@@ -3,7 +3,7 @@ title: "2026년의 Usenet: 학습과 평가를 위한 깨끗한 AI 이전 텍스
 description: "Usenet은 AI 이전 인간 담론의 손상되지 않은 아카이브입니다 — 수십 년에 걸친 뉴스그룹 게시물로, 모두 인간이 작성했으며 어떤 언어 모델의 손도 타지 않았습니다. 그래서 언어 및 음성 모델의 학습과 평가에 가치 있는 데이터가 됩니다. 우리는 이를 수집하는 작은 Python 도구를 만들었습니다."
 date: 2026-07-01
 lang: ko
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "Usenet"
   - "Datasets"

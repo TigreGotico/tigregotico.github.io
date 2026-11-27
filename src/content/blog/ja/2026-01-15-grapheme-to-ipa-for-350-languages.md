@@ -4,7 +4,7 @@ description: "orthography2ipa は、純粋なデータで構成され言語学�
 date: 2026-01-15
 updated: 2026-08-01
 lang: ja
-author: "Casimiro Ferreira"
+authors: ["Casimiro Ferreira", "Claude"]
 tags:
   - "G2P"
   - "IPA"
