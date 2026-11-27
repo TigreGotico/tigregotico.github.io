@@ -29,9 +29,8 @@ for m in tag_numbers("Il a quatre-vingt-dix-sept ans et vit au XXe siècle.", "f
 # (41, 44) XXe 20 ORDINAL
 ```
 
-The outputs in this post come from numtag 0.49.1a1. Try it in the browser in the
-[numtag Space](https://huggingface.co/spaces/TigreGotico/numtag): the page
-installs the newest alpha from PyPI and shows its version.
+All outputs are from numtag 0.49.1a1. The
+[numtag Space](https://huggingface.co/spaces/TigreGotico/numtag) runs the newest alpha in the browser and shows its version.
 
 ## Value, kind and position
 
@@ -94,7 +93,7 @@ The writer covers 29 languages. The full lists are in the
 ## Limits
 
 Some languages are much weaker than others. Bengali reads badly. Hindi named
-fractions such as ढाई सौ (250) give nothing yet
+fractions such as ढाई सौ (250) give no result
 ([#430](https://github.com/TigreGotico/numtag/issues/430)). A word that can be a number or
 an ordinary word gets only a low confidence. Each known defect is an open issue
 with a strict `xfail` test.
