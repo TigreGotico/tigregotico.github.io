@@ -1,6 +1,6 @@
 ---
 title: "Jeux de données de wakeword synthétiques : sept noms d'assistant, un seul détecteur"
-description: "Nous avons publié sept jeux de données de wakeword synthétiques pour des noms d'assistant vocal courants — hey_computer, hey_mycroft, hey_siri, alexa, home_assistant, voice_assistant, wake_up. Entraînez un détecteur qui fonctionne partout."
+description: "Nous avons publié sept jeux de données de wakeword synthétiques pour des noms d'assistant vocal courants : hey_computer, hey_mycroft, hey_siri, alexa, home_assistant, voice_assistant, wake_up. Entraînez un détecteur qui fonctionne partout."
 date: 2025-10-14
 lang: fr
 author: "Casimiro Ferreira"
@@ -14,10 +14,10 @@ tags:
 draft: false
 ---
 
-Sept noms d'assistant. Sept jeux de données. Tout l'audio est généré entièrement à
-partir de la framework TTS **[phoonnx](https://github.com/TigreGotico/phoonnx)** en
-utilisant les voix Miro et Dii — sans enregistrements humains, sans formulaires de
-consentement, sans exposition de la vie privée.
+Sept noms d'assistant. Sept jeux de données. Tout l'audio est généré entièrement par
+la framework TTS **[phoonnx](https://github.com/TigreGotico/phoonnx)** en
+utilisant les voix Miro et Dii. Aucun enregistrement humain. Aucun formulaire de
+consentement. Aucune exposition de la vie privée.
 
 - **[hey_computer](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-hey_computer)**
 - **[hey_mycroft](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-hey_mycroft)**
@@ -27,7 +27,7 @@ consentement, sans exposition de la vie privée.
 - **[voice_assistant](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-voice_assistant)**
 - **[wake_up](https://huggingface.co/datasets/TigreGotico/synthetic-wakeword-wake_up)**
 
-Chaque jeu de données est un ensemble plat d'environ un millier de clips positifs — le
+Chaque jeu de données est un ensemble plat d'environ un millier de clips positifs : le
 wakeword prononcé avec des locuteurs, des débits et une prosodie variés. Les négatifs
 difficiles et le bruit de fond sont fournis dans des jeux de données compagnons
 séparés que vous mélangez au moment de l'entraînement :
@@ -37,18 +37,20 @@ et [ambient_noises](https://huggingface.co/datasets/TigreGotico/ambient_noises).
 
 ## Pourquoi le synthétique
 
-Les enregistrements réels exigent des mois de collecte, des formulaires de
-consentement pour chaque locuteur, et laissent malgré tout des lacunes d'accent que
-vous n'aviez pas anticipées. La génération synthétique inverse cela :
+Les enregistrements réels prennent des mois à collecter. Chaque locuteur a besoin
+d'un formulaire de consentement, et le résultat laisse malgré tout des lacunes
+d'accent que vous n'aviez pas anticipées. La génération synthétique évite tout
+cela.
 
-- **Reproductible** : les mêmes paramètres de génération, les mêmes voix → le même
-  audio. Piste d'audit complète, sans archéologie de formulaires de consentement.
+- **Reproductible** : les mêmes paramètres de génération et les mêmes voix
+  produisent le même audio, avec une piste d'audit complète et sans archéologie
+  de formulaires de consentement.
 - **Auditable** : le pipeline de génération est la documentation.
 - **Extensible** : faire varier le débit de parole et les caractéristiques du locuteur
   est un changement de paramètre, non une session de studio.
 
-Pour la détection de wakeword, la propriété pertinente est la distinctivité acoustique,
-non le naturel. Les données synthétiques sont bien adaptées à cette exigence.
+Pour la détection de wakeword, ce qui compte est la distinctivité acoustique,
+non le naturel. Les données synthétiques correspondent à cette exigence.
 
 ## Utilisez-les
 

@@ -16,14 +16,15 @@ draft: false
 
 À un moment donné au cours des quinze dernières années, le web a discrètement
 décidé que chaque site important avait aussi besoin d'une app mobile. Non pas
-parce que le HTML avait cessé de fonctionner — mais parce qu'une app est une
-*surface contrôlée* : un ensemble curé d'actions, sans chrome que vous n'avez pas
-choisi, une interface conçue pour une seule façon d'interagir.
+parce que le HTML avait cessé de fonctionner, mais parce qu'une app est une
+*surface contrôlée* : un ensemble curé d'actions, sans chrome de navigateur
+(menus, onglets et barre d'adresse) que vous n'avez pas choisi, une interface
+conçue pour une seule façon d'interagir.
 
 Nous pensons que le même mouvement attend d'être accompli pour un autre ensemble
 d'utilisateurs et un autre ensemble d'interfaces. Si tout le monde transforme
 son site en app Android, **nous pouvons transformer les sites en applications
-vocales** — et en applications en ligne de commande, et en flux natifs pour
+vocales**, et en applications en ligne de commande, et en flux natifs pour
 lecteurs d'écran. La même idée, dans la direction opposée : envelopper un site
 dans une surface conçue pour la façon dont *vous* voulez interagir avec lui, sauf
 que la surface est votre voix et votre terminal au lieu d'un écran tactile.
@@ -40,7 +41,7 @@ L'information est là-dedans. L'en extraire, sans les mains, est une misère.
 La réponse habituelle est « les sites devraient être plus accessibles », et ils
 le devraient. Mais nous n'allons pas réparer le web entier en demandant
 gentiment. Ce que nous *pouvons* faire, c'est prendre les sites qui comptent et
-construire une interface parlée et propre pour chacun d'eux — à la manière des
+construire une interface parlée et propre pour chacun d'eux, à la manière des
 magasins d'apps pour le tactile, mais pour la voix et la ligne de commande, et de
 façon ouverte.
 
@@ -49,10 +50,10 @@ façon ouverte.
 Chacune de ces applications vocales est constituée de deux pièces empilées, et
 nous construisons déjà les deux.
 
-**Couche un — un client typé qui transforme un site en API.** C'est exactement
+**La couche un est un client typé qui transforme un site en API.** C'est exactement
 notre [travail de scraping et de rétro-ingénierie d'API](/fr/blog/2026-04-20-music-database-scrapers) :
-atteindre un site qui n'a aucune interface publique utilisable et renvoyer des
-objets structurés et typés au lieu de HTML fragile — des verbes, pas du scraping :
+il atteint un site qui n'a aucune interface publique utilisable et renvoie des
+objets structurés et typés au lieu de HTML fragile. Des verbes, pas du scraping :
 
 ```python
 from py_bandcamp import BandCamp
@@ -66,17 +67,17 @@ Les outils de reconnaissance et de
 [transport anti-bot](/fr/blog/2026-03-15-beating-bot-walls-with-drop-in-requests-sessions)
 en dessous maintiennent cet accès en état de marche à mesure que le site change.
 Ce client est déjà utile en soi : pour un utilisateur de terminal, l'API *est* la
-version accessible du site web — notre client SoundCloud embarque même `nds`, une
+version accessible du site web. Notre client SoundCloud embarque même `nds`, une
 application en ligne de commande pour chercher et lire de la musique sans le
 moindre navigateur en vue. Une fois qu'un site est une API, il cesse d'être un
-artefact visuel et devient quelque chose qu'une machine — ou un pipeline vocal —
+artefact visuel et devient quelque chose qu'une machine, ou un pipeline vocal,
 peut piloter.
 
-**Couche deux — un plugin OVOS qui parle cette API.** Par-dessus le client repose
+**La couche deux est un plugin OVOS qui parle cette API.** Par-dessus le client repose
 un plugin [OpenVoiceOS](https://openvoiceos.org) qui associe les intentions
 parlées à des appels d'API et narre les résultats avec nos
 [voix TTS hors ligne](/fr/blog/2026-06-15-two-voices-every-language-miro-and-dii).
-Ce n'est délibérément *pas* une skill sur mesure par site — cette voie mène à des
+Ce n'est délibérément *pas* une skill sur mesure par site, car cette voie mène à des
 dizaines de skills isolées que personne ne peut maintenir. Pour tout ce qui a une
 forme média, c'est un plugin fournisseur
 [OCP](https://openvoiceos.github.io/ovos-technical-manual/) : un petit adaptateur
@@ -87,7 +88,7 @@ s'insère dans une interface vocale uniforme au lieu d'inventer la sienne.
 
 Le résultat : « Joue le canal Groove Salad de SomaFM. » « Cherche sur Bandcamp de
 l'ambient Creative Commons. » Le site web, transformé en quelque chose que vous
-pouvez utiliser sans le regarder — et sans une nouvelle grammaire à apprendre
+pouvez utiliser sans le regarder, et sans une nouvelle grammaire à apprendre
 pour chaque site.
 
 ## À l'ère des LLM, une API typée est une interface en langage naturel qui ne demande qu'à naître
@@ -97,17 +98,17 @@ qu'elle ne l'aurait fait il y a cinq ans. Un client propre et typé est exacteme
 ce dont un grand modèle de langage a besoin pour devenir un *front-end en langage
 naturel* d'un site web.
 
-Donnez à un LLM un ensemble documenté de fonctions — `search_albums`,
-`get_recommendations`, `stream_url` — et il traduira volontiers « trouve-moi
+Donnez à un LLM un ensemble documenté de fonctions, comme `search_albums`,
+`get_recommendations` et `stream_url`, et il traduira volontiers « trouve-moi
 quelque chose comme Naxatras mais en plus lourd » en les bons appels, les
 enchaînera et vous restituera le résultat à voix haute. L'API structurée est la
-partie difficile ; l'interface conversationnelle par-dessus est de plus en plus
+partie difficile. L'interface conversationnelle par-dessus est de plus en plus
 quelque chose que le modèle se contente de *fournir*, du moment que les outils
 qu'on lui remet sont bien typés et honnêtes quant à ce qu'ils renvoient. Un HTML
 désordonné ne donne rien au LLM à quoi se raccrocher. Un client typé lui donne
 une surface de contrôle.
 
-C'est pourquoi nos clients de site web embarquent un **`SKILL.md`** — une
+C'est pourquoi nos clients de site web embarquent un **`SKILL.md`**, une
 description en langage clair de ce que fait l'API, de ses verbes, de ses types de
 retour et d'exemples d'appels, écrite pour être lue par un agent. Pointez un
 assistant piloté par LLM vers lui et le client devient un outil que le modèle
@@ -123,31 +124,31 @@ Construisez l'API une fois ; portez-la de trois façons.
 ## Pourquoi cela importe le plus pour ceux qui ne peuvent pas voir l'écran
 
 Pour les utilisateurs aveugles et malvoyants, ce n'est pas une fonctionnalité de
-confort — c'est la différence entre l'accès et l'exclusion. Un lecteur d'écran ne
+confort. C'est la différence entre l'accès et l'exclusion. Un lecteur d'écran ne
 peut lire que ce qu'une page expose proprement, et la plupart des pages ne le
 font pas. Une application vocale dédiée saute la page entièrement : elle va aux
 données structurées et parle *cela*, dans un flux conçu pour l'écoute dès la
 première ligne de code.
 
 C'est le même principe qui sous-tend nos
-[jeux audio-first](/fr/games) — construits pour les oreilles, pas pour les yeux,
+[jeux audio-first](/fr/games), construits pour les oreilles, pas pour les yeux,
 avec les joueurs aveugles comme public principal plutôt que comme une réflexion
 après coup. Les applications vocales pour sites web étendent ce principe des jeux
 au reste du web.
 
-## Un site à la fois — mais la direction est un navigateur vocal
+## Un site à la fois, mais la direction est un navigateur vocal
 
 Voici la partie honnête : il n'y a pas de raccourci universel. On ne peut pas
 rendre « le web » utilisable à la voix d'un seul coup, parce que chaque site est
-son propre enchevêtrement. Cela doit se faire **site par site** — un client, une
+son propre enchevêtrement. Cela doit se faire **site par site** : un client, une
 skill, un ensemble d'intentions soigneusement cartographié à la fois. Cela
 ressemble à une limitation, et à court terme ç'en est une.
 
 Mais regardez vers quoi pointe l'accumulation. Chaque site que nous enveloppons
 est un coin de plus du web désormais accessible à la voix et à la ligne de
-commande. Assemblez-en suffisamment — un vocabulaire de métadonnées commun, une
+commande. Assemblez-en suffisamment (un vocabulaire de métadonnées commun, une
 couche vocale partagée, un ensemble cohérent d'intentions « chercher / ouvrir /
-lire / jouer / suivant » — et vous ne regardez plus un tas de skills séparées.
+lire / jouer / suivant ») et vous ne regardez plus un tas de skills séparées.
 Vous regardez les prémices d'un **navigateur vocal** : une façon de parcourir le
 web en parlant, où les sites individuels ne sont que des destinations qui savent
 déjà comment répondre.
@@ -159,5 +160,5 @@ rend le web un peu plus navigable pour les personnes que le web visuel a laissé
 de côté.
 
 Vous voulez qu'un site précis soit transformé en application vocale ou en ligne
-de commande — pour l'accessibilité, pour votre produit, ou simplement parce qu'il
+de commande, pour l'accessibilité, pour votre produit, ou simplement parce qu'il
 devrait exister ? [Discutons-en.](/fr/services)
