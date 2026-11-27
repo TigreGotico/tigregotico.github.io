@@ -29,7 +29,9 @@ for m in tag_numbers("Il a quatre-vingt-dix-sept ans et vit au XXe siècle.", "f
 # (41, 44) XXe 20 ORDINAL
 ```
 
-The outputs in this post come from numtag 0.49.1a1.
+The outputs in this post come from numtag 0.49.1a1. Try it in the browser in the
+[numtag Space](https://huggingface.co/spaces/TigreGotico/numtag): the page
+installs the newest alpha from PyPI and shows its version.
 
 ## Value, kind and position
 
@@ -86,12 +88,13 @@ engine reads all lexicons. No language has its own Python code. A new language i
 a new data file and its tests.
 
 The reader has 53 lexicons, from Asturian and Kabyle to Mirandese and Marwari.
-The writer speaks 29 languages. The full lists are in the
+The writer covers 29 languages. The full lists are in the
 [repository](https://github.com/TigreGotico/numtag).
 
 ## Limits
 
 Some languages are much weaker than others. Bengali reads badly. Hindi named
-fractions such as ढाई सौ (250) give nothing yet. A word that can be a number or
+fractions such as ढाई सौ (250) give nothing yet
+([#430](https://github.com/TigreGotico/numtag/issues/430)). A word that can be a number or
 an ordinary word gets only a low confidence. Each known defect is an open issue
 with a strict `xfail` test.
