@@ -1,7 +1,7 @@
 ---
 title: "Sprachqualität messen ohne Hörer-Panel"
 description: "Ein praxisnaher Leitfaden zu speechonnxmetrics: was MOS, referenzlose MOS-Schätzer, intrusive Signalmetriken und ASR-basierte WER/CER tatsächlich messen, wann welche gilt, echte Werte von echtem Audio, und warum ein vorhergesagter MOS Beweis ist, nicht Wahrheit."
-date: 2026-08-01
+date: 2026-08-31
 lang: de
 author: "Casimiro Ferreira"
 tags:
@@ -46,7 +46,7 @@ Textmetriken leben in einem separaten Modul, `speechonnxmetrics.asr`, weil sie Z
 
 ## Referenzloses MOS: die Zahlen lesen
 
-Vier MOS-Schätzer werden ausgeliefert, jeder gibt Werte auf einer Skala von 1 bis 5 zurück, wobei höher besser ist, dieselbe Skala, die ein menschliches Panel verwendet:
+Fünf MOS-Schätzer werden ausgeliefert, jeder gibt Werte auf einer Skala von 1 bis 5 zurück, wobei höher besser ist, dieselbe Skala, die ein menschliches Panel verwendet:
 
 | Metrik | Dimensionen | trainiert auf | kommerzielle Nutzung |
 |---|---|---|---|
@@ -86,7 +86,7 @@ Elf referenzbasierte Metriken messen den Abstand von einem sauberen Original. Di
 
 | Metrik | Bereich | Richtung | misst |
 |---|---|---|---|
-| `stoi` / `estoi` | 0–1 | höher ist besser | Short-Time Objective Intelligibility — wie viel vom *Inhalt* überlebt, unabhängig davon, wie natürlich es klingt |
+| `stoi` / `estoi` | 0–1 (`estoi`: −1–1) | höher ist besser | Short-Time Objective Intelligibility — wie viel vom *Inhalt* überlebt, unabhängig davon, wie natürlich es klingt |
 | `si_sdr` / `sdr` / `snr` | dB, unbegrenzt | höher ist besser | Signal-zu-Verzerrung-/Signal-zu-Rausch-Verhältnis |
 | `mcd` | dB, unbegrenzt | niedriger ist besser | Mel-Cepstral-Distortion — Abstand der Spektralhülle, eine klassische TTS/VC-Qualitätsmetrik |
 | `log_f0_rmse` | unbegrenzt | niedriger ist besser | Tonhöhenkontur-Fehler |
@@ -112,7 +112,7 @@ Fünf Textmetriken stammen aus einer einzigen Levenshtein-Ausrichtung zwischen e
 | Metrik | Bereich | Richtung | Bedeutung |
 |---|---|---|---|
 | `wer` | ≥ 0 (üblicherweise 0–1, kann 1 überschreiten) | niedriger ist besser | Word Error Rate: Ersetzungen + Auslassungen + Einfügungen, geteilt durch die Anzahl der Referenzwörter |
-| `cer` | 0–1 | niedriger ist besser | dieselbe Idee auf Zeichenebene — nachsichtiger gegenüber kleinen Rechtschreib-/Tokenisierungsabweichungen |
+| `cer` | ≥ 0 | niedriger ist besser | dieselbe Idee auf Zeichenebene — nachsichtiger gegenüber kleinen Rechtschreib-/Tokenisierungsabweichungen |
 | `mer` | 0–1 | niedriger ist besser | Match Error Rate |
 | `wil` | 0–1 | niedriger ist besser | verlorene Wortinformation |
 | `wip` | 0–1 | höher ist besser | erhaltene Wortinformation (`1 − wil`) |

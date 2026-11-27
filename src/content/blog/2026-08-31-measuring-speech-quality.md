@@ -1,7 +1,7 @@
 ---
 title: "Measuring Speech Quality Without a Listening Panel"
 description: "A working guide to speechonnxmetrics: what MOS, no-reference MOS predictors, intrusive signal metrics and ASR-based WER/CER actually measure, when each applies, real scores from real audio, and why a predicted MOS is evidence, not truth."
-date: 2026-08-01
+date: 2026-08-31
 lang: en
 author: "Casimiro Ferreira"
 tags:
@@ -74,7 +74,7 @@ strings, not audio. `s.score()` only dispatches metrics that take a waveform.
 
 ## No-reference MOS: reading the numbers
 
-Four MOS estimators ship, each returning values on a 1–5 scale where higher is better,
+Five MOS estimators ship, each returning values on a 1–5 scale where higher is better,
 the same scale a human panel uses:
 
 | metric | dimensions | trained on | commercial use |
@@ -130,7 +130,7 @@ knowing first:
 
 | metric | range | direction | measures |
 |---|---|---|---|
-| `stoi` / `estoi` | 0–1 | higher is better | short-time objective intelligibility — how much of the *content* survives, independent of how natural it sounds |
+| `stoi` / `estoi` | 0–1 (`estoi`: −1–1) | higher is better | short-time objective intelligibility — how much of the *content* survives, independent of how natural it sounds |
 | `si_sdr` / `sdr` / `snr` | dB, unbounded | higher is better | signal-to-distortion / signal-to-noise ratio |
 | `mcd` | dB, unbounded | lower is better | mel-cepstral distortion — spectral-envelope distance, a classic TTS/VC quality metric |
 | `log_f0_rmse` | unbounded | lower is better | pitch-contour error |
@@ -164,7 +164,7 @@ and a hypothesis (what the audio was actually transcribed as):
 | metric | range | direction | meaning |
 |---|---|---|---|
 | `wer` | ≥ 0 (usually 0–1, can exceed 1) | lower is better | word error rate: substitutions + deletions + insertions, divided by reference word count |
-| `cer` | 0–1 | lower is better | same idea at the character level — more forgiving of minor spelling/tokenization mismatches |
+| `cer` | ≥ 0 | lower is better | same idea at the character level — more forgiving of minor spelling/tokenization mismatches |
 | `mer` | 0–1 | lower is better | match error rate |
 | `wil` | 0–1 | lower is better | word information lost |
 | `wip` | 0–1 | higher is better | word information preserved (`1 − wil`) |

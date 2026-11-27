@@ -1,7 +1,7 @@
 ---
 title: "Misurare la Qualità del Parlato Senza un Panel di Ascolto"
 description: "Una guida pratica a speechonnxmetrics: cosa misurano davvero MOS, predittori MOS senza riferimento, metriche di segnale intrusive e WER/CER basati su ASR, quando ciascuno si applica, punteggi reali su audio reale, e perché un MOS predetto è evidenza, non verità."
-date: 2026-08-01
+date: 2026-08-31
 lang: it
 author: "Casimiro Ferreira"
 tags:
@@ -79,7 +79,7 @@ metriche che prendono una forma d'onda.
 
 ## MOS senza riferimento: leggere i numeri
 
-Vengono distribuiti quattro stimatori MOS, ciascuno restituisce valori su
+Vengono distribuiti cinque stimatori MOS, ciascuno restituisce valori su
 una scala 1–5 dove più alto è meglio — la stessa scala usata da un panel
 umano:
 
@@ -139,7 +139,7 @@ pulito. Quelle da conoscere per prime:
 
 | metrica | intervallo | direzione | misura |
 |---|---|---|---|
-| `stoi` / `estoi` | 0–1 | più alto è meglio | intelligibilità obiettiva a breve termine — quanto del *contenuto* sopravvive, indipendentemente da quanto suoni naturale |
+| `stoi` / `estoi` | 0–1 (`estoi`: −1–1) | più alto è meglio | intelligibilità obiettiva a breve termine — quanto del *contenuto* sopravvive, indipendentemente da quanto suoni naturale |
 | `si_sdr` / `sdr` / `snr` | dB, illimitato | più alto è meglio | rapporto segnale-distorsione / segnale-rumore |
 | `mcd` | dB, illimitato | più basso è meglio | distorsione mel-cepstrale — distanza dell'inviluppo spettrale, una metrica classica di qualità TTS/VC |
 | `log_f0_rmse` | illimitato | più basso è meglio | errore del contorno del pitch |
@@ -176,7 +176,7 @@ stato effettivamente trascritto):
 | metrica | intervallo | direzione | significato |
 |---|---|---|---|
 | `wer` | ≥ 0 (di solito 0–1, può superare 1) | più basso è meglio | word error rate: sostituzioni + cancellazioni + inserimenti, diviso per il numero di parole di riferimento |
-| `cer` | 0–1 | più basso è meglio | la stessa idea a livello di carattere — più tollerante verso piccole differenze di ortografia/tokenizzazione |
+| `cer` | ≥ 0 | più basso è meglio | la stessa idea a livello di carattere — più tollerante verso piccole differenze di ortografia/tokenizzazione |
 | `mer` | 0–1 | più basso è meglio | match error rate |
 | `wil` | 0–1 | più basso è meglio | word information lost |
 | `wip` | 0–1 | più alto è meglio | word information preserved (`1 − wil`) |
