@@ -28,8 +28,8 @@ closest_lang("pt-AO", ["pt-BR", "pt-PT"])                 # 'pt-PT'
 closest_lang("zh-HK-HiuMaanNeural", ["zh-CN", "zh-HK"])   # 'zh-HK'
 ```
 
-A voice id reads as its tag prefix, so a voice name can go in directly. The
-outputs in this post come from linguatag 0.10.5a1.
+A voice id reads as its tag prefix, so a voice name can go in directly. All
+outputs are from linguatag 0.10.5a1.
 
 ## Standard tags
 
