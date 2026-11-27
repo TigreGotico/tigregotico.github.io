@@ -9,6 +9,7 @@ interface Project {
   name: string;
   description: string;
   url?: string;
+  demo?: string;
   category: string | string[];
   tags: string[];
   image?: string;
@@ -134,6 +135,17 @@ const badgeStyle = `--h:${meta.hue}; background:hsl(${meta.hue} 70% 55% / 0.12);
         {c.selfHosted}
       </span>
     )}
+    {
+      project.demo && (
+        <a
+          href={project.demo}
+          class="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
+          rel="noopener"
+        >
+          {c.tryDemo}
+        </a>
+      )
+    }
     {
       project.url ? (
         <a

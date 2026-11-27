@@ -284,21 +284,21 @@ export const blogUI: Record<Locale, { allPosts: string; minRead: string; newer: 
 };
 
 /** Project-card chrome, per locale. */
-export const cardUI: Record<Locale, { selfHosted: string; selfHostedTitle: string; viewRepo: string; featured: string; comingSoon: string; comingSoonLong: string }> = {
-  en: { selfHosted: 'Self-hosted', selfHostedTitle: 'Runs on your own hardware — no mandatory cloud', viewRepo: 'View repository', featured: 'Featured', comingSoon: 'Coming soon', comingSoonLong: 'Coming soon — not yet public' },
-  pt: { selfHosted: 'Auto-hospedado', selfHostedTitle: 'Corre no seu próprio hardware — sem nuvem obrigatória', viewRepo: 'Ver repositório', featured: 'Destaque', comingSoon: 'Em breve', comingSoonLong: 'Em breve — ainda não público' },
-  es: { selfHosted: 'Autoalojado', selfHostedTitle: 'Se ejecuta en tu propio hardware, sin nube obligatoria', viewRepo: 'Ver repositorio', featured: 'Destacado', comingSoon: 'Próximamente', comingSoonLong: 'Próximamente — aún no público' },
-  de: { selfHosted: 'Selbst gehostet', selfHostedTitle: 'Läuft auf Ihrer eigenen Hardware — keine verpflichtende Cloud', viewRepo: 'Repository ansehen', featured: 'Empfohlen', comingSoon: 'Demnächst', comingSoonLong: 'Demnächst — noch nicht öffentlich' },
-  nl: { selfHosted: 'Zelf gehost', selfHostedTitle: 'Draait op je eigen hardware — geen verplichte cloud', viewRepo: 'Repository bekijken', featured: 'Uitgelicht', comingSoon: 'Binnenkort', comingSoonLong: 'Binnenkort — nog niet openbaar' },
-  fr: { selfHosted: 'Auto-hébergé', selfHostedTitle: 'Fonctionne sur votre propre matériel — aucun cloud obligatoire', viewRepo: 'Voir le dépôt', featured: 'En vedette', comingSoon: 'Bientôt disponible', comingSoonLong: 'Bientôt disponible — pas encore public' },
-  it: { selfHosted: 'Self-hosted', selfHostedTitle: 'Funziona sul tuo hardware — nessun cloud obbligatorio', viewRepo: 'Vedi il repository', featured: 'In evidenza', comingSoon: 'Prossimamente', comingSoonLong: 'Prossimamente — non ancora pubblico' },
-  ru: { selfHosted: 'Self-hosted', selfHostedTitle: 'Работает на вашем оборудовании — без обязательного облака', viewRepo: 'Открыть репозиторий', featured: 'Рекомендуемое', comingSoon: 'Скоро', comingSoonLong: 'Скоро — пока не опубликовано' },
-  ar: { selfHosted: 'استضافة ذاتية', selfHostedTitle: 'يعمل على أجهزتك الخاصة — دون سحابة إلزامية', viewRepo: 'عرض المستودع', featured: 'مميّز', comingSoon: 'قريبًا', comingSoonLong: 'قريبًا — ليس عامًّا بعد' },
-  fa: { selfHosted: 'خودمیزبان', selfHostedTitle: 'روی سخت‌افزار خودتان اجرا می‌شود — بدون ابر اجباری', viewRepo: 'مشاهدهٔ مخزن', featured: 'برگزیده', comingSoon: 'به‌زودی', comingSoonLong: 'به‌زودی — هنوز عمومی نشده' },
-  hi: { selfHosted: 'स्व-होस्टेड', selfHostedTitle: 'आपके अपने हार्डवेयर पर चलता है — कोई अनिवार्य क्लाउड नहीं', viewRepo: 'रिपॉज़िटरी देखें', featured: 'विशेष', comingSoon: 'जल्द आ रहा है', comingSoonLong: 'जल्द आ रहा है — अभी सार्वजनिक नहीं' },
-  zh: { selfHosted: '自托管', selfHostedTitle: '在你自己的硬件上运行 —— 无强制云', viewRepo: '查看仓库', featured: '精选', comingSoon: '即将推出', comingSoonLong: '即将推出 —— 尚未公开' },
-  ko: { selfHosted: '자체 호스팅', selfHostedTitle: '여러분의 하드웨어에서 실행 — 필수 클라우드 없음', viewRepo: '저장소 보기', featured: '추천', comingSoon: '출시 예정', comingSoonLong: '출시 예정 — 아직 비공개' },
-  ja: { selfHosted: 'セルフホスト', selfHostedTitle: 'ご自身のハードウェアで動作 — 必須のクラウドなし', viewRepo: 'リポジトリを見る', featured: '注目', comingSoon: '近日公開', comingSoonLong: '近日公開 — まだ非公開' },
+export const cardUI: Record<Locale, { selfHosted: string; selfHostedTitle: string; viewRepo: string; featured: string; comingSoon: string; comingSoonLong: string; tryDemo: string }> = {
+  en: { selfHosted: 'Self-hosted', selfHostedTitle: 'Runs on your own hardware — no mandatory cloud', viewRepo: 'View repository', featured: 'Featured', comingSoon: 'Coming soon', comingSoonLong: 'Coming soon — not yet public', tryDemo: 'Try the demo' },
+  pt: { selfHosted: 'Auto-hospedado', selfHostedTitle: 'Corre no seu próprio hardware — sem nuvem obrigatória', viewRepo: 'Ver repositório', featured: 'Destaque', comingSoon: 'Em breve', comingSoonLong: 'Em breve — ainda não público', tryDemo: 'Experimentar' },
+  es: { selfHosted: 'Autoalojado', selfHostedTitle: 'Se ejecuta en tu propio hardware, sin nube obligatoria', viewRepo: 'Ver repositorio', featured: 'Destacado', comingSoon: 'Próximamente', comingSoonLong: 'Próximamente — aún no público', tryDemo: 'Probar la demo' },
+  de: { selfHosted: 'Selbst gehostet', selfHostedTitle: 'Läuft auf Ihrer eigenen Hardware — keine verpflichtende Cloud', viewRepo: 'Repository ansehen', featured: 'Empfohlen', comingSoon: 'Demnächst', comingSoonLong: 'Demnächst — noch nicht öffentlich', tryDemo: 'Demo testen' },
+  nl: { selfHosted: 'Zelf gehost', selfHostedTitle: 'Draait op je eigen hardware — geen verplichte cloud', viewRepo: 'Repository bekijken', featured: 'Uitgelicht', comingSoon: 'Binnenkort', comingSoonLong: 'Binnenkort — nog niet openbaar', tryDemo: 'Demo proberen' },
+  fr: { selfHosted: 'Auto-hébergé', selfHostedTitle: 'Fonctionne sur votre propre matériel — aucun cloud obligatoire', viewRepo: 'Voir le dépôt', featured: 'En vedette', comingSoon: 'Bientôt disponible', comingSoonLong: 'Bientôt disponible — pas encore public', tryDemo: 'Essayer la démo' },
+  it: { selfHosted: 'Self-hosted', selfHostedTitle: 'Funziona sul tuo hardware — nessun cloud obbligatorio', viewRepo: 'Vedi il repository', featured: 'In evidenza', comingSoon: 'Prossimamente', comingSoonLong: 'Prossimamente — non ancora pubblico', tryDemo: 'Prova la demo' },
+  ru: { selfHosted: 'Self-hosted', selfHostedTitle: 'Работает на вашем оборудовании — без обязательного облака', viewRepo: 'Открыть репозиторий', featured: 'Рекомендуемое', comingSoon: 'Скоро', comingSoonLong: 'Скоро — пока не опубликовано', tryDemo: 'Открыть демо' },
+  ar: { selfHosted: 'استضافة ذاتية', selfHostedTitle: 'يعمل على أجهزتك الخاصة — دون سحابة إلزامية', viewRepo: 'عرض المستودع', featured: 'مميّز', comingSoon: 'قريبًا', comingSoonLong: 'قريبًا — ليس عامًّا بعد', tryDemo: 'جرّب العرض' },
+  fa: { selfHosted: 'خودمیزبان', selfHostedTitle: 'روی سخت‌افزار خودتان اجرا می‌شود — بدون ابر اجباری', viewRepo: 'مشاهدهٔ مخزن', featured: 'برگزیده', comingSoon: 'به‌زودی', comingSoonLong: 'به‌زودی — هنوز عمومی نشده', tryDemo: 'امتحان نسخهٔ نمایشی' },
+  hi: { selfHosted: 'स्व-होस्टेड', selfHostedTitle: 'आपके अपने हार्डवेयर पर चलता है — कोई अनिवार्य क्लाउड नहीं', viewRepo: 'रिपॉज़िटरी देखें', featured: 'विशेष', comingSoon: 'जल्द आ रहा है', comingSoonLong: 'जल्द आ रहा है — अभी सार्वजनिक नहीं', tryDemo: 'डेमो आज़माएँ' },
+  zh: { selfHosted: '自托管', selfHostedTitle: '在你自己的硬件上运行 —— 无强制云', viewRepo: '查看仓库', featured: '精选', comingSoon: '即将推出', comingSoonLong: '即将推出 —— 尚未公开', tryDemo: '试用演示' },
+  ko: { selfHosted: '자체 호스팅', selfHostedTitle: '여러분의 하드웨어에서 실행 — 필수 클라우드 없음', viewRepo: '저장소 보기', featured: '추천', comingSoon: '출시 예정', comingSoonLong: '출시 예정 — 아직 비공개', tryDemo: '데모 사용해 보기' },
+  ja: { selfHosted: 'セルフホスト', selfHostedTitle: 'ご自身のハードウェアで動作 — 必須のクラウドなし', viewRepo: 'リポジトリを見る', featured: '注目', comingSoon: '近日公開', comingSoonLong: '近日公開 — まだ非公開', tryDemo: 'デモを試す' },
 };
 
 /** Footer note on native languages + machine translation, per locale. */

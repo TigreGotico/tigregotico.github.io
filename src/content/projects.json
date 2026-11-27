@@ -117,7 +117,8 @@
       "zh": "涵盖 20 多个语系、350 多种语言的字素到 IPA 及音位变体映射——一个最大匹配 IPA 分词器、音系与文字距离度量、方言变换，以及可插拔的 G2P 后端。",
       "ko": "20개 이상 어족에 걸친 350개 이상 언어의 자소-IPA 및 이음 매핑 — 최대 일치 IPA 토크나이저, 음운 및 문자 거리 지표, 방언 변환, 플러그형 G2P 백엔드 제공.",
       "ja": "20以上の語族にわたる350以上の言語に対応した書記素からIPAへの変換と異音マッピング。最長一致IPAトークナイザー、音韻・文字距離指標、方言変換、プラガブルなG2Pバックエンドを備える。"
-    }
+    },
+    "demo": "https://huggingface.co/spaces/TigreGotico/orthography2ipa"
   },
   {
     "id": "phonematcher",
@@ -406,7 +407,8 @@
       "zh": "在 NLnet 资助下为 OpenVoiceOS 开发的唤醒词模型训练器——用你自己的样本构建自定义的设备端唤醒词。",
       "ko": "OpenVoiceOS를 위해 NLnet 보조금으로 개발된 웨이크워드 모델 트레이너 — 자신의 샘플로 맞춤형 온디바이스 웨이크워드를 구축합니다.",
       "ja": "OpenVoiceOSのためにNLnet助成のもとで開発されたウェイクワードモデル学習ツール。自分のサンプルからカスタムのオンデバイスウェイクワードを構築できる。"
-    }
+    },
+    "demo": "https://huggingface.co/spaces/TigreGotico/wakephonehubert-space"
   },
   {
     "id": "chatterbox-onnx",
@@ -463,7 +465,8 @@
       "zh": "葡萄牙语字素到音素工具。",
       "ko": "포르투갈어 자소-음소 변환 도구.",
       "ja": "ポルトガル語の書記素から音素への変換ツール。"
-    }
+    },
+    "demo": "https://huggingface.co/spaces/TigreGotico/tugaphone"
   },
   {
     "id": "rake-keywords",
@@ -603,7 +606,8 @@
       "zh": "葡萄牙语文本音节切分工具。",
       "ko": "포르투갈어 텍스트 음절 분리 도구.",
       "ja": "ポルトガル語テキストの音節分割ツール。"
-    }
+    },
+    "demo": "https://huggingface.co/spaces/TigreGotico/silabificador"
   },
   {
     "id": "pyfrotz",
@@ -3181,7 +3185,8 @@
       "zh": "面向 TTS 的欧洲葡萄牙语异读同形词消歧——为拼写相同但因词义不同而读法不同的词选择正确发音（sede = 口渴 vs 总部，forma = 模具 vs 形状）。纯 Python 规则加学习模型，并附开放数据集。",
       "ko": "TTS를 위한 유럽 포르투갈어 이음 동철이의어 중의성 해소 — 철자는 같지만 의미에 따라 다르게 읽히는 단어의 올바른 발음을 선택합니다(sede = 갈증 vs 본부, forma = 틀 vs 형태). 순수 Python 규칙과 학습 모델, 오픈 데이터셋 포함.",
       "ja": "TTS向けのヨーロッパポルトガル語における異音同綴語の曖昧性解消。綴りは同じでも意味によって読み方が異なる語（sede＝渇き対本部、forma＝型対形）の正しい発音を選択する。純Python製のルールと学習モデルを備え、オープンデータセットを伴う。"
-    }
+    },
+    "demo": "https://huggingface.co/spaces/TigreGotico/bifonia"
   },
   {
     "id": "voiceclonnx",
@@ -3555,7 +3560,8 @@
       "zh": "基于 orthography2ipa、带 tashkeel 加符的规则式阿拉伯语（MSA）文本转 IPA——上下文敏感的标记树处理太阳字母同化、hamzat al-waṣl、tanwīn 和 tāʾ marbūṭa，并先通过内置 ONNX 模型对无标记文本加符。",
       "ko": "orthography2ipa 기반의 tashkeel 발음 부호를 포함한 규칙 기반 아랍어(MSA) 텍스트-IPA 변환 — 문맥 민감 토큰 트리가 태양 문자 동화, hamzat al-waṣl, tanwīn, tāʾ marbūṭa를 처리하며, 번들된 ONNX 모델로 무부호 텍스트를 먼저 발음 부호화합니다.",
       "ja": "orthography2ipa上に構築された、タシュキール（母音記号付与）を伴うルールベースのアラビア語（MSA）テキストからIPAへの変換。文脈依存のトークンツリーが太陽文字の同化、ハムザ・アルワスル、タンウィーン、ター・マルブータを処理し、まず付属のONNXモデルで無記号テキストに母音記号を付与する。"
-    }
+    },
+    "demo": "https://huggingface.co/spaces/TigreGotico/arbtok"
   },
   {
     "id": "pyahotts-iparrahotsa",
@@ -3700,7 +3706,8 @@
       "zh": "检测并在七种葡萄牙语正字法规范之间转换——1911 年以前的词源写法，1911/1943/1945/1971/1973 年的改革，以及 1990 年正字法协定及其欧洲和巴西子变体。",
       "ko": "일곱 가지 포르투갈어 정서법 규범 간의 감지 및 변환 — 1911년 이전 어원적 표기, 1911/1943/1945/1971/1973년 개혁, 그리고 유럽 및 브라질 하위 변형을 포함한 1990년 Acordo Ortográfico.",
       "ja": "7つのポルトガル語正書法規範の検出と相互変換。1911年以前の語源的表記、1911／1943／1945／1971／1973年の改革、およびそのヨーロッパ・ブラジル両下位変種を伴う1990年正書法協定（Acordo Ortográfico de 1990）に対応する。"
-    }
+    },
+    "demo": "https://huggingface.co/spaces/TigreGotico/desacordo_ortografico"
   },
   {
     "id": "ahotts-g2p",
@@ -4439,5 +4446,98 @@
       "ko": "아주 단순한 키워드 기반 인텐트 파서 — 필수/선택 키워드 슬롯으로 발화를 매칭하는 Adapt 대체재입니다. TigreGótico에서 태어나 OpenVoiceOS에 기증되었습니다.",
       "ja": "きわめてシンプルなキーワードベースのインテントパーサー。必須／任意キーワードスロットで発話をマッチングするAdaptの代替品。TigreGóticoで生まれ、OpenVoiceOSに寄贈されました。"
     }
+  },
+  {
+    "id": "chronologia",
+    "name": "chronologia",
+    "description": "Reads dates and times in many languages, converts between 18 calendars and the Gregorian, and speaks Portuguese dates.",
+    "url": "https://github.com/TigreGotico/chronologia",
+    "category": "NLP & Language",
+    "tags": [
+      "dates",
+      "calendars",
+      "NLP"
+    ],
+    "featured": false,
+    "demo": "https://huggingface.co/spaces/TigreGotico/chronologia"
+  },
+  {
+    "id": "numtag",
+    "name": "numtag",
+    "description": "Finds every number in a text, in digits or words, with its value, kind and position, and spells values in words.",
+    "url": "https://github.com/TigreGotico/numtag",
+    "category": "NLP & Language",
+    "tags": [
+      "numbers",
+      "NLP",
+      "TTS"
+    ],
+    "featured": false,
+    "demo": "https://huggingface.co/spaces/TigreGotico/numtag"
+  },
+  {
+    "id": "text2spoken",
+    "name": "text2spoken",
+    "description": "Rewrites numbers, dates, times, money, units and abbreviations into the words a voice speaks.",
+    "url": "https://github.com/TigreGotico/text2spoken",
+    "category": "Speech Synthesis",
+    "tags": [
+      "TTS",
+      "text normalisation"
+    ],
+    "featured": false
+  },
+  {
+    "id": "linguatag",
+    "name": "linguatag",
+    "description": "Reads, standardizes and matches BCP 47 language tags, with regional varieties and a cited family tree of languages.",
+    "url": "https://github.com/TigreGotico/linguatag",
+    "category": "NLP & Language",
+    "tags": [
+      "BCP 47",
+      "languages"
+    ],
+    "featured": false
+  },
+  {
+    "id": "linguonnx",
+    "name": "linguonnx",
+    "description": "Offline translation and language identification on ONNX Runtime, with a router that chains small models.",
+    "url": "https://github.com/TigreGotico/linguonnx",
+    "category": "NLP & Language",
+    "tags": [
+      "translation",
+      "language identification",
+      "ONNX"
+    ],
+    "featured": false
+  },
+  {
+    "id": "pt2barranquenho",
+    "name": "pt2barranquenho",
+    "description": "Rule-based translator from European Portuguese to Barranquenho.",
+    "url": "https://github.com/TigreGotico/pt2barranquenho",
+    "category": "NLP & Language",
+    "tags": [
+      "Barranquenho",
+      "Portuguese",
+      "translation"
+    ],
+    "featured": false,
+    "demo": "https://huggingface.co/spaces/TigreGotico/pt2barranquenho"
+  },
+  {
+    "id": "pt2mirandese",
+    "name": "pt2mirandese",
+    "description": "Rule-based translator from European Portuguese to Mirandese.",
+    "url": "https://github.com/TigreGotico/pt2mirandese",
+    "category": "NLP & Language",
+    "tags": [
+      "Mirandese",
+      "Portuguese",
+      "translation"
+    ],
+    "featured": false,
+    "demo": "https://huggingface.co/spaces/TigreGotico/pt2mirandese"
   }
 ]
