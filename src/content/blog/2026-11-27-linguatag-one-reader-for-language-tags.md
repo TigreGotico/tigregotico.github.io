@@ -57,13 +57,15 @@ inside its language first:
 closest_lang("pt-PT-x-porto", ["pt-PT-x-lisbon", "pt-BR"])   # 'pt-PT-x-lisbon'
 ```
 
-The [orthography2ipa](https://github.com/TigreGotico/orthography2ipa) specs and
-the [phoonnx](https://github.com/TigreGotico/phoonnx) voices use these lect tags.
+The [orthography2ipa](https://github.com/TigreGotico/orthography2ipa) specs use
+these lect tags, and so do some [phoonnx](https://github.com/TigreGotico/phoonnx)
+voices (StyleTTS2, MMS).
 
 ## Distance and family
 
-`lang_distance` says how well one language serves a speaker of another. A small
-number is a good fallback, and 100 means "do not use":
+`lang_distance` says how well one language serves a speaker of another. 0 is the
+same language, up to 10 is a usable fallback, and above 10 is no usable match.
+100 marks a different language:
 
 ```python
 from linguatag import lang_distance, ancestry_similarity
@@ -82,7 +84,7 @@ the tree cites a source: a grammar, a paper or Glottolog.
 ## Small and offline
 
 The wheel holds its data and is about 2 MB. It needs no network and no heavy
-dependency. Import takes about 22 ms. orthography2ipa, phoonnx, scriptconv and
+dependency. Import takes about 20 ms on a laptop. orthography2ipa, phoonnx, scriptconv and
 linguonnx read their tags through it.
 
 ## Limits
