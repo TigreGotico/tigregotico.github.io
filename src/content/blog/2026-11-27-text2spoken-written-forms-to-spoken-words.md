@@ -1,6 +1,6 @@
 ---
 title: "text2spoken: Written Forms to Spoken Words"
-description: "A TTS voice reads letters, not '12/03/2024' or '3,50 €'. text2spoken rewrites numbers, dates, times, money, units and abbreviations into the words a speaker says, in 19 languages, with a cited source for each rule."
+description: "A TTS voice reads letters, not '12/03/2024' or '3,50 €'. text2spoken rewrites numbers, dates, times, money, units and abbreviations into the words a speaker says, in 19 languages, with cited sources for the rules."
 date: 2026-11-27
 author: "Casimiro Ferreira"
 tags:
@@ -58,7 +58,7 @@ dative ordinal *dritten*. "3" before a prepositional plural is *трёх*.
 
 Nineteen languages have their own language file: Arabic, Bengali, Catalan,
 Danish, German, Greek, English, Spanish, Basque, French, Hindi, Italian,
-Japanese, Korean, Dutch, Portuguese (pt-PT and pt-BR), Russian, Tetum Dili and
+Japanese, Korean, Dutch, Portuguese (pt-PT and pt-BR), Russian, Tetun Dili and
 Chinese. Any other BCP 47 tag still gets cardinals, decimals and the minus sign
 from the CLDR rules.
 
@@ -68,12 +68,12 @@ style guide. The test set has 4,286 rows. 4,149 of them cite a source. The other
 
 ## One engine for reading and speaking
 
-text2spoken does not parse numbers or dates itself.
-[numtag](https://github.com/TigreGotico/numtag) finds and spells the numbers, and
-[chronologia](https://github.com/TigreGotico/chronologia) reads and speaks the
-dates and clock times. The parser that understands "doze de março" in a voice
-command is the same code that writes it for the voice. A fix in one place fixes
-both directions.
+text2spoken finds the written forms with its own recognizers. For most
+languages, [numtag](https://github.com/TigreGotico/numtag) spells the numbers. For
+Portuguese, [chronologia](https://github.com/TigreGotico/chronologia) speaks the
+dates and clock times, and more languages follow. numtag and chronologia also
+parse voice commands, so the forms that a parser reads and the forms that the
+writer speaks come from one library. A fix in one place fixes both directions.
 
 The rule is "parse every form, speak the canonical one". The reader accepts every
 spelling that a speaker uses. The writer gives the one preferred form.
@@ -90,15 +90,15 @@ A form that text2spoken cannot read stays as written. It never guesses.
 ## Where it runs
 
 [phoonnx](https://github.com/TigreGotico/phoonnx) voices and the scriptconv
-phonemizers call it before phonemization. OpenVoiceOS uses it through
-`ovos-dialog-normalizer-plugin`. It also normalises reference text before WER
-scoring, so that "21" and "twenty-one" count as the same word. On 8,336 inputs,
-its output is equal to the output of the older normaliser inside phoonnx, which it
-replaces.
+phonemizers call it before phonemization. The OpenVoiceOS plugin
+`ovos-dialog-normalizer-plugin` is moving to it. It can also normalise
+reference text before WER scoring, so that "21" and "twenty-one" count as the same
+word. It replaces the older normaliser inside phoonnx. When phoonnx switched, the
+two gave equal output on 8,336 inputs.
 
 ## Limits
 
-The package is an alpha. Bengali digits with a classifier (`3টি`) are not read
-yet. Russian ordinals above 10^15 stay as digits. Greek, Chinese, Korean,
+The package is an alpha. On 0.0.2a169, Bengali digits with a classifier (`3টি`)
+are not read. Russian ordinals above 10^15 stay as digits. Greek, Chinese, Korean,
 Japanese, Basque and Arabic read their numbers through CLDR rules, not yet through
 numtag.
