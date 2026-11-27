@@ -116,7 +116,9 @@ rows for chronologia (commit `7760ee2d`, numtag 0.49.0a1) and ovos-date-parser
 | bn | 0.65 | 0.23 |
 
 chronologia loses 309 of the 1,662 cells of the test set (each cell is one sentence
-class in one language) to ovos-date-parser, most of them false dates in text that has no date.
+class in one language) to ovos-date-parser. The losses include languages without locale data (Chinese,
+Japanese), false dates in text that has no date, and some day-part and clock
+forms.
 For this reason, no language has the "ready" mark.
 
 ## Browser demo
