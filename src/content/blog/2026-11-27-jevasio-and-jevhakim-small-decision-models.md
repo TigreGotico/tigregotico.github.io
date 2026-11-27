@@ -117,10 +117,17 @@ higher) about one question in three, and when it is sure it is right 94 % of the
 time. Kev is sure about one question in twenty. Thus you can send the sure answers
 straight through and send only the rest to a person.
 
+<picture>
+  <source srcset="/blog/jevasio/jevhakim-per-source-dark.svg" media="(prefers-color-scheme: dark)">
+  <img src="/blog/jevasio/jevhakim-per-source-light.svg" alt="Dot plot of accuracy per Arabic test source for Kev-0.8B and Jevhakim-0.8B. Jevhakim is higher on every trained source, for example arafacts 0.097 to 0.763, and slightly lower on the unseen belebele_ar and arabic_mmlu." width="800" loading="lazy">
+</picture>
+
 Some tasks changed a lot. Some sources check whether an Arabic claim is true:
 Kev scored 0.097 on arafacts and Jevhakim scores 0.763. Detection of unsafe
 prompts (guardrail) went from 0.392 to 0.894. Translation pairs in Egyptian Arabic
-went from 0.614 to 0.980.
+went from 0.614 to 0.980. On two sources that it never saw in training, belebele_ar and
+arabic_mmlu (reading comprehension and exam questions), Jevhakim is slightly below
+Kev.
 
 ## What you can do with them
 
@@ -167,6 +174,11 @@ far out-of-domain requests:
 | Template matcher, then Jevásio | 0.820 | 11 of 50 |
 | Stock OVOS pipeline | 0.213 | |
 | Stock OVOS pipeline, then Jevásio | 0.657 | |
+
+<picture>
+  <source srcset="/blog/jevasio/jevasio-pipeline-dark.svg" media="(prefers-color-scheme: dark)">
+  <img src="/blog/jevasio/jevasio-pipeline-light.svg" alt="Dot plot of pt-PT intent accuracy: the template matcher goes from 0.736 to 0.820 with Jevásio after it, and the stock OVOS pipeline from 0.213 to 0.657." width="800" loading="lazy">
+</picture>
 
 Jevásio adds 8 points of accuracy after a good template matcher. After the stock
 pipeline, the accuracy goes from 21 % to 66 %. There is a cost: each tier that you
