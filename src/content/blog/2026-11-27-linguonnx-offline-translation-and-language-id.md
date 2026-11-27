@@ -99,8 +99,12 @@ overrides per call.
 
 A size budget is the obvious knob for a small host, and the obvious implementation
 of it is wrong. Used as a filter, `max_model_mb=500` cuts 592 routable languages
-down to 275, because the long tail lives inside the big multilingual models and no
+down to 235 on a fresh install, because the long tail lives inside the big multilingual models and no
 chain of small models replaces them.
+
+A model that is already in the local cache counts as 0 MB against the budget
+(`count_cached_as_free=True`, the default), so a host with cached models routes
+more languages under the same budget.
 
 `oversize_fallback=True` makes the budget a preference instead:
 
@@ -110,7 +114,7 @@ tx = load_translator(max_model_mb=500, oversize_fallback=True)
 print(tx.route("en", "ca").model_ids)        # ('opus-mt-en-ca-int8',)    157 MB
 print(tx.route("en", "tt").model_ids)        # ('madlad400-3b-mt-int8',) 4945 MB
 print(tx.route("en", "tt").waived_size_cap)  # 500
-print(len(tx.available_languages))           # 592, not 275
+print(len(tx.available_languages))           # 592, not 235
 ```
 
 English to Catalan stays on the small model, because a small model exists. English
