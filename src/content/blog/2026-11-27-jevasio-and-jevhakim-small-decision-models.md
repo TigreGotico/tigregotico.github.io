@@ -1,6 +1,6 @@
 ---
 title: "Jevásio and Jevhakim: Small Decision Models for Portuguese and Arabic"
-description: "Jevásio (European Portuguese) and Jevhakim (Arabic) are 0.8B and 4B decision models. They read a state and a typed question, and give a probability for each option in one forward pass, with no generated text."
+description: "Jevásio (European Portuguese) and Jevhakim (Arabic) are small decision models, published in 0.8B and 4B sizes. They read a state and a typed question, and give a probability for each option in one forward pass, with no generated text."
 date: 2026-11-27
 author: "Casimiro Ferreira"
 tags:
@@ -42,20 +42,22 @@ alarm:
 | Jevhakim | "شغل لي أغنية لفيروز" | music, 1.0 |
 | Jevhakim | "صحيني الساعة سبعة الصبح" | alarm, 0.982 |
 
-A warm call takes about 250 to 320 ms. A cold start takes several seconds.
+On the ZeroGPU Spaces, a warm call takes 243 to 323 ms. A cold start takes
+several seconds.
 
 ## How they were trained
 
 Both models keep the base model `Qwen/Qwen3.5-0.8B-Base` frozen and train a
 rank-16 LoRA (11.3M trainable parameters) and the Kev pointer head.
 
-- **Jevásio-0.8B-V2** trained on 267,950 European Portuguese requests and 12,576
+- **Jevásio-0.8B-V2** starts from Jevásio-0.8B and trained on 267,950 European Portuguese requests and 12,576
   English replay records, for one epoch, in 4.3 hours on one RTX 4090. Most
   labels come from the source data. One part of the data has labels from the
   AMALIA-9B model.
 - **Jevhakim-0.8B** starts from Kev-0.8B and trained on 442,627 requests from 58
-  sources, for two epochs, in 14.2 hours on one RTX 5090. No model wrote a
-  label. 22 more sources are held out for the test.
+  sources and 12,576 English replay records, for two epochs, in 14.2 hours on one RTX 5090. No model wrote a
+  label, but 62,005 requests are machine-translated and 60,000 come from
+  LLM-generated sources. 22 more sources are held out for the test.
 
 ## Results
 
