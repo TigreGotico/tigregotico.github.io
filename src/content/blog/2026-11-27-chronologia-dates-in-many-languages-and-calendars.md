@@ -9,7 +9,7 @@ tags:
   - "dates"
   - "calendars"
   - "OVOS"
-draft: false
+draft: true
 ---
 
 "Na próxima sexta às 15h." A voice assistant must turn this into a time on a

@@ -10,7 +10,7 @@ tags:
   - "ONNX"
   - "self-hosted"
   - "OVOS"
-draft: false
+draft: true
 ---
 
 [**linguonnx**](https://github.com/TigreGotico/linguonnx) is a Python library for

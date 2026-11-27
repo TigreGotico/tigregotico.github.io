@@ -8,7 +8,7 @@ tags:
   - "BCP 47"
   - "NLP"
   - "OVOS"
-draft: false
+draft: true
 ---
 
 A user in Luanda asks for Portuguese. The installed voices are `pt-BR` and

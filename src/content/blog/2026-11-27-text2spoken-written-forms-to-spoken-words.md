@@ -9,7 +9,7 @@ tags:
   - "text normalisation"
   - "phoonnx"
   - "OVOS"
-draft: false
+draft: true
 ---
 
 A phonemizer reads letters. Give it `12/03/2024` or `3,50 €` and it reads
