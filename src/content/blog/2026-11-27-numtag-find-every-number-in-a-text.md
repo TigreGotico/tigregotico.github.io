@@ -1,6 +1,6 @@
 ---
 title: "numtag: Why “Duas Dúzias” Is 24, Not 2"
-description: "The old OpenVoiceOS number parser read 'o vigésimo terceiro lugar' as 0.05 and 'un milione e duecentomila' as 1000000.2. numtag finds every number in a text, in digits or words, with its exact value as a string, its kind and its position, and spells values back. Why it exists, how it works and what to do with it."
+description: "Numbers hide in text as digits, words, ordinals, fractions and mixes such as '2 milhões e meio'. numtag finds every one, gives its exact value as a string, its kind and its position, and spells values back in words. Why it exists, how it works and what to do with it."
 date: 2026-11-27
 authors: ["Casimiro Ferreira", "Claude"]
 tags:
@@ -12,43 +12,35 @@ tags:
 draft: false
 ---
 
-Here are four sentences and what `ovos-number-parser` 0.5.1 made of them. It was the
-number reader of OpenVoiceOS:
+A number in a text is rarely just digits:
 
-| Text | ovos-number-parser 0.5.1 | Correct |
-| :--- | :--- | :--- |
-| o vigésimo terceiro lugar ("twenty-third place") | `0.05` | 23rd |
-| tenho duas dúzias de ovos ("two dozen eggs") | `2` | 24 |
-| dreihundertzweiundvierzig Bücher | `None` | 342 |
-| un milione e duecentomila | `1000000.2` | 1,200,000 |
+| Text | Value |
+| :--- | :--- |
+| o vigésimo terceiro lugar ("twenty-third place") | 23rd |
+| tenho duas dúzias de ovos ("two dozen eggs") | 24 |
+| dreihundertzweiundvierzig Bücher | 342 |
+| un milione e duecentomila | 1,200,000 |
+| 2 milhões e meio | 2,500,000 |
 
-It also wrote numbers, and the writer had its own defects. In European Portuguese,
-10^30 came out as "um bilião sextiliões". The correct word is "um quintilião". In
-English, 0.1 + 0.2 came out as "zero point three zero zero", because the computer
-added two floats and got 0.30000000000000004.
+A voice assistant must read these in commands. A speech synthesiser must say them
+back. A script that extracts data must find them in documents. Each job needs the
+exact value, and most of them need to know where the number is in the text.
 
-In a random sample of 50 cases per language where the old parser's number writer and
-numtag disagreed, the old writer was wrong in 40 Romanian and 45 Galician cases, and
-numtag in none. Most were ordinals that lost the hundreds.
+## Why we wrote our own
 
-## Why the old parser failed
+The usual design has one module per language, with its own reader and writer, and it
+returns an `int` or a `float`. The number parser that OpenVoiceOS used was built this
+way. It had three limits that we could not fix inside that design:
 
-`ovos-number-parser` had one Python module per language. Each module had its own
-reader and its own writer, and each one returned an `int` or a `float`. The same idea
-was written again in each language, so each language had different bugs. A fix in
-Portuguese did nothing for Italian.
+- **Each language had its own bugs.** The same idea was written again in each
+  language, so a fix in Portuguese did nothing for Italian.
+- **One value per text.** It returned one number for the whole text, with no
+  position. "Set a timer for 5 minutes and call mum at 6" holds two numbers.
+- **Binary floats.** A float cannot hold 0.1 exactly, so 0.1 + 0.2 is
+  0.30000000000000004, and a writer reads that error aloud. A float also keeps only
+  about 16 significant digits.
 
-The design had two more problems:
-
-- **One value per text.** `extract_number` returned one number for the whole text,
-  with no position. A skill could not replace a number in place, or cut it out of a
-  command. "Set a timer for 5 minutes and call mum at 6" holds two numbers, and the
-  old reader gave one.
-- **Binary floats.** A float cannot hold 0.1 exactly. Each sum adds a small error, and
-  a number writer then reads that error aloud. A float keeps only about 16
-  significant digits, so very large numbers lost digits.
-
-[**numtag**](https://github.com/TigreGotico/numtag) replaces it.
+[**numtag**](https://github.com/TigreGotico/numtag) starts from a different design.
 
 ```bash
 uv pip install --prerelease=allow numtag
@@ -134,15 +126,13 @@ normal test.
 
 ### What we did not do
 
-- **Use the old parser as the truth.** Its output is a regression baseline, not
-  gold. Where it disagrees with a cited source, the source wins.
 - **Test against num2words or babel.** Another library can be wrong in the same way.
   The tests compare with cited rows, not with other code.
 
 ## What you can do with it
 
-- **Read commands.** `ovos-number-parser` itself reads 42 languages through
-  numtag. Every OVOS skill that calls `extract_number` uses numtag with no change.
+- **Read commands.** A voice assistant reads "set a timer for twenty minutes" with
+  `tag_numbers`, and it gets the value and its place in the command.
 - **Speak numbers.** Skills for alerts, counting and diagnostics call `spell`
   directly. text2spoken uses `spell` to speak numbers.
 - **Read dates.** chronologia finds the numbers in dates with `tag_numbers`.
@@ -153,7 +143,7 @@ normal test.
 
 ## Where it fails
 
-The reader covers more languages than the writer: `spell` writes 29 languages. Hindi
+The reader covers more languages than the writer: `spell` writes 29 lexicons (24 languages). Hindi
 named fractions do not read yet. ढाई सौ ("two hundred and fifty", literally "two and a
 half hundred") gives nothing. Each known defect is an open issue on GitHub and a
 strict `xfail` test.
@@ -161,5 +151,5 @@ strict `xfail` test.
 ## Try it
 
 The [numtag Space](https://huggingface.co/spaces/TigreGotico/numtag) runs in your
-browser. It installs the newest alpha from PyPI and gives sample sentences for each of
-52 languages.
+browser. It installs the newest alpha from PyPI and gives sample sentences for about 50
+languages.
