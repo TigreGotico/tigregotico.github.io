@@ -148,7 +148,8 @@ which reads numbers in many languages.
 Some readings differ from the old parser on purpose. These differences are written
 down as rulings. For example, "in two hours" said at 13:04 is 15:04, and rounding
 it to 15:00 is a defect. "Next" means the first occurrence strictly after now. A
-month with no day ("in March") is this month if now is in it, or else next year's.
+month with no day ("in March") is this month if now is in it, next year's if it has
+ended, and otherwise this year's.
 
 ## Speaking dates
 
@@ -202,7 +203,8 @@ correct rows for chronologia (commit `7760ee2d`, numtag 0.49.0a1) and ovos-date-
 chronologia loses 304 of the 1,662 cells of the test set (each cell is one sentence
 class in one language) to ovos-date-parser. The losses include languages without
 locale data (Chinese, Japanese), false dates in text that has no date, and some
-day-part and clock forms. For this reason, no language has the "ready" mark.
+day-part and clock forms. In this run, no language wins every class. Only Russian has the "ready" mark that
+chronologia publishes for each language.
 
 ## Where it fails
 
