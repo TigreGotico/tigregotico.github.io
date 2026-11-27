@@ -112,8 +112,7 @@ every form that people write and speaks the standard one.
 Each language is one data file: its abbreviations, its units, the gender and case
 of its nouns, and the libraries that write it. The test suite has more than 4,400 rows. Each row cites a grammar, a dictionary or a
 style guide, or it is marked *silver* when no source states the rule, so nobody
-mistakes it for a checked fact. Native speakers review languages that we do not
-speak, for example Danish.
+mistakes it for a checked fact.
 
 A form that text2spoken cannot read stays as written. It does not guess. For
 example, `1/2` in British English and the Bengali counted form `3টি` stay as
@@ -176,5 +175,4 @@ normalize("Comprei 2 maçãs e 1 laranja.", "pt-PT")
 
 text2spoken has 19 language files. The rules for each language, the sources and
 the known gaps are in the
-[documentation](https://github.com/TigreGotico/text2spoken/tree/dev/docs). Each
-known defect is an open issue on GitHub.
+[documentation](https://github.com/TigreGotico/text2spoken/tree/dev/docs).

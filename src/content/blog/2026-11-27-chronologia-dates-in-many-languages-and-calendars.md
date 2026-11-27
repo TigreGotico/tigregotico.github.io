@@ -171,8 +171,7 @@ voice reads a Portuguese date.
 
 The biggest open defect is a false date in text that has no date. A common word can
 also be a time word. "I had a bad fall" gives September to December, because "fall"
-is also autumn. "May I come in" gives May. Each known defect is an open issue on GitHub, and questions for native
-speakers are open for Kabyle, Bengali, Marwari and Colombian Spanish.
+is also autumn. "May I come in" gives May.
 
 ## Try it
 
