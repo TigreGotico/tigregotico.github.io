@@ -1,6 +1,6 @@
 ---
-title: "chronologia: Dates in Many Languages, in 18 Calendars and the Gregorian"
-description: "chronologia reads dates, times, ranges and repeats from text in many languages, and converts between 18 calendars. For Portuguese it also speaks dates and clock times. It runs in the browser in a public demo."
+title: "chronologia: From “Next Friday at 3” to 66 Million Years Ago"
+description: "A voice assistant must turn 'daqui a duas semanas' or 'von Juni bis August' into a span on a calendar. The old OpenVoiceOS date parser did this with one hand-written loop per language. chronologia replaces it with one engine, language data, 18 calendars and dates with no year limit. Why, how and what you can build with it."
 date: 2026-11-27
 authors: ["Casimiro Ferreira", "Claude"]
 tags:
@@ -9,12 +9,46 @@ tags:
   - "dates"
   - "calendars"
   - "OVOS"
-draft: true
+draft: false
 ---
 
-"Na próxima sexta às 15h." A voice assistant must turn this into a time on a
-calendar. [**chronologia**](https://github.com/TigreGotico/chronologia) does that:
-it is a calendar core with a multilingual date reader on top.
+Say these four things to a voice assistant:
+
+- "The meeting is on the second of May."
+- "Daqui a duas semanas." ("Two weeks from now.")
+- "Tenho uma reunião às três e meia." ("I have a meeting at half past three.")
+- "Von Juni bis August." ("From June to August.")
+
+Each one names a time on a calendar. The assistant must find it before it can set a
+reminder, answer "what day is that?" or read the weather for that day. Here is what
+`ovos-date-parser` 0.29.0, the date reader of OpenVoiceOS, gives for them. The
+anchor (the time "now") is 27 November 2026, 10:00:
+
+| Sentence | ovos-date-parser 0.29.0 | chronologia |
+| :--- | :--- | :--- |
+| the meeting is on the second of may | 1 May 2027 | 2 May 2027 |
+| daqui a duas semanas | nothing | 11 December 2026, 10:00 |
+| tenho uma reunião às três e meia | nothing | today, 15:30 |
+| von Juni bis August | nothing | 1 June to 1 September 2027 |
+
+These are not rare forms. They are what people say every day.
+
+## Why the old parser failed
+
+`ovos-date-parser` had one hand-written function per language: a token loop of 200 to
+1,000 lines that read the words one at a time. Each loop implemented the same rules
+again, with its own control flow. An audit found the cost:
+
+- The bug that reverses the direction of "N units ago" was in 20 different scanners.
+  Each one needed its own fix.
+- A month with a bare year ("May 2027") failed in most languages.
+- Five scanners returned a different type of result from the others.
+- Two languages could write dates but could not read them.
+
+The defects multiplied: languages × features. A fix in Portuguese did nothing for
+German. We needed one engine that reads data for each language, so that one fix in
+the engine fixes every language. That engine is
+[**chronologia**](https://github.com/TigreGotico/chronologia).
 
 ```bash
 uv pip install --prerelease=allow chronologia
@@ -24,81 +58,128 @@ uv pip install --prerelease=allow chronologia
 import datetime as dt
 from chronologia import extract_timespan
 
-anchor = dt.datetime(2026, 5, 3, 12, 0)   # a Sunday
-r = extract_timespan("na próxima sexta às 15h", lang="pt-PT", anchor=anchor)
-print(r.span.start, r.span.end)
-# 2026-05-08T15:00:00 2026-05-08T15:01:00
+anchor = dt.datetime(2026, 11, 27, 10, 0)
+r = extract_timespan("tenho uma reunião às três e meia", "pt-PT", anchor)
+# start 2026-11-27 15:30, end 15:31, remainder 'tenho uma reunião'
 ```
 
-All outputs are from chronologia 0.47.2a1, with that anchor.
+All outputs in this post are from chronologia 0.48.2a2, with that anchor.
 
-## A span, not a point
+## A phrase names a stretch of time
 
-The result is a span with a start and an end. "15h" is one minute. "Von Juni bis
-August" is three months, from 1 June to 1 September:
+The old parser returned one instant. But "June" is not an instant. It is a month.
+"3 pm" is a minute. "The 1990s" is ten years. If a reader returns one instant for
+"June", the caller cannot tell whether it means the first second of June or the whole
+month.
+
+chronologia returns a **half-open span**, `[start, end)`. The width of the span is the
+uncertainty. "Às três e meia" is one minute wide. "Von Juni bis August" starts on 1
+June and ends on 1 September, so it holds all of August. The span knows its own
+resolution from its width, so no separate tag can disagree with the value.
+
+The text that is not a date comes back as the **remainder**. "The meeting is on the
+second of may" gives the span and the remainder "the meeting is". A skill can use the
+remainder as the title of the reminder.
+
+## Dates with no year limit
+
+Python's `datetime` stops at year 1 and year 9999. That is enough for a calendar app,
+but not for "the Jurassic" or "66 million years ago". chronologia has its own date
+type, `AstroDate`. It acts like a `datetime`, but it has no year limit. It uses
+astronomical year numbering, where 1 BC is year 0.
 
 ```python
-extract_timespan("von Juni bis August", lang="de", anchor=anchor)
-# start 2026-06-01 00:00, end 2026-09-01 00:00
-
-extract_timespan("в следующую пятницу в 15:00", lang="ru", anchor=anchor)
-# start 2026-05-08 15:00
+extract_timespan("66 million years ago", "en", anchor)
+# start year -65998050, end year -64998050: a span one million years wide
 ```
 
-The text that is not a date comes back as the remainder. The reader also uses
-the grammar of the sentence. In Hindi, कल means both "yesterday" and
-"tomorrow", and the tense of the verb decides:
-
-```python
-r = extract_timespan("कल की दावत कैसी थी", lang="hi", anchor=anchor)
-# start 2026-05-02: थी is past tense, so कल is yesterday
-# r.remainder == 'की दावत कैसी थी'
-```
-
-## Repeats
-
-"Every Monday at 8" is not one date. `extract_recurrence` returns a rule in the
-iCalendar RRULE form:
-
-```python
-from chronologia import extract_recurrence
-extract_recurrence("every monday at 8", lang="en", anchor=anchor).recurrence.to_string()
-# FREQ=WEEKLY;BYDAY=MO;BYHOUR=8
-```
+The span is one million years wide. When a span is too wide for `timedelta` (about 2.74 million years), chronologia gives a
+`WideDuration` in its place.
 
 ## 18 calendars
 
-The core converts between the Gregorian date and 18 other calendars, among them
-the Hebrew, Islamic (civil and Umm al-Qura), Solar Hijri, Chinese, Ethiopian,
-Coptic, Julian, Armenian, Bahá'í, French Republican and Mayan Long Count
-calendars. The full list is in
-[docs/calendars.md](https://github.com/TigreGotico/chronologia/blob/dev/docs/calendars.md).
+Every calendar in chronologia converts through the Julian Day Number, a count of days
+that all calendars share. There are 18 calendars, among them the Hebrew, Islamic
+(civil and Umm al-Qura), Chinese, Coptic, Ethiopian, Bahá'í, French Republican and
+Mayan Long Count calendars.
+
+```python
+from datetime import date
+from chronologia import CALENDARS
+
+CALENDARS["hebrew"].from_astro(date(2026, 11, 27))       # 5787-09-17
+CALENDARS["umm_al_qura"].from_astro(date(2026, 11, 27))  # 1448-06-17
+
+extract_timespan("the 15th of Ramadan 1446", "en", anchor)
+# 2025-03-15
+```
+
+Each span also carries a **basis**: exact, tabulated, reconstructed or predicted. An
+Islamic month that begins when people see the new moon has no exact date in the
+future. chronologia gives it as a two-day span with the basis `predicted`. The Ides of
+March, 44 BC, in the proleptic Julian calendar, is 13 March in the Gregorian calendar.
+
+## Grammar, not only words
+
+In Hindi, कल means both "yesterday" and "tomorrow". A word list cannot decide which
+one. The verb decides:
+
+```python
+extract_timespan("कल की दावत कैसी थी", "hi", anchor)       # 2026-11-26
+extract_timespan("कल की दावत में आना ज़रूर", "hi", anchor)  # 2026-11-28
+```
+
+In the first sentence the verb थी is a past form of होना ("to be"), so कल is
+yesterday. In the second, आना is an imperative, so कल is tomorrow. If there is no
+verb, or if there are verbs in both tenses, chronologia does not guess, and it
+returns no date, as a native speaker of Hindi advised. The lists of past and
+future verbs are data files, not code.
+
+## Language is data
+
+A new language in chronologia is a JSON file, word lists and a gold test set. The repo
+has 62 locale folders, and there is no Python in them. Numbers inside dates ("duas
+semanas", "vinte e sete") come from [numtag](https://github.com/TigreGotico/numtag),
+which reads numbers in many languages.
+
+Some readings differ from the old parser on purpose. These differences are written
+down as rulings. For example, "in two hours" said at 13:04 is 15:04, and rounding
+it to 15:00 is a defect. "Next" means the first occurrence strictly after now. A
+month with no day ("in March") is this month if now is in it, or else next year's.
 
 ## Speaking dates
 
-The reader has a writer beside it. For Portuguese, `chronologia.spoken` writes
-dates and clock times in words, with the differences between the European and
-the Brazilian norm:
+The reader has a writer beside it. For Portuguese, `chronologia.spoken` writes a date
+or a clock time as words, in the European or the Brazilian norm:
 
 ```python
-from chronologia.spoken import spoken_date, spoken_time
-
-spoken_date("pt-PT", day=3, month=5, year=2026, weekday=6)
-# 'domingo três de maio de dois mil e vinte e seis'
-
-spoken_time("pt-PT", 16)   # 'dezasseis horas'
-spoken_time("pt-BR", 16)   # 'dezesseis horas'
-spoken_time("pt-BR", 0)    # 'zero hora'
+from chronologia.spoken import spoken_date
+spoken_date("pt-BR", day=27, month=11, year=2026, weekday=4)
+# 'sexta-feira vinte e sete de novembro de dois mil e vinte e seis'
 ```
 
-text2spoken uses these writers when a TTS voice reads a date. Only Portuguese
-has writers.
+[text2spoken](https://github.com/TigreGotico/text2spoken) uses this writer when a
+voice reads a Portuguese date.
+
+## What you can build with it
+
+- **Voice assistant skills.** The OpenVoiceOS date-time, alerts and weather skills
+  use chronologia to read the dates and times in requests.
+- **A drop-in for old code.** `ovos-date-parser` itself sends every language to
+  chronologia. Old code that calls `extract_datetime` gets the new reader with no
+  change.
+- **Calendar tools.** Convert a date to the Hebrew or Islamic calendar, find the
+  Gregorian date of a feast, or show a date in two calendars side by side.
+- **History and science.** Read "the Jurassic", "44 BC" or "66 million years ago" in
+  text, and get a span that you can sort and compare with modern dates.
+- **Spoken output.** Give a Portuguese voice a correct sentence for any date.
 
 ## Against ovos-date-parser
 
 The test set has 84,869 LLM-written sentences, with gold by calendar arithmetic.
-It is a regression set, not held-out data. The table gives the share of correct
-rows for chronologia (commit `7760ee2d`, numtag 0.49.0a1) and ovos-date-parser
+It is a regression set, not held-out data. Over all rows, chronologia reads 59,020
+correctly and ovos-date-parser 0.29.0 reads 33,350. The table gives the share of
+correct rows for chronologia (commit `7760ee2d`, numtag 0.49.0a1) and ovos-date-parser
 0.29.0:
 
 | Language | chronologia | ovos-date-parser |
@@ -116,20 +197,19 @@ rows for chronologia (commit `7760ee2d`, numtag 0.49.0a1) and ovos-date-parser
 | bn | 0.65 | 0.23 |
 
 chronologia loses 304 of the 1,662 cells of the test set (each cell is one sentence
-class in one language) to ovos-date-parser. The losses include languages without locale data (Chinese,
-Japanese), false dates in text that has no date, and some day-part and clock
-forms.
-For this reason, no language has the "ready" mark.
+class in one language) to ovos-date-parser. The losses include languages without
+locale data (Chinese, Japanese), false dates in text that has no date, and some
+day-part and clock forms. For this reason, no language has the "ready" mark.
 
-## Browser demo
+## Where it fails
 
-The [chronologia Space](https://huggingface.co/spaces/TigreGotico/chronologia)
-runs the package in your browser with Pyodide. No text goes to a server.
+The biggest open defect is a false date in text that has no date. A common word can
+also be a time word. "I had a bad fall" gives September to December, because "fall"
+is also autumn. "May I come in" gives May. ovos-date-parser also gets the second one
+wrong. Each known defect is an open issue on GitHub, and questions for native
+speakers are open for Kabyle, Bengali, Marwari and Colombian Spanish.
 
-## Limits
+## Try it
 
-A doubtful reading gets a low confidence value. The reader can find a false date
-in text that has none. It does not read holiday names in some languages
-(Hindi, Kabyle), and a holiday name next to another date can confuse it.
-Questions for native speakers are open in Kabyle, Hindi, Bengali, Marwari and
-Colombian Spanish. Each known defect is an open issue on GitHub.
+The [chronologia Space](https://huggingface.co/spaces/TigreGotico/chronologia) runs
+the package in your browser with Pyodide. No text goes to a server.
