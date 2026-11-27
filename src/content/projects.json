@@ -614,7 +614,7 @@
     "name": "pyFrotz",
     "description": "Python wrapper for an interactive fiction engine.",
     "url": "https://github.com/TigreGotico/pyFrotz",
-    "category": "Games",
+    "category": "Voice Platforms",
     "tags": [
       "Python",
       "Z-machine",
@@ -2152,7 +2152,7 @@
     "name": "Virtual Habitat",
     "description": "A voice-enabled game built with the StoryForge or TNaLaGmes platform.",
     "url": "https://github.com/VoiceGamez/virtual-habitat",
-    "category": "Games",
+    "category": "Developer Tools",
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -2167,7 +2167,7 @@
     "name": "Pokepython",
     "description": "Faithful multi-generation Pokémon engine (Gen 1/2/3) you can play by voice",
     "url": "https://github.com/VoiceGamez/pokepython",
-    "category": "Games",
+    "category": "Developer Tools",
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -2182,7 +2182,7 @@
     "name": "StoryForge",
     "description": "Engine for building voice-playable interactive fiction and audio-first adventure games.",
     "url": "https://github.com/VoiceGamez/story-forge",
-    "category": "Games",
+    "category": "Developer Tools",
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -2197,7 +2197,7 @@
     "name": "TNaLaGmes",
     "description": "T(oolbox) Na(tural) La(nguage) G(a)mes — framework for building and running natural-language voice games.",
     "url": "https://github.com/VoiceGamez/TNaLaGmes",
-    "category": "Games",
+    "category": "Developer Tools",
     "tags": [
       "Interactive Fiction",
       "Audio-first",
@@ -2664,7 +2664,7 @@
     "name": "pyvndb",
     "description": "Python client for the VNDB (Visual Novel Database) kana public JSON API.",
     "url": "https://github.com/TigreGotico/pyvndb",
-    "category": "Games",
+    "category": "Developer Tools",
     "tags": [
       "Visual Novels",
       "Games",

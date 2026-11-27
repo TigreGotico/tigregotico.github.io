@@ -38,7 +38,6 @@ export const translatedPaths = [
   '/',
   '/about',
   '/services',
-  '/games',
   '/contact',
   '/privacy',
   '/projects',
@@ -50,7 +49,7 @@ export const ui = {
     lang: 'en',
     locale: 'en_US',
     chooseLanguage: 'Choose language',
-    nav: { home: 'Home', about: 'About', blog: 'Blog', projects: 'Open Source', services: 'Services', games: 'Games', contact: 'Contact' },
+    nav: { home: 'Home', about: 'About', blog: 'Blog', projects: 'Open Source', services: 'Services', contact: 'Contact' },
     footer: {
       tagline: 'Privacy-first voice technology and FOSS AI — built to run on your own hardware.',
       explore: 'Explore', projects: 'Projects', connect: 'Connect', voicesDemo: 'Voices Demo',
@@ -63,7 +62,7 @@ export const ui = {
     lang: 'pt-PT',
     locale: 'pt_PT',
     chooseLanguage: 'Escolher idioma',
-    nav: { home: 'Início', about: 'Sobre', blog: 'Blogue', projects: 'Código Aberto', services: 'Serviços', games: 'Jogos', contact: 'Contacto' },
+    nav: { home: 'Início', about: 'Sobre', blog: 'Blogue', projects: 'Código Aberto', services: 'Serviços', contact: 'Contacto' },
     footer: {
       tagline: 'Tecnologia de voz centrada na privacidade e IA em código aberto — feita para correr no seu próprio hardware.',
       explore: 'Explorar', projects: 'Projetos', connect: 'Ligações', voicesDemo: 'Demo de Vozes',
@@ -76,7 +75,7 @@ export const ui = {
     lang: 'es',
     locale: 'es_ES',
     chooseLanguage: 'Elegir idioma',
-    nav: { home: 'Inicio', about: 'Nosotros', blog: 'Blog', projects: 'Código Abierto', services: 'Servicios', games: 'Juegos', contact: 'Contacto' },
+    nav: { home: 'Inicio', about: 'Nosotros', blog: 'Blog', projects: 'Código Abierto', services: 'Servicios', contact: 'Contacto' },
     footer: {
       tagline: 'Tecnología de voz centrada en la privacidad e IA de código abierto — hecha para funcionar en tu propio hardware.',
       explore: 'Explorar', projects: 'Proyectos', connect: 'Conectar', voicesDemo: 'Demo de Voces',
@@ -89,7 +88,7 @@ export const ui = {
     lang: 'de',
     locale: 'de_DE',
     chooseLanguage: 'Sprache wählen',
-    nav: { home: 'Start', about: 'Über uns', blog: 'Blog', projects: 'Open Source', services: 'Leistungen', games: 'Spiele', contact: 'Kontakt' },
+    nav: { home: 'Start', about: 'Über uns', blog: 'Blog', projects: 'Open Source', services: 'Leistungen', contact: 'Kontakt' },
     footer: {
       tagline: 'Datenschutzorientierte Sprachtechnologie und quelloffene KI — gebaut, um auf Ihrer eigenen Hardware zu laufen.',
       explore: 'Entdecken', projects: 'Projekte', connect: 'Verbinden', voicesDemo: 'Stimmen-Demo',
@@ -102,7 +101,7 @@ export const ui = {
     lang: 'nl',
     locale: 'nl_NL',
     chooseLanguage: 'Taal kiezen',
-    nav: { home: 'Start', about: 'Over ons', blog: 'Blog', projects: 'Open Source', services: 'Diensten', games: 'Games', contact: 'Contact' },
+    nav: { home: 'Start', about: 'Over ons', blog: 'Blog', projects: 'Open Source', services: 'Diensten', contact: 'Contact' },
     footer: {
       tagline: 'Privacy-first spraaktechnologie en open-source AI — gemaakt om op je eigen hardware te draaien.',
       explore: 'Verkennen', projects: 'Projecten', connect: 'Verbinden', voicesDemo: 'Stemmen-demo',
@@ -115,7 +114,7 @@ export const ui = {
     lang: 'fr',
     locale: 'fr_FR',
     chooseLanguage: 'Choisir la langue',
-    nav: { home: 'Accueil', about: 'À propos', blog: 'Blog', projects: 'Open Source', services: 'Services', games: 'Jeux', contact: 'Contact' },
+    nav: { home: 'Accueil', about: 'À propos', blog: 'Blog', projects: 'Open Source', services: 'Services', contact: 'Contact' },
     footer: {
       tagline: 'Technologie vocale axée sur la confidentialité et IA open source — conçue pour fonctionner sur votre propre matériel.',
       explore: 'Explorer', projects: 'Projets', connect: 'Nous suivre', voicesDemo: 'Démo des voix',
@@ -128,7 +127,7 @@ export const ui = {
     lang: 'it',
     locale: 'it_IT',
     chooseLanguage: 'Scegli la lingua',
-    nav: { home: 'Home', about: 'Chi siamo', blog: 'Blog', projects: 'Open Source', services: 'Servizi', games: 'Giochi', contact: 'Contatti' },
+    nav: { home: 'Home', about: 'Chi siamo', blog: 'Blog', projects: 'Open Source', services: 'Servizi', contact: 'Contatti' },
     footer: {
       tagline: 'Tecnologia vocale attenta alla privacy e IA open source — pensata per funzionare sul tuo hardware.',
       explore: 'Esplora', projects: 'Progetti', connect: 'Seguici', voicesDemo: 'Demo delle voci',
@@ -141,7 +140,7 @@ export const ui = {
     lang: 'ru',
     locale: 'ru_RU',
     chooseLanguage: 'Выберите язык',
-    nav: { home: 'Главная', about: 'О нас', blog: 'Блог', projects: 'Открытый код', services: 'Услуги', games: 'Игры', contact: 'Контакты' },
+    nav: { home: 'Главная', about: 'О нас', blog: 'Блог', projects: 'Открытый код', services: 'Услуги', contact: 'Контакты' },
     footer: {
       tagline: 'Голосовые технологии с приоритетом приватности и открытый ИИ — работают на вашем собственном оборудовании.',
       explore: 'Обзор', projects: 'Проекты', connect: 'Связаться', voicesDemo: 'Демо голосов',
@@ -154,7 +153,7 @@ export const ui = {
     lang: 'ar',
     locale: 'ar_AR',
     chooseLanguage: 'اختر اللغة',
-    nav: { home: 'الرئيسية', about: 'من نحن', blog: 'المدونة', projects: 'مفتوح المصدر', services: 'الخدمات', games: 'الألعاب', contact: 'اتصل بنا' },
+    nav: { home: 'الرئيسية', about: 'من نحن', blog: 'المدونة', projects: 'مفتوح المصدر', services: 'الخدمات', contact: 'اتصل بنا' },
     footer: {
       tagline: 'تقنية صوتية تحترم الخصوصية وذكاء اصطناعي مفتوح المصدر — مصمّمة للعمل على أجهزتك الخاصة.',
       explore: 'استكشف', projects: 'المشاريع', connect: 'تواصل', voicesDemo: 'عرض الأصوات',
@@ -167,7 +166,7 @@ export const ui = {
     lang: 'fa',
     locale: 'fa_IR',
     chooseLanguage: 'انتخاب زبان',
-    nav: { home: 'خانه', about: 'درباره ما', blog: 'وبلاگ', projects: 'متن‌باز', services: 'خدمات', games: 'بازی‌ها', contact: 'تماس' },
+    nav: { home: 'خانه', about: 'درباره ما', blog: 'وبلاگ', projects: 'متن‌باز', services: 'خدمات', contact: 'تماس' },
     footer: {
       tagline: 'فناوری صوتی حریم‌خصوصی‌محور و هوش مصنوعی متن‌باز — ساخته‌شده برای اجرا روی سخت‌افزار خودتان.',
       explore: 'کاوش', projects: 'پروژه‌ها', connect: 'ارتباط', voicesDemo: 'نمایش صداها',
@@ -180,7 +179,7 @@ export const ui = {
     lang: 'hi',
     locale: 'hi_IN',
     chooseLanguage: 'भाषा चुनें',
-    nav: { home: 'होम', about: 'हमारे बारे में', blog: 'ब्लॉग', projects: 'ओपन सोर्स', services: 'सेवाएँ', games: 'खेल', contact: 'संपर्क' },
+    nav: { home: 'होम', about: 'हमारे बारे में', blog: 'ब्लॉग', projects: 'ओपन सोर्स', services: 'सेवाएँ', contact: 'संपर्क' },
     footer: {
       tagline: 'गोपनीयता-प्रथम वॉइस तकनीक और FOSS AI — आपके अपने हार्डवेयर पर चलने के लिए बनाई गई।',
       explore: 'खोजें', projects: 'परियोजनाएँ', connect: 'जुड़ें', voicesDemo: 'आवाज़ डेमो',
@@ -193,7 +192,7 @@ export const ui = {
     lang: 'zh',
     locale: 'zh_CN',
     chooseLanguage: '选择语言',
-    nav: { home: '首页', about: '关于我们', blog: '博客', projects: '开源', services: '服务', games: '游戏', contact: '联系' },
+    nav: { home: '首页', about: '关于我们', blog: '博客', projects: '开源', services: '服务', contact: '联系' },
     footer: {
       tagline: '隐私优先的语音技术与开源 AI —— 专为在你自己的硬件上运行而打造。',
       explore: '探索', projects: '项目', connect: '联系我们', voicesDemo: '语音演示',
@@ -206,7 +205,7 @@ export const ui = {
     lang: 'ko',
     locale: 'ko_KR',
     chooseLanguage: '언어 선택',
-    nav: { home: '홈', about: '소개', blog: '블로그', projects: '오픈 소스', services: '서비스', games: '게임', contact: '문의' },
+    nav: { home: '홈', about: '소개', blog: '블로그', projects: '오픈 소스', services: '서비스', contact: '문의' },
     footer: {
       tagline: '프라이버시 우선 음성 기술과 오픈소스 AI — 여러분의 하드웨어에서 실행되도록 만들어졌습니다.',
       explore: '둘러보기', projects: '프로젝트', connect: '연결', voicesDemo: '음성 데모',
@@ -219,7 +218,7 @@ export const ui = {
     lang: 'ja',
     locale: 'ja_JP',
     chooseLanguage: '言語を選択',
-    nav: { home: 'ホーム', about: '会社概要', blog: 'ブログ', projects: 'オープンソース', services: 'サービス', games: 'ゲーム', contact: 'お問い合わせ' },
+    nav: { home: 'ホーム', about: '会社概要', blog: 'ブログ', projects: 'オープンソース', services: 'サービス', contact: 'お問い合わせ' },
     footer: {
       tagline: 'プライバシー重視の音声技術とオープンソースAI — ご自身のハードウェアで動作するように作られています。',
       explore: '見る', projects: 'プロジェクト', connect: 'つながる', voicesDemo: '音声デモ',
@@ -239,7 +238,6 @@ export function navItems(locale: Locale) {
     { label: t.blog, href: '/blog' },
     { label: t.projects, href: '/projects' },
     { label: t.services, href: '/services' },
-    { label: t.games, href: '/games' },
     { label: t.contact, href: '/contact' },
   ];
 }
@@ -317,22 +315,4 @@ export const langNote: Record<Locale, string> = {
   zh: '本页面为机器翻译；我们的母语是葡萄牙语和英语。请用任何语言联系我们 —— 需要时我们会使用机器翻译。',
   ko: '이 페이지는 기계 번역되었습니다. 저희의 모국어는 포르투갈어와 영어입니다. 어떤 언어로든 연락 주세요 — 필요하면 기계 번역을 사용합니다.',
   ja: 'このページは機械翻訳です。私たちの母語はポルトガル語と英語です。どの言語でもお問い合わせください — 必要に応じて機械翻訳を使用します。',
-};
-
-/** Games page banner: most game repos are private for now. */
-export const gamesComingSoon: Record<Locale, string> = {
-  en: "Our games are in active development — most aren't public yet. pyFrotz is available today; the rest are coming soon.",
-  pt: 'Os nossos jogos estão em desenvolvimento ativo — a maioria ainda não é pública. O pyFrotz já está disponível; os restantes estão para breve.',
-  es: 'Nuestros juegos están en desarrollo activo: la mayoría aún no son públicos. pyFrotz ya está disponible; el resto llegará pronto.',
-  de: 'Unsere Spiele befinden sich in aktiver Entwicklung — die meisten sind noch nicht öffentlich. pyFrotz ist bereits verfügbar; der Rest folgt in Kürze.',
-  nl: 'Onze games zijn volop in ontwikkeling — de meeste zijn nog niet openbaar. pyFrotz is nu beschikbaar; de rest komt binnenkort.',
-  fr: "Nos jeux sont en développement actif — la plupart ne sont pas encore publics. pyFrotz est disponible dès aujourd'hui ; le reste arrive bientôt.",
-  it: 'I nostri giochi sono in fase di sviluppo attivo — la maggior parte non è ancora pubblica. pyFrotz è già disponibile; il resto arriverà presto.',
-  ru: 'Наши игры в активной разработке — большинство ещё не опубликованы. pyFrotz уже доступен; остальное скоро появится.',
-  ar: 'ألعابنا قيد التطوير النشط — معظمها ليس عامًّا بعد. pyFrotz متاح اليوم؛ والبقية قريبًا.',
-  fa: 'بازی‌های ما در حال توسعهٔ فعال هستند — بیشترشان هنوز عمومی نشده‌اند. pyFrotz هم‌اکنون در دسترس است؛ بقیه به‌زودی می‌آیند.',
-  hi: 'हमारे खेल सक्रिय विकास में हैं — अधिकांश अभी सार्वजनिक नहीं हैं। pyFrotz आज उपलब्ध है; बाकी जल्द आ रहे हैं।',
-  zh: '我们的游戏正在积极开发中 —— 大多数尚未公开。pyFrotz 现已可用；其余即将推出。',
-  ko: '저희 게임은 활발히 개발 중입니다 — 대부분 아직 비공개입니다. pyFrotz는 지금 이용 가능하며, 나머지는 곧 공개됩니다.',
-  ja: '私たちのゲームは活発に開発中です — ほとんどはまだ非公開です。pyFrotz は現在利用可能で、残りは近日公開予定です。',
 };
