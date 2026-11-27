@@ -22,7 +22,7 @@ loop, beam search and KV cache included, is written against the raw ONNX graphs.
 uv pip install --prerelease=allow linguonnx
 ```
 
-The numbers and outputs in this post come from linguonnx 0.26.5a2.
+All numbers and outputs are from linguonnx 0.26.5a2.
 
 ```python
 from linguonnx import load_translator, load_detector
