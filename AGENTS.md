@@ -1,6 +1,6 @@
 # tigregotico.github.io — Agent Onboarding
 
-Company website for TigreGótico Lda. Astro 5 SSG with Tailwind CSS, deployed to GitHub Pages. Content-driven: markdown + JSON validated against Zod schemas at build time.
+Company website for Tigre Gótico - Consultoria Informática, Lda. Astro 7 SSG with Tailwind CSS, deployed to GitHub Pages. Content-driven: markdown + JSON validated against Zod schemas at build time.
 
 ## Quick start
 
@@ -37,22 +37,22 @@ npm run preview   # preview the built site
 ├── public/                   # static files (favicon, llms.txt, research PDFs)
 └── .github/workflows/
     ├── ci.yml                # PR check: astro check + build
-    └── deploy.yml            # push to master/dev → GitHub Pages
+    └── deploy.yml            # push to dev → GitHub Pages
 ```
 
 ## Conventions
 
-- **Branch model:** work on `dev`, release PR to `master`. Pages deploys from both (dev = staging, master = prod).
+- **Branch model:** `dev` is production. The repo has one Pages site, and a push to `dev` deploys it. Open PRs against `dev`.
 - **Content:** all page copy in `src/content/` — never embed prose in components. Blog posts via markdown files, data via JSON.
 - **Styling:** Tailwind utility classes + CSS custom properties for theming (4 color palettes: tiger, hivemind, noir, slop). Dark mode via `.dark` class.
 - **Images:** use `image()` from `astro:assets` for local images (optimized); `coverExternal` string URL as fallback.
-- **No README.md exists** — CONTENT.md serves as the content authoring contract.
+- **CONTENT.md** is the content authoring contract.
 - **Node 20** (`.nvmrc`). Commit identity: `JarbasAi <jarbasai@mailfence.com>`.
 - **Blog posts are living documents:** when the code, model, or dataset a post describes changes, update the post to match and set the `updated:` frontmatter field to the date of the fix. Post filenames and slugs are permanent identifiers — never rename a post file or change its slug, even when correcting its content. A change to an English post's facts requires syncing the same correction into its 13 translations.
 
 ## Gotchas
 
-- `base: '/'` in `astro.config.mjs` — the site is served at the org root (`tigregotico.github.io`).
+- `base: '/'` in `astro.config.mjs` — the site is served at the domain root (`https://tigregotico.pt`).
 - `featured` is a boolean flag on projects, not a separate collection. Homepage queries `featured === true`.
 - Draft posts: set `draft: true` in frontmatter to exclude from production.
 - `astro check` requires valid content; a deliberate schema violation fails the build with a located error.
