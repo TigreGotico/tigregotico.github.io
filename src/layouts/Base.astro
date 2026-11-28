@@ -135,7 +135,7 @@ const projectLinks = [
       class="sticky top-0 z-40 border-b border-transparent transition-all duration-300"
     >
       <nav
-        class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-6 py-4"
+        class="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-4 sm:px-6"
         aria-label={t.a11y.primaryNav}
       >
         <a
@@ -204,8 +204,10 @@ const projectLinks = [
               }
             </ul>
           </details>
-          <PaletteSelector id="palette-desktop" />
-          <ThemeToggle />
+          <div class="hidden items-center gap-2 sm:flex">
+            <PaletteSelector id="palette-desktop" />
+            <ThemeToggle />
+          </div>
           <button
             id="nav-toggle"
             type="button"
@@ -268,7 +270,10 @@ const projectLinks = [
           <span class="font-display text-xs uppercase tracking-[0.2em] text-muted">
             {t.footer.appearance}
           </span>
-          <PaletteSelector id="palette-mobile" compact />
+          <div class="flex items-center gap-2">
+            <PaletteSelector id="palette-mobile" compact />
+            <div class="sm:hidden"><ThemeToggle /></div>
+          </div>
         </li>
       </ul>
       </nav>
