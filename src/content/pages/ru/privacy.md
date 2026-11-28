@@ -40,6 +40,7 @@ GitHub может фиксировать стандартные техничес
 [Hugging Face](https://huggingface.co), на которые распространяется
 [политика конфиденциальности Hugging Face](https://huggingface.co/privacy). Сам
 синтез происходит на вашем устройстве.
+Демо также загружает движок ONNX Runtime из CDN jsDelivr, на который распространяется [политика конфиденциальности jsDelivr](https://www.jsdelivr.com/terms/privacy-policy-jsdelivr-net).
 
 ## Email
 
@@ -51,7 +52,7 @@ GitHub может фиксировать стандартные техничес
 
 Организация, ответственная за этот веб-сайт:
 
-**TigreGótico Lda**
+**Tigre Gótico - Consultoria Informática, Lda**
 Praceta António Sérgio, nº 317, 4º Esquerdo
 4450-048 Matosinhos, Portugal
 NIF: PT517914190

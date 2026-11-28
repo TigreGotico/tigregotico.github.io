@@ -36,6 +36,7 @@ order: 7
 ملفات النموذج المفتوحة من [Hugging Face](https://huggingface.co)، الذي يخضع
 لـ[سياسة خصوصية Hugging Face](https://huggingface.co/privacy).
 أما التركيب نفسه فيحدث على جهازك.
+يحمّل العرض أيضًا محرك ONNX Runtime من شبكة jsDelivr لتوزيع المحتوى، وتخضع لـ[سياسة خصوصية jsDelivr](https://www.jsdelivr.com/terms/privacy-policy-jsdelivr-net).
 
 ## البريد الإلكتروني
 
@@ -46,7 +47,7 @@ order: 7
 
 الكيان المسؤول عن هذا الموقع هو:
 
-**TigreGótico Lda**
+**Tigre Gótico - Consultoria Informática, Lda**
 Praceta António Sérgio, nº 317, 4º Esquerdo
 4450-048 Matosinhos, Portugal
 NIF: PT517914190

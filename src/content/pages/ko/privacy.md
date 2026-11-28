@@ -36,6 +36,7 @@ order: 7
 여러분의 브라우저가 [Hugging Face](https://huggingface.co)에서 오픈 모델 파일을
 다운로드하며, 이는 [Hugging Face 개인정보 처리방침](https://huggingface.co/privacy)의
 적용을 받습니다. 합성 자체는 여러분의 기기에서 이루어집니다.
+데모는 jsDelivr CDN에서 ONNX Runtime 엔진도 불러오며, 여기에는 [jsDelivr 개인정보 처리방침](https://www.jsdelivr.com/terms/privacy-policy-jsdelivr-net)이 적용됩니다.
 
 ## 이메일
 
@@ -47,7 +48,7 @@ order: 7
 
 이 웹사이트를 책임지는 주체는 다음과 같습니다:
 
-**TigreGótico Lda**
+**Tigre Gótico - Consultoria Informática, Lda**
 Praceta António Sérgio, nº 317, 4º Esquerdo
 4450-048 Matosinhos, Portugal
 VAT (NIF): PT517914190

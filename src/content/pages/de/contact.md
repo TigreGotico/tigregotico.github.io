@@ -32,7 +32,7 @@ Gesprächsplan.
 - **GitHub:** [github.com/TigreGotico](https://github.com/TigreGotico) — unsere quelloffenen Projekte
 - **Datensätze:** [huggingface.co/TigreGotico](https://huggingface.co/TigreGotico) — Datensätze und Modelle auf Hugging Face
 - **OpenVoiceOS:** [openvoiceos.org](https://openvoiceos.org) — die unabhängige Stiftung, die wir unterstützen
-- **Gemeinschaft:** Treten Sie dem [OpenVoiceOS-Matrix-Chat](https://matrix.to/#/#OpenVoiceOS:matrix.org) bei, um mit uns und der Gemeinschaft zu sprechen
+- **Gemeinschaft:** Treten Sie dem [OpenVoiceOS-Matrix-Chat](https://matrix.to/#/#openvoiceos:matrix.org) bei, um mit uns und der Gemeinschaft zu sprechen
 
 ## Fragen, bevor Sie sich melden?
 

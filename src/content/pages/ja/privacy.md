@@ -36,6 +36,7 @@ GitHub はサービスの運用と保護のために標準的な技術データ�
 [Hugging Face](https://huggingface.co) からオープンなモデルファイルをダウンロードします。これは
 [Hugging Face のプライバシーポリシー](https://huggingface.co/privacy)の対象となります。
 合成自体はあなたのデバイス上で行われます。
+デモは ONNX Runtime エンジンを jsDelivr CDN からも読み込みます。これには [jsDelivr のプライバシーポリシー](https://www.jsdelivr.com/terms/privacy-policy-jsdelivr-net) が適用されます。
 
 ## メール
 
@@ -47,7 +48,7 @@ GitHub はサービスの運用と保護のために標準的な技術データ�
 
 このウェブサイトの責任主体は以下のとおりです。
 
-**TigreGótico Lda**
+**Tigre Gótico - Consultoria Informática, Lda**
 Praceta António Sérgio, nº 317, 4º Esquerdo
 4450-048 Matosinhos, Portugal
 VAT（NIF）: PT517914190

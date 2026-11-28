@@ -28,7 +28,7 @@ Ti risponderemo con i passi successivi, stime dei tempi e un piano di conversazi
 - **GitHub:** [github.com/TigreGotico](https://github.com/TigreGotico) — i nostri progetti open source
 - **Dataset:** [huggingface.co/TigreGotico](https://huggingface.co/TigreGotico) — dataset e modelli su Hugging Face
 - **OpenVoiceOS:** [openvoiceos.org](https://openvoiceos.org) — la fondazione indipendente che sosteniamo
-- **Comunità:** unisciti alla [chat Matrix di OpenVoiceOS](https://matrix.to/#/#OpenVoiceOS:matrix.org) per parlare con noi e con la comunità
+- **Comunità:** unisciti alla [chat Matrix di OpenVoiceOS](https://matrix.to/#/#openvoiceos:matrix.org) per parlare con noi e con la comunità
 
 ## Domande prima di scriverci?
 

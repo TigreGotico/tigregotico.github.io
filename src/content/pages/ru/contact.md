@@ -34,7 +34,7 @@ order: 6
 - **OpenVoiceOS:** [openvoiceos.org](https://openvoiceos.org) — независимый фонд,
   который мы поддерживаем
 - **Сообщество:** присоединяйтесь к [чату OpenVoiceOS в
-  Matrix](https://matrix.to/#/#OpenVoiceOS:matrix.org), чтобы пообщаться с нами и
+  Matrix](https://matrix.to/#/#openvoiceos:matrix.org), чтобы пообщаться с нами и
   сообществом
 
 ## Вопросы перед обращением?

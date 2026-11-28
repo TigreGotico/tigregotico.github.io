@@ -42,6 +42,7 @@ auswählen, lädt Ihr Browser die offenen Modelldateien von
 [Hugging Face](https://huggingface.co) herunter, was der
 [Datenschutzrichtlinie von Hugging Face](https://huggingface.co/privacy)
 unterliegt. Die Synthese selbst findet auf Ihrem Gerät statt.
+Die Demo lädt außerdem die ONNX-Runtime-Engine vom CDN jsDelivr; dafür gilt die [Datenschutzerklärung von jsDelivr](https://www.jsdelivr.com/terms/privacy-policy-jsdelivr-net).
 
 ## E-Mail
 
@@ -53,7 +54,7 @@ Verteilerlisten auf und geben Ihre Adresse an niemanden weiter.
 
 Die für diese Website verantwortliche Stelle ist:
 
-**TigreGótico Lda**
+**Tigre Gótico - Consultoria Informática, Lda**
 Praceta António Sérgio, nº 317, 4º Esquerdo
 4450-048 Matosinhos, Portugal
 USt-IdNr. (NIF): PT517914190

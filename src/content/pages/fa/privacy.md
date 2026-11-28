@@ -37,6 +37,7 @@ GitHub ممکن است داده‌های فنی استاندارد (آدرس IP�
 شما فایل‌های باز مدل را از [Hugging Face](https://huggingface.co) دانلود می‌کند که
 مشمول [سیاست حریم خصوصی Hugging Face](https://huggingface.co/privacy) است. خود
 سنتز روی دستگاه شما انجام می‌شود.
+این دمو همچنین موتور ONNX Runtime را از CDN ‏jsDelivr بارگیری می‌کند که تابع [سیاست حریم خصوصی jsDelivr](https://www.jsdelivr.com/terms/privacy-policy-jsdelivr-net) است.
 
 ## ایمیل
 
@@ -48,7 +49,7 @@ GitHub ممکن است داده‌های فنی استاندارد (آدرس IP�
 
 نهاد مسئول این وب‌سایت عبارت است از:
 
-**TigreGótico Lda**
+**Tigre Gótico - Consultoria Informática, Lda**
 Praceta António Sérgio, nº 317, 4º Esquerdo
 4450-048 Matosinhos, Portugal
 NIF: PT517914190

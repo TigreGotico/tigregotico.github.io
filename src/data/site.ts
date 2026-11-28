@@ -1,6 +1,6 @@
 export const site = {
   name: 'TigreGótico',
-  legalName: 'TigreGótico Lda',
+  legalName: 'Tigre Gótico - Consultoria Informática, Lda',
   url: 'https://tigregotico.pt',
   lang: 'en',
   locale: 'en_US',
