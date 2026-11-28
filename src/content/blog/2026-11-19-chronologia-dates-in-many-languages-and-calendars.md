@@ -157,6 +157,72 @@ spoken_date("pt-BR", day=27, month=11, year=2026, weekday=4)
 [text2spoken](https://github.com/TigreGotico/text2spoken) uses this writer when a
 voice reads a Portuguese date.
 
+## Against other date libraries
+
+We compared chronologia 0.48.6a1 with three Python packages that read dates:
+[dateparser](https://pypi.org/project/dateparser/) 1.5.1,
+[parsedatetime](https://pypi.org/project/parsedatetime/) 2.6 and
+[dateutil](https://pypi.org/project/python-dateutil/) 4.0.0. The test set has 17,470
+sentences in 12 languages. They cover weekdays, day parts, clock times, holidays,
+two-part dates, inflected forms, and common words that only look like dates. A model
+wrote each sentence and a second model checked it. Python computed each correct date
+from a fixed anchor. These are chronologia's own regression tests, so the set favours
+it.
+
+The packages do not do the same job:
+
+| Package | Input | Output | Positions |
+| :--- | :--- | :--- | :--- |
+| chronologia `extract_timespans` | a sentence | every date, as a span | yes |
+| dateparser `search_dates` | a sentence | every match, as a moment | text only |
+| parsedatetime `nlp` | a sentence | every match, as a moment | yes |
+| dateutil `parse(fuzzy=True)` | a sentence | one moment | no |
+
+dateutil reads only English month and weekday names, so it read no sentence of the 12
+languages. The test gives each package the whole sentence and checks its first date:
+
+<picture>
+  <source srcset="/blog/chronologia/thirdparty-sentence-dark.svg" media="(prefers-color-scheme: dark)">
+  <img src="/blog/chronologia/thirdparty-sentence-light.svg" alt="Bar chart of the share of sentences with the date read correctly. chronologia: pt-PT 0.96, pt-BR 0.95, es-CO 0.83, fr 0.99, it 0.93, de 0.93, nl 0.97, da 0.85, hi 0.79, bn 0.73, kab 0.52. dateparser: 0.17 to 0.38, no kab. parsedatetime: 0.10 to 0.47 in pt-PT, pt-BR, es-CO, fr, de and nl." width="900" loading="lazy">
+</picture>
+
+In the eight European languages, chronologia reads 83 to 99 % of the dates, dateparser
+26 to 38 %, and parsedatetime 10 to 47 %. In Hindi and Bengali, chronologia reads
+about three quarters, and dateparser about a fifth. For Kabyle, chronologia is the
+only package, and it reads half. The test also has Marwari, and there chronologia
+reads nothing: it has no Marwari data.
+
+The other side matters too: a date reader must not find dates where there are none.
+"Verão" is "summer", but in "eles verão o filme" it is a verb: "they will see". A bare number is
+usually not a day.
+
+<picture>
+  <source srcset="/blog/chronologia/thirdparty-false-dark.svg" media="(prefers-color-scheme: dark)">
+  <img src="/blog/chronologia/thirdparty-false-light.svg" alt="Bar chart of the share of sentences with no date where a package gives a date, lower is better. chronologia: pt-PT 0.24, pt-BR 0.23, es-CO 0.48, fr 0.35, it 0.20, de 0.23, nl 0.29, da 0.17, hi 0.04, bn 0.00, kab 0.06. dateparser: pt-PT 0.16, pt-BR 0.08, es-CO 0.56, fr 0.60, it 0.00, de 0.67, nl 0.15, da 0.51, hi 0.33, bn 0.20. parsedatetime: pt-PT 0.09, pt-BR 0.02, es-CO 0.25, fr 0.31, de 0.38, nl 0.29." width="900" loading="lazy">
+</picture>
+
+Here chronologia is not the best. It gives more false dates than dateparser in
+Portuguese, Italian and Dutch, and more than parsedatetime in Portuguese, Spanish and
+French. Most of these sentences are traps that we wrote on purpose, but each one is a
+real defect.
+
+chronologia is also the slowest: about 12 ms per sentence on one laptop core, against
+1.6 ms for dateparser and 0.2 ms for parsedatetime. It reads every date in a sentence
+as a span, with its grammar. For a voice command, 12 ms is small. For millions of
+log lines with fixed date formats, a simpler parser is faster.
+
+### Against the standard library
+
+Python's `datetime` stops at year 1 and year 9999:
+
+| Input | `datetime` | chronologia |
+| :--- | :--- | :--- |
+| the year 10000 | `date(10000, 1, 1)`: ValueError | +010000-01-01 |
+| the year 0 | `date(0, 1, 1)`: ValueError | 0000-01-01 |
+| "44 a.C." (44 BC) | no year before 1 | year -43, in astronomical numbering |
+| "27 de junho de 2017" | `strptime(..., "%d de %B de %Y")`: ValueError in the default locale | 27 June 2017 |
+| "amanhã às cinco da tarde" | `fromisoformat`: ValueError | 2017-06-28 17:00 |
+
 ## What you can build with it
 
 - **Voice assistant skills.** The OpenVoiceOS date-time, alerts and weather skills
